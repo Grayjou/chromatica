@@ -1,4 +1,4 @@
-from .unit_float import UnitFloat
+from .numbers import UnitFloat
 
 def saturate(value: float) -> UnitFloat:
     """

@@ -1,109 +1,86 @@
+"""
+Color Array Generation Module
+==============================
+
+This module provides color array classes that extend ColorBase with generation
+methods for creating 1D and 2D color gradients and patterns.
+
+Features
+--------
+- Inherits all ColorBase functionality (conversions, arithmetic, alpha support)
+- 1D color arrays with repeat and projection methods
+- 2D color arrays with repeat and resize methods
+- Angular gradients (wrap_around)
+- Radial gradients (rotate_around)
+- Easing/transform support for custom gradient curves
+
+Classes
+-------
+Color1DArr: 1D color array with gradient generation methods
+Color2DArr: 2D color array with tiling and resizing methods
+"""
+
 from numpy import ndarray as NDArray
-from .colors import ColorMode, get_color_mode, color
 import numpy as np
-from enum import Enum
-from .conversions import np_convert
-from typing import Type, List, Union, Optional, Callable, Tuple
-from .color_int import ColorInt
+from typing import List, Union, Optional, Callable, Tuple
+from .colors.color_base import ColorBase
+from .colors.types import ColorValue
 
 
-
-class ColorFormat(Enum):
-    """Enum for color formats used in Color1DArr and Color2DArr.
-    This enum defines the formats in which colors can be represented.
-    - INT: Integer format (0-255 for each channel).
-    - PIL_INT: PIL-compatible integer format (0-255 for each channel but Hue).
-    - UNIT_FLOAT: Normalized float format (0.0-1.0 for each channel but Hue).
+class Color1DArr:
     """
-    INT = "int"
-    PIL_INT = "pilint"
-    UNIT_FLOAT = "float"
-
-class ColorArr:
-    def __init__(self, colors: NDArray, color_mode: Union[ColorMode, str], color_format: ColorFormat = ColorFormat.INT) -> None:
-        self.colors: NDArray = colors
-        self.color_mode: Type[ColorMode] = get_color_mode(color_mode)
-        self.mode: str = self.color_mode.mode.upper()
-        self.format: ColorFormat = color_format
-    def __array__(self) -> NDArray:
+    1D Color Array with gradient generation capabilities.
+    
+    Wraps a ColorBase instance, so it has full support for:
+    - Color space conversion
+    - Arithmetic operations
+    - Alpha channel manipulation
+    - Array operations
+    
+    Additional methods:
+    - repeat: Tile the gradient horizontally and vertically
+    - wrap_around: Create angular gradients around a point
+    - rotate_around: Create radial gradients from a center
+    """
+    
+    def __init__(self, color_base: ColorBase) -> None:
         """
-        Convert the color array to a numpy array.
+        Initialize a 1D color array.
         
-        :return: A numpy array of shape (n, channels) or (h, w, channels).
-        """
-        return self.colors
-    def convert(self, to_mode: str, output_type: str = 'int') -> NDArray:
-        """
-        Convert the color array to another color mode.
-
         Args:
-            to_mode (str): Target color mode (e.g., 'RGB', 'HSV', etc.).
-            output_type (str): Output type ('int', 'pilint', 'unitfloat', 'hueunitfloat').
-
-        Returns:
-            NDArray: Converted color array.
+            color_base: ColorBase instance with 2D array value (N, channels)
+                       where N is the number of color samples.
         """
-        return np_convert(
-            self.colors,
-            from_space=self.mode.lower(),
-            to_space=to_mode.lower(),
-            input_type=self.format,
-            output_type=output_type
-        )
-    @property
-    def channel_num(self) -> int:
-        return len(self.color_mode.maxima)
-
+        if not isinstance(color_base, ColorBase):
+            raise TypeError("Color1DArr requires a ColorBase instance")
+        
+        # Validate that we have a proper 1D array (N, channels)
+        if not color_base.is_array:
+            raise ValueError("Color1DArr requires an array value, not a scalar")
+        
+        if color_base.value.ndim != 2:
+            raise ValueError(
+                f"Color1DArr requires 2D array (N, channels), got shape {color_base.value.shape}"
+            )
+        
+        self._color = color_base
+    
+    def __getattr__(self, name):
+        """Forward attribute access to wrapped ColorBase."""
+        return getattr(self._color, name)
+    
     @property
     def channels(self) -> List[NDArray]:
-        if self.channel_num == 1 or self.colors.ndim < 3:
-            return [self.colors]
-        return [self.colors[..., i] for i in range(self.channel_num)]
+        """Get individual color channels as separate arrays."""
+        return [self._color.value[..., i] for i in range(self._color.num_channels)]
     
-    def unit_array(self, normalize_hue: bool = False) -> NDArray:
-
-        channels = self.channels
-        maxima = self.color_mode.maxima
-        
-        if len(channels) == 1:
-            return self.colors/maxima[0]
-        else:
-            do_normalize_hue = normalize_hue and self.mode.upper().startswith('H')
-            if not do_normalize_hue:
-                hue = channels[0]
-                unit_values = [c/max for c, max in zip(channels[1:], maxima[1:])]
-                unit_values.insert(0, hue)  # keep hue as is
-                return np.stack(unit_values, axis=-1)
-            else:
-
-                unit_values = [c/max for c, max in zip(channels, maxima)]
-                return np.stack(unit_values, axis=-1)
-_ndarray_props = ['shape', 'dtype', 'ndim', 'size', 'itemsize', 'nbytes']
-for _prop in _ndarray_props:
-    setattr(
-        ColorArr,
-        _prop,
-        property(lambda self, p=_prop: getattr(self.colors, p))
-    )
-
-class Color1DArr(ColorArr):
-    def __init__(self, colors: NDArray, color_mode: Union[ColorMode, str], color_format: ColorFormat = ColorFormat.INT):
-        super().__init__(colors, color_mode, color_format)
-
-        assert isinstance(self.colors, NDArray), "colors must be a numpy array"
-
-        if len(self.color_mode.maxima) > 1:
-            # Multi-channel: expect shape (N, C)
-            assert self.colors.ndim >= 2, "multi-channel colors must be at least 2D"
-            assert self.colors.shape[-1] == len(self.color_mode.maxima), \
-                f"expected last dimension to be {len(self.color_mode.maxima)} channels, got {self.colors.shape[-1]}"
-        else:
-            # Single-channel: expect shape (N,)
-            assert self.colors.ndim == 1, "single-channel colors must be 1D"
-
-    def repeat(self, horizontally: float = 1.0, vertically: int = 1) -> NDArray:
+    def __array__(self) -> NDArray:
+        """Enable numpy array interface."""
+        return self._color.value
+    
+    def repeat(self, horizontally: float = 1.0, vertically: int = 1) -> 'Color2DArr':
         """
-        Repeat the 1D color array horizontally and vertically.
+        Repeat the 1D color array horizontally and vertically to create a 2D array.
 
         Horizontally can be a float — repeats the array fully `int(horizontally)` times
         and appends a proportional fraction of the array.
@@ -113,77 +90,71 @@ class Color1DArr(ColorArr):
             vertically (int): How many times to stack vertically.
 
         Returns:
-            NDArray: Repeated 2D color array.
+            Color2DArr: Repeated 2D color array as a new Color2DArr instance.
         """
         if horizontally <= 0:
             raise ValueError("horizontally must be > 0")
         if vertically <= 0:
             raise ValueError("vertically must be > 0")
 
-        n = self.colors.shape[0]
+        n = self._color.value.shape[0]
         full_repeats = int(horizontally)
         partial_fraction = horizontally - full_repeats
         partial_count = int(round(partial_fraction * n))
 
         # Build one row
         row = np.concatenate(
-            [self.colors] * full_repeats + ([self.colors[:partial_count]] if partial_count > 0 else [])
+            [self._color.value] * full_repeats + ([self._color.value[:partial_count]] if partial_count > 0 else [])
         )
 
         # Stack vertically
-        result = np.tile(row, (vertically, 1))
-        return result
-    # --------------------------------------------------------------------- #
-    # 2-D “angular” projection – wrap this 1-D gradient around a point
-    # --------------------------------------------------------------------- #
+        result = np.tile(row, (vertically, 1, 1))
+        
+        # Return as Color2DArr with same color class
+        return Color2DArr(self._color.__class__(result))
+    
     def wrap_around(
         self,
         width: int,
         height: int,
-        center: Union[tuple[int, int], List[int]] = (0, 0),
+        center: Union[Tuple[int, int], List[int]] = (0, 0),
         *,
         angle_start: float = 0.0,
         angle_end: float = 2 * np.pi,
         unit_transform: Optional[Callable[[NDArray], NDArray]] = None,
-        outside_fill: Optional[Union[ColorInt, tuple[int, ...], int]] = None,
+        outside_fill: Optional[ColorValue] = None,
         radius_offset: float = 0.0,
         base: Optional[NDArray] = None
-    ) -> NDArray:
+    ) -> 'Color2DArr':
         """
-        Wrap the 1-D gradient around a centre point, producing a 2-D
-        (height, width, channels) array whose colour varies with *angle*.
+        Wrap the 1-D gradient around a center point, producing a 2-D
+        (height, width, channels) array whose color varies with *angle*.
 
         Args:
-            width, height : size of the output image.
-            center        : (cx, cy) – origin in pixel coordinates.
-            angle_start   : angle (rad) mapped to the first entry of the
-                            1-D gradient.
-            angle_end     : angle (rad) mapped to the last entry of the
-                            1-D gradient.  If angle_end-angle_start == 2π
-                            the gradient completes a full circle.
-            unit_transform: optional easing function applied to the
-                            normalised angle before colour lookup.
-            outside_fill  : colour used for pixels whose angle lies
-                            outside [angle_start, angle_end).  If None
-                            and *base* is given, those pixels are left
-                            unchanged.
-            radius_offset : minimum distance from *center* that must be
-                            exceeded for a pixel to be considered
-                            “inside” the gradient.  (Useful when layering
-                            several angular gradients.)
-            base          : optional image to paint *onto*; must have the
-                            same shape and dtype as the output.
+            width, height: Size of the output image.
+            center: (cx, cy) – origin in pixel coordinates.
+            angle_start: Angle (rad) mapped to the first entry of the
+                        1-D gradient.
+            angle_end: Angle (rad) mapped to the last entry of the
+                      1-D gradient. If angle_end-angle_start == 2π
+                      the gradient completes a full circle.
+            unit_transform: Optional easing function applied to the
+                           normalized angle before color lookup.
+            outside_fill: Color value used for pixels whose angle lies
+                         outside [angle_start, angle_end). Can be ColorBase,
+                         tuple, or scalar.
+            radius_offset: Minimum distance from *center* that must be
+                          exceeded for a pixel to be considered
+                          "inside" the gradient.
+            base: Optional image to paint *onto*; must have the
+                 same shape and dtype as the output.
 
         Returns:
-            (H, W, C) NumPy array in the same dtype as `self.colors`.
+            Color2DArr: Angular gradient as 2D color array.
         """
+        n_steps, n_channels = self._color.value.shape
 
-        # ------------------------------------------------------------------
-        # set-up          ---------------------------------------------------
-        # ------------------------------------------------------------------
-        n_steps, n_channels = self.colors.shape
-
-        # output container – start from *base* or zero-array
+        # Output container – start from *base* or zero-array
         if base is not None:
             if base.shape != (height, width, n_channels):
                 raise ValueError(
@@ -191,118 +162,115 @@ class Color1DArr(ColorArr):
                     f"expected {(height, width, n_channels)}")
             out = base.copy()
         else:
-            out = np.zeros((height, width, n_channels),
-                           dtype=self.colors.dtype)
+            out = np.zeros((height, width, n_channels), dtype=self._color.value.dtype)
 
-        # fallback colour for “outside” pixels
+        # Fallback color for "outside" pixels
         if outside_fill is not None:
-            outside_colour = np.asarray(
-                color(self.color_mode, outside_fill).value,
-                dtype=self.colors.dtype)
+            if isinstance(outside_fill, ColorBase):
+                # Convert to same color space and format
+                outside_color_obj = outside_fill.convert(self._color.mode, self._color.format_type)
+                outside_colour = np.asarray(outside_color_obj.value, dtype=self._color.value.dtype)
+            else:
+                outside_colour = np.asarray(outside_fill, dtype=self._color.value.dtype)
         else:
             outside_colour = None
 
-        # ------------------------------------------------------------------
-        # compute angle of each pixel relative to centre                    -
-        # ------------------------------------------------------------------
+        # Compute angle of each pixel relative to center
         yy, xx = np.indices((height, width), dtype=float)
         cx, cy = center
         dx, dy = xx - cx, yy - cy
         distance = np.hypot(dx, dy)
 
-        angle = np.arctan2(dy, dx)              # [-π, π]
+        angle = np.arctan2(dy, dx)  # [-π, π]
         angle = (angle + 2 * np.pi) % (2 * np.pi)  # → [0, 2π)
 
-        # map angle into the gradient’s [0, 1] domain
+        # Map angle into the gradient's [0, 1] domain
         span = (angle_end - angle_start) % (2 * np.pi)
-        # if span == 0 we treat it as a full turn
         span = 2 * np.pi if span == 0 else span
         unit = ((angle - angle_start) % (2 * np.pi)) / span
 
-        # mask: pixels whose angle lies inside the active arc *and*
+        # Mask: pixels whose angle lies inside the active arc and
         # whose radius is beyond `radius_offset`
         inside_mask = (unit <= 1.0) & (distance >= radius_offset)
 
-        # optional easing / warping
+        # Optional easing / warping
         if unit_transform is not None:
             unit = np.where(inside_mask, unit_transform(unit), unit)
 
-        # ------------------------------------------------------------------
-        # look-up / interpolate colour for every pixel inside_mask          -
-        # ------------------------------------------------------------------
-        # continuous index in 1-D gradient
+        # Look-up / interpolate color for every pixel inside_mask
         idx_f = unit * (n_steps - 1)
         idx0 = np.floor(idx_f).astype(int).clip(0, n_steps - 1)
         idx1 = np.clip(idx0 + 1, 0, n_steps - 1)
-        t = (idx_f - idx0)[..., None]                       # shape (..., 1)
+        t = (idx_f - idx0)[..., None]  # shape (..., 1)
 
-        # linear interpolation between neighbouring colour steps
-        col = (1 - t) * self.colors[idx0] + t * self.colors[idx1]
+        # Linear interpolation between neighboring color steps
+        col = (1 - t) * self._color.value[idx0] + t * self._color.value[idx1]
 
-        # ------------------------------------------------------------------
-        # write colours into the output                                     -
-        # ------------------------------------------------------------------
+        # Write colors into the output
         out[inside_mask] = col[inside_mask]
 
-        # pixels not inside_mask
+        # Pixels not inside_mask
         outside_mask = ~inside_mask
         if outside_colour is not None:
             out[outside_mask] = outside_colour
-        # else: if base was supplied we already kept its pixels
-        #       if base was None they remain zeros → caller can ignore
-        return out
-    # ------------------------------------------------------------------ #
-    # 2-D radial projection – cast this 1-D gradient outward from centre #
-    # ------------------------------------------------------------------ #
+
+        return Color2DArr(self._color.__class__(out))
+    
     def rotate_around(
         self,
         width: int,
         height: int,
-        center: Union[tuple[int, int], List[int]] = (0, 0),
+        center: Union[Tuple[int, int], List[int]] = (0, 0),
         *,
-        angle_start: float = 0.0,              # still honoured – lets you
-        angle_end: float = 2 * np.pi,          # restrict the radial segment
+        angle_start: float = 0.0,
+        angle_end: float = 2 * np.pi,
         unit_transform: Optional[Callable[[NDArray], NDArray]] = None,
-        outside_fill: Optional[Union[ColorInt, tuple[int, ...], int]] = None,
-        radius_offset: float = 0.0,            # inner “hole” radius
+        outside_fill: Optional[ColorValue] = None,
+        radius_offset: float = 0.0,
         base: Optional[NDArray] = None
-    ) -> NDArray:
+    ) -> 'Color2DArr':
         """
-        Cast the 1-D gradient radially: colour now varies with *radius* from
-        `center`.  Angles may still be limited via `angle_start/angle_end`.
+        Cast the 1-D gradient radially: color now varies with *radius* from
+        `center`. Angles may still be limited via `angle_start/angle_end`.
 
         Parameters are intentionally identical to `wrap_around` so you can
         swap the two calls with no code changes.
-        """
-        n_steps, n_channels = self.colors.shape
 
-        # ---------- prepare output ------------------------------------------------
+        Returns:
+            Color2DArr: Radial gradient as 2D color array.
+        """
+        n_steps, n_channels = self._color.value.shape
+
+        # Prepare output
         if base is not None:
             if base.shape != (height, width, n_channels):
                 raise ValueError(
                     f"`base` shape {base.shape} != required {(height, width, n_channels)}")
             out = base.copy()
         else:
-            out = np.zeros((height, width, n_channels), dtype=self.colors.dtype)
+            out = np.zeros((height, width, n_channels), dtype=self._color.value.dtype)
 
         if outside_fill is not None:
-            outside_colour = np.asarray(
-                color(self.color_mode, outside_fill).value, dtype=self.colors.dtype)
+            if isinstance(outside_fill, ColorBase):
+                outside_color_obj = outside_fill.convert(self._color.mode, self._color.format_type)
+                outside_colour = np.asarray(outside_color_obj.value, dtype=self._color.value.dtype)
+            else:
+                outside_colour = np.asarray(outside_fill, dtype=self._color.value.dtype)
         else:
             outside_colour = None
 
-        # ---------- geometry ------------------------------------------------------
+        # Geometry
         yy, xx = np.indices((height, width), dtype=float)
         cx, cy = center
         dx, dy = xx - cx, yy - cy
-        distance = np.hypot(dx, dy)                       # radius of each pixel
+        distance = np.hypot(dx, dy)  # radius of each pixel
 
         angle = (np.arctan2(dy, dx) + 2 * np.pi) % (2 * np.pi)  # 0‥2π
         span = (angle_end - angle_start) % (2 * np.pi)
         span = 2 * np.pi if span == 0 else span
         angle_mask = ((angle - angle_start) % (2 * np.pi)) <= span
 
-        # ---------- normalise radius to [0,1] -------------------------------------
+        # Normalize radius to [0,1]
         max_radius = np.max(distance) if base is None else np.hypot(
             max(cx, width - cx), max(cy, height - cy))
 
@@ -312,15 +280,15 @@ class Color1DArr(ColorArr):
         if unit_transform is not None:
             unit = unit_transform(unit)
 
-        # ---------- gradient lookup (linear interp) -------------------------------
-        idx_f = unit * (n_steps - 1)                     # float index
+        # Gradient lookup (linear interp)
+        idx_f = unit * (n_steps - 1)
         idx0 = np.floor(idx_f).astype(int)
         idx1 = np.clip(idx0 + 1, 0, n_steps - 1)
-        t = (idx_f - idx0)[..., None]                    # (...,1)
+        t = (idx_f - idx0)[..., None]  # (...,1)
 
-        col = (1 - t) * self.colors[idx0] + t * self.colors[idx1]
+        col = (1 - t) * self._color.value[idx0] + t * self._color.value[idx1]
 
-        # ---------- compose result ------------------------------------------------
+        # Compose result
         inside_mask = (distance >= radius_offset) & angle_mask
         out[inside_mask] = col[inside_mask]
 
@@ -328,30 +296,60 @@ class Color1DArr(ColorArr):
         if outside_colour is not None:
             out[outside_mask] = outside_colour
 
-        return out
+        return Color2DArr(self._color.__class__(out))
 
 
-
-
-class Color2DArr(ColorArr):
-    def __init__(self, colors: NDArray, color_mode: Union[ColorMode, str], color_format: ColorFormat = ColorFormat.INT):
-        self.colors: NDArray = colors
-        self.color_mode: Type[ColorMode] = get_color_mode(color_mode)
-        self.mode: str = self.color_mode.mode.upper()
-        self.format: ColorFormat = color_format
-
-        assert isinstance(self.colors, NDArray), "colors must be a numpy array"
-
-        if len(self.color_mode.maxima) > 1:
-            # Multi-channel: expect shape (H, W, C)
-            assert self.colors.ndim >= 3, "multi-channel colors must be at least 3D"
-            assert self.colors.shape[-1] == len(self.color_mode.maxima), \
-                f"expected last dimension to be {len(self.color_mode.maxima)} channels, got {self.colors.shape[-1]}"
-        else:
-            # Single-channel: expect shape (H, W)
-            assert self.colors.ndim == 2, "single-channel colors must be 2D"
-
-    def repeat(self, horizontally: int = 1, vertically: int = 1) -> NDArray:
+class Color2DArr:
+    """
+    2D Color Array with image manipulation capabilities.
+    
+    Wraps a ColorBase instance, so it has full support for:
+    - Color space conversion
+    - Arithmetic operations
+    - Alpha channel manipulation
+    - Array operations
+    
+    Additional methods:
+    - repeat: Tile the image horizontally and vertically
+    - resize: Resize the image to new dimensions (requires scikit-image)
+    """
+    
+    def __init__(self, color_base: ColorBase) -> None:
+        """
+        Initialize a 2D color array.
+        
+        Args:
+            color_base: ColorBase instance with 3D array value (H, W, channels)
+                       where H is height and W is width.
+        """
+        if not isinstance(color_base, ColorBase):
+            raise TypeError("Color2DArr requires a ColorBase instance")
+        
+        # Validate that we have a proper 2D array (H, W, channels)
+        if not color_base.is_array:
+            raise ValueError("Color2DArr requires an array value, not a scalar")
+        
+        if color_base.value.ndim != 3:
+            raise ValueError(
+                f"Color2DArr requires 3D array (H, W, channels), got shape {color_base.value.shape}"
+            )
+        
+        self._color = color_base
+    
+    def __getattr__(self, name):
+        """Forward attribute access to wrapped ColorBase."""
+        return getattr(self._color, name)
+    
+    @property
+    def channels(self) -> List[NDArray]:
+        """Get individual color channels as separate arrays."""
+        return [self._color.value[..., i] for i in range(self._color.num_channels)]
+    
+    def __array__(self) -> NDArray:
+        """Enable numpy array interface."""
+        return self._color.value
+    
+    def repeat(self, horizontally: int = 1, vertically: int = 1) -> 'Color2DArr':
         """
         Repeat the 2D color array horizontally and vertically.
 
@@ -362,7 +360,7 @@ class Color2DArr(ColorArr):
             vertically (int): How many times to repeat vertically.
 
         Returns:
-            NDArray: Repeated 2D color array.
+            Color2DArr: Repeated 2D color array.
         """
         if horizontally <= 0:
             raise ValueError("horizontally must be > 0")
@@ -370,12 +368,11 @@ class Color2DArr(ColorArr):
             raise ValueError("vertically must be > 0")
 
         # Repeat each axis
-        reps = (vertically, horizontally) + (1,) * (self.colors.ndim - 2)
-        result = np.tile(self.colors, reps)
-        return result
+        reps = (vertically, horizontally) + (1,) * (self._color.value.ndim - 2)
+        result = np.tile(self._color.value, reps)
+        return Color2DArr(self._color.__class__(result))
 
-
-    def resize(self, new_shape: tuple[int, int]) -> NDArray:
+    def resize(self, new_shape: Tuple[int, int]) -> 'Color2DArr':
         """
         Resize the 2D color array to a new shape.
 
@@ -383,11 +380,30 @@ class Color2DArr(ColorArr):
             new_shape (tuple[int, int]): New shape (height, width).
 
         Returns:
-            NDArray: Resized color array.
+            Color2DArr: Resized color array.
+        
+        Raises:
+            ImportError: If scikit-image is not installed.
         """
         if len(new_shape) != 2:
             raise ValueError("new_shape must be a tuple of (height, width)")
         
-        from skimage.transform import resize
-        resized_colors = resize(self.colors, new_shape, anti_aliasing=True, mode='reflect')
-        return resized_colors
+        try:
+            from skimage.transform import resize
+        except ImportError:
+            raise ImportError(
+                "resize() requires scikit-image. Install with: pip install scikit-image"
+            )
+        
+        resized_colors = resize(
+            self._color.value, 
+            new_shape + (self._color.num_channels,), 
+            anti_aliasing=True, 
+            mode='reflect'
+        )
+        
+        # Convert back to original dtype
+        if self._color.value.dtype.kind in ('u', 'i'):
+            resized_colors = (resized_colors * np.iinfo(self._color.value.dtype).max).astype(self._color.value.dtype)
+        
+        return Color2DArr(self._color.__class__(resized_colors.astype(self._color.value.dtype)))

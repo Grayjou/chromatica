@@ -1,6 +1,10 @@
-from .unit_float import UnitFloat
+from .numbers import UnitFloat
 import numpy as np
 from numpy import ndarray as NDArray
+from .css_to_hsv import css_rgb_to_hsv, np_css_rgb_to_hsv
+
+## HSL to HSV conversions
+
 def hsl_to_hsv(hue_deg: float, saturation: UnitFloat, lightness: UnitFloat) -> tuple[float, UnitFloat, UnitFloat]:
     """
     Convert HSL (Hue, Saturation, Lightness) to HSV (Hue, Saturation, Value).
@@ -24,37 +28,6 @@ def hsl_to_hsv(hue_deg: float, saturation: UnitFloat, lightness: UnitFloat) -> t
         hsv_saturation = UnitFloat(2 * (value - l) / value)
 
     return hue_deg, hsv_saturation, UnitFloat(value)
-
-def unit_rgb_to_hsv(r: UnitFloat, g: UnitFloat, b: UnitFloat) -> tuple[float, UnitFloat, UnitFloat]:
-    """
-    Convert RGB components to HSV.
-
-    Args:
-        r (UnitFloat): Red component in [0.0, 1.0].
-        g (UnitFloat): Green component in [0.0, 1.0].
-        b (UnitFloat): Blue component in [0.0, 1.0].
-
-    Returns:
-        Tuple[float, UnitFloat, UnitFloat]: (Hue in degrees, Saturation, Value).
-    """
-    max_c = max(r, g, b)
-    min_c = min(r, g, b)
-    delta = max_c - min_c
-
-    if delta == 0:
-        hue = 0
-    elif max_c == r:
-        hue = (60 * ((g - b) / delta) + 360) % 360
-    elif max_c == g:
-        hue = (60 * ((b - r) / delta) + 120) % 360
-    else:  # max_c == b
-        hue = (60 * ((r - g) / delta) + 240) % 360
-
-    saturation = UnitFloat(0 if max_c == 0 else delta / max_c)
-    value = max_c
-
-    return hue, saturation, value
-
 
 def np_hsl_to_hsv(hue_deg: NDArray, saturation: NDArray, lightness: NDArray) -> NDArray:
     """
@@ -88,7 +61,9 @@ def np_hsl_to_hsv(hue_deg: NDArray, saturation: NDArray, lightness: NDArray) -> 
     hsv = np.stack([hue_deg, hsv_s, value], axis=-1)
     return hsv
 
-def np_rgb_to_hsv(r: NDArray, g: NDArray, b: NDArray) -> NDArray:
+## RGB to HSV conversions
+
+def _np_unit_rgb_to_hsv(r: NDArray, g: NDArray, b: NDArray) -> NDArray:
     """
     Vectorized RGB → HSV.
 
@@ -131,3 +106,81 @@ def np_rgb_to_hsv(r: NDArray, g: NDArray, b: NDArray) -> NDArray:
 
     hsv = np.stack([hue, saturation, value], axis=-1)
     return hsv
+
+def unit_rgb_to_hsv_analytic(r: UnitFloat, g: UnitFloat, b: UnitFloat) -> tuple[float, UnitFloat, UnitFloat]:
+    """
+    Convert RGB components to HSV.
+
+    Args:
+        r (UnitFloat): Red component in [0.0, 1.0].
+        g (UnitFloat): Green component in [0.0, 1.0].
+        b (UnitFloat): Blue component in [0.0, 1.0].
+
+    Returns:
+        Tuple[float, UnitFloat, UnitFloat]: (Hue in degrees, Saturation, Value).
+    """
+    max_c = max(r, g, b)
+    min_c = min(r, g, b)
+    delta = max_c - min_c
+
+    if delta == 0:
+        hue = 0.0
+    elif max_c == r:
+        hue = 60 * (((g - b) / delta) % 6)
+    elif max_c == g:
+        hue = 60 * (((b - r) / delta) + 2)
+    else:
+        hue = 60 * (((r - g) / delta) + 4)
+
+    saturation = UnitFloat(0 if max_c == 0 else delta / max_c)
+    value = max_c
+
+    return hue, saturation, value
+
+def unit_rgb_to_hsv_picker(r: UnitFloat, g: UnitFloat, b: UnitFloat) -> tuple[float, UnitFloat, UnitFloat]:
+    """Match color picker's rounding behavior."""
+    h, s, v = unit_rgb_to_hsv_analytic(r, g, b)
+    
+    # Apply color picker rounding rules
+    h_rounded = round(h)  # Integer degrees
+    s_rounded = round(float(s) * 100, 1) / 100.0  # Percentage rounded to 1 decimal
+    v_rounded = round(float(v) * 100, 1) / 100.0  # Percentage rounded to 1 decimal
+    
+    return h_rounded, UnitFloat(s_rounded), UnitFloat(v_rounded)
+
+# RGB to HSV main functions
+
+def unit_rgb_to_hsv(r: UnitFloat, g: UnitFloat, b: UnitFloat, *, use_css_algo: bool = False) -> tuple[float, UnitFloat, UnitFloat]:
+    """
+    Convert RGB components to HSV.
+
+    Args:
+        r (UnitFloat): Red component in [0.0, 1.0].
+        g (UnitFloat): Green component in [0.0, 1.0].
+        b (UnitFloat): Blue component in [0.0, 1.0].
+        use_css_algo (bool): Whether to use CSS Color 4 / Culori-compatible algorithm.
+
+    Returns:
+        Tuple[float, UnitFloat, UnitFloat]: (Hue in degrees, Saturation, Value).
+    """
+    if use_css_algo:
+        return css_rgb_to_hsv(r, g, b)  # type: ignore
+    else:
+        return unit_rgb_to_hsv_analytic(r, g, b)
+
+def np_unit_rgb_to_hsv(r: NDArray, g: NDArray, b: NDArray, *, use_css_algo: bool = False) -> NDArray:
+    """
+    Vectorized RGB → HSV.
+
+    Args:
+        r, g, b: array-like or scalar, [0,1]
+        use_css_algo (bool): Whether to use CSS Color 4 / Culori-compatible algorithm.
+
+    Returns:
+        hsv: array of shape (..., 3): (hue_deg, saturation, value)
+    """
+    if use_css_algo:
+        return np_css_rgb_to_hsv(r, g, b)
+    else:
+        return _np_unit_rgb_to_hsv(r, g, b)
+    

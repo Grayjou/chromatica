@@ -1,207 +1,162 @@
-from .to_hsv import hsl_to_hsv, unit_rgb_to_hsv, np_hsl_to_hsv, np_rgb_to_hsv
-from .to_hsl import hsv_to_hsl, unit_rgb_to_hsl, np_rgb_to_hsl, np_hsv_to_hsl
-from .to_rgb import hsv_to_unit_rgb, hsl_to_unit_rgb, np_hsv_to_rgb, np_hsl_to_rgb
 import numpy as np
-from typing import Literal
+from typing import Literal, Tuple, cast, Dict, Callable
 
+from .format_type import FormatType, max_non_hue
 
-def _normalize_rgb(rgb: tuple[int, int, int], input_type: str) -> tuple[float, float, float]:
-    if input_type in ('int', 'pilint'):
-        return tuple(c / 255.0 for c in rgb)
-    return rgb
+from .to_rgb import np_hsv_to_unit_rgb, np_hsl_to_unit_rgb
+from .to_hsv import np_unit_rgb_to_hsv, np_hsl_to_hsv
+from .to_hsl import np_unit_rgb_to_hsl, np_hsv_to_hsl
 
+from ..colors.types import ColorElement, element_to_array, ColorSpace
 
-def _normalize_hsv(hsv: tuple[int, int, int], input_type: str) -> tuple[float, float, float]:
-    h, s, v = hsv
-    h = float(h)
-    if input_type == 'pilint':
-        return h, s / 255.0, v / 255.0
-    elif input_type == 'int':
-        return h, s / 100.0, v / 100.0
-    return hsv
+# Functions that accept use_css_algo parameter
+CONVERT_NUMPY_CSS: dict[tuple[str, str], Callable[[np.ndarray, np.ndarray, np.ndarray, bool], np.ndarray]] = {
+    ("rgb", "hsv"): lambda r, g, b, use_css: np_unit_rgb_to_hsv(r, g, b, use_css_algo=use_css),
+    ("hsv", "rgb"): lambda h, s, v, use_css: np_hsv_to_unit_rgb(h, s, v, use_css_algo=use_css),
+    ("rgb", "hsl"): lambda r, g, b, use_css: np_unit_rgb_to_hsl(r, g, b, use_css_algo=use_css),
+    ("hsl", "rgb"): lambda h, s, l, use_css: np_hsl_to_unit_rgb(h, s, l, use_css_algo=use_css),
+}
 
+# Functions without css algorithm (direct conversions between HSV and HSL)
+CONVERT_NUMPY_DIRECT: dict[tuple[str, str], Callable[[np.ndarray, np.ndarray, np.ndarray], np.ndarray]] = {
+    ("hsv", "hsl"): np_hsv_to_hsl,
+    ("hsl", "hsv"): np_hsl_to_hsv,
+}
 
-def _normalize_hsl(hsl: tuple[int, int, int], input_type: str) -> tuple[float, float, float]:
-    h, s, l = hsl
-    h = float(h)
-    if input_type in ('int', 'pilint'):
-        return h, s / 100.0, l / 100.0
-    return hsl
+def normalize(color: np.ndarray, space: str, fmt: FormatType) -> np.ndarray:
+    maxval = max_non_hue[fmt]
 
+    if space == "rgb":
+        return color / maxval
 
-def _format_output(
-    color: tuple[float, ...],
+    if space in ("hsv", "hsl"):
+        h = color[..., 0]
+        a = color[..., 1] / maxval
+        b = color[..., 2] / maxval
+        return np.stack([h, a, b], axis=-1)
+
+    raise ValueError(f"Unknown space: {space}")
+
+def scale(color: np.ndarray, space: str, fmt: FormatType) -> np.ndarray:
+    maxval = max_non_hue[fmt]
+
+    if space == "rgb":
+        scaled = color * maxval
+        return np.round(scaled).astype(int) if fmt == FormatType.INT else scaled
+
+    if space in ("hsv", "hsl"):
+        h = color[..., 0]
+        a = color[..., 1] * maxval
+        b = color[..., 2] * maxval
+
+        if fmt == FormatType.INT:
+            return np.stack([np.round(h), np.round(a), np.round(b)], axis=-1).astype(int)
+
+        return np.stack([h, a, b], axis=-1)
+
+    raise ValueError(f"Unknown space: {space}")
+
+def convert_alpha(alpha: np.ndarray | None, input_fmt: FormatType, output_fmt: FormatType) -> np.ndarray | None:
+    if alpha is None:
+        return None
+
+    max_in  = max_non_hue[input_fmt]
+    max_out = max_non_hue[output_fmt]
+
+    result = alpha / max_in * max_out
+    return np.round(result).astype(int) if output_fmt == FormatType.INT else result
+
+def _convert_core(
+    color: np.ndarray,
+    from_space: str,
     to_space: str,
-    output_type: Literal['int', 'float', 'pilint']
-) -> tuple[int, int, int] | tuple[float, float, float]:
-    """
-    Format output color tuple depending on target color space and desired output type.
-    """
-    if to_space == 'rgb':
-        if output_type in ('int', 'pilint'):
-            return tuple(round(c * 255) for c in color)
-        return color
+    input_fmt: FormatType,
+    output_fmt: FormatType,
+    use_css_algo: bool = False,
+) -> np.ndarray:
+    has_alpha_in  = from_space.endswith("a")
+    has_alpha_out = to_space.endswith("a")
 
-    elif to_space in ('hsv', 'hsl'):
-        h, s, v = color
-        if output_type == 'pilint':
-            return (round(h), round(s * 255), round(v * 255))  # PIL format
-        elif output_type == 'int':
-            if to_space == 'hsv':
-                return (round(h), round(s * 100), round(v * 100))
-            else:  # HSL
-                return (round(h), round(s * 100), round(v * 100))
-        return color
+    if has_alpha_in:
+        base = color[..., :3]
+        alpha = color[..., 3]
+    else:
+        base = color
+        alpha = None
 
-    return color
+    fs, ts = from_space[:3], to_space[:3]
+
+    # normalize → convert → scale
+    base_norm = normalize(base, fs, input_fmt)
+
+    if fs == ts:
+        converted = base_norm
+    else:
+        key = (fs, ts)
+        if key in CONVERT_NUMPY_CSS:
+            # Conversion involves RGB, use css algorithm parameter
+            converted = CONVERT_NUMPY_CSS[key](
+                base_norm[..., 0],
+                base_norm[..., 1],
+                base_norm[..., 2],
+                use_css_algo,
+            )
+        else:
+            # Direct HSV <-> HSL conversion, no css algorithm
+            converted = CONVERT_NUMPY_DIRECT[key](
+                base_norm[..., 0],
+                base_norm[..., 1],
+                base_norm[..., 2],
+            )
+
+    out = scale(converted, ts, output_fmt)
+
+    # alpha output
+    if has_alpha_out:
+        new_alpha = convert_alpha(alpha, input_fmt, output_fmt)
+        if new_alpha is None:
+            # Default alpha value when no alpha in input
+            default_alpha = max_non_hue[output_fmt]
+            alpha_array = np.full(out.shape[:-1] + (1,), default_alpha)
+            return np.concatenate([out, alpha_array], axis=-1)
+        return np.concatenate([out, new_alpha[..., None]], axis=-1)
+
+    return out
 
 
 def convert(
-    color: tuple[int, int, int] | tuple[float, float, float],
-    from_space: Literal['rgb', 'hsv', 'hsl'],
-    to_space: Literal['rgb', 'hsv', 'hsl'],
-    input_type: Literal['int', 'float', 'pil_int'] = 'int',
-    output_type: Literal['int', 'float', 'pil_int'] = 'int'
-) -> tuple:
-    """
-    Convert color values between RGB, HSV, and HSL color spaces.
-    Supports various input/output formats including 'pil_int'.
-
-    Args:
-        color (tuple[int, int, int] | tuple[float, float, float]): The color to convert.
-        from_space (str): The input color space ('rgb', 'hsv', 'hsl').
-        to_space (str): The output color space ('rgb', 'hsv', 'hsl').
-        input_type (str): Input value format: 'int', 'float', or 'pil_int'.
-        output_type (str): Output value format: 'int', 'float', or 'pil_int'.
-
-    Returns:
-        tuple: The converted color in the desired space and format.
-    """
-    from_space = from_space.lower()
-    to_space = to_space.lower()
-    input_type = input_type.lower().replace('_', '')
-    output_type = output_type.lower().replace('_', '')
-    # Step 1: Normalize input to floats
-    if from_space == 'rgb':
-        color_f = _normalize_rgb(color, input_type)
-    elif from_space == 'hsv':
-        color_f = _normalize_hsv(color, input_type)
-    elif from_space == 'hsl':
-        color_f = _normalize_hsl(color, input_type)
-    else:
-        raise ValueError(f"Unknown from_space: {from_space}")
-
-    # Step 2: Perform the color space conversion
-    if from_space == 'rgb' and to_space == 'hsv':
-        converted = unit_rgb_to_hsv(*color_f)
-    elif from_space == 'hsv' and to_space == 'rgb':
-        converted = hsv_to_unit_rgb(*color_f)
-    elif from_space == 'hsl' and to_space == 'rgb':
-        converted = hsl_to_unit_rgb(*color_f)
-    elif from_space == 'rgb' and to_space == 'hsl':
-        converted = unit_rgb_to_hsl(*color_f)
-    elif from_space == 'hsv' and to_space == 'hsl':
-        converted = hsv_to_hsl(*color_f)
-    elif from_space == 'hsl' and to_space == 'hsv':
-        converted = hsl_to_hsv(*color_f)
-    elif from_space == to_space:
-        converted = color_f
-    else:
-        raise ValueError(f"Conversion from {from_space} to {to_space} is not supported.")
-
-    # Step 3: Format output as requested
-    return _format_output(converted, to_space, output_type)
-
+    color: ColorElement,
+    from_space: ColorSpace,
+    to_space:   ColorSpace,
+    input_type:  FormatType=FormatType.INT,
+    output_type: FormatType=FormatType.INT,
+    use_css_algo: bool = False,
+ ) -> ColorElement:
+    color_array = element_to_array(color)
+    result = _convert_core(
+        color_array,
+        from_space.lower(),
+        to_space.lower(),
+        FormatType(input_type),
+        FormatType(output_type),
+        use_css_algo,
+    )
+    # Convert back to tuple for scalar output
+    return tuple(result.flat) if result.ndim == 1 else cast(ColorElement, result)
 
 def np_convert(
     color: np.ndarray,
-    from_space: Literal['rgb', 'hsv', 'hsl'],
-    to_space: Literal['rgb', 'hsv', 'hsl'],
-    input_type: Literal['int', 'float', 'pil_int'] = 'int',
-    output_type: Literal['int', 'float', 'pil_int'] = 'int'
+    from_space: ColorSpace,
+    to_space:   ColorSpace,
+    input_type:  Literal["int","float","percentage"]="int",
+    output_type: Literal["int","float","percentage"]="int",
+    use_css_algo: bool = False,
 ) -> np.ndarray:
-    """
-    Vectorized color space conversion for numpy arrays, respecting np_* names.
-
-    Args:
-        color: np.ndarray of shape (..., 3)
-        from_space: 'rgb', 'hsv', 'hsl'
-        to_space: 'rgb', 'hsv', 'hsl'
-        input_type: 'int', 'float', 'pil_int'
-        output_type: 'int', 'float', 'pil_int'
-
-    Returns:
-        np.ndarray of shape (..., 3)
-    """
-    from_space = from_space.lower()
-    to_space = to_space.lower()
-    input_type = input_type.lower().replace('_', '')
-    output_type = output_type.lower().replace('_', '')
-
-    color = np.asarray(color)
-
-    if color.shape[-1] != 3:
-        raise ValueError(f"Input color array must have shape (...,3), got {color.shape}")
-
-    # Step 1: normalize input
-    if from_space == 'rgb':
-        if input_type in ('int', 'pilint'):
-            color_f = color / 255.0
-        else:
-            color_f = color
-    elif from_space == 'hsv':
-        h, s, v = color[...,0], color[...,1], color[...,2]
-        if input_type == 'pilint':
-            s /= 255.0
-            v /= 255.0
-            h = h.astype(float)
-        elif input_type == 'int':
-            s /= 100.0
-            v /= 100.0
-            h = h.astype(float)
-        color_f = np.stack([h, s, v], axis=-1)
-    elif from_space == 'hsl':
-        h, s, l = color[...,0], color[...,1], color[...,2]
-        if input_type in ('int', 'pilint'):
-            s /= 100.0
-            l /= 100.0
-            h = h.astype(float)
-        color_f = np.stack([h, s, l], axis=-1)
-    else:
-        raise ValueError(f"Unknown from_space: {from_space}")
-
-    # Step 2: convert
-    if from_space == 'rgb' and to_space == 'hsv':
-        converted = np_rgb_to_hsv(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == 'hsv' and to_space == 'rgb':
-        converted = np_hsv_to_rgb(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == 'hsl' and to_space == 'rgb':
-        converted = np_hsl_to_rgb(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == 'rgb' and to_space == 'hsl':
-        converted = np_rgb_to_hsl(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == 'hsv' and to_space == 'hsl':
-        converted = np_hsv_to_hsl(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == 'hsl' and to_space == 'hsv':
-        converted = np_hsl_to_hsv(color_f[...,0], color_f[...,1], color_f[...,2])
-    elif from_space == to_space:
-        converted = color_f
-    else:
-        raise ValueError(f"Conversion from {from_space} to {to_space} is not supported.")
-
-    # Step 3: format output
-    if to_space == 'rgb':
-        if output_type in ('int', 'pilint'):
-            converted = np.round(converted * 255).astype(int)
-    elif to_space in ('hsv', 'hsl'):
-        h, s, v = converted[...,0], converted[...,1], converted[...,2]
-        if output_type == 'pilint':
-            s = np.round(s * 255).astype(int)
-            v = np.round(v * 255).astype(int)
-            h = np.round(h).astype(int)
-        elif output_type == 'int':
-            s = np.round(s * 100).astype(int)
-            v = np.round(v * 100).astype(int)
-            h = np.round(h).astype(int)
-        converted = np.stack([h, s, v], axis=-1)
-
-    return converted
+    return _convert_core(
+        np.asarray(color, dtype=float),
+        from_space.lower(),
+        to_space.lower(),
+        FormatType(input_type),
+        FormatType(output_type),
+        use_css_algo,
+    )
