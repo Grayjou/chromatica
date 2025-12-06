@@ -1,25 +1,28 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "chromatica"
-version = "0.1.2"
+version = "1.0.0"
 description = "Advanced color manipulation library for gradients and conversions"
-readme = "README.md"
+readme = { file = "README.md", content-type = "text/markdown" }
 authors = [
     { name = "Grayjou", email = "cgrayjou@gmail.com" }
 ]
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Multimedia :: Graphics"
 ]
 dependencies = [
@@ -41,9 +44,10 @@ Repository = "https://github.com/Grayjou/chromatica"
 Issues = "https://github.com/Grayjou/chromatica/issues"
 
 [tool.setuptools]
-package-dir = {"" = "chromatica"}
+package-dir = {"" = "."}
+include-package-data = true
 
 [tool.setuptools.packages.find]
-where = ["chromatica"]
-include = ["*", "conversions/*"]
+where = ["."]
+include = ["chromatica*"]
 exclude = ["tests*", "examples*"]

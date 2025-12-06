@@ -85,3 +85,16 @@ pytest
 ```
 
 This exercises conversion math, utility functions, and gradient helpers.
+
+## Examples
+
+Runnable examples live in the `examples/` folder:
+
+- `examples/basic_usage.py` demonstrates typed colors, conversions, and 1D/2D gradients.
+- `examples/array_operations.py` shows array-backed gradients, hue wrapping, and simple tiling.
+
+Run either script directly with Python, e.g.:
+
+```bash
+python examples/basic_usage.py
+```
