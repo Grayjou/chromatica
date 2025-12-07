@@ -645,6 +645,9 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         # Convert to appropriate format
         if format_type == FormatType.INT:
             result = np.round(result).astype(np.uint16)
+            # Ensure hue values are wrapped to [0, 360) for hue-based color spaces
+            if is_hue_space:
+                result[..., 0] = result[..., 0] % 360
         
         # Create ColorBase instance and wrap in Gradient2D
         assigned_class = unified_tuple_to_class[(color_space, format_type)]

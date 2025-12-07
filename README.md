@@ -1,12 +1,65 @@
 # Chromatica
 
-Chromatica is a Python toolkit for color manipulation, conversion, and gradient generation. It ships typed color objects, robust conversion utilities (scalar and NumPy-based), and helpers for constructing complex gradients across RGB, HSV, and HSL color spaces.
+**Chromatica** is a comprehensive Python toolkit for advanced color manipulation, conversion, and gradient generation. It provides typed color objects, robust conversion utilities (both scalar and NumPy-accelerated), and powerful tools for constructing complex gradients across multiple color spaces including RGB, HSV, HSL, and their alpha-enabled variants.
 
-## Features
-- Typed color classes for common modes (RGB, HSV, HSL, CMYK, grayscale, palette, and alpha-enabled variants).
-- High-level conversion helpers with CSS Color 4-compatible algorithms and NumPy acceleration.
-- Gradient generators for 1D, 2D, and radial patterns with hue direction control, easing hooks, and alpha support.
-- Utility helpers for clamping, cyclic wrapping, and working with array-backed colors.
+## Project Scope
+
+Chromatica is designed for developers, designers, and data visualization specialists who need:
+
+- **Precise color conversions** between multiple color spaces with support for different numeric formats (int, float, percentage)
+- **Complex gradient generation** including 1D, 2D, radial, and angular-radial patterns with advanced interpolation controls
+- **Hue-aware interpolation** for smooth color transitions in HSV/HSL spaces with clockwise/counterclockwise direction control
+- **Array-based operations** for efficient batch processing of colors using NumPy
+- **Type safety** with dedicated color classes for each color space and format
+- **Flexible format handling** supporting integer (0-255), float (0.0-1.0), and percentage representations
+- **Animation support** for creating smooth color transitions and dynamic gradient effects
+
+## Key Features
+
+### Color Spaces & Formats
+- **Supported color spaces**: RGB, RGBA, HSV, HSVA, HSL, HSLA, CMYK, grayscale, and palette modes
+- **Multiple format types**: Integer (0-255), Float (0.0-1.0), and percentage representations
+- **Alpha channel support**: Full alpha transparency handling across all compatible color spaces
+- **CSS Color 4 compatibility**: Optional CSS-compliant algorithms for web-standard conversions
+
+### Gradient Generation
+- **1D gradients**: Linear color interpolation with customizable steps and easing functions
+- **2D gradients**: Bilinear interpolation from four corner colors
+- **Radial gradients**: Circular gradients radiating from a center point with configurable radius
+- **Angular-radial gradients**: Advanced polar coordinate gradients with separate angular and radial interpolation
+  - Simple angular-radial: Two-color gradients with angular and radial variation
+  - Full parametrical: Multi-ring gradients with per-ring color control and custom easing functions
+- **Hue interpolation**: Intelligent hue path selection (shortest, clockwise, or counterclockwise) for smooth color transitions
+- **Masking & bounds**: Configurable angular and radial masks for partial gradient coverage
+- **Outside fill**: Custom colors for regions outside the gradient boundaries
+
+### Color Manipulation
+- **Typed color classes**: Dedicated classes for each color space with automatic value clamping
+- **Arithmetic operations**: Add, subtract, multiply, and divide colors with automatic range handling
+- **Format conversion**: Seamless conversion between integer, float, and percentage formats
+- **Space conversion**: Convert between any supported color spaces with high precision
+- **Array operations**: Batch processing of color arrays with NumPy efficiency
+- **Channel access**: Direct manipulation of individual color channels (hue, saturation, brightness, etc.)
+
+### Utility Functions
+- **Value clamping**: Keep values within valid ranges
+- **Cyclic wrapping**: Handle hue wraparound for seamless color wheel navigation
+- **Bounce wrapping**: Reflect values that exceed boundaries
+- **Easing functions**: Apply custom interpolation curves to gradients
+- **Coordinate transforms**: Advanced spatial transformations for complex gradient patterns
+
+## Use Cases
+
+Chromatica is ideal for:
+
+- **Data Visualization**: Create color scales and gradients for heatmaps, charts, and scientific visualizations
+- **Image Processing**: Manipulate image colors, apply gradients, and perform color space conversions
+- **UI/UX Design**: Generate color palettes, themes, and dynamic color schemes
+- **Animation & Motion Graphics**: Create smooth color transitions and animated gradients
+- **Game Development**: Generate procedural textures, environmental effects, and dynamic color themes
+- **Web Development**: Produce CSS-compatible color values and gradient backgrounds
+- **Art & Creative Coding**: Experiment with color theory and create generative art
+- **Scientific Computing**: Perform precise color space transformations for research applications
 
 ## Installation
 Chromatica targets Python 3.8+. To install from source:
@@ -98,3 +151,119 @@ Run either script directly with Python, e.g.:
 ```bash
 python examples/basic_usage.py
 ```
+
+## Advanced Features
+
+### Angular-Radial Gradients
+
+Create sophisticated polar coordinate gradients with independent control over angular and radial interpolation:
+
+```python
+from chromatica.gradients.simple_angular_radial import SimpleAngularRadialGradient
+from chromatica.format_type import FormatType
+
+# Create a gradient that varies both angularly and radially
+gradient = SimpleAngularRadialGradient.generate(
+    width=500,
+    height=500,
+    radius=200,
+    inner_ring_colors=(
+        (0, 255, 255),    # Cyan at start angle
+        (120, 255, 255)   # Green at end angle
+    ),
+    outer_ring_colors=(
+        (240, 255, 255),  # Blue at start angle
+        (300, 255, 255)   # Magenta at end angle
+    ),
+    color_space='hsv',
+    format_type=FormatType.INT,
+    deg_start=0.0,
+    deg_end=360.0,
+    radius_start=0.3,
+    radius_end=1.0,
+    hue_direction_theta='cw',  # Clockwise hue interpolation
+    outside_fill=(0, 0, 0)
+)
+```
+
+### Hue Direction Control
+
+When working with HSV/HSL color spaces, control how hues interpolate:
+
+```python
+from chromatica import Gradient1D
+from chromatica.format_type import FormatType
+
+# Shortest path (default) - goes through the closest colors
+gradient_short = Gradient1D.from_colors(
+    (350, 100, 100), (10, 100, 100),
+    steps=20, color_space='hsv', direction=None
+)
+
+# Clockwise - forces interpolation through increasing hue values
+gradient_cw = Gradient1D.from_colors(
+    (350, 100, 100), (10, 100, 100),
+    steps=20, color_space='hsv', direction='cw'
+)
+
+# Counter-clockwise - forces interpolation through decreasing hue values
+gradient_ccw = Gradient1D.from_colors(
+    (350, 100, 100), (10, 100, 100),
+    steps=20, color_space='hsv', direction='ccw'
+)
+```
+
+### Custom Easing Functions
+
+Apply easing functions to control interpolation curves:
+
+```python
+import numpy as np
+from chromatica import Gradient1D
+
+# Ease-in-out cubic
+def ease_in_out_cubic(t):
+    return np.where(t < 0.5, 4 * t**3, 1 - (-2 * t + 2)**3 / 2)
+
+gradient = Gradient1D.from_colors(
+    (255, 0, 0), (0, 0, 255),
+    steps=50,
+    color_space='rgb',
+    unit_transform=ease_in_out_cubic
+)
+```
+
+### Array-Based Color Operations
+
+Efficiently process multiple colors using NumPy arrays:
+
+```python
+from chromatica import ColorRGBArr
+import numpy as np
+
+# Create an array of colors
+colors = ColorRGBArr(np.array([
+    [255, 0, 0],
+    [0, 255, 0],
+    [0, 0, 255]
+]))
+
+# Convert all colors to HSV
+hsv_colors = colors.convert('hsv')
+
+# Perform arithmetic operations
+brightened = colors * 1.2  # Increase brightness
+mixed = colors + ColorRGB((50, 50, 50))  # Add to each color
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit pull requests, report bugs, or suggest new features through the [GitHub issues page](https://github.com/Grayjou/chromatica/issues).
+
+## License
+
+Chromatica is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+This library builds upon established color science principles and aims to provide a robust, performant, and user-friendly interface for color manipulation in Python.

@@ -115,6 +115,9 @@ def radial_gradient(
 
     if format_type == FormatType.INT:
         result = np.round(result).astype(np.uint16)
+        # Ensure hue values are wrapped to [0, 360) for hue-based color spaces
+        if color_space in ("hsv", "hsl", "hsva", "hsla"):
+            result[..., 0] = result[..., 0] % 360
     else:
         result = result.astype(np.float32)
 
