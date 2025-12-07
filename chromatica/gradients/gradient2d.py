@@ -79,6 +79,9 @@ class Gradient2D(Color2DArr):
 
         if format_type == FormatType.INT:
             colors = np.round(colors).astype(np.uint16)
+            # Ensure hue values are wrapped to [0, 360) for hue-based color spaces
+            if color_space in ("hsv", "hsl", "hsva", "hsla"):
+                colors[..., 0] = colors[..., 0] % 360
         else:
             colors = colors.astype(np.float32)
 
