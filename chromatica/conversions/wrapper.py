@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Literal, Tuple, cast, Dict, Callable
 
-from .format_type import FormatType, max_non_hue
+from ..format_type import FormatType, max_non_hue
 
 from .to_rgb import np_hsv_to_unit_rgb, np_hsl_to_unit_rgb
 from .to_hsv import np_unit_rgb_to_hsv, np_hsl_to_hsv

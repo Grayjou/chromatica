@@ -3,7 +3,7 @@ from .color_base import ColorBase, ColorValue
 from .hsl import hsl_tuple_to_class
 from .rgb import rgb_tuple_to_class
 from .hsv import hsv_tuple_to_class
-from ..conversions.format_type import FormatType, max_non_hue
+from ..format_type import FormatType, max_non_hue
 from ..conversions import ColorSpace, convert, np_convert
 from .types import ColorElement, ScalarVector
 from typing import Optional, ClassVar, Tuple

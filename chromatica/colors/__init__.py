@@ -99,5 +99,8 @@ Notes
 """
 
 from .color import color_convert
+from .color_base import ColorBase
+
+
 
 __all__ = ['color_convert']

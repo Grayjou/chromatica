@@ -1,5 +1,5 @@
 from typing import ClassVar, Tuple
-from ..conversions.format_type import FormatType
+from ..format_type import FormatType
 from ..conversions import ColorSpace
 from .color_base import ColorBase, WithAlpha
 

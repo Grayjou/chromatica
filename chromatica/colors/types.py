@@ -6,7 +6,7 @@ from numpy import ndarray
 Scalar = int | float
 IntVector = Tuple[int, ...]
 ScalarVector = Tuple[Scalar, ...]
-IntElement = Union[Scalar, IntVector]
+IntElement = Union[int, IntVector]
 FloatElement = Union[float, Tuple[float, ...]]
 ColorElement = Union[IntElement, FloatElement]
 ColorValue = Union[ColorElement, ndarray]  # Includes array support

@@ -10,7 +10,7 @@ from chromatica import (
     Gradient2D,
     color_convert,
 )
-from chromatica.conversions.format_type import FormatType
+from Chromatica.chromatica.format_type import FormatType
 
 
 def demonstrate_colors() -> None:

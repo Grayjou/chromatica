@@ -5,7 +5,7 @@ import numpy as np
 from ...chromatica.color_arr import Color1DArr, Color2DArr
 from ...chromatica.colors.rgb import ColorUnitRGB
 from ...chromatica.colors.hsv import UnitHSV
-from ...chromatica.conversions.format_type import FormatType
+from ...chromatica.format_type import FormatType
 
 
 def test_color1darr_creation():

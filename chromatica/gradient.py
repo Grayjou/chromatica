@@ -24,7 +24,7 @@ from .colors.color_base import ColorBase
 from .colors.rgb import ColorUnitRGB, ColorRGBINT, ColorUnitRGBA, ColorRGBAINT
 from .colors.hsv import UnitHSV, ColorHSVINT, UnitHSVA, ColorHSVAINT
 from .colors.hsl import UnitHSL, ColorHSLINT, UnitHSLA, ColorHSLAINT
-from .conversions.format_type import FormatType
+from .format_type import FormatType
 
 
 # Color type mapping for convenience
@@ -90,12 +90,12 @@ class Gradient1D(Color1DArr):
         
         # Convert inputs to target space
         if isinstance(color1, ColorBase):
-            c1 = color1.convert(color_space, format_type)
+            c1 = color1.convert(color_space, format_type) # type: ignore
         else:
             c1 = color_class(color1)
         
         if isinstance(color2, ColorBase):
-            c2 = color2.convert(color_space, format_type)
+            c2 = color2.convert(color_space, format_type) # type: ignore
         else:
             c2 = color_class(color2)
         
@@ -201,7 +201,7 @@ class Gradient2D(Color2DArr):
         corners = []
         for corner_color in [color_tl, color_tr, color_bl, color_br]:
             if isinstance(corner_color, ColorBase):
-                corners.append(corner_color.convert(color_space, format_type))
+                corners.append(corner_color.convert(color_space, format_type)) # type: ignore
             else:
                 corners.append(color_class(corner_color))
         
@@ -290,18 +290,18 @@ def radial_gradient(
     
     # Convert colors to target space
     if isinstance(color1, ColorBase):
-        col1 = color1.convert(color_space, format_type)
+        col1 = color1.convert(color_space, format_type) # type: ignore
     else:
         col1 = color_class(color1)
     
     if isinstance(color2, ColorBase):
-        col2 = color2.convert(color_space, format_type)
+        col2 = color2.convert(color_space, format_type) # type: ignore
     else:
         col2 = color_class(color2)
     
     if outside_fill is not None:
         if isinstance(outside_fill, ColorBase):
-            outside_fill_color = outside_fill.convert(color_space, format_type).value
+            outside_fill_color = outside_fill.convert(color_space, format_type).value # type: ignore
         else:
             outside_fill_color = color_class(outside_fill).value
     else:
@@ -513,3 +513,4 @@ def example_arr_rotate(output_path=None):
     if output_path:
         img.save(output_path)
     img.show()
+

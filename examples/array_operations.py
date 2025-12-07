@@ -8,7 +8,7 @@ import numpy as np
 from chromatica import Color1DArr, Color2DArr
 from chromatica.functions import clamp, cyclic_wrap_float
 from chromatica.gradient import radial_gradient
-from chromatica.conversions.format_type import FormatType
+from Chromatica.chromatica.format_type import FormatType
 
 
 def demonstrate_arrays() -> None:

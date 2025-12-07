@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 from ..chromatica.gradient import Gradient1D, Gradient2D, radial_gradient
 from ..chromatica.colors.rgb import ColorUnitRGB, ColorUnitRGBA
-from ..chromatica.conversions.format_type import FormatType
+from ..chromatica.format_type import FormatType
 
 
 def test_gradient1d_from_colors_rgb():
