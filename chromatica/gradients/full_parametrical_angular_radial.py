@@ -150,14 +150,29 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                 raise ValueError("Radius functions must return non-negative values")
 
             if np.any(outer_test < inner_test):
+                problematic_angles = test_theta[outer_test < inner_test]
                 warnings.warn(
-                    "outer_r_theta returns values less than inner_r_theta at some angles. "
-                    "This may cause unexpected behavior."
+                    f"outer_r_theta returns values less than inner_r_theta at angles {problematic_angles}. "
+                    "This may cause unexpected behavior. Consider adjusting your radius functions "
+                    "to ensure outer_r_theta >= inner_r_theta for all angles."
                 )
         except Exception as e:
             if isinstance(e, (ValueError, TypeError)):
                 raise
             warnings.warn(f"Could not validate radius functions: {e}")
+
+    @staticmethod
+    def _ensure_inner_radius_within_outer(
+        inner_radius: NDArray,
+        outer_radius: NDArray
+    ) -> NDArray:
+        """Ensure inner radius does not exceed outer radius."""
+        if np.any(inner_radius > outer_radius):
+            warnings.warn(
+                "inner_radius > outer_radius at some positions. Clipping inner_radius to match outer_radius."
+            )
+            return np.minimum(inner_radius, outer_radius)
+        return inner_radius
 
     @staticmethod
     def _validate_hue_directions(
@@ -247,12 +262,10 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         if outer_radius.size == 1:
             outer_radius = np.full_like(distances, outer_radius.item())
         
-        # Edge case handling: ensure inner <= outer
-        if np.any(inner_radius > outer_radius):
-            warnings.warn(
-                "inner_radius > outer_radius at some angles. Clipping inner_radius to match outer_radius."
-            )
-            inner_radius = np.minimum(inner_radius, outer_radius)
+        # Ensure inner <= outer
+        inner_radius = FullParametricalAngularRadialGradient._ensure_inner_radius_within_outer(
+            inner_radius, outer_radius
+        )
         
         return inner_radius, outer_radius
 
@@ -469,7 +482,9 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         if outer_radius_ch.size == 1:
             outer_radius_ch = np.full_like(r_ch, outer_radius_ch.item())
         
-        inner_radius_ch = np.minimum(inner_radius_ch, outer_radius_ch)
+        inner_radius_ch = FullParametricalAngularRadialGradient._ensure_inner_radius_within_outer(
+            inner_radius_ch, outer_radius_ch
+        )
         denominator_ch = outer_radius_ch - inner_radius_ch
         denominator_ch = np.where(np.abs(denominator_ch) < 1e-3, 1e-3, denominator_ch)
         u_r_ch = (r_ch - inner_radius_ch) / denominator_ch
