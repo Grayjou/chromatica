@@ -1,99 +1,21 @@
-from .gradient import Gradient2D
 from typing import Optional, Tuple, Callable, List, Dict
-from ..colors.types import ColorElement
-from ..colors import ColorBase
-from ..colors.color import unified_tuple_to_class
-from ..normalizers.color_normalizer import normalize_color_input, ColorInput
-from ..format_type import FormatType
-import numpy as np
-from numpy.typing import NDArray
 import warnings
 from functools import lru_cache
 
+import numpy as np
+from numpy.typing import NDArray
 
-def normalize_angle(angle: float) -> float:
-    """Normalize angle to [0, 360) range."""
-    return angle % 360.0
-
-
-def linear_transform(x: NDArray, min_input, max_input, min_output, max_output) -> NDArray:
-    """Linearly transform x from [min_input, max_input] to [min_output, max_output]."""
-    # Clip x to input range
-    x_clipped = np.clip(x, min_input, max_input)
-    # Scale to [0, 1]
-    x_scaled = (x_clipped - min_input) / (max_input - min_input)
-    # Scale to output range
-    return min_output + x_scaled * (max_output - min_output)
-
-def interpolate_hue_parametric(
-    h0: np.ndarray,
-    h1: np.ndarray,
-    u: np.ndarray,
-    direction: Optional[str] = None
-) -> np.ndarray:
-    """
-    Interpolate hue values with wrapping support.
-    
-    Args:
-        h0: Starting hue in degrees (array)
-        h1: Ending hue in degrees (array)
-        u: Interpolation parameter in [0, 1] (array)
-        direction: 'cw' (clockwise), 'ccw' (counter-clockwise), or None (shortest path)
-    
-    Returns:
-        Interpolated hue values
-    """
-    h0 = h0 % 360.0
-    h1 = h1 % 360.0
-    
-    if direction == 'cw':
-        # Always go clockwise (increasing hue)
-        mask = h1 <= h0
-        h1 = np.where(mask, h1 + 360.0, h1)
-    elif direction == 'ccw':
-        # Always go counter-clockwise (decreasing hue)
-        mask = h1 >= h0
-        h1 = np.where(mask, h1 - 360.0, h1)
-    else:
-        # Shortest path
-        delta = h1 - h0
-        h1 = np.where(delta > 180.0, h1 - 360.0, h1)
-        h1 = np.where(delta < -180.0, h1 + 360.0, h1)
-    
-    dh = h1 - h0
-    return (h0 + u * dh) % 360.0
-
-
-def validate_and_return_outside_fill_array(arr: np.ndarray, width: int, height: int, num_channels: int) -> np.ndarray | Tuple:
-    """Validate outside fill array shape."""
-    if arr.ndim == 1:
-        return tuple(arr.tolist())
-    else:
-        expected_shape = (height, width, num_channels)
-        if arr.shape != expected_shape:
-            raise ValueError("outside_fill array shape does not match the expected image shape.")
-        return arr
-
-
-def process_outside_fill(outside_fill: Optional[ColorInput], width: int, height: int, format_type: FormatType, color_space: str) -> np.ndarray:
-    """Process outside fill input into usable array."""
-    respective_class = unified_tuple_to_class[(color_space, format_type)]
-    num_channels = respective_class.num_channels
-    
-    if outside_fill is None:
-        return np.zeros((height, width, num_channels))
-    if isinstance(outside_fill, np.ndarray):
-        return validate_and_return_outside_fill_array(outside_fill, width, height, num_channels)
-    elif isinstance(outside_fill, ColorBase):
-        if isinstance(outside_fill.value, np.ndarray):
-            return validate_and_return_outside_fill_array(outside_fill.value, width, height, num_channels)
-        else:
-            value = normalize_color_input(outside_fill)
-            return np.full((height, width, num_channels), value)
-    else:
-        value = normalize_color_input(outside_fill)
-        # Ensure it's always an array
-        return np.array(value) if not isinstance(value, np.ndarray) else value
+from .angular_radial_helpers import (
+    CoordinateGridCache,
+    compute_center,
+    interpolate_hue,
+    normalize_angle,
+    process_outside_fill,
+)
+from .gradient import Gradient2D
+from ..colors.color import unified_tuple_to_class
+from ..normalizers.color_normalizer import normalize_color_input, ColorInput
+from ..format_type import FormatType
 
 
 GradientEnds = Tuple[ColorInput, ...]
@@ -105,29 +27,66 @@ def cached_normalize_color(color_tuple: Tuple) -> Tuple:
     return tuple(normalize_color_input(color_tuple))
 
 
+GRID_CACHE = CoordinateGridCache()
+
+
+def build_angular_mask(theta: NDArray, deg_start: float, deg_end: float, normalize_theta: bool) -> NDArray:
+    """Create an angular mask honoring the configured angular range."""
+    angular_mask = np.ones_like(theta, dtype=bool)
+    if not normalize_theta:
+        return angular_mask
+
+    if deg_end >= deg_start:
+        angular_range = deg_end - deg_start
+        if angular_range >= 360.0:
+            return angular_mask
+        theta_start = deg_start % 360.0
+        theta_end = deg_end % 360.0
+        if theta_end >= theta_start:
+            return (theta >= theta_start) & (theta <= theta_end)
+        return (theta >= theta_start) | (theta <= theta_end)
+
+    theta_start = deg_start % 360.0
+    theta_end = deg_end % 360.0
+    return (theta >= theta_start) | (theta <= theta_end)
+
+
+def normalize_theta_range(
+    theta: NDArray, deg_start: float, deg_end: float, angular_mask: NDArray, normalize_theta: bool
+) -> Tuple[NDArray, float]:
+    """Normalize theta values into [0, 1] respecting the configured range."""
+    if not normalize_theta:
+        return theta / 360.0, 360.0
+
+    if deg_end >= deg_start:
+        theta_range = deg_end - deg_start
+        if theta_range <= 0:
+            theta_range = 360.0
+    else:
+        theta_range = (360.0 - normalize_angle(deg_start)) + normalize_angle(deg_end)
+
+    theta_adjusted = (theta - deg_start + 360.0) % 360.0
+
+    if deg_end < deg_start:
+        return (theta_adjusted / theta_range) % 1.0, theta_range
+
+    return np.where(angular_mask, np.clip(theta_adjusted / theta_range, 0.0, 1.0), 0), theta_range
+
+
+def normalize_radial_distances(
+    distances: NDArray, inner_radius: NDArray, outer_radius: NDArray, normalize_radius: bool
+) -> Tuple[NDArray, NDArray]:
+    """Normalize radial distances and provide the in-bounds mask."""
+    denominator = outer_radius - inner_radius
+    denominator = np.where(np.abs(denominator) < 1e-3, 1e-3, denominator)
+    u_r = (distances - inner_radius) / denominator
+    if not normalize_radius:
+        return np.clip(u_r, 0.0, 1.0), (distances >= inner_radius) & (distances <= outer_radius)
+
+    return np.clip(u_r, 0.0, 1.0), (distances >= inner_radius) & (distances <= outer_radius)
+
+
 class FullParametricalAngularRadialGradient(Gradient2D):
-    # Class-level cache for coordinate grids
-    _grid_cache = {}
-    
-    @staticmethod
-    def _get_coordinate_grid(width: int, height: int, center: Tuple[int, int]) -> Tuple[NDArray, NDArray]:
-        """Get or compute coordinate grid with caching."""
-        key = (width, height, center)
-        if key not in FullParametricalAngularRadialGradient._grid_cache:
-            indices_matrix = np.indices((height, width), dtype=np.float32)
-            y_indices = indices_matrix[0] - center[1]
-            x_indices = indices_matrix[1] - center[0]
-            distances = np.sqrt(x_indices**2 + y_indices**2)
-            theta = (np.degrees(np.arctan2(y_indices, x_indices)) + 360.0) % 360.0
-            FullParametricalAngularRadialGradient._grid_cache[key] = (distances, theta)
-            
-            # Limit cache size
-            if len(FullParametricalAngularRadialGradient._grid_cache) > 10:
-                # Remove oldest entry
-                oldest_key = next(iter(FullParametricalAngularRadialGradient._grid_cache))
-                del FullParametricalAngularRadialGradient._grid_cache[oldest_key]
-        
-        return FullParametricalAngularRadialGradient._grid_cache[key]
     """
     Full parametric angular-radial gradient generator with maximum mathematical control.
     
@@ -219,38 +178,36 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             ...     format_type=FormatType.INT
             ... )
         """
-        # Validate inputs
+        # ---- Input validation ----
         if width <= 0 or height <= 0:
             raise ValueError("width and height must be positive integers")
-        
+
         if not callable(inner_r_theta) or not callable(outer_r_theta):
             raise TypeError("inner_r_theta and outer_r_theta must be callable")
-        
+
         if not color_rings or len(color_rings) == 0:
             raise ValueError("color_rings must contain at least one ring")
-        
-        # Validate color rings
+
         for i, ring in enumerate(color_rings):
             if not ring or len(ring) == 0:
                 raise ValueError(f"color_rings[{i}] must contain at least one color")
-        
-        # Test radius functions with sample input
+
         try:
             test_theta = np.array([0.0, 90.0, 180.0, 270.0])
             inner_test = inner_r_theta(test_theta)
             outer_test = outer_r_theta(test_theta)
-            
+
             if not isinstance(inner_test, (np.ndarray, int, float)):
                 raise ValueError("inner_r_theta must return a number or array")
             if not isinstance(outer_test, (np.ndarray, int, float)):
                 raise ValueError("outer_r_theta must return a number or array")
-            
+
             inner_test = np.atleast_1d(inner_test)
             outer_test = np.atleast_1d(outer_test)
-            
+
             if np.any(inner_test < 0) or np.any(outer_test < 0):
                 raise ValueError("Radius functions must return non-negative values")
-            
+
             if np.any(outer_test < inner_test):
                 warnings.warn(
                     "outer_r_theta returns values less than inner_r_theta at some angles. "
@@ -261,20 +218,14 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                 raise
             warnings.warn(f"Could not validate radius functions: {e}")
         
-        # Determine center
-        if center is None:
-            if relative_center is not None:
-                center_x = int(relative_center[0] * width)
-                center_y = int(relative_center[1] * height)
-                center = (center_x, center_y)
-            else:
-                center = (width // 2, height // 2)
+        # ---- Geometry setup ----
+        center = compute_center(width, height, center, relative_center)
         
-        # Get color class info
+        # ---- Color/space preparation ----
         respective_class = unified_tuple_to_class[(color_space, format_type)]
         num_channels = respective_class.num_channels
         is_hue_space = color_space.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
-        
+
         # Process outside fill
         outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_space)
         
@@ -304,8 +255,8 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             if len(hue_directions_r) != num_rings - 1:
                 raise ValueError(f"hue_directions_r must have {num_rings - 1} entries (between rings)")
         
-        # Get coordinate grids (cached for performance)
-        distances, theta = cls._get_coordinate_grid(width, height, center)
+        # ---- Coordinate preparation ----
+        distances, theta = GRID_CACHE.get_grid(width, height, center)
         
         # Apply easing and transforms per channel (only when needed for memory efficiency)
         has_transforms = bool(easing_theta or bivariable_space_transforms)
@@ -331,60 +282,12 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             # Reuse the same coordinates for all channels (memory efficient)
             transformed_coords = {ch: (distances, theta) for ch in range(num_channels)}
         
-        # Create angular mask - handle negative angles and ranges > 360 degrees
-        angular_mask = np.ones_like(theta, dtype=bool)
-        if normalize_theta:
-            # Calculate the effective angular range
-            if deg_end >= deg_start:
-                angular_range = deg_end - deg_start
-                if angular_range >= 360.0:
-                    # Full circle or more - include everything
-                    angular_mask = np.ones_like(theta, dtype=bool)
-                else:
-                    # Normal case
-                    theta_start = deg_start % 360.0
-                    theta_end = deg_end % 360.0
-                    if theta_end >= theta_start:
-                        angular_mask = (theta >= theta_start) & (theta <= theta_end)
-                    else:
-                        # Wrap-around at 360
-                        angular_mask = (theta >= theta_start) | (theta <= theta_end)
-            else:
-                # Wrap-around case (deg_end < deg_start)
-                theta_start = deg_start % 360.0
-                theta_end = deg_end % 360.0
-                # Normal wrap-around
-                angular_mask = (theta >= theta_start) | (theta <= theta_end)
+        angular_mask = build_angular_mask(theta, deg_start, deg_end, normalize_theta)
+        theta_normalized, theta_range = normalize_theta_range(
+            theta, deg_start, deg_end, angular_mask, normalize_theta
+        )
         
-        # Normalize theta to [0, 1] based on the angular range
-        if normalize_theta:
-            # Calculate the effective angular range (accounting for negative start angles)
-            # We need to map [deg_start, deg_end] to [0, 1]
-            if deg_end >= deg_start:
-                theta_range = deg_end - deg_start
-                if theta_range <= 0:
-                    theta_range = 360.0  # Full circle
-            else:
-                # Wrap-around case
-                theta_range = (360.0 - normalize_angle(deg_start)) + normalize_angle(deg_end)
-            
-            # Adjust theta relative to deg_start
-            theta_adjusted = (theta - deg_start + 360.0) % 360.0
-            
-            # Handle wrap-around case
-            if deg_end < deg_start:
-                # Wrap-around: e.g., deg_start=270, deg_end=90
-                theta_normalized = theta_adjusted / theta_range
-                # For wrap-around, values > 1 should wrap back to [0, 1]
-                theta_normalized = theta_normalized % 1.0
-            else:
-                # Normal case - clip to [0, 1] within the angular range
-                theta_normalized = np.where(angular_mask, 
-                                          np.clip(theta_adjusted / theta_range, 0.0, 1.0), 
-                                          0)
-        else:
-            theta_normalized = theta / 360.0
-        
+        # ---- Radial boundaries ----
         # Handle rotation of r_theta functions if requested
         if rotate_r_theta_with_theta_normalization:
             # We need to rotate the theta passed to r_theta functions
@@ -411,35 +314,28 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             )
             inner_radius = np.minimum(inner_radius, outer_radius)
         
-        # Normalize radial distances with numerical stability
-        if normalize_radius:
-            denominator = outer_radius - inner_radius
-            # Prevent division by zero
-            denominator = np.where(np.abs(denominator) < 1e-3, 1e-3, denominator)
-            u_r = (distances - inner_radius) / denominator
-        else:
-            # When normalize_radius=False, still interpolate from inner to outer radius
-            denominator = outer_radius - inner_radius
-            denominator = np.where(np.abs(denominator) < 1e-3, 1e-3, denominator)
-            u_r = (distances - inner_radius) / denominator
+        u_r, radial_mask = normalize_radial_distances(distances, inner_radius, outer_radius, normalize_radius)
         
         # Apply radial easing per channel
         u_r_eased = {}
         for ch in range(num_channels):
             if easing_r and ch in easing_r:
-                u_r_eased[ch] = easing_r[ch](np.clip(u_r, 0.0, 1.0))
+                u_r_eased[ch] = easing_r[ch](u_r)
             else:
-                u_r_eased[ch] = np.clip(u_r, 0.0, 1.0)
-        
-        # Create combined mask - use actual distance bounds
-        radial_mask = (distances >= inner_radius) & (distances <= outer_radius)
-        if normalize_theta:
-            combined_mask = angular_mask & radial_mask
+                u_r_eased[ch] = u_r
+
+        combined_mask = angular_mask & radial_mask if normalize_theta else radial_mask
+
+        # Initialize result array from outside_fill so masked areas default correctly
+        if isinstance(outside_fill_processed, np.ndarray):
+            if outside_fill_processed.ndim == 1:
+                base = np.tile(outside_fill_processed, (height, width, 1))
+            else:
+                base = outside_fill_processed.copy()
         else:
-            combined_mask = radial_mask
-        
-        # Initialize result array
-        result = np.zeros((height, width, num_channels), dtype=np.float32)
+            base = np.tile(np.array(outside_fill_processed), (height, width, 1))
+
+        result = base.astype(np.float32, copy=False)
         
         # Process each channel
         for ch in range(num_channels):
@@ -514,17 +410,14 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                     # Apply hue interpolation if needed
                     if ch == 0 and is_hue_space and hue_directions_theta:
                         ring_hue_dirs = hue_directions_theta[ring_idx]
-                        # Get direction for each segment
-                        directions = np.array([ring_hue_dirs[i] if i < len(ring_hue_dirs) else None 
-                                             for i in range(num_colors)])
-                        
+
                         # Apply hue interpolation per segment
                         ring_color = np.zeros_like(theta_ch_normalized)
                         for seg in range(num_colors - 1):
                             mask_seg = segment_idx == seg
                             if np.any(mask_seg):
                                 direction = ring_hue_dirs[seg] if seg < len(ring_hue_dirs) else None
-                                ring_color[mask_seg] = interpolate_hue_parametric(
+                                ring_color[mask_seg] = interpolate_hue(
                                     np.full(np.sum(mask_seg), color_start[seg]),
                                     np.full(np.sum(mask_seg), color_start[seg + 1]),
                                     local_u[mask_seg],
@@ -554,7 +447,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                         mask_ring = ring_idx == ring_i
                         if np.any(mask_ring):
                             direction = hue_directions_r[ring_i]
-                            channel_result[mask_ring] = interpolate_hue_parametric(
+                            channel_result[mask_ring] = interpolate_hue(
                                 ring_colors[ring_i][mask_ring],
                                 ring_colors[ring_i + 1][mask_ring],
                                 local_u_r[mask_ring],

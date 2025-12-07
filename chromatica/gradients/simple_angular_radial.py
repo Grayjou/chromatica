@@ -1,86 +1,17 @@
-from .gradient import Gradient2D
 from typing import Optional, Tuple
-from ..colors.types import ColorElement
-from ..colors import ColorBase
+
+import numpy as np
+
+from .gradient import Gradient2D
+from .angular_radial_helpers import (
+    compute_center,
+    interpolate_hue,
+    normalize_angle,
+    process_outside_fill,
+)
 from ..colors.color import unified_tuple_to_class
 from ..normalizers.color_normalizer import normalize_color_input, ColorInput
 from ..format_type import FormatType
-import numpy as np
-
-
-def normalize_angle(angle: float) -> float:
-    """Normalize angle to [0, 360) range."""
-    return angle % 360.0
-
-
-def interpolate_hue_simple(
-    h0: np.ndarray,
-    h1: np.ndarray,
-    u: np.ndarray,
-    direction: Optional[str] = None
-) -> np.ndarray:
-    """
-    Interpolate hue values with wrapping support.
-    
-    Args:
-        h0: Starting hue in degrees (array)
-        h1: Ending hue in degrees (array)
-        u: Interpolation parameter in [0, 1] (array)
-        direction: 'cw' (clockwise), 'ccw' (counter-clockwise), or None (shortest path)
-    
-    Returns:
-        Interpolated hue values
-    """
-    h0 = h0 % 360.0
-    h1 = h1 % 360.0
-    
-    if direction == 'cw':
-        # Always go clockwise (increasing hue)
-        mask = h1 <= h0
-        h1 = np.where(mask, h1 + 360.0, h1)
-    elif direction == 'ccw':
-        # Always go counter-clockwise (decreasing hue)
-        mask = h1 >= h0
-        h1 = np.where(mask, h1 - 360.0, h1)
-    else:
-        # Shortest path
-        delta = h1 - h0
-        h1 = np.where(delta > 180.0, h1 - 360.0, h1)
-        h1 = np.where(delta < -180.0, h1 + 360.0, h1)
-    
-    dh = h1 - h0
-    return (h0 + u * dh) % 360.0
-
-def validate_and_return_outside_fill_array(arr: np.ndarray, width:int, height:int, num_channels:int) -> np.ndarray | Tuple:
-    if arr.ndim == 1:
-        return tuple(arr.tolist())
-    else:
-        #check the if the shape matches
-        expected_shape = (height, width, num_channels)
-        if arr.shape != expected_shape:
-            raise ValueError("outside_fill array shape does not match the expected image shape.")
-        return arr
-    
-def process_outside_fill(outside_fill: Optional[ColorInput], width:int, height:int, format_type: FormatType, color_space: str) -> np.ndarray:
-    respective_class = unified_tuple_to_class[(color_space, format_type)]
-    num_channels = respective_class.num_channels
-    #null_value = respective_class.null_value
-    if outside_fill is None:
-        # Return an array of zeros with shape (height, width, channels)
-        return np.zeros((height, width, num_channels))
-    if isinstance(outside_fill, np.ndarray):
-        return validate_and_return_outside_fill_array(outside_fill, width, height, num_channels)
-    elif isinstance(outside_fill, ColorBase):
-        if isinstance(outside_fill.value, np.ndarray):
-            return validate_and_return_outside_fill_array(outside_fill.value, width, height, num_channels)
-        else:
-            value = normalize_color_input(outside_fill)
-            # return an array filled with this value of shape (height, width, channels)
-            return np.full((height, width, num_channels), value)
-    else:
-        value = normalize_color_input(outside_fill)
-        # Ensure it's always an array
-        return np.array(value) if not isinstance(value, np.ndarray) else value
 
 class SimpleAngularRadialGradient(Gradient2D):
     @classmethod
@@ -109,13 +40,7 @@ class SimpleAngularRadialGradient(Gradient2D):
         end_color1 = normalize_color_input(outer_ring_colors[0])
         end_color2 = normalize_color_input(outer_ring_colors[1])
     
-        if center is None:
-            if relative_center is not None:
-                center_x = int(relative_center[0] * width)
-                center_y = int(relative_center[1] * height)
-                center = (center_x, center_y)
-            else:
-                center = (width // 2, height // 2)
+        center = compute_center(width, height, center, relative_center)
         
         outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_space)
         
@@ -215,9 +140,16 @@ class SimpleAngularRadialGradient(Gradient2D):
         # Clip u_r to [0, 1] for gradient calculation
         u_r = np.clip(u_r, 0.0, 1.0)
         
-        # Get number of channels
+        # Get number of channels and initialize from outside_fill to avoid default zeros
         num_channels = len(start_color1)
-        result = np.zeros((height, width, num_channels), dtype=np.float32)
+        if isinstance(outside_fill_processed, np.ndarray):
+            if outside_fill_processed.ndim == 1:
+                base = np.tile(outside_fill_processed, (height, width, 1))
+            else:
+                base = outside_fill_processed.copy()
+        else:
+            base = np.tile(np.array(outside_fill_processed), (height, width, 1))
+        result = base.astype(np.float32, copy=False)
         
         # Check if we're in a hue-based color space
         is_hue_space = color_space.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
@@ -230,7 +162,7 @@ class SimpleAngularRadialGradient(Gradient2D):
             if ch == 0 and is_hue_space:
                 # ALWAYS use hue interpolation for the hue channel (channel 0) in HSV/HSL spaces
                 # Use shortest path if no direction specified (None)
-                inner_color = interpolate_hue_simple(
+                inner_color = interpolate_hue(
                     np.full_like(theta_normalized, start_color1[ch]),
                     np.full_like(theta_normalized, start_color2[ch]),
                     theta_normalized,
@@ -243,7 +175,7 @@ class SimpleAngularRadialGradient(Gradient2D):
             # Interpolate along theta for outer radius (outer_ring_colors)
             if ch == 0 and is_hue_space:
                 # ALWAYS use hue interpolation for the hue channel
-                outer_color = interpolate_hue_simple(
+                outer_color = interpolate_hue(
                     np.full_like(theta_normalized, end_color1[ch]),
                     np.full_like(theta_normalized, end_color2[ch]),
                     theta_normalized,
@@ -256,7 +188,7 @@ class SimpleAngularRadialGradient(Gradient2D):
             # Interpolate along radius
             if ch == 0 and is_hue_space:
                 # ALWAYS use hue interpolation for radial dimension
-                channel_gradient = interpolate_hue_simple(
+                channel_gradient = interpolate_hue(
                     inner_color,
                     outer_color,
                     u_r,
