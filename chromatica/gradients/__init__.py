@@ -1,4 +1,4 @@
-from .color_utils import COLOR_CLASSES, convert_color, get_color_class
+from .color_utils import convert_color, get_color_class
 from .gradient1d import Gradient1D
 from .gradient2d import Gradient2D
 from .radial import radial_gradient
@@ -11,7 +11,7 @@ from .examples import (
 )
 
 __all__ = [
-    "COLOR_CLASSES",
+
     "convert_color",
     "get_color_class",
     "Gradient1D",

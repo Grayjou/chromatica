@@ -13,7 +13,7 @@ from ...chromatica.gradients.full_parametrical_angular_radial import (
     cached_normalize_color,
 )
 from ...chromatica.format_type import FormatType
-
+from ..utils import get_point
 
 class TestAngularMask:
     """Tests for angular mask generation."""
@@ -39,7 +39,27 @@ class TestAngularMask:
         assert not mask[0]  # 0 is out of range
         assert not mask[2]  # 180 is out of range
         assert not mask[3]  # 270 is out of range
-    
+     
+    def test_partial_range_gt360(self):
+        """Test angular range greater than 360 degrees."""
+        theta = np.array([0, 90, 180, 270])
+        mask = build_angular_mask(theta, 360, 449, normalize_theta=True)
+        # All should be in range since 450 > 360
+        assert mask[0]
+        assert not mask[1]
+        assert not mask[2]
+        assert not mask[3]
+
+    def test_partial_range_lt0(self):
+        """Test angular range less than 0 degrees."""
+        theta = np.array([0, 90, 180, 270])
+        mask = build_angular_mask(theta, -89, 45, normalize_theta=True)
+        # Only 0 degrees should be in range
+        assert mask[0]  # 0 is in range
+        assert not mask[1]  # 90 is out of range
+        assert not mask[2]  # 180 is out of range
+        assert not mask[3]  # 270 is out of range
+
     def test_wrap_around_range(self):
         """Test angular range that wraps around 0."""
         theta = np.array([0, 90, 180, 270, 350])
@@ -123,6 +143,20 @@ class TestRadialNormalization:
         assert normalized[1] == 0.5  # (100-80)/(120-80) = 0.5
         assert normalized[2] == 0.5  # (150-120)/(180-120) = 0.5
 
+    def test_parametric_radii(self):
+        """Test with parametric inner and outer radius functions."""
+        distances = np.array([0, 50, 100, 150, 200])
+        inner = lambda t: 0.2 * t  # Inner radius grows with distance
+        outer = lambda t: 0.8 * t  # Outer radius grows with distance
+        
+        inner_vals = inner(distances)
+        outer_vals = outer(distances)
+        
+        normalized, mask = normalize_radial_distances(distances, inner_vals, outer_vals, normalize_radius=True)
+        
+        # Check some expected values
+        assert normalized[1] == pytest.approx((50 - 10) / (40), abs=0.01)  # (50-10)/(40)
+        assert normalized[3] == pytest.approx((150 - 30) / (120), abs=0.01)  # (150-30)/(120)
 
 class TestColorNormalization:
     """Tests for color normalization."""
@@ -265,6 +299,12 @@ class TestGradientGeneration:
         assert gradient.value.shape == (100, 100, 3)
         # Check it's an integer type
         assert np.issubdtype(gradient.value.dtype, np.integer)
+        this_r, this_theta = 25, 180
+        pixel = get_point(gradient, (50, 50), this_r, this_theta)
+        # At angle 180, should be halfway between red and blue
+        assert 120 < pixel[0] < 200  # Red channel
+        assert 120 < pixel[2] < 200  # Blue channel
+        assert pixel[1] == 0    # Green channel
     
     def test_multiple_rings(self):
         """Test generating a multi-ring gradient."""
@@ -274,14 +314,19 @@ class TestGradientGeneration:
             inner_r_theta=lambda theta: np.full_like(theta, 5),
             outer_r_theta=lambda theta: np.full_like(theta, 45),
             color_rings=[
-                ((255, 0, 0),),
-                ((0, 255, 0),),
-                ((0, 0, 255),)
+                ((255, 0, 0),(255, 255, 0)),
+                ((0, 255, 0), (0, 255, 255)),
+                ((0, 0, 255), (255, 0, 255))
             ],
             color_space='rgb',
             format_type=FormatType.INT
         )
-        
+        this_r, this_theta = 25, 180 
+        pixel = get_point(gradient, (50, 50), this_r, this_theta)
+        # Should be in the second ring (green to cyan) at halfway point
+        assert pixel[0] < 5    # Red channel
+        assert pixel[1] > 250  # Green channel
+        assert 120 < pixel[2] < 200  # Blue channel
         assert gradient.value.shape == (100, 100, 3)
     
     def test_angular_range(self):
@@ -298,7 +343,8 @@ class TestGradientGeneration:
             deg_end=180,
             normalize_theta=True
         )
-        
+        pixel = get_point(gradient, (50, 50), 25, 181)  # Outside angular range
+        assert np.array_equal(pixel, [0, 0, 0])  # Should be black (outside fill)
         assert gradient.value.shape == (100, 100, 3)
     
     def test_with_outside_fill(self):
@@ -409,7 +455,12 @@ class TestVariableRadiusFunctions:
             color_space='rgb',
             format_type=FormatType.INT
         )
-        
+
+        pixel = get_point(gradient, (50, 50), 29, -1) 
+        # Should be near outer color (blue)
+        assert pixel[2] > 250  # Blue channel
+        pixel = get_point(gradient, (50, 50), 40, 30) 
+        assert pixel[0] > 250*(1-30/360)  # Red channel
         assert gradient.value.shape == (100, 100, 3)
     
     def test_flower_petals(self):
@@ -423,11 +474,22 @@ class TestVariableRadiusFunctions:
             height=120,
             inner_r_theta=lambda theta: np.full_like(theta, 5),
             outer_r_theta=petal_r,
-            color_rings=[((255, 255, 0), (255, 0, 255))],
+            color_rings=[((255, 255, 0), (255, 0, 255)),
+                         ((255, 128, 255), (255, 255, 128))],
             color_space='rgb',
             format_type=FormatType.INT
         )
-        
+
+        pixel = get_point(gradient, (60, 60), 6, 30) 
+        # Should be in first ring (yellow to magenta)
+        assert pixel[0] > 250  # Red channel
+        assert pixel[1] > 250*(1-30/360)  # Green channel
+        assert pixel[2] > 255*(30/360)  # Blue channel
+        outer_pixel = get_point(gradient, (60, 60), 39, 30)
+        # Should be in second ring (pinkish)
+        assert outer_pixel[0] > 250  # Red channel
+        assert 100 < outer_pixel[1] < 200  # Green channel
+        assert outer_pixel[2] > 200  # Blue channel
         assert gradient.value.shape == (120, 120, 3)
 
 
@@ -445,7 +507,16 @@ class TestHSVGradients:
             color_space='hsv',
             format_type=FormatType.FLOAT
         )
-        
+        gradient = gradient.convert('rgb', to_format=FormatType.INT)
+
+        pixel = get_point(gradient, (50, 50), 25, -1)  # Midway hue between 0 and 120
+        assert pixel[0] < 5  # Red channel
+        assert pixel[1] > 250  # Green channel
+        assert pixel[2] < 5   # Blue channel
+        midpixel = get_point(gradient, (50, 50), 25, 180)  # yellow
+        assert midpixel[0] > 250  # Red channel
+        assert midpixel[1] > 250  # Green channel
+        assert midpixel[2] < 5    # Blue channel
         assert gradient.value.shape == (100, 100, 3)
     
     def test_hsv_with_hue_direction(self):
@@ -460,7 +531,31 @@ class TestHSVGradients:
             format_type=FormatType.FLOAT,
             hue_directions_theta=[['cw']]
         )
-        
+        gradient = gradient.convert('rgb', to_format=FormatType.INT)
+
+        royal_blue_pixel = get_point(gradient, (50, 50), 25, -1)  # Should be near royal blue
+        assert royal_blue_pixel[0] < 5    # Red channel
+        assert royal_blue_pixel[1] < 10    # Green channel
+        assert royal_blue_pixel[2] > 250  # Blue channel
+        midpoint_green = get_point(gradient, (50, 50), 25, 180)  # Should be near green
+        assert midpoint_green[0] < 10    # Red channel
+        assert midpoint_green[1] > 250  # Green channel
+        assert midpoint_green[2] < 10    # Blue channel
+        gradient = FullParametricalAngularRadialGradient.generate(
+            width=100,
+            height=100,
+            inner_r_theta=lambda theta: np.full_like(theta, 10),
+            outer_r_theta=lambda theta: np.full_like(theta, 40),
+            color_rings=[((0.0, 1.0, 1.0), (240.0, 1.0, 1.0))],
+            color_space='hsv',
+            format_type=FormatType.FLOAT,
+            hue_directions_theta=[['ccw']]
+        )
+        gradient = gradient.convert('rgb', to_format=FormatType.INT)
+        midpoint_magenta = get_point(gradient, (50, 50), 25, 180)  # Should be near magenta
+        assert midpoint_magenta[0] > 250  # Red channel
+        assert midpoint_magenta[1] < 1    # Green channel
+        assert midpoint_magenta[2] > 250  # Blue channel
         assert gradient.value.shape == (100, 100, 3)
 
 

@@ -1,5 +1,5 @@
-from chromatica.gradients.full_parametrical_angular_radial import FullParametricalAngularRadialGradient
-from chromatica.format_type import FormatType
+from .chromatica.gradients.full_parametrical_angular_radial import FullParametricalAngularRadialGradient
+from .chromatica.format_type import FormatType
 import numpy as np
 from PIL import Image
 
@@ -52,6 +52,6 @@ print(f"\nAre they equal? {np.allclose(grad.value, grad2.value)}")
 print("They should be DIFFERENT now that the fix is applied!")
 
 img = Image.fromarray(grad.value.astype(np.uint8), 'RGBA')
-img.show()
+#img.show()
 img2 = Image.fromarray(grad2.value.astype(np.uint8), 'RGBA')
-img2.show()
+#img2.show()

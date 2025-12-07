@@ -24,8 +24,7 @@ from numpy import ndarray as NDArray
 from typing import Callable, List, Tuple, Dict, Optional, Union
 from .colors.color_base import ColorBase
 from .format_type import FormatType
-from .gradient import COLOR_CLASSES
-
+from .colors.color import unified_tuple_to_class
 
 def interpolate_hue_vector(
     c0: NDArray, 
@@ -296,7 +295,7 @@ class RadialAngularGradient:
         """
         self.color_space = color_space.lower()
         self.format_type = format_type
-        self.color_class = COLOR_CLASSES.get((self.color_space, format_type))
+        self.color_class = unified_tuple_to_class.get((self.color_space, format_type))
         
         if self.color_class is None:
             raise ValueError(f"Unsupported color space/format: {color_space}/{format_type}")
