@@ -68,9 +68,12 @@ def normalize_theta_range(
     theta_adjusted = (theta - deg_start + 360.0) % 360.0
 
     if deg_end < deg_start:
+        # Wrap-around case - use modulo to wrap values > 1 back to [0, 1]
         return (theta_adjusted / theta_range) % 1.0, theta_range
-
-    return np.where(angular_mask, np.clip(theta_adjusted / theta_range, 0.0, 1.0), 0), theta_range
+    
+    # Normal case - clip to [0, 1] and apply angular mask
+    theta_normalized = np.clip(theta_adjusted / theta_range, 0.0, 1.0)
+    return np.where(angular_mask, theta_normalized, 0), theta_range
 
 
 def normalize_radial_distances(
@@ -210,20 +213,31 @@ class FullParametricalAngularRadialGradient(Gradient2D):
     @staticmethod
     def _compute_transformed_coordinates(
         distances: NDArray,
-        theta: NDArray,
+        theta_normalized: NDArray,
         num_channels: int,
         easing_theta: Optional[Dict[int, Callable]],
         bivariable_space_transforms: Optional[Dict[int, Callable]]
     ) -> Dict[int, Tuple[NDArray, NDArray]]:
-        """Compute per-channel coordinate transformations."""
+        """Compute per-channel coordinate transformations.
+        
+        Args:
+            distances: Radial distances from center
+            theta_normalized: Theta values already normalized to [0, 1]
+            num_channels: Number of color channels
+            easing_theta: Per-channel easing functions (operate on [0,1] theta)
+            bivariable_space_transforms: Per-channel space transforms (operate on [0,1] theta)
+        
+        Returns:
+            Dict mapping channel index to (r, theta_normalized) tuples
+        """
         has_transforms = bool(easing_theta or bivariable_space_transforms)
         
         if has_transforms:
             transformed_coords = {}
             for ch in range(num_channels):
-                theta_ch = theta
+                theta_ch = theta_normalized
                 if easing_theta and ch in easing_theta:
-                    theta_ch = easing_theta[ch](theta)
+                    theta_ch = easing_theta[ch](theta_normalized)
                 
                 r_ch = distances
                 if bivariable_space_transforms and ch in bivariable_space_transforms:
@@ -232,7 +246,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                 transformed_coords[ch] = (r_ch, theta_ch)
         else:
             # Reuse the same coordinates for all channels (memory efficient)
-            transformed_coords = {ch: (distances, theta) for ch in range(num_channels)}
+            transformed_coords = {ch: (distances, theta_normalized) for ch in range(num_channels)}
         
         return transformed_coords
 
@@ -302,37 +316,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         
         return base.astype(np.float32, copy=False)
 
-    @staticmethod
-    def _compute_normalized_theta_for_channel(
-        theta_ch: NDArray,
-        deg_start: float,
-        deg_end: float,
-        theta_range: float,
-        angular_mask: NDArray,
-        normalize_theta: bool
-    ) -> NDArray:
-        """Compute normalized theta for a specific channel."""
-        if normalize_theta:
-            # Adjust transformed theta relative to deg_start
-            theta_ch_adjusted = (theta_ch - deg_start + 360.0) % 360.0
-            
-            # Handle wrap-around case
-            if deg_end < deg_start:
-                # Wrap-around case
-                theta_ch_normalized = theta_ch_adjusted / theta_range
-                # For wrap-around, values > 1 should wrap back to [0, 1]
-                theta_ch_normalized = theta_ch_normalized % 1.0
-            else:
-                # Normal case - clip to [0, 1] within the angular range
-                theta_ch_normalized = np.where(
-                    angular_mask, 
-                    np.clip(theta_ch_adjusted / theta_range, 0.0, 1.0), 
-                    0
-                )
-        else:
-            theta_ch_normalized = theta_ch / 360.0
-        
-        return theta_ch_normalized
+
 
     @staticmethod
     def _interpolate_colors_angularly(
@@ -458,11 +442,6 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         inner_r_theta: Callable,
         outer_r_theta: Callable,
         easing_r: Optional[Dict[int, Callable]],
-        deg_start: float,
-        deg_end: float,
-        theta_range: float,
-        angular_mask: NDArray,
-        normalize_theta: bool,
         normalized_rings: List[List],
         is_hue_space: bool,
         hue_directions_theta: Optional[List[List[Optional[str]]]],
@@ -470,12 +449,15 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         bivariable_color_transforms: Optional[Dict[int, Callable]]
     ) -> NDArray:
         """Process a single color channel."""
-        # Get transformed coordinates for this channel
-        r_ch, theta_ch = transformed_coords[ch]
+        # Get transformed coordinates for this channel (already normalized [0,1])
+        r_ch, theta_ch_normalized = transformed_coords[ch]
         
         # Recalculate inner/outer radius for transformed theta
-        inner_radius_ch = np.atleast_1d(inner_r_theta(theta_ch))
-        outer_radius_ch = np.atleast_1d(outer_r_theta(theta_ch))
+        # Note: theta_ch_normalized is in [0,1], but r_theta functions expect degrees
+        # So we need to convert back to degrees for radius calculation
+        theta_ch_deg = theta_ch_normalized * 360.0
+        inner_radius_ch = np.atleast_1d(inner_r_theta(theta_ch_deg))
+        outer_radius_ch = np.atleast_1d(outer_r_theta(theta_ch_deg))
         
         if inner_radius_ch.size == 1:
             inner_radius_ch = np.full_like(r_ch, inner_radius_ch.item())
@@ -495,10 +477,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         else:
             u_r_ch_eased = np.clip(u_r_ch, 0.0, 1.0)
         
-        # Compute normalized theta for this channel
-        theta_ch_normalized = FullParametricalAngularRadialGradient._compute_normalized_theta_for_channel(
-            theta_ch, deg_start, deg_end, theta_range, angular_mask, normalize_theta
-        )
+        # theta_ch_normalized is already in [0,1] range, ready for color interpolation
         
         # Build angular colors for each ring
         ring_colors = FullParametricalAngularRadialGradient._build_angular_colors_for_rings(
@@ -512,7 +491,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         
         # Apply bivariable color transform if specified
         if bivariable_color_transforms and ch in bivariable_color_transforms:
-            channel_result = bivariable_color_transforms[ch](r_ch, theta_ch, channel_result)
+            channel_result = bivariable_color_transforms[ch](r_ch, theta_ch_deg, channel_result)
         
         return channel_result
 
@@ -606,9 +585,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         
         # Compute coordinates
         distances, theta = GRID_CACHE.get_grid(width, height, center)
-        transformed_coords = cls._compute_transformed_coordinates(
-            distances, theta, num_channels, easing_theta, bivariable_space_transforms
-        )
+        
         
         # Compute angular masks and normalization
         angular_mask = build_angular_mask(theta, deg_start, deg_end, normalize_theta)
@@ -622,6 +599,12 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             rotate_r_theta_with_theta_normalization
         )
         u_r, radial_mask = normalize_radial_distances(distances, inner_radius, outer_radius, normalize_radius)
+
+        # Apply transforms to normalized [0,1] theta (universal coordinate space)
+        transformed_coords = cls._compute_transformed_coordinates(
+            distances, theta_normalized, num_channels, easing_theta, bivariable_space_transforms
+        )
+        
         u_r_eased = cls._apply_radial_easing(u_r, num_channels, easing_r)
         
         combined_mask = angular_mask & radial_mask if normalize_theta else radial_mask
@@ -633,7 +616,6 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         for ch in range(num_channels):
             channel_result = cls._process_single_channel(
                 ch, transformed_coords, inner_r_theta, outer_r_theta, easing_r,
-                deg_start, deg_end, theta_range, angular_mask, normalize_theta,
                 normalized_rings, is_hue_space, hue_directions_theta, hue_directions_r,
                 bivariable_color_transforms
             )
