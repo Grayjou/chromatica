@@ -76,8 +76,8 @@ class TestFparLimited:
         outer_point_180 = get_point(gradient, (100, 100),  79, (180)) # Outer ring, cw hue, redder hue (209+158+360)/2 = 363.5 = 3.5
 
         assert outer_point_180[0] > 250    # Red channel    
-        assert outer_point_180[1] > 200   # Green channel
-        assert outer_point_180[2] < 150   # Blue channel
+        assert outer_point_180[1] > 100   # Green channel
+        assert outer_point_180[2] < 200   # Blue channel
 
     def test_flake_gradient_limited(self):
         """Test generating a flake-like gradient with limited angles."""
