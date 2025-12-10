@@ -1,6 +1,7 @@
 # Chromatica
 <p align="center">
-  <img src="images/filling_ring_combined.png" alt="Base File Highlight icon" width="160" />
+  <img src="https://raw.githubusercontent.com/Grayjou/chromatica/main/images/filling_ring_combined.png"
+       alt="Base File Highlight icon" width="160" />
 </p>
 **Chromatica** is a comprehensive Python toolkit for advanced color manipulation, conversion, and gradient generation. It provides typed color objects, robust conversion utilities (both scalar and NumPy-accelerated), and powerful tools for constructing complex gradients across multiple color spaces including RGB, HSV, HSL, and their alpha-enabled variants.
 
