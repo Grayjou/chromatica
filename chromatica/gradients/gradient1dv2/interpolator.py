@@ -8,7 +8,7 @@ from ...utils.interpolate_hue import interpolate_hue
 from ...types.transform_types import PerChannelTransform
 from ...types.color_types import ColorSpace, HueDirection, is_hue_space
 from ...utils.dimension import most_common_element
-from ..v2_core import multival1d_lerp
+from ..v2core import multival1d_lerp
 from ...colors import ColorBase
 from boundednumbers import BoundType
 from .unit_builder import _Gradient1DUnitBuilder

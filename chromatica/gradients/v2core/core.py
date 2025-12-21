@@ -1,4 +1,4 @@
-# ===================== v2_core.py =====================
+# ===================== core.py =====================
 """
 Core interpolation functions with Cython-accelerated backends.
 """
@@ -7,8 +7,8 @@ import numpy as np
 from typing import List, Tuple, Union
 
 from boundednumbers import BoundType, bound_type_to_np_function
-from ..types.array_types import ndarray_1d
-from .v2core_interp import ( # type: ignore
+from ...types.array_types import ndarray_1d
+from .interp import ( # type: ignore
     lerp_bounded_1d_spatial_fast,
     lerp_bounded_2d_spatial_fast,
     single_channel_multidim_lerp_bounded_cython_fast,

@@ -34,9 +34,9 @@ def lerp_between_lines_1ch(
     cdef Py_ssize_t W = coords.shape[1]
     
     if line1.shape[0] != L:
-        raise ValueError(f"Lines must have same length: {L} vs {line1.shape[0]}")
+        raise ValueError("Lines must have same length")
     if coords.shape[2] != 2:
-        raise ValueError(f"coords must have shape (H, W, 2), got {coords.shape}")
+        raise ValueError("coords must have shape (H, W, 2)")
     
     # Ensure contiguous
     if not line0.flags['C_CONTIGUOUS']:
@@ -120,9 +120,9 @@ def lerp_between_lines_multichannel(
     cdef Py_ssize_t W = coords.shape[1]
     
     if line1.shape[0] != L or line1.shape[1] != C:
-        raise ValueError(f"Lines must have same shape: {line0.shape} vs {line1.shape}")
+        raise ValueError("Lines must have same shape")
     if coords.shape[2] != 2:
-        raise ValueError(f"coords must have shape (H, W, 2)")
+        raise ValueError("coords must have shape (H, W, 2)")
     
     # Ensure contiguous
     if not line0.flags['C_CONTIGUOUS']:
@@ -498,7 +498,7 @@ def lerp_between_lines(
             return lerp_between_lines_flat_multichannel(line0, line1, coords)
     
     raise ValueError(
-        f"Unsupported shapes: line0={line0.shape}, line1={line1.shape}, coords={coords.shape}"
+        "Unsupported shapes for lerp_between_lines"
     )
 
 
@@ -530,4 +530,4 @@ def lerp_between_planes(
     if plane0.ndim == 2 and coords.ndim == 4:
         return lerp_between_planes_1ch(plane0, plane1, coords)
     
-    raise ValueError(f"Unsupported: plane0={plane0.shape}, coords={coords.shape}")
+    raise ValueError("Unsupported shapes for lerp_between_planes")

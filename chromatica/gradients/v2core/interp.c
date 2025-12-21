@@ -13,12 +13,12 @@
         "include_dirs": [
             "/home/runner/.local/lib/python3.12/site-packages/numpy/_core/include"
         ],
-        "name": "chromatica.gradients.v2core_interp",
+        "name": "chromatica.gradients.v2core.interp",
         "sources": [
-            "chromatica/gradients/v2core_interp.pyx"
+            "chromatica/gradients/v2core/interp.pyx"
         ]
     },
-    "module_name": "chromatica.gradients.v2core_interp"
+    "module_name": "chromatica.gradients.v2core.interp"
 }
 END: Cython Metadata */
 
@@ -1136,8 +1136,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__chromatica__gradients__v2core_interp
-#define __PYX_HAVE_API__chromatica__gradients__v2core_interp
+#define __PYX_HAVE__chromatica__gradients__v2core__interp
+#define __PYX_HAVE_API__chromatica__gradients__v2core__interp
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -1389,7 +1389,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "chromatica/gradients/v2core_interp.pyx",
+  "chromatica/gradients/v2core/interp.pyx",
   "<stringsource>",
   "../../../.local/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd",
   "cpython/type.pxd",
@@ -1797,14 +1797,14 @@ typedef npy_double __pyx_t_5numpy_double_t;
 */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "chromatica/gradients/v2core_interp.pyx":8
+/* "chromatica/gradients/v2core/interp.pyx":8
  * from libc.stdlib cimport malloc, free
  * 
  * ctypedef np.float64_t f64             # <<<<<<<<<<<<<<
  * 
  * # =============================================================================
 */
-typedef __pyx_t_5numpy_float64_t __pyx_t_10chromatica_9gradients_13v2core_interp_f64;
+typedef __pyx_t_5numpy_float64_t __pyx_t_10chromatica_9gradients_6v2core_6interp_f64;
 /* #### Code section: complex_type_declarations ### */
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX && (1) && (!0 || __cplusplus)
@@ -3020,13 +3020,13 @@ static int __Pyx_ValidateAndInit_memviewslice(
                 PyObject *original_obj);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *, int writable_flag);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -3332,7 +3332,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
 
 /* Module declarations from "libc.stdlib" */
 
-/* Module declarations from "chromatica.gradients.v2core_interp" */
+/* Module declarations from "chromatica.gradients.v2core.interp" */
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3376,13 +3376,13 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
-static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64 = { "f64", NULL, sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64), { 0 }, 0, 'R', 0, 0 };
+static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64 = { "f64", NULL, sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "chromatica.gradients.v2core_interp"
-extern int __pyx_module_is_main_chromatica__gradients__v2core_interp;
-int __pyx_module_is_main_chromatica__gradients__v2core_interp = 0;
+#define __Pyx_MODULE_NAME "chromatica.gradients.v2core.interp"
+extern int __pyx_module_is_main_chromatica__gradients__v2core__interp;
+int __pyx_module_is_main_chromatica__gradients__v2core__interp = 0;
 
-/* Implementation of "chromatica.gradients.v2core_interp" */
+/* Implementation of "chromatica.gradients.v2core.interp" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin___import__;
 static PyObject *__pyx_builtin_enumerate;
@@ -3434,10 +3434,10 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_2d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded_vectorized(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channel_multidim_lerp_bounded_cython_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_lerp_bounded_1d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_2lerp_bounded_2d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded_vectorized(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_6single_channel_multidim_lerp_bounded_cython_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs); /* proto */
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -18808,7 +18808,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "chromatica/gradients/v2core_interp.pyx":13
+/* "chromatica/gradients/v2core/interp.pyx":13
  * # 1D spatial: coeffs shape (L, N) -> output shape (L,)
  * # =============================================================================
  * def lerp_bounded_1d_spatial_fast(             # <<<<<<<<<<<<<<
@@ -18817,15 +18817,15 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_1lerp_bounded_1d_spatial_fast(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_1lerp_bounded_1d_spatial_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10chromatica_9gradients_13v2core_interp_1lerp_bounded_1d_spatial_fast = {"lerp_bounded_1d_spatial_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_13v2core_interp_1lerp_bounded_1d_spatial_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_1lerp_bounded_1d_spatial_fast(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10chromatica_9gradients_6v2core_6interp_1lerp_bounded_1d_spatial_fast = {"lerp_bounded_1d_spatial_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_6v2core_6interp_1lerp_bounded_1d_spatial_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_1lerp_bounded_1d_spatial_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -18903,14 +18903,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 14, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1d_spatial_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
+  __pyx_r = __pyx_pf_10chromatica_9gradients_6v2core_6interp_lerp_bounded_1d_spatial_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -18929,7 +18929,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_lerp_bounded_1d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
   Py_ssize_t __pyx_v_num_points;
   Py_ssize_t __pyx_v_num_interp_dims;
   Py_ssize_t __pyx_v_num_corners;
@@ -18943,12 +18943,12 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   Py_ssize_t __pyx_v_j;
   Py_ssize_t __pyx_v_half;
   Py_ssize_t __pyx_v_curr_size;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_u;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_u;
   Py_ssize_t __pyx_v_MAX_CORNERS;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_a_stack[256];
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_b_stack[256];
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 *__pyx_v_a;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 *__pyx_v_b;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_a_stack[256];
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_b_stack[256];
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *__pyx_v_a;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *__pyx_v_b;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
   __Pyx_Buffer __pyx_pybuffer_coeffs;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_ends;
@@ -19010,21 +19010,21 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
   }
   __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
   }
   __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 13, __pyx_L1_error)
   }
   __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1];
 
-  /* "chromatica/gradients/v2core_interp.pyx":18
+  /* "chromatica/gradients/v2core/interp.pyx":18
  *     np.ndarray[f64, ndim=2] coeffs,
  * ):
  *     cdef Py_ssize_t num_points = coeffs.shape[0]             # <<<<<<<<<<<<<<
@@ -19033,7 +19033,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_num_points = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":19
+  /* "chromatica/gradients/v2core/interp.pyx":19
  * ):
  *     cdef Py_ssize_t num_points = coeffs.shape[0]
  *     cdef Py_ssize_t num_interp_dims = coeffs.shape[1]             # <<<<<<<<<<<<<<
@@ -19042,7 +19042,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_num_interp_dims = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[1]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":20
+  /* "chromatica/gradients/v2core/interp.pyx":20
  *     cdef Py_ssize_t num_points = coeffs.shape[0]
  *     cdef Py_ssize_t num_interp_dims = coeffs.shape[1]
  *     cdef Py_ssize_t num_corners = starts.shape[0]             # <<<<<<<<<<<<<<
@@ -19051,7 +19051,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_num_corners = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_starts))[0]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":22
+  /* "chromatica/gradients/v2core/interp.pyx":22
  *     cdef Py_ssize_t num_corners = starts.shape[0]
  * 
  *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
@@ -19061,7 +19061,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_ends))[0]) != __pyx_v_num_corners);
   if (unlikely(__pyx_t_1)) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":23
+    /* "chromatica/gradients/v2core/interp.pyx":23
  * 
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")             # <<<<<<<<<<<<<<
@@ -19081,7 +19081,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 23, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":22
+    /* "chromatica/gradients/v2core/interp.pyx":22
  *     cdef Py_ssize_t num_corners = starts.shape[0]
  * 
  *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
@@ -19090,7 +19090,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":24
+  /* "chromatica/gradients/v2core/interp.pyx":24
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:             # <<<<<<<<<<<<<<
@@ -19100,7 +19100,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_1 = (__pyx_v_num_corners <= 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":25
+    /* "chromatica/gradients/v2core/interp.pyx":25
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:
  *         raise ValueError("num_corners must be > 0")             # <<<<<<<<<<<<<<
@@ -19120,7 +19120,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 25, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":24
+    /* "chromatica/gradients/v2core/interp.pyx":24
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:             # <<<<<<<<<<<<<<
@@ -19129,7 +19129,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":28
+  /* "chromatica/gradients/v2core/interp.pyx":28
  * 
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19146,7 +19146,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":29
+    /* "chromatica/gradients/v2core/interp.pyx":29
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -19193,10 +19193,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -19210,7 +19210,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":28
+    /* "chromatica/gradients/v2core/interp.pyx":28
  * 
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19219,7 +19219,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":30
+  /* "chromatica/gradients/v2core/interp.pyx":30
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19236,7 +19236,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":31
+    /* "chromatica/gradients/v2core/interp.pyx":31
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -19283,10 +19283,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -19300,7 +19300,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":30
+    /* "chromatica/gradients/v2core/interp.pyx":30
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19309,7 +19309,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":32
+  /* "chromatica/gradients/v2core/interp.pyx":32
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19326,7 +19326,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":33
+    /* "chromatica/gradients/v2core/interp.pyx":33
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -19373,10 +19373,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -19390,7 +19390,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":32
+    /* "chromatica/gradients/v2core/interp.pyx":32
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -19399,43 +19399,43 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":35
+  /* "chromatica/gradients/v2core/interp.pyx":35
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
  * 
  *     cdef f64[::1] starts_mv = starts             # <<<<<<<<<<<<<<
  *     cdef f64[::1] ends_mv = ends
  *     cdef f64[:, ::1] coeffs_mv = coeffs
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 35, __pyx_L1_error)
   __pyx_v_starts_mv = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":36
+  /* "chromatica/gradients/v2core/interp.pyx":36
  * 
  *     cdef f64[::1] starts_mv = starts
  *     cdef f64[::1] ends_mv = ends             # <<<<<<<<<<<<<<
  *     cdef f64[:, ::1] coeffs_mv = coeffs
  * 
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_v_ends_mv = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":37
+  /* "chromatica/gradients/v2core/interp.pyx":37
  *     cdef f64[::1] starts_mv = starts
  *     cdef f64[::1] ends_mv = ends
  *     cdef f64[:, ::1] coeffs_mv = coeffs             # <<<<<<<<<<<<<<
  * 
  *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)
 */
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 37, __pyx_L1_error)
   __pyx_v_coeffs_mv = __pyx_t_14;
   __pyx_t_14.memview = NULL;
   __pyx_t_14.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":39
+  /* "chromatica/gradients/v2core/interp.pyx":39
  *     cdef f64[:, ::1] coeffs_mv = coeffs
  * 
  *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -19484,7 +19484,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   if (!(likely(((__pyx_t_8) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_8, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 39, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_result = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_result.rcbuffer->pybuffer.buf = NULL;
       __PYX_ERR(0, 39, __pyx_L1_error)
     } else {__pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
@@ -19493,19 +19493,19 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_v_result = ((PyArrayObject *)__pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":40
+  /* "chromatica/gradients/v2core/interp.pyx":40
  * 
  *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)
  *     cdef f64[::1] result_mv = result             # <<<<<<<<<<<<<<
  * 
  *     cdef Py_ssize_t p, i, j, half, curr_size
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 40, __pyx_L1_error)
   __pyx_v_result_mv = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":48
+  /* "chromatica/gradients/v2core/interp.pyx":48
  *     # ALL cdef declarations MUST be here, not inside if blocks
  *     # ------------------------------------------------------------
  *     cdef Py_ssize_t MAX_CORNERS = 256             # <<<<<<<<<<<<<<
@@ -19514,7 +19514,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_MAX_CORNERS = 0x100;
 
-  /* "chromatica/gradients/v2core_interp.pyx":51
+  /* "chromatica/gradients/v2core/interp.pyx":51
  *     cdef f64 a_stack[256]  # Moved outside if block
  *     cdef f64 b_stack[256]  # Moved outside if block
  *     cdef f64* a = NULL             # <<<<<<<<<<<<<<
@@ -19523,7 +19523,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_a = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":52
+  /* "chromatica/gradients/v2core/interp.pyx":52
  *     cdef f64 b_stack[256]  # Moved outside if block
  *     cdef f64* a = NULL
  *     cdef f64* b = NULL             # <<<<<<<<<<<<<<
@@ -19532,7 +19532,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   __pyx_v_b = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":54
+  /* "chromatica/gradients/v2core/interp.pyx":54
  *     cdef f64* b = NULL
  * 
  *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
@@ -19542,7 +19542,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_t_5 = (__pyx_v_num_corners <= __pyx_v_MAX_CORNERS);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":56
+    /* "chromatica/gradients/v2core/interp.pyx":56
  *     if num_corners <= MAX_CORNERS:
  *         # Use stack buffers
  *         for p in range(num_points):             # <<<<<<<<<<<<<<
@@ -19554,7 +19554,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_p = __pyx_t_18;
 
-      /* "chromatica/gradients/v2core_interp.pyx":57
+      /* "chromatica/gradients/v2core/interp.pyx":57
  *         # Use stack buffers
  *         for p in range(num_points):
  *             memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -19562,9 +19562,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  * 
 */
       __pyx_t_19 = 0;
-      (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_19)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+      (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_19)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-      /* "chromatica/gradients/v2core_interp.pyx":58
+      /* "chromatica/gradients/v2core/interp.pyx":58
  *         for p in range(num_points):
  *             memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
  *             memcpy(&b_stack[0], &ends_mv[0],   num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -19572,9 +19572,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  *             curr_size = num_corners
 */
       __pyx_t_19 = 0;
-      (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_19)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+      (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_19)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-      /* "chromatica/gradients/v2core_interp.pyx":60
+      /* "chromatica/gradients/v2core/interp.pyx":60
  *             memcpy(&b_stack[0], &ends_mv[0],   num_corners * sizeof(f64))
  * 
  *             curr_size = num_corners             # <<<<<<<<<<<<<<
@@ -19583,7 +19583,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
       __pyx_v_curr_size = __pyx_v_num_corners;
 
-      /* "chromatica/gradients/v2core_interp.pyx":61
+      /* "chromatica/gradients/v2core/interp.pyx":61
  * 
  *             curr_size = num_corners
  *             for i in range(num_interp_dims):             # <<<<<<<<<<<<<<
@@ -19595,7 +19595,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
       for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
         __pyx_v_i = __pyx_t_22;
 
-        /* "chromatica/gradients/v2core_interp.pyx":62
+        /* "chromatica/gradients/v2core/interp.pyx":62
  *             curr_size = num_corners
  *             for i in range(num_interp_dims):
  *                 u = coeffs_mv[p, i]             # <<<<<<<<<<<<<<
@@ -19604,9 +19604,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
         __pyx_t_19 = __pyx_v_p;
         __pyx_t_23 = __pyx_v_i;
-        __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_19 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_23)) )));
+        __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_19 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_23)) )));
 
-        /* "chromatica/gradients/v2core_interp.pyx":64
+        /* "chromatica/gradients/v2core/interp.pyx":64
  *                 u = coeffs_mv[p, i]
  * 
  *                 for j in range(curr_size):             # <<<<<<<<<<<<<<
@@ -19618,7 +19618,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_j = __pyx_t_26;
 
-          /* "chromatica/gradients/v2core_interp.pyx":65
+          /* "chromatica/gradients/v2core/interp.pyx":65
  * 
  *                 for j in range(curr_size):
  *                     a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])             # <<<<<<<<<<<<<<
@@ -19628,7 +19628,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
           (__pyx_v_a_stack[__pyx_v_j]) = ((__pyx_v_a_stack[__pyx_v_j]) + (__pyx_v_u * ((__pyx_v_b_stack[__pyx_v_j]) - (__pyx_v_a_stack[__pyx_v_j]))));
         }
 
-        /* "chromatica/gradients/v2core_interp.pyx":67
+        /* "chromatica/gradients/v2core/interp.pyx":67
  *                     a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])
  * 
  *                 if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -19638,7 +19638,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         __pyx_t_5 = (__pyx_v_curr_size > 1);
         if (__pyx_t_5) {
 
-          /* "chromatica/gradients/v2core_interp.pyx":68
+          /* "chromatica/gradients/v2core/interp.pyx":68
  * 
  *                 if curr_size > 1:
  *                     half = curr_size >> 1             # <<<<<<<<<<<<<<
@@ -19647,16 +19647,16 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
           __pyx_v_half = (__pyx_v_curr_size >> 1);
 
-          /* "chromatica/gradients/v2core_interp.pyx":69
+          /* "chromatica/gradients/v2core/interp.pyx":69
  *                 if curr_size > 1:
  *                     half = curr_size >> 1
  *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))             # <<<<<<<<<<<<<<
  *                     curr_size = half
  * 
 */
-          (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+          (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-          /* "chromatica/gradients/v2core_interp.pyx":70
+          /* "chromatica/gradients/v2core/interp.pyx":70
  *                     half = curr_size >> 1
  *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
  *                     curr_size = half             # <<<<<<<<<<<<<<
@@ -19665,7 +19665,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
           __pyx_v_curr_size = __pyx_v_half;
 
-          /* "chromatica/gradients/v2core_interp.pyx":67
+          /* "chromatica/gradients/v2core/interp.pyx":67
  *                     a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])
  * 
  *                 if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -19675,7 +19675,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         }
       }
 
-      /* "chromatica/gradients/v2core_interp.pyx":72
+      /* "chromatica/gradients/v2core/interp.pyx":72
  *                     curr_size = half
  * 
  *             result_mv[p] = a_stack[0]             # <<<<<<<<<<<<<<
@@ -19683,10 +19683,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  *         return result
 */
       __pyx_t_23 = __pyx_v_p;
-      *((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_result_mv.data) + __pyx_t_23)) )) = (__pyx_v_a_stack[0]);
+      *((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_result_mv.data) + __pyx_t_23)) )) = (__pyx_v_a_stack[0]);
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":74
+    /* "chromatica/gradients/v2core/interp.pyx":74
  *             result_mv[p] = a_stack[0]
  * 
  *         return result             # <<<<<<<<<<<<<<
@@ -19698,7 +19698,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __pyx_r = ((PyObject *)__pyx_v_result);
     goto __pyx_L0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":54
+    /* "chromatica/gradients/v2core/interp.pyx":54
  *     cdef f64* b = NULL
  * 
  *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
@@ -19707,25 +19707,25 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":79
+  /* "chromatica/gradients/v2core/interp.pyx":79
  *     # Heap buffer fallback (for large corner counts)
  *     # ------------------------------------------------------------
  *     a = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:
 */
-  __pyx_v_a = ((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+  __pyx_v_a = ((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-  /* "chromatica/gradients/v2core_interp.pyx":80
+  /* "chromatica/gradients/v2core/interp.pyx":80
  *     # ------------------------------------------------------------
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)
 */
-  __pyx_v_b = ((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+  __pyx_v_b = ((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-  /* "chromatica/gradients/v2core_interp.pyx":81
+  /* "chromatica/gradients/v2core/interp.pyx":81
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
@@ -19743,7 +19743,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_L17_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":82
+    /* "chromatica/gradients/v2core/interp.pyx":82
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)             # <<<<<<<<<<<<<<
@@ -19755,7 +19755,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
       free(__pyx_v_a);
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":83
+    /* "chromatica/gradients/v2core/interp.pyx":83
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)
  *         if b != NULL: free(b)             # <<<<<<<<<<<<<<
@@ -19767,7 +19767,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
       free(__pyx_v_b);
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":84
+    /* "chromatica/gradients/v2core/interp.pyx":84
  *         if a != NULL: free(a)
  *         if b != NULL: free(b)
  *         raise MemoryError("Failed to allocate working buffers")             # <<<<<<<<<<<<<<
@@ -19787,7 +19787,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __PYX_ERR(0, 84, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":81
+    /* "chromatica/gradients/v2core/interp.pyx":81
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
@@ -19796,7 +19796,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":86
+  /* "chromatica/gradients/v2core/interp.pyx":86
  *         raise MemoryError("Failed to allocate working buffers")
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -19805,7 +19805,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
   /*try:*/ {
 
-    /* "chromatica/gradients/v2core_interp.pyx":87
+    /* "chromatica/gradients/v2core/interp.pyx":87
  * 
  *     try:
  *         for p in range(num_points):             # <<<<<<<<<<<<<<
@@ -19817,7 +19817,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_p = __pyx_t_18;
 
-      /* "chromatica/gradients/v2core_interp.pyx":88
+      /* "chromatica/gradients/v2core/interp.pyx":88
  *     try:
  *         for p in range(num_points):
  *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -19825,9 +19825,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  * 
 */
       __pyx_t_23 = 0;
-      (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+      (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-      /* "chromatica/gradients/v2core_interp.pyx":89
+      /* "chromatica/gradients/v2core/interp.pyx":89
  *         for p in range(num_points):
  *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
  *             memcpy(b, &ends_mv[0],   num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -19835,9 +19835,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  *             curr_size = num_corners
 */
       __pyx_t_23 = 0;
-      (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+      (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-      /* "chromatica/gradients/v2core_interp.pyx":91
+      /* "chromatica/gradients/v2core/interp.pyx":91
  *             memcpy(b, &ends_mv[0],   num_corners * sizeof(f64))
  * 
  *             curr_size = num_corners             # <<<<<<<<<<<<<<
@@ -19846,7 +19846,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
       __pyx_v_curr_size = __pyx_v_num_corners;
 
-      /* "chromatica/gradients/v2core_interp.pyx":92
+      /* "chromatica/gradients/v2core/interp.pyx":92
  * 
  *             curr_size = num_corners
  *             for i in range(num_interp_dims):             # <<<<<<<<<<<<<<
@@ -19858,7 +19858,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
       for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
         __pyx_v_i = __pyx_t_22;
 
-        /* "chromatica/gradients/v2core_interp.pyx":93
+        /* "chromatica/gradients/v2core/interp.pyx":93
  *             curr_size = num_corners
  *             for i in range(num_interp_dims):
  *                 u = coeffs_mv[p, i]             # <<<<<<<<<<<<<<
@@ -19867,9 +19867,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
         __pyx_t_23 = __pyx_v_p;
         __pyx_t_19 = __pyx_v_i;
-        __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_23 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_19)) )));
+        __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_23 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_19)) )));
 
-        /* "chromatica/gradients/v2core_interp.pyx":95
+        /* "chromatica/gradients/v2core/interp.pyx":95
  *                 u = coeffs_mv[p, i]
  * 
  *                 for j in range(curr_size):             # <<<<<<<<<<<<<<
@@ -19881,7 +19881,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_j = __pyx_t_26;
 
-          /* "chromatica/gradients/v2core_interp.pyx":96
+          /* "chromatica/gradients/v2core/interp.pyx":96
  * 
  *                 for j in range(curr_size):
  *                     a[j] = a[j] + u * (b[j] - a[j])             # <<<<<<<<<<<<<<
@@ -19891,7 +19891,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
           (__pyx_v_a[__pyx_v_j]) = ((__pyx_v_a[__pyx_v_j]) + (__pyx_v_u * ((__pyx_v_b[__pyx_v_j]) - (__pyx_v_a[__pyx_v_j]))));
         }
 
-        /* "chromatica/gradients/v2core_interp.pyx":98
+        /* "chromatica/gradients/v2core/interp.pyx":98
  *                     a[j] = a[j] + u * (b[j] - a[j])
  * 
  *                 if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -19901,7 +19901,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         __pyx_t_5 = (__pyx_v_curr_size > 1);
         if (__pyx_t_5) {
 
-          /* "chromatica/gradients/v2core_interp.pyx":99
+          /* "chromatica/gradients/v2core/interp.pyx":99
  * 
  *                 if curr_size > 1:
  *                     half = curr_size >> 1             # <<<<<<<<<<<<<<
@@ -19910,16 +19910,16 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
           __pyx_v_half = (__pyx_v_curr_size >> 1);
 
-          /* "chromatica/gradients/v2core_interp.pyx":100
+          /* "chromatica/gradients/v2core/interp.pyx":100
  *                 if curr_size > 1:
  *                     half = curr_size >> 1
  *                     memcpy(b, a + half, half * sizeof(f64))             # <<<<<<<<<<<<<<
  *                     curr_size = half
  * 
 */
-          (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+          (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-          /* "chromatica/gradients/v2core_interp.pyx":101
+          /* "chromatica/gradients/v2core/interp.pyx":101
  *                     half = curr_size >> 1
  *                     memcpy(b, a + half, half * sizeof(f64))
  *                     curr_size = half             # <<<<<<<<<<<<<<
@@ -19928,7 +19928,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
           __pyx_v_curr_size = __pyx_v_half;
 
-          /* "chromatica/gradients/v2core_interp.pyx":98
+          /* "chromatica/gradients/v2core/interp.pyx":98
  *                     a[j] = a[j] + u * (b[j] - a[j])
  * 
  *                 if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -19938,7 +19938,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
         }
       }
 
-      /* "chromatica/gradients/v2core_interp.pyx":103
+      /* "chromatica/gradients/v2core/interp.pyx":103
  *                     curr_size = half
  * 
  *             result_mv[p] = a[0]             # <<<<<<<<<<<<<<
@@ -19946,11 +19946,11 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
  *         free(a)
 */
       __pyx_t_19 = __pyx_v_p;
-      *((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_result_mv.data) + __pyx_t_19)) )) = (__pyx_v_a[0]);
+      *((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_result_mv.data) + __pyx_t_19)) )) = (__pyx_v_a[0]);
     }
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":105
+  /* "chromatica/gradients/v2core/interp.pyx":105
  *             result_mv[p] = a[0]
  *     finally:
  *         free(a)             # <<<<<<<<<<<<<<
@@ -19961,7 +19961,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     /*normal exit:*/{
       free(__pyx_v_a);
 
-      /* "chromatica/gradients/v2core_interp.pyx":106
+      /* "chromatica/gradients/v2core/interp.pyx":106
  *     finally:
  *         free(a)
  *         free(b)             # <<<<<<<<<<<<<<
@@ -19974,7 +19974,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __pyx_L23:;
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":108
+  /* "chromatica/gradients/v2core/interp.pyx":108
  *         free(b)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -19986,7 +19986,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   __pyx_r = ((PyObject *)__pyx_v_result);
   goto __pyx_L0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":13
+  /* "chromatica/gradients/v2core/interp.pyx":13
  * # 1D spatial: coeffs shape (L, N) -> output shape (L,)
  * # =============================================================================
  * def lerp_bounded_1d_spatial_fast(             # <<<<<<<<<<<<<<
@@ -20013,7 +20013,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -20035,7 +20035,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
   return __pyx_r;
 }
 
-/* "chromatica/gradients/v2core_interp.pyx":114
+/* "chromatica/gradients/v2core/interp.pyx":114
  * # 2D spatial: coeffs shape (H, W, N) -> output shape (H, W)
  * # =============================================================================
  * def lerp_bounded_2d_spatial_fast(             # <<<<<<<<<<<<<<
@@ -20044,15 +20044,15 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_lerp_bounded_1
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_3lerp_bounded_2d_spatial_fast(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_3lerp_bounded_2d_spatial_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10chromatica_9gradients_13v2core_interp_3lerp_bounded_2d_spatial_fast = {"lerp_bounded_2d_spatial_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_13v2core_interp_3lerp_bounded_2d_spatial_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_3lerp_bounded_2d_spatial_fast(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10chromatica_9gradients_6v2core_6interp_3lerp_bounded_2d_spatial_fast = {"lerp_bounded_2d_spatial_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_6v2core_6interp_3lerp_bounded_2d_spatial_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_3lerp_bounded_2d_spatial_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20130,14 +20130,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 115, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 116, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 117, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_2d_spatial_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
+  __pyx_r = __pyx_pf_10chromatica_9gradients_6v2core_6interp_2lerp_bounded_2d_spatial_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -20156,7 +20156,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_2d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_2lerp_bounded_2d_spatial_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
   Py_ssize_t __pyx_v_H;
   Py_ssize_t __pyx_v_W;
   Py_ssize_t __pyx_v_N;
@@ -20172,12 +20172,12 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   Py_ssize_t __pyx_v_j;
   Py_ssize_t __pyx_v_half;
   Py_ssize_t __pyx_v_curr_size;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_u;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_u;
   Py_ssize_t __pyx_v_MAX_CORNERS;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_a_stack[256];
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 __pyx_v_b_stack[256];
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 *__pyx_v_a;
-  __pyx_t_10chromatica_9gradients_13v2core_interp_f64 *__pyx_v_b;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_a_stack[256];
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 __pyx_v_b_stack[256];
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *__pyx_v_a;
+  __pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *__pyx_v_b;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
   __Pyx_Buffer __pyx_pybuffer_coeffs;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_ends;
@@ -20244,21 +20244,21 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
   }
   __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
   }
   __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 114, __pyx_L1_error)
   }
   __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coeffs.diminfo[2].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coeffs.diminfo[2].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[2];
 
-  /* "chromatica/gradients/v2core_interp.pyx":119
+  /* "chromatica/gradients/v2core/interp.pyx":119
  *     np.ndarray[f64, ndim=3] coeffs,
  * ):
  *     cdef Py_ssize_t H = coeffs.shape[0]             # <<<<<<<<<<<<<<
@@ -20267,7 +20267,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":120
+  /* "chromatica/gradients/v2core/interp.pyx":120
  * ):
  *     cdef Py_ssize_t H = coeffs.shape[0]
  *     cdef Py_ssize_t W = coeffs.shape[1]             # <<<<<<<<<<<<<<
@@ -20276,7 +20276,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[1]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":121
+  /* "chromatica/gradients/v2core/interp.pyx":121
  *     cdef Py_ssize_t H = coeffs.shape[0]
  *     cdef Py_ssize_t W = coeffs.shape[1]
  *     cdef Py_ssize_t N = coeffs.shape[2]             # <<<<<<<<<<<<<<
@@ -20285,7 +20285,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_N = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[2]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":122
+  /* "chromatica/gradients/v2core/interp.pyx":122
  *     cdef Py_ssize_t W = coeffs.shape[1]
  *     cdef Py_ssize_t N = coeffs.shape[2]
  *     cdef Py_ssize_t num_corners = starts.shape[0]             # <<<<<<<<<<<<<<
@@ -20294,7 +20294,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_num_corners = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_starts))[0]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":124
+  /* "chromatica/gradients/v2core/interp.pyx":124
  *     cdef Py_ssize_t num_corners = starts.shape[0]
  * 
  *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
@@ -20304,7 +20304,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_ends))[0]) != __pyx_v_num_corners);
   if (unlikely(__pyx_t_1)) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":125
+    /* "chromatica/gradients/v2core/interp.pyx":125
  * 
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")             # <<<<<<<<<<<<<<
@@ -20324,7 +20324,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 125, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":124
+    /* "chromatica/gradients/v2core/interp.pyx":124
  *     cdef Py_ssize_t num_corners = starts.shape[0]
  * 
  *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
@@ -20333,7 +20333,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":126
+  /* "chromatica/gradients/v2core/interp.pyx":126
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:             # <<<<<<<<<<<<<<
@@ -20343,7 +20343,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_1 = (__pyx_v_num_corners <= 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":127
+    /* "chromatica/gradients/v2core/interp.pyx":127
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:
  *         raise ValueError("num_corners must be > 0")             # <<<<<<<<<<<<<<
@@ -20363,7 +20363,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 127, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":126
+    /* "chromatica/gradients/v2core/interp.pyx":126
  *     if ends.shape[0] != num_corners:
  *         raise ValueError("starts and ends must have same length")
  *     if num_corners <= 0:             # <<<<<<<<<<<<<<
@@ -20372,7 +20372,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":130
+  /* "chromatica/gradients/v2core/interp.pyx":130
  * 
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20389,7 +20389,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":131
+    /* "chromatica/gradients/v2core/interp.pyx":131
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -20436,10 +20436,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -20453,7 +20453,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":130
+    /* "chromatica/gradients/v2core/interp.pyx":130
  * 
  *     # Ensure contiguous
  *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20462,7 +20462,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":132
+  /* "chromatica/gradients/v2core/interp.pyx":132
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20479,7 +20479,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":133
+    /* "chromatica/gradients/v2core/interp.pyx":133
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -20526,10 +20526,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -20543,7 +20543,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":132
+    /* "chromatica/gradients/v2core/interp.pyx":132
  *     if not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20552,7 +20552,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":134
+  /* "chromatica/gradients/v2core/interp.pyx":134
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20569,7 +20569,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":135
+    /* "chromatica/gradients/v2core/interp.pyx":135
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -20616,10 +20616,10 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
       if (unlikely(__pyx_t_9 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -20633,7 +20633,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":134
+    /* "chromatica/gradients/v2core/interp.pyx":134
  *     if not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -20642,43 +20642,43 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":137
+  /* "chromatica/gradients/v2core/interp.pyx":137
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
  * 
  *     cdef f64[::1] starts_mv = starts             # <<<<<<<<<<<<<<
  *     cdef f64[::1] ends_mv = ends
  *     cdef f64[:, :, ::1] coeffs_mv = coeffs
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 137, __pyx_L1_error)
   __pyx_v_starts_mv = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":138
+  /* "chromatica/gradients/v2core/interp.pyx":138
  * 
  *     cdef f64[::1] starts_mv = starts
  *     cdef f64[::1] ends_mv = ends             # <<<<<<<<<<<<<<
  *     cdef f64[:, :, ::1] coeffs_mv = coeffs
  * 
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_v_ends_mv = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":139
+  /* "chromatica/gradients/v2core/interp.pyx":139
  *     cdef f64[::1] starts_mv = starts
  *     cdef f64[::1] ends_mv = ends
  *     cdef f64[:, :, ::1] coeffs_mv = coeffs             # <<<<<<<<<<<<<<
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
 */
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 139, __pyx_L1_error)
   __pyx_v_coeffs_mv = __pyx_t_14;
   __pyx_t_14.memview = NULL;
   __pyx_t_14.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":141
+  /* "chromatica/gradients/v2core/interp.pyx":141
  *     cdef f64[:, :, ::1] coeffs_mv = coeffs
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -20737,7 +20737,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   if (!(likely(((__pyx_t_8) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_8, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 141, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_8), &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
       __PYX_ERR(0, 141, __pyx_L1_error)
     } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
@@ -20746,19 +20746,19 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_v_out = ((PyArrayObject *)__pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":142
+  /* "chromatica/gradients/v2core/interp.pyx":142
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
  *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
  * 
  *     cdef Py_ssize_t h, w, i, j, half, curr_size
 */
-  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 142, __pyx_L1_error)
   __pyx_v_out_mv = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":148
+  /* "chromatica/gradients/v2core/interp.pyx":148
  * 
  *     # ALL cdef declarations at function scope
  *     cdef Py_ssize_t MAX_CORNERS = 256             # <<<<<<<<<<<<<<
@@ -20767,7 +20767,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_MAX_CORNERS = 0x100;
 
-  /* "chromatica/gradients/v2core_interp.pyx":151
+  /* "chromatica/gradients/v2core/interp.pyx":151
  *     cdef f64 a_stack[256]
  *     cdef f64 b_stack[256]
  *     cdef f64* a = NULL             # <<<<<<<<<<<<<<
@@ -20776,7 +20776,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_a = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":152
+  /* "chromatica/gradients/v2core/interp.pyx":152
  *     cdef f64 b_stack[256]
  *     cdef f64* a = NULL
  *     cdef f64* b = NULL             # <<<<<<<<<<<<<<
@@ -20785,7 +20785,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   __pyx_v_b = NULL;
 
-  /* "chromatica/gradients/v2core_interp.pyx":154
+  /* "chromatica/gradients/v2core/interp.pyx":154
  *     cdef f64* b = NULL
  * 
  *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
@@ -20795,7 +20795,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_t_5 = (__pyx_v_num_corners <= __pyx_v_MAX_CORNERS);
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":155
+    /* "chromatica/gradients/v2core/interp.pyx":155
  * 
  *     if num_corners <= MAX_CORNERS:
  *         for h in range(H):             # <<<<<<<<<<<<<<
@@ -20807,7 +20807,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_h = __pyx_t_19;
 
-      /* "chromatica/gradients/v2core_interp.pyx":156
+      /* "chromatica/gradients/v2core/interp.pyx":156
  *     if num_corners <= MAX_CORNERS:
  *         for h in range(H):
  *             for w in range(W):             # <<<<<<<<<<<<<<
@@ -20819,7 +20819,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
       for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
         __pyx_v_w = __pyx_t_22;
 
-        /* "chromatica/gradients/v2core_interp.pyx":157
+        /* "chromatica/gradients/v2core/interp.pyx":157
  *         for h in range(H):
  *             for w in range(W):
  *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -20827,9 +20827,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
  * 
 */
         __pyx_t_23 = 0;
-        (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+        (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-        /* "chromatica/gradients/v2core_interp.pyx":158
+        /* "chromatica/gradients/v2core/interp.pyx":158
  *             for w in range(W):
  *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
  *                 memcpy(&b_stack[0], &ends_mv[0],   num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -20837,9 +20837,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
  *                 curr_size = num_corners
 */
         __pyx_t_23 = 0;
-        (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+        (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_23)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-        /* "chromatica/gradients/v2core_interp.pyx":160
+        /* "chromatica/gradients/v2core/interp.pyx":160
  *                 memcpy(&b_stack[0], &ends_mv[0],   num_corners * sizeof(f64))
  * 
  *                 curr_size = num_corners             # <<<<<<<<<<<<<<
@@ -20848,7 +20848,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
         __pyx_v_curr_size = __pyx_v_num_corners;
 
-        /* "chromatica/gradients/v2core_interp.pyx":161
+        /* "chromatica/gradients/v2core/interp.pyx":161
  * 
  *                 curr_size = num_corners
  *                 for i in range(N):             # <<<<<<<<<<<<<<
@@ -20860,7 +20860,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_i = __pyx_t_26;
 
-          /* "chromatica/gradients/v2core_interp.pyx":162
+          /* "chromatica/gradients/v2core/interp.pyx":162
  *                 curr_size = num_corners
  *                 for i in range(N):
  *                     u = coeffs_mv[h, w, i]             # <<<<<<<<<<<<<<
@@ -20870,9 +20870,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           __pyx_t_23 = __pyx_v_h;
           __pyx_t_27 = __pyx_v_w;
           __pyx_t_28 = __pyx_v_i;
-          __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_23 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_27 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_28)) )));
+          __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_23 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_27 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_28)) )));
 
-          /* "chromatica/gradients/v2core_interp.pyx":164
+          /* "chromatica/gradients/v2core/interp.pyx":164
  *                     u = coeffs_mv[h, w, i]
  * 
  *                     for j in range(curr_size):             # <<<<<<<<<<<<<<
@@ -20884,7 +20884,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
             __pyx_v_j = __pyx_t_31;
 
-            /* "chromatica/gradients/v2core_interp.pyx":165
+            /* "chromatica/gradients/v2core/interp.pyx":165
  * 
  *                     for j in range(curr_size):
  *                         a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])             # <<<<<<<<<<<<<<
@@ -20894,7 +20894,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
             (__pyx_v_a_stack[__pyx_v_j]) = ((__pyx_v_a_stack[__pyx_v_j]) + (__pyx_v_u * ((__pyx_v_b_stack[__pyx_v_j]) - (__pyx_v_a_stack[__pyx_v_j]))));
           }
 
-          /* "chromatica/gradients/v2core_interp.pyx":167
+          /* "chromatica/gradients/v2core/interp.pyx":167
  *                         a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])
  * 
  *                     if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -20904,7 +20904,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           __pyx_t_5 = (__pyx_v_curr_size > 1);
           if (__pyx_t_5) {
 
-            /* "chromatica/gradients/v2core_interp.pyx":168
+            /* "chromatica/gradients/v2core/interp.pyx":168
  * 
  *                     if curr_size > 1:
  *                         half = curr_size >> 1             # <<<<<<<<<<<<<<
@@ -20913,16 +20913,16 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
             __pyx_v_half = (__pyx_v_curr_size >> 1);
 
-            /* "chromatica/gradients/v2core_interp.pyx":169
+            /* "chromatica/gradients/v2core/interp.pyx":169
  *                     if curr_size > 1:
  *                         half = curr_size >> 1
  *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))             # <<<<<<<<<<<<<<
  *                         curr_size = half
  * 
 */
-            (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+            (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-            /* "chromatica/gradients/v2core_interp.pyx":170
+            /* "chromatica/gradients/v2core/interp.pyx":170
  *                         half = curr_size >> 1
  *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
  *                         curr_size = half             # <<<<<<<<<<<<<<
@@ -20931,7 +20931,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
             __pyx_v_curr_size = __pyx_v_half;
 
-            /* "chromatica/gradients/v2core_interp.pyx":167
+            /* "chromatica/gradients/v2core/interp.pyx":167
  *                         a_stack[j] = a_stack[j] + u * (b_stack[j] - a_stack[j])
  * 
  *                     if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -20941,7 +20941,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           }
         }
 
-        /* "chromatica/gradients/v2core_interp.pyx":172
+        /* "chromatica/gradients/v2core/interp.pyx":172
  *                         curr_size = half
  * 
  *                 out_mv[h, w] = a_stack[0]             # <<<<<<<<<<<<<<
@@ -20950,11 +20950,11 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
         __pyx_t_28 = __pyx_v_h;
         __pyx_t_27 = __pyx_v_w;
-        *((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_28 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_27)) )) = (__pyx_v_a_stack[0]);
+        *((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_28 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_27)) )) = (__pyx_v_a_stack[0]);
       }
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":174
+    /* "chromatica/gradients/v2core/interp.pyx":174
  *                 out_mv[h, w] = a_stack[0]
  * 
  *         return out             # <<<<<<<<<<<<<<
@@ -20966,7 +20966,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __pyx_r = ((PyObject *)__pyx_v_out);
     goto __pyx_L0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":154
+    /* "chromatica/gradients/v2core/interp.pyx":154
  *     cdef f64* b = NULL
  * 
  *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
@@ -20975,25 +20975,25 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":177
+  /* "chromatica/gradients/v2core/interp.pyx":177
  * 
  *     # Heap fallback
  *     a = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:
 */
-  __pyx_v_a = ((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+  __pyx_v_a = ((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-  /* "chromatica/gradients/v2core_interp.pyx":178
+  /* "chromatica/gradients/v2core/interp.pyx":178
  *     # Heap fallback
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)
 */
-  __pyx_v_b = ((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+  __pyx_v_b = ((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-  /* "chromatica/gradients/v2core_interp.pyx":179
+  /* "chromatica/gradients/v2core/interp.pyx":179
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
@@ -21011,7 +21011,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_L19_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":180
+    /* "chromatica/gradients/v2core/interp.pyx":180
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)             # <<<<<<<<<<<<<<
@@ -21023,7 +21023,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
       free(__pyx_v_a);
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":181
+    /* "chromatica/gradients/v2core/interp.pyx":181
  *     if a == NULL or b == NULL:
  *         if a != NULL: free(a)
  *         if b != NULL: free(b)             # <<<<<<<<<<<<<<
@@ -21035,7 +21035,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
       free(__pyx_v_b);
     }
 
-    /* "chromatica/gradients/v2core_interp.pyx":182
+    /* "chromatica/gradients/v2core/interp.pyx":182
  *         if a != NULL: free(a)
  *         if b != NULL: free(b)
  *         raise MemoryError("Failed to allocate working buffers")             # <<<<<<<<<<<<<<
@@ -21055,7 +21055,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __PYX_ERR(0, 182, __pyx_L1_error)
 
-    /* "chromatica/gradients/v2core_interp.pyx":179
+    /* "chromatica/gradients/v2core/interp.pyx":179
  *     a = <f64*>malloc(num_corners * sizeof(f64))
  *     b = <f64*>malloc(num_corners * sizeof(f64))
  *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
@@ -21064,7 +21064,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":184
+  /* "chromatica/gradients/v2core/interp.pyx":184
  *         raise MemoryError("Failed to allocate working buffers")
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -21073,7 +21073,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
   /*try:*/ {
 
-    /* "chromatica/gradients/v2core_interp.pyx":185
+    /* "chromatica/gradients/v2core/interp.pyx":185
  * 
  *     try:
  *         for h in range(H):             # <<<<<<<<<<<<<<
@@ -21085,7 +21085,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_h = __pyx_t_19;
 
-      /* "chromatica/gradients/v2core_interp.pyx":186
+      /* "chromatica/gradients/v2core/interp.pyx":186
  *     try:
  *         for h in range(H):
  *             for w in range(W):             # <<<<<<<<<<<<<<
@@ -21097,7 +21097,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
       for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
         __pyx_v_w = __pyx_t_22;
 
-        /* "chromatica/gradients/v2core_interp.pyx":187
+        /* "chromatica/gradients/v2core/interp.pyx":187
  *         for h in range(H):
  *             for w in range(W):
  *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -21105,9 +21105,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
  * 
 */
         __pyx_t_27 = 0;
-        (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_27)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+        (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_starts_mv.data) + __pyx_t_27)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-        /* "chromatica/gradients/v2core_interp.pyx":188
+        /* "chromatica/gradients/v2core/interp.pyx":188
  *             for w in range(W):
  *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
  *                 memcpy(b, &ends_mv[0],   num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
@@ -21115,9 +21115,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
  *                 curr_size = num_corners
 */
         __pyx_t_27 = 0;
-        (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_27)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+        (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) __pyx_v_ends_mv.data) + __pyx_t_27)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-        /* "chromatica/gradients/v2core_interp.pyx":190
+        /* "chromatica/gradients/v2core/interp.pyx":190
  *                 memcpy(b, &ends_mv[0],   num_corners * sizeof(f64))
  * 
  *                 curr_size = num_corners             # <<<<<<<<<<<<<<
@@ -21126,7 +21126,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
         __pyx_v_curr_size = __pyx_v_num_corners;
 
-        /* "chromatica/gradients/v2core_interp.pyx":191
+        /* "chromatica/gradients/v2core/interp.pyx":191
  * 
  *                 curr_size = num_corners
  *                 for i in range(N):             # <<<<<<<<<<<<<<
@@ -21138,7 +21138,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_i = __pyx_t_26;
 
-          /* "chromatica/gradients/v2core_interp.pyx":192
+          /* "chromatica/gradients/v2core/interp.pyx":192
  *                 curr_size = num_corners
  *                 for i in range(N):
  *                     u = coeffs_mv[h, w, i]             # <<<<<<<<<<<<<<
@@ -21148,9 +21148,9 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           __pyx_t_27 = __pyx_v_h;
           __pyx_t_28 = __pyx_v_w;
           __pyx_t_23 = __pyx_v_i;
-          __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_27 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_28 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_23)) )));
+          __pyx_v_u = (*((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_27 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_28 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_23)) )));
 
-          /* "chromatica/gradients/v2core_interp.pyx":194
+          /* "chromatica/gradients/v2core/interp.pyx":194
  *                     u = coeffs_mv[h, w, i]
  * 
  *                     for j in range(curr_size):             # <<<<<<<<<<<<<<
@@ -21162,7 +21162,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
             __pyx_v_j = __pyx_t_31;
 
-            /* "chromatica/gradients/v2core_interp.pyx":195
+            /* "chromatica/gradients/v2core/interp.pyx":195
  * 
  *                     for j in range(curr_size):
  *                         a[j] = a[j] + u * (b[j] - a[j])             # <<<<<<<<<<<<<<
@@ -21172,7 +21172,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
             (__pyx_v_a[__pyx_v_j]) = ((__pyx_v_a[__pyx_v_j]) + (__pyx_v_u * ((__pyx_v_b[__pyx_v_j]) - (__pyx_v_a[__pyx_v_j]))));
           }
 
-          /* "chromatica/gradients/v2core_interp.pyx":197
+          /* "chromatica/gradients/v2core/interp.pyx":197
  *                         a[j] = a[j] + u * (b[j] - a[j])
  * 
  *                     if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -21182,7 +21182,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           __pyx_t_5 = (__pyx_v_curr_size > 1);
           if (__pyx_t_5) {
 
-            /* "chromatica/gradients/v2core_interp.pyx":198
+            /* "chromatica/gradients/v2core/interp.pyx":198
  * 
  *                     if curr_size > 1:
  *                         half = curr_size >> 1             # <<<<<<<<<<<<<<
@@ -21191,16 +21191,16 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
             __pyx_v_half = (__pyx_v_curr_size >> 1);
 
-            /* "chromatica/gradients/v2core_interp.pyx":199
+            /* "chromatica/gradients/v2core/interp.pyx":199
  *                     if curr_size > 1:
  *                         half = curr_size >> 1
  *                         memcpy(b, a + half, half * sizeof(f64))             # <<<<<<<<<<<<<<
  *                         curr_size = half
  * 
 */
-            (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_13v2core_interp_f64)))));
+            (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64)))));
 
-            /* "chromatica/gradients/v2core_interp.pyx":200
+            /* "chromatica/gradients/v2core/interp.pyx":200
  *                         half = curr_size >> 1
  *                         memcpy(b, a + half, half * sizeof(f64))
  *                         curr_size = half             # <<<<<<<<<<<<<<
@@ -21209,7 +21209,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
             __pyx_v_curr_size = __pyx_v_half;
 
-            /* "chromatica/gradients/v2core_interp.pyx":197
+            /* "chromatica/gradients/v2core/interp.pyx":197
  *                         a[j] = a[j] + u * (b[j] - a[j])
  * 
  *                     if curr_size > 1:             # <<<<<<<<<<<<<<
@@ -21219,7 +21219,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
           }
         }
 
-        /* "chromatica/gradients/v2core_interp.pyx":202
+        /* "chromatica/gradients/v2core/interp.pyx":202
  *                         curr_size = half
  * 
  *                 out_mv[h, w] = a[0]             # <<<<<<<<<<<<<<
@@ -21228,12 +21228,12 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
         __pyx_t_23 = __pyx_v_h;
         __pyx_t_28 = __pyx_v_w;
-        *((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_13v2core_interp_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_23 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_28)) )) = (__pyx_v_a[0]);
+        *((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10chromatica_9gradients_6v2core_6interp_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_23 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_28)) )) = (__pyx_v_a[0]);
       }
     }
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":204
+  /* "chromatica/gradients/v2core/interp.pyx":204
  *                 out_mv[h, w] = a[0]
  *     finally:
  *         free(a)             # <<<<<<<<<<<<<<
@@ -21244,7 +21244,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     /*normal exit:*/{
       free(__pyx_v_a);
 
-      /* "chromatica/gradients/v2core_interp.pyx":205
+      /* "chromatica/gradients/v2core/interp.pyx":205
  *     finally:
  *         free(a)
  *         free(b)             # <<<<<<<<<<<<<<
@@ -21257,7 +21257,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __pyx_L25:;
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":207
+  /* "chromatica/gradients/v2core/interp.pyx":207
  *         free(b)
  * 
  *     return out             # <<<<<<<<<<<<<<
@@ -21269,7 +21269,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   __pyx_r = ((PyObject *)__pyx_v_out);
   goto __pyx_L0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":114
+  /* "chromatica/gradients/v2core/interp.pyx":114
  * # 2D spatial: coeffs shape (H, W, N) -> output shape (H, W)
  * # =============================================================================
  * def lerp_bounded_2d_spatial_fast(             # <<<<<<<<<<<<<<
@@ -21297,7 +21297,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -21319,7 +21319,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
   return __pyx_r;
 }
 
-/* "chromatica/gradients/v2core_interp.pyx":211
+/* "chromatica/gradients/v2core/interp.pyx":211
  * 
  * 
  * def _lerp_bounded_vectorized(             # <<<<<<<<<<<<<<
@@ -21328,16 +21328,16 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_2lerp_bounded_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_5_lerp_bounded_vectorized(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_5_lerp_bounded_vectorized(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10chromatica_9gradients_13v2core_interp_4_lerp_bounded_vectorized, "\n    Fallback for spatial dims > 2. Uses NumPy broadcasting.\n    ");
-static PyMethodDef __pyx_mdef_10chromatica_9gradients_13v2core_interp_5_lerp_bounded_vectorized = {"_lerp_bounded_vectorized", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_13v2core_interp_5_lerp_bounded_vectorized, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10chromatica_9gradients_13v2core_interp_4_lerp_bounded_vectorized};
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_5_lerp_bounded_vectorized(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded_vectorized, "\n    Fallback for spatial dims > 2. Uses NumPy broadcasting.\n    ");
+static PyMethodDef __pyx_mdef_10chromatica_9gradients_6v2core_6interp_5_lerp_bounded_vectorized = {"_lerp_bounded_vectorized", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_6v2core_6interp_5_lerp_bounded_vectorized, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded_vectorized};
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_5_lerp_bounded_vectorized(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21415,14 +21415,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 212, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 213, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 214, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded_vectorized(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
+  __pyx_r = __pyx_pf_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded_vectorized(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -21441,7 +21441,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded_vectorized(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded_vectorized(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
   Py_ssize_t __pyx_v_n_interp_dims;
   Py_ssize_t __pyx_v_spatial_ndims;
   Py_ssize_t __pyx_v_i;
@@ -21467,7 +21467,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_lerp_bounded_vectorized", 0);
 
-  /* "chromatica/gradients/v2core_interp.pyx":219
+  /* "chromatica/gradients/v2core/interp.pyx":219
  *     Fallback for spatial dims > 2. Uses NumPy broadcasting.
  *     """
  *     cdef Py_ssize_t n_interp_dims = coeffs.shape[coeffs.ndim - 1]             # <<<<<<<<<<<<<<
@@ -21476,7 +21476,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
 */
   __pyx_v_n_interp_dims = (__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_coeffs)[(__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coeffs) - 1)]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":220
+  /* "chromatica/gradients/v2core/interp.pyx":220
  *     """
  *     cdef Py_ssize_t n_interp_dims = coeffs.shape[coeffs.ndim - 1]
  *     cdef Py_ssize_t spatial_ndims = coeffs.ndim - 1             # <<<<<<<<<<<<<<
@@ -21485,7 +21485,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
 */
   __pyx_v_spatial_ndims = (__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coeffs) - 1);
 
-  /* "chromatica/gradients/v2core_interp.pyx":224
+  /* "chromatica/gradients/v2core/interp.pyx":224
  * 
  *     # Reshape for broadcasting: (num_corners,) -> (num_corners, 1, 1, ..., 1)
  *     broadcast_shape = (starts.shape[0],) + (1,) * spatial_ndims             # <<<<<<<<<<<<<<
@@ -21508,7 +21508,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   __pyx_v_broadcast_shape = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":226
+  /* "chromatica/gradients/v2core/interp.pyx":226
  *     broadcast_shape = (starts.shape[0],) + (1,) * spatial_ndims
  * 
  *     cdef np.ndarray current_starts = starts.reshape(broadcast_shape).copy()             # <<<<<<<<<<<<<<
@@ -21540,7 +21540,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   __pyx_v_current_starts = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":227
+  /* "chromatica/gradients/v2core/interp.pyx":227
  * 
  *     cdef np.ndarray current_starts = starts.reshape(broadcast_shape).copy()
  *     cdef np.ndarray current_ends = ends.reshape(broadcast_shape).copy()             # <<<<<<<<<<<<<<
@@ -21572,7 +21572,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   __pyx_v_current_ends = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":231
+  /* "chromatica/gradients/v2core/interp.pyx":231
  *     cdef np.ndarray diff
  * 
  *     for i in range(n_interp_dims):             # <<<<<<<<<<<<<<
@@ -21584,7 +21584,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "chromatica/gradients/v2core_interp.pyx":232
+    /* "chromatica/gradients/v2core/interp.pyx":232
  * 
  *     for i in range(n_interp_dims):
  *         u = coeffs[..., i]             # <<<<<<<<<<<<<<
@@ -21608,7 +21608,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     __Pyx_XDECREF_SET(__pyx_v_u, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":235
+    /* "chromatica/gradients/v2core/interp.pyx":235
  * 
  *         # Fused lerp: out = start + u * (end - start)
  *         diff = np.subtract(current_ends, current_starts)             # <<<<<<<<<<<<<<
@@ -21645,7 +21645,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     __Pyx_XDECREF_SET(__pyx_v_diff, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":236
+    /* "chromatica/gradients/v2core/interp.pyx":236
  *         # Fused lerp: out = start + u * (end - start)
  *         diff = np.subtract(current_ends, current_starts)
  *         np.multiply(diff, u, out=diff)             # <<<<<<<<<<<<<<
@@ -21684,7 +21684,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":237
+    /* "chromatica/gradients/v2core/interp.pyx":237
  *         diff = np.subtract(current_ends, current_starts)
  *         np.multiply(diff, u, out=diff)
  *         np.add(current_starts, diff, out=current_starts)             # <<<<<<<<<<<<<<
@@ -21723,7 +21723,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":239
+    /* "chromatica/gradients/v2core/interp.pyx":239
  *         np.add(current_starts, diff, out=current_starts)
  * 
  *         if current_starts.shape[0] > 1:             # <<<<<<<<<<<<<<
@@ -21733,7 +21733,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     __pyx_t_9 = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_current_starts)[0]) > 1);
     if (__pyx_t_9) {
 
-      /* "chromatica/gradients/v2core_interp.pyx":240
+      /* "chromatica/gradients/v2core/interp.pyx":240
  * 
  *         if current_starts.shape[0] > 1:
  *             half = current_starts.shape[0] // 2             # <<<<<<<<<<<<<<
@@ -21742,7 +21742,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
 */
       __pyx_v_half = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_current_starts)[0]) / 2);
 
-      /* "chromatica/gradients/v2core_interp.pyx":241
+      /* "chromatica/gradients/v2core/interp.pyx":241
  *         if current_starts.shape[0] > 1:
  *             half = current_starts.shape[0] // 2
  *             current_ends = current_starts[half:].copy()             # <<<<<<<<<<<<<<
@@ -21766,7 +21766,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
       __Pyx_DECREF_SET(__pyx_v_current_ends, ((PyArrayObject *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "chromatica/gradients/v2core_interp.pyx":242
+      /* "chromatica/gradients/v2core/interp.pyx":242
  *             half = current_starts.shape[0] // 2
  *             current_ends = current_starts[half:].copy()
  *             current_starts = current_starts[:half].copy()             # <<<<<<<<<<<<<<
@@ -21790,7 +21790,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
       __Pyx_DECREF_SET(__pyx_v_current_starts, ((PyArrayObject *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "chromatica/gradients/v2core_interp.pyx":239
+      /* "chromatica/gradients/v2core/interp.pyx":239
  *         np.add(current_starts, diff, out=current_starts)
  * 
  *         if current_starts.shape[0] > 1:             # <<<<<<<<<<<<<<
@@ -21800,7 +21800,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
     }
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":244
+  /* "chromatica/gradients/v2core/interp.pyx":244
  *             current_starts = current_starts[:half].copy()
  * 
  *     return current_starts.squeeze(axis=0)             # <<<<<<<<<<<<<<
@@ -21826,7 +21826,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":211
+  /* "chromatica/gradients/v2core/interp.pyx":211
  * 
  * 
  * def _lerp_bounded_vectorized(             # <<<<<<<<<<<<<<
@@ -21840,7 +21840,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_broadcast_shape);
@@ -21853,7 +21853,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
   return __pyx_r;
 }
 
-/* "chromatica/gradients/v2core_interp.pyx":250
+/* "chromatica/gradients/v2core/interp.pyx":250
  * # Dispatcher
  * # =============================================================================
  * def single_channel_multidim_lerp_bounded_cython_fast(             # <<<<<<<<<<<<<<
@@ -21862,15 +21862,15 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_4_lerp_bounded
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_7single_channel_multidim_lerp_bounded_cython_fast(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_7single_channel_multidim_lerp_bounded_cython_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10chromatica_9gradients_13v2core_interp_7single_channel_multidim_lerp_bounded_cython_fast = {"single_channel_multidim_lerp_bounded_cython_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_13v2core_interp_7single_channel_multidim_lerp_bounded_cython_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10chromatica_9gradients_13v2core_interp_7single_channel_multidim_lerp_bounded_cython_fast(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10chromatica_9gradients_6v2core_6interp_7single_channel_multidim_lerp_bounded_cython_fast = {"single_channel_multidim_lerp_bounded_cython_fast", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10chromatica_9gradients_6v2core_6interp_7single_channel_multidim_lerp_bounded_cython_fast, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10chromatica_9gradients_6v2core_6interp_7single_channel_multidim_lerp_bounded_cython_fast(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21948,14 +21948,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 251, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 252, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 253, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channel_multidim_lerp_bounded_cython_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
+  __pyx_r = __pyx_pf_10chromatica_9gradients_6v2core_6interp_6single_channel_multidim_lerp_bounded_cython_fast(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -21974,7 +21974,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channel_multidim_lerp_bounded_cython_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
+static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_6single_channel_multidim_lerp_bounded_cython_fast(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs) {
   int __pyx_v_spatial_ndims;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -21995,7 +21995,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   __Pyx_INCREF((PyObject *)__pyx_v_ends);
   __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
 
-  /* "chromatica/gradients/v2core_interp.pyx":255
+  /* "chromatica/gradients/v2core/interp.pyx":255
  *     np.ndarray coeffs,
  * ):
  *     cdef int spatial_ndims = coeffs.ndim - 1             # <<<<<<<<<<<<<<
@@ -22004,7 +22004,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
 */
   __pyx_v_spatial_ndims = (__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coeffs) - 1);
 
-  /* "chromatica/gradients/v2core_interp.pyx":258
+  /* "chromatica/gradients/v2core/interp.pyx":258
  * 
  *     # Force float64 contiguous
  *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22040,7 +22040,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":259
+    /* "chromatica/gradients/v2core/interp.pyx":259
  *     # Force float64 contiguous
  *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -22087,7 +22087,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":258
+    /* "chromatica/gradients/v2core/interp.pyx":258
  * 
  *     # Force float64 contiguous
  *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22096,7 +22096,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":260
+  /* "chromatica/gradients/v2core/interp.pyx":260
  *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
  *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22132,7 +22132,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":261
+    /* "chromatica/gradients/v2core/interp.pyx":261
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
  *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -22179,7 +22179,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":260
+    /* "chromatica/gradients/v2core/interp.pyx":260
  *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
  *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
  *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22188,7 +22188,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":262
+  /* "chromatica/gradients/v2core/interp.pyx":262
  *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22224,7 +22224,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/gradients/v2core_interp.pyx":263
+    /* "chromatica/gradients/v2core/interp.pyx":263
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -22271,7 +22271,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":262
+    /* "chromatica/gradients/v2core/interp.pyx":262
  *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
  *         starts = np.ascontiguousarray(starts, dtype=np.float64)
  *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -22280,7 +22280,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
 */
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":265
+  /* "chromatica/gradients/v2core/interp.pyx":265
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  * 
  *     if spatial_ndims == 1:             # <<<<<<<<<<<<<<
@@ -22290,7 +22290,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   switch (__pyx_v_spatial_ndims) {
     case 1:
 
-    /* "chromatica/gradients/v2core_interp.pyx":266
+    /* "chromatica/gradients/v2core/interp.pyx":266
  * 
  *     if spatial_ndims == 1:
  *         return lerp_bounded_1d_spatial_fast(starts, ends, coeffs)             # <<<<<<<<<<<<<<
@@ -22325,7 +22325,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":265
+    /* "chromatica/gradients/v2core/interp.pyx":265
  *         ends = np.ascontiguousarray(ends, dtype=np.float64)
  * 
  *     if spatial_ndims == 1:             # <<<<<<<<<<<<<<
@@ -22335,7 +22335,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     break;
     case 2:
 
-    /* "chromatica/gradients/v2core_interp.pyx":268
+    /* "chromatica/gradients/v2core/interp.pyx":268
  *         return lerp_bounded_1d_spatial_fast(starts, ends, coeffs)
  *     elif spatial_ndims == 2:
  *         return lerp_bounded_2d_spatial_fast(starts, ends, coeffs)             # <<<<<<<<<<<<<<
@@ -22370,7 +22370,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "chromatica/gradients/v2core_interp.pyx":267
+    /* "chromatica/gradients/v2core/interp.pyx":267
  *     if spatial_ndims == 1:
  *         return lerp_bounded_1d_spatial_fast(starts, ends, coeffs)
  *     elif spatial_ndims == 2:             # <<<<<<<<<<<<<<
@@ -22380,7 +22380,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     break;
     default:
 
-    /* "chromatica/gradients/v2core_interp.pyx":270
+    /* "chromatica/gradients/v2core/interp.pyx":270
  *         return lerp_bounded_2d_spatial_fast(starts, ends, coeffs)
  *     else:
  *         return _lerp_bounded_vectorized(starts, ends, coeffs)             # <<<<<<<<<<<<<<
@@ -22415,7 +22415,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
     break;
   }
 
-  /* "chromatica/gradients/v2core_interp.pyx":250
+  /* "chromatica/gradients/v2core/interp.pyx":250
  * # Dispatcher
  * # =============================================================================
  * def single_channel_multidim_lerp_bounded_cython_fast(             # <<<<<<<<<<<<<<
@@ -22430,7 +22430,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_13v2core_interp_6single_channe
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("chromatica.gradients.v2core_interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_starts);
@@ -22567,7 +22567,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "chromatica.gradients.v2core_interp.array",
+  "chromatica.gradients.v2core.interp.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -22601,7 +22601,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core_interp.""array", /*tp_name*/
+  "chromatica.gradients.v2core.interp.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -22746,7 +22746,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "chromatica.gradients.v2core_interp.Enum",
+  "chromatica.gradients.v2core.interp.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -22756,7 +22756,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core_interp.""Enum", /*tp_name*/
+  "chromatica.gradients.v2core.interp.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -23023,7 +23023,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "chromatica.gradients.v2core_interp.memoryview",
+  "chromatica.gradients.v2core.interp.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -23057,7 +23057,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core_interp.""memoryview", /*tp_name*/
+  "chromatica.gradients.v2core.interp.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -23200,7 +23200,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "chromatica.gradients.v2core_interp._memoryviewslice",
+  "chromatica.gradients.v2core.interp._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -23210,7 +23210,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core_interp.""_memoryviewslice", /*tp_name*/
+  "chromatica.gradients.v2core.interp.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -23670,10 +23670,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_v2core_interp(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_interp(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_v2core_interp},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_interp},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -23692,7 +23692,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "v2core_interp",
+      "interp",
       0, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
@@ -23730,8 +23730,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_v2core_interp(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_v2core_interp(void)
+__Pyx_PyMODINIT_FUNC PyInit_interp(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_interp(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -23838,7 +23838,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_v2core_interp(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -23861,7 +23861,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_v2core_interp(PyObject *__pyx_pyin
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'v2core_interp' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'interp' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -23877,7 +23877,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_v2core_interp(PyObject *__pyx_pyin
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "v2core_interp" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "interp" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -23905,7 +23905,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_v2core_interp(PyObject *__pyx_pyin
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
+__Pyx_RefNannySetupContext("PyInit_interp", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -23916,13 +23916,13 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_chromatica__gradients__v2core_interp) {
+  if (__pyx_module_is_main_chromatica__gradients__v2core__interp) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "chromatica.gradients.v2core_interp")) {
-      if (unlikely((PyDict_SetItemString(modules, "chromatica.gradients.v2core_interp", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "chromatica.gradients.v2core.interp")) {
+      if (unlikely((PyDict_SetItemString(modules, "chromatica.gradients.v2core.interp", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -24431,7 +24431,7 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_4) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":3
+  /* "chromatica/gradients/v2core/interp.pyx":3
  * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -24444,14 +24444,14 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_4) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":13
+  /* "chromatica/gradients/v2core/interp.pyx":13
  * # 1D spatial: coeffs shape (L, N) -> output shape (L,)
  * # =============================================================================
  * def lerp_bounded_1d_spatial_fast(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] starts,
  *     np.ndarray[f64, ndim=1] ends,
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_13v2core_interp_1lerp_bounded_1d_spatial_fast, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_1d_spatial_fast, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_6v2core_6interp_1lerp_bounded_1d_spatial_fast, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_1d_spatial_fast, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24459,14 +24459,14 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_bounded_1d_spatial_fast, __pyx_t_4) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":114
+  /* "chromatica/gradients/v2core/interp.pyx":114
  * # 2D spatial: coeffs shape (H, W, N) -> output shape (H, W)
  * # =============================================================================
  * def lerp_bounded_2d_spatial_fast(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] starts,
  *     np.ndarray[f64, ndim=1] ends,
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_13v2core_interp_3lerp_bounded_2d_spatial_fast, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_2d_spatial_fast, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_6v2core_6interp_3lerp_bounded_2d_spatial_fast, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_2d_spatial_fast, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24474,14 +24474,14 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_bounded_2d_spatial_fast, __pyx_t_4) < (0)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":211
+  /* "chromatica/gradients/v2core/interp.pyx":211
  * 
  * 
  * def _lerp_bounded_vectorized(             # <<<<<<<<<<<<<<
  *     np.ndarray starts,
  *     np.ndarray ends,
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_13v2core_interp_5_lerp_bounded_vectorized, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_vectorized, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_6v2core_6interp_5_lerp_bounded_vectorized, 0, __pyx_mstate_global->__pyx_n_u_lerp_bounded_vectorized, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24489,14 +24489,14 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_bounded_vectorized, __pyx_t_4) < (0)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":250
+  /* "chromatica/gradients/v2core/interp.pyx":250
  * # Dispatcher
  * # =============================================================================
  * def single_channel_multidim_lerp_bounded_cython_fast(             # <<<<<<<<<<<<<<
  *     np.ndarray starts,
  *     np.ndarray ends,
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_13v2core_interp_7single_channel_multidim_lerp_bounded_cython_fast, 0, __pyx_mstate_global->__pyx_n_u_single_channel_multidim_lerp_bou, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_9gradients_6v2core_6interp_7single_channel_multidim_lerp_bounded_cython_fast, 0, __pyx_mstate_global->__pyx_n_u_single_channel_multidim_lerp_bou, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_gradients_v2core_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24504,7 +24504,7 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_single_channel_multidim_lerp_bou, __pyx_t_4) < (0)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "chromatica/gradients/v2core_interp.pyx":1
+  /* "chromatica/gradients/v2core/interp.pyx":1
  * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False             # <<<<<<<<<<<<<<
  * 
  * import numpy as np
@@ -24522,7 +24522,7 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
   __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init chromatica.gradients.v2core_interp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init chromatica.gradients.v2core.interp", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -24536,7 +24536,7 @@ __Pyx_RefNannySetupContext("PyInit_v2core_interp", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init chromatica.gradients.v2core_interp");
+    PyErr_SetString(PyExc_ImportError, "init chromatica.gradients.v2core.interp");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -24610,7 +24610,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
 
-  /* "chromatica/gradients/v2core_interp.pyx":224
+  /* "chromatica/gradients/v2core/interp.pyx":224
  * 
  *     # Reshape for broadcasting: (num_corners,) -> (num_corners, 1, 1, ..., 1)
  *     broadcast_shape = (starts.shape[0],) + (1,) * spatial_ndims             # <<<<<<<<<<<<<<
@@ -24659,24 +24659,24 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
     const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{26},{34},{34},{29},{33},{45},{22},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{38},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{50},{23},{39},{34},{8},{21},{37},{20},{32},{22},{30},{37},{5},{12},{8},{1},{11},{1},{20},{8},{15},{1},{1},{7},{3},{3},{15},{17},{18},{4},{1},{7},{4},{15},{1},{34},{9},{17},{18},{6},{9},{4},{5},{9},{12},{14},{8},{4},{5},{15},{5},{6},{4},{7},{9},{5},{5},{7},{6},{7},{8},{12},{1},{4},{1},{2},{10},{5},{13},{5},{8},{1},{28},{28},{24},{8},{7},{4},{10},{8},{13},{4},{8},{4},{7},{2},{11},{15},{10},{5},{3},{3},{6},{1},{4},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{7},{6},{9},{12},{10},{12},{19},{5},{48},{4},{13},{7},{5},{6},{9},{4},{4},{6},{8},{8},{1},{6},{6},{6},{1},{1},{222},{204},{775},{732},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2377 bytes) */
-const char* const cstring = "BZh91AY&SY\022\331dq\000\001\324\377\377\377\375\377\377\377\377\377\367\377\343\377\345\277\377\377\365@@@@@@@@@@@@@\000@\000`\t\\\370v\243S\026cLlbU\233\266\342\262\331\300\013\201(\210\224i\246&CA\241\3520\315\246\204\223\364\241\243F\324\364\312\0035\001\352\r\003@\003\324h\323F\232d\304\332\202Q\002a&\324\321\210\232MF0\247\244a\00024\320\r\000\000\000\000\006\232z\236\240\003@A\246&\000\000\000\000\000\000\000\000\000\000\000\214#\000\000\000\002SB\t\032LJz4\310\233!\246B\r\017Q\240\031\000\000\032\000\000\000\000\032bbhA\246&\000\000\000\000\000\000\000\000\000\000\000\214#\000\000\000\002I\004\304\247\222\237\352\217U=\251\345=S\362a(3D\321\246@h\r4\320\0004\310\365\r4\0004\000\000\323J\265\326D;\2669\311\367\031\277\260\351\261\324\016\251\326\226\010$\353\322\t\352\205\t\031\022?d\354\202\020$!\t\220\310@$\211';3u\373\001\201\030\317\263v3\264\225\002\201E2s\222J\005)B\341\\\230\031\200a\2230\031\024\213o\204\025\t\006\351!\220\316\212\t\203\020Iv\201\200\201\005\001\230L\031\261\205\212\301T\242\304\257\253\314!\007\225{\3319\345\003\021\001FJ\311\212\321n\0251\226\304\245\021J\324\031\004\205\031ki\206 \210\234\014y \225\361\0349\322\002\223 TRN\340\243I\275\013,-(6R\036\013m\037w\360t\317\304\216\234t\227\347\353\364z\227\242\350\305\274\327?\\m\322\233\343v|\325HG\253\004:rbLg\027\033e?\356\313F5\316\204Y\231s\"\365{\034\347y\357\217\347m\376\234\254\260\270}\304=\363\345'=!\342:\252\026%.\227[#\312%E\361D\027\321\035\212\321u\257\226\351\362]<X\234\320\236!\245!Y\355I\324\213_\034\2655\226\341\2746\363\r\307\336\r\336[o\242\242\254\"\010\"\203\357X\202\323\315\263^\307\212\327\270s_\226.@Y\255\344\n\022\332s\225\302\325\310\343\344\332\016\t\2704\347+\010\230\343\330\260\236\235\346\317\236n\037\023WwN.\343\305R\321\336#O)q[\2106\303\033\r\263\276\240\024\224C\240\200}\267z\366\nP#\re\005G\277\340\352b\367\350P\2252\300P \353K\371p\177\3331\306\341\257Y\300\324]x\3631\n\362\333N\2572\316\304\344\022\t\033b\250\\\360p\365\306\206\375\204\010\216\023""\360\330u\373+\270\016\032\320\244\373H\324s\266p\375\365\325\237\001-\t\317G+v\271\343\033\020\261*`\342r\276\003\370\376\332?o[fqnl\343\345\352\312'\315\230\374c\304\370\026\241\201\220\230d15\033LkG\273^zl\234\t\310\211\036\275t\3643\334\024JT-7\032\320\343\277db\026\023\321\313g\224\206\311\017\037\206\333\350\014K\030\031\314\277\255\3719\366\000\374\034\226\236\010.j\327\337\347\327%k\232\024@S\201KD\212\370\357\315n\213\004\024\305\270\306\00641\241b\363\343\231)dJD_$=\250\326Oa'u\013\004M\034b\213\241C\235\325|\341F*\262\014\255\360X\376\271\373\017\232*\334\261\314\3435\343o:\\w8\323\372o\230\377A\321\326U5y1v\215*\026nf$ \326\207z\346\210\352j\212\344\2042\313@GF\2258\033i\226\032\254E\265\030\266\216\310\265\024u\tu\212.y\026*o\357\002n\242op\007?\206\001\022\026!\343\230s\314xi\273Y\244\252\315\220 \006\370@\235\216\036\305\265\305S\305\354\253\311\270f\335B\265\205A\266;\221\234]\366Y\004\202\301]\352Pd4\341.\354\305\313\275a\304*on\274\271\020\251V\014P\277\226\312@\222m\233e\360AD\353MX1Z\020e\034%\032\371\373\350\214\274\2336\301v\310\017L\352I\rJ\212b]\210#\004C&GB\036\006}\324\021\206\200\313\273\376\360\365\t\\\247\215\3428;5t\360\334+Imko\033wK#\330\254\311\027w\212:\325\261T\021x\214\311\273\010\022!\357\027\277\025\267-\351,.\214K\030|m\264/|e^s\314\010\312Mk\253e\026\331\344\214\234\013\241\365\315\331\344\355\247\335\021.'\260\311\207Kc\025!\265\223py0T\246\017Y\343RX\217\253i\252\217k\314\"\234\n\253\r\000X\2634\251\201\334\255\374\204\316\035<\034\362(\303\004I\324\025ZC=bu9\227\266e9\341\300\234\343\234&!t9\254m\363:\035\267\0372\020\014\341\270\270\272\3039\221B\314\206s8\333p\032\350[}M\255\2313;\025\222\307\370\222\022s4\206\306\226\342P\312\230\321\241;&\265f\022c4\235\325sg\307N\001\264\360\327BK\013\214s\003(R\344\314\36288\306\0336\303\277&\260$n\265E\266\027#\324\030h\252\220\\^\032\"\032W\033\345\255\034\227\363s\342]r\336\302\351\364uu\036\206\207\2033\241U\031\251)\246L!\004\025sb\307\227\310EA\360\021\355\311\321D{fz\262hm\252""\026d\322\214\014*\351\t\347\201\021 \235\316\335\337\003\237c&\214(A\362Y\21048h\220\030\300k\325Q\231\227E\343.\213\020\202\265$$\342]$$\"\330\n\241q\254\211\270HC>\212\352\346)\345k\306s\014\362\306f\026\323\353\304.\253\303\224df3\330\025|\325\010lu\316C\2710\351\017\t\"x\235\034\3038-\206h\300,\007\027\244\3435\340\3143\n\352\350\024\362\205\367^h\312\303%\0235\266kI[\266\212/)\214U\203\035\203v\2718\024Y\317vV\316\265\210*\321\n1^\320\245(\217D`?5W\237\010t(\t\014\n6\202\306_\336**q1\n\"\243Q\350\200`g2n\210\355\260M\031*R\216\023\2659\350~\366\255\204\242D\0166\224(\301\032#P\213\021=\303F\263\034\265\016M&\376\333\014\324V\014e\317qw)Z\310Y-\020;\322\264\244>\233L\232\330a\025\323m&\354s\253L\246Mv\341p\341\243\025G\3206\316\331E\246\317\252\242KZ\357\2505k\252\323%\207U\244\"\027\033=q\307\302d<9[\233\220\363\262\307\033b\rs]g\023m\211\235N\261\252RL\211\350\231\267\021]8D\261V\316mt\254\322\344B\217\204\032\242\252$\246\302#U)\336I\322\006cbXj\320\306\350\322\332\020\256\013A\031#;\345\324\301\230x\266<z\225\275\206\345\251\313\202\034\2078\265BY\006\267\267\034\355h5\353\307\331\275L.g\234J\237\323(`KJcq\034v\r\216\337\274\\]\307e\rZ\355\310\242\027&\3500O\233tq\031\235]\022|_\230\320\240\251\3047\216O$\332\3329\233\271\3301\0228\027\275hfI \346\247\322\302\016\333\0364\210]\246n\233\307U\355\025\257}\316u^'Sq\010\244\240%\346\260\212\334\323A\220b5\375\317\215\310\370\205\357\014\014\310\341p\305N\261\361\213u\003\034!\355\014\216xtC\247\316?.\270|\242\352\035f^p\340\361C\3338E\321\023\203\017\230\3511\353`8\376&t\377\024n\002\320J\340\247\210\365\006*)\302.&\252]\304\0168i\020\202\206\302\033b\332(\203R\000x\234\341M5>*z\032xC\224\231!@\331SQF\212v\206\351\225\205)\207x\246~m\203\201\226\013\305\246F\306-c\336~\234 \325\030\213H\325\005\r\023\033\356-:DZ\332\312\340[J\021\3049>Dv\017\343\320x\254XXS;\236\342\321&\2140\250u\211t\271\022Jn\005\301\244\333\031-&+\030\243\365\345*\n\313\302k\233\244\315\014\021E\330\033\003k\246\337\354\316K7\245S\031R\006""\t\313L\372\245\361:\220CU\205\230g\260l\316&\356\314\363\351\316\271\360,\275R\254\341<\005\362+\312\231\323\022\223Y\204h\260\311\265a\t\237\266Ku\262\333\251\035\242i\203$\250\310H\236\362e#\254]\222\274\037\201\037\241a\204\212\244\213\024\216{A^\315\nY\217W\274\313p\243\225\212fR\376\254h\347:\007dD$Qk\216\035\2349\324\202!L\214\245\307\312\310\346\327\343\026\314<:\206\026\026^\rL\003P\231_ui\216\263\217\300\243\177\201\231\177{N\206\375z\253\022\274R\212\211\305\030\344\217\036j r\254\331dd\370X\360\211\021\365\"\304\016\"\360\220\342\035\026*\250\236\212\344\227TI\252&\036D\305\210\023T{\021K\024SJ\326\303\325\312\226*\356@\345&\244\325\342\032\302\377\305\334\221N\024$\004\266Y\034@";
-    PyObject *data = __Pyx_DecompressString(cstring, 2377, 2);
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2384 bytes) */
+const char* const cstring = "BZh91AY&SY\370@b2\000\001\325\377\377\377\375\377\377\377\377\377\367\377\343\377\345\277\377\377\365@@@@@@@@@@@@@\000@\000`\tU\360\336\246S\023cUk)RJ-`p\000\270\022\232\220\244\310i\246#@\0320\314\2324\223\364\246\2324yOS\312h3P\032d\321\243 h4h\323&\232d\315O(%\020&\020\324\322z52F\232M\350\247\250\000\03224\000\000\000\000\000\001\247\251\352\r2m@A\246&\000\000\000\000\000\000\000\000\000\000\000\214#\000\000\000\003S\320L\252\236\236\223Bh4\032z\206\217P\000\0004\000\000\032\000\000\000\000\032i\246\232\004\032b`\000\000\000\000\000\000\000\000\000\000\010\3020\000\000\000$\223@I\211\244\325O\362i=S\303\"h\323MOTy\020\014\32444\003!\221\240\304\006\203\020\320\000=M \221Y\250\306%\265\035\356\"u\003\371C\252\035c\256\344\006\2169\036\321\335`x\341\020\370\353E\240B\004\204!2\031\010\004\220\370\375\3433o\331\013\242R\257\226\375g\302\225\202\301eR\265\242J%\255b\361^\230\031\200a\2230\033\025\013\260\214U\212\006\242\203!\241$\025\006\"\222\370A\200\211\025\021\230L\033u\204\324\305\221e\212\303'4\306.d\356\312\016X1\")QN\242\270\\\006F\262\351\026\262-\226@\310()S{T1\t\n\000\307\222\ta\021\303\235 )2\005E$\356\n4\233\320\262\302\322\203e!\340\033\244z\376\243({\202\345.I\370u2?2\347!c\224\203\345dd\264\3314Ku$\021\322R\035)1&3\213\215\262\237\367e\243\032\347B,\271nE\3639;gzO\217\357n\036\264\254\260\274}\342\244\334\276\rq\325\025r\312\233\003\3119\226\221\210b\263a\n'\001sj\3472o\244\245\251(\260\032\332\224U\243\022\014$;_\254M\227\325\030g\030^\024\275AME\3405}K\306\304\306\233\260\343\217\"\035\352\016R=\264U\241\350*\324;a\32478QS\310(\3234 \257\026\357\007V\314\301\327X\0077\031\224dk\227\2772\274\334\255\307\307X\017#w}\306.2-J&\006\330\214\035a\305\246\220S\022\203\022\232-\271P\013\007!\010\n\002]D\237\375-`\224w\226\025\235\375\257\277\217\263b\305-\305\021D\214.0\355\213\376\352\2208\r\373\316\266\262\374\262\361b,\013\256=\217\024\375\372\320(\0244\013 \275\302\003\256\344z&Dx\341?MgOv\376\003\206\264)>\3065\034\355|?\235r\315\210\226\204\347\237""\233\316\256h\306\304,J\230\270\234\260\200\376?\302\217\334\333l\316.^\276>\303-1>\233\217\326<O\201j\030\232D\307H\304\310\324\306\264{\266\363S\\\340NDH\364\353\265\334f\274(\224\250Zr\332\320\343\303\\b\023+\311\346\263\226\217=\007\037N\207\2601M`q\234_\327\r\2376`>\230%\315\327\025\3477\017\217\321\235\323\236\016\316\341-R\243\304j\337\343\214\352\305\001\311^\267\026/\221|\204\tn \264\360C\025\233L\220\364\202\220\tD*s\2043\240\240s\302q\272\313|\341F*\262\014\256\020X\3653r>h\253z\306\347\027`7\003\243\307{\215\257\343|\321\327\016\206\331T\313\313\213\263\355(Y\313\270\220\203Z\034\3674GS(\256\224!\247Np\216}\2458\033i\247\034\254E\265\030\266\216\322Z\212:\204\277\022\213\232E\212\233\373\0019\310\2338\003\267\341\200H\214\320\344\030\203\232\364\363_\274\3462[v\004@\350\010\225\234\007b\354\261\310\361\367k\275x\315\312\205k\n\203lw+0\273\354\262\t\005\202\273\327\240\310mc.\364\320\345\331\305Q\231ts\310\305#9\236\004\0304o\206i\226[M\246\211\241\205\357\\\320 \316\r(0\034\246U\357\232\332o\330\232\210\244\301\217\252\270p_\001\\\3271\006\215\223\016\2311\344x8\241\322\300\366\3103t\371v\342E\273\360~\360\372\373\223\203A\326\312D\2148\274\005\331&\322@\2530YDWC\204\360\002\312\255\263L\322\001!RV\333\343u\353\226\213M\362\2216\036W\\\030<\251\227\236\346\222T\243]\014\247e\240\371\303(\002\347}n\346iv\247\337\021/'\254\322\303\243\255\212\220\325\245\270\274\230*S\027\254\364T\226\201\365m2\243\332\363\030\247\002\252\3038\026,\315\2451;\265\303\224\231\203\245\213\236E\030b\225\331\301\231\311\345\236\247\223\253C\334f\363C\245v\035\202\324\030\317\303\007\321q\333\327\374z\2470\250l]\334Da5j\334\2420\250\233\315\014\224]\356\2573[\213\230\204\034X\177J\252*\260\271\301\253\004\345<\242\241\2332\261\025,\203\232\252\205\316;\230][p\307E\016dd\256a\231\263\\#\300\030\004\252F1\347\331\213\333\271K|\2023q\230\351S\033\230/G\2500\306\252Arxc\020\320\271a-h\344\303\265\315\240\276\365\301\205\363\350e\342=\016\t\0042Fv!\302\263i\264\t\315\014\330j\204""\215\026\023\"S\024\237\\j\224\226\020\232d\353\212E\023(\261b\323\2030\320\216\247x\203B\007\206\020\261\350\320\273,hA\362Y\21048h\220\030\300k\325Q\227.|\006_\026!\005jHI\304\212\252\212\242\226HX\004D\261GD\034\rFf\206{\207\37196\244\252\344.af|\263\227\344\341\330lf8\346\031=U\210\364B\370\"\036\030\372c\205\021\\a-\243@.\216\331D&\0200J\006\334\001\230f\025\371r\n\274A\205\370\034\234L4\250\227[f\332J\335\304Qy\254b\254\030\354[\253{\022\2139\354\225\263\255b\n\264C\227\277\232}\356\301u\245\000\353\371\354\337&A\362\246)E\207\233x\014l\311\227\026\323\224d\351\321\020\322q\2335\010\370\232SJ\212\326\264\005\r\320t?.\356r\222$\007s\231\014@N'E`\227\34186\032\265\360\221ZN\356\330\030fh\020\2062\211\216\346xN\216F\264c\037\007\275\254\302\3078\306Rl0\263\003\201\274\370>\204\362M\275\306\243mW\2630\232\356\20780\230EXDJ_\212V\270Tf\020\020\325\324\205:{\225\262\315\365\010EA\010\233\032\307kC\233\251\246FKQSxTb\273\0238\367\023V=Q6)\014$\333jg\272\347\215\251\246)\031\2459\273\014\311Z\350\025\035\226o>\321\260CU\025\016\036\004t\212+&\032\240\331\017s\347\206ll\221\007\245\373\346N\264\027SG5\230\200\360\201r\2156\rw\230B\033\320o\337\257\313\202\250^\316g\310\377L\243\244\2472c\201\035L\034\360\350\300\\<\020\342\r\333\356\330\244\027\246\364\230+\233\305,M\260\313\222\217'\332r(\251y\207x\356\367N^S\301\323\235\005\3431\252\265\234\214\031\231\203\265\241\241\014\035w\356\210\303qC\234\350=98\317)c\030\347\220\274\234h\252\264\305\240\330\025l\\\3405\206\241]\314\247;\3347\250@\223\032.\021\3054\317x\334v\004h\207\230Lv\003(3\261\315\237hj\r\3474\323w\207\007\\3\315\021\262\206p_\374N\352<w\343\215\313\223;a\213@\256\032\250#<\366\006\023#\220j\266\323[\346\00785\210\001\006\353\026E`\301\007\231\360\214n\240\215t|\221\353x\316\016\213c\005\301\274\215\204<#\300=\256T\0214<\204\323g4\"\007V.\224\322s\234\252\032\207\352!\207\220\346S\r\240A\244a\376\0056a\016\336\332\210\025\204\023\241\"o\231:\261\374\215\210\304\345\003\211\247\213\340X'\351A\002\016\341C[""\237>\201h5G\2117q\236$*\030D{\224\n\"u\321&\257\001\273Az!n\217>\365V\263\3732\332\277\010\244a\246}\303t\2332\221vJ\207\340\244\342\274\022\3267\245\032\346\274\262\353\312\263\037T2\212R\204\257\227l\243(\345\310P$\257\000\360\240\237\277Y\211#\262P\266\365\014\3323\254\022H\030\305\027@C\034d\210\235P\267>\253\377\221\243\320\254\342zD\365\014\370\243x\024n\320\231N5\034fLB\"NE9\237\3259\242\212'\342\305\204ha\334\"\"\313\"\212`B#\027!bdb\343\325\346\231\246\006\005\022\372\373&\366\215\341\260H\243\266\246\221W\304\343`\361/)\341\361m\351te\354,V\002\244\224\216\021\217\010\343\233\210\235\223\347\234\250\361\233\204\211\017\220X\n\020\021*H@B\021\002\245\3129\220\302K\223J\203@\214\r\004\005\006\225\t\001^\003\226z\326\002U\005D\n\242\005\010\035\252\032\250\253H\007\376.\344\212p\241!\360\200\304d";
+    PyObject *data = __Pyx_DecompressString(cstring, 2384, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2233 bytes) */
-const char* const cstring = "x\332\315UAs\333\306\0256cR\226]M\"J\262,7\251\263\224\"+nc\306\224U;\365\250ji\211rt\210lI\226\335\316d\212Y\002K\0226\010\200X\200\022=\231\216\217<\342\210#\2168\342\310#\217>\352\310#\177\202\177B\277]\220\024)\333\231\364\322\351\214\004.v\337{\373\275\357}\357\341\021)\032\006\321\364:3\271n\231\234\330\016S\231\246\233\325\363M\262\252\221\272\307]RfD75v\3124BM\215\230\226K\270\241\303\374\261W\2510\2074uvB4\213qy\304Nm\2133\302]G\327\030\337\246&\261L\243ET\207Q\227\021J\312\211\223[\243.\3219Q-\323\325\253\236\345q\\B\352\254n9\255<\274D(\312\271^5\211k\0218kwe\234\304B\\90\032\004>qt\227\226\r60H@U\034\253\376k\2762-r\242\2735\342\266lF\326\006\373\256CM.\3238wI\314\340\241\203*w\214\273\235q\302\364\204\204\304\250T\267\335\026\3415\212\320\256g\003\\\305r\210\332rk\226\231\247\216C[\273T7@+2\244\206a\2512\021\313y-\352\220\360\304\367$D\313s\211U!e\31335N\276\245\247\270gU\273\263\367!\232\244<\236m[\216\313\264=\263I\r\035u\2644\366\235(\r\214q\337\232\272F\200d\rpD\252k\337\221*\274\206\306\t`TC^\263\371\223\244\340\205\240\000\020\366-`\224\305\333\226y\210\2145f\350e\346\000=H\026\205\307%\262\302&yVzvw\343\207\r)\034\207\275\302\365\034\350\312\252\201\332B0\"'O7\\\\&\n\300\363d\257BZ\226GL\226\320b\303n\334\301\2551\223p\346\212\005Y\223\325\242.\362V\340\016\326\326\006\314\353M&\274w\251\301Y\376\351\004y\200<\220 UU\306\207l\036\271\314&u\332\222\374A\361o\230c\235\023}lJm!$\364\332d\016\244\343\262\272x\267\312\"\251\374\326\332\235\277QMSLA\217H\226\200\241{\247j\r\n\004@\225~_u\250\2463\323\345\3377\327U\313a\212n\202%;o\267NU\3130\004h\224/O\313\352\346XO\210PIJ[\027\267\207R\334\322t.\3201\211\261\252\222oE1\253R\205\"O!&v\352\212\253EQ\317\373[\347\211\213&r\341\372\033F6\377J\356}\240Q\323B\201+\3243\\\242(\016\323<\225)\n\321<I\207i\231wQ\360\246N\r\234\252\272\251\273\212bzu\005)\232\220\357h\202l\221{\330\266[yq\302\362u\204\323exR\031\365\200^\027\252\0357\363@^\355\003\213\001\351[\234\031\225\274I\353l\330v\373\226\311\270K\0357a""\210\211zK\0005\nApai0\263\352\3266\223\361\244M\360\373\341\236h\222\021\315\023\347\243]o\244\214Q\007'ii\324\245\371\217\234&\335%b\014Fd\276x\264\275\267\267\255l?\335\177\276\367\344\370\351\361Q\3110t\233\353\374\307\237\212\377\300\366\341~\351\360h_Q\236\265N\361\277\203\356R\366Q\320CV9b\r\217\231*\023\315\231?\357\323\227\224*\240A}\r1A\224\303\253\225D\367\224\237\013IB\245\274e\252\272\225\007\343\2303:(\024\262/\227\223\030e\312Y\331\261\250\246R\356*\022\275z.\353\374H\326\371\tYC\013\242c\025e\270\2502W\310L\274\342\006X)\230<*+\343\006\325b\225\nO\236J\275\251ZvKE\257\272\252\3478\212\320\245X\340\nE\324s\270N\312\254(\232\240C\021J\327\304\004\221\017E\347J\"\021&&0\030\302\370\023\316\342\03770HL\216+\3468\226S1h\225W\014\213\272\0176\240}\3445\030\213\212R\361LU\244\000\360\270\017\014*\265\0325*\272\256)J\"E\374\212\001-n\034\321\227\264\323\240\247^\031\202\r9{\230\246\0244\205\333 \216\032J\005tN\234\255O\236)\023\207M$c9\210\207\233\353\024\354)\3702\211\317\222\230\354x\2614\317\020\277\242\255l\243e\016\313\200n\347\242C\320\224\311\023\033x\262\023<\354\261>\025\313q\027\274\332\0266\270\354F\220\211\324\360\007\362l\033%\263-T\030\223KQkL}\315a-\337\006$\211\245\254\203\\y\246\255\253\257\201\256d\016\355\232\362S-\230mx\324H\220\235\317\226\321*\231Bc\033 \032\313\252\316\001\324aR\213\370A\316\311\023\350\024\005\037\207A\256X\r\006\227\\\017\300\215\255\207\361e \2169\tL*\276Z&3\022&\005Y\023e\030x\210\372\210\342\016\353%X\345\034\275\310\336\014\346\217|\0144Zo\002\257\315]\013\377\216\207/\240W\026\332\007*\027\326\212\342\201!p\352\331\030\031\014\237`\217\361\223\323\267\251\367\263\2272\253\341nt;N\305\213q\263s\330i\364\322\337\310\215\317\342\334\373\351K\231%\277\031\274\010\013a)\232\217v\343\\?\275\032\276\210~\210\013g\033;\335\322\273l/\275\022n\204\247Q\343\354\336\337\273\231\356\201p\271\332\316\264\217\375\234_\350M\317\264w\261\370s\220z?u\351\352l\333\361o\006\271`+\312\366\246\257\265\357\370\005\1777X\t\236\207\362""\365\2336=\373\342\353\240\031>\217\262\375\351\337\265\267\202\305\240\021^\016\327\303\203\336\314\274\277\025.\206\215\350rt?\242\275\231/E\014`\314\3048\373C\360\257h=:\216W\343F?-\374\226\302l\270\0326\220\335\265K\231[@\377 \232\213\n@\220\231~\333l\277\364\267}'\270\031\256\340\242\305\250\031\037\304\2647\235\365\347\316\346W\303\203\260\026U\342\307\330I_\371oL\335\366C\177\305?\364[\300\273\021\272\321\2038\033\347z\323_\264\235\263\354\n\310\033\360\331\207\351\277\375\243 \205\243\263/\376\024\025\242\037\343\335N\256w\365\206\317\203\334\344f_\274\255!\345\351x*\246I.7\203\251\240\022\026AHz\351\243\313\345\360v4\025\321\250\321\227\240\036\370Y\300\222\367}\336~\025\244\202\254\000\373\213\177\337\247\243\235\204\026a\273\3507\204\345\307\363\333h7\375\003\341v1\247\336\340\246Ox\367\323\267\002\204\370*(\n]\025\373\351\265\320\001\227N<\037\357t\246:\345n\252',\336\317\\\312\254\2049\001f\336G\3149_\2225\200:\323.\371\327}\3527z3\263~\306?\206\206\n\275\331E\261\023\\\201H\322\310\376\237H\333\2157;N7{\361\350eT\214^$G\375Y\201dv\301/\005\327\003\0324z\013K\301U\310e%<\212R}\274d\202\3430\027\026zK_\3039#]\217\220\346r\274\035\237th\207w\227\273O\336\025\336\025\373\0137\3747\341\\b\371\006\275Q\354-\335\022\021\303+\250Y\032n/\343b\374\262S\352\316ua#R\227\250x\260\032\234\2044l\240\276\355\206\310\367j{\252]\361\213\376\3172Zzz\362\365\312[\247=\217\364\347\375\307\276\212\372\2411\326\333G\376\224\257I\022.\276~\336~\035d\003p\227\3715\326 \266\340/ \346y\364U|\0307\3167\037\"\367\007\311\346og\352&n\\E\342\251p>|\034\226\321\243\205\001k\271\270\020\177\222)\036.\303\274\022\225\342\271\370\"C\"\030\206\300L\273\330>\350%?\242\265\013I\033,c\0244\243\003\014\202\364m\004\330\025\367\374\277k?\207|\322\177\214\226%\332\315N\263{\330m$\312\237\375\264\362\373\3435\234\023\023\325\177\022\024\202\035\260s3\312E\033\321/\235\365\316\301\305\243\033Q\n\035&\217\3723K\0006^\376\005\177/8\010T\240\031/\355\227p-I\307\371\350qT\216/\307\017;\271\316}\264""\347\225n\343]\252?;\357?\n\016\023\313GB\000\275\205\337\213x\301\023\220\261\003\267\033\370~\334\350d\344\367c\201\204\251\376\314uP\306\244\240\n\211\324\257\375o\244.\270\000u\030\305\251p!\374Y\212k\264y\202t\233\311\346o\245&\311\243\020\024\203\243\3603Hv\033\355\235\320\004\251\305\237\244\346~P\206\371\355(\023\035F\223\224\210P\007\037\321\366\323\377\000qI\260\225";
-    PyObject *data = __Pyx_DecompressString(cstring, 2233, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2237 bytes) */
+const char* const cstring = "x\332\315UAS\333H\026\216'6!Yj\202\201\020\2623\233i\303\020&\273\023'&l2\233b\3315`2\034\206\004\010\311n\325\324\252\332R\033+\221%Y-\031\234\232\332\312\321G\035u\324QG\035}\3641G\216>\372'\344'\354\327-a\014I\246f/[[\005r\253\373\275\327\337\373\336\367\236\236\220\262a\020Mo0\223\353\226\311\211\3550\225i\272yx\266I\0265\322\360\270K\252\214\350\246\306\216\231F\250\251\021\323r\t7t\230\257{\265\032sHKgGD\263\030\227G\354\330\2668#\334ut\215\361\rj\022\3134\332Du\030u\031\241\244\2328\271u\352\022\235\023\3252]\375\320\263<\216KH\2035,\247]\204\227\010E9\327\017M\342Z\004\316\332=\031'\261\020W\246Fi\340#Gwi\325`\251A\002\252\346X\215_\363\225i\221#\335\255\023\267m3\262\224\356\273\0165\271L\343\314%1\203\207\016\252\334\021\3566G\t\323\023\022\022\243J\303v\333\204\327)B\273\236\rp5\313!j\333\255[f\221:\016moQ\335\000\255\310\220\032\206\245\312D,\347\215\250C\302\023\337\226\020-\317%V\215T-\317\3248\371\216\036\343\236E\355\356\366\307h\222\362x\266m9.\323\266\315\0265t\324\321\322\330\367\24240\306}K\352\022\001\222%\300\021\251.}O\016\341uj\234\000F5\3445\253?I\n^\n\n\000a\307\002FY\274\r\231\207\310Xc\206^e\016\320\203dQx\\\"+l\222\347\225\347\367V~X\221\302q\330k\\\317\201\256\252\032\250-\004#r\362t\303\305e\242\000\274H\266k\244my\304d\t-6\354F\035\334:3\tg\256X\220%Y-\352\"o\005\356`m)e^o1\341\275E\r\316\212\317\316\221\007\310\251\004\251\2522~\312\346\276\313l\322\240m\311\037\024\377\2269\326\031\321\007\246\324\026BB\257-\346@:.k\210w\253*\222*\256-\335\375\033\3254\305\024\364\210d\t\030zp\254\326\241@\000T\351\375C\207j:3]~\277\265\254Z\016\273\257\233`\311.\332\355c\3252\014\001\032\345+\322\252\272:\322\023\"T\222\322\332\305\355S)\256i:\027\350\230\304x\250\222\357D1\017\245\nE\236BL\354\330\025W\213\242\236\365\267\316\023\027M\344\302\365\267\214\254\376\225<\370H\243\246\205\002\327\250g\270DQ\034\246y*S\024\242y\222\016\3232\357\241\340-\235\0328UuSw\025\305\364\032\nR4!\337\341\004Y#\017\260m\267\213\342\204\025\033\010\247\313\360\2446""\354\001\275!T;j\346\201\274\372G\026)\351k\234\031\265\242I\033\354\264\355v,\223q\227:n\302\020\023\365\226\000\352\024\202\340\302\322`\346\241[_M\306\223v\216\337\217\367D\223\014i>w>\334\365\206\312\030vp\222\226F]Z\374\304i\322]\"F:\"\213\345\375\215\355\355\re\343\331\316\213\355\247\007\317\016\366+\206\241\333\\\347?\376T\376\007\266\367v*{\373;\212\362\274}\214\377Mt\227\262\203\202\356\261\332>kz\314T\231h\316\342Y\237\276\242T\001\r\352\033\210\t\242<\275ZItO\371\231\220$T\312\333\246\252[E0\2169\243\203B!\373j5\211Q\245\234U\035\213j*\345\256\"\321\253g\262.\016e]Ld]Ld\r-\210\216U\224\323\305!s\205\314\304+nPtt\254CUV\305\r\252\305j5\236<\225FK\265\354\266\212^uU\317q\024\241K\261\300\025\212\250\347\351:)\263\242h\202\016E(]\023\023D>\024\235+\211D\230\230\300`\010\343O8\213\177\334\300 19\256\230\343XN\315\240\207\274fX\324}\264\002\355#\257t,*J\3153U\221\002\300\343>0\250\324\353\324\250\351\272\246(\211\024\361+\006\264\270qH_\322NiO\2756\004\033r\3660M)i\n\267A\0345\224\032\350<w\266|\376L9w\330B2\226\203x\270\271A\301\236\202/\223\370,\211\311\216\027K\363\014\361+\332\3126\332\246\222\226\001\335\316E\207\240)\223'6\360dGx\330#}*\226\243.x\265-lp\331\215 \023\251\341\017\344\3316Jf[\2500&\227\242\326\231\372\206\303Z\276\245$\211\245\254\203\\y\246\255\253o\200\256b\236\332\265\344\247Z0\333\364\250\221 ;\233-\303U2\205F6@4\226\207:\007P\207I-\342\0079'O\240S\024|\034\322\\\261J\007\227\\\247\340F\326\247\361e \2169\tL*\276Z&3\022&\005Y\347\312\220z\210\372\210\342\236\326K\260\3129z\221\275M\347\217|\244\032m\264\200\327\346\256\205\177\307\303\027\320\253\n\355\003\225\013kE\361\300\0208\365l\214\014\206O\260\307\370\321\361\273\314\207\311K\271\305p+\272\023g\342\331\270\325\335\3536\373\331o\345\306\027q\341\303\370\245\334\234\337\n^\206\245\260\022MG[qa\220]\014_F?\304\245\223\225\315^\345}\276\237]\010W\302\343\250y\362\340\357\275\\oW\270\\\355\344:\007~\301/\365\307':[X\3749\310|\030\273tu\262\343\370\267\202B\260\026\345\373\343\327:w""\375\222\277\025,\004/B\371\372m\207\236\\\377&h\205/\242\374`\374w\235\265`6h\206\227\303\345p\267?1\355\257\205\263a3\272\034=\214h\177\342+\021\003\030s1\316\376\020\374+Z\216\016\342\305\2709\310\n\277\2710\037.\206Mdw\355R\3566\320?\212\246\242\022\020\344\306\337\265:\257\374\r\337\tn\205\013\270h6j\305\2731\355\217\347\375\251\223\351\305p7\254G\265x\035;\331+\377\215\251\333y\354/\370{~\033xWB7z\024\347\343B\177\374z\3079\311/\200\274\224\317\001L\377\355\357\007\031\034\235\\\377ST\212~\214\267\272\205\376\325\233>\017\n\3477\007\342m\t)\217\307c1Mr\271\025\214\005\265\260\014B\262s\237\\\316\207w\242\261\210F\315\201\004\365\310\317\003\226\274\357\313\316\353 \023\344\005\330_\374\207>\035\356$\264\010\333Y\277),?\235\337J\247\345\357\n\267\2139\365\323\233>\343=\310\336\016\020\342\353\240,tU\036d\227B\007\\:\361t\274\331\035\353V{\231\276\260\3700q)\267\020\026\004\230i\0371\247|IV\nu\242S\361o\370\324o\366'&\375\234\177\000\r\225\372\223\263b'\270\002\221d\221\375?\221\266\033\257v\235^\376\342\321\253\250\034\275L\216\006\223\002\311\344\214_\tn\0044h\366g\346\202\253\220\313B\270\037e\006x\311\005\007a!,\365\347\276\201sN\272\356#\315\371x#>\352\322.\357\315\367\236\276/\275/\017fn\372o\303\251\304\362-z\243\334\237\273-\"\206WP\263,\334^\305\345\370U\267\322\233\352\301F\244.Q\361`18\ni\330D};M\221\357\325\316X\247\346\227\375\237e\264\354\370\371\327+\357\234\3164\322\237\366\327}\025\365Cc,w\366\3751_\223$\\|\375\262\363&\310\007\340.\367k\254Al\301_@\314\213\350\353x/n\236m>F\356\217\222\315\337\316\324-\334\270\210\3043\341t\270\036V\321\243\245\224\265B\\\212?\313\024\017\347a^\213*\361T|\221!\021\014C`\242S\356\354\366\223\037\321\332\245\244\r\3461\nZ\321.\006A\366\016\002l\211{\376\337\265_@>\331?F\363\022\355j\267\325\333\3535\023\345O~^\371\203\321\032N\211\211\352?\rJ\301&\330\271\025\025\242\225\350\227\356rw\367\342\321\315(\203\016\223G\203\2119\000\033-\377\214\277\035\354\006*\320\214\226\366+\270V\244\343t\264\036U\343\313\361\343n""\241\373\020\355y\245\327|\237\031LN\373O\202\275\304\362\211\020@\177\346\367\"^\360\024dl\302\355&\276\0377\2739\371\375\230!af0q\003\2241)\250R\"\365k\377\033\251\013.@\035Fq&\234\t\177\226\342\032n\036!\335V\262\371[\251I\362(\005\345`?\374\002\222\335@{'4Aj\361g\251y\030Ta~'\312E{\321yJD\250\335Oh\373\331\177\000\315\230\2604";
+    PyObject *data = __Pyx_DecompressString(cstring, 2237, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
     #else /* compression: none (4400 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xchromatica/gradients/v2core_interp.pyxcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__num_corners must be > 0numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same length<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSEllipsisHMAX_CORNERSN__Pyx_PyDict_NextRefSequenceView.MemoryViewWaa_stackabcaddallocate_bufferascontiguousarrayasyncio.coroutinesaxisbb_stackbasebroadcast_shapecchromatica.gradients.v2core_interp__class____class_getitem__cline_in_tracebackcoeffscoeffs_mvcopycountcurr_sizecurrent_endscurrent_starts__dict__diffdtypedtype_is_objectemptyencodeendsends_mvenumerateerrorflagsfloat64formatfortran__func____getstate__hhalfiid__import__index_is_coroutineitemsitemsizejlerp_bounded_1d_spatial_fastlerp_bounded_2d_spatial_fast_lerp_bounded_vectorized__main__memviewmode__""module__multiplyn_interp_dimsname__name__ndim__new__npnum_cornersnum_interp_dimsnum_pointsnumpyobjoutout_mvppackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerreshaperesultresult_mv__set_name__setdefault__setstate____setstate_cython__shapesingle_channel_multidim_lerp_bounded_cython_fastsizespatial_ndimssqueezestartstartsstarts_mvstepstopstructsubtract__test__uunpackupdatevalueswx\200\001\360\020\000\005%\240F\250&\260\001\260\026\260v\270R\270q\330\004$\240F\250&\260\002\260!\360\010\000\005\030\220v\230V\2401\240E\250\023\250F\260!\340\004%\240V\2508\2601\3204D\300E\310\021\330\004#\2404\240x\250q\3200@\300\005\300Q\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210F\220!\2205\230\001\360\006\000\t\020\210r\220\031\230!\230>\250\021\330\010\n\210)\2201\220F\230#\230T\240\021\330\010\n\210$\210a\320\017\037\230v\240T\250\021\340\010\013\210>\230\026\230q\240\003\2402\240Q\330\014\023\220>\240\026\240q\250\003\2503\250a\330\014\033\230>\250\021\250&\260\005\260Q\330\014\035\230^\2502\250U\260%\260q\340\004\013\210>\230\030\240\021\240%\240q\200\001\360\n\000\005\036\230V\2406\250\022\2501\360\006\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\340\004\007\200~\220S\230\001\330\010\017\320\017+\2501\250H\260F\270!\330\t\027\220s\230!\330\010\017\320\017+\2501\250H\260F\270!\340\010\017\320\017'\240q\250\010\260\006\260a\200\001\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330""\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004$\240A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\007\230q\240\004\240A\240Y\250a\250t\260<\270r\300\021\330\020\026\220a\220q\230\007\230q\240\004\240A\240W\250A\250V\260<\270r\300\021\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\037\230q\240\005\240W\250A\250S\260\002\260\"\260C\260w\270a\270s\300\"\300G\3101\310A\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230q\240\007\240q\250\004\250A\250W\260A\260W\270E\300\022\3001\330\030$\240A\340\020\026\220a\220s\230%\230w\240a\240q\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220s\230!\2309\240A\240T\250\034\260R\260q\330\020\026\220a\220s\230!\2307\240!\2406\250\034\260R\260q\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\031\230\021\230%\230q\240\001\240\023\240B\240b\250\003\2501\250A\250S\260\002\260!\2601\260A\340\024\027\220z\240\022\2401\330\030\037\230z""\250\023\250A\330\030\036\230a\230s\240\"\240B\240f\250E\260\022\2601\330\030$\240A\340\020\026\220a\220s\230%\230q\240\001\240\021\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360\n\000\005\"\240\026\240v\250Q\250a\330\004&\240f\250F\260!\2601\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004!\240\021\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\020\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\340\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\026\250|\2702\270Q\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\033\2301\230E\240\027\250\001\250\023\250B\250b\260\003\2607\270!\2703\270b\300\007\300q\310\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\n\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a""\220w\230a\230v\240\\\260\022\2601\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\025\220Q\220e\2301\230A\230S\240\002\240\"\240C\240q\250\001\250\023\250B\250a\250q\260\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101O";
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xchromatica/gradients/v2core/interp.pyxcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__num_corners must be > 0numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same length<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSEllipsisHMAX_CORNERSN__Pyx_PyDict_NextRefSequenceView.MemoryViewWaa_stackabcaddallocate_bufferascontiguousarrayasyncio.coroutinesaxisbb_stackbasebroadcast_shapecchromatica.gradients.v2core.interp__class____class_getitem__cline_in_tracebackcoeffscoeffs_mvcopycountcurr_sizecurrent_endscurrent_starts__dict__diffdtypedtype_is_objectemptyencodeendsends_mvenumerateerrorflagsfloat64formatfortran__func____getstate__hhalfiid__import__index_is_coroutineitemsitemsizejlerp_bounded_1d_spatial_fastlerp_bounded_2d_spatial_fast_lerp_bounded_vectorized__main__memviewmode__""module__multiplyn_interp_dimsname__name__ndim__new__npnum_cornersnum_interp_dimsnum_pointsnumpyobjoutout_mvppackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerreshaperesultresult_mv__set_name__setdefault__setstate____setstate_cython__shapesingle_channel_multidim_lerp_bounded_cython_fastsizespatial_ndimssqueezestartstartsstarts_mvstepstopstructsubtract__test__uunpackupdatevalueswx\200\001\360\020\000\005%\240F\250&\260\001\260\026\260v\270R\270q\330\004$\240F\250&\260\002\260!\360\010\000\005\030\220v\230V\2401\240E\250\023\250F\260!\340\004%\240V\2508\2601\3204D\300E\310\021\330\004#\2404\240x\250q\3200@\300\005\300Q\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210F\220!\2205\230\001\360\006\000\t\020\210r\220\031\230!\230>\250\021\330\010\n\210)\2201\220F\230#\230T\240\021\330\010\n\210$\210a\320\017\037\230v\240T\250\021\340\010\013\210>\230\026\230q\240\003\2402\240Q\330\014\023\220>\240\026\240q\250\003\2503\250a\330\014\033\230>\250\021\250&\260\005\260Q\330\014\035\230^\2502\250U\260%\260q\340\004\013\210>\230\030\240\021\240%\240q\200\001\360\n\000\005\036\230V\2406\250\022\2501\360\006\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\340\004\007\200~\220S\230\001\330\010\017\320\017+\2501\250H\260F\270!\330\t\027\220s\230!\330\010\017\320\017+\2501\250H\260F\270!\340\010\017\320\017'\240q\250\010\260\006\260a\200\001\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330""\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004$\240A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\007\230q\240\004\240A\240Y\250a\250t\260<\270r\300\021\330\020\026\220a\220q\230\007\230q\240\004\240A\240W\250A\250V\260<\270r\300\021\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\037\230q\240\005\240W\250A\250S\260\002\260\"\260C\260w\270a\270s\300\"\300G\3101\310A\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230q\240\007\240q\250\004\250A\250W\260A\260W\270E\300\022\3001\330\030$\240A\340\020\026\220a\220s\230%\230w\240a\240q\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220s\230!\2309\240A\240T\250\034\260R\260q\330\020\026\220a\220s\230!\2307\240!\2406\250\034\260R\260q\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\031\230\021\230%\230q\240\001\240\023\240B\240b\250\003\2501\250A\250S\260\002\260!\2601\260A\340\024\027\220z\240\022\2401\330\030\037\230z""\250\023\250A\330\030\036\230a\230s\240\"\240B\240f\250E\260\022\2601\330\030$\240A\340\020\026\220a\220s\230%\230q\240\001\240\021\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360\n\000\005\"\240\026\240v\250Q\250a\330\004&\240f\250F\260!\2601\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004!\240\021\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\020\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\340\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\026\250|\2702\270Q\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\033\2301\230E\240\027\250\001\250\023\250B\250b\260\003\2607\270!\2703\270b\300\007\300q\310\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\n\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a""\220w\230a\230v\240\\\260\022\2601\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\025\220Q\220e\2301\230A\230S\240\002\240\"\240C\240q\250\001\250\023\250B\250a\250q\260\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -31197,7 +31197,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -31208,7 +31208,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
@@ -31220,7 +31220,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -31231,7 +31231,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 2,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
@@ -31243,7 +31243,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -31254,7 +31254,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 3,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_13v2core_interp_f64, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
