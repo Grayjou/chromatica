@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from ...chromatica.gradients.full_parametrical_angular_radial import (
+from ...chromatica.gradients.gradientv1.full_parametrical_angular_radial import (
     FullParametricalAngularRadialGradient,
 )
 from ...chromatica.types.format_type import FormatType

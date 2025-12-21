@@ -5,7 +5,7 @@ Tests focus on individual helper methods and integration scenarios.
 
 import pytest
 import numpy as np
-from ...chromatica.gradients.full_parametrical_angular_radial import (
+from ...chromatica.gradients.gradientv1.full_parametrical_angular_radial import (
     FullParametricalAngularRadialGradient,
     build_angular_mask,
     normalize_theta_range,

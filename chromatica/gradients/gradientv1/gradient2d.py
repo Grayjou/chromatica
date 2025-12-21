@@ -4,23 +4,23 @@ import numpy as np
 from numpy import ndarray as NDArray
 from typing import Callable, Optional, Tuple, Union, Dict, Iterable, List
 
-from ..color_arr import Color1DArr
+from ...color_arr import Color1DArr
 
-from ..color_arr import Color2DArr
-from ..colors.color_base import ColorBase
-from ..types.format_type import FormatType
+from ...color_arr import Color2DArr
+from ...colors.color_base import ColorBase
+from ...types.format_type import FormatType
 from .color_utils import convert_color, get_color_class
-from ..utils.interpolate_hue import interpolate_hue
-from ..utils.list_mismatch import handle_list_size_mismatch
-from ..utils.multiple_envelope import global_envelope_multiple_interp
-from ..types.transform_types import (
+from ...utils.interpolate_hue import interpolate_hue
+from ...utils.list_mismatch import handle_list_size_mismatch
+from ...utils.multiple_envelope import global_envelope_multiple_interp
+from ...types.transform_types import (
     UnitTransform,
     BiVariableSpaceTransform,
     BiVariableColorTransform,
     PerChannelTransform,
     get_bivar_space_transforms
 )
-from ..normalizers.rows_and_portions import normalize_portions, normalize_2d_rows, normalize_width_portions, normalize_height_portions
+from ...normalizers.rows_and_portions import normalize_portions, normalize_2d_rows, normalize_width_portions, normalize_height_portions
 from .partitions import PerpendicularPartition, HuePartition
 from .gradient1d import Gradient1D
 from unitfield import Unit2DMappedEndomorphism

@@ -9,7 +9,7 @@ FullParametricalAngularRadialGradient class.
 import numpy as np
 from PIL import Image
 from .full_parametrical_angular_radial import FullParametricalAngularRadialGradient
-from ..types.format_type import FormatType
+from ...types.format_type import FormatType
 
 
 def example_basic_three_rings():
