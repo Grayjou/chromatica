@@ -6,6 +6,7 @@ Module for building gradient segments from scaled u parameters.
 import numpy as np
 from typing import List, Tuple
 from .segment import get_transformed_segment
+from .color_conversion_utils import convert_to_space_float
 
 
 class GradientSegmentBuilder:
@@ -22,7 +23,6 @@ class GradientSegmentBuilder:
         hue_directions: List[str],
         per_channel_transforms: List,
         bound_type: str,
-        conversion_func
     ) -> List:
         """
         Build gradient segments from scaled u array.
@@ -37,7 +37,6 @@ class GradientSegmentBuilder:
             hue_directions: Hue direction for each segment
             per_channel_transforms: Per-channel transforms for each segment
             bound_type: Bound type for interpolation
-            conversion_func: Function to convert between color spaces
             
         Returns:
             List of gradient segments
@@ -48,10 +47,10 @@ class GradientSegmentBuilder:
         
         # Build first segment
         first_segment = get_transformed_segment(
-            already_converted_start_color=conversion_func(
+            already_converted_start_color=convert_to_space_float(
                 colors[0], input_color_spaces[0], format_type, color_spaces[0]
             ).value,
-            already_converted_end_color=conversion_func(
+            already_converted_end_color=convert_to_space_float(
                 colors[1], input_color_spaces[1], format_type, color_spaces[0]
             ).value,
             local_us=[index_local_us[0][1]],
@@ -70,7 +69,7 @@ class GradientSegmentBuilder:
                 already_converted_start_color=previous_segment.end_as_color_space(
                     color_spaces[seg_idx]
                 ),
-                already_converted_end_color=conversion_func(
+                already_converted_end_color=convert_to_space_float(
                     colors[seg_idx + 1],
                     input_color_spaces[seg_idx + 1],
                     format_type,
