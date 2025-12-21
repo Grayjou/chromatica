@@ -80,6 +80,9 @@ def interpolate_2d_hue_space(
     """
     Interpolate colors in a hue-based space (HSV/HSL) in 2D.
     
+    Note: This implementation uses nested loops for clarity. For production use
+    with large images, consider vectorizing or using Cython for better performance.
+    
     Args:
         start: Start color values, shape (num_channels,)
         end: End color values, shape (num_channels,)
@@ -211,7 +214,12 @@ class GradientCell(CellBase):
         return result
     
     def _render_hue_space(self) -> np.ndarray:
-        """Render the cell in hue-based color space."""
+        """
+        Render the cell in hue-based color space.
+        
+        Note: This implementation uses nested loops for clarity. For production use
+        with large images, consider vectorizing or using Cython for better performance.
+        """
         # Similar to non-hue but with special hue handling
         # This is a simplified implementation
         H, W, _ = self.coords[0].shape
