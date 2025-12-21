@@ -1,5 +1,5 @@
 from typing import List, Callable
-from ..chromatica.gradients.full_parametrical_angular_radial import FullParametricalAngularRadialGradient, GradientEnds
+from ..chromatica.gradients.gradientv1.full_parametrical_angular_radial import FullParametricalAngularRadialGradient, GradientEnds
 from ..chromatica.format_type import FormatType
 import numpy as np
 from PIL import Image
