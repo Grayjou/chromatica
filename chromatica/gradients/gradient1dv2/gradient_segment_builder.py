@@ -6,7 +6,6 @@ Module for building gradient segments from scaled u parameters.
 import numpy as np
 from typing import List, Tuple
 from .segment import get_transformed_segment
-from .color_conversion_utils import convert_to_space_float
 
 
 class GradientSegmentBuilder:
@@ -30,7 +29,7 @@ class GradientSegmentBuilder:
         Args:
             u_scaled: Scaled u parameters for the entire gradient
             num_segments: Number of segments to build
-            colors: List of color points
+            colors: List of color points (unconverted)
             input_color_spaces: Color spaces of input colors
             color_spaces: Interpolation color spaces for each segment
             format_type: Output format type
@@ -45,14 +44,13 @@ class GradientSegmentBuilder:
         
         index_local_us = get_segments_from_scaled_u(u_scaled, num_segments)
         
-        # Build first segment
+        # Build first segment using new API
         first_segment = get_transformed_segment(
-            already_converted_start_color=convert_to_space_float(
-                colors[0], input_color_spaces[0], format_type, color_spaces[0]
-            ).value,
-            already_converted_end_color=convert_to_space_float(
-                colors[1], input_color_spaces[1], format_type, color_spaces[0]
-            ).value,
+            start_color=colors[0],
+            end_color=colors[1],
+            start_color_space=input_color_spaces[0],
+            end_color_space=input_color_spaces[1],
+            format_type=format_type,
             local_us=[index_local_us[0][1]],
             color_space=color_spaces[0],
             hue_direction=hue_directions[0],
@@ -65,16 +63,14 @@ class GradientSegmentBuilder:
         
         # Build remaining segments
         for seg_idx in range(1, num_segments):
+            # For subsequent segments, start is the end of previous segment (already converted)
             new_segment = get_transformed_segment(
                 already_converted_start_color=previous_segment.end_as_color_space(
                     color_spaces[seg_idx]
                 ),
-                already_converted_end_color=convert_to_space_float(
-                    colors[seg_idx + 1],
-                    input_color_spaces[seg_idx + 1],
-                    format_type,
-                    color_spaces[seg_idx],
-                ).value,
+                end_color=colors[seg_idx + 1],
+                end_color_space=input_color_spaces[seg_idx + 1],
+                format_type=format_type,
                 local_us=[index_local_us[seg_idx][1]],
                 color_space=color_spaces[seg_idx],
                 hue_direction=hue_directions[seg_idx],

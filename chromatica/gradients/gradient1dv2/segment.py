@@ -1,6 +1,6 @@
 
 from __future__ import annotations
-from typing import List, Optional
+from typing import List, Optional, Union, Tuple
 import numpy as np
 from ...types.color_types import ColorSpace, is_hue_space
 from abc import ABC, abstractmethod
@@ -8,6 +8,9 @@ from ...utils.interpolate_hue import interpolate_hue
 from ..v2_core import multival1d_lerp
 from boundednumbers import BoundType
 from ...conversions import np_convert
+from ...types.format_type import FormatType
+from ...colors.color_base import ColorBase
+from ...types.array_types import ndarray_1d
 
 
 def get_segments_from_scaled_u(arr: np.ndarray, max_value: float) -> List[tuple[int, np.ndarray]]:
@@ -114,14 +117,59 @@ class SegmentBase(ABC):
 
 
 def get_transformed_segment(
-    already_converted_start_color:np.ndarray, 
-    already_converted_end_color:np.ndarray, 
-    local_us:List[np.ndarray], 
-    color_space:ColorSpace, 
-    hue_direction: Optional[str]=None, 
-    per_channel_transforms: Optional[dict]=None,
-    bound_types: Optional[List[BoundType] | BoundType]=BoundType.CLAMP, *, value: Optional[np.ndarray]=None
+    already_converted_start_color: Optional[np.ndarray] = None,
+    already_converted_end_color: Optional[np.ndarray] = None,
+    local_us: List[np.ndarray] = None,
+    color_space: ColorSpace = None,
+    hue_direction: Optional[str] = None,
+    per_channel_transforms: Optional[dict] = None,
+    bound_types: Optional[List[BoundType] | BoundType] = BoundType.CLAMP,
+    *,
+    value: Optional[np.ndarray] = None,
+    # New parameters for conversion
+    start_color: Optional[Union[ColorBase, Tuple, List, ndarray_1d]] = None,
+    end_color: Optional[Union[ColorBase, Tuple, List, ndarray_1d]] = None,
+    start_color_space: Optional[ColorSpace] = None,
+    end_color_space: Optional[ColorSpace] = None,
+    format_type: Optional[FormatType] = None,
 ) -> TransformedGradientSegment:
+    """
+    Create a transformed gradient segment.
+    
+    Can be called in two ways:
+    1. Legacy mode: Pass already_converted_start_color and already_converted_end_color
+    2. New mode: Pass start_color, end_color, start_color_space, end_color_space, format_type
+    
+    Args:
+        already_converted_start_color: Pre-converted start color (legacy)
+        already_converted_end_color: Pre-converted end color (legacy)
+        local_us: Local u parameters for interpolation
+        color_space: Target color space for interpolation
+        hue_direction: Hue direction for hue spaces
+        per_channel_transforms: Per-channel transforms
+        bound_types: Bound types for interpolation
+        value: Pre-computed values (optional)
+        start_color: Unconverted start color (new mode)
+        end_color: Unconverted end color (new mode)
+        start_color_space: Color space of start_color (new mode)
+        end_color_space: Color space of end_color (new mode)
+        format_type: Format type of input colors (new mode)
+        
+    Returns:
+        TransformedGradientSegment or UniformGradientSegment
+    """
+    # Handle conversion if new parameters are provided
+    if start_color is not None and already_converted_start_color is None:
+        from .color_conversion_utils import convert_to_space_float
+        already_converted_start_color = convert_to_space_float(
+            start_color, start_color_space, format_type, color_space
+        ).value
+    
+    if end_color is not None and already_converted_end_color is None:
+        from .color_conversion_utils import convert_to_space_float
+        already_converted_end_color = convert_to_space_float(
+            end_color, end_color_space, format_type, color_space
+        ).value
 
     if per_channel_transforms is not None:
         if is_hue_space(color_space):
