@@ -1,7 +1,7 @@
 from ...chromatica.colors.rgb import ColorUnitRGB
 from ...chromatica.colors.hsv import UnitHSV
 from ...chromatica.colors.hsl import UnitHSL
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 from ...chromatica.colors.arithmetic import make_arithmetic, bounce
 import numpy as np
 from ..samples import samples_rgb_hsv, samples_rgb_hsl

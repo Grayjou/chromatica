@@ -100,7 +100,7 @@ Notes
 
 from .color import color_convert
 from .color_base import ColorBase
-
+from .color import unified_tuple_to_class
 
 
 __all__ = ['color_convert']

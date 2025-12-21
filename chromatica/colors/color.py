@@ -3,15 +3,15 @@ from .color_base import ColorBase, ColorValue
 from .hsl import hsl_tuple_to_class
 from .rgb import rgb_tuple_to_class
 from .hsv import hsv_tuple_to_class
-from ..format_type import FormatType, max_non_hue
+from ..types.format_type import FormatType, max_non_hue
 from ..conversions import ColorSpace, convert, np_convert
-from .types import ColorElement, ScalarVector
+from ..types.color_types import ColorElement, ScalarVector
 from typing import Optional, ClassVar, Tuple
 from numpy import ndarray
 import numpy as np
 unified_tuple_to_class: dict[tuple[ColorSpace, FormatType], type[ColorBase]]  = {**rgb_tuple_to_class, **hsl_tuple_to_class, **hsv_tuple_to_class}
 
-def color_convert(self: ColorBase, to_space: ColorSpace, to_format: FormatType | None = None, *, use_css_algo:bool = False) -> ColorBase:
+def color_convert(self: ColorBase, to_space: ColorSpace | None = None, to_format: FormatType | None = None, *, use_css_algo:bool = False) -> ColorBase:
     """
     Convert this color to a different color space and/or format.
     
@@ -26,6 +26,7 @@ def color_convert(self: ColorBase, to_space: ColorSpace, to_format: FormatType |
     Returns:
         New ColorBase instance in the target space/format
     """
+    to_space = to_space or self.mode
     to_space = to_space.lower() # type: ignore
     from_space = self.mode
     from_format = self.format_type
@@ -38,8 +39,8 @@ def color_convert(self: ColorBase, to_space: ColorSpace, to_format: FormatType |
             color=self.value,
             from_space=from_space,
             to_space=to_space,
-            input_type=from_format.value,
-            output_type=to_format.value,
+            input_type=from_format,
+            output_type=to_format,
             use_css_algo=use_css_algo
         )
     else:

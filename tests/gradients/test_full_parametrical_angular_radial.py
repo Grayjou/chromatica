@@ -12,7 +12,7 @@ from ...chromatica.gradients.full_parametrical_angular_radial import (
     normalize_radial_distances,
     cached_normalize_color,
 )
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 from ..utils import get_point
 
 class TestAngularMask:

@@ -7,7 +7,7 @@ from numpy.typing import NDArray
 from ..colors import ColorBase
 from ..colors.color import unified_tuple_to_class
 from ..normalizers.color_normalizer import normalize_color_input, ColorInput
-from ..format_type import FormatType
+from ..types.format_type import FormatType
 
 
 class CoordinateGridCache:

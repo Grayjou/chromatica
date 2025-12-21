@@ -5,7 +5,7 @@ import numpy as np
 from ...chromatica.color_arr import Color1DArr, Color2DArr
 from ...chromatica.colors.rgb import ColorUnitRGB
 from ...chromatica.colors.hsv import UnitHSV
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 
 
 def test_color1darr_creation():
@@ -22,7 +22,7 @@ def test_color1darr_creation():
     
     assert grad.is_array
     assert grad.shape == (3, 3)
-    assert grad.num_channels == 3
+    assert grad._color.num_channels == 3
     assert np.allclose(grad.value, colors)
 
 
@@ -179,3 +179,30 @@ def test_channels_property():
     assert np.allclose(channels[0], [1.0, 0.0])
     assert np.allclose(channels[1], [0.5, 0.5])
     assert np.allclose(channels[2], [0.0, 1.0])
+
+def test_color1darr_contatenates():
+    """Test that Color1DArr can concatenate with another Color1DArr"""
+    colors1 = np.array([
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0]
+    ], dtype=np.float32)
+    
+    colors2 = np.array([
+        [0.0, 0.0, 1.0],
+        [1.0, 1.0, 0.0]
+    ], dtype=np.float32)
+    
+    grad1 = Color1DArr(ColorUnitRGB(colors1))
+    grad2 = Color1DArr(ColorUnitRGB(colors2))
+    
+    combined = grad1 + grad2
+    
+    assert isinstance(combined, Color1DArr)
+    assert combined.shape == (4, 3)
+    expected_colors = np.array([
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0],
+        [1.0, 1.0, 0.0]
+    ], dtype=np.float32)
+    assert np.allclose(combined.value, expected_colors)

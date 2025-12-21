@@ -97,3 +97,4 @@ def test_round_trip_hsl_hsv_numpy():
     assert np.allclose(h, h_final, atol=hsl_tolerance)
     assert np.allclose(s, s_final, atol=hsl_tolerance)
     assert np.allclose(l, l_final, atol=hsl_tolerance)
+

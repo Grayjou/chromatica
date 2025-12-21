@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import Any, ClassVar, Tuple, cast, Self, Callable, Union
 from ..conversions import convert, ColorSpace, FormatType, np_convert
-from ..format_type import format_classes, format_valid_dtypes, default_format_dtypes
-from .types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES
+from ..types.format_type import format_classes, format_valid_dtypes, default_format_dtypes
+from ..types.color_types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES
 from ..utils import get_dimension
 from abc import ABC
 from numpy import ndarray

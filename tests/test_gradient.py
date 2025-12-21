@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 from ..chromatica.gradient import Gradient1D, Gradient2D, radial_gradient
 from ..chromatica.colors.rgb import ColorUnitRGB, ColorUnitRGBA
-from ..chromatica.format_type import FormatType
+from ..chromatica.types.format_type import FormatType
 
 
 def test_gradient1d_from_colors_rgb():
@@ -32,7 +32,7 @@ def test_gradient1d_hsv_hue_direction():
         steps=5,
         color_space='hsv',
         format_type=FormatType.FLOAT,
-        direction='cw'
+        hue_direction='cw'
     )
     
     # Hue should increase from 0 to 240 going clockwise (0 -> 60 -> 120 -> 180 -> 240)
@@ -48,7 +48,7 @@ def test_gradient1d_hsv_hue_direction():
         steps=5,
         color_space='hsv',
         format_type=FormatType.FLOAT,
-        direction='ccw'
+        hue_direction='ccw'
     )
     
     # Hue should decrease going ccw
@@ -157,7 +157,7 @@ def test_gradient1d_hsva_with_hue_direction():
         steps=6,
         color_space='hsva',
         format_type=FormatType.FLOAT,
-        direction='cw'
+        hue_direction='cw'
     )
     
     # Check shape has 4 channels

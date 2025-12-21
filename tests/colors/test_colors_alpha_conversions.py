@@ -2,7 +2,7 @@ import numpy as np
 from ...chromatica.colors.rgb import ColorRGBINT, ColorRGBAINT, ColorUnitRGB, ColorUnitRGBA
 from ...chromatica.colors.hsv import ColorHSVAINT, ColorHSVINT, UnitHSV, UnitHSVA
 from ...chromatica.colors.hsl import ColorHSLINT, ColorHSLAINT, UnitHSL, UnitHSLA
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 
 
 def test_rgb_to_rgba_with_alpha():

@@ -1,0 +1,533 @@
+# cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
+
+import numpy as np
+cimport numpy as np
+from libc.math cimport floor
+from libc.stdlib cimport malloc, free
+
+ctypedef np.float64_t f64
+
+# =============================================================================
+# Core: Interpolate between two 1D lines at arbitrary (u_x, u_y) coordinates
+# Single channel version
+# =============================================================================
+def lerp_between_lines_1ch(
+    np.ndarray[f64, ndim=1] line0,
+    np.ndarray[f64, ndim=1] line1,
+    np.ndarray[f64, ndim=3] coords,
+):
+    """
+    Interpolate between two 1D lines using a 2D grid of (u_x, u_y) coordinates.
+    
+    Args:
+        line0: First line, shape (L,)
+        line1: Second line, shape (L,)
+        coords: Coordinate grid, shape (H, W, 2)
+                coords[h, w, 0] = u_x (position along lines, 0-1)
+                coords[h, w, 1] = u_y (blend factor between lines, 0-1)
+    
+    Returns:
+        Interpolated values, shape (H, W)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+    
+    if line1.shape[0] != L:
+        raise ValueError(f"Lines must have same length: {L} vs {line1.shape[0]}")
+    if coords.shape[2] != 2:
+        raise ValueError(f"coords must have shape (H, W, 2), got {coords.shape}")
+    
+    # Ensure contiguous
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[::1] l0 = line0
+    cdef f64[::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
+    cdef f64[:, ::1] out_mv = out
+    
+    cdef Py_ssize_t h, w
+    cdef Py_ssize_t idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac
+    cdef f64 v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for h in range(H):
+        for w in range(W):
+            u_x = c[h, w, 0]
+            u_y = c[h, w, 1]
+            
+            # Map u_x to line index (continuous)
+            idx_f = u_x * L_minus_1
+            idx_lo = <Py_ssize_t>floor(idx_f)
+            
+            # Clamp indices to valid range
+            if idx_lo < 0:
+                idx_lo = 0
+            if idx_lo >= L - 1:
+                idx_lo = L - 2
+            
+            idx_hi = idx_lo + 1
+            frac = idx_f - <f64>idx_lo
+            
+            # Clamp frac for boundary cases
+            if frac < 0.0:
+                frac = 0.0
+            elif frac > 1.0:
+                frac = 1.0
+            
+            # Sample line0 at u_x (linear interpolation within line)
+            v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])
+            
+            # Sample line1 at u_x
+            v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])
+            
+            # Blend between lines using u_y
+            out_mv[h, w] = v0 + u_y * (v1 - v0)
+    
+    return out
+
+
+# =============================================================================
+# Multi-channel version: lines have shape (L, C)
+# =============================================================================
+def lerp_between_lines_multichannel(
+    np.ndarray[f64, ndim=2] line0,
+    np.ndarray[f64, ndim=2] line1,
+    np.ndarray[f64, ndim=3] coords,
+):
+    """
+    Interpolate between two multi-channel 1D lines.
+    
+    Args:
+        line0: First line, shape (L, C)
+        line1: Second line, shape (L, C)
+        coords: Coordinate grid, shape (H, W, 2)
+    
+    Returns:
+        Interpolated values, shape (H, W, C)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t C = line0.shape[1]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+    
+    if line1.shape[0] != L or line1.shape[1] != C:
+        raise ValueError(f"Lines must have same shape: {line0.shape} vs {line1.shape}")
+    if coords.shape[2] != 2:
+        raise ValueError(f"coords must have shape (H, W, 2)")
+    
+    # Ensure contiguous
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[:, ::1] l0 = line0
+    cdef f64[:, ::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+    cdef f64[:, :, ::1] out_mv = out
+    
+    cdef Py_ssize_t h, w, ch
+    cdef Py_ssize_t idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac
+    cdef f64 v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for h in range(H):
+        for w in range(W):
+            u_x = c[h, w, 0]
+            u_y = c[h, w, 1]
+            
+            # Map u_x to line index
+            idx_f = u_x * L_minus_1
+            idx_lo = <Py_ssize_t>floor(idx_f)
+            
+            if idx_lo < 0:
+                idx_lo = 0
+            if idx_lo >= L - 1:
+                idx_lo = L - 2
+            
+            idx_hi = idx_lo + 1
+            frac = idx_f - <f64>idx_lo
+            
+            if frac < 0.0:
+                frac = 0.0
+            elif frac > 1.0:
+                frac = 1.0
+            
+            # Process each channel
+            for ch in range(C):
+                v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+                v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+                out_mv[h, w, ch] = v0 + u_y * (v1 - v0)
+    
+    return out
+
+
+# =============================================================================
+# Flat coordinates version: coords shape (N, 2) -> output (N,) or (N, C)
+# =============================================================================
+def lerp_between_lines_flat_1ch(
+    np.ndarray[f64, ndim=1] line0,
+    np.ndarray[f64, ndim=1] line1,
+    np.ndarray[f64, ndim=2] coords,
+):
+    """
+    Interpolate at arbitrary (u_x, u_y) points (flat list).
+    
+    Args:
+        line0: First line, shape (L,)
+        line1: Second line, shape (L,)
+        coords: Coordinate pairs, shape (N, 2)
+    
+    Returns:
+        Interpolated values, shape (N,)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t N = coords.shape[0]
+    
+    if line1.shape[0] != L:
+        raise ValueError("Lines must have same length")
+    if coords.shape[1] != 2:
+        raise ValueError("coords must have shape (N, 2)")
+    
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[::1] l0 = line0
+    cdef f64[::1] l1 = line1
+    cdef f64[:, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
+    cdef f64[::1] out_mv = out
+    
+    cdef Py_ssize_t n, idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac, v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for n in range(N):
+        u_x = c[n, 0]
+        u_y = c[n, 1]
+        
+        idx_f = u_x * L_minus_1
+        idx_lo = <Py_ssize_t>floor(idx_f)
+        
+        if idx_lo < 0:
+            idx_lo = 0
+        if idx_lo >= L - 1:
+            idx_lo = L - 2
+        
+        idx_hi = idx_lo + 1
+        frac = idx_f - <f64>idx_lo
+        
+        if frac < 0.0:
+            frac = 0.0
+        elif frac > 1.0:
+            frac = 1.0
+        
+        v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])
+        v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])
+        out_mv[n] = v0 + u_y * (v1 - v0)
+    
+    return out
+
+
+def lerp_between_lines_flat_multichannel(
+    np.ndarray[f64, ndim=2] line0,
+    np.ndarray[f64, ndim=2] line1,
+    np.ndarray[f64, ndim=2] coords,
+):
+    """
+    Interpolate at arbitrary (u_x, u_y) points (flat list), multi-channel.
+    
+    Args:
+        line0: First line, shape (L, C)
+        line1: Second line, shape (L, C)
+        coords: Coordinate pairs, shape (N, 2)
+    
+    Returns:
+        Interpolated values, shape (N, C)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t C = line0.shape[1]
+    cdef Py_ssize_t N = coords.shape[0]
+    
+    if line1.shape[0] != L or line1.shape[1] != C:
+        raise ValueError("Lines must have same shape")
+    if coords.shape[1] != 2:
+        raise ValueError("coords must have shape (N, 2)")
+    
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[:, ::1] l0 = line0
+    cdef f64[:, ::1] l1 = line1
+    cdef f64[:, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)
+    cdef f64[:, ::1] out_mv = out
+    
+    cdef Py_ssize_t n, ch, idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac, v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for n in range(N):
+        u_x = c[n, 0]
+        u_y = c[n, 1]
+        
+        idx_f = u_x * L_minus_1
+        idx_lo = <Py_ssize_t>floor(idx_f)
+        
+        if idx_lo < 0:
+            idx_lo = 0
+        if idx_lo >= L - 1:
+            idx_lo = L - 2
+        
+        idx_hi = idx_lo + 1
+        frac = idx_f - <f64>idx_lo
+        
+        if frac < 0.0:
+            frac = 0.0
+        elif frac > 1.0:
+            frac = 1.0
+        
+        for ch in range(C):
+            v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+            v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+            out_mv[n, ch] = v0 + u_y * (v1 - v0)
+    
+    return out
+
+
+# =============================================================================
+# Generalized: Interpolate between two N-D structures
+# planes shape (H, W) or (H, W, C), coords shape (D1, D2, ..., 3)
+# =============================================================================
+def lerp_between_planes_1ch(
+    np.ndarray[f64, ndim=2] plane0,
+    np.ndarray[f64, ndim=2] plane1,
+    np.ndarray[f64, ndim=4] coords,
+):
+    """
+    Interpolate between two 2D planes using a 3D grid of (u_x, u_y, u_z) coordinates.
+    
+    Args:
+        plane0: First plane, shape (H_src, W_src)
+        plane1: Second plane, shape (H_src, W_src)
+        coords: Coordinate grid, shape (D, H, W, 3)
+                coords[..., 0] = u_x (x position in planes)
+                coords[..., 1] = u_y (y position in planes)
+                coords[..., 2] = u_z (blend factor between planes)
+    
+    Returns:
+        Interpolated values, shape (D, H, W)
+    """
+    cdef Py_ssize_t H_src = plane0.shape[0]
+    cdef Py_ssize_t W_src = plane0.shape[1]
+    cdef Py_ssize_t D_out = coords.shape[0]
+    cdef Py_ssize_t H_out = coords.shape[1]
+    cdef Py_ssize_t W_out = coords.shape[2]
+    
+    if plane1.shape[0] != H_src or plane1.shape[1] != W_src:
+        raise ValueError("Planes must have same shape")
+    if coords.shape[3] != 3:
+        raise ValueError("coords last dim must be 3")
+    
+    if not plane0.flags['C_CONTIGUOUS']:
+        plane0 = np.ascontiguousarray(plane0)
+    if not plane1.flags['C_CONTIGUOUS']:
+        plane1 = np.ascontiguousarray(plane1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[:, ::1] p0 = plane0
+    cdef f64[:, ::1] p1 = plane1
+    cdef f64[:, :, :, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=3] out = np.empty((D_out, H_out, W_out), dtype=np.float64)
+    cdef f64[:, :, ::1] out_mv = out
+    
+    cdef Py_ssize_t d, h, w
+    cdef Py_ssize_t x_lo, x_hi, y_lo, y_hi
+    cdef f64 u_x, u_y, u_z, x_f, y_f, x_frac, y_frac
+    cdef f64 v00_0, v01_0, v10_0, v11_0  # plane0 corners
+    cdef f64 v00_1, v01_1, v10_1, v11_1  # plane1 corners
+    cdef f64 v0, v1  # bilinear results
+    cdef f64 H_minus_1 = <f64>(H_src - 1)
+    cdef f64 W_minus_1 = <f64>(W_src - 1)
+    
+    for d in range(D_out):
+        for h in range(H_out):
+            for w in range(W_out):
+                u_x = c[d, h, w, 0]
+                u_y = c[d, h, w, 1]
+                u_z = c[d, h, w, 2]
+                
+                # Map to source indices
+                x_f = u_x * W_minus_1
+                y_f = u_y * H_minus_1
+                
+                x_lo = <Py_ssize_t>floor(x_f)
+                y_lo = <Py_ssize_t>floor(y_f)
+                
+                # Clamp
+                if x_lo < 0: x_lo = 0
+                if x_lo >= W_src - 1: x_lo = W_src - 2
+                if y_lo < 0: y_lo = 0
+                if y_lo >= H_src - 1: y_lo = H_src - 2
+                
+                x_hi = x_lo + 1
+                y_hi = y_lo + 1
+                
+                x_frac = x_f - <f64>x_lo
+                y_frac = y_f - <f64>y_lo
+                
+                if x_frac < 0.0: x_frac = 0.0
+                if x_frac > 1.0: x_frac = 1.0
+                if y_frac < 0.0: y_frac = 0.0
+                if y_frac > 1.0: y_frac = 1.0
+                
+                # Bilinear sample plane0
+                v00_0 = p0[y_lo, x_lo]
+                v01_0 = p0[y_lo, x_hi]
+                v10_0 = p0[y_hi, x_lo]
+                v11_0 = p0[y_hi, x_hi]
+                v0 = (v00_0 * (1 - x_frac) + v01_0 * x_frac) * (1 - y_frac) + \
+                     (v10_0 * (1 - x_frac) + v11_0 * x_frac) * y_frac
+                
+                # Bilinear sample plane1
+                v00_1 = p1[y_lo, x_lo]
+                v01_1 = p1[y_lo, x_hi]
+                v10_1 = p1[y_hi, x_lo]
+                v11_1 = p1[y_hi, x_hi]
+                v1 = (v00_1 * (1 - x_frac) + v01_1 * x_frac) * (1 - y_frac) + \
+                     (v10_1 * (1 - x_frac) + v11_1 * x_frac) * y_frac
+                
+                # Blend between planes
+                out_mv[d, h, w] = v0 + u_z * (v1 - v0)
+    
+    return out
+
+
+# =============================================================================
+# Dispatcher
+# =============================================================================
+def lerp_between_lines(
+    np.ndarray line0,
+    np.ndarray line1,
+    np.ndarray coords,
+):
+    """
+    Interpolate between two lines at arbitrary (u_x, u_y) coordinates.
+    
+    This implements Section 6 of the interpolation article:
+    creating gradient planes by sampling between pre-existing gradient lines.
+    
+    Args:
+        line0: First line, shape (L,) or (L, C) for multi-channel
+        line1: Second line, shape (L,) or (L, C) for multi-channel
+        coords: Coordinates where to sample
+                - Shape (H, W, 2): grid of (u_x, u_y) pairs → output (H, W) or (H, W, C)
+                - Shape (N, 2): flat list of pairs → output (N,) or (N, C)
+                
+                u_x ∈ [0, 1]: position along the lines
+                u_y ∈ [0, 1]: blend factor (0 = line0, 1 = line1)
+    
+    Returns:
+        Interpolated values at each coordinate
+        
+    Example:
+        >>> # Create two RGB gradient lines
+        >>> line0 = np.linspace([255, 0, 0], [255, 255, 0], 100)  # Red → Yellow
+        >>> line1 = np.linspace([0, 0, 255], [0, 255, 0], 100)    # Blue → Green
+        >>> 
+        >>> # Create coordinate grid
+        >>> H, W = 50, 100
+        >>> u_x = np.linspace(0, 1, W)  # Sample along lines
+        >>> u_y = np.linspace(0, 1, H)  # Blend between lines
+        >>> coords = np.stack(np.meshgrid(u_x, u_y, indexing='xy'), axis=-1)
+        >>> 
+        >>> result = lerp_between_lines(line0, line1, coords)
+        >>> result.shape
+        (50, 100, 3)
+    """
+    # Ensure float64 contiguous
+    if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0, dtype=np.float64)
+    if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1, dtype=np.float64)
+    if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords, dtype=np.float64)
+    
+    # Determine shapes
+    line_ndim = line0.ndim
+    coords_ndim = coords.ndim
+    
+    # Grid coords (H, W, 2)
+    if coords_ndim == 3 and coords.shape[2] == 2:
+        if line_ndim == 1:
+            return lerp_between_lines_1ch(line0, line1, coords)
+        elif line_ndim == 2:
+            return lerp_between_lines_multichannel(line0, line1, coords)
+    
+    # Flat coords (N, 2)
+    elif coords_ndim == 2 and coords.shape[1] == 2:
+        if line_ndim == 1:
+            return lerp_between_lines_flat_1ch(line0, line1, coords)
+        elif line_ndim == 2:
+            return lerp_between_lines_flat_multichannel(line0, line1, coords)
+    
+    raise ValueError(
+        f"Unsupported shapes: line0={line0.shape}, line1={line1.shape}, coords={coords.shape}"
+    )
+
+
+def lerp_between_planes(
+    np.ndarray plane0,
+    np.ndarray plane1,
+    np.ndarray coords,
+):
+    """
+    Interpolate between two planes at arbitrary (u_x, u_y, u_z) coordinates.
+    
+    Extends Section 6 to higher dimensions.
+    
+    Args:
+        plane0: First plane, shape (H, W) or (H, W, C)
+        plane1: Second plane, shape (H, W) or (H, W, C)
+        coords: Coordinates, shape (..., 3) where last dim is (u_x, u_y, u_z)
+    
+    Returns:
+        Interpolated values
+    """
+    if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:
+        plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+    if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
+        plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+    if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords, dtype=np.float64)
+    
+    if plane0.ndim == 2 and coords.ndim == 4:
+        return lerp_between_planes_1ch(plane0, plane1, coords)
+    
+    raise ValueError(f"Unsupported: plane0={plane0.shape}, coords={coords.shape}")

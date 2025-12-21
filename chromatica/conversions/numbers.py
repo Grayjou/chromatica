@@ -1,4 +1,4 @@
-from ..functions import clamp01, RealNumber
+from boundednumbers import clamp01, RealNumber
 
 class UnitFloat(float):
     """A floating-point number clamped to the inclusive range ``[0, 1]``."""

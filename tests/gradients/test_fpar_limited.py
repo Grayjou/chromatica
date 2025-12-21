@@ -3,7 +3,7 @@ import numpy as np
 from ...chromatica.gradients.full_parametrical_angular_radial import (
     FullParametricalAngularRadialGradient,
 )
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 from ..utils import get_point
 
 class TestFparLimited:

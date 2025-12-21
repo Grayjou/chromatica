@@ -7,7 +7,7 @@ from ..chromatica.radial_angular_gradient import (
     build_theta_interpolators
 )
 from ..chromatica.colors.rgb import ColorUnitRGB
-from ..chromatica.format_type import FormatType
+from ..chromatica.types.format_type import FormatType
 
 
 def test_radial_angular_gradient_basic():

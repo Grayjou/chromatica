@@ -1,0 +1,3 @@
+from .multiple_envelope import multiple_envelope, global_envelope_multiple_interp
+from .interpolate_hue import interpolate_hue, interpolate_hue_line
+from .dimension import get_dimension

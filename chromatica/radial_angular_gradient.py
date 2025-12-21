@@ -23,7 +23,7 @@ import numpy as np
 from numpy import ndarray as NDArray
 from typing import Callable, List, Tuple, Dict, Optional, Union
 from .colors.color_base import ColorBase
-from .format_type import FormatType
+from .types.format_type import FormatType
 from .colors.color import unified_tuple_to_class
 
 def interpolate_hue_vector(

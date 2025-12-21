@@ -5,7 +5,7 @@ from numpy import ndarray as NDArray
 from typing import Callable, List, Optional, Tuple, Union
 
 from ..colors.color_base import ColorBase
-from ..format_type import FormatType
+from ..types.format_type import FormatType
 from .color_utils import convert_color, get_color_class
 
 

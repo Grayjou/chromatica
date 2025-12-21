@@ -135,7 +135,7 @@ from .to_hsl import hsv_to_hsl, np_hsv_to_hsl
 from .wrapper import convert, np_convert, ColorSpace
 
 # Types and enums
-from ..format_type import FormatType
+from ..types.format_type import FormatType
 
 __all__ = [
     # RGB → HSV

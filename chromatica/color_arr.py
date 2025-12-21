@@ -24,10 +24,10 @@ from numpy import ndarray as NDArray
 import numpy as np
 from typing import List, Union, Optional, Callable, Tuple
 from .colors.color_base import ColorBase
-from .colors.types import ColorValue
+from .types.color_types import ColorValue
 
 
-class Color1DArr:
+class Color1DArr(ColorBase):
     """
     1D Color Array with gradient generation capabilities.
     
@@ -51,6 +51,7 @@ class Color1DArr:
             color_base: ColorBase instance with 2D array value (N, channels)
                        where N is the number of color samples.
         """
+
         if not isinstance(color_base, ColorBase):
             raise TypeError("Color1DArr requires a ColorBase instance")
         
@@ -62,8 +63,9 @@ class Color1DArr:
             raise ValueError(
                 f"Color1DArr requires 2D array (N, channels), got shape {color_base.value.shape}"
             )
-        
+
         self._color = color_base
+
     
     def __getattr__(self, name):
         """Forward attribute access to wrapped ColorBase."""
@@ -297,6 +299,18 @@ class Color1DArr:
             out[outside_mask] = outside_colour
 
         return Color2DArr(self._color.__class__(out))
+    def __add__(self, other):
+
+        if isinstance(other, Color1DArr):
+
+            color_class = self._color.__class__
+            other_color = other._color.convert(self._color.mode, self._color.format_type)
+            return Color1DArr(
+                color_class(np.concatenate([self._color.value, other_color.value], axis=0))
+            )
+        
+    def _radd__(self, other):
+        return self.__add__(other)
 
 
 class Color2DArr:

@@ -1,4 +1,4 @@
-from ...chromatica.conversions import convert, ColorSpace, FormatType
+from ...chromatica.conversions import convert, ColorSpace, FormatType, np_convert
 from ..samples import samples_rgb_hsv
 
 def test_convert_returns_tuple():
@@ -104,3 +104,12 @@ def test_removes_alpha():
 
     result = convert(color, from_space, to_space)
     assert result == (360, 100, 50)
+
+import numpy as np
+def test_input_wrapping_np():
+    red = np.array([[1.0, 0.0, 0.0]])
+    unwrapped_red = np.array([1.0, 0.0, 0.0])
+    #Convert to HSV
+    red_hsv = np_convert(red, 'rgb', 'hsv', input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
+    unwrapped_red_hsv = np_convert(unwrapped_red, 'rgb', 'hsv', input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
+    assert np.allclose(red_hsv[0], unwrapped_red_hsv, atol=1e-5)

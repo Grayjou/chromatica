@@ -5,7 +5,7 @@ from numpy import ndarray as NDArray
 
 from ..color_arr import Color1DArr
 from ..colors.rgb import ColorUnitRGB
-from ..format_type import FormatType
+from ..types.format_type import FormatType
 from .gradient1d import Gradient1D
 from .gradient2d import Gradient2D
 from .radial import radial_gradient

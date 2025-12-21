@@ -1,7 +1,7 @@
 from ...chromatica.colors.rgb import ColorRGBINT, ColorRGBAINT, ColorUnitRGB, ColorPercentageRGBA, ColorUnitRGBA, ColorPercentageRGB
 from ...chromatica.colors.hsv import ColorHSVAINT, ColorHSVINT, UnitHSV, PercentageHSV, PercentageHSVA, UnitHSVA
 from ...chromatica.colors.hsl import ColorHSLINT, ColorHSLAINT, UnitHSL, UnitHSLA, PercentageHSL, PercentageHSLA
-from ...chromatica.format_type import FormatType
+from ...chromatica.types.format_type import FormatType
 from ..samples import samples_rgb_hsv, samples_rgb_hsl
 
 def test_round_trip_rgb_to_hsv_to_rgb():

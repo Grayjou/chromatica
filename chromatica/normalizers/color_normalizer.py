@@ -1,5 +1,5 @@
 from ..colors import ColorBase
-from ..colors.types import ColorElement
+from ..types.color_types import ColorElement
 from typing import Optional, Tuple
 import numpy as np
 

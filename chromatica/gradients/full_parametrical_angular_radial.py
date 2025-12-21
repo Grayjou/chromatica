@@ -8,15 +8,15 @@ from numpy.typing import NDArray
 from .angular_radial_helpers import (
     CoordinateGridCache,
     compute_center,
-    interpolate_hue,
     normalize_angle,
     process_outside_fill,
 )
+from ..utils.interpolate_hue import interpolate_hue
 from .gradient import Gradient2D
 from ..colors.color import unified_tuple_to_class
 from ..normalizers.color_normalizer import normalize_color_input, ColorInput
-from ..format_type import FormatType
-
+from ..types.format_type import FormatType
+from unitfield import UnitMappedEndomorphism
 
 GradientEnds = Tuple[ColorInput, ...]
 
@@ -325,7 +325,8 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         ch: int,
         is_hue_space: bool,
         ring_idx: int,
-        hue_directions_theta: Optional[List[List[Optional[str]]]]
+        hue_directions_theta: Optional[List[List[Optional[str]]]],
+        #color_spaces: List[str]
     ) -> NDArray:
         """Interpolate colors within a ring angularly."""
         num_colors = len(ring)
@@ -394,7 +395,8 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         u_r_ch_eased: NDArray,
         ch: int,
         is_hue_space: bool,
-        hue_directions_r: Optional[List[Optional[str]]]
+        hue_directions_r: Optional[List[Optional[str]]],
+        #color_spaces: List[str]
     ) -> NDArray:
         """Interpolate between rings radially."""
         num_rings = len(ring_colors)
@@ -637,6 +639,8 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         gradient_obj = cls(result_color)
         
         return gradient_obj
+    
+
     
     @classmethod
     def create_elliptical(

@@ -1,13 +1,13 @@
 import numpy as np
 from typing import Literal, Tuple, cast, Dict, Callable
 
-from ..format_type import FormatType, max_non_hue
+from ..types.format_type import FormatType, max_non_hue
 
 from .to_rgb import np_hsv_to_unit_rgb, np_hsl_to_unit_rgb
 from .to_hsv import np_unit_rgb_to_hsv, np_hsl_to_hsv
 from .to_hsl import np_unit_rgb_to_hsl, np_hsv_to_hsl
 
-from ..colors.types import ColorElement, element_to_array, ColorSpace
+from ..types.color_types import ColorElement, element_to_array, ColorSpace
 
 # Functions that accept use_css_algo parameter
 CONVERT_NUMPY_CSS: dict[tuple[str, str], Callable[[np.ndarray, np.ndarray, np.ndarray, bool], np.ndarray]] = {
@@ -132,6 +132,8 @@ def convert(
     output_type: FormatType=FormatType.INT,
     use_css_algo: bool = False,
  ) -> ColorElement:
+    if from_space.lower() == to_space.lower() and input_type == output_type:
+        return color  # No conversion needed
     color_array = element_to_array(color)
     result = _convert_core(
         color_array,
@@ -152,6 +154,8 @@ def np_convert(
     output_type: Literal["int","float","percentage"]="int",
     use_css_algo: bool = False,
 ) -> np.ndarray:
+    if from_space.lower() == to_space.lower() and input_type == output_type:
+        return color  # No conversion needed
     return _convert_core(
         np.asarray(color, dtype=float),
         from_space.lower(),
