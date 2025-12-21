@@ -11,11 +11,11 @@ from .angular_radial_helpers import (
     normalize_angle,
     process_outside_fill,
 )
-from ..utils.interpolate_hue import interpolate_hue
+from ...utils.interpolate_hue import interpolate_hue
 from .gradient import Gradient2D
-from ..colors.color import unified_tuple_to_class
-from ..normalizers.color_normalizer import normalize_color_input, ColorInput
-from ..types.format_type import FormatType
+from ...colors.color import unified_tuple_to_class
+from ...normalizers.color_normalizer import normalize_color_input, ColorInput
+from ...types.format_type import FormatType
 from unitfield import UnitMappedEndomorphism
 
 GradientEnds = Tuple[ColorInput, ...]

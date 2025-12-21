@@ -1,4 +1,4 @@
-from ...chromatica.gradients.gradient2d import Gradient2D, Color1DArr
+from ...chromatica.gradients.gradientv1.gradient2d import Gradient2D, Color1DArr
 from ...chromatica.colors.rgb import RGB
 import numpy as np
 def test_gradient2d_initialization():

@@ -8,10 +8,10 @@ from .angular_radial_helpers import (
     normalize_angle,
     process_outside_fill,
 )
-from ..colors.color import unified_tuple_to_class
-from ..normalizers.color_normalizer import normalize_color_input, ColorInput
-from ..types.format_type import FormatType
-from ..utils.interpolate_hue import interpolate_hue
+from ...colors.color import unified_tuple_to_class
+from ...normalizers.color_normalizer import normalize_color_input, ColorInput
+from ...types.format_type import FormatType
+from ...utils.interpolate_hue import interpolate_hue
 class SimpleAngularRadialGradient(Gradient2D):
     @classmethod
     def generate(cls,

@@ -1,7 +1,7 @@
 from bisect import bisect_left
 from typing import Generic, List, TypeVar, Literal
 from boundednumbers import UnitFloat
-from ..types.color_types import ColorSpace
+from ...types.color_types import ColorSpace
 T = TypeVar("T")
 
 

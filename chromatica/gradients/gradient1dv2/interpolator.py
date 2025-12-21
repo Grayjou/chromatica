@@ -8,12 +8,13 @@ from ...utils.interpolate_hue import interpolate_hue
 from ...types.transform_types import PerChannelTransform
 from ...types.color_types import ColorSpace, HueDirection, is_hue_space
 from ...utils.dimension import most_common_element
-from ..v2_core import multival1d_lerp
+from ..v2core import multival1d_lerp
 from ...colors import ColorBase
 from boundednumbers import BoundType
 from .unit_builder import _Gradient1DUnitBuilder
 from enum import Enum
 from .gradient_segment_builder import GradientSegmentBuilder
+from .color_conversion_utils import convert_to_space_float as _convert_to_space_float
 
 
 class SequenceMethod(Enum):
@@ -82,15 +83,15 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         bound_type: BoundType,
     ) -> np.ndarray:
         """Interpolate using mask method."""
-        first_color_converted = cls._convert_to_space_float(
+        first_color_converted = _convert_to_space_float(
             colors[0], input_color_spaces[0], format_type, output_color_space
         )
         
         current_color_space = color_spaces[0]
-        float_color_left = cls._convert_to_space_float(
+        float_color_left = _convert_to_space_float(
             colors[0], input_color_spaces[0], format_type, current_color_space
         )
-        float_color_right = cls._convert_to_space_float(
+        float_color_right = _convert_to_space_float(
             colors[1], input_color_spaces[1], format_type, current_color_space
         )
         
@@ -114,7 +115,7 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
             )
             
             if current_color_space != output_color_space:
-                this_chunk = cls._convert_to_space_float(
+                this_chunk = _convert_to_space_float(
                     this_chunk, current_color_space, FormatType.FLOAT, output_color_space
                 ).value
             
@@ -154,7 +155,6 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
             hue_directions=hue_directions,
             per_channel_transforms=per_channel_transforms,
             bound_type=bound_type,
-            conversion_func=cls._convert_to_space_float,
         )
         
         # Convert segments to output space and combine
@@ -186,7 +186,7 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
             )
             current_color_space = next_color_space
         
-        float_color_right = cls._convert_to_space_float(
+        float_color_right = _convert_to_space_float(
             colors[next_seg_idx + 1],
             input_color_spaces[next_seg_idx + 1],
             FormatType.FLOAT,

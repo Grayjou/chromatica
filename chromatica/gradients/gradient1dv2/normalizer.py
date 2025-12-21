@@ -61,14 +61,5 @@ class _Gradient1DNormalizer(Color1DArr):
         per_channel_transforms = cls._normalize_list(per_channel_transforms, num_segments, None)
         return input_color_spaces, color_spaces, hue_directions, per_channel_transforms
 
-    @staticmethod
-    def _convert_to_space_float(
-        color: Union[ColorBase, Tuple, List, ndarray_1d],
-        from_space: ColorSpace,
-        format_type: FormatType,
-        to_space: ColorSpace,
-    ) -> ColorBase:
-        """Convert a color to a specified color space and float format."""
-        from_class = unified_tuple_to_class[(from_space, format_type)]
-        to_float_class = unified_tuple_to_class[(to_space, FormatType.FLOAT)]
-        return to_float_class(from_class(color))
+    # Use the utility function from color_conversion_utils
+    from .color_conversion_utils import convert_to_space_float as _convert_to_space_float

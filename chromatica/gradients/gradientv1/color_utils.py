@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from ..colors.color_base import ColorBase
-from ..colors.hsl import UnitHSL, ColorHSLINT, UnitHSLA, ColorHSLAINT
-from ..colors.hsv import UnitHSV, ColorHSVINT, UnitHSVA, ColorHSVAINT
-from ..colors.rgb import ColorUnitRGB, ColorRGBINT, ColorUnitRGBA, ColorRGBAINT
-from ..types.format_type import FormatType
+from ...colors.color_base import ColorBase
+from ...colors.hsl import UnitHSL, ColorHSLINT, UnitHSLA, ColorHSLAINT
+from ...colors.hsv import UnitHSV, ColorHSVINT, UnitHSVA, ColorHSVAINT
+from ...colors.rgb import ColorUnitRGB, ColorRGBINT, ColorUnitRGBA, ColorRGBAINT
+from ...types.format_type import FormatType
 
 
 # Color type mapping for convenience

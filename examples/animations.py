@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw
 import numpy as np
 from typing import Tuple
-from ..chromatica.gradients.simple_angular_radial import SimpleAngularRadialGradient
-from ..chromatica.gradients.full_parametrical_angular_radial import FullParametricalAngularRadialGradient
+from ..chromatica.gradients.gradientv1.simple_angular_radial import SimpleAngularRadialGradient
+from ..chromatica.gradients.gradientv1.full_parametrical_angular_radial import FullParametricalAngularRadialGradient
 from ..chromatica.format_type import FormatType
 from PIL import Image
 from functools import partial

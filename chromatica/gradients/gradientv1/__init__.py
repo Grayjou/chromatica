@@ -1,8 +1,15 @@
-from .gradientv1.color_utils import convert_color, get_color_class
-from .gradientv1.gradient1d import Gradient1D
-from .gradientv1.gradient2d import Gradient2D
-from .gradientv1.radial import radial_gradient
-from .gradientv1.examples import (
+"""
+GradientV1 - Legacy gradient implementation.
+
+This module contains the original gradient implementation.
+New code should use gradient1dv2 and gradient2dv2 instead.
+"""
+
+from .color_utils import convert_color, get_color_class
+from .gradient1d import Gradient1D
+from .gradient2d import Gradient2D
+from .radial import radial_gradient
+from .examples import (
     example,
     example_2d_gradient,
     example_radial_gradient,
@@ -11,7 +18,6 @@ from .gradientv1.examples import (
 )
 
 __all__ = [
-
     "convert_color",
     "get_color_class",
     "Gradient1D",
