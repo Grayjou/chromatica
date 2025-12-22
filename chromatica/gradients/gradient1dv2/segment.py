@@ -48,6 +48,7 @@ def get_transformed_segment(
     hue_direction: Optional[str] = None,
     per_channel_transforms: Optional[dict] = None,
     bound_types: Optional[List[BoundType] | BoundType] = BoundType.CLAMP,
+    homogeneous_local_us: bool = False,
     *,
     value: Optional[np.ndarray] = None,
     # New parameters for conversion
@@ -72,6 +73,10 @@ def get_transformed_segment(
         hue_direction: Hue direction for hue spaces
         per_channel_transforms: Per-channel transforms
         bound_types: Bound types for interpolation
+        homogeneous_local_us: If True, local_us is a single array used for all channels.
+                              If False, local_us is a list of arrays (one per channel).
+                              When per_channel_transforms is None, this determines whether
+                              to return UniformGradientSegment (True) or TransformedGradientSegment (False).
         value: Pre-computed values (optional)
         start_color: Unconverted start color (new mode)
         end_color: Unconverted end color (new mode)
@@ -96,12 +101,9 @@ def get_transformed_segment(
         ).value
 
     if per_channel_transforms is not None:
-
-            transformed_us = transform_1dchannels(
-                local_us, per_channel_transforms, range(len(color_space)))
-    else:
-        transformed_us = local_us[0] #if isinstance(local_us, list) and len(local_us) == 1 else local_us
-        return UniformGradientSegment(
+        transformed_us = transform_1dchannels(
+            local_us, per_channel_transforms, range(len(color_space)))
+        return TransformedGradientSegment(
             already_converted_start_color,
             already_converted_end_color,
             transformed_us,
@@ -110,15 +112,33 @@ def get_transformed_segment(
             bound_types,
             value=value,
         )
-    return TransformedGradientSegment(
-        already_converted_start_color,
-        already_converted_end_color,
-        transformed_us,
-        color_space,
-        hue_direction,
-        bound_types,
-        value=value,
-    )    
+    else:
+        # When no per_channel_transforms, check if local_us is homogeneous
+        # Auto-detect: if local_us is a list with single element, treat as homogeneous
+        # unless explicitly specified otherwise
+        if homogeneous_local_us or (isinstance(local_us, list) and len(local_us) == 1):
+            # Extract single u array for uniform segment
+            transformed_us = local_us[0] if isinstance(local_us, list) else local_us
+            return UniformGradientSegment(
+                already_converted_start_color,
+                already_converted_end_color,
+                transformed_us,
+                color_space,
+                hue_direction,
+                bound_types,
+                value=value,
+            )
+        else:
+            # local_us already contains per-channel arrays
+            return TransformedGradientSegment(
+                already_converted_start_color,
+                already_converted_end_color,
+                local_us,
+                color_space,
+                hue_direction,
+                bound_types,
+                value=value,
+            )    
     
 
 class TransformedGradientSegment(SegmentBase):
