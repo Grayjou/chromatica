@@ -4,7 +4,6 @@ from typing import List, Optional, Union, Tuple
 import numpy as np
 from ...types.color_types import ColorSpace, is_hue_space
 from abc import abstractmethod
-from ...v2core import multival1d_lerp
 from ...v2core.subgradient import SubGradient
 from boundednumbers import BoundType
 from ...conversions import np_convert
@@ -43,12 +42,12 @@ class SegmentBase(SubGradient):
 def get_transformed_segment(
     already_converted_start_color: Optional[np.ndarray] = None,
     already_converted_end_color: Optional[np.ndarray] = None,
-    local_us: List[np.ndarray] = None,
+    per_channel_coords: List[np.ndarray] = None,
     color_space: ColorSpace = None,
     hue_direction: Optional[str] = None,
     per_channel_transforms: Optional[dict] = None,
     bound_types: Optional[List[BoundType] | BoundType] = BoundType.CLAMP,
-    homogeneous_local_us: bool = False,
+    homogeneous_per_channel_coords: bool = False,
     *,
     value: Optional[np.ndarray] = None,
     # New parameters for conversion
@@ -68,13 +67,13 @@ def get_transformed_segment(
     Args:
         already_converted_start_color: Pre-converted start color (legacy)
         already_converted_end_color: Pre-converted end color (legacy)
-        local_us: Local u parameters for interpolation
+        per_channel_coords: Local u parameters for interpolation
         color_space: Target color space for interpolation
         hue_direction: Hue direction for hue spaces
         per_channel_transforms: Per-channel transforms
         bound_types: Bound types for interpolation
-        homogeneous_local_us: If True, local_us is a single array used for all channels.
-                              If False, local_us is a list of arrays (one per channel).
+        homogeneous_per_channel_coords: If True, per_channel_coords is a single array used for all channels.
+                              If False, per_channel_coords is a list of arrays (one per channel).
                               When per_channel_transforms is None, this determines whether
                               to return UniformGradientSegment (True) or TransformedGradientSegment (False).
         value: Pre-computed values (optional)
@@ -102,7 +101,7 @@ def get_transformed_segment(
 
     if per_channel_transforms is not None:
         transformed_us = transform_1dchannels(
-            local_us, per_channel_transforms, range(len(color_space)))
+            per_channel_coords, per_channel_transforms, range(len(color_space)))
         return TransformedGradientSegment(
             already_converted_start_color,
             already_converted_end_color,
@@ -113,12 +112,12 @@ def get_transformed_segment(
             value=value,
         )
     else:
-        # When no per_channel_transforms, check if local_us is homogeneous
-        # Auto-detect: if local_us is a list with single element, treat as homogeneous
+        # When no per_channel_transforms, check if per_channel_coords is homogeneous
+        # Auto-detect: if per_channel_coords is a list with single element, treat as homogeneous
         # unless explicitly specified otherwise
-        if homogeneous_local_us or (isinstance(local_us, list) and len(local_us) == 1):
+        if homogeneous_per_channel_coords or (isinstance(per_channel_coords, list) and len(per_channel_coords) == 1):
             # Extract single u array for uniform segment
-            transformed_us = local_us[0] if isinstance(local_us, list) else local_us
+            transformed_us = per_channel_coords[0] if isinstance(per_channel_coords, list) else per_channel_coords
             return UniformGradientSegment(
                 already_converted_start_color,
                 already_converted_end_color,
@@ -129,11 +128,11 @@ def get_transformed_segment(
                 value=value,
             )
         else:
-            # local_us already contains per-channel arrays
+            # per_channel_coords already contains per-channel arrays
             return TransformedGradientSegment(
                 already_converted_start_color,
                 already_converted_end_color,
-                local_us,
+                per_channel_coords,
                 color_space,
                 hue_direction,
                 bound_types,
@@ -142,17 +141,17 @@ def get_transformed_segment(
     
 
 class TransformedGradientSegment(SegmentBase):
-    __slots__ = ('start_color', 'end_color', 'local_us', 'color_space', '_value', 'hue_direction', 'bound_types')
+    __slots__ = ('start_color', 'end_color', 'per_channel_coords', 'color_space', '_value', 'hue_direction', 'bound_types')
     def __init__(self, 
                  already_converted_start_color:np.ndarray, 
                  already_converted_end_color:np.ndarray, 
-                 local_us:np.ndarray, 
+                 per_channel_coords:np.ndarray, 
                  color_space:ColorSpace, 
                  hue_direction: Optional[str]=None, 
                  bound_types: Optional[List[BoundType] | BoundType]=BoundType.CLAMP, *, value: Optional[np.ndarray]=None):
         self.start_color = already_converted_start_color
         self.end_color = already_converted_end_color
-        self.local_us = local_us
+        self.per_channel_coords = per_channel_coords
         self.color_space = color_space
         self._value = value
         self.hue_direction = hue_direction
@@ -162,7 +161,7 @@ class TransformedGradientSegment(SegmentBase):
             return interpolate_transformed_hue_space(
                 self.start_color,
                 self.end_color,
-                self.local_us,
+                self.per_channel_coords,
                 self.hue_direction,
                 self.bound_types,
             )
@@ -170,7 +169,7 @@ class TransformedGradientSegment(SegmentBase):
             return interpolate_transformed_non_hue(
                 self.start_color,
                 self.end_color,
-                self.local_us,
+                self.per_channel_coords,
                 self.bound_types,
             )
     def convert_to_space(self, color_space: ColorSpace) -> TransformedGradientSegment:
@@ -182,7 +181,7 @@ class TransformedGradientSegment(SegmentBase):
         return TransformedGradientSegment(
             converted_start,
             converted_end,
-            self.local_us,
+            self.per_channel_coords,
             color_space,
             self.hue_direction,
             self.bound_types,
@@ -216,11 +215,11 @@ class UniformGradientSegment(TransformedGradientSegment):
                  u_local:np.ndarray, color_space:ColorSpace, 
                  hue_direction: Optional[str]=None, 
                  bound_types: Optional[List[BoundType] | BoundType]=BoundType.CLAMP, *, value: Optional[np.ndarray]=None):
-        local_us = [u_local]*len(color_space)
+        per_channel_coords = [u_local]*len(color_space)
         super().__init__(
             already_converted_start_color,
             already_converted_end_color,
-            local_us,
+            per_channel_coords,
             color_space,
             hue_direction,
             bound_types,

@@ -4,7 +4,11 @@ from ...chromatica.gradients.gradient2dv2.cell import (
     CellMode,
     LineInterpMethods,
     HueMode,
-    ColorSpace
+    ColorSpace,
+    PartitionInterval as PInt,
+    get_transformed_corners_cell_dual,
+    PerpendicularDualPartition,
+    CornersCellDual
 
 )
 import numpy as np
@@ -147,3 +151,195 @@ def test_cell_corners_interpolation():
     assert np.allclose(result[0, -1], top_right / 255)
     assert np.allclose(result[-1, 0], bottom_left / 255)
     assert np.allclose(result[-1, -1], bottom_right / 255)
+
+
+from ...chromatica.gradients.gradient2dv2.partitions import PerpendicularPartition, CellDualPartitionInterval
+from ...chromatica.gradients.gradient1dv2.gradient_1dv2 import Gradient1D
+
+def test_cell_line_partition():
+
+    partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt('rgb'), PInt('hsv', HueMode.CW)]
+    )
+    identity_partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt("hsv", HueMode.CW), PInt("hsv", HueMode.CW)]
+    )
+
+    gradient = Gradient1D.from_colors(
+        left_color=[0, 255, 255],
+        right_color=[240, 255, 255],
+        steps=10,
+        color_space="hsv",
+        format_type="int",
+    )
+    W = 10
+    H = 5
+    pcc = [upbm_2d(width=W, height=H) for _ in range(3)]
+    #print(pcc, [pc.shape for pc in pcc])
+
+    cell = get_transformed_lines_cell(
+        top_line=gradient.value,
+        bottom_line=gradient.value,
+        per_channel_coords=pcc,
+        top_line_color_space="hsv",
+        bottom_line_color_space="hsv",
+        color_space="hsv",
+        input_format="int",
+        line_method=LineInterpMethods.LINES_DISCRETE,
+        hue_direction_x=HueMode.SHORTEST,
+        hue_direction_y=HueMode.CW,
+    )
+
+    #cell.get_value()
+    cell0, cell1 = cell.partition_slice(partition=partition)
+
+    cell2, cell3 = cell.partition_slice(partition=identity_partition)
+
+    reconstructed = np.concatenate([cell2.get_value(), cell3.get_value()], axis=1)
+    assert not np.allclose(cell0.get_value(), cell2.get_value())
+    assert np.allclose(cell1.get_value(), cell3.get_value())
+
+    # This passes only because W % len(partition) == 0 and W = steps. Otherwise, index rounding cause minor differences. Not a big deal anyways.
+    assert np.allclose(reconstructed, cell.get_value())
+
+def test_cell_corners_partition():
+
+    partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt("rgb"), PInt("hsv", HueMode.CW)]
+    )
+    identity_partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt("hsv", HueMode.CW), PInt("hsv", HueMode.CW)]
+    )
+    assert len(partition) == 2
+
+
+    total = 255
+    top_left = np.array([total, 0, total], dtype=np.int32)
+    top_right = np.array([total, 0, 0], dtype=np.int32)
+    bottom_left = np.array([0, total, 0], dtype=np.int32)
+    bottom_right = np.array([0, 0, total], dtype=np.int32)
+
+    W = 10
+    H = 2
+    pcc = [upbm_2d(width=W, height=H) for _ in range(3)]
+
+    cell = get_transformed_corners_cell(
+        top_left=top_left,
+        top_right=top_right,
+        bottom_left=bottom_left,
+        bottom_right=bottom_right,
+        per_channel_coords=pcc,
+        top_left_color_space="rgb",
+        top_right_color_space="rgb",
+        bottom_left_color_space="rgb",
+        bottom_right_color_space="rgb",
+        color_space="hsv",
+        hue_direction_x=HueMode.CCW,
+        hue_direction_y=HueMode.CW,
+    )
+
+    cell0, cell1 = cell.partition_slice(partition=partition)
+
+    cell2, cell3 = cell.partition_slice(partition=identity_partition)
+
+    reconstructed = np.concatenate([cell2.get_value(), cell3.get_value()], axis=1)
+
+    assert not np.allclose(cell0.get_value(), cell2.get_value())
+    assert np.allclose(cell1.get_value(), cell3.get_value())
+
+    # This passes only because W % len(partition) == 0. Otherwise, index rounding cause minor differences. Not a big deal anyways.
+    assert np.allclose(reconstructed, cell.get_value())
+
+
+def test_cell_corners_partition_():
+
+    partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt("rgb"), PInt("hsv", HueMode.CW)]
+    )
+    identity_partition = PerpendicularPartition(
+        breakpoints=[0.5],
+        values=[PInt("hsv", HueMode.CW), PInt("hsv", HueMode.CW, HueMode.CCW)]
+    )
+
+
+    total = 255
+    top_left = np.array([total, 0, total], dtype=np.int32)
+    top_right = np.array([total, 0, 0], dtype=np.int32)
+    bottom_left = np.array([0, total, 0], dtype=np.int32)
+    bottom_right = np.array([0, 0, total], dtype=np.int32)
+
+    W = 400
+    H = 300
+    pcc = [upbm_2d(width=W, height=H) for _ in range(3)]
+
+    cell = get_transformed_corners_cell(
+        top_left=top_left,
+        top_right=top_right,
+        bottom_left=bottom_left,
+        bottom_right=bottom_right,
+        per_channel_coords=pcc,
+        top_left_color_space="rgb",
+        top_right_color_space="rgb",
+        bottom_left_color_space="rgb",
+        bottom_right_color_space="rgb",
+        color_space="hsv",
+        hue_direction_x=HueMode.CCW,
+        hue_direction_y=HueMode.CW,
+    )
+
+    cell0, cell1 = cell.partition_slice(partition=partition)
+
+    cell2, cell3 = cell.partition_slice(partition=identity_partition)
+    reconstructed = np.concatenate([cell2.get_value(), cell3.get_value()], axis=1)
+    reconstructed_id = np.concatenate([cell2.get_value(), cell3.get_value()], axis=1)
+
+
+    assert not np.allclose(cell0.get_value(), cell2.get_value())
+    assert np.allclose(cell1.get_value(), cell3.get_value())
+
+def test_cell_corners_partition_dual():
+
+    i1 = CellDualPartitionInterval(horizontal_color_space="rgb", vertical_color_space="rgb", hue_direction_x=None, hue_direction_y=None)
+    i2 = CellDualPartitionInterval(horizontal_color_space="hsv", vertical_color_space="hsv", top_segment_color_space="rgb", bottom_segment_color_space="hsv", top_segment_hue_direction_x=None, bottom_segment_hue_direction_x=HueMode.CW, hue_direction_y=HueMode.CW)
+    partition = PerpendicularDualPartition(
+        breakpoints=[0.5],
+        values=[i1, i2]
+    )
+    total = 255
+    top_left = np.array([total, 0, total], dtype=np.int32)
+    top_right = np.array([total, 0, 0], dtype=np.int32)
+    bottom_left = np.array([0, total, 0], dtype=np.int32)
+    bottom_right = np.array([0, 0, total], dtype=np.int32)
+
+    W = 10
+    H = 2
+    pcc = [upbm_2d(width=W, height=H) for _ in range(3)]
+    cell:CornersCellDual = get_transformed_corners_cell_dual(
+        top_left=top_left,
+        top_right=top_right,
+        bottom_left=bottom_left,
+        bottom_right=bottom_right,
+        per_channel_coords=pcc,
+        horizontal_color_space="hsv",
+        vertical_color_space="hsv",
+        top_left_color_space="rgb",
+        top_right_color_space="rgb",
+        bottom_left_color_space="rgb",
+        bottom_right_color_space="rgb",
+
+        hue_direction_x=HueMode.CCW,
+        hue_direction_y=HueMode.CW,
+    )
+    from PIL import Image
+    img = (cell.get_value() * 255).astype(np.uint8)
+    image = Image.fromarray(img, 'RGB')
+    image.show()
+    return
+    cell0, cell1 = cell.partition_slice(partition=partition)
+    reconstructed = np.concatenate([cell0.get_value(), cell1.get_value()], axis=1)
+    

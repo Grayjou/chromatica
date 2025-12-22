@@ -21,7 +21,7 @@ from ...types.transform_types import (
     get_bivar_space_transforms
 )
 from ...normalizers.rows_and_portions import normalize_portions, normalize_2d_rows, normalize_width_portions, normalize_height_portions
-from .partitions import PerpendicularPartition, HuePartition
+from ..gradient2dv2.partitions import PerpendicularPartition, HuePartition
 from .gradient1d import Gradient1D
 from unitfield import Unit2DMappedEndomorphism
 

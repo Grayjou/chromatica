@@ -87,7 +87,7 @@ def merge_endpoint_scaled_u(segment_lengths: np.ndarray) -> np.ndarray:
     return u_local
 
 
-def get_local_us_merged_endpoints(segment_lengths: np.ndarray) -> List[np.ndarray]:
+def get_per_channel_coords_merged_endpoints(segment_lengths: np.ndarray) -> List[np.ndarray]:
     """
     Generate local u arrays for each segment with merged endpoints.
 
@@ -101,17 +101,17 @@ def get_local_us_merged_endpoints(segment_lengths: np.ndarray) -> List[np.ndarra
     if len(segment_lengths) == 1:
         return [u_local]
     
-    local_us = [u_local[:-1]]
+    per_channel_coords = [u_local[:-1]]
     for seg_len in segment_lengths[1:-1]:
         u_local = flat_1d_upbm(seg_len)
-        local_us.append(u_local[:-1])
+        per_channel_coords.append(u_local[:-1])
     
     u_local = flat_1d_upbm(segment_lengths[-1])
-    local_us.append(u_local)
-    return local_us
+    per_channel_coords.append(u_local)
+    return per_channel_coords
 
 
-def get_local_us(segment_lengths: np.ndarray, offset: int = 1) -> List[np.ndarray]:
+def get_per_channel_coords(segment_lengths: np.ndarray, offset: int = 1) -> List[np.ndarray]:
     """
     Generate local u arrays for each segment.
 
@@ -127,20 +127,20 @@ def get_local_us(segment_lengths: np.ndarray, offset: int = 1) -> List[np.ndarra
     if offset < 0:
         raise ValueError("Offset must be non-negative")
     elif offset == 0:
-        return get_local_us_merged_endpoints(segment_lengths)
+        return get_per_channel_coords_merged_endpoints(segment_lengths)
     
-    local_us = []
+    per_channel_coords = []
     for seg_len in segment_lengths:
         u_local = flat_1d_upbm(seg_len)
         if offset > 1:
             padding = np.ones(offset - 1, dtype=u_local.dtype)
             u_local = np.concatenate((padding, u_local))
-        local_us.append(u_local)
+        per_channel_coords.append(u_local)
     
-    return local_us
+    return per_channel_coords
 
 
-def get_uniform_local_us(total_steps: int, num_segments: int) -> List[np.ndarray]:
+def get_uniform_per_channel_coords(total_steps: int, num_segments: int) -> List[np.ndarray]:
     """
     Generate uniformly distributed local u arrays for each segment.
 
@@ -156,7 +156,7 @@ def get_uniform_local_us(total_steps: int, num_segments: int) -> List[np.ndarray
     
     indices = np.arange(total_steps, dtype=float)
     scale = num_segments / (total_steps - 1)
-    local_us: List[np.ndarray] = []
+    per_channel_coords: List[np.ndarray] = []
     start = 0
     
     for seg_idx in range(num_segments):
@@ -167,10 +167,10 @@ def get_uniform_local_us(total_steps: int, num_segments: int) -> List[np.ndarray
         
         this_slice = indices[start:stop]
         local_u = this_slice * scale - seg_idx
-        local_us.append(local_u)
+        per_channel_coords.append(local_u)
         start = stop
     
-    return local_us
+    return per_channel_coords
 
 
 def construct_scaled_u(segment_lengths: np.ndarray, offset: int = 1) -> np.ndarray:
@@ -241,9 +241,9 @@ __all__ = [
     'get_segment_lengths',
     'get_segment_indices',
     'merge_endpoint_scaled_u',
-    'get_local_us_merged_endpoints',
-    'get_local_us',
-    'get_uniform_local_us',
+    'get_per_channel_coords_merged_endpoints',
+    'get_per_channel_coords',
+    'get_uniform_per_channel_coords',
     'construct_scaled_u',
     'get_segments_from_scaled_u',
 ]

@@ -1,3 +1,4 @@
+#chromatica\gradients\gradient2dv2\helpers\interpolation\lines.py
 import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional
@@ -93,10 +94,12 @@ def _interp_transformed_hue_space_2d_lines_continuous(
     btypes_list = _prepare_bound_types(bound_types)
     
     # Interpolate hue channel
+    transformed_h = transformed[0]
+    transformed_r = transformed[1:]
     hresult = sample_hue_between_lines_continuous(
         hline0,
         hline1,
-        transformed,
+        transformed_h,
         mode_x=huemode_x,
         mode_y=huemode_y,
         bound_type=btypes_list[0],
@@ -108,7 +111,7 @@ def _interp_transformed_hue_space_2d_lines_continuous(
     rresult = multival2d_lerp_between_lines_continuous(
         rlines0,
         rlines1,
-        transformed,
+        transformed_r,
         bound_types=btypes_list[1:],
     )
     
@@ -119,7 +122,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
-    huemode_x: HueMode,
+    #huemode_x: HueMode,
     huemode_y: HueMode,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
 ) -> np.ndarray:
@@ -127,18 +130,18 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     Interpolate hue values between two lines using discrete x-sampling in multidimensional space.
     """
     from .....v2core.core import _prepare_bound_types
-    
     # Prepare channels
     hline0, rline0 = prepare_hue_and_rest_channels(line0, is_hue=True)
     hline1, rline1 = prepare_hue_and_rest_channels(line1, is_hue=True)
     btypes_list = _prepare_bound_types(bound_types)
-    
+    transformed_h = transformed[0]
+    transformed_r = transformed[1:]
     # Interpolate hue channel
     hresult = sample_hue_between_lines_discrete(
         hline0,
         hline1,
-        transformed,
-        mode_x=huemode_x,
+        transformed_h,
+        #mode_x=huemode_x,
         mode_y=huemode_y,
         bound_type=btypes_list[0],
     )
@@ -151,7 +154,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     rresult = multival2d_lerp_between_lines_discrete(
         rlines0,
         rlines1,
-        transformed,
+        transformed_r,
         bound_types=btypes_list[1:],
     )
     
@@ -186,10 +189,10 @@ def interp_transformed_2d_lines(
         Interpolated values, shape (H, W, C)
     """
     
-    
+
     if is_hue_space(color_space):
         line_method = _get_line_method(line_method, huemode_x)
-        if huemode_x is None or huemode_y is None:
+        if huemode_x is None and huemode_y is None:
             raise ValueError("Hue modes must be provided for hue color spaces.")
         
         if line_method == LineInterpMethods.LINES_CONTINUOUS:
@@ -206,7 +209,7 @@ def interp_transformed_2d_lines(
                 line0,
                 line1,
                 transformed,
-                huemode_x=huemode_x,
+                #huemode_x=huemode_x,
                 huemode_y=huemode_y,
                 bound_types=bound_types,
             )

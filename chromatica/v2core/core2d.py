@@ -203,7 +203,7 @@ def sample_hue_between_lines_discrete(
     line1 = np.asarray(line1, dtype=np.float64)
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
-    
+
     return hue_lerp_between_lines_x_discrete(line0, line1, coords, int(mode_y))
 
 

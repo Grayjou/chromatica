@@ -15,7 +15,7 @@ class CellMode(Enum):
     """Modes for defining a gradient cell."""
     CORNERS = 1
     LINES = 2
-
+    CORNERS_DUAL = 3
 
 def apply_per_channel_transforms_2d(
     coords: np.ndarray,

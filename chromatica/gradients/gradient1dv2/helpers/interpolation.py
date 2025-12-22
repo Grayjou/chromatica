@@ -1,3 +1,4 @@
+#chromatica\gradients\gradient1dv2\helpers\interpolation.py
 """
 Interpolation utilities for 1D gradient segments.
 """
@@ -13,7 +14,7 @@ from ....v2core import multival1d_lerp
 def interpolate_transformed_non_hue(
     starts: np.ndarray,
     ends: np.ndarray,
-    local_us: List[np.ndarray],
+    per_channel_coords: List[np.ndarray],
     bound_types: List[BoundType] | BoundType,
 ) -> np.ndarray:
     """
@@ -22,7 +23,7 @@ def interpolate_transformed_non_hue(
     Args:
         starts: Start values for each channel
         ends: End values for each channel
-        local_us: Per-channel interpolation parameters (already transformed)
+        per_channel_coords: Per-channel interpolation parameters (already transformed)
         bound_types: Bound types for each channel
         
     Returns:
@@ -31,7 +32,7 @@ def interpolate_transformed_non_hue(
     return multival1d_lerp(
         starts=[starts],
         ends=[ends],
-        coeffs=local_us,
+        coeffs=per_channel_coords,
         bound_types=bound_types,
     )
 
@@ -39,7 +40,7 @@ def interpolate_transformed_non_hue(
 def interpolate_transformed_hue_space(
     start: np.ndarray,
     end: np.ndarray,
-    local_us: List[np.ndarray],
+    per_channel_coords: List[np.ndarray],
     hue_direction: str,
     bound_types: List[BoundType] | BoundType,
 ) -> np.ndarray:
@@ -49,7 +50,7 @@ def interpolate_transformed_hue_space(
     Args:
         start: Start color in hue space
         end: End color in hue space
-        local_us: Per-channel interpolation parameters (already transformed)
+        per_channel_coords: Per-channel interpolation parameters (already transformed)
         hue_direction: Direction for hue interpolation
         bound_types: Bound types for each channel
         
@@ -58,16 +59,16 @@ def interpolate_transformed_hue_space(
     """
     from ....utils.interpolate_hue import interpolate_hue
     
-    hue = interpolate_hue(start[0], end[0], local_us[0], hue_direction)
+    hue = interpolate_hue(start[0], end[0], per_channel_coords[0], hue_direction)
     
     rest = interpolate_transformed_non_hue(
-        starts=start[1:], ends=end[1:], local_us=local_us[1:], bound_types=bound_types
+        starts=start[1:], ends=end[1:], per_channel_coords=per_channel_coords[1:], bound_types=bound_types
     )
     return np.column_stack((hue, rest))
 
 
 def transform_1dchannels(
-    local_us: List[np.ndarray],
+    per_channel_coords: List[np.ndarray],
     per_channel_transforms: Optional[dict],
     indices: range,
 ) -> List[np.ndarray]:
@@ -75,7 +76,7 @@ def transform_1dchannels(
     Apply per-channel transforms to non-hue channels.
     
     Args:
-        local_us: List of interpolation parameters for each channel
+        per_channel_coords: List of interpolation parameters for each channel
         per_channel_transforms: Dictionary mapping channel index to transform function
         indices: Range of channel indices to process
         
@@ -85,10 +86,10 @@ def transform_1dchannels(
     if per_channel_transforms:
         return [
             transform(u) if (transform := per_channel_transforms.get(i)) else u
-            for u, i in zip(local_us, indices)
+            for u, i in zip(per_channel_coords, indices)
         ]
     else:
-        return local_us
+        return per_channel_coords
 
 
 

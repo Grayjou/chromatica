@@ -1,3 +1,4 @@
+#chromatica\gradients\gradient2dv2\helpers\interpolation\corners.py
 import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional
@@ -54,14 +55,14 @@ def _interp_transformed_hue_space_2d_corners(
     # Prepare corner data
     corner_data = _prepare_corner_arrays(c_tl, c_tr, c_bl, c_br, is_hue=True)
     h_tl, h_tr, h_bl, h_br = corner_data['hue']
-    
+
     # Interpolate hue channel
     result_hue = hue_gradient2d_from_corners(
         corners=(h_tl, h_tr, h_bl, h_br),
         shape=transformed[0].shape[:2],
         modes=(huemode_x, huemode_y)
     )
-    
+
     # Interpolate rest channels (skip first channel which is hue)
     result_rest = multival2d_lerp_from_corners(
         corners=corner_data['rest'],

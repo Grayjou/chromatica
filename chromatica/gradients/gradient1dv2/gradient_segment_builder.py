@@ -42,7 +42,7 @@ class GradientSegmentBuilder:
         """
         from .segment import get_segments_from_scaled_u
         
-        index_local_us = get_segments_from_scaled_u(u_scaled, num_segments)
+        index_per_channel_coords = get_segments_from_scaled_u(u_scaled, num_segments)
         
         # Build first segment using new API
         first_segment = get_transformed_segment(
@@ -51,7 +51,7 @@ class GradientSegmentBuilder:
             start_color_space=input_color_spaces[0],
             end_color_space=input_color_spaces[1],
             format_type=format_type,
-            local_us=[index_local_us[0][1]],
+            per_channel_coords=[index_per_channel_coords[0][1]],
             color_space=color_spaces[0],
             hue_direction=hue_directions[0],
             per_channel_transforms=per_channel_transforms[0],
@@ -71,7 +71,7 @@ class GradientSegmentBuilder:
                 end_color=colors[seg_idx + 1],
                 end_color_space=input_color_spaces[seg_idx + 1],
                 format_type=format_type,
-                local_us=[index_local_us[seg_idx][1]],
+                per_channel_coords=[index_per_channel_coords[seg_idx][1]],
                 color_space=color_spaces[seg_idx],
                 hue_direction=hue_directions[seg_idx],
                 per_channel_transforms=per_channel_transforms[seg_idx],

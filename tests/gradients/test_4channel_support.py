@@ -23,9 +23,9 @@ def test_rgba_segment_uniform():
     segment = get_transformed_segment(
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
-        local_us=[u],
+        per_channel_coords=[u],
         color_space="rgba",
-        homogeneous_local_us=True,
+        homogeneous_per_channel_coords=True,
     )
     
     assert isinstance(segment, UniformGradientSegment)
@@ -54,9 +54,9 @@ def test_rgba_segment_per_channel():
     segment = get_transformed_segment(
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
-        local_us=[u_r, u_g, u_b, u_a],
+        per_channel_coords=[u_r, u_g, u_b, u_a],
         color_space="rgba",
-        homogeneous_local_us=False,
+        homogeneous_per_channel_coords=False,
     )
     
     result = segment.get_value()
@@ -80,10 +80,10 @@ def test_hsva_segment():
     segment = get_transformed_segment(
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
-        local_us=[u],
+        per_channel_coords=[u],
         color_space="hsva",
         hue_direction="shortest",
-        homogeneous_local_us=True,
+        homogeneous_per_channel_coords=True,
     )
     
     result = segment.get_value()

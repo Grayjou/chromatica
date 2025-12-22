@@ -1,3 +1,4 @@
+#chromatica\v2core\core.py
 # ===================== core.py =====================
 """
 Core interpolation functions with Cython-accelerated backends.
@@ -432,11 +433,12 @@ def hue_gradient_2d(
         >>> hues = hue_gradient_2d(corners, (100, 100), (HueMode.CW, HueMode.CCW))
     """
     tl, tr, bl, br = corners
+
     H, W = shape
     
     # For bilinear: 2 corners for 2D (starts=first half, ends=second half)
-    starts = np.array([tl, tr], dtype=np.float64)
-    ends = np.array([bl, br], dtype=np.float64)
+    starts = np.array([tl, bl], dtype=np.float64)
+    ends = np.array([tr, br], dtype=np.float64)
     
     ux = np.linspace(0, 1, W)
     uy = np.linspace(0, 1, H)

@@ -267,7 +267,7 @@ def test_get_transformed_segment():
     result = get_transformed_segment(
         already_converted_start_color=np.array(colors[0]),
         already_converted_end_color=np.array(colors[-1]),
-        local_us=[u_scaled],
+        per_channel_coords=[u_scaled],
         color_space=color_spaces[0],
         hue_direction=hue_directions[0],
 

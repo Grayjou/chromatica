@@ -13,15 +13,16 @@ from typing import Optional
 from ..v2core.core import hue_lerp, HueMode
 
 
+
 def _convert_direction_to_mode(direction: Optional[str]) -> HueMode:
     """Convert old string direction to new HueMode enum."""
-    if direction is None or direction == 'shortest':
+    if direction is None or direction == 'shortest' or direction == HueMode.SHORTEST:
         return HueMode.SHORTEST
-    elif direction == 'cw' or direction == 'clockwise':
+    elif direction == 'cw' or direction == 'clockwise' or direction == HueMode.CW:
         return HueMode.CW
-    elif direction == 'ccw' or direction == 'counterclockwise':
+    elif direction == 'ccw' or direction == 'counterclockwise' or direction == HueMode.CCW:
         return HueMode.CCW
-    elif direction == 'longest':
+    elif direction == 'longest' or direction == HueMode.LONGEST:
         return HueMode.LONGEST
     else:
         raise ValueError(f"Invalid hue direction: {direction}")

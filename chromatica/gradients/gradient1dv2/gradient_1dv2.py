@@ -88,7 +88,7 @@ class Gradient1D(_Gradient1DInterpolator):
             per_channel_transforms,
             num_segments,
         )
-        local_us = cls._construct_local_us_no_transform(
+        per_channel_coords = cls._construct_per_channel_coords_no_transform(
             total_steps=total_steps,
             segment_lengths=segment_lengths,
             num_segments=num_segments,
@@ -109,7 +109,7 @@ class Gradient1D(_Gradient1DInterpolator):
         first_gradient = cls._interpolate(
             start=first_color_converted.value,
             end=second_color_converted.value,
-            u=local_us[0],
+            u=per_channel_coords[0],
             is_hue=is_hue_space(current_color_space),
             hue_direction=hue_directions[0],
             per_channel_transforms=per_channel_transforms[0],
@@ -142,7 +142,7 @@ class Gradient1D(_Gradient1DInterpolator):
             next_gradient = cls._interpolate(
                 start=float_color_left.value,
                 end=float_color_right.value,
-                u=local_us[seg_idx+1],
+                u=per_channel_coords[seg_idx+1],
                 is_hue=is_hue_space(current_color_space),
                 hue_direction=hue_directions[seg_idx],
                 per_channel_transforms=per_channel_transforms[seg_idx],

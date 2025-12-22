@@ -5,7 +5,7 @@ from typing import Optional, Tuple, List
 from ...types.transform_types import UnitTransform
 from unitfield import flat_1d_upbm
 from .normalizer import _Gradient1DNormalizer
-from .helpers import get_segment_lengths, construct_scaled_u, get_local_us, get_uniform_local_us
+from .helpers import get_segment_lengths, construct_scaled_u, get_per_channel_coords, get_uniform_per_channel_coords
 
 
 class _Gradient1DUnitBuilder(_Gradient1DNormalizer):
@@ -59,7 +59,7 @@ class _Gradient1DUnitBuilder(_Gradient1DNormalizer):
         return u_global * num_segments
     
     @classmethod
-    def _construct_local_us_no_transform(
+    def _construct_per_channel_coords_no_transform(
         cls,
         total_steps: Optional[int],
         segment_lengths: Optional[List[int]],
@@ -69,8 +69,8 @@ class _Gradient1DUnitBuilder(_Gradient1DNormalizer):
         """Construct local u arrays without global transform."""
         if segment_lengths is not None:
             seg_lengths = get_segment_lengths(total_steps, segment_lengths, num_segments)
-            return get_local_us(seg_lengths, offset=offset)
+            return get_per_channel_coords(seg_lengths, offset=offset)
         else:
             if total_steps is None:
                 raise ValueError("Either total_steps or segment_lengths must be provided")
-            return get_uniform_local_us(total_steps, num_segments)
+            return get_uniform_per_channel_coords(total_steps, num_segments)
