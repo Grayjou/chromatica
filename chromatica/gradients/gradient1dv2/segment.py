@@ -3,116 +3,40 @@ from __future__ import annotations
 from typing import List, Optional, Union, Tuple
 import numpy as np
 from ...types.color_types import ColorSpace, is_hue_space
-from abc import ABC, abstractmethod
-from ...utils.interpolate_hue import interpolate_hue
+from abc import abstractmethod
 from ..v2core import multival1d_lerp
+from ..v2core.subgradient import SubGradient
 from boundednumbers import BoundType
 from ...conversions import np_convert
 from ...types.format_type import FormatType
 from ...colors.color_base import ColorBase
 from ...types.array_types import ndarray_1d
+from .helpers import (
+    interpolate_transformed_non_hue,
+    interpolate_transformed_hue_space,
+    transform_non_hue_channels,
+    transform_hue_space,
+    get_segments_from_scaled_u,
+)
 
 
-def get_segments_from_scaled_u(arr: np.ndarray, max_value: float) -> List[tuple[int, np.ndarray]]:
-    if not arr.size:
-        raise ValueError("Input array must not be empty.")
-    current_low = int(arr[0])
-    current_segment = [arr[0]]
-    segments = []
-    for value in arr[1:]:
-        value_floor = int(np.floor(value))
-        if value_floor == current_low or (value_floor == max_value and current_low == max_value - 1):
-            current_segment.append(value)
-        else:
-            segments.append((current_low,np.array(current_segment)-current_low))
-            current_segment = [value]
-            current_low = value_floor
-    segments.append((current_low,np.array(current_segment)-current_low))
-    return segments
-
-
-def interpolate_transformed_non_hue(
-        starts: np.ndarray,
-        ends: np.ndarray,
-        local_us: List[np.ndarray],
-        bound_types: List[BoundType] | BoundType,
-) -> np.ndarray:
-        return multival1d_lerp(
-            starts=[starts],
-            ends=[ends],
-            coeffs=local_us,
-            bound_types=bound_types,
-        )
-
-def interpolate_transformed_hue_space(
-        start: np.ndarray,
-        end: np.ndarray,
-        local_us: List[np.ndarray],
-        hue_direction: str,
-        bound_types: List[BoundType] | BoundType,
-    ) -> np.ndarray:
-        """Interpolate colors in a hue-based space (HSV/HSL)."""
-        hue = interpolate_hue(start[0], end[0], local_us[0], hue_direction)
-        
-        rest = interpolate_transformed_non_hue(
-            starts=start[1:], ends=end[1:], local_us=local_us[1:], bound_types=bound_types
-        )
-        return np.column_stack((hue, rest))
-
-def transform_non_hue_channels(
-    local_us: List[np.ndarray],
-    per_channel_transforms: Optional[dict],
-    indices: range,
-) -> list[np.ndarray]:
-    """Apply per-channel transforms to non-hue channels."""
-    if per_channel_transforms:
-        return [
-            transform(u) if (transform := per_channel_transforms.get(i)) else u
-            for u, i in zip(local_us, indices)
-        ]
-    else:
-        return local_us
-
-def transform_hue_space(
-    local_us: List[np.ndarray],
-    per_channel_transforms: Optional[dict],
-    num_channels: int = 3,
-    ) -> np.ndarray:
-    """Apply per-channel transform to hue channel."""
-    if not per_channel_transforms:
-        return np.column_stack(local_us)
-    hue_transform = per_channel_transforms.get(0) if per_channel_transforms else None
-    rest_transformed = transform_non_hue_channels(
-        local_us[1:]
-        , per_channel_transforms, range(1, num_channels)
-    )
-    if hue_transform:
-        hue_transformed = hue_transform(local_us[0])
-    else:
-        hue_transformed = local_us[0]
-    return np.column_stack((hue_transformed, *rest_transformed))
-
-
-class SegmentBase(ABC):
+class SegmentBase(SubGradient):
+    """Base class for 1D gradient segments, extending SubGradient."""
+    
     __slots__ = ('start_color', 'end_color', '_value')
-    def get_value(self) -> np.ndarray:
-        if self._value is None:
-            self._value = self._render_value()
-        return self._value
-    @abstractmethod
-    def _render_value(self) -> np.ndarray:
-        pass
-    @property
-    def format_type(self) -> str:
-        return "float"
-    @abstractmethod
-    def convert_to_space(self, color_space: ColorSpace) -> SegmentBase:
-        pass
+    
+    def __init__(self):
+        """Initialize with no cached value."""
+        super().__init__()
+    
     @abstractmethod
     def start_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+        """Get start color in specified color space."""
         pass
+    
     @abstractmethod
     def end_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+        """Get end color in specified color space."""
         pass
 
 

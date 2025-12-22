@@ -1,14 +1,15 @@
 """
 Helper utilities for gradient1dv2 operations.
-
-This module re-exports from the helpers subpackage for backward compatibility.
 """
 
-from .helpers import (
+from .interpolation import (
     interpolate_transformed_non_hue,
     interpolate_transformed_hue_space,
     transform_non_hue_channels,
     transform_hue_space,
+)
+
+from .segment_utils import (
     get_segment_lengths,
     get_segment_indices,
     merge_endpoint_scaled_u,
@@ -20,10 +21,13 @@ from .helpers import (
 )
 
 __all__ = [
+    # Interpolation
     'interpolate_transformed_non_hue',
     'interpolate_transformed_hue_space',
     'transform_non_hue_channels',
     'transform_hue_space',
+    
+    # Segment utilities
     'get_segment_lengths',
     'get_segment_indices',
     'merge_endpoint_scaled_u',
