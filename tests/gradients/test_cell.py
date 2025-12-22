@@ -335,11 +335,6 @@ def test_cell_corners_partition_dual():
         hue_direction_x=HueMode.CCW,
         hue_direction_y=HueMode.CW,
     )
-    from PIL import Image
-    img = (cell.get_value() * 255).astype(np.uint8)
-    image = Image.fromarray(img, 'RGB')
-    image.show()
-    return
     cell0, cell1 = cell.partition_slice(partition=partition)
     reconstructed = np.concatenate([cell0.get_value(), cell1.get_value()], axis=1)
     
