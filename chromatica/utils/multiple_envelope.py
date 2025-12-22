@@ -1,7 +1,7 @@
 import numpy as np
 from enum import Enum
 from typing import Sequence, Callable, Optional, Union, List, Any, Dict
-from boundednumbers.functions import clamp, bounce, cyclic_wrap
+from boundednumbers.functions import clamp, bounce, cyclic_wrap_float
 from boundednumbers import UnitFloat
 from abc import ABC, abstractmethod
 import warnings
