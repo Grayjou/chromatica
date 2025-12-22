@@ -1,0 +1,13 @@
+# Core dependencies
+numpy>=1.21.0
+pillow>=9.0.0
+scikit-image>=0.19.0
+
+# Additional dependencies (inferred from codebase)
+boundednumbers>=0.1.0
+unitfield>=0.1.0
+
+# Development dependencies (optional)
+pytest>=7.0
+twine>=4.0
+coverage>=6.0

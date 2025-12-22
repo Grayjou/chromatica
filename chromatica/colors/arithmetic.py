@@ -1,4 +1,4 @@
-from ..np_functions import clamp, bounce, cyclic_wrap_float
+from boundednumbers import clamp, bounce, cyclic_wrap_float
 import numpy as np
 from typing import Callable
 from .color_base import ColorBase

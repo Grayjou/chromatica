@@ -14,6 +14,15 @@ from .core import (
     single_channel_multidim_lerp,
     bound_coeffs,
     bound_coeffs_fused,
+    hue_lerp,
+    hue_lerp_multi,
+    hue_multidim_lerp_bounded,
+    hue_gradient_1d,
+    hue_gradient_2d,
+    sample_hue_between_lines,
+    make_hue_line_sampler,
+    sample_between_lines,
+    HueMode,
 )
 
 # Import 2D interpolation functions from interp_2d
@@ -27,6 +36,21 @@ except ImportError:
     lerp_between_lines = None
     lerp_between_planes = None
 
+# Import 2D wrappers from core2d
+from .core2d import (
+    sample_between_lines_continuous,
+    sample_between_lines_discrete,
+    sample_hue_between_lines_continuous,
+    sample_hue_between_lines_discrete,
+    multival2d_lerp_between_lines_continuous,
+    multival2d_lerp_between_lines_discrete,
+    multival2d_lerp_from_corners,
+    sample_between_planes,
+)
+
+# Import base class
+from .subgradient import SubGradient
+
 __all__ = [
     # 1D/2D multi-value interpolation
     "multival1d_lerp",
@@ -34,10 +58,36 @@ __all__ = [
     "multival1d_lerp_uniform",
     "multival2d_lerp_uniform",
     "single_channel_multidim_lerp",
+    
+    # Hue interpolation
+    "hue_lerp",
+    "hue_lerp_multi",
+    "hue_multidim_lerp_bounded",
+    "hue_gradient_1d",
+    "hue_gradient_2d",
+    "sample_hue_between_lines",
+    "make_hue_line_sampler",
+    
     # Utility functions
     "bound_coeffs",
     "bound_coeffs_fused",
+    "HueMode",
+    
     # 2D interpolation between lines/planes
     "lerp_between_lines",
     "lerp_between_planes",
+    "sample_between_lines",
+    
+    # 2D wrappers
+    "sample_between_lines_continuous",
+    "sample_between_lines_discrete",
+    "sample_hue_between_lines_continuous",
+    "sample_hue_between_lines_discrete",
+    "multival2d_lerp_between_lines_continuous",
+    "multival2d_lerp_between_lines_discrete",
+    "multival2d_lerp_from_corners",
+    "sample_between_planes",
+    
+    # Base classes
+    "SubGradient",
 ]

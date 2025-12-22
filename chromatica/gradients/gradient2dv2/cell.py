@@ -8,35 +8,26 @@ from __future__ import annotations
 from typing import List, Optional, Union, Tuple
 import numpy as np
 from ...types.color_types import ColorSpace, is_hue_space
-from abc import ABC, abstractmethod
-from ...utils.interpolate_hue import interpolate_hue
+from abc import abstractmethod
+from ..v2core.subgradient import SubGradient
 from ..v2core import multival2d_lerp, lerp_between_lines, multival2d_lerp_uniform
 from boundednumbers import BoundType
 from ...conversions import np_convert
 from ...types.format_type import FormatType
 from ...colors.color_base import ColorBase
 from ...types.array_types import ndarray_1d
-from .helpers import HueMode, get_line_method, LineInterpMethods
-from enum import Enum
-from boundednumbers import BoundType
+from .helpers import HueMode, get_line_method, LineInterpMethods, CellMode
 
-class CellMode(Enum):
-    CORNERS = 1
-    LINES = 2
 
-class CellBase(ABC):
+class CellBase(SubGradient):
+    """Abstract base class for 2D gradient cells, extending SubGradient."""
+    
     mode: CellMode
-    """Abstract base class for 2D gradient cells."""
-    def get_value(self) -> np.ndarray:
-        if self._value is None:
-            self._value = self._render_value()
-        return self._value    
-    @property
-    def format_type(self) -> str:
-        return "float"
-    @abstractmethod
-    def convert_to_space(self, color_space: ColorSpace) -> CellBase:
-        pass
+    
+    def __init__(self):
+        """Initialize with no cached value."""
+        super().__init__()
+
 
 class LinesCell(CellBase):
     mode: CellMode = CellMode.LINES

@@ -502,6 +502,195 @@ def lerp_between_lines(
     )
 
 
+# =============================================================================
+# Discrete x-sampling versions (nearest neighbor in x-direction)
+# =============================================================================
+def lerp_between_lines_x_discrete_1ch(
+    np.ndarray[f64, ndim=1] line0,
+    np.ndarray[f64, ndim=1] line1,
+    np.ndarray[f64, ndim=3] coords,
+):
+    """
+    Interpolate between two 1D lines with discrete x-sampling (nearest index).
+    
+    Args:
+        line0: First line, shape (L,)
+        line1: Second line, shape (L,)
+        coords: Coordinate grid, shape (H, W, 2)
+                coords[..., 0] = u_x (position along lines, maps to nearest index)
+                coords[..., 1] = u_y (blend between lines)
+    
+    Returns:
+        Interpolated values, shape (H, W)
+        
+    Note:
+        For efficiency when L = W, use this function instead of lerp_between_lines_1ch.
+        The x-coordinate is mapped to the nearest index by rounding.
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+    
+    if line1.shape[0] != L:
+        raise ValueError("Lines must have same length")
+    if coords.shape[2] != 2:
+        raise ValueError("coords must have shape (H, W, 2)")
+    
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[::1] l0 = line0
+    cdef f64[::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
+    cdef f64[:, ::1] out_mv = out
+    
+    cdef Py_ssize_t h, w
+    cdef Py_ssize_t idx
+    cdef f64 u_x, u_y, idx_f
+    cdef f64 v0, v1
+    
+    # Handle edge case when L == 1
+    if L == 1:
+        v0 = l0[0]
+        v1 = l1[0]
+        for h in range(H):
+            for w in range(W):
+                u_y = c[h, w, 1]
+                if u_y < 0.0:
+                    u_y = 0.0
+                elif u_y > 1.0:
+                    u_y = 1.0
+                out_mv[h, w] = v0 + u_y * (v1 - v0)
+        return out
+    
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for h in range(H):
+        for w in range(W):
+            u_x = c[h, w, 0]
+            u_y = c[h, w, 1]
+            
+            # Map u_x to nearest index by rounding
+            idx_f = u_x * L_minus_1
+            idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest
+            
+            # Clamp index to valid range [0, L-1]
+            if idx < 0:
+                idx = 0
+            elif idx >= L:
+                idx = L - 1
+            
+            # Clamp u_y to [0, 1] for safety
+            if u_y < 0.0:
+                u_y = 0.0
+            elif u_y > 1.0:
+                u_y = 1.0
+            
+            # Sample lines at discrete index
+            v0 = l0[idx]
+            v1 = l1[idx]
+            
+            # Blend between lines
+            out_mv[h, w] = v0 + u_y * (v1 - v0)
+    
+    return out
+
+
+def lerp_between_lines_x_discrete_multichannel(
+    np.ndarray[f64, ndim=2] line0,
+    np.ndarray[f64, ndim=2] line1,
+    np.ndarray[f64, ndim=3] coords,
+):
+    """
+    Interpolate between two multi-channel 1D lines with discrete x-sampling.
+    
+    Args:
+        line0: First line, shape (L, C)
+        line1: Second line, shape (L, C)
+        coords: Coordinate grid, shape (H, W, 2)
+                coords[..., 0] = u_x (position along lines, maps to nearest index)
+                coords[..., 1] = u_y (blend between lines)
+    
+    Returns:
+        Interpolated values, shape (H, W, C)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t C = line0.shape[1]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+    
+    if line1.shape[0] != L or line1.shape[1] != C:
+        raise ValueError("Lines must have same shape")
+    if coords.shape[2] != 2:
+        raise ValueError("coords must have shape (H, W, 2)")
+    
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    
+    cdef f64[:, ::1] l0 = line0
+    cdef f64[:, ::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    
+    cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+    cdef f64[:, :, ::1] out_mv = out
+    
+    cdef Py_ssize_t h, w, ch
+    cdef Py_ssize_t idx
+    cdef f64 u_x, u_y, idx_f
+    
+    # Handle edge case when L == 1
+    if L == 1:
+        for h in range(H):
+            for w in range(W):
+                u_y = c[h, w, 1]
+                if u_y < 0.0:
+                    u_y = 0.0
+                elif u_y > 1.0:
+                    u_y = 1.0
+                for ch in range(C):
+                    out_mv[h, w, ch] = l0[0, ch] + u_y * (l1[0, ch] - l0[0, ch])
+        return out
+    
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    for h in range(H):
+        for w in range(W):
+            u_x = c[h, w, 0]
+            u_y = c[h, w, 1]
+            
+            # Map u_x to nearest index by rounding
+            idx_f = u_x * L_minus_1
+            idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest
+            
+            # Clamp index to valid range [0, L-1]
+            if idx < 0:
+                idx = 0
+            elif idx >= L:
+                idx = L - 1
+            
+            # Clamp u_y to [0, 1] for safety
+            if u_y < 0.0:
+                u_y = 0.0
+            elif u_y > 1.0:
+                u_y = 1.0
+            
+            # Blend between lines at discrete index for each channel
+            for ch in range(C):
+                out_mv[h, w, ch] = l0[idx, ch] + u_y * (l1[idx, ch] - l0[idx, ch])
+    
+    return out
+
+
 def lerp_between_planes(
     np.ndarray plane0,
     np.ndarray plane1,
