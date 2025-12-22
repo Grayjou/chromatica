@@ -58,14 +58,14 @@ def _interp_transformed_hue_space_2d_corners(
     # Interpolate hue channel
     result_hue = hue_gradient2d_from_corners(
         corners=(h_tl, h_tr, h_bl, h_br),
-        shape=transformed.shape[:2],
+        shape=transformed[0].shape[:2],
         modes=(huemode_x, huemode_y)
     )
     
-    # Interpolate rest channels
+    # Interpolate rest channels (skip first channel which is hue)
     result_rest = multival2d_lerp_from_corners(
         corners=corner_data['rest'],
-        coeffs=transformed,
+        coords=transformed[1:],  # Skip hue channel coordinates
         bound_types=BoundType.CLAMP,
     )
     

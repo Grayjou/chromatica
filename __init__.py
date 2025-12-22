@@ -74,7 +74,7 @@ from .chromatica.conversions import (
     ColorSpace, FormatType
 )
 
-from .chromatica.np_functions import clamp, bounce, cyclic_wrap_float
+from boundednumbers.functions import clamp, bounce, cyclic_wrap_float
 
 __version__ = "1.0.0"
 

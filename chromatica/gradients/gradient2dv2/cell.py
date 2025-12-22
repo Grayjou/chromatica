@@ -59,7 +59,6 @@ class LinesCell(CellBase):
         self.bottom_line = bottom_line
         self._value = value
     def _render_value(self):
-        print("Rendering LinesCell", self.line_method)
         return interp_transformed_2d_lines(
             line0=self.top_line,
             line1=self.bottom_line,

@@ -229,8 +229,6 @@ def multival2d_lerp_between_lines_continuous(
         Interpolated values, shape (H, W, num_channels)
     """
     num_channels = len(starts_lines)
-    print("Lengths:", len(ends_lines), len(coords), num_channels)
-    print("Shapes", [arr.shape for arr in starts_lines], [arr.shape for arr in ends_lines], [arr.shape for arr in coords])
     if len(ends_lines) != num_channels or len(coords) != num_channels:
         raise ValueError("All lists must have same length (num_channels)")
     
@@ -347,26 +345,26 @@ def multival2d_lerp_from_corners(
     
     # For each channel, use bilinear interpolation from corners
     for ch in range(num_channels):
-        print("Corners for channel", ch, ":", corners[:, ch])
         tl, tr, bl, br = corners[:, ch]
-        starts = np.array([tl, tr], dtype=np.float64)
-        ends = np.array([bl, br], dtype=np.float64)
         
-        # Stack coordinates for multival2d_lerp
-        # It expects shape (H, W, 2) and treats as (u_x, u_y)
-        # We need to provide as list of 2D arrays
+        # Get coordinates for this channel
         coord = coords[ch]  # Shape (H, W, 2)
-        coeffs = [coord[:, :, 0], coord[:, :, 1]]  # Split into u_x and u_y
+        u_x = coord[:, :, 0]  # Horizontal interpolation parameter
+        u_y = coord[:, :, 1]  # Vertical interpolation parameter
         
-        # Use the existing multival2d_lerp which handles bilinear interpolation
-        result = multival2d_lerp(
-            starts=starts,
-            ends=ends,
-            coeffs=coeffs,
-            bound_types=bound_types[ch],
-        )
-        print("Result shape for channel", ch, ":", result.shape, result.ndim)
-        out[:, :, ch] = result[:, :, ch] if result.ndim == 3 else result
+        # Apply bounding to coordinates
+        from .core import bound_coeffs, _prepare_bound_types
+        bt = _prepare_bound_types(bound_types[ch])
+        u_x_bounded = bound_coeffs([u_x], [bt[0]])[0]
+        u_y_bounded = bound_coeffs([u_y], [bt[0]])[0]
+        
+        # Bilinear interpolation: lerp top edge, lerp bottom edge, then lerp vertically
+        # top_edge = lerp(tl, tr, u_x)
+        top_edge = tl + (tr - tl) * u_x_bounded
+        # bottom_edge = lerp(bl, br, u_x)
+        bottom_edge = bl + (br - bl) * u_x_bounded
+        # result = lerp(top_edge, bottom_edge, u_y)
+        out[:, :, ch] = top_edge + (bottom_edge - top_edge) * u_y_bounded
     
     return out
 

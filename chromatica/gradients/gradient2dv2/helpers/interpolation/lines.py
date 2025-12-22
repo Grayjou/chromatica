@@ -212,7 +212,6 @@ def interp_transformed_2d_lines(
             )
     else:
         if line_method == LineInterpMethods.LINES_CONTINUOUS:
-            print("Using non-hue continuous")
             return _interp_transformed_non_hue_space_2d_lines_continuous(
                 line0,
                 line1,
@@ -220,7 +219,6 @@ def interp_transformed_2d_lines(
                 bound_types=bound_types,
             )
         else:
-            print("Using non-hue discrete")
             return _interp_transformed_non_hue_space_2d_lines_discrete(
                 line0,
                 line1,
