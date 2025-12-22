@@ -103,3 +103,19 @@ def with_alpha(self: ColorBase, alpha: Optional[ColorValue] = None) -> ColorBase
 
 ColorBase.convert = color_convert
 ColorBase.with_alpha = with_alpha
+
+
+def get_color_class(color_space: str, format_type: FormatType):
+    color_class = unified_tuple_to_class.get((color_space, format_type))
+    if color_class is None:
+        raise ValueError(
+            f"Unsupported color space/format combination: {color_space}/{format_type}"
+        )
+    return color_class
+
+
+def convert_color(value, color_space: str, format_type: FormatType):
+    color_class = get_color_class(color_space, format_type)
+    if isinstance(value, ColorBase):
+        return value.convert(color_space, format_type)  # type: ignore
+    return color_class(value)

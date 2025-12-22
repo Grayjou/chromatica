@@ -7,7 +7,7 @@ from typing import Callable, Optional, Tuple, Union, Dict, Iterable, List
 from ...color_arr import Color1DArr
 from ...colors.color_base import ColorBase
 from ...types.format_type import FormatType
-from .color_utils import convert_color, get_color_class
+from ...colors.color import convert_color, get_color_class
 from ...utils.interpolate_hue import interpolate_hue
 from ...utils.list_mismatch import handle_list_size_mismatch
 from ...utils.multiple_envelope import global_envelope_multiple_interp

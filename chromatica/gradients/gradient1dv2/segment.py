@@ -4,8 +4,8 @@ from typing import List, Optional, Union, Tuple
 import numpy as np
 from ...types.color_types import ColorSpace, is_hue_space
 from abc import abstractmethod
-from ..v2core import multival1d_lerp
-from ..v2core.subgradient import SubGradient
+from ...v2core import multival1d_lerp
+from ...v2core.subgradient import SubGradient
 from boundednumbers import BoundType
 from ...conversions import np_convert
 from ...types.format_type import FormatType
@@ -14,8 +14,8 @@ from ...types.array_types import ndarray_1d
 from .helpers import (
     interpolate_transformed_non_hue,
     interpolate_transformed_hue_space,
-    transform_non_hue_channels,
-    transform_hue_space,
+    transform_1dchannels,
+
     get_segments_from_scaled_u,
 )
 
@@ -84,22 +84,20 @@ def get_transformed_segment(
     """
     # Handle conversion if new parameters are provided
     if start_color is not None and already_converted_start_color is None:
-        from .color_conversion_utils import convert_to_space_float
+        from ...utils.color_utils import convert_to_space_float
         already_converted_start_color = convert_to_space_float(
             start_color, start_color_space, format_type, color_space
         ).value
     
     if end_color is not None and already_converted_end_color is None:
-        from .color_conversion_utils import convert_to_space_float
+        from ...utils.color_utils import convert_to_space_float
         already_converted_end_color = convert_to_space_float(
             end_color, end_color_space, format_type, color_space
         ).value
 
     if per_channel_transforms is not None:
-        if is_hue_space(color_space):
-            transformed_us = transform_hue_space(local_us, per_channel_transforms, num_channels=len(color_space))
-        else:
-            transformed_us = transform_non_hue_channels(
+
+            transformed_us = transform_1dchannels(
                 local_us, per_channel_transforms, range(len(color_space)))
     else:
         transformed_us = local_us[0] #if isinstance(local_us, list) and len(local_us) == 1 else local_us

@@ -8,7 +8,7 @@ from enum import IntEnum
 from typing import List, Tuple, Union, Sequence
 
 from boundednumbers import BoundType, bound_type_to_np_function
-from ...types.array_types import ndarray_1d
+from ..types.array_types import ndarray_1d
 from .interp import (  # type: ignore
     lerp_bounded_1d_spatial_fast,
     lerp_bounded_2d_spatial_fast,

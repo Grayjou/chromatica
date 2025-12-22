@@ -3,11 +3,11 @@
 from typing import Union, List
 import numpy as np
 from numpy import ndarray as NDArray
-from ...colors import unified_tuple_to_class
-from ...colors.color_base import ColorBase
-from ...types.format_type import FormatType
-from ...types.color_types import ColorSpace
-from ...types.array_types import ndarray_1d
+from ..colors import unified_tuple_to_class
+from ..colors.color_base import ColorBase
+from ..types.format_type import FormatType
+from ..types.color_types import ColorSpace
+from ..types.array_types import ndarray_1d
 
 
 def convert_to_space_float(

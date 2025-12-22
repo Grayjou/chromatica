@@ -1,4 +1,4 @@
-from .gradientv1.color_utils import convert_color, get_color_class
+from ..colors.color import convert_color, get_color_class
 from .gradientv1.gradient1d import Gradient1D
 from .gradientv1.gradient2d import Gradient2D
 from .gradientv1.radial import radial_gradient

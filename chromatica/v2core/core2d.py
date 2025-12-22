@@ -8,10 +8,11 @@ from typing import List, Tuple, Union, Optional
 from enum import IntEnum
 
 from boundednumbers import BoundType, bound_type_to_np_function
-from ...types.array_types import ndarray_1d
+from ..types.array_types import ndarray_1d
 from .interp_2d import (  # type: ignore
     lerp_between_lines,
     lerp_between_lines_x_discrete_1ch,
+    lerp_between_lines_multichannel,
     lerp_between_lines_x_discrete_multichannel,
     lerp_between_planes,
 )
@@ -19,6 +20,7 @@ from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
 )
+from .interp import lerp_bounded_2d_spatial_fast
 from .core import (
     HueMode,
     HueModeSequence,
@@ -34,6 +36,13 @@ CoordArray2D = np.ndarray  # Shape (H, W, 2)
 CoordArrayFlat = np.ndarray  # Shape (N, 2)
 LineArray = np.ndarray  # Shape (L,) or (L, C)
 
+
+def _ensure_list_ndarray(arr: Union[List[np.ndarray], np.ndarray]) -> List[np.ndarray]:
+    """Ensure the input is a list of ndarrays."""
+    if isinstance(arr, list):
+        return arr
+    else:
+        return list((arr[i] for i in range(arr.shape[0])))
 
 # =============================================================================
 # Regular (Non-Hue) Line Interpolation
@@ -72,7 +81,20 @@ def sample_between_lines_continuous(
     """
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
-    return lerp_between_lines(line0, line1, coords)
+    # Detect if single or multi-channel
+    if line0.ndim == 1:
+        # Coordinates must be 3D for the Cython function
+        if coords.ndim == 2:
+            # Flat coords not supported for discrete version yet
+            raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
+        return lerp_between_lines(line0, line1, coords)
+    elif line0.ndim == 2:
+        if coords.ndim == 2:
+            raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
+        return lerp_between_lines_multichannel(line0, line1, coords)
+    else:
+        raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
+
 
 
 def sample_between_lines_discrete(
@@ -149,7 +171,9 @@ def sample_hue_between_lines_continuous(
     line1 = np.asarray(line1, dtype=np.float64)
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
-    
+    # Detect if single or multi-channel
+
+        
     return hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y))
 
 
@@ -205,6 +229,8 @@ def multival2d_lerp_between_lines_continuous(
         Interpolated values, shape (H, W, num_channels)
     """
     num_channels = len(starts_lines)
+    print("Lengths:", len(ends_lines), len(coords), num_channels)
+    print("Shapes", [arr.shape for arr in starts_lines], [arr.shape for arr in ends_lines], [arr.shape for arr in coords])
     if len(ends_lines) != num_channels or len(coords) != num_channels:
         raise ValueError("All lists must have same length (num_channels)")
     
@@ -232,8 +258,8 @@ def multival2d_lerp_between_lines_continuous(
 
 
 def multival2d_lerp_between_lines_discrete(
-    starts_lines: List[np.ndarray],
-    ends_lines: List[np.ndarray],
+    starts_lines: List[np.ndarray] | np.ndarray,
+    ends_lines: List[np.ndarray] | np.ndarray,
     coords: List[CoordArray2D],
     bound_types: Union[BoundType, BoundTypeSequence] = BoundType.CLAMP,
 ) -> np.ndarray:
@@ -250,6 +276,10 @@ def multival2d_lerp_between_lines_discrete(
         Interpolated values, shape (H, W, num_channels)
     """
     num_channels = len(starts_lines)
+
+    #starts_lines = _ensure_list_ndarray(starts_lines)
+    #ends_lines = _ensure_list_ndarray(ends_lines)
+
     if len(ends_lines) != num_channels or len(coords) != num_channels:
         raise ValueError("All lists must have same length (num_channels)")
     
@@ -317,6 +347,7 @@ def multival2d_lerp_from_corners(
     
     # For each channel, use bilinear interpolation from corners
     for ch in range(num_channels):
+        print("Corners for channel", ch, ":", corners[:, ch])
         tl, tr, bl, br = corners[:, ch]
         starts = np.array([tl, tr], dtype=np.float64)
         ends = np.array([bl, br], dtype=np.float64)
@@ -334,6 +365,7 @@ def multival2d_lerp_from_corners(
             coeffs=coeffs,
             bound_types=bound_types[ch],
         )
+        print("Result shape for channel", ch, ":", result.shape, result.ndim)
         out[:, :, ch] = result[:, :, ch] if result.ndim == 3 else result
     
     return out

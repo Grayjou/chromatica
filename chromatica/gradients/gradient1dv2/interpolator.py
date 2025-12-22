@@ -8,13 +8,13 @@ from ...utils.interpolate_hue import interpolate_hue
 from ...types.transform_types import PerChannelTransform
 from ...types.color_types import ColorSpace, HueDirection, is_hue_space
 from ...utils.dimension import most_common_element
-from ..v2core import multival1d_lerp
+from ...v2core import multival1d_lerp
 from ...colors import ColorBase
 from boundednumbers import BoundType
 from .unit_builder import _Gradient1DUnitBuilder
 from enum import Enum
 from .gradient_segment_builder import GradientSegmentBuilder
-from .color_conversion_utils import convert_to_space_float as _convert_to_space_float
+from ...utils.color_utils import convert_to_space_float as _convert_to_space_float
 
 
 class SequenceMethod(Enum):

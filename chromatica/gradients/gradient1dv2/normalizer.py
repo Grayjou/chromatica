@@ -62,4 +62,4 @@ class _Gradient1DNormalizer(Color1DArr):
         return input_color_spaces, color_spaces, hue_directions, per_channel_transforms
 
     # Use the utility function from color_conversion_utils
-    from .color_conversion_utils import convert_to_space_float as _convert_to_space_float
+    from ...utils.color_utils import convert_to_space_float as _convert_to_space_float

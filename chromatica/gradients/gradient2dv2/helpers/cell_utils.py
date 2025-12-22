@@ -7,7 +7,7 @@ import numpy as np
 from enum import Enum
 
 from ....types.color_types import ColorSpace
-from ...v2core.core import HueMode
+from ....v2core.core import HueMode
 from boundednumbers import BoundType
 
 
@@ -65,41 +65,6 @@ def apply_per_channel_transforms_2d(
     return transformed_coords
 
 
-def separate_hue_and_non_hue_transforms(
-    per_channel_transforms: Optional[dict],
-    color_space: ColorSpace,
-) -> Tuple[Optional[dict], Optional[dict]]:
-    """
-    Separate transforms into hue and non-hue channels based on color space.
-    
-    Args:
-        per_channel_transforms: Dictionary mapping channel index to transform function
-        color_space: Color space to determine which channel is hue
-        
-    Returns:
-        Tuple of (hue_transforms, non_hue_transforms) dictionaries
-    """
-    if per_channel_transforms is None:
-        return None, None
-    
-    from ....types.color_types import is_hue_space
-    
-    if not is_hue_space(color_space):
-        # No hue channel, all are non-hue
-        return None, per_channel_transforms
-    
-    # First channel is hue in HSV/HSL
-    hue_transforms = {}
-    non_hue_transforms = {}
-    
-    for ch, transform in per_channel_transforms.items():
-        if ch == 0:
-            hue_transforms[ch] = transform
-        else:
-            non_hue_transforms[ch] = transform
-    
-    return (hue_transforms if hue_transforms else None,
-            non_hue_transforms if non_hue_transforms else None)
 
 
 __all__ = [

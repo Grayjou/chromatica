@@ -6,7 +6,7 @@ from typing import Callable, List, Optional, Tuple, Union
 
 from ...colors.color_base import ColorBase
 from ...types.format_type import FormatType
-from .color_utils import convert_color, get_color_class
+from ...colors.color import convert_color, get_color_class
 
 
 def radial_gradient(

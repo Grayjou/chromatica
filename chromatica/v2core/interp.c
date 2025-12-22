@@ -13,12 +13,12 @@
         "include_dirs": [
             "/home/runner/.local/lib/python3.12/site-packages/numpy/_core/include"
         ],
-        "name": "chromatica.gradients.v2core.interp",
+        "name": "chromatica.v2core.interp",
         "sources": [
             "chromatica/gradients/v2core/interp.pyx"
         ]
     },
-    "module_name": "chromatica.gradients.v2core.interp"
+    "module_name": "chromatica.v2core.interp"
 }
 END: Cython Metadata */
 
@@ -3332,7 +3332,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
 
 /* Module declarations from "libc.stdlib" */
 
-/* Module declarations from "chromatica.gradients.v2core.interp" */
+/* Module declarations from "chromatica.v2core.interp" */
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3378,11 +3378,11 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, 
 /* #### Code section: typeinfo ### */
 static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10chromatica_9gradients_6v2core_6interp_f64 = { "f64", NULL, sizeof(__pyx_t_10chromatica_9gradients_6v2core_6interp_f64), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "chromatica.gradients.v2core.interp"
+#define __Pyx_MODULE_NAME "chromatica.v2core.interp"
 extern int __pyx_module_is_main_chromatica__gradients__v2core__interp;
 int __pyx_module_is_main_chromatica__gradients__v2core__interp = 0;
 
-/* Implementation of "chromatica.gradients.v2core.interp" */
+/* Implementation of "chromatica.v2core.interp" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin___import__;
 static PyObject *__pyx_builtin_enumerate;
@@ -18903,7 +18903,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -20013,7 +20013,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_lerp_bounded_1
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.lerp_bounded_1d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -20130,7 +20130,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -21297,7 +21297,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_2lerp_bounded_
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.lerp_bounded_2d_spatial_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -21415,7 +21415,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -21840,7 +21840,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_4_lerp_bounded
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp._lerp_bounded_vectorized", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_broadcast_shape);
@@ -21948,7 +21948,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -22430,7 +22430,7 @@ static PyObject *__pyx_pf_10chromatica_9gradients_6v2core_6interp_6single_channe
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("chromatica.gradients.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("chromatica.v2core.interp.single_channel_multidim_lerp_bounded_cython_fast", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_starts);
@@ -22567,7 +22567,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "chromatica.gradients.v2core.interp.array",
+  "chromatica.v2core.interp.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -22601,7 +22601,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core.interp.""array", /*tp_name*/
+  "chromatica.v2core.interp.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -22746,7 +22746,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "chromatica.gradients.v2core.interp.Enum",
+  "chromatica.v2core.interp.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -22756,7 +22756,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core.interp.""Enum", /*tp_name*/
+  "chromatica.v2core.interp.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -23023,7 +23023,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "chromatica.gradients.v2core.interp.memoryview",
+  "chromatica.v2core.interp.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -23057,7 +23057,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core.interp.""memoryview", /*tp_name*/
+  "chromatica.v2core.interp.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -23200,7 +23200,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "chromatica.gradients.v2core.interp._memoryviewslice",
+  "chromatica.v2core.interp._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -23210,7 +23210,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "chromatica.gradients.v2core.interp.""_memoryviewslice", /*tp_name*/
+  "chromatica.v2core.interp.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -23921,8 +23921,8 @@ __Pyx_RefNannySetupContext("PyInit_interp", 0);
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "chromatica.gradients.v2core.interp")) {
-      if (unlikely((PyDict_SetItemString(modules, "chromatica.gradients.v2core.interp", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "chromatica.v2core.interp")) {
+      if (unlikely((PyDict_SetItemString(modules, "chromatica.v2core.interp", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -24522,7 +24522,7 @@ __Pyx_RefNannySetupContext("PyInit_interp", 0);
   __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init chromatica.gradients.v2core.interp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init chromatica.v2core.interp", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -24536,7 +24536,7 @@ __Pyx_RefNannySetupContext("PyInit_interp", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init chromatica.gradients.v2core.interp");
+    PyErr_SetString(PyExc_ImportError, "init chromatica.v2core.interp");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -24676,7 +24676,7 @@ const char* const cstring = "x\332\315UAS\333H\026\216'6!Yj\202\201\020\2623\233
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
     #else /* compression: none (4400 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xchromatica/gradients/v2core/interp.pyxcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__num_corners must be > 0numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same length<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSEllipsisHMAX_CORNERSN__Pyx_PyDict_NextRefSequenceView.MemoryViewWaa_stackabcaddallocate_bufferascontiguousarrayasyncio.coroutinesaxisbb_stackbasebroadcast_shapecchromatica.gradients.v2core.interp__class____class_getitem__cline_in_tracebackcoeffscoeffs_mvcopycountcurr_sizecurrent_endscurrent_starts__dict__diffdtypedtype_is_objectemptyencodeendsends_mvenumerateerrorflagsfloat64formatfortran__func____getstate__hhalfiid__import__index_is_coroutineitemsitemsizejlerp_bounded_1d_spatial_fastlerp_bounded_2d_spatial_fast_lerp_bounded_vectorized__main__memviewmode__""module__multiplyn_interp_dimsname__name__ndim__new__npnum_cornersnum_interp_dimsnum_pointsnumpyobjoutout_mvppackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerreshaperesultresult_mv__set_name__setdefault__setstate____setstate_cython__shapesingle_channel_multidim_lerp_bounded_cython_fastsizespatial_ndimssqueezestartstartsstarts_mvstepstopstructsubtract__test__uunpackupdatevalueswx\200\001\360\020\000\005%\240F\250&\260\001\260\026\260v\270R\270q\330\004$\240F\250&\260\002\260!\360\010\000\005\030\220v\230V\2401\240E\250\023\250F\260!\340\004%\240V\2508\2601\3204D\300E\310\021\330\004#\2404\240x\250q\3200@\300\005\300Q\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210F\220!\2205\230\001\360\006\000\t\020\210r\220\031\230!\230>\250\021\330\010\n\210)\2201\220F\230#\230T\240\021\330\010\n\210$\210a\320\017\037\230v\240T\250\021\340\010\013\210>\230\026\230q\240\003\2402\240Q\330\014\023\220>\240\026\240q\250\003\2503\250a\330\014\033\230>\250\021\250&\260\005\260Q\330\014\035\230^\2502\250U\260%\260q\340\004\013\210>\230\030\240\021\240%\240q\200\001\360\n\000\005\036\230V\2406\250\022\2501\360\006\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\340\004\007\200~\220S\230\001\330\010\017\320\017+\2501\250H\260F\270!\330\t\027\220s\230!\330\010\017\320\017+\2501\250H\260F\270!\340\010\017\320\017'\240q\250\010\260\006\260a\200\001\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330""\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004$\240A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\007\230q\240\004\240A\240Y\250a\250t\260<\270r\300\021\330\020\026\220a\220q\230\007\230q\240\004\240A\240W\250A\250V\260<\270r\300\021\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\037\230q\240\005\240W\250A\250S\260\002\260\"\260C\260w\270a\270s\300\"\300G\3101\310A\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230q\240\007\240q\250\004\250A\250W\260A\260W\270E\300\022\3001\330\030$\240A\340\020\026\220a\220s\230%\230w\240a\240q\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220s\230!\2309\240A\240T\250\034\260R\260q\330\020\026\220a\220s\230!\2307\240!\2406\250\034\260R\260q\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\031\230\021\230%\230q\240\001\240\023\240B\240b\250\003\2501\250A\250S\260\002\260!\2601\260A\340\024\027\220z\240\022\2401\330\030\037\230z""\250\023\250A\330\030\036\230a\230s\240\"\240B\240f\250E\260\022\2601\330\030$\240A\340\020\026\220a\220s\230%\230q\240\001\240\021\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360\n\000\005\"\240\026\240v\250Q\250a\330\004&\240f\250F\260!\2601\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004!\240\021\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\020\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\340\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\026\250|\2702\270Q\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\033\2301\230E\240\027\250\001\250\023\250B\250b\260\003\2607\270!\2703\270b\300\007\300q\310\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\n\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a""\220w\230a\230v\240\\\260\022\2601\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\025\220Q\220e\2301\230A\230S\240\002\240\"\240C\240q\250\001\250\023\250B\250a\250q\260\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101O";
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xchromatica/gradients/v2core/interp.pyxcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__num_corners must be > 0numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same length<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSEllipsisHMAX_CORNERSN__Pyx_PyDict_NextRefSequenceView.MemoryViewWaa_stackabcaddallocate_bufferascontiguousarrayasyncio.coroutinesaxisbb_stackbasebroadcast_shapecchromatica.v2core.interp__class____class_getitem__cline_in_tracebackcoeffscoeffs_mvcopycountcurr_sizecurrent_endscurrent_starts__dict__diffdtypedtype_is_objectemptyencodeendsends_mvenumerateerrorflagsfloat64formatfortran__func____getstate__hhalfiid__import__index_is_coroutineitemsitemsizejlerp_bounded_1d_spatial_fastlerp_bounded_2d_spatial_fast_lerp_bounded_vectorized__main__memviewmode__""module__multiplyn_interp_dimsname__name__ndim__new__npnum_cornersnum_interp_dimsnum_pointsnumpyobjoutout_mvppackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerreshaperesultresult_mv__set_name__setdefault__setstate____setstate_cython__shapesingle_channel_multidim_lerp_bounded_cython_fastsizespatial_ndimssqueezestartstartsstarts_mvstepstopstructsubtract__test__uunpackupdatevalueswx\200\001\360\020\000\005%\240F\250&\260\001\260\026\260v\270R\270q\330\004$\240F\250&\260\002\260!\360\010\000\005\030\220v\230V\2401\240E\250\023\250F\260!\340\004%\240V\2508\2601\3204D\300E\310\021\330\004#\2404\240x\250q\3200@\300\005\300Q\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210F\220!\2205\230\001\360\006\000\t\020\210r\220\031\230!\230>\250\021\330\010\n\210)\2201\220F\230#\230T\240\021\330\010\n\210$\210a\320\017\037\230v\240T\250\021\340\010\013\210>\230\026\230q\240\003\2402\240Q\330\014\023\220>\240\026\240q\250\003\2503\250a\330\014\033\230>\250\021\250&\260\005\260Q\330\014\035\230^\2502\250U\260%\260q\340\004\013\210>\230\030\240\021\240%\240q\200\001\360\n\000\005\036\230V\2406\250\022\2501\360\006\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\340\004\007\200~\220S\230\001\330\010\017\320\017+\2501\250H\260F\270!\330\t\027\220s\230!\330\010\017\320\017+\2501\250H\260F\270!\340\010\017\320\017'\240q\250\010\260\006\260a\200\001\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330""\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004$\240A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\007\230q\240\004\240A\240Y\250a\250t\260<\270r\300\021\330\020\026\220a\220q\230\007\230q\240\004\240A\240W\250A\250V\260<\270r\300\021\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\037\230q\240\005\240W\250A\250S\260\002\260\"\260C\260w\270a\270s\300\"\300G\3101\310A\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230q\240\007\240q\250\004\250A\250W\260A\260W\270E\300\022\3001\330\030$\240A\340\020\026\220a\220s\230%\230w\240a\240q\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220s\230!\2309\240A\240T\250\034\260R\260q\330\020\026\220a\220s\230!\2307\240!\2406\250\034\260R\260q\340\020\034\230A\330\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\340\024\030\230\005\230U\240!\2401\330\030\031\230\021\230%\230q\240\001\240\023\240B\240b\250\003\2501\250A\250S\260\002\260!\2601\260A\340\024\027\220z\240\022\2401\330\030\037\230z""\250\023\250A\330\030\036\230a\230s\240\"\240B\240f\250E\260\022\2601\330\030$\240A\340\020\026\220a\220s\230%\230q\240\001\240\021\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360\n\000\005\"\240\026\240v\250Q\250a\330\004&\240f\250F\260!\2601\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200|\2203\220a\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\036\230a\330\004\034\230A\330\004!\240\021\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\020\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\340\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\026\250|\2702\270Q\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\033\2301\230E\240\027\250\001\250\023\250B\250b\260\003\2607\270!\2703\270b\300\007\300q\310\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\n\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a""\220w\230a\230v\240\\\260\022\2601\340\014\030\230\001\330\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\340\020\024\220E\230\025\230a\230q\330\024\025\220Q\220e\2301\230A\230S\240\002\240\"\240C\240q\250\001\250\023\250B\250a\250q\260\001\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif

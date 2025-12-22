@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "Chromatica.chromatica.gradients.v2core.interp_hue",
+        "name": "Chromatica.chromatica.v2core.interp_2d",
         "sources": [
-            "Chromatica\\chromatica\\gradients\\v2core\\interp_hue.pyx"
+            "Chromatica/chromatica/v2core/interp_2d.pyx"
         ]
     },
-    "module_name": "Chromatica.chromatica.gradients.v2core.interp_hue"
+    "module_name": "Chromatica.chromatica.v2core.interp_2d"
 }
 END: Cython Metadata */
 
@@ -1127,8 +1127,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__Chromatica__chromatica__gradients__v2core__interp_hue
-#define __PYX_HAVE_API__Chromatica__chromatica__gradients__v2core__interp_hue
+#define __PYX_HAVE__Chromatica__chromatica__v2core__interp_2d
+#define __PYX_HAVE_API__Chromatica__chromatica__v2core__interp_2d
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -1381,7 +1381,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "Chromatica/chromatica/gradients/v2core/interp_hue.pyx",
+  "Chromatica/chromatica/v2core/interp_2d.pyx",
   "<stringsource>",
   "../../AppData/Local/Python/pythoncore-3.12-64/Lib/site-packages/numpy/__init__.cython-30.pxd",
   "cpython/type.pxd",
@@ -1789,23 +1789,14 @@ typedef npy_double __pyx_t_5numpy_double_t;
 */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":19
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":8
  * from libc.stdlib cimport malloc, free
  * 
  * ctypedef np.float64_t f64             # <<<<<<<<<<<<<<
- * ctypedef np.int32_t i32
- * 
-*/
-typedef __pyx_t_5numpy_float64_t __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64;
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":20
- * 
- * ctypedef np.float64_t f64
- * ctypedef np.int32_t i32             # <<<<<<<<<<<<<<
  * 
  * # =============================================================================
 */
-typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32;
+typedef __pyx_t_5numpy_float64_t __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64;
 /* #### Code section: complex_type_declarations ### */
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX && (1) && (!0 || __cplusplus)
@@ -2718,9 +2709,6 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
 #endif
 
-/* PyNotImplementedError_Check.proto */
-#define __Pyx_PyExc_NotImplementedError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_NotImplementedError)
-
 /* AllocateExtensionType.proto */
 static PyObject *__Pyx_AllocateExtensionType(PyTypeObject *t, int is_final);
 
@@ -3011,19 +2999,16 @@ static int __Pyx_ValidateAndInit_memviewslice(
                 PyObject *original_obj);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *, int writable_flag);
-
-/* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *, int writable_flag);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -3168,12 +3153,6 @@ __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
                                  size_t sizeof_dtype, int contig_flag,
                                  int dtype_is_object);
 
-/* CIntFromPy.proto */
-static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
-
 /* PyObjectCall2Args.proto (used by PyObjectCallMethod1) */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
 
@@ -3187,7 +3166,13 @@ static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t 
 static CYTHON_INLINE int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members);
 
 /* CIntFromPy.proto */
+static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
+
+/* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value);
@@ -3328,7 +3313,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
 
 /* Module declarations from "libc.stdlib" */
 
-/* Module declarations from "Chromatica.chromatica.gradients.v2core.interp_hue" */
+/* Module declarations from "Chromatica.chromatica.v2core.interp_2d" */
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3337,9 +3322,6 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64); /*proto*/
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, int); /*proto*/
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, int); /*proto*/
 static int __pyx_array_allocate_buffer(struct __pyx_array_obj *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo const *); /*proto*/
@@ -3375,14 +3357,13 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
-static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 = { "f64", NULL, sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64), { 0 }, 0, 'R', 0, 0 };
-static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 = { "i32", NULL, sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32), { 0 }, 0, __PYX_IS_UNSIGNED(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32) ? 'U' : 'I', __PYX_IS_UNSIGNED(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32), 0 };
+static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 = { "f64", NULL, sizeof(__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "Chromatica.chromatica.gradients.v2core.interp_hue"
-extern int __pyx_module_is_main_Chromatica__chromatica__gradients__v2core__interp_hue;
-int __pyx_module_is_main_Chromatica__chromatica__gradients__v2core__interp_hue = 0;
+#define __Pyx_MODULE_NAME "Chromatica.chromatica.v2core.interp_2d"
+extern int __pyx_module_is_main_Chromatica__chromatica__v2core__interp_2d;
+int __pyx_module_is_main_Chromatica__chromatica__v2core__interp_2d = 0;
 
-/* Implementation of "Chromatica.chromatica.gradients.v2core.interp_hue" */
+/* Implementation of "Chromatica.chromatica.v2core.interp_2d" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin___import__;
 static PyObject *__pyx_builtin_enumerate;
@@ -3392,7 +3373,6 @@ static PyObject *__pyx_builtin_id;
 static const char __pyx_k_c[] = "c";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_fortran[] = "fortran";
-static const char __pyx_k_Hue_interpolation_with_cyclical[] = "\nHue interpolation with cyclical color space support.\n\nSupports four interpolation modes per dimension:\n- CW (0): Clockwise\n- CCW (1): Counterclockwise  \n- SHORTEST (2): Shortest path (\342\211\244180\302\260)\n- LONGEST (3): Longest path (\342\211\245180\302\260)\n";
 /* #### Code section: decls ### */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
@@ -3435,14 +3415,15 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_hue_lerp_1d_spatial(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_2hue_lerp_2d_spatial(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_4hue_lerp_simple(CYTHON_UNUSED PyObject *__pyx_self, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1, PyArrayObject *__pyx_v_coeffs, int __pyx_v_mode); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_6hue_lerp_arrays(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_h0_arr, PyArrayObject *__pyx_v_h1_arr, PyArrayObject *__pyx_v_coeffs, int __pyx_v_mode); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_8hue_lerp_2d_with_modes(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_h0_grid, PyArrayObject *__pyx_v_h1_grid, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_10hue_lerp_between_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords, int __pyx_v_mode_x, int __pyx_v_mode_y); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_12hue_lerp_between_lines_x_discrete(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords, int __pyx_v_mode_y); /* proto */
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_14hue_multidim_lerp(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_lerp_between_lines_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_2lerp_between_lines_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_4lerp_between_lines_flat_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_6lerp_between_lines_flat_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_8lerp_between_planes_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_plane0, PyArrayObject *__pyx_v_plane1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_10lerp_between_lines_x_discrete_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_12lerp_between_lines_x_discrete_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_14lerp_between_planes(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_plane0, PyArrayObject *__pyx_v_plane1, PyArrayObject *__pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_16lerp_between_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords); /* proto */
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3496,8 +3477,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[2];
-  PyObject *__pyx_codeobj_tab[8];
-  PyObject *__pyx_string_tab[218];
+  PyObject *__pyx_codeobj_tab[9];
+  PyObject *__pyx_string_tab[208];
   PyObject *__pyx_number_tab[4];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -3547,216 +3528,206 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_Cannot_create_writable_memory_vi __pyx_string_tab[5]
 #define __pyx_kp_u_Cannot_index_with_type __pyx_string_tab[6]
 #define __pyx_kp_u_Cannot_transpose_memoryview_with __pyx_string_tab[7]
-#define __pyx_kp_u_Chromatica_chromatica_gradients_2 __pyx_string_tab[8]
-#define __pyx_kp_u_D_not_implemented __pyx_string_tab[9]
-#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[10]
-#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[11]
-#define __pyx_kp_u_Failed_to_allocate_working_buffe __pyx_string_tab[12]
-#define __pyx_kp_u_Hue_lerp_for __pyx_string_tab[13]
-#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[14]
-#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[15]
-#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[16]
-#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[17]
-#define __pyx_kp_u_Lines_must_have_same_length __pyx_string_tab[18]
-#define __pyx_kp_u_MemoryView_of __pyx_string_tab[19]
-#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[20]
-#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[21]
+#define __pyx_kp_u_Chromatica_chromatica_v2core_int_2 __pyx_string_tab[8]
+#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[9]
+#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[10]
+#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[11]
+#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[12]
+#define __pyx_kp_u_Interpolate_between_two_lines_a __pyx_string_tab[13]
+#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[14]
+#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[15]
+#define __pyx_kp_u_Lines_must_have_same_length __pyx_string_tab[16]
+#define __pyx_kp_u_Lines_must_have_same_shape __pyx_string_tab[17]
+#define __pyx_kp_u_MemoryView_of __pyx_string_tab[18]
+#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[19]
+#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[20]
+#define __pyx_kp_u_Planes_must_have_same_shape __pyx_string_tab[21]
 #define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[22]
 #define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[23]
-#define __pyx_kp_u__2 __pyx_string_tab[24]
-#define __pyx_kp_u__3 __pyx_string_tab[25]
-#define __pyx_kp_u__4 __pyx_string_tab[26]
-#define __pyx_kp_u__5 __pyx_string_tab[27]
-#define __pyx_kp_u__6 __pyx_string_tab[28]
-#define __pyx_kp_u_add_note __pyx_string_tab[29]
-#define __pyx_kp_u_and __pyx_string_tab[30]
-#define __pyx_kp_u_at_0x __pyx_string_tab[31]
-#define __pyx_kp_u_coeffs_shape_mismatch __pyx_string_tab[32]
-#define __pyx_kp_u_collections_abc __pyx_string_tab[33]
-#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[34]
-#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[35]
-#define __pyx_kp_u_coords_must_have_shape_H_W_2 __pyx_string_tab[36]
-#define __pyx_kp_u_disable __pyx_string_tab[37]
-#define __pyx_kp_u_enable __pyx_string_tab[38]
-#define __pyx_kp_u_gc __pyx_string_tab[39]
-#define __pyx_kp_u_got __pyx_string_tab[40]
-#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[41]
-#define __pyx_kp_u_h0_arr_and_h1_arr_must_have_same __pyx_string_tab[42]
-#define __pyx_kp_u_h1_grid_shape_mismatch __pyx_string_tab[43]
-#define __pyx_kp_u_isenabled __pyx_string_tab[44]
-#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[45]
-#define __pyx_kp_u_modes_must_have_length_equal_to __pyx_string_tab[46]
-#define __pyx_kp_u_modes_shape_mismatch __pyx_string_tab[47]
+#define __pyx_kp_u_Unsupported_shapes_for_lerp_betw __pyx_string_tab[24]
+#define __pyx_kp_u_Unsupported_shapes_for_lerp_betw_2 __pyx_string_tab[25]
+#define __pyx_kp_u__2 __pyx_string_tab[26]
+#define __pyx_kp_u__3 __pyx_string_tab[27]
+#define __pyx_kp_u__4 __pyx_string_tab[28]
+#define __pyx_kp_u__5 __pyx_string_tab[29]
+#define __pyx_kp_u__6 __pyx_string_tab[30]
+#define __pyx_kp_u_add_note __pyx_string_tab[31]
+#define __pyx_kp_u_and __pyx_string_tab[32]
+#define __pyx_kp_u_at_0x __pyx_string_tab[33]
+#define __pyx_kp_u_collections_abc __pyx_string_tab[34]
+#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[35]
+#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[36]
+#define __pyx_kp_u_coords_last_dim_must_be_3 __pyx_string_tab[37]
+#define __pyx_kp_u_coords_must_have_shape_H_W_2 __pyx_string_tab[38]
+#define __pyx_kp_u_coords_must_have_shape_N_2 __pyx_string_tab[39]
+#define __pyx_kp_u_disable __pyx_string_tab[40]
+#define __pyx_kp_u_enable __pyx_string_tab[41]
+#define __pyx_kp_u_gc __pyx_string_tab[42]
+#define __pyx_kp_u_got __pyx_string_tab[43]
+#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[44]
+#define __pyx_kp_u_isenabled __pyx_string_tab[45]
+#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[46]
+#define __pyx_kp_u_lerp_between_lines_line_653 __pyx_string_tab[47]
 #define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[48]
 #define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[49]
 #define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[50]
 #define __pyx_kp_u_object __pyx_string_tab[51]
 #define __pyx_kp_u_self_name_is_not_None __pyx_string_tab[52]
-#define __pyx_kp_u_starts_and_ends_must_have_same_l __pyx_string_tab[53]
-#define __pyx_kp_u_strided_and_direct __pyx_string_tab[54]
-#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[55]
-#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[56]
-#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[57]
-#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[58]
-#define __pyx_n_u_ASCII __pyx_string_tab[59]
+#define __pyx_kp_u_strided_and_direct __pyx_string_tab[53]
+#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[54]
+#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[55]
+#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[56]
+#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[57]
+#define __pyx_n_u_ASCII __pyx_string_tab[58]
+#define __pyx_n_u_C __pyx_string_tab[59]
 #define __pyx_n_u_C_CONTIGUOUS __pyx_string_tab[60]
-#define __pyx_n_u_Chromatica_chromatica_gradients __pyx_string_tab[61]
-#define __pyx_n_u_Ellipsis __pyx_string_tab[62]
-#define __pyx_n_u_H __pyx_string_tab[63]
-#define __pyx_n_u_L __pyx_string_tab[64]
-#define __pyx_n_u_L_minus_1 __pyx_string_tab[65]
-#define __pyx_n_u_M __pyx_string_tab[66]
-#define __pyx_n_u_MAX_CORNERS __pyx_string_tab[67]
-#define __pyx_n_u_N __pyx_string_tab[68]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[69]
-#define __pyx_n_u_Sequence __pyx_string_tab[70]
-#define __pyx_n_u_View_MemoryView __pyx_string_tab[71]
-#define __pyx_n_u_W __pyx_string_tab[72]
-#define __pyx_n_u_a __pyx_string_tab[73]
-#define __pyx_n_u_a_stack __pyx_string_tab[74]
-#define __pyx_n_u_abc __pyx_string_tab[75]
-#define __pyx_n_u_allocate_buffer __pyx_string_tab[76]
-#define __pyx_n_u_ascontiguousarray __pyx_string_tab[77]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[78]
-#define __pyx_n_u_b __pyx_string_tab[79]
-#define __pyx_n_u_b_stack __pyx_string_tab[80]
-#define __pyx_n_u_base __pyx_string_tab[81]
-#define __pyx_n_u_c __pyx_string_tab[82]
-#define __pyx_n_u_c_mv __pyx_string_tab[83]
-#define __pyx_n_u_class __pyx_string_tab[84]
-#define __pyx_n_u_class_getitem __pyx_string_tab[85]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[86]
-#define __pyx_n_u_coeffs __pyx_string_tab[87]
-#define __pyx_n_u_coeffs_mv __pyx_string_tab[88]
-#define __pyx_n_u_coords __pyx_string_tab[89]
+#define __pyx_n_u_Chromatica_chromatica_v2core_int __pyx_string_tab[61]
+#define __pyx_n_u_D_out __pyx_string_tab[62]
+#define __pyx_n_u_Ellipsis __pyx_string_tab[63]
+#define __pyx_n_u_H __pyx_string_tab[64]
+#define __pyx_n_u_H_minus_1 __pyx_string_tab[65]
+#define __pyx_n_u_H_out __pyx_string_tab[66]
+#define __pyx_n_u_H_src __pyx_string_tab[67]
+#define __pyx_n_u_L __pyx_string_tab[68]
+#define __pyx_n_u_L_minus_1 __pyx_string_tab[69]
+#define __pyx_n_u_N __pyx_string_tab[70]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[71]
+#define __pyx_n_u_Sequence __pyx_string_tab[72]
+#define __pyx_n_u_View_MemoryView __pyx_string_tab[73]
+#define __pyx_n_u_W __pyx_string_tab[74]
+#define __pyx_n_u_W_minus_1 __pyx_string_tab[75]
+#define __pyx_n_u_W_out __pyx_string_tab[76]
+#define __pyx_n_u_W_src __pyx_string_tab[77]
+#define __pyx_n_u_abc __pyx_string_tab[78]
+#define __pyx_n_u_allocate_buffer __pyx_string_tab[79]
+#define __pyx_n_u_ascontiguousarray __pyx_string_tab[80]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[81]
+#define __pyx_n_u_base __pyx_string_tab[82]
+#define __pyx_n_u_c __pyx_string_tab[83]
+#define __pyx_n_u_ch __pyx_string_tab[84]
+#define __pyx_n_u_class __pyx_string_tab[85]
+#define __pyx_n_u_class_getitem __pyx_string_tab[86]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[87]
+#define __pyx_n_u_coords __pyx_string_tab[88]
+#define __pyx_n_u_coords_ndim __pyx_string_tab[89]
 #define __pyx_n_u_count __pyx_string_tab[90]
-#define __pyx_n_u_curr_size __pyx_string_tab[91]
+#define __pyx_n_u_d __pyx_string_tab[91]
 #define __pyx_n_u_dict __pyx_string_tab[92]
 #define __pyx_n_u_dtype __pyx_string_tab[93]
 #define __pyx_n_u_dtype_is_object __pyx_string_tab[94]
 #define __pyx_n_u_empty __pyx_string_tab[95]
 #define __pyx_n_u_encode __pyx_string_tab[96]
-#define __pyx_n_u_ends __pyx_string_tab[97]
-#define __pyx_n_u_ends_mv __pyx_string_tab[98]
-#define __pyx_n_u_enumerate __pyx_string_tab[99]
-#define __pyx_n_u_error __pyx_string_tab[100]
-#define __pyx_n_u_flags __pyx_string_tab[101]
-#define __pyx_n_u_float64 __pyx_string_tab[102]
-#define __pyx_n_u_format __pyx_string_tab[103]
-#define __pyx_n_u_fortran __pyx_string_tab[104]
-#define __pyx_n_u_frac __pyx_string_tab[105]
-#define __pyx_n_u_func __pyx_string_tab[106]
-#define __pyx_n_u_getstate __pyx_string_tab[107]
-#define __pyx_n_u_h __pyx_string_tab[108]
-#define __pyx_n_u_h0 __pyx_string_tab[109]
-#define __pyx_n_u_h0_arr __pyx_string_tab[110]
-#define __pyx_n_u_h0_grid __pyx_string_tab[111]
-#define __pyx_n_u_h0_hi __pyx_string_tab[112]
-#define __pyx_n_u_h0_lo __pyx_string_tab[113]
-#define __pyx_n_u_h0_mv __pyx_string_tab[114]
-#define __pyx_n_u_h1 __pyx_string_tab[115]
-#define __pyx_n_u_h1_adj __pyx_string_tab[116]
-#define __pyx_n_u_h1_arr __pyx_string_tab[117]
-#define __pyx_n_u_h1_grid __pyx_string_tab[118]
-#define __pyx_n_u_h1_hi __pyx_string_tab[119]
-#define __pyx_n_u_h1_lo __pyx_string_tab[120]
-#define __pyx_n_u_h1_mv __pyx_string_tab[121]
-#define __pyx_n_u_h_adj __pyx_string_tab[122]
-#define __pyx_n_u_half __pyx_string_tab[123]
-#define __pyx_n_u_hue_lerp_1d_spatial __pyx_string_tab[124]
-#define __pyx_n_u_hue_lerp_2d_spatial __pyx_string_tab[125]
-#define __pyx_n_u_hue_lerp_2d_with_modes __pyx_string_tab[126]
-#define __pyx_n_u_hue_lerp_arrays __pyx_string_tab[127]
-#define __pyx_n_u_hue_lerp_between_lines __pyx_string_tab[128]
-#define __pyx_n_u_hue_lerp_between_lines_x_discret __pyx_string_tab[129]
-#define __pyx_n_u_hue_lerp_simple __pyx_string_tab[130]
-#define __pyx_n_u_hue_multidim_lerp __pyx_string_tab[131]
-#define __pyx_n_u_i __pyx_string_tab[132]
-#define __pyx_n_u_id __pyx_string_tab[133]
-#define __pyx_n_u_idx __pyx_string_tab[134]
-#define __pyx_n_u_idx_f __pyx_string_tab[135]
-#define __pyx_n_u_idx_hi __pyx_string_tab[136]
-#define __pyx_n_u_idx_lo __pyx_string_tab[137]
-#define __pyx_n_u_import __pyx_string_tab[138]
-#define __pyx_n_u_index __pyx_string_tab[139]
-#define __pyx_n_u_int32 __pyx_string_tab[140]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[141]
-#define __pyx_n_u_items __pyx_string_tab[142]
-#define __pyx_n_u_itemsize __pyx_string_tab[143]
-#define __pyx_n_u_j __pyx_string_tab[144]
-#define __pyx_n_u_l0 __pyx_string_tab[145]
-#define __pyx_n_u_l1 __pyx_string_tab[146]
-#define __pyx_n_u_line0 __pyx_string_tab[147]
-#define __pyx_n_u_line1 __pyx_string_tab[148]
-#define __pyx_n_u_m_mv __pyx_string_tab[149]
-#define __pyx_n_u_main __pyx_string_tab[150]
-#define __pyx_n_u_memview __pyx_string_tab[151]
-#define __pyx_n_u_mode __pyx_string_tab[152]
-#define __pyx_n_u_mode_x __pyx_string_tab[153]
-#define __pyx_n_u_mode_y __pyx_string_tab[154]
-#define __pyx_n_u_modes __pyx_string_tab[155]
-#define __pyx_n_u_modes_mv __pyx_string_tab[156]
-#define __pyx_n_u_module __pyx_string_tab[157]
-#define __pyx_n_u_name __pyx_string_tab[158]
-#define __pyx_n_u_name_2 __pyx_string_tab[159]
-#define __pyx_n_u_ndim __pyx_string_tab[160]
-#define __pyx_n_u_new __pyx_string_tab[161]
-#define __pyx_n_u_np __pyx_string_tab[162]
-#define __pyx_n_u_num_corners __pyx_string_tab[163]
-#define __pyx_n_u_num_dims __pyx_string_tab[164]
-#define __pyx_n_u_num_points __pyx_string_tab[165]
-#define __pyx_n_u_numpy __pyx_string_tab[166]
-#define __pyx_n_u_obj __pyx_string_tab[167]
-#define __pyx_n_u_out __pyx_string_tab[168]
-#define __pyx_n_u_out_mv __pyx_string_tab[169]
-#define __pyx_n_u_p __pyx_string_tab[170]
-#define __pyx_n_u_pack __pyx_string_tab[171]
-#define __pyx_n_u_pop __pyx_string_tab[172]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[173]
-#define __pyx_n_u_pyx_state __pyx_string_tab[174]
-#define __pyx_n_u_pyx_type __pyx_string_tab[175]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[176]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[177]
-#define __pyx_n_u_qualname __pyx_string_tab[178]
-#define __pyx_n_u_reduce __pyx_string_tab[179]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[180]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[181]
-#define __pyx_n_u_register __pyx_string_tab[182]
-#define __pyx_n_u_result __pyx_string_tab[183]
-#define __pyx_n_u_result_mv __pyx_string_tab[184]
-#define __pyx_n_u_set_name __pyx_string_tab[185]
-#define __pyx_n_u_setdefault __pyx_string_tab[186]
-#define __pyx_n_u_setstate __pyx_string_tab[187]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[188]
-#define __pyx_n_u_shape __pyx_string_tab[189]
-#define __pyx_n_u_size __pyx_string_tab[190]
-#define __pyx_n_u_spatial_ndims __pyx_string_tab[191]
-#define __pyx_n_u_start __pyx_string_tab[192]
-#define __pyx_n_u_starts __pyx_string_tab[193]
-#define __pyx_n_u_starts_mv __pyx_string_tab[194]
-#define __pyx_n_u_step __pyx_string_tab[195]
-#define __pyx_n_u_stop __pyx_string_tab[196]
-#define __pyx_n_u_struct __pyx_string_tab[197]
-#define __pyx_n_u_test __pyx_string_tab[198]
-#define __pyx_n_u_u __pyx_string_tab[199]
-#define __pyx_n_u_u_x __pyx_string_tab[200]
-#define __pyx_n_u_u_y __pyx_string_tab[201]
-#define __pyx_n_u_unpack __pyx_string_tab[202]
-#define __pyx_n_u_update __pyx_string_tab[203]
-#define __pyx_n_u_v0 __pyx_string_tab[204]
-#define __pyx_n_u_v1 __pyx_string_tab[205]
-#define __pyx_n_u_values __pyx_string_tab[206]
-#define __pyx_n_u_w __pyx_string_tab[207]
-#define __pyx_n_u_x __pyx_string_tab[208]
-#define __pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5 __pyx_string_tab[209]
-#define __pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5_2 __pyx_string_tab[210]
-#define __pyx_kp_b_iso88591_fAQ_fAQ_vV1A_aq_t6_S_j_uF_3c_j __pyx_string_tab[211]
-#define __pyx_kp_b_iso88591_fAQ_fAQ_vV1Cs_j_t6_q_Qa_t6_q_Qa __pyx_string_tab[212]
-#define __pyx_kp_b_iso88591_fAQ_r_q_6_1_1_a_d_U_1_AQa_auHAS __pyx_string_tab[213]
-#define __pyx_kp_b_iso88591_vQa_vQa_wfAS_2S_vQc_A_j_vV1Cs_C __pyx_string_tab[214]
-#define __pyx_kp_b_iso88591_vQa_vV1A_aq_t6_S_j_uF_3c_j_4r_Y __pyx_string_tab[215]
-#define __pyx_kp_b_iso88591_vWCr_T_vQa_QhfBa_t7_Ry_4t6_r_1F __pyx_string_tab[216]
-#define __pyx_n_b_O __pyx_string_tab[217]
+#define __pyx_n_u_enumerate __pyx_string_tab[97]
+#define __pyx_n_u_error __pyx_string_tab[98]
+#define __pyx_n_u_flags __pyx_string_tab[99]
+#define __pyx_n_u_float64 __pyx_string_tab[100]
+#define __pyx_n_u_format __pyx_string_tab[101]
+#define __pyx_n_u_fortran __pyx_string_tab[102]
+#define __pyx_n_u_frac __pyx_string_tab[103]
+#define __pyx_n_u_func __pyx_string_tab[104]
+#define __pyx_n_u_getstate __pyx_string_tab[105]
+#define __pyx_n_u_h __pyx_string_tab[106]
+#define __pyx_n_u_id __pyx_string_tab[107]
+#define __pyx_n_u_idx __pyx_string_tab[108]
+#define __pyx_n_u_idx_f __pyx_string_tab[109]
+#define __pyx_n_u_idx_hi __pyx_string_tab[110]
+#define __pyx_n_u_idx_lo __pyx_string_tab[111]
+#define __pyx_n_u_import __pyx_string_tab[112]
+#define __pyx_n_u_index __pyx_string_tab[113]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[114]
+#define __pyx_n_u_items __pyx_string_tab[115]
+#define __pyx_n_u_itemsize __pyx_string_tab[116]
+#define __pyx_n_u_l0 __pyx_string_tab[117]
+#define __pyx_n_u_l1 __pyx_string_tab[118]
+#define __pyx_n_u_lerp_between_lines __pyx_string_tab[119]
+#define __pyx_n_u_lerp_between_lines_1ch __pyx_string_tab[120]
+#define __pyx_n_u_lerp_between_lines_flat_1ch __pyx_string_tab[121]
+#define __pyx_n_u_lerp_between_lines_flat_multicha __pyx_string_tab[122]
+#define __pyx_n_u_lerp_between_lines_multichannel __pyx_string_tab[123]
+#define __pyx_n_u_lerp_between_lines_x_discrete_1c __pyx_string_tab[124]
+#define __pyx_n_u_lerp_between_lines_x_discrete_mu __pyx_string_tab[125]
+#define __pyx_n_u_lerp_between_planes __pyx_string_tab[126]
+#define __pyx_n_u_lerp_between_planes_1ch __pyx_string_tab[127]
+#define __pyx_n_u_line0 __pyx_string_tab[128]
+#define __pyx_n_u_line1 __pyx_string_tab[129]
+#define __pyx_n_u_line_ndim __pyx_string_tab[130]
+#define __pyx_n_u_main __pyx_string_tab[131]
+#define __pyx_n_u_memview __pyx_string_tab[132]
+#define __pyx_n_u_mode __pyx_string_tab[133]
+#define __pyx_n_u_module __pyx_string_tab[134]
+#define __pyx_n_u_n __pyx_string_tab[135]
+#define __pyx_n_u_name __pyx_string_tab[136]
+#define __pyx_n_u_name_2 __pyx_string_tab[137]
+#define __pyx_n_u_ndim __pyx_string_tab[138]
+#define __pyx_n_u_new __pyx_string_tab[139]
+#define __pyx_n_u_np __pyx_string_tab[140]
+#define __pyx_n_u_numpy __pyx_string_tab[141]
+#define __pyx_n_u_obj __pyx_string_tab[142]
+#define __pyx_n_u_out __pyx_string_tab[143]
+#define __pyx_n_u_out_mv __pyx_string_tab[144]
+#define __pyx_n_u_p0 __pyx_string_tab[145]
+#define __pyx_n_u_p1 __pyx_string_tab[146]
+#define __pyx_n_u_pack __pyx_string_tab[147]
+#define __pyx_n_u_plane0 __pyx_string_tab[148]
+#define __pyx_n_u_plane1 __pyx_string_tab[149]
+#define __pyx_n_u_pop __pyx_string_tab[150]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[151]
+#define __pyx_n_u_pyx_state __pyx_string_tab[152]
+#define __pyx_n_u_pyx_type __pyx_string_tab[153]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[154]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[155]
+#define __pyx_n_u_qualname __pyx_string_tab[156]
+#define __pyx_n_u_reduce __pyx_string_tab[157]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[158]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[159]
+#define __pyx_n_u_register __pyx_string_tab[160]
+#define __pyx_n_u_set_name __pyx_string_tab[161]
+#define __pyx_n_u_setdefault __pyx_string_tab[162]
+#define __pyx_n_u_setstate __pyx_string_tab[163]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[164]
+#define __pyx_n_u_shape __pyx_string_tab[165]
+#define __pyx_n_u_size __pyx_string_tab[166]
+#define __pyx_n_u_start __pyx_string_tab[167]
+#define __pyx_n_u_step __pyx_string_tab[168]
+#define __pyx_n_u_stop __pyx_string_tab[169]
+#define __pyx_n_u_struct __pyx_string_tab[170]
+#define __pyx_n_u_test __pyx_string_tab[171]
+#define __pyx_n_u_u_x __pyx_string_tab[172]
+#define __pyx_n_u_u_y __pyx_string_tab[173]
+#define __pyx_n_u_u_z __pyx_string_tab[174]
+#define __pyx_n_u_unpack __pyx_string_tab[175]
+#define __pyx_n_u_update __pyx_string_tab[176]
+#define __pyx_n_u_v0 __pyx_string_tab[177]
+#define __pyx_n_u_v00_0 __pyx_string_tab[178]
+#define __pyx_n_u_v00_1 __pyx_string_tab[179]
+#define __pyx_n_u_v01_0 __pyx_string_tab[180]
+#define __pyx_n_u_v01_1 __pyx_string_tab[181]
+#define __pyx_n_u_v1 __pyx_string_tab[182]
+#define __pyx_n_u_v10_0 __pyx_string_tab[183]
+#define __pyx_n_u_v10_1 __pyx_string_tab[184]
+#define __pyx_n_u_v11_0 __pyx_string_tab[185]
+#define __pyx_n_u_v11_1 __pyx_string_tab[186]
+#define __pyx_n_u_values __pyx_string_tab[187]
+#define __pyx_n_u_w __pyx_string_tab[188]
+#define __pyx_n_u_x __pyx_string_tab[189]
+#define __pyx_n_u_x_f __pyx_string_tab[190]
+#define __pyx_n_u_x_frac __pyx_string_tab[191]
+#define __pyx_n_u_x_hi __pyx_string_tab[192]
+#define __pyx_n_u_x_lo __pyx_string_tab[193]
+#define __pyx_n_u_y_f __pyx_string_tab[194]
+#define __pyx_n_u_y_frac __pyx_string_tab[195]
+#define __pyx_n_u_y_hi __pyx_string_tab[196]
+#define __pyx_n_u_y_lo __pyx_string_tab[197]
+#define __pyx_kp_b_iso88591_F_F_F_F_F_vV1Cs_6_q_3a_j_vV1Cs __pyx_string_tab[198]
+#define __pyx_kp_b_iso88591_P_uG3b_D_V1A_AWF_A_uG3b_D_V1A_A __pyx_string_tab[199]
+#define __pyx_kp_b_iso88591_V1A_V1A_fAQ_fAQ_uF_3c_3e6_S_j_v __pyx_string_tab[200]
+#define __pyx_kp_b_iso88591_V1A_V1A_fAQ_fAQ_uF_3c_3e6_S_j_v_2 __pyx_string_tab[201]
+#define __pyx_kp_b_iso88591_V1A_V1A_fAQ_uF_3c_3e6_S_j_vV1Cs __pyx_string_tab[202]
+#define __pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5 __pyx_string_tab[203]
+#define __pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5_2 __pyx_string_tab[204]
+#define __pyx_kp_b_iso88591_V1A_fAQ_uF_3c_j_vV1Cs_j_t5_aq_A __pyx_string_tab[205]
+#define __pyx_kp_b_iso88591_vWCr_T_vQa_QhfBa_vWCr_T_vQa_Qhf __pyx_string_tab[206]
+#define __pyx_n_b_O __pyx_string_tab[207]
 #define __pyx_int_0 __pyx_number_tab[0]
 #define __pyx_int_neg_1 __pyx_number_tab[1]
 #define __pyx_int_1 __pyx_number_tab[2]
@@ -3801,8 +3772,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<8; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<218; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<9; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<208; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<4; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -3852,8 +3823,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<8; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<218; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<9; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<208; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<4; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -18855,499 +18826,45 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":33
- * # Inline Helpers
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":14
+ * # Single channel version
  * # =============================================================================
- * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """Wrap hue to [0, 360)."""
- *     h = fmod(h, 360.0)
-*/
-
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h) {
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_r;
-  int __pyx_t_1;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":35
- * cdef inline f64 wrap_hue(f64 h) noexcept nogil:
- *     """Wrap hue to [0, 360)."""
- *     h = fmod(h, 360.0)             # <<<<<<<<<<<<<<
- *     if h < 0.0:
- *         h += 360.0
-*/
-  __pyx_v_h = fmod(__pyx_v_h, 360.0);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":36
- *     """Wrap hue to [0, 360)."""
- *     h = fmod(h, 360.0)
- *     if h < 0.0:             # <<<<<<<<<<<<<<
- *         h += 360.0
- *     return h
-*/
-  __pyx_t_1 = (__pyx_v_h < 0.0);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":37
- *     h = fmod(h, 360.0)
- *     if h < 0.0:
- *         h += 360.0             # <<<<<<<<<<<<<<
- *     return h
- * 
-*/
-    __pyx_v_h = (__pyx_v_h + 360.0);
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":36
- *     """Wrap hue to [0, 360)."""
- *     h = fmod(h, 360.0)
- *     if h < 0.0:             # <<<<<<<<<<<<<<
- *         h += 360.0
- *     return h
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":38
- *     if h < 0.0:
- *         h += 360.0
- *     return h             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __pyx_r = __pyx_v_h;
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":33
- * # Inline Helpers
- * # =============================================================================
- * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """Wrap hue to [0, 360)."""
- *     h = fmod(h, 360.0)
-*/
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":41
- * 
- * 
- * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """
- *     Adjust h1 relative to h0 based on interpolation mode.
-*/
-
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1, int __pyx_v_mode) {
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_d;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_r;
-  int __pyx_t_1;
-  int __pyx_t_2;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":46
- *     Returns adjusted h1 (may be outside [0, 360)).
- *     """
- *     cdef f64 d = h1 - h0             # <<<<<<<<<<<<<<
- * 
- *     if mode == HUE_CW:
-*/
-  __pyx_v_d = (__pyx_v_h1 - __pyx_v_h0);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":48
- *     cdef f64 d = h1 - h0
- * 
- *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
- *         # Clockwise: ensure h1 > h0
- *         if h0 >= h1:
-*/
-  switch (__pyx_v_mode) {
-    case 0:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":50
- *     if mode == HUE_CW:
- *         # Clockwise: ensure h1 > h0
- *         if h0 >= h1:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    __pyx_t_1 = (__pyx_v_h0 >= __pyx_v_h1);
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":51
- *         # Clockwise: ensure h1 > h0
- *         if h0 >= h1:
- *             return h1 + 360.0             # <<<<<<<<<<<<<<
- *         return h1
- * 
-*/
-      __pyx_r = (__pyx_v_h1 + 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":50
- *     if mode == HUE_CW:
- *         # Clockwise: ensure h1 > h0
- *         if h0 >= h1:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":52
- *         if h0 >= h1:
- *             return h1 + 360.0
- *         return h1             # <<<<<<<<<<<<<<
- * 
- *     elif mode == HUE_CCW:
-*/
-    __pyx_r = __pyx_v_h1;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":48
- *     cdef f64 d = h1 - h0
- * 
- *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
- *         # Clockwise: ensure h1 > h0
- *         if h0 >= h1:
-*/
-    break;
-    case 1:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":56
- *     elif mode == HUE_CCW:
- *         # Counterclockwise: ensure h1 < h0
- *         if h0 <= h1:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         return h1
-*/
-    __pyx_t_1 = (__pyx_v_h0 <= __pyx_v_h1);
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":57
- *         # Counterclockwise: ensure h1 < h0
- *         if h0 <= h1:
- *             return h1 - 360.0             # <<<<<<<<<<<<<<
- *         return h1
- * 
-*/
-      __pyx_r = (__pyx_v_h1 - 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":56
- *     elif mode == HUE_CCW:
- *         # Counterclockwise: ensure h1 < h0
- *         if h0 <= h1:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         return h1
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":58
- *         if h0 <= h1:
- *             return h1 - 360.0
- *         return h1             # <<<<<<<<<<<<<<
- * 
- *     elif mode == HUE_SHORTEST:
-*/
-    __pyx_r = __pyx_v_h1;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":54
- *         return h1
- * 
- *     elif mode == HUE_CCW:             # <<<<<<<<<<<<<<
- *         # Counterclockwise: ensure h1 < h0
- *         if h0 <= h1:
-*/
-    break;
-    case 2:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":62
- *     elif mode == HUE_SHORTEST:
- *         # Shortest path: |d| <= 180
- *         if d > 180.0:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         elif d < -180.0:
-*/
-    __pyx_t_1 = (__pyx_v_d > 180.0);
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":63
- *         # Shortest path: |d| <= 180
- *         if d > 180.0:
- *             return h1 - 360.0             # <<<<<<<<<<<<<<
- *         elif d < -180.0:
- *             return h1 + 360.0
-*/
-      __pyx_r = (__pyx_v_h1 - 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":62
- *     elif mode == HUE_SHORTEST:
- *         # Shortest path: |d| <= 180
- *         if d > 180.0:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         elif d < -180.0:
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":64
- *         if d > 180.0:
- *             return h1 - 360.0
- *         elif d < -180.0:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    __pyx_t_1 = (__pyx_v_d < -180.0);
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":65
- *             return h1 - 360.0
- *         elif d < -180.0:
- *             return h1 + 360.0             # <<<<<<<<<<<<<<
- *         return h1
- * 
-*/
-      __pyx_r = (__pyx_v_h1 + 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":64
- *         if d > 180.0:
- *             return h1 - 360.0
- *         elif d < -180.0:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":66
- *         elif d < -180.0:
- *             return h1 + 360.0
- *         return h1             # <<<<<<<<<<<<<<
- * 
- *     elif mode == HUE_LONGEST:
-*/
-    __pyx_r = __pyx_v_h1;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":60
- *         return h1
- * 
- *     elif mode == HUE_SHORTEST:             # <<<<<<<<<<<<<<
- *         # Shortest path: |d| <= 180
- *         if d > 180.0:
-*/
-    break;
-    case 3:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":70
- *     elif mode == HUE_LONGEST:
- *         # Longest path: |d| >= 180
- *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         elif d < 0.0 and d > -180.0:
-*/
-    __pyx_t_2 = (__pyx_v_d >= 0.0);
-    if (__pyx_t_2) {
-    } else {
-      __pyx_t_1 = __pyx_t_2;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_2 = (__pyx_v_d < 180.0);
-    __pyx_t_1 = __pyx_t_2;
-    __pyx_L7_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":71
- *         # Longest path: |d| >= 180
- *         if d >= 0.0 and d < 180.0:
- *             return h1 - 360.0             # <<<<<<<<<<<<<<
- *         elif d < 0.0 and d > -180.0:
- *             return h1 + 360.0
-*/
-      __pyx_r = (__pyx_v_h1 - 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":70
- *     elif mode == HUE_LONGEST:
- *         # Longest path: |d| >= 180
- *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
- *             return h1 - 360.0
- *         elif d < 0.0 and d > -180.0:
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":72
- *         if d >= 0.0 and d < 180.0:
- *             return h1 - 360.0
- *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    __pyx_t_2 = (__pyx_v_d < 0.0);
-    if (__pyx_t_2) {
-    } else {
-      __pyx_t_1 = __pyx_t_2;
-      goto __pyx_L9_bool_binop_done;
-    }
-    __pyx_t_2 = (__pyx_v_d > -180.0);
-    __pyx_t_1 = __pyx_t_2;
-    __pyx_L9_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":73
- *             return h1 - 360.0
- *         elif d < 0.0 and d > -180.0:
- *             return h1 + 360.0             # <<<<<<<<<<<<<<
- *         return h1
- * 
-*/
-      __pyx_r = (__pyx_v_h1 + 360.0);
-      goto __pyx_L0;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":72
- *         if d >= 0.0 and d < 180.0:
- *             return h1 - 360.0
- *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
- *             return h1 + 360.0
- *         return h1
-*/
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":74
- *         elif d < 0.0 and d > -180.0:
- *             return h1 + 360.0
- *         return h1             # <<<<<<<<<<<<<<
- * 
- *     # Default: no adjustment
-*/
-    __pyx_r = __pyx_v_h1;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":68
- *         return h1
- * 
- *     elif mode == HUE_LONGEST:             # <<<<<<<<<<<<<<
- *         # Longest path: |d| >= 180
- *         if d >= 0.0 and d < 180.0:
-*/
-    break;
-    default: break;
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":77
- * 
- *     # Default: no adjustment
- *     return h1             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __pyx_r = __pyx_v_h1;
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":41
- * 
- * 
- * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """
- *     Adjust h1 relative to h0 based on interpolation mode.
-*/
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":80
- * 
- * 
- * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """Lerp between two hues with mode, returning wrapped result."""
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u, int __pyx_v_mode) {
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_result;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_r;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":82
- * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:
- *     """Lerp between two hues with mode, returning wrapped result."""
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *     cdef f64 result = h0 + u * (h1_adj - h0)
- *     return wrap_hue(result)
-*/
-  __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":83
- *     """Lerp between two hues with mode, returning wrapped result."""
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
- *     cdef f64 result = h0 + u * (h1_adj - h0)             # <<<<<<<<<<<<<<
- *     return wrap_hue(result)
- * 
-*/
-  __pyx_v_result = (__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0)));
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":84
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
- *     cdef f64 result = h0 + u * (h1_adj - h0)
- *     return wrap_hue(result)             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __pyx_r = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue(__pyx_v_result);
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":80
- * 
- * 
- * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
- *     """Lerp between two hues with mode, returning wrapped result."""
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":90
- * # 1D Hue Interpolation: coeffs (L, N), modes (N,) -> output (L,)
- * # =============================================================================
- * def hue_lerp_1d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
+ * def lerp_between_lines_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=1] line0,
+ *     np.ndarray[f64, ndim=1] line1,
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_1hue_lerp_1d_spatial(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_1lerp_between_lines_1ch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_hue_lerp_1d_spatial, "\n    Multi-dimensional hue interpolation over 1D spatial grid.\n    \n    Args:\n        starts: Corner start values, shape (2^{N-1},)\n        ends: Corner end values, shape (2^{N-1},)\n        coeffs: Interpolation coefficients, shape (L, N)\n        modes: Interpolation mode per dimension, shape (N,)\n               0=CW, 1=CCW, 2=SHORTEST, 3=LONGEST\n    \n    Returns:\n        Interpolated hues, shape (L,), values in [0, 360)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_1hue_lerp_1d_spatial = {"hue_lerp_1d_spatial", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_1hue_lerp_1d_spatial, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_hue_lerp_1d_spatial};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_1hue_lerp_1d_spatial(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_lerp_between_lines_1ch, "\n    Interpolate between two 1D lines using a 2D grid of (u_x, u_y) coordinates.\n    \n    Args:\n        line0: First line, shape (L,)\n        line1: Second line, shape (L,)\n        coords: Coordinate grid, shape (H, W, 2)\n                coords[h, w, 0] = u_x (position along lines, 0-1)\n                coords[h, w, 1] = u_y (blend factor between lines, 0-1)\n    \n    Returns:\n        Interpolated values, shape (H, W)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_1lerp_between_lines_1ch = {"lerp_between_lines_1ch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_1lerp_between_lines_1ch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_lerp_between_lines_1ch};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_1lerp_between_lines_1ch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  PyArrayObject *__pyx_v_starts = 0;
-  PyArrayObject *__pyx_v_ends = 0;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  PyArrayObject *__pyx_v_modes = 0;
+  PyArrayObject *__pyx_v_line0 = 0;
+  PyArrayObject *__pyx_v_line1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_1d_spatial (wrapper)", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_1ch (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -19357,70 +18874,62 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_starts,&__pyx_mstate_global->__pyx_n_u_ends,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_modes,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 90, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 14, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 90, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 90, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 90, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 90, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_1d_spatial", 0) < (0)) __PYX_ERR(0, 90, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_1d_spatial", 1, 4, 4, i); __PYX_ERR(0, 90, __pyx_L3_error) }
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_1ch", 0) < (0)) __PYX_ERR(0, 14, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_1ch", 1, 3, 3, i); __PYX_ERR(0, 14, __pyx_L3_error) }
       }
-    } else if (unlikely(__pyx_nargs != 4)) {
+    } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 90, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 90, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 90, __pyx_L3_error)
-      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 90, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
     }
-    __pyx_v_starts = ((PyArrayObject *)values[0]);
-    __pyx_v_ends = ((PyArrayObject *)values[1]);
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    __pyx_v_modes = ((PyArrayObject *)values[3]);
+    __pyx_v_line0 = ((PyArrayObject *)values[0]);
+    __pyx_v_line1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_1d_spatial", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 90, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_1ch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 14, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_1d_spatial", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 91, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 92, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 93, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "modes", 0))) __PYX_ERR(0, 94, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_hue_lerp_1d_spatial(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs, __pyx_v_modes);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_lerp_between_lines_1ch(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -19439,41 +18948,34 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_hue_lerp_1d_spatial(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes) {
-  Py_ssize_t __pyx_v_num_points;
-  Py_ssize_t __pyx_v_num_dims;
-  Py_ssize_t __pyx_v_num_corners;
-  __Pyx_memviewslice __pyx_v_starts_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_ends_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_coeffs_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_modes_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyArrayObject *__pyx_v_result = 0;
-  __Pyx_memviewslice __pyx_v_result_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_p;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_j;
-  Py_ssize_t __pyx_v_half;
-  Py_ssize_t __pyx_v_curr_size;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  int __pyx_v_mode;
-  Py_ssize_t __pyx_v_MAX_CORNERS;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_a_stack[256];
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_b_stack[256];
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *__pyx_v_a;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *__pyx_v_b;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
-  __Pyx_Buffer __pyx_pybuffer_coeffs;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_ends;
-  __Pyx_Buffer __pyx_pybuffer_ends;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_modes;
-  __Pyx_Buffer __pyx_pybuffer_modes;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_result;
-  __Pyx_Buffer __pyx_pybuffer_result;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_starts;
-  __Pyx_Buffer __pyx_pybuffer_starts;
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_lerp_between_lines_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
+  Py_ssize_t __pyx_v_L;
+  Py_ssize_t __pyx_v_H;
+  Py_ssize_t __pyx_v_W;
+  __Pyx_memviewslice __pyx_v_l0 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_l1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyArrayObject *__pyx_v_out = 0;
+  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_v_h;
+  Py_ssize_t __pyx_v_w;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
+  __Pyx_Buffer __pyx_pybuffer_coords;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
+  __Pyx_Buffer __pyx_pybuffer_line0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line1;
+  __Pyx_Buffer __pyx_pybuffer_line1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -19489,9 +18991,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   PyObject *__pyx_t_11 = NULL;
   __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_14 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_14 = NULL;
   PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
+  __Pyx_memviewslice __pyx_t_16 = { 0, 0, { 0 }, { 0 }, { 0 } };
   Py_ssize_t __pyx_t_17;
   Py_ssize_t __pyx_t_18;
   Py_ssize_t __pyx_t_19;
@@ -19501,1613 +19003,178 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   Py_ssize_t __pyx_t_23;
   Py_ssize_t __pyx_t_24;
   Py_ssize_t __pyx_t_25;
-  Py_ssize_t __pyx_t_26;
-  Py_ssize_t __pyx_t_27;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_1d_spatial", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_starts);
-  __Pyx_INCREF((PyObject *)__pyx_v_ends);
-  __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_INCREF((PyObject *)__pyx_v_modes);
-  __pyx_pybuffer_result.pybuffer.buf = NULL;
-  __pyx_pybuffer_result.refcount = 0;
-  __pyx_pybuffernd_result.data = NULL;
-  __pyx_pybuffernd_result.rcbuffer = &__pyx_pybuffer_result;
-  __pyx_pybuffer_starts.pybuffer.buf = NULL;
-  __pyx_pybuffer_starts.refcount = 0;
-  __pyx_pybuffernd_starts.data = NULL;
-  __pyx_pybuffernd_starts.rcbuffer = &__pyx_pybuffer_starts;
-  __pyx_pybuffer_ends.pybuffer.buf = NULL;
-  __pyx_pybuffer_ends.refcount = 0;
-  __pyx_pybuffernd_ends.data = NULL;
-  __pyx_pybuffernd_ends.rcbuffer = &__pyx_pybuffer_ends;
-  __pyx_pybuffer_coeffs.pybuffer.buf = NULL;
-  __pyx_pybuffer_coeffs.refcount = 0;
-  __pyx_pybuffernd_coeffs.data = NULL;
-  __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
-  __pyx_pybuffer_modes.pybuffer.buf = NULL;
-  __pyx_pybuffer_modes.refcount = 0;
-  __pyx_pybuffernd_modes.data = NULL;
-  __pyx_pybuffernd_modes.rcbuffer = &__pyx_pybuffer_modes;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 90, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 90, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 90, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 90, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0];
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":109
- *         Interpolated hues, shape (L,), values in [0, 360)
- *     """
- *     cdef Py_ssize_t num_points = coeffs.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t num_dims = coeffs.shape[1]
- *     cdef Py_ssize_t num_corners = starts.shape[0]
-*/
-  __pyx_v_num_points = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":110
- *     """
- *     cdef Py_ssize_t num_points = coeffs.shape[0]
- *     cdef Py_ssize_t num_dims = coeffs.shape[1]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t num_corners = starts.shape[0]
- * 
-*/
-  __pyx_v_num_dims = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[1]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":111
- *     cdef Py_ssize_t num_points = coeffs.shape[0]
- *     cdef Py_ssize_t num_dims = coeffs.shape[1]
- *     cdef Py_ssize_t num_corners = starts.shape[0]             # <<<<<<<<<<<<<<
- * 
- *     if ends.shape[0] != num_corners:
-*/
-  __pyx_v_num_corners = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_starts))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":113
- *     cdef Py_ssize_t num_corners = starts.shape[0]
- * 
- *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
-*/
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_ends))[0]) != __pyx_v_num_corners);
-  if (unlikely(__pyx_t_1)) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":114
- * 
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")             # <<<<<<<<<<<<<<
- *     if modes.shape[0] != num_dims:
- *         raise ValueError("modes must have length equal to num dimensions")
-*/
-    __pyx_t_3 = NULL;
-    __pyx_t_4 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_starts_and_ends_must_have_same_l};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 114, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":113
- *     cdef Py_ssize_t num_corners = starts.shape[0]
- * 
- *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":115
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes must have length equal to num dimensions")
- *     if num_corners != (1 << (num_dims - 1)) * 2:
-*/
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_modes))[0]) != __pyx_v_num_dims);
-  if (unlikely(__pyx_t_1)) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":116
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
- *         raise ValueError("modes must have length equal to num dimensions")             # <<<<<<<<<<<<<<
- *     if num_corners != (1 << (num_dims - 1)) * 2:
- *         # Actually num_corners should be 2^{n-1} for each of starts and ends
-*/
-    __pyx_t_3 = NULL;
-    __pyx_t_4 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_modes_must_have_length_equal_to};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 116, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":115
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes must have length equal to num dimensions")
- *     if num_corners != (1 << (num_dims - 1)) * 2:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":117
- *     if modes.shape[0] != num_dims:
- *         raise ValueError("modes must have length equal to num dimensions")
- *     if num_corners != (1 << (num_dims - 1)) * 2:             # <<<<<<<<<<<<<<
- *         # Actually num_corners should be 2^{n-1} for each of starts and ends
- *         # but they're passed as the two halves... let me reconsider
-*/
-  __pyx_t_1 = (__pyx_v_num_corners != ((1 << (__pyx_v_num_dims - 1)) * 2));
-  if (__pyx_t_1) {
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":123
- * 
- *     # Ensure contiguous
- *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
-*/
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = (!__pyx_t_1);
-  if (__pyx_t_5) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":124
- *     # Ensure contiguous
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)             # <<<<<<<<<<<<<<
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
-*/
-    __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_7);
-      assert(__pyx_t_2);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_2, ((PyObject *)__pyx_v_starts)};
-      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-    }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 124, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-        }
-        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
-      }
-      __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_3));
-    __pyx_t_3 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":123
- * 
- *     # Ensure contiguous
- *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":125
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
-*/
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 125, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = (!__pyx_t_5);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":126
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)             # <<<<<<<<<<<<<<
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
-*/
-    __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 126, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_6);
-      assert(__pyx_t_3);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_6);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_6, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_ends)};
-      __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 126, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-    }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 126, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-        }
-        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
-      }
-      __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 126, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_7));
-    __pyx_t_7 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":125
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":127
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
-*/
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_5 = (!__pyx_t_1);
-  if (__pyx_t_5) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":128
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)             # <<<<<<<<<<<<<<
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)
-*/
-    __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
-      assert(__pyx_t_7);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_7);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coeffs)};
-      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-    }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 128, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-        }
-        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
-      }
-      __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 128, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_6));
-    __pyx_t_6 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":127
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":129
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
- * 
-*/
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 129, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = (!__pyx_t_5);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":130
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)             # <<<<<<<<<<<<<<
- * 
- *     cdef f64[::1] starts_mv = starts
-*/
-    __pyx_t_6 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_3);
-      assert(__pyx_t_6);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_6);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, ((PyObject *)__pyx_v_modes)};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 130, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_2), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-        }
-        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
-      }
-      __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 130, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_modes, ((PyArrayObject *)__pyx_t_2));
-    __pyx_t_2 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":129
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
- * 
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":132
- *         modes = np.ascontiguousarray(modes)
- * 
- *     cdef f64[::1] starts_mv = starts             # <<<<<<<<<<<<<<
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, ::1] coeffs_mv = coeffs
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 132, __pyx_L1_error)
-  __pyx_v_starts_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":133
- * 
- *     cdef f64[::1] starts_mv = starts
- *     cdef f64[::1] ends_mv = ends             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] coeffs_mv = coeffs
- *     cdef i32[::1] modes_mv = modes
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __pyx_v_ends_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":134
- *     cdef f64[::1] starts_mv = starts
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, ::1] coeffs_mv = coeffs             # <<<<<<<<<<<<<<
- *     cdef i32[::1] modes_mv = modes
- * 
-*/
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __pyx_v_coeffs_mv = __pyx_t_13;
-  __pyx_t_13.memview = NULL;
-  __pyx_t_13.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":135
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, ::1] coeffs_mv = coeffs
- *     cdef i32[::1] modes_mv = modes             # <<<<<<<<<<<<<<
- * 
- *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)
-*/
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(((PyObject *)__pyx_v_modes), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __pyx_v_modes_mv = __pyx_t_14;
-  __pyx_t_14.memview = NULL;
-  __pyx_t_14.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":137
- *     cdef i32[::1] modes_mv = modes
- * 
- *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef f64[::1] result_mv = result
- * 
-*/
-  __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_num_points); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_16);
-  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_4 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
-    assert(__pyx_t_3);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-    __Pyx_INCREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-    __pyx_t_4 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_6};
-    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 137, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_15);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_16, __pyx_t_15, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 137, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-  }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 137, __pyx_L1_error)
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_2), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-      __pyx_v_result = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_result.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 137, __pyx_L1_error)
-    } else {__pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
-    }
-  }
-  __pyx_v_result = ((PyArrayObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":138
- * 
- *     cdef np.ndarray[f64, ndim=1] result = np.empty(num_points, dtype=np.float64)
- *     cdef f64[::1] result_mv = result             # <<<<<<<<<<<<<<
- * 
- *     cdef Py_ssize_t p, i, j, half, curr_size
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 138, __pyx_L1_error)
-  __pyx_v_result_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":145
- * 
- *     # Working buffers
- *     cdef Py_ssize_t MAX_CORNERS = 256             # <<<<<<<<<<<<<<
- *     cdef f64 a_stack[256]
- *     cdef f64 b_stack[256]
-*/
-  __pyx_v_MAX_CORNERS = 0x100;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":148
- *     cdef f64 a_stack[256]
- *     cdef f64 b_stack[256]
- *     cdef f64* a = NULL             # <<<<<<<<<<<<<<
- *     cdef f64* b = NULL
- * 
-*/
-  __pyx_v_a = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":149
- *     cdef f64 b_stack[256]
- *     cdef f64* a = NULL
- *     cdef f64* b = NULL             # <<<<<<<<<<<<<<
- * 
- *     if num_corners <= MAX_CORNERS:
-*/
-  __pyx_v_b = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":151
- *     cdef f64* b = NULL
- * 
- *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
- *         for p in range(num_points):
- *             # Initialize working buffers
-*/
-  __pyx_t_1 = (__pyx_v_num_corners <= __pyx_v_MAX_CORNERS);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":152
- * 
- *     if num_corners <= MAX_CORNERS:
- *         for p in range(num_points):             # <<<<<<<<<<<<<<
- *             # Initialize working buffers
- *             memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
-*/
-    __pyx_t_17 = __pyx_v_num_points;
-    __pyx_t_18 = __pyx_t_17;
-    for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-      __pyx_v_p = __pyx_t_19;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":154
- *         for p in range(num_points):
- *             # Initialize working buffers
- *             memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *             memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))
- * 
-*/
-      __pyx_t_20 = 0;
-      (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_starts_mv.data) + __pyx_t_20)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":155
- *             # Initialize working buffers
- *             memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
- *             memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- * 
- *             curr_size = num_corners
-*/
-      __pyx_t_20 = 0;
-      (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_ends_mv.data) + __pyx_t_20)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":157
- *             memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))
- * 
- *             curr_size = num_corners             # <<<<<<<<<<<<<<
- * 
- *             for i in range(num_dims):
-*/
-      __pyx_v_curr_size = __pyx_v_num_corners;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":159
- *             curr_size = num_corners
- * 
- *             for i in range(num_dims):             # <<<<<<<<<<<<<<
- *                 u = coeffs_mv[p, i]
- *                 mode = modes_mv[i]
-*/
-      __pyx_t_21 = __pyx_v_num_dims;
-      __pyx_t_22 = __pyx_t_21;
-      for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
-        __pyx_v_i = __pyx_t_23;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":160
- * 
- *             for i in range(num_dims):
- *                 u = coeffs_mv[p, i]             # <<<<<<<<<<<<<<
- *                 mode = modes_mv[i]
- * 
-*/
-        __pyx_t_20 = __pyx_v_p;
-        __pyx_t_24 = __pyx_v_i;
-        __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_20 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_24)) )));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":161
- *             for i in range(num_dims):
- *                 u = coeffs_mv[p, i]
- *                 mode = modes_mv[i]             # <<<<<<<<<<<<<<
- * 
- *                 # Lerp each pair with hue mode
-*/
-        __pyx_t_24 = __pyx_v_i;
-        __pyx_v_mode = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) __pyx_v_modes_mv.data) + __pyx_t_24)) )));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":164
- * 
- *                 # Lerp each pair with hue mode
- *                 for j in range(curr_size):             # <<<<<<<<<<<<<<
- *                     h0 = a_stack[j]
- *                     h1 = b_stack[j]
-*/
-        __pyx_t_25 = __pyx_v_curr_size;
-        __pyx_t_26 = __pyx_t_25;
-        for (__pyx_t_27 = 0; __pyx_t_27 < __pyx_t_26; __pyx_t_27+=1) {
-          __pyx_v_j = __pyx_t_27;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":165
- *                 # Lerp each pair with hue mode
- *                 for j in range(curr_size):
- *                     h0 = a_stack[j]             # <<<<<<<<<<<<<<
- *                     h1 = b_stack[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-          __pyx_v_h0 = (__pyx_v_a_stack[__pyx_v_j]);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":166
- *                 for j in range(curr_size):
- *                     h0 = a_stack[j]
- *                     h1 = b_stack[j]             # <<<<<<<<<<<<<<
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                     a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-          __pyx_v_h1 = (__pyx_v_b_stack[__pyx_v_j]);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":167
- *                     h0 = a_stack[j]
- *                     h1 = b_stack[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *                     a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
-*/
-          __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":168
- *                     h1 = b_stack[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                     a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
- * 
- *                 # Split for next iteration
-*/
-          (__pyx_v_a_stack[__pyx_v_j]) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
-        }
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":171
- * 
- *                 # Split for next iteration
- *                 if curr_size > 1:             # <<<<<<<<<<<<<<
- *                     half = curr_size >> 1
- *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
-*/
-        __pyx_t_1 = (__pyx_v_curr_size > 1);
-        if (__pyx_t_1) {
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":172
- *                 # Split for next iteration
- *                 if curr_size > 1:
- *                     half = curr_size >> 1             # <<<<<<<<<<<<<<
- *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
- *                     curr_size = half
-*/
-          __pyx_v_half = (__pyx_v_curr_size >> 1);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":173
- *                 if curr_size > 1:
- *                     half = curr_size >> 1
- *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))             # <<<<<<<<<<<<<<
- *                     curr_size = half
- * 
-*/
-          (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":174
- *                     half = curr_size >> 1
- *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
- *                     curr_size = half             # <<<<<<<<<<<<<<
- * 
- *             result_mv[p] = a_stack[0]
-*/
-          __pyx_v_curr_size = __pyx_v_half;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":171
- * 
- *                 # Split for next iteration
- *                 if curr_size > 1:             # <<<<<<<<<<<<<<
- *                     half = curr_size >> 1
- *                     memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
-*/
-        }
-      }
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":176
- *                     curr_size = half
- * 
- *             result_mv[p] = a_stack[0]             # <<<<<<<<<<<<<<
- * 
- *         return result
-*/
-      __pyx_t_24 = __pyx_v_p;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_result_mv.data) + __pyx_t_24)) )) = (__pyx_v_a_stack[0]);
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":178
- *             result_mv[p] = a_stack[0]
- * 
- *         return result             # <<<<<<<<<<<<<<
- * 
- *     # Heap fallback for large corner counts
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF((PyObject *)__pyx_v_result);
-    __pyx_r = ((PyObject *)__pyx_v_result);
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":151
- *     cdef f64* b = NULL
- * 
- *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
- *         for p in range(num_points):
- *             # Initialize working buffers
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":181
- * 
- *     # Heap fallback for large corner counts
- *     a = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:
-*/
-  __pyx_v_a = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":182
- *     # Heap fallback for large corner counts
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)
-*/
-  __pyx_v_b = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":183
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
-*/
-  __pyx_t_5 = (__pyx_v_a == NULL);
-  if (!__pyx_t_5) {
-  } else {
-    __pyx_t_1 = __pyx_t_5;
-    goto __pyx_L19_bool_binop_done;
-  }
-  __pyx_t_5 = (__pyx_v_b == NULL);
-  __pyx_t_1 = __pyx_t_5;
-  __pyx_L19_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":184
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)             # <<<<<<<<<<<<<<
- *         if b != NULL: free(b)
- *         raise MemoryError("Failed to allocate working buffers")
-*/
-    __pyx_t_1 = (__pyx_v_a != NULL);
-    if (__pyx_t_1) {
-      free(__pyx_v_a);
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":185
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)             # <<<<<<<<<<<<<<
- *         raise MemoryError("Failed to allocate working buffers")
- * 
-*/
-    __pyx_t_1 = (__pyx_v_b != NULL);
-    if (__pyx_t_1) {
-      free(__pyx_v_b);
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":186
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
- *         raise MemoryError("Failed to allocate working buffers")             # <<<<<<<<<<<<<<
- * 
- *     try:
-*/
-    __pyx_t_7 = NULL;
-    __pyx_t_4 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_mstate_global->__pyx_kp_u_Failed_to_allocate_working_buffe};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_MemoryError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 186, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":183
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":188
- *         raise MemoryError("Failed to allocate working buffers")
- * 
- *     try:             # <<<<<<<<<<<<<<
- *         for p in range(num_points):
- *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
-*/
-  /*try:*/ {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":189
- * 
- *     try:
- *         for p in range(num_points):             # <<<<<<<<<<<<<<
- *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
- *             memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
-*/
-    __pyx_t_17 = __pyx_v_num_points;
-    __pyx_t_18 = __pyx_t_17;
-    for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-      __pyx_v_p = __pyx_t_19;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":190
- *     try:
- *         for p in range(num_points):
- *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *             memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
- * 
-*/
-      __pyx_t_24 = 0;
-      (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_starts_mv.data) + __pyx_t_24)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":191
- *         for p in range(num_points):
- *             memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
- *             memcpy(b, &ends_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- * 
- *             curr_size = num_corners
-*/
-      __pyx_t_24 = 0;
-      (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_ends_mv.data) + __pyx_t_24)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":193
- *             memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
- * 
- *             curr_size = num_corners             # <<<<<<<<<<<<<<
- * 
- *             for i in range(num_dims):
-*/
-      __pyx_v_curr_size = __pyx_v_num_corners;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":195
- *             curr_size = num_corners
- * 
- *             for i in range(num_dims):             # <<<<<<<<<<<<<<
- *                 u = coeffs_mv[p, i]
- *                 mode = modes_mv[i]
-*/
-      __pyx_t_21 = __pyx_v_num_dims;
-      __pyx_t_22 = __pyx_t_21;
-      for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
-        __pyx_v_i = __pyx_t_23;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":196
- * 
- *             for i in range(num_dims):
- *                 u = coeffs_mv[p, i]             # <<<<<<<<<<<<<<
- *                 mode = modes_mv[i]
- * 
-*/
-        __pyx_t_24 = __pyx_v_p;
-        __pyx_t_20 = __pyx_v_i;
-        __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_24 * __pyx_v_coeffs_mv.strides[0]) )) + __pyx_t_20)) )));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":197
- *             for i in range(num_dims):
- *                 u = coeffs_mv[p, i]
- *                 mode = modes_mv[i]             # <<<<<<<<<<<<<<
- * 
- *                 for j in range(curr_size):
-*/
-        __pyx_t_20 = __pyx_v_i;
-        __pyx_v_mode = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) __pyx_v_modes_mv.data) + __pyx_t_20)) )));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":199
- *                 mode = modes_mv[i]
- * 
- *                 for j in range(curr_size):             # <<<<<<<<<<<<<<
- *                     h0 = a[j]
- *                     h1 = b[j]
-*/
-        __pyx_t_25 = __pyx_v_curr_size;
-        __pyx_t_26 = __pyx_t_25;
-        for (__pyx_t_27 = 0; __pyx_t_27 < __pyx_t_26; __pyx_t_27+=1) {
-          __pyx_v_j = __pyx_t_27;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":200
- * 
- *                 for j in range(curr_size):
- *                     h0 = a[j]             # <<<<<<<<<<<<<<
- *                     h1 = b[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-          __pyx_v_h0 = (__pyx_v_a[__pyx_v_j]);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":201
- *                 for j in range(curr_size):
- *                     h0 = a[j]
- *                     h1 = b[j]             # <<<<<<<<<<<<<<
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                     a[j] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-          __pyx_v_h1 = (__pyx_v_b[__pyx_v_j]);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":202
- *                     h0 = a[j]
- *                     h1 = b[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *                     a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
-*/
-          __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":203
- *                     h1 = b[j]
- *                     h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                     a[j] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
- * 
- *                 if curr_size > 1:
-*/
-          (__pyx_v_a[__pyx_v_j]) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
-        }
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":205
- *                     a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                 if curr_size > 1:             # <<<<<<<<<<<<<<
- *                     half = curr_size >> 1
- *                     memcpy(b, a + half, half * sizeof(f64))
-*/
-        __pyx_t_1 = (__pyx_v_curr_size > 1);
-        if (__pyx_t_1) {
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":206
- * 
- *                 if curr_size > 1:
- *                     half = curr_size >> 1             # <<<<<<<<<<<<<<
- *                     memcpy(b, a + half, half * sizeof(f64))
- *                     curr_size = half
-*/
-          __pyx_v_half = (__pyx_v_curr_size >> 1);
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":207
- *                 if curr_size > 1:
- *                     half = curr_size >> 1
- *                     memcpy(b, a + half, half * sizeof(f64))             # <<<<<<<<<<<<<<
- *                     curr_size = half
- * 
-*/
-          (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":208
- *                     half = curr_size >> 1
- *                     memcpy(b, a + half, half * sizeof(f64))
- *                     curr_size = half             # <<<<<<<<<<<<<<
- * 
- *             result_mv[p] = a[0]
-*/
-          __pyx_v_curr_size = __pyx_v_half;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":205
- *                     a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                 if curr_size > 1:             # <<<<<<<<<<<<<<
- *                     half = curr_size >> 1
- *                     memcpy(b, a + half, half * sizeof(f64))
-*/
-        }
-      }
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":210
- *                     curr_size = half
- * 
- *             result_mv[p] = a[0]             # <<<<<<<<<<<<<<
- *     finally:
- *         free(a)
-*/
-      __pyx_t_20 = __pyx_v_p;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_result_mv.data) + __pyx_t_20)) )) = (__pyx_v_a[0]);
-    }
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":212
- *             result_mv[p] = a[0]
- *     finally:
- *         free(a)             # <<<<<<<<<<<<<<
- *         free(b)
- * 
-*/
-  /*finally:*/ {
-    /*normal exit:*/{
-      free(__pyx_v_a);
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":213
- *     finally:
- *         free(a)
- *         free(b)             # <<<<<<<<<<<<<<
- * 
- *     return result
-*/
-      free(__pyx_v_b);
-      goto __pyx_L25;
-    }
-    __pyx_L25:;
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":215
- *         free(b)
- * 
- *     return result             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF((PyObject *)__pyx_v_result);
-  __pyx_r = ((PyObject *)__pyx_v_result);
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":90
- * # 1D Hue Interpolation: coeffs (L, N), modes (N,) -> output (L,)
- * # =============================================================================
- * def hue_lerp_1d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_14, 1);
-  __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_XDECREF(__pyx_t_16);
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_1d_spatial", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_starts_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_ends_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_coeffs_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_modes_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_result);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_result_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_starts);
-  __Pyx_XDECREF((PyObject *)__pyx_v_ends);
-  __Pyx_XDECREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_XDECREF((PyObject *)__pyx_v_modes);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":221
- * # 2D Hue Interpolation: coeffs (H, W, N), modes (N,) -> output (H, W)
- * # =============================================================================
- * def hue_lerp_2d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_3hue_lerp_2d_spatial(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_2hue_lerp_2d_spatial, "\n    Multi-dimensional hue interpolation over 2D spatial grid.\n    \n    Args:\n        starts: Corner start values, shape (2^{N-1},)\n        ends: Corner end values, shape (2^{N-1},)\n        coeffs: Interpolation coefficients, shape (H, W, N)\n        modes: Interpolation mode per dimension, shape (N,)\n    \n    Returns:\n        Interpolated hues, shape (H, W), values in [0, 360)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_3hue_lerp_2d_spatial = {"hue_lerp_2d_spatial", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_3hue_lerp_2d_spatial, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_2hue_lerp_2d_spatial};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_3hue_lerp_2d_spatial(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_starts = 0;
-  PyArrayObject *__pyx_v_ends = 0;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  PyArrayObject *__pyx_v_modes = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_2d_spatial (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_starts,&__pyx_mstate_global->__pyx_n_u_ends,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_modes,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 221, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 221, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 221, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 221, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 221, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_2d_spatial", 0) < (0)) __PYX_ERR(0, 221, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_2d_spatial", 1, 4, 4, i); __PYX_ERR(0, 221, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 4)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 221, __pyx_L3_error)
-      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 221, __pyx_L3_error)
-      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 221, __pyx_L3_error)
-      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 221, __pyx_L3_error)
-    }
-    __pyx_v_starts = ((PyArrayObject *)values[0]);
-    __pyx_v_ends = ((PyArrayObject *)values[1]);
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    __pyx_v_modes = ((PyArrayObject *)values[3]);
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_2d_spatial", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 221, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_2d_spatial", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 222, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 223, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 224, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "modes", 0))) __PYX_ERR(0, 225, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_2hue_lerp_2d_spatial(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs, __pyx_v_modes);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  goto __pyx_L7_cleaned_up;
-  __pyx_L0:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __pyx_L7_cleaned_up:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_2hue_lerp_2d_spatial(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes) {
-  Py_ssize_t __pyx_v_H;
-  Py_ssize_t __pyx_v_W;
-  Py_ssize_t __pyx_v_num_dims;
-  Py_ssize_t __pyx_v_num_corners;
-  __Pyx_memviewslice __pyx_v_starts_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_ends_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_coeffs_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_modes_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyArrayObject *__pyx_v_out = 0;
-  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_h;
-  Py_ssize_t __pyx_v_w;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_j;
-  Py_ssize_t __pyx_v_half;
-  Py_ssize_t __pyx_v_curr_size;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  int __pyx_v_mode;
-  Py_ssize_t __pyx_v_MAX_CORNERS;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_a_stack[256];
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_b_stack[256];
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *__pyx_v_a;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *__pyx_v_b;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
-  __Pyx_Buffer __pyx_pybuffer_coeffs;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_ends;
-  __Pyx_Buffer __pyx_pybuffer_ends;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_modes;
-  __Pyx_Buffer __pyx_pybuffer_modes;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
-  __Pyx_Buffer __pyx_pybuffer_out;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_starts;
-  __Pyx_Buffer __pyx_pybuffer_starts;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  size_t __pyx_t_4;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_14 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
-  __Pyx_memviewslice __pyx_t_17 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_18;
-  Py_ssize_t __pyx_t_19;
-  Py_ssize_t __pyx_t_20;
-  Py_ssize_t __pyx_t_21;
-  Py_ssize_t __pyx_t_22;
-  Py_ssize_t __pyx_t_23;
-  Py_ssize_t __pyx_t_24;
-  Py_ssize_t __pyx_t_25;
-  Py_ssize_t __pyx_t_26;
-  Py_ssize_t __pyx_t_27;
-  Py_ssize_t __pyx_t_28;
-  Py_ssize_t __pyx_t_29;
-  Py_ssize_t __pyx_t_30;
-  Py_ssize_t __pyx_t_31;
-  Py_ssize_t __pyx_t_32;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_2d_spatial", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_starts);
-  __Pyx_INCREF((PyObject *)__pyx_v_ends);
-  __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_INCREF((PyObject *)__pyx_v_modes);
+  __Pyx_RefNannySetupContext("lerp_between_lines_1ch", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
   __pyx_pybuffer_out.pybuffer.buf = NULL;
   __pyx_pybuffer_out.refcount = 0;
   __pyx_pybuffernd_out.data = NULL;
   __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
-  __pyx_pybuffer_starts.pybuffer.buf = NULL;
-  __pyx_pybuffer_starts.refcount = 0;
-  __pyx_pybuffernd_starts.data = NULL;
-  __pyx_pybuffernd_starts.rcbuffer = &__pyx_pybuffer_starts;
-  __pyx_pybuffer_ends.pybuffer.buf = NULL;
-  __pyx_pybuffer_ends.refcount = 0;
-  __pyx_pybuffernd_ends.data = NULL;
-  __pyx_pybuffernd_ends.rcbuffer = &__pyx_pybuffer_ends;
-  __pyx_pybuffer_coeffs.pybuffer.buf = NULL;
-  __pyx_pybuffer_coeffs.refcount = 0;
-  __pyx_pybuffernd_coeffs.data = NULL;
-  __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
-  __pyx_pybuffer_modes.pybuffer.buf = NULL;
-  __pyx_pybuffer_modes.refcount = 0;
-  __pyx_pybuffernd_modes.data = NULL;
-  __pyx_pybuffernd_modes.rcbuffer = &__pyx_pybuffer_modes;
+  __pyx_pybuffer_line0.pybuffer.buf = NULL;
+  __pyx_pybuffer_line0.refcount = 0;
+  __pyx_pybuffernd_line0.data = NULL;
+  __pyx_pybuffernd_line0.rcbuffer = &__pyx_pybuffer_line0;
+  __pyx_pybuffer_line1.pybuffer.buf = NULL;
+  __pyx_pybuffer_line1.refcount = 0;
+  __pyx_pybuffernd_line1.data = NULL;
+  __pyx_pybuffernd_line1.rcbuffer = &__pyx_pybuffer_line1;
+  __pyx_pybuffer_coords.pybuffer.buf = NULL;
+  __pyx_pybuffer_coords.refcount = 0;
+  __pyx_pybuffernd_coords.data = NULL;
+  __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 221, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
   }
-  __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
+  __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 221, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
   }
-  __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
+  __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 221, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
   }
-  __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coeffs.diminfo[2].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coeffs.diminfo[2].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[2];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 221, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0];
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":239
- *         Interpolated hues, shape (H, W), values in [0, 360)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":32
+ *         Interpolated values, shape (H, W)
  *     """
- *     cdef Py_ssize_t H = coeffs.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t W = coeffs.shape[1]
- *     cdef Py_ssize_t num_dims = coeffs.shape[2]
+ *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]
 */
-  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
+  __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":240
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":33
  *     """
- *     cdef Py_ssize_t H = coeffs.shape[0]
- *     cdef Py_ssize_t W = coeffs.shape[1]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t num_dims = coeffs.shape[2]
- *     cdef Py_ssize_t num_corners = starts.shape[0]
-*/
-  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[1]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":241
- *     cdef Py_ssize_t H = coeffs.shape[0]
- *     cdef Py_ssize_t W = coeffs.shape[1]
- *     cdef Py_ssize_t num_dims = coeffs.shape[2]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t num_corners = starts.shape[0]
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t H = coords.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t W = coords.shape[1]
  * 
 */
-  __pyx_v_num_dims = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[2]);
+  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":242
- *     cdef Py_ssize_t W = coeffs.shape[1]
- *     cdef Py_ssize_t num_dims = coeffs.shape[2]
- *     cdef Py_ssize_t num_corners = starts.shape[0]             # <<<<<<<<<<<<<<
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":34
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]             # <<<<<<<<<<<<<<
  * 
- *     if ends.shape[0] != num_corners:
+ *     if line1.shape[0] != L:
 */
-  __pyx_v_num_corners = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_starts))[0]);
+  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":244
- *     cdef Py_ssize_t num_corners = starts.shape[0]
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":36
+ *     cdef Py_ssize_t W = coords.shape[1]
  * 
- *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
+ *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same length")
+ *     if coords.shape[2] != 2:
 */
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_ends))[0]) != __pyx_v_num_corners);
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":245
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":37
  * 
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")             # <<<<<<<<<<<<<<
- *     if modes.shape[0] != num_dims:
- *         raise ValueError("modes must have length equal to num dimensions")
+ *     if line1.shape[0] != L:
+ *         raise ValueError("Lines must have same length")             # <<<<<<<<<<<<<<
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")
 */
     __pyx_t_3 = NULL;
     __pyx_t_4 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_starts_and_ends_must_have_same_l};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_length};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 245, __pyx_L1_error)
+    __PYX_ERR(0, 37, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":244
- *     cdef Py_ssize_t num_corners = starts.shape[0]
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":36
+ *     cdef Py_ssize_t W = coords.shape[1]
  * 
- *     if ends.shape[0] != num_corners:             # <<<<<<<<<<<<<<
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
+ *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same length")
+ *     if coords.shape[2] != 2:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":246
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes must have length equal to num dimensions")
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":38
+ *     if line1.shape[0] != L:
+ *         raise ValueError("Lines must have same length")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
  * 
 */
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_modes))[0]) != __pyx_v_num_dims);
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]) != 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":247
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:
- *         raise ValueError("modes must have length equal to num dimensions")             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":39
+ *         raise ValueError("Lines must have same length")
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")             # <<<<<<<<<<<<<<
  * 
- *     if not starts.flags['C_CONTIGUOUS']:
+ *     # Ensure contiguous
 */
     __pyx_t_3 = NULL;
     __pyx_t_4 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_modes_must_have_length_equal_to};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_H_W_2};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 247, __pyx_L1_error)
+    __PYX_ERR(0, 39, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":246
- *     if ends.shape[0] != num_corners:
- *         raise ValueError("starts and ends must have same length")
- *     if modes.shape[0] != num_dims:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes must have length equal to num dimensions")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":38
+ *     if line1.shape[0] != L:
+ *         raise ValueError("Lines must have same length")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
  * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":249
- *         raise ValueError("modes must have length equal to num dimensions")
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":42
  * 
- *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":250
- * 
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)             # <<<<<<<<<<<<<<
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":43
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_4 = 1;
@@ -21123,21 +19190,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_2, ((PyObject *)__pyx_v_starts)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, ((PyObject *)__pyx_v_line0)};
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 250, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 43, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_starts.rcbuffer->pybuffer, (PyObject*)__pyx_v_starts, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -21145,49 +19212,49 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
-      __pyx_pybuffernd_starts.diminfo[0].strides = __pyx_pybuffernd_starts.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_starts.diminfo[0].shape = __pyx_pybuffernd_starts.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+      __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 43, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_3));
+    __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":249
- *         raise ValueError("modes must have length equal to num dimensions")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":42
  * 
- *     if not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":251
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":44
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":252
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)             # <<<<<<<<<<<<<<
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":45
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_4 = 1;
@@ -21203,21 +19270,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_ends)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_line1)};
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 252, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 45, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ends.rcbuffer->pybuffer, (PyObject*)__pyx_v_ends, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -21225,49 +19292,49 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
       }
-      __pyx_pybuffernd_ends.diminfo[0].strides = __pyx_pybuffernd_ends.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ends.diminfo[0].shape = __pyx_pybuffernd_ends.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 252, __pyx_L1_error)
+      __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 45, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_7));
+    __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":251
- *     if not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts)
- *     if not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":44
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":253
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":46
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
 */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":254
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)             # <<<<<<<<<<<<<<
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":47
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64[::1] l0 = line0
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_4 = 1;
@@ -21283,21 +19350,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coeffs)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coords)};
       __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 254, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
     }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 254, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 47, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -21305,1811 +19372,87 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
-      __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coeffs.diminfo[2].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coeffs.diminfo[2].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[2];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_6));
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":253
- *     if not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":255
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
- * 
-*/
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = (!__pyx_t_5);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":256
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)             # <<<<<<<<<<<<<<
- * 
- *     cdef f64[::1] starts_mv = starts
-*/
-    __pyx_t_6 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_3);
-      assert(__pyx_t_6);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_6);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, ((PyObject *)__pyx_v_modes)};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 256, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_2), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-        }
-        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
-      }
-      __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 256, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_modes, ((PyArrayObject *)__pyx_t_2));
-    __pyx_t_2 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":255
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":46
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
  * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":258
- *         modes = np.ascontiguousarray(modes)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":49
+ *         coords = np.ascontiguousarray(coords)
  * 
- *     cdef f64[::1] starts_mv = starts             # <<<<<<<<<<<<<<
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, :, ::1] coeffs_mv = coeffs
+ *     cdef f64[::1] l0 = line0             # <<<<<<<<<<<<<<
+ *     cdef f64[::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_starts), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 258, __pyx_L1_error)
-  __pyx_v_starts_mv = __pyx_t_12;
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_v_l0 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":259
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":50
  * 
- *     cdef f64[::1] starts_mv = starts
- *     cdef f64[::1] ends_mv = ends             # <<<<<<<<<<<<<<
- *     cdef f64[:, :, ::1] coeffs_mv = coeffs
- *     cdef i32[::1] modes_mv = modes
+ *     cdef f64[::1] l0 = line0
+ *     cdef f64[::1] l1 = line1             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] c = coords
+ * 
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_ends), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 259, __pyx_L1_error)
-  __pyx_v_ends_mv = __pyx_t_12;
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_v_l1 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":260
- *     cdef f64[::1] starts_mv = starts
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, :, ::1] coeffs_mv = coeffs             # <<<<<<<<<<<<<<
- *     cdef i32[::1] modes_mv = modes
- * 
-*/
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 260, __pyx_L1_error)
-  __pyx_v_coeffs_mv = __pyx_t_13;
-  __pyx_t_13.memview = NULL;
-  __pyx_t_13.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":261
- *     cdef f64[::1] ends_mv = ends
- *     cdef f64[:, :, ::1] coeffs_mv = coeffs
- *     cdef i32[::1] modes_mv = modes             # <<<<<<<<<<<<<<
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":51
+ *     cdef f64[::1] l0 = line0
+ *     cdef f64[::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords             # <<<<<<<<<<<<<<
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
 */
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(((PyObject *)__pyx_v_modes), PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 261, __pyx_L1_error)
-  __pyx_v_modes_mv = __pyx_t_14;
-  __pyx_t_14.memview = NULL;
-  __pyx_t_14.data = NULL;
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_v_c = __pyx_t_13;
+  __pyx_t_13.memview = NULL;
+  __pyx_t_13.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":263
- *     cdef i32[::1] modes_mv = modes
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":53
+ *     cdef f64[:, :, ::1] c = coords
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef f64[:, ::1] out_mv = out
  * 
 */
-  __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_15 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_16);
-  __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_6) != (0)) __PYX_ERR(0, 263, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_15);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_15) != (0)) __PYX_ERR(0, 263, __pyx_L1_error);
-  __pyx_t_6 = 0;
-  __pyx_t_15 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_4 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
-    assert(__pyx_t_3);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-    __Pyx_INCREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-    __pyx_t_4 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_16};
-    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 263, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_15);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_15, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 263, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-  }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 263, __pyx_L1_error)
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_2), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
-      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 263, __pyx_L1_error)
-    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
-    }
-  }
-  __pyx_v_out = ((PyArrayObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":264
- * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
- *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
- * 
- *     cdef Py_ssize_t h, w, i, j, half, curr_size
-*/
-  __pyx_t_17 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(0, 264, __pyx_L1_error)
-  __pyx_v_out_mv = __pyx_t_17;
-  __pyx_t_17.memview = NULL;
-  __pyx_t_17.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":270
- *     cdef int mode
- * 
- *     cdef Py_ssize_t MAX_CORNERS = 256             # <<<<<<<<<<<<<<
- *     cdef f64 a_stack[256]
- *     cdef f64 b_stack[256]
-*/
-  __pyx_v_MAX_CORNERS = 0x100;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":273
- *     cdef f64 a_stack[256]
- *     cdef f64 b_stack[256]
- *     cdef f64* a = NULL             # <<<<<<<<<<<<<<
- *     cdef f64* b = NULL
- * 
-*/
-  __pyx_v_a = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":274
- *     cdef f64 b_stack[256]
- *     cdef f64* a = NULL
- *     cdef f64* b = NULL             # <<<<<<<<<<<<<<
- * 
- *     if num_corners <= MAX_CORNERS:
-*/
-  __pyx_v_b = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":276
- *     cdef f64* b = NULL
- * 
- *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
- *         for h in range(H):
- *             for w in range(W):
-*/
-  __pyx_t_1 = (__pyx_v_num_corners <= __pyx_v_MAX_CORNERS);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":277
- * 
- *     if num_corners <= MAX_CORNERS:
- *         for h in range(H):             # <<<<<<<<<<<<<<
- *             for w in range(W):
- *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
-*/
-    __pyx_t_18 = __pyx_v_H;
-    __pyx_t_19 = __pyx_t_18;
-    for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
-      __pyx_v_h = __pyx_t_20;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":278
- *     if num_corners <= MAX_CORNERS:
- *         for h in range(H):
- *             for w in range(W):             # <<<<<<<<<<<<<<
- *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
- *                 memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))
-*/
-      __pyx_t_21 = __pyx_v_W;
-      __pyx_t_22 = __pyx_t_21;
-      for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
-        __pyx_v_w = __pyx_t_23;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":279
- *         for h in range(H):
- *             for w in range(W):
- *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *                 memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))
- * 
-*/
-        __pyx_t_24 = 0;
-        (void)(memcpy((&(__pyx_v_a_stack[0])), (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_starts_mv.data) + __pyx_t_24)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":280
- *             for w in range(W):
- *                 memcpy(&a_stack[0], &starts_mv[0], num_corners * sizeof(f64))
- *                 memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- * 
- *                 curr_size = num_corners
-*/
-        __pyx_t_24 = 0;
-        (void)(memcpy((&(__pyx_v_b_stack[0])), (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_ends_mv.data) + __pyx_t_24)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":282
- *                 memcpy(&b_stack[0], &ends_mv[0], num_corners * sizeof(f64))
- * 
- *                 curr_size = num_corners             # <<<<<<<<<<<<<<
- * 
- *                 for i in range(num_dims):
-*/
-        __pyx_v_curr_size = __pyx_v_num_corners;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":284
- *                 curr_size = num_corners
- * 
- *                 for i in range(num_dims):             # <<<<<<<<<<<<<<
- *                     u = coeffs_mv[h, w, i]
- *                     mode = modes_mv[i]
-*/
-        __pyx_t_25 = __pyx_v_num_dims;
-        __pyx_t_26 = __pyx_t_25;
-        for (__pyx_t_27 = 0; __pyx_t_27 < __pyx_t_26; __pyx_t_27+=1) {
-          __pyx_v_i = __pyx_t_27;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":285
- * 
- *                 for i in range(num_dims):
- *                     u = coeffs_mv[h, w, i]             # <<<<<<<<<<<<<<
- *                     mode = modes_mv[i]
- * 
-*/
-          __pyx_t_24 = __pyx_v_h;
-          __pyx_t_28 = __pyx_v_w;
-          __pyx_t_29 = __pyx_v_i;
-          __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_24 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_28 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_29)) )));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":286
- *                 for i in range(num_dims):
- *                     u = coeffs_mv[h, w, i]
- *                     mode = modes_mv[i]             # <<<<<<<<<<<<<<
- * 
- *                     for j in range(curr_size):
-*/
-          __pyx_t_29 = __pyx_v_i;
-          __pyx_v_mode = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) __pyx_v_modes_mv.data) + __pyx_t_29)) )));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":288
- *                     mode = modes_mv[i]
- * 
- *                     for j in range(curr_size):             # <<<<<<<<<<<<<<
- *                         h0 = a_stack[j]
- *                         h1 = b_stack[j]
-*/
-          __pyx_t_30 = __pyx_v_curr_size;
-          __pyx_t_31 = __pyx_t_30;
-          for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
-            __pyx_v_j = __pyx_t_32;
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":289
- * 
- *                     for j in range(curr_size):
- *                         h0 = a_stack[j]             # <<<<<<<<<<<<<<
- *                         h1 = b_stack[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-            __pyx_v_h0 = (__pyx_v_a_stack[__pyx_v_j]);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":290
- *                     for j in range(curr_size):
- *                         h0 = a_stack[j]
- *                         h1 = b_stack[j]             # <<<<<<<<<<<<<<
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                         a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-            __pyx_v_h1 = (__pyx_v_b_stack[__pyx_v_j]);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":291
- *                         h0 = a_stack[j]
- *                         h1 = b_stack[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *                         a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
-*/
-            __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":292
- *                         h1 = b_stack[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                         a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
- * 
- *                     if curr_size > 1:
-*/
-            (__pyx_v_a_stack[__pyx_v_j]) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
-          }
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":294
- *                         a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                     if curr_size > 1:             # <<<<<<<<<<<<<<
- *                         half = curr_size >> 1
- *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
-*/
-          __pyx_t_1 = (__pyx_v_curr_size > 1);
-          if (__pyx_t_1) {
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":295
- * 
- *                     if curr_size > 1:
- *                         half = curr_size >> 1             # <<<<<<<<<<<<<<
- *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
- *                         curr_size = half
-*/
-            __pyx_v_half = (__pyx_v_curr_size >> 1);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":296
- *                     if curr_size > 1:
- *                         half = curr_size >> 1
- *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))             # <<<<<<<<<<<<<<
- *                         curr_size = half
- * 
-*/
-            (void)(memcpy((&(__pyx_v_b_stack[0])), (&(__pyx_v_a_stack[__pyx_v_half])), (__pyx_v_half * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":297
- *                         half = curr_size >> 1
- *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
- *                         curr_size = half             # <<<<<<<<<<<<<<
- * 
- *                 out_mv[h, w] = a_stack[0]
-*/
-            __pyx_v_curr_size = __pyx_v_half;
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":294
- *                         a_stack[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                     if curr_size > 1:             # <<<<<<<<<<<<<<
- *                         half = curr_size >> 1
- *                         memcpy(&b_stack[0], &a_stack[half], half * sizeof(f64))
-*/
-          }
-        }
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":299
- *                         curr_size = half
- * 
- *                 out_mv[h, w] = a_stack[0]             # <<<<<<<<<<<<<<
- * 
- *         return out
-*/
-        __pyx_t_29 = __pyx_v_h;
-        __pyx_t_28 = __pyx_v_w;
-        *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_29 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_28)) )) = (__pyx_v_a_stack[0]);
-      }
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":301
- *                 out_mv[h, w] = a_stack[0]
- * 
- *         return out             # <<<<<<<<<<<<<<
- * 
- *     # Heap fallback
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF((PyObject *)__pyx_v_out);
-    __pyx_r = ((PyObject *)__pyx_v_out);
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":276
- *     cdef f64* b = NULL
- * 
- *     if num_corners <= MAX_CORNERS:             # <<<<<<<<<<<<<<
- *         for h in range(H):
- *             for w in range(W):
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":304
- * 
- *     # Heap fallback
- *     a = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:
-*/
-  __pyx_v_a = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":305
- *     # Heap fallback
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)
-*/
-  __pyx_v_b = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *)malloc((__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":306
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
-*/
-  __pyx_t_5 = (__pyx_v_a == NULL);
-  if (!__pyx_t_5) {
-  } else {
-    __pyx_t_1 = __pyx_t_5;
-    goto __pyx_L20_bool_binop_done;
-  }
-  __pyx_t_5 = (__pyx_v_b == NULL);
-  __pyx_t_1 = __pyx_t_5;
-  __pyx_L20_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":307
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)             # <<<<<<<<<<<<<<
- *         if b != NULL: free(b)
- *         raise MemoryError()
-*/
-    __pyx_t_1 = (__pyx_v_a != NULL);
-    if (__pyx_t_1) {
-      free(__pyx_v_a);
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":308
- *     if a == NULL or b == NULL:
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- * 
-*/
-    __pyx_t_1 = (__pyx_v_b != NULL);
-    if (__pyx_t_1) {
-      free(__pyx_v_b);
-    }
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":309
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
- *         raise MemoryError()             # <<<<<<<<<<<<<<
- * 
- *     try:
-*/
-    PyErr_NoMemory(); __PYX_ERR(0, 309, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":306
- *     a = <f64*>malloc(num_corners * sizeof(f64))
- *     b = <f64*>malloc(num_corners * sizeof(f64))
- *     if a == NULL or b == NULL:             # <<<<<<<<<<<<<<
- *         if a != NULL: free(a)
- *         if b != NULL: free(b)
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":311
- *         raise MemoryError()
- * 
- *     try:             # <<<<<<<<<<<<<<
- *         for h in range(H):
- *             for w in range(W):
-*/
-  /*try:*/ {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":312
- * 
- *     try:
- *         for h in range(H):             # <<<<<<<<<<<<<<
- *             for w in range(W):
- *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
-*/
-    __pyx_t_18 = __pyx_v_H;
-    __pyx_t_19 = __pyx_t_18;
-    for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
-      __pyx_v_h = __pyx_t_20;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":313
- *     try:
- *         for h in range(H):
- *             for w in range(W):             # <<<<<<<<<<<<<<
- *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
- *                 memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
-*/
-      __pyx_t_21 = __pyx_v_W;
-      __pyx_t_22 = __pyx_t_21;
-      for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
-        __pyx_v_w = __pyx_t_23;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":314
- *         for h in range(H):
- *             for w in range(W):
- *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- *                 memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
- * 
-*/
-        __pyx_t_28 = 0;
-        (void)(memcpy(__pyx_v_a, (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_starts_mv.data) + __pyx_t_28)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":315
- *             for w in range(W):
- *                 memcpy(a, &starts_mv[0], num_corners * sizeof(f64))
- *                 memcpy(b, &ends_mv[0], num_corners * sizeof(f64))             # <<<<<<<<<<<<<<
- * 
- *                 curr_size = num_corners
-*/
-        __pyx_t_28 = 0;
-        (void)(memcpy(__pyx_v_b, (&(*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_ends_mv.data) + __pyx_t_28)) )))), (__pyx_v_num_corners * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":317
- *                 memcpy(b, &ends_mv[0], num_corners * sizeof(f64))
- * 
- *                 curr_size = num_corners             # <<<<<<<<<<<<<<
- * 
- *                 for i in range(num_dims):
-*/
-        __pyx_v_curr_size = __pyx_v_num_corners;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":319
- *                 curr_size = num_corners
- * 
- *                 for i in range(num_dims):             # <<<<<<<<<<<<<<
- *                     u = coeffs_mv[h, w, i]
- *                     mode = modes_mv[i]
-*/
-        __pyx_t_25 = __pyx_v_num_dims;
-        __pyx_t_26 = __pyx_t_25;
-        for (__pyx_t_27 = 0; __pyx_t_27 < __pyx_t_26; __pyx_t_27+=1) {
-          __pyx_v_i = __pyx_t_27;
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":320
- * 
- *                 for i in range(num_dims):
- *                     u = coeffs_mv[h, w, i]             # <<<<<<<<<<<<<<
- *                     mode = modes_mv[i]
- * 
-*/
-          __pyx_t_28 = __pyx_v_h;
-          __pyx_t_29 = __pyx_v_w;
-          __pyx_t_24 = __pyx_v_i;
-          __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_coeffs_mv.data + __pyx_t_28 * __pyx_v_coeffs_mv.strides[0]) ) + __pyx_t_29 * __pyx_v_coeffs_mv.strides[1]) )) + __pyx_t_24)) )));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":321
- *                 for i in range(num_dims):
- *                     u = coeffs_mv[h, w, i]
- *                     mode = modes_mv[i]             # <<<<<<<<<<<<<<
- * 
- *                     for j in range(curr_size):
-*/
-          __pyx_t_24 = __pyx_v_i;
-          __pyx_v_mode = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) __pyx_v_modes_mv.data) + __pyx_t_24)) )));
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":323
- *                     mode = modes_mv[i]
- * 
- *                     for j in range(curr_size):             # <<<<<<<<<<<<<<
- *                         h0 = a[j]
- *                         h1 = b[j]
-*/
-          __pyx_t_30 = __pyx_v_curr_size;
-          __pyx_t_31 = __pyx_t_30;
-          for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
-            __pyx_v_j = __pyx_t_32;
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":324
- * 
- *                     for j in range(curr_size):
- *                         h0 = a[j]             # <<<<<<<<<<<<<<
- *                         h1 = b[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-            __pyx_v_h0 = (__pyx_v_a[__pyx_v_j]);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":325
- *                     for j in range(curr_size):
- *                         h0 = a[j]
- *                         h1 = b[j]             # <<<<<<<<<<<<<<
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                         a[j] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-            __pyx_v_h1 = (__pyx_v_b[__pyx_v_j]);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":326
- *                         h0 = a[j]
- *                         h1 = b[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *                         a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
-*/
-            __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":327
- *                         h1 = b[j]
- *                         h1_adj = adjust_end_for_mode(h0, h1, mode)
- *                         a[j] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
- * 
- *                     if curr_size > 1:
-*/
-            (__pyx_v_a[__pyx_v_j]) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
-          }
-
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":329
- *                         a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                     if curr_size > 1:             # <<<<<<<<<<<<<<
- *                         half = curr_size >> 1
- *                         memcpy(b, a + half, half * sizeof(f64))
-*/
-          __pyx_t_1 = (__pyx_v_curr_size > 1);
-          if (__pyx_t_1) {
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":330
- * 
- *                     if curr_size > 1:
- *                         half = curr_size >> 1             # <<<<<<<<<<<<<<
- *                         memcpy(b, a + half, half * sizeof(f64))
- *                         curr_size = half
-*/
-            __pyx_v_half = (__pyx_v_curr_size >> 1);
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":331
- *                     if curr_size > 1:
- *                         half = curr_size >> 1
- *                         memcpy(b, a + half, half * sizeof(f64))             # <<<<<<<<<<<<<<
- *                         curr_size = half
- * 
-*/
-            (void)(memcpy(__pyx_v_b, (__pyx_v_a + __pyx_v_half), (__pyx_v_half * (sizeof(__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)))));
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":332
- *                         half = curr_size >> 1
- *                         memcpy(b, a + half, half * sizeof(f64))
- *                         curr_size = half             # <<<<<<<<<<<<<<
- * 
- *                 out_mv[h, w] = a[0]
-*/
-            __pyx_v_curr_size = __pyx_v_half;
-
-            /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":329
- *                         a[j] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *                     if curr_size > 1:             # <<<<<<<<<<<<<<
- *                         half = curr_size >> 1
- *                         memcpy(b, a + half, half * sizeof(f64))
-*/
-          }
-        }
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":334
- *                         curr_size = half
- * 
- *                 out_mv[h, w] = a[0]             # <<<<<<<<<<<<<<
- *     finally:
- *         free(a)
-*/
-        __pyx_t_24 = __pyx_v_h;
-        __pyx_t_29 = __pyx_v_w;
-        *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_24 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_29)) )) = (__pyx_v_a[0]);
-      }
-    }
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":336
- *                 out_mv[h, w] = a[0]
- *     finally:
- *         free(a)             # <<<<<<<<<<<<<<
- *         free(b)
- * 
-*/
-  /*finally:*/ {
-    /*normal exit:*/{
-      free(__pyx_v_a);
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":337
- *     finally:
- *         free(a)
- *         free(b)             # <<<<<<<<<<<<<<
- * 
- *     return out
-*/
-      free(__pyx_v_b);
-      goto __pyx_L26;
-    }
-    __pyx_L26:;
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":339
- *         free(b)
- * 
- *     return out             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF((PyObject *)__pyx_v_out);
-  __pyx_r = ((PyObject *)__pyx_v_out);
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":221
- * # 2D Hue Interpolation: coeffs (H, W, N), modes (N,) -> output (H, W)
- * # =============================================================================
- * def hue_lerp_2d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_14, 1);
-  __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_XDECREF(__pyx_t_16);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_17, 1);
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_2d_spatial", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ends.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_starts.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_starts_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_ends_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_coeffs_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_modes_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_out);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_starts);
-  __Pyx_XDECREF((PyObject *)__pyx_v_ends);
-  __Pyx_XDECREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_XDECREF((PyObject *)__pyx_v_modes);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":345
- * # Simple 1D Hue Lerp: Single dimension interpolation
- * # =============================================================================
- * def hue_lerp_simple(             # <<<<<<<<<<<<<<
- *     f64 h0,
- *     f64 h1,
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_5hue_lerp_simple(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_4hue_lerp_simple, "\n    Simple 1D hue interpolation between two values.\n    \n    Args:\n        h0: Start hue (degrees)\n        h1: End hue (degrees)\n        coeffs: Interpolation coefficients, shape (N,)\n        mode: Interpolation mode (0=CW, 1=CCW, 2=SHORTEST, 3=LONGEST)\n    \n    Returns:\n        Interpolated hues, shape (N,)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_5hue_lerp_simple = {"hue_lerp_simple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_5hue_lerp_simple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_4hue_lerp_simple};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_5hue_lerp_simple(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  int __pyx_v_mode;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_simple (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_h0,&__pyx_mstate_global->__pyx_n_u_h1,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_mode,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 345, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 345, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 345, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 345, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 345, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_simple", 0) < (0)) __PYX_ERR(0, 345, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_simple", 0, 3, 4, i); __PYX_ERR(0, 345, __pyx_L3_error) }
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 345, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 345, __pyx_L3_error)
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 345, __pyx_L3_error)
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 345, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_h0 = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_h0 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L3_error)
-    __pyx_v_h1 = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_h1 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L3_error)
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    if (values[3]) {
-      __pyx_v_mode = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 349, __pyx_L3_error)
-    } else {
-      __pyx_v_mode = ((int)((int)2));
-    }
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_simple", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 345, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_simple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 348, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_4hue_lerp_simple(__pyx_self, __pyx_v_h0, __pyx_v_h1, __pyx_v_coeffs, __pyx_v_mode);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  goto __pyx_L7_cleaned_up;
-  __pyx_L0:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __pyx_L7_cleaned_up:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_4hue_lerp_simple(CYTHON_UNUSED PyObject *__pyx_self, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1, PyArrayObject *__pyx_v_coeffs, int __pyx_v_mode) {
-  Py_ssize_t __pyx_v_N;
-  PyArrayObject *__pyx_v_out = 0;
-  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  Py_ssize_t __pyx_v_i;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
-  __Pyx_Buffer __pyx_pybuffer_coeffs;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
-  __Pyx_Buffer __pyx_pybuffer_out;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  size_t __pyx_t_7;
-  __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_simple", 0);
-  __pyx_pybuffer_out.pybuffer.buf = NULL;
-  __pyx_pybuffer_out.refcount = 0;
-  __pyx_pybuffernd_out.data = NULL;
-  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
-  __pyx_pybuffer_coeffs.pybuffer.buf = NULL;
-  __pyx_pybuffer_coeffs.refcount = 0;
-  __pyx_pybuffernd_coeffs.data = NULL;
-  __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 345, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0];
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":363
- *         Interpolated hues, shape (N,)
- *     """
- *     cdef Py_ssize_t N = coeffs.shape[0]             # <<<<<<<<<<<<<<
- *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
- *     cdef f64[::1] out_mv = out
-*/
-  __pyx_v_N = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":364
- *     """
- *     cdef Py_ssize_t N = coeffs.shape[0]
- *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef f64[::1] out_mv = out
- *     cdef f64[::1] c = coeffs
-*/
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_N); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_7 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-    __pyx_t_7 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_3};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 364, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 364, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 364, __pyx_L1_error)
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 364, __pyx_L1_error)
-    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0];
-    }
-  }
-  __pyx_v_out = ((PyArrayObject *)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":365
- *     cdef Py_ssize_t N = coeffs.shape[0]
- *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
- *     cdef f64[::1] out_mv = out             # <<<<<<<<<<<<<<
- *     cdef f64[::1] c = coeffs
- * 
-*/
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 365, __pyx_L1_error)
-  __pyx_v_out_mv = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":366
- *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
- *     cdef f64[::1] out_mv = out
- *     cdef f64[::1] c = coeffs             # <<<<<<<<<<<<<<
- * 
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 366, __pyx_L1_error)
-  __pyx_v_c = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":368
- *     cdef f64[::1] c = coeffs
- * 
- *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i
- *     cdef f64 u
-*/
-  __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":372
- *     cdef f64 u
- * 
- *     for i in range(N):             # <<<<<<<<<<<<<<
- *         u = c[i]
- *         out_mv[i] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-  __pyx_t_9 = __pyx_v_N;
-  __pyx_t_10 = __pyx_t_9;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":373
- * 
- *     for i in range(N):
- *         u = c[i]             # <<<<<<<<<<<<<<
- *         out_mv[i] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
-*/
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_c.data) + __pyx_t_12)) )));
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":374
- *     for i in range(N):
- *         u = c[i]
- *         out_mv[i] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
- * 
- *     return out
-*/
-    __pyx_t_12 = __pyx_v_i;
-    *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_out_mv.data) + __pyx_t_12)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":376
- *         out_mv[i] = wrap_hue(h0 + u * (h1_adj - h0))
- * 
- *     return out             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF((PyObject *)__pyx_v_out);
-  __pyx_r = ((PyObject *)__pyx_v_out);
-  goto __pyx_L0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":345
- * # Simple 1D Hue Lerp: Single dimension interpolation
- * # =============================================================================
- * def hue_lerp_simple(             # <<<<<<<<<<<<<<
- *     f64 h0,
- *     f64 h1,
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_8, 1);
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_simple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XDECREF((PyObject *)__pyx_v_out);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":382
- * # Vectorized Simple Lerp: Arrays of start/end pairs
- * # =============================================================================
- * def hue_lerp_arrays(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] h0_arr,
- *     np.ndarray[f64, ndim=1] h1_arr,
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_7hue_lerp_arrays(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_6hue_lerp_arrays, "\n    Vectorized 1D hue interpolation for arrays of hue pairs.\n    \n    Args:\n        h0_arr: Start hues, shape (M,)\n        h1_arr: End hues, shape (M,)\n        coeffs: Interpolation coefficients, shape (N,)\n        mode: Interpolation mode\n    \n    Returns:\n        Interpolated hues, shape (N, M)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_7hue_lerp_arrays = {"hue_lerp_arrays", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_7hue_lerp_arrays, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_6hue_lerp_arrays};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_7hue_lerp_arrays(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_h0_arr = 0;
-  PyArrayObject *__pyx_v_h1_arr = 0;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  int __pyx_v_mode;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_arrays (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_h0_arr,&__pyx_mstate_global->__pyx_n_u_h1_arr,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_mode,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 382, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 382, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 382, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 382, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 382, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_arrays", 0) < (0)) __PYX_ERR(0, 382, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_arrays", 0, 3, 4, i); __PYX_ERR(0, 382, __pyx_L3_error) }
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 382, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 382, __pyx_L3_error)
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 382, __pyx_L3_error)
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 382, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_h0_arr = ((PyArrayObject *)values[0]);
-    __pyx_v_h1_arr = ((PyArrayObject *)values[1]);
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    if (values[3]) {
-      __pyx_v_mode = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 386, __pyx_L3_error)
-    } else {
-      __pyx_v_mode = ((int)((int)2));
-    }
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_arrays", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 382, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_arrays", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h0_arr), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "h0_arr", 0))) __PYX_ERR(0, 383, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h1_arr), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "h1_arr", 0))) __PYX_ERR(0, 384, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 385, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_6hue_lerp_arrays(__pyx_self, __pyx_v_h0_arr, __pyx_v_h1_arr, __pyx_v_coeffs, __pyx_v_mode);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  goto __pyx_L7_cleaned_up;
-  __pyx_L0:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __pyx_L7_cleaned_up:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_6hue_lerp_arrays(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_h0_arr, PyArrayObject *__pyx_v_h1_arr, PyArrayObject *__pyx_v_coeffs, int __pyx_v_mode) {
-  Py_ssize_t __pyx_v_M;
-  Py_ssize_t __pyx_v_N;
-  __Pyx_memviewslice __pyx_v_h0_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_h1_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyArrayObject *__pyx_v_out = 0;
-  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_j;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
-  __Pyx_Buffer __pyx_pybuffer_coeffs;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_h0_arr;
-  __Pyx_Buffer __pyx_pybuffer_h0_arr;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_h1_arr;
-  __Pyx_Buffer __pyx_pybuffer_h1_arr;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
-  __Pyx_Buffer __pyx_pybuffer_out;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  size_t __pyx_t_4;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_t_13 = NULL;
-  PyObject *__pyx_t_14 = NULL;
-  __Pyx_memviewslice __pyx_t_15 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_16;
-  Py_ssize_t __pyx_t_17;
-  Py_ssize_t __pyx_t_18;
-  Py_ssize_t __pyx_t_19;
-  Py_ssize_t __pyx_t_20;
-  Py_ssize_t __pyx_t_21;
-  Py_ssize_t __pyx_t_22;
-  Py_ssize_t __pyx_t_23;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_arrays", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_h0_arr);
-  __Pyx_INCREF((PyObject *)__pyx_v_h1_arr);
-  __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
-  __pyx_pybuffer_out.pybuffer.buf = NULL;
-  __pyx_pybuffer_out.refcount = 0;
-  __pyx_pybuffernd_out.data = NULL;
-  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
-  __pyx_pybuffer_h0_arr.pybuffer.buf = NULL;
-  __pyx_pybuffer_h0_arr.refcount = 0;
-  __pyx_pybuffernd_h0_arr.data = NULL;
-  __pyx_pybuffernd_h0_arr.rcbuffer = &__pyx_pybuffer_h0_arr;
-  __pyx_pybuffer_h1_arr.pybuffer.buf = NULL;
-  __pyx_pybuffer_h1_arr.refcount = 0;
-  __pyx_pybuffernd_h1_arr.data = NULL;
-  __pyx_pybuffernd_h1_arr.rcbuffer = &__pyx_pybuffer_h1_arr;
-  __pyx_pybuffer_coeffs.pybuffer.buf = NULL;
-  __pyx_pybuffer_coeffs.refcount = 0;
-  __pyx_pybuffernd_coeffs.data = NULL;
-  __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_h0_arr, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 382, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_h0_arr.diminfo[0].strides = __pyx_pybuffernd_h0_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h0_arr.diminfo[0].shape = __pyx_pybuffernd_h0_arr.rcbuffer->pybuffer.shape[0];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_h1_arr, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 382, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_h1_arr.diminfo[0].strides = __pyx_pybuffernd_h1_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h1_arr.diminfo[0].shape = __pyx_pybuffernd_h1_arr.rcbuffer->pybuffer.shape[0];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 382, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0];
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":400
- *         Interpolated hues, shape (N, M)
- *     """
- *     cdef Py_ssize_t M = h0_arr.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t N = coeffs.shape[0]
- * 
-*/
-  __pyx_v_M = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h0_arr))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":401
- *     """
- *     cdef Py_ssize_t M = h0_arr.shape[0]
- *     cdef Py_ssize_t N = coeffs.shape[0]             # <<<<<<<<<<<<<<
- * 
- *     if h1_arr.shape[0] != M:
-*/
-  __pyx_v_N = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":403
- *     cdef Py_ssize_t N = coeffs.shape[0]
- * 
- *     if h1_arr.shape[0] != M:             # <<<<<<<<<<<<<<
- *         raise ValueError("h0_arr and h1_arr must have same length")
- * 
-*/
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h1_arr))[0]) != __pyx_v_M);
-  if (unlikely(__pyx_t_1)) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":404
- * 
- *     if h1_arr.shape[0] != M:
- *         raise ValueError("h0_arr and h1_arr must have same length")             # <<<<<<<<<<<<<<
- * 
- *     if not h0_arr.flags['C_CONTIGUOUS']:
-*/
-    __pyx_t_3 = NULL;
-    __pyx_t_4 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_h0_arr_and_h1_arr_must_have_same};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 404, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 404, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":403
- *     cdef Py_ssize_t N = coeffs.shape[0]
- * 
- *     if h1_arr.shape[0] != M:             # <<<<<<<<<<<<<<
- *         raise ValueError("h0_arr and h1_arr must have same length")
- * 
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":406
- *         raise ValueError("h0_arr and h1_arr must have same length")
- * 
- *     if not h0_arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h0_arr = np.ascontiguousarray(h0_arr)
- *     if not h1_arr.flags['C_CONTIGUOUS']:
-*/
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_h0_arr), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 406, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 406, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = (!__pyx_t_1);
-  if (__pyx_t_5) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":407
- * 
- *     if not h0_arr.flags['C_CONTIGUOUS']:
- *         h0_arr = np.ascontiguousarray(h0_arr)             # <<<<<<<<<<<<<<
- *     if not h1_arr.flags['C_CONTIGUOUS']:
- *         h1_arr = np.ascontiguousarray(h1_arr)
-*/
-    __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 407, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 407, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_7);
-      assert(__pyx_t_2);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_2, ((PyObject *)__pyx_v_h0_arr)};
-      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-    }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 407, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_h0_arr, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-        }
-        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
-      }
-      __pyx_pybuffernd_h0_arr.diminfo[0].strides = __pyx_pybuffernd_h0_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h0_arr.diminfo[0].shape = __pyx_pybuffernd_h0_arr.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 407, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_h0_arr, ((PyArrayObject *)__pyx_t_3));
-    __pyx_t_3 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":406
- *         raise ValueError("h0_arr and h1_arr must have same length")
- * 
- *     if not h0_arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h0_arr = np.ascontiguousarray(h0_arr)
- *     if not h1_arr.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":408
- *     if not h0_arr.flags['C_CONTIGUOUS']:
- *         h0_arr = np.ascontiguousarray(h0_arr)
- *     if not h1_arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h1_arr = np.ascontiguousarray(h1_arr)
- *     if not coeffs.flags['C_CONTIGUOUS']:
-*/
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_h1_arr), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 408, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = (!__pyx_t_5);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":409
- *         h0_arr = np.ascontiguousarray(h0_arr)
- *     if not h1_arr.flags['C_CONTIGUOUS']:
- *         h1_arr = np.ascontiguousarray(h1_arr)             # <<<<<<<<<<<<<<
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
-*/
-    __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 409, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 409, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_6);
-      assert(__pyx_t_3);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_6);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_6, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_h1_arr)};
-      __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 409, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-    }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 409, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_h1_arr, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-        }
-        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
-      }
-      __pyx_pybuffernd_h1_arr.diminfo[0].strides = __pyx_pybuffernd_h1_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h1_arr.diminfo[0].shape = __pyx_pybuffernd_h1_arr.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 409, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_h1_arr, ((PyArrayObject *)__pyx_t_7));
-    __pyx_t_7 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":408
- *     if not h0_arr.flags['C_CONTIGUOUS']:
- *         h0_arr = np.ascontiguousarray(h0_arr)
- *     if not h1_arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h1_arr = np.ascontiguousarray(h1_arr)
- *     if not coeffs.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":410
- *     if not h1_arr.flags['C_CONTIGUOUS']:
- *         h1_arr = np.ascontiguousarray(h1_arr)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- * 
-*/
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 410, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 410, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 410, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_5 = (!__pyx_t_1);
-  if (__pyx_t_5) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":411
- *         h1_arr = np.ascontiguousarray(h1_arr)
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)             # <<<<<<<<<<<<<<
- * 
- *     cdef f64[::1] h0_mv = h0_arr
-*/
-    __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 411, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_4 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
-      assert(__pyx_t_7);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_7);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
-      __pyx_t_4 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coeffs)};
-      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 411, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-    }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 411, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-        }
-        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
-      }
-      __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 411, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_6));
-    __pyx_t_6 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":410
- *     if not h1_arr.flags['C_CONTIGUOUS']:
- *         h1_arr = np.ascontiguousarray(h1_arr)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- * 
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":413
- *         coeffs = np.ascontiguousarray(coeffs)
- * 
- *     cdef f64[::1] h0_mv = h0_arr             # <<<<<<<<<<<<<<
- *     cdef f64[::1] h1_mv = h1_arr
- *     cdef f64[::1] c = coeffs
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_h0_arr), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 413, __pyx_L1_error)
-  __pyx_v_h0_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":414
- * 
- *     cdef f64[::1] h0_mv = h0_arr
- *     cdef f64[::1] h1_mv = h1_arr             # <<<<<<<<<<<<<<
- *     cdef f64[::1] c = coeffs
- * 
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_h1_arr), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 414, __pyx_L1_error)
-  __pyx_v_h1_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":415
- *     cdef f64[::1] h0_mv = h0_arr
- *     cdef f64[::1] h1_mv = h1_arr
- *     cdef f64[::1] c = coeffs             # <<<<<<<<<<<<<<
- * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, M), dtype=np.float64)
-*/
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 415, __pyx_L1_error)
-  __pyx_v_c = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":417
- *     cdef f64[::1] c = coeffs
- * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] out_mv = out
- * 
-*/
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_N); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_13 = PyLong_FromSsize_t(__pyx_v_M); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 417, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_13);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_13) != (0)) __PYX_ERR(0, 417, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 53, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_14);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 53, __pyx_L1_error);
   __pyx_t_7 = 0;
-  __pyx_t_13 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_14 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -23123,121 +19466,289 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   }
   #endif
   {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_14};
-    __pyx_t_13 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 417, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_13);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_13, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 417, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_13);
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_15};
+    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_14);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 417, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 417, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 53, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 417, __pyx_L1_error)
+      __PYX_ERR(0, 53, __pyx_L1_error)
     } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
     }
   }
   __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":418
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":54
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, M), dtype=np.float64)
+ *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
  *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t i, j
+ *     cdef Py_ssize_t h, w
 */
-  __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 418, __pyx_L1_error)
-  __pyx_v_out_mv = __pyx_t_15;
-  __pyx_t_15.memview = NULL;
-  __pyx_t_15.data = NULL;
+  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_16;
+  __pyx_t_16.memview = NULL;
+  __pyx_t_16.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":423
- *     cdef f64 u, h0, h1, h1_adj
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":60
+ *     cdef f64 u_x, u_y, idx_f, frac
+ *     cdef f64 v0, v1
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
  * 
- *     for j in range(M):             # <<<<<<<<<<<<<<
- *         h0 = h0_mv[j]
- *         h1 = h1_mv[j]
+ *     for h in range(H):
 */
-  __pyx_t_16 = __pyx_v_M;
-  __pyx_t_17 = __pyx_t_16;
-  for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
-    __pyx_v_j = __pyx_t_18;
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":424
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":62
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
  * 
- *     for j in range(M):
- *         h0 = h0_mv[j]             # <<<<<<<<<<<<<<
- *         h1 = h1_mv[j]
- *         h1_adj = adjust_end_for_mode(h0, h1, mode)
+ *     for h in range(H):             # <<<<<<<<<<<<<<
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]
 */
-    __pyx_t_19 = __pyx_v_j;
-    __pyx_v_h0 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_h0_mv.data) + __pyx_t_19)) )));
+  __pyx_t_17 = __pyx_v_H;
+  __pyx_t_18 = __pyx_t_17;
+  for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
+    __pyx_v_h = __pyx_t_19;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":425
- *     for j in range(M):
- *         h0 = h0_mv[j]
- *         h1 = h1_mv[j]             # <<<<<<<<<<<<<<
- *         h1_adj = adjust_end_for_mode(h0, h1, mode)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":63
  * 
+ *     for h in range(H):
+ *         for w in range(W):             # <<<<<<<<<<<<<<
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]
 */
-    __pyx_t_19 = __pyx_v_j;
-    __pyx_v_h1 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_h1_mv.data) + __pyx_t_19)) )));
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":426
- *         h0 = h0_mv[j]
- *         h1 = h1_mv[j]
- *         h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- * 
- *         for i in range(N):
-*/
-    __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":428
- *         h1_adj = adjust_end_for_mode(h0, h1, mode)
- * 
- *         for i in range(N):             # <<<<<<<<<<<<<<
- *             u = c[i]
- *             out_mv[i, j] = wrap_hue(h0 + u * (h1_adj - h0))
-*/
-    __pyx_t_20 = __pyx_v_N;
+    __pyx_t_20 = __pyx_v_W;
     __pyx_t_21 = __pyx_t_20;
     for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
-      __pyx_v_i = __pyx_t_22;
+      __pyx_v_w = __pyx_t_22;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":429
- * 
- *         for i in range(N):
- *             u = c[i]             # <<<<<<<<<<<<<<
- *             out_mv[i, j] = wrap_hue(h0 + u * (h1_adj - h0))
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":64
+ *     for h in range(H):
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]             # <<<<<<<<<<<<<<
+ *             u_y = c[h, w, 1]
  * 
 */
-      __pyx_t_19 = __pyx_v_i;
-      __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_c.data) + __pyx_t_19)) )));
+      __pyx_t_23 = __pyx_v_h;
+      __pyx_t_24 = __pyx_v_w;
+      __pyx_t_25 = 0;
+      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_23 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":430
- *         for i in range(N):
- *             u = c[i]
- *             out_mv[i, j] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":65
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
+ * 
+ *             # Map u_x to line index (continuous)
+*/
+      __pyx_t_25 = __pyx_v_h;
+      __pyx_t_24 = __pyx_v_w;
+      __pyx_t_23 = 1;
+      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_25 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_23)) )));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":68
+ * 
+ *             # Map u_x to line index (continuous)
+ *             idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *             idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+*/
+      __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":69
+ *             # Map u_x to line index (continuous)
+ *             idx_f = u_x * L_minus_1
+ *             idx_lo = <Py_ssize_t>floor(idx_f)             # <<<<<<<<<<<<<<
+ * 
+ *             # Clamp indices to valid range
+*/
+      __pyx_v_idx_lo = ((Py_ssize_t)floor(__pyx_v_idx_f));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":72
+ * 
+ *             # Clamp indices to valid range
+ *             if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+*/
+      __pyx_t_5 = (__pyx_v_idx_lo < 0);
+      if (__pyx_t_5) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":73
+ *             # Clamp indices to valid range
+ *             if idx_lo < 0:
+ *                 idx_lo = 0             # <<<<<<<<<<<<<<
+ *             if idx_lo >= L - 1:
+ *                 idx_lo = L - 2
+*/
+        __pyx_v_idx_lo = 0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":72
+ * 
+ *             # Clamp indices to valid range
+ *             if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+*/
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":74
+ *             if idx_lo < 0:
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *                 idx_lo = L - 2
+ * 
+*/
+      __pyx_t_5 = (__pyx_v_idx_lo >= (__pyx_v_L - 1));
+      if (__pyx_t_5) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":75
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+ *                 idx_lo = L - 2             # <<<<<<<<<<<<<<
+ * 
+ *             idx_hi = idx_lo + 1
+*/
+        __pyx_v_idx_lo = (__pyx_v_L - 2);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":74
+ *             if idx_lo < 0:
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *                 idx_lo = L - 2
+ * 
+*/
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":77
+ *                 idx_lo = L - 2
+ * 
+ *             idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ *             frac = idx_f - <f64>idx_lo
+ * 
+*/
+      __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":78
+ * 
+ *             idx_hi = idx_lo + 1
+ *             frac = idx_f - <f64>idx_lo             # <<<<<<<<<<<<<<
+ * 
+ *             # Clamp frac for boundary cases
+*/
+      __pyx_v_frac = (__pyx_v_idx_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_idx_lo));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":81
+ * 
+ *             # Clamp frac for boundary cases
+ *             if frac < 0.0:             # <<<<<<<<<<<<<<
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+*/
+      __pyx_t_5 = (__pyx_v_frac < 0.0);
+      if (__pyx_t_5) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":82
+ *             # Clamp frac for boundary cases
+ *             if frac < 0.0:
+ *                 frac = 0.0             # <<<<<<<<<<<<<<
+ *             elif frac > 1.0:
+ *                 frac = 1.0
+*/
+        __pyx_v_frac = 0.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":81
+ * 
+ *             # Clamp frac for boundary cases
+ *             if frac < 0.0:             # <<<<<<<<<<<<<<
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+*/
+        goto __pyx_L14;
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":83
+ *             if frac < 0.0:
+ *                 frac = 0.0
+ *             elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *                 frac = 1.0
+ * 
+*/
+      __pyx_t_5 = (__pyx_v_frac > 1.0);
+      if (__pyx_t_5) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":84
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+ *                 frac = 1.0             # <<<<<<<<<<<<<<
+ * 
+ *             # Sample line0 at u_x (linear interpolation within line)
+*/
+        __pyx_v_frac = 1.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":83
+ *             if frac < 0.0:
+ *                 frac = 0.0
+ *             elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *                 frac = 1.0
+ * 
+*/
+      }
+      __pyx_L14:;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":87
+ * 
+ *             # Sample line0 at u_x (linear interpolation within line)
+ *             v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])             # <<<<<<<<<<<<<<
+ * 
+ *             # Sample line1 at u_x
+*/
+      __pyx_t_23 = __pyx_v_idx_lo;
+      __pyx_t_24 = __pyx_v_idx_hi;
+      __pyx_t_25 = __pyx_v_idx_lo;
+      __pyx_v_v0 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_23)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_24)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_25)) ))))));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":90
+ * 
+ *             # Sample line1 at u_x
+ *             v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])             # <<<<<<<<<<<<<<
+ * 
+ *             # Blend between lines using u_y
+*/
+      __pyx_t_25 = __pyx_v_idx_lo;
+      __pyx_t_24 = __pyx_v_idx_hi;
+      __pyx_t_23 = __pyx_v_idx_lo;
+      __pyx_v_v1 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_25)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_24)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_23)) ))))));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":93
+ * 
+ *             # Blend between lines using u_y
+ *             out_mv[h, w] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
  * 
  *     return out
 */
-      __pyx_t_19 = __pyx_v_i;
-      __pyx_t_23 = __pyx_v_j;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_19 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_23)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
+      __pyx_t_23 = __pyx_v_h;
+      __pyx_t_24 = __pyx_v_w;
+      *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_23 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_24)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
     }
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":432
- *             out_mv[i, j] = wrap_hue(h0 + u * (h1_adj - h0))
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":95
+ *             out_mv[h, w] = v0 + u_y * (v1 - v0)
  * 
  *     return out             # <<<<<<<<<<<<<<
  * 
@@ -23248,12 +19759,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_r = ((PyObject *)__pyx_v_out);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":382
- * # Vectorized Simple Lerp: Arrays of start/end pairs
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":14
+ * # Single channel version
  * # =============================================================================
- * def hue_lerp_arrays(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] h0_arr,
- *     np.ndarray[f64, ndim=1] h1_arr,
+ * def lerp_between_lines_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=1] line0,
+ *     np.ndarray[f64, ndim=1] line1,
 */
 
   /* function exit code */
@@ -23263,80 +19774,80 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
-  __Pyx_XDECREF(__pyx_t_13);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
   __Pyx_XDECREF(__pyx_t_14);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_15, 1);
+  __Pyx_XDECREF(__pyx_t_15);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_16, 1);
   { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_arrays", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_arr.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_arr.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
   __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __pyx_L2:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_h0_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_h1_mv, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l0, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l1, 1);
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
   __Pyx_XDECREF((PyObject *)__pyx_v_out);
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_h0_arr);
-  __Pyx_XDECREF((PyObject *)__pyx_v_h1_arr);
-  __Pyx_XDECREF((PyObject *)__pyx_v_coeffs);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":438
- * # 2D Grid Hue Lerp with per-pixel mode
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":101
+ * # Multi-channel version: lines have shape (L, C)
  * # =============================================================================
- * def hue_lerp_2d_with_modes(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=2] h0_grid,
- *     np.ndarray[f64, ndim=2] h1_grid,
+ * def lerp_between_lines_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_9hue_lerp_2d_with_modes(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_3lerp_between_lines_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_8hue_lerp_2d_with_modes, "\n    2D hue interpolation with per-pixel start, end, coeff, and mode.\n    \n    Args:\n        h0_grid: Start hues, shape (H, W)\n        h1_grid: End hues, shape (H, W)\n        coeffs: Interpolation coefficients, shape (H, W)\n        modes: Per-pixel modes, shape (H, W)\n    \n    Returns:\n        Interpolated hues, shape (H, W)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_9hue_lerp_2d_with_modes = {"hue_lerp_2d_with_modes", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_9hue_lerp_2d_with_modes, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_8hue_lerp_2d_with_modes};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_9hue_lerp_2d_with_modes(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_2lerp_between_lines_multichannel, "\n    Interpolate between two multi-channel 1D lines.\n    \n    Args:\n        line0: First line, shape (L, C)\n        line1: Second line, shape (L, C)\n        coords: Coordinate grid, shape (H, W, 2)\n    \n    Returns:\n        Interpolated values, shape (H, W, C)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_3lerp_between_lines_multichannel = {"lerp_between_lines_multichannel", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_3lerp_between_lines_multichannel, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_2lerp_between_lines_multichannel};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_3lerp_between_lines_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  PyArrayObject *__pyx_v_h0_grid = 0;
-  PyArrayObject *__pyx_v_h1_grid = 0;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  PyArrayObject *__pyx_v_modes = 0;
+  PyArrayObject *__pyx_v_line0 = 0;
+  PyArrayObject *__pyx_v_line1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_2d_with_modes (wrapper)", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_multichannel (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -23346,70 +19857,62 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_h0_grid,&__pyx_mstate_global->__pyx_n_u_h1_grid,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_modes,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 438, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 101, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 438, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 438, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 101, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 438, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 101, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 438, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 101, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_2d_with_modes", 0) < (0)) __PYX_ERR(0, 438, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_2d_with_modes", 1, 4, 4, i); __PYX_ERR(0, 438, __pyx_L3_error) }
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_multichannel", 0) < (0)) __PYX_ERR(0, 101, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_multichannel", 1, 3, 3, i); __PYX_ERR(0, 101, __pyx_L3_error) }
       }
-    } else if (unlikely(__pyx_nargs != 4)) {
+    } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 438, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 101, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 438, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 101, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 438, __pyx_L3_error)
-      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 438, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 101, __pyx_L3_error)
     }
-    __pyx_v_h0_grid = ((PyArrayObject *)values[0]);
-    __pyx_v_h1_grid = ((PyArrayObject *)values[1]);
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    __pyx_v_modes = ((PyArrayObject *)values[3]);
+    __pyx_v_line0 = ((PyArrayObject *)values[0]);
+    __pyx_v_line1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_2d_with_modes", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 438, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_multichannel", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 101, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_2d_with_modes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h0_grid), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "h0_grid", 0))) __PYX_ERR(0, 439, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h1_grid), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "h1_grid", 0))) __PYX_ERR(0, 440, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 441, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "modes", 0))) __PYX_ERR(0, 442, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_8hue_lerp_2d_with_modes(__pyx_self, __pyx_v_h0_grid, __pyx_v_h1_grid, __pyx_v_coeffs, __pyx_v_modes);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_2lerp_between_lines_multichannel(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -23428,30 +19931,34 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_8hue_lerp_2d_with_modes(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_h0_grid, PyArrayObject *__pyx_v_h1_grid, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes) {
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_2lerp_between_lines_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
+  Py_ssize_t __pyx_v_L;
+  Py_ssize_t __pyx_v_C;
   Py_ssize_t __pyx_v_H;
   Py_ssize_t __pyx_v_W;
-  __Pyx_memviewslice __pyx_v_h0_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_h1_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_c_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_m_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_l0 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_l1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyArrayObject *__pyx_v_out = 0;
   __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
   Py_ssize_t __pyx_v_h;
   Py_ssize_t __pyx_v_w;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_adj;
-  int __pyx_v_mode;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_coeffs;
-  __Pyx_Buffer __pyx_pybuffer_coeffs;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_h0_grid;
-  __Pyx_Buffer __pyx_pybuffer_h0_grid;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_h1_grid;
-  __Pyx_Buffer __pyx_pybuffer_h1_grid;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_modes;
-  __Pyx_Buffer __pyx_pybuffer_modes;
+  Py_ssize_t __pyx_v_ch;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
+  __Pyx_Buffer __pyx_pybuffer_coords;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
+  __Pyx_Buffer __pyx_pybuffer_line0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line1;
+  __Pyx_Buffer __pyx_pybuffer_line1;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
   __Pyx_Buffer __pyx_pybuffer_out;
   PyObject *__pyx_r = NULL;
@@ -23471,7 +19978,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_t_14 = NULL;
   PyObject *__pyx_t_15 = NULL;
-  Py_ssize_t __pyx_t_16;
+  PyObject *__pyx_t_16 = NULL;
   Py_ssize_t __pyx_t_17;
   Py_ssize_t __pyx_t_18;
   Py_ssize_t __pyx_t_19;
@@ -23479,242 +19986,203 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   Py_ssize_t __pyx_t_21;
   Py_ssize_t __pyx_t_22;
   Py_ssize_t __pyx_t_23;
+  Py_ssize_t __pyx_t_24;
+  Py_ssize_t __pyx_t_25;
+  Py_ssize_t __pyx_t_26;
+  Py_ssize_t __pyx_t_27;
+  Py_ssize_t __pyx_t_28;
+  Py_ssize_t __pyx_t_29;
+  Py_ssize_t __pyx_t_30;
+  Py_ssize_t __pyx_t_31;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_2d_with_modes", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_h0_grid);
-  __Pyx_INCREF((PyObject *)__pyx_v_h1_grid);
-  __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_INCREF((PyObject *)__pyx_v_modes);
+  __Pyx_RefNannySetupContext("lerp_between_lines_multichannel", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
   __pyx_pybuffer_out.pybuffer.buf = NULL;
   __pyx_pybuffer_out.refcount = 0;
   __pyx_pybuffernd_out.data = NULL;
   __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
-  __pyx_pybuffer_h0_grid.pybuffer.buf = NULL;
-  __pyx_pybuffer_h0_grid.refcount = 0;
-  __pyx_pybuffernd_h0_grid.data = NULL;
-  __pyx_pybuffernd_h0_grid.rcbuffer = &__pyx_pybuffer_h0_grid;
-  __pyx_pybuffer_h1_grid.pybuffer.buf = NULL;
-  __pyx_pybuffer_h1_grid.refcount = 0;
-  __pyx_pybuffernd_h1_grid.data = NULL;
-  __pyx_pybuffernd_h1_grid.rcbuffer = &__pyx_pybuffer_h1_grid;
-  __pyx_pybuffer_coeffs.pybuffer.buf = NULL;
-  __pyx_pybuffer_coeffs.refcount = 0;
-  __pyx_pybuffernd_coeffs.data = NULL;
-  __pyx_pybuffernd_coeffs.rcbuffer = &__pyx_pybuffer_coeffs;
-  __pyx_pybuffer_modes.pybuffer.buf = NULL;
-  __pyx_pybuffer_modes.refcount = 0;
-  __pyx_pybuffernd_modes.data = NULL;
-  __pyx_pybuffernd_modes.rcbuffer = &__pyx_pybuffer_modes;
+  __pyx_pybuffer_line0.pybuffer.buf = NULL;
+  __pyx_pybuffer_line0.refcount = 0;
+  __pyx_pybuffernd_line0.data = NULL;
+  __pyx_pybuffernd_line0.rcbuffer = &__pyx_pybuffer_line0;
+  __pyx_pybuffer_line1.pybuffer.buf = NULL;
+  __pyx_pybuffer_line1.refcount = 0;
+  __pyx_pybuffernd_line1.data = NULL;
+  __pyx_pybuffernd_line1.rcbuffer = &__pyx_pybuffer_line1;
+  __pyx_pybuffer_coords.pybuffer.buf = NULL;
+  __pyx_pybuffer_coords.refcount = 0;
+  __pyx_pybuffernd_coords.data = NULL;
+  __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_h0_grid, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 438, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 101, __pyx_L1_error)
   }
-  __pyx_pybuffernd_h0_grid.diminfo[0].strides = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h0_grid.diminfo[0].shape = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h0_grid.diminfo[1].strides = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h0_grid.diminfo[1].shape = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.shape[1];
+  __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_h1_grid, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 438, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 101, __pyx_L1_error)
   }
-  __pyx_pybuffernd_h1_grid.diminfo[0].strides = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h1_grid.diminfo[0].shape = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h1_grid.diminfo[1].strides = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h1_grid.diminfo[1].shape = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.shape[1];
+  __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 438, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 101, __pyx_L1_error)
   }
-  __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 438, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_modes.diminfo[1].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_modes.diminfo[1].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[1];
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":456
- *         Interpolated hues, shape (H, W)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":117
+ *         Interpolated values, shape (H, W, C)
  *     """
- *     cdef Py_ssize_t H = h0_grid.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t W = h0_grid.shape[1]
- * 
+ *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]
 */
-  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h0_grid))[0]);
+  __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":457
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":118
  *     """
- *     cdef Py_ssize_t H = h0_grid.shape[0]
- *     cdef Py_ssize_t W = h0_grid.shape[1]             # <<<<<<<<<<<<<<
- * 
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]
 */
-  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h0_grid))[1]);
+  __pyx_v_C = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[1]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":459
- *     cdef Py_ssize_t W = h0_grid.shape[1]
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":119
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t W = coords.shape[1]
  * 
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("h1_grid shape mismatch")
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
 */
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h1_grid))[0]) != __pyx_v_H);
+  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":120
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]             # <<<<<<<<<<<<<<
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+*/
+  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":122
+ *     cdef Py_ssize_t W = coords.shape[1]
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
+*/
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
   if (!__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_h1_grid))[1]) != __pyx_v_W);
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[1]) != __pyx_v_C);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":460
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":123
  * 
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:
- *         raise ValueError("h1_grid shape mismatch")             # <<<<<<<<<<<<<<
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
- *         raise ValueError("coeffs shape mismatch")
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")             # <<<<<<<<<<<<<<
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")
 */
     __pyx_t_4 = NULL;
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_h1_grid_shape_mismatch};
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_shape};
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 460, __pyx_L1_error)
+    __PYX_ERR(0, 123, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":459
- *     cdef Py_ssize_t W = h0_grid.shape[1]
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":122
+ *     cdef Py_ssize_t W = coords.shape[1]
  * 
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("h1_grid shape mismatch")
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":461
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:
- *         raise ValueError("h1_grid shape mismatch")
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("coeffs shape mismatch")
- *     if modes.shape[0] != H or modes.shape[1] != W:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":124
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
+ * 
 */
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[0]) != __pyx_v_H);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L7_bool_binop_done;
-  }
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coeffs))[1]) != __pyx_v_W);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L7_bool_binop_done:;
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]) != 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":462
- *         raise ValueError("h1_grid shape mismatch")
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
- *         raise ValueError("coeffs shape mismatch")             # <<<<<<<<<<<<<<
- *     if modes.shape[0] != H or modes.shape[1] != W:
- *         raise ValueError("modes shape mismatch")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":125
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")             # <<<<<<<<<<<<<<
+ * 
+ *     # Ensure contiguous
 */
     __pyx_t_4 = NULL;
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_coeffs_shape_mismatch};
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_H_W_2};
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 462, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 462, __pyx_L1_error)
+    __PYX_ERR(0, 125, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":461
- *     if h1_grid.shape[0] != H or h1_grid.shape[1] != W:
- *         raise ValueError("h1_grid shape mismatch")
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("coeffs shape mismatch")
- *     if modes.shape[0] != H or modes.shape[1] != W:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":463
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
- *         raise ValueError("coeffs shape mismatch")
- *     if modes.shape[0] != H or modes.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes shape mismatch")
- * 
-*/
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_modes))[0]) != __pyx_v_H);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L10_bool_binop_done;
-  }
-  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_modes))[1]) != __pyx_v_W);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L10_bool_binop_done:;
-  if (unlikely(__pyx_t_1)) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":464
- *         raise ValueError("coeffs shape mismatch")
- *     if modes.shape[0] != H or modes.shape[1] != W:
- *         raise ValueError("modes shape mismatch")             # <<<<<<<<<<<<<<
- * 
- *     if not h0_grid.flags['C_CONTIGUOUS']:
-*/
-    __pyx_t_4 = NULL;
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_modes_shape_mismatch};
-      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 464, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-    }
-    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 464, __pyx_L1_error)
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":463
- *     if coeffs.shape[0] != H or coeffs.shape[1] != W:
- *         raise ValueError("coeffs shape mismatch")
- *     if modes.shape[0] != H or modes.shape[1] != W:             # <<<<<<<<<<<<<<
- *         raise ValueError("modes shape mismatch")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":124
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
  * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":466
- *         raise ValueError("modes shape mismatch")
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":128
  * 
- *     if not h0_grid.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h0_grid = np.ascontiguousarray(h0_grid)
- *     if not h1_grid.flags['C_CONTIGUOUS']:
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_h0_grid), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 466, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":467
- * 
- *     if not h0_grid.flags['C_CONTIGUOUS']:
- *         h0_grid = np.ascontiguousarray(h0_grid)             # <<<<<<<<<<<<<<
- *     if not h1_grid.flags['C_CONTIGUOUS']:
- *         h1_grid = np.ascontiguousarray(h1_grid)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":129
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 467, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 467, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_5 = 1;
@@ -23730,21 +20198,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_h0_grid)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_line0)};
       __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 467, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 467, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 129, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_h0_grid, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -23752,49 +20220,49 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
-      __pyx_pybuffernd_h0_grid.diminfo[0].strides = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h0_grid.diminfo[0].shape = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h0_grid.diminfo[1].strides = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h0_grid.diminfo[1].shape = __pyx_pybuffernd_h0_grid.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 467, __pyx_L1_error)
+      __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 129, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_h0_grid, ((PyArrayObject *)__pyx_t_4));
+    __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":466
- *         raise ValueError("modes shape mismatch")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":128
  * 
- *     if not h0_grid.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h0_grid = np.ascontiguousarray(h0_grid)
- *     if not h1_grid.flags['C_CONTIGUOUS']:
+ *     # Ensure contiguous
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":468
- *     if not h0_grid.flags['C_CONTIGUOUS']:
- *         h0_grid = np.ascontiguousarray(h0_grid)
- *     if not h1_grid.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h1_grid = np.ascontiguousarray(h1_grid)
- *     if not coeffs.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":130
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_h1_grid), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_1 = (!__pyx_t_2);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":469
- *         h0_grid = np.ascontiguousarray(h0_grid)
- *     if not h1_grid.flags['C_CONTIGUOUS']:
- *         h1_grid = np.ascontiguousarray(h1_grid)             # <<<<<<<<<<<<<<
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":131
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)
 */
     __pyx_t_4 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 469, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_5 = 1;
@@ -23810,21 +20278,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_v_h1_grid)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_v_line1)};
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 469, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 469, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 131, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_h1_grid, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -23832,49 +20300,49 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
       }
-      __pyx_pybuffernd_h1_grid.diminfo[0].strides = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h1_grid.diminfo[0].shape = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h1_grid.diminfo[1].strides = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h1_grid.diminfo[1].shape = __pyx_pybuffernd_h1_grid.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 469, __pyx_L1_error)
+      __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 131, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_h1_grid, ((PyArrayObject *)__pyx_t_7));
+    __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":468
- *     if not h0_grid.flags['C_CONTIGUOUS']:
- *         h0_grid = np.ascontiguousarray(h0_grid)
- *     if not h1_grid.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         h1_grid = np.ascontiguousarray(h1_grid)
- *     if not coeffs.flags['C_CONTIGUOUS']:
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":130
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":470
- *     if not h1_grid.flags['C_CONTIGUOUS']:
- *         h1_grid = np.ascontiguousarray(h1_grid)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":132
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
 */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":471
- *         h1_grid = np.ascontiguousarray(h1_grid)
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)             # <<<<<<<<<<<<<<
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":133
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64[:, ::1] l0 = line0
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 471, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 471, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_5 = 1;
@@ -23890,21 +20358,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coeffs)};
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coords)};
       __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 471, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
     }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 471, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 133, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer, (PyObject*)__pyx_v_coeffs, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -23912,321 +20380,408 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
-      __pyx_pybuffernd_coeffs.diminfo[0].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coeffs.diminfo[0].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coeffs.diminfo[1].strides = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coeffs.diminfo[1].shape = __pyx_pybuffernd_coeffs.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 471, __pyx_L1_error)
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 133, __pyx_L1_error)
     }
-    __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_6));
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":470
- *     if not h1_grid.flags['C_CONTIGUOUS']:
- *         h1_grid = np.ascontiguousarray(h1_grid)
- *     if not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
-*/
-  }
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":472
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
- * 
-*/
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 472, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = (!__pyx_t_2);
-  if (__pyx_t_1) {
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":473
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes)             # <<<<<<<<<<<<<<
- * 
- *     cdef f64[:, ::1] h0_mv = h0_grid
-*/
-    __pyx_t_6 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 473, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 473, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_5 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      assert(__pyx_t_6);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-      __pyx_t_5 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, ((PyObject *)__pyx_v_modes)};
-      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 473, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-    }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 473, __pyx_L1_error)
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
-      if (unlikely(__pyx_t_8 < 0)) {
-        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_modes.rcbuffer->pybuffer, (PyObject*)__pyx_v_modes, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-        }
-        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
-      }
-      __pyx_pybuffernd_modes.diminfo[0].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_modes.diminfo[0].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_modes.diminfo[1].strides = __pyx_pybuffernd_modes.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_modes.diminfo[1].shape = __pyx_pybuffernd_modes.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 473, __pyx_L1_error)
-    }
-    __Pyx_DECREF_SET(__pyx_v_modes, ((PyArrayObject *)__pyx_t_3));
-    __pyx_t_3 = 0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":472
- *     if not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs)
- *     if not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":132
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
  * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":475
- *         modes = np.ascontiguousarray(modes)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":135
+ *         coords = np.ascontiguousarray(coords)
  * 
- *     cdef f64[:, ::1] h0_mv = h0_grid             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] h1_mv = h1_grid
- *     cdef f64[:, ::1] c_mv = coeffs
+ *     cdef f64[:, ::1] l0 = line0             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_h0_grid), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 475, __pyx_L1_error)
-  __pyx_v_h0_mv = __pyx_t_12;
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_v_l0 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":476
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":136
  * 
- *     cdef f64[:, ::1] h0_mv = h0_grid
- *     cdef f64[:, ::1] h1_mv = h1_grid             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] c_mv = coeffs
- *     cdef i32[:, ::1] m_mv = modes
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] c = coords
+ * 
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_h1_grid), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 476, __pyx_L1_error)
-  __pyx_v_h1_mv = __pyx_t_12;
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_v_l1 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":477
- *     cdef f64[:, ::1] h0_mv = h0_grid
- *     cdef f64[:, ::1] h1_mv = h1_grid
- *     cdef f64[:, ::1] c_mv = coeffs             # <<<<<<<<<<<<<<
- *     cdef i32[:, ::1] m_mv = modes
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":137
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords             # <<<<<<<<<<<<<<
  * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coeffs), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 477, __pyx_L1_error)
-  __pyx_v_c_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":478
- *     cdef f64[:, ::1] h1_mv = h1_grid
- *     cdef f64[:, ::1] c_mv = coeffs
- *     cdef i32[:, ::1] m_mv = modes             # <<<<<<<<<<<<<<
- * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
-*/
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(((PyObject *)__pyx_v_modes), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 478, __pyx_L1_error)
-  __pyx_v_m_mv = __pyx_t_13;
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_v_c = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":480
- *     cdef i32[:, ::1] m_mv = modes
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":139
+ *     cdef f64[:, :, ::1] c = coords
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] out_mv = out
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] out_mv = out
  * 
 */
-  __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 480, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 480, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_15 = PyLong_FromSsize_t(__pyx_v_C); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_6) != (0)) __PYX_ERR(0, 480, __pyx_L1_error);
+  __pyx_t_16 = PyTuple_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __Pyx_GIVEREF(__pyx_t_7);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 139, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_14);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 480, __pyx_L1_error);
-  __pyx_t_6 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 139, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_15);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 139, __pyx_L1_error);
+  __pyx_t_7 = 0;
   __pyx_t_14 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_15 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 480, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_7);
-    assert(__pyx_t_4);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-    __Pyx_INCREF(__pyx_t_4);
+  if (unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
     __pyx_t_5 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_4, __pyx_t_15};
-    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 480, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_14);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 480, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_16};
+    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_15);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_14, __pyx_t_15, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
   }
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 480, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 139, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
       __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 480, __pyx_L1_error)
-    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
+      __PYX_ERR(0, 139, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_out.diminfo[2].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_out.diminfo[2].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[2];
     }
   }
-  __pyx_v_out = ((PyArrayObject *)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
+  __pyx_t_6 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":481
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":140
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
- *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+ *     cdef f64[:, :, ::1] out_mv = out             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t h, w
+ *     cdef Py_ssize_t h, w, ch
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 481, __pyx_L1_error)
-  __pyx_v_out_mv = __pyx_t_12;
-  __pyx_t_12.memview = NULL;
-  __pyx_t_12.data = NULL;
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_13;
+  __pyx_t_13.memview = NULL;
+  __pyx_t_13.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":487
- *     cdef int mode
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":146
+ *     cdef f64 u_x, u_y, idx_f, frac
+ *     cdef f64 v0, v1
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ * 
+ *     for h in range(H):
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":148
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
  * 
  *     for h in range(H):             # <<<<<<<<<<<<<<
  *         for w in range(W):
- *             h0 = h0_mv[h, w]
+ *             u_x = c[h, w, 0]
 */
-  __pyx_t_16 = __pyx_v_H;
-  __pyx_t_17 = __pyx_t_16;
-  for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
-    __pyx_v_h = __pyx_t_18;
+  __pyx_t_17 = __pyx_v_H;
+  __pyx_t_18 = __pyx_t_17;
+  for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
+    __pyx_v_h = __pyx_t_19;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":488
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":149
  * 
  *     for h in range(H):
  *         for w in range(W):             # <<<<<<<<<<<<<<
- *             h0 = h0_mv[h, w]
- *             h1 = h1_mv[h, w]
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]
 */
-    __pyx_t_19 = __pyx_v_W;
-    __pyx_t_20 = __pyx_t_19;
-    for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
-      __pyx_v_w = __pyx_t_21;
+    __pyx_t_20 = __pyx_v_W;
+    __pyx_t_21 = __pyx_t_20;
+    for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
+      __pyx_v_w = __pyx_t_22;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":489
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":150
  *     for h in range(H):
  *         for w in range(W):
- *             h0 = h0_mv[h, w]             # <<<<<<<<<<<<<<
- *             h1 = h1_mv[h, w]
- *             u = c_mv[h, w]
+ *             u_x = c[h, w, 0]             # <<<<<<<<<<<<<<
+ *             u_y = c[h, w, 1]
+ * 
 */
-      __pyx_t_22 = __pyx_v_h;
-      __pyx_t_23 = __pyx_v_w;
-      __pyx_v_h0 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_h0_mv.data + __pyx_t_22 * __pyx_v_h0_mv.strides[0]) )) + __pyx_t_23)) )));
+      __pyx_t_23 = __pyx_v_h;
+      __pyx_t_24 = __pyx_v_w;
+      __pyx_t_25 = 0;
+      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_23 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":490
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":151
  *         for w in range(W):
- *             h0 = h0_mv[h, w]
- *             h1 = h1_mv[h, w]             # <<<<<<<<<<<<<<
- *             u = c_mv[h, w]
- *             mode = m_mv[h, w]
-*/
-      __pyx_t_23 = __pyx_v_h;
-      __pyx_t_22 = __pyx_v_w;
-      __pyx_v_h1 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_h1_mv.data + __pyx_t_23 * __pyx_v_h1_mv.strides[0]) )) + __pyx_t_22)) )));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":491
- *             h0 = h0_mv[h, w]
- *             h1 = h1_mv[h, w]
- *             u = c_mv[h, w]             # <<<<<<<<<<<<<<
- *             mode = m_mv[h, w]
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
  * 
+ *             # Map u_x to line index
 */
-      __pyx_t_22 = __pyx_v_h;
-      __pyx_t_23 = __pyx_v_w;
-      __pyx_v_u = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_c_mv.data + __pyx_t_22 * __pyx_v_c_mv.strides[0]) )) + __pyx_t_23)) )));
+      __pyx_t_25 = __pyx_v_h;
+      __pyx_t_24 = __pyx_v_w;
+      __pyx_t_23 = 1;
+      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_25 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_23)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":492
- *             h1 = h1_mv[h, w]
- *             u = c_mv[h, w]
- *             mode = m_mv[h, w]             # <<<<<<<<<<<<<<
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":154
  * 
- *             h1_adj = adjust_end_for_mode(h0, h1, mode)
-*/
-      __pyx_t_23 = __pyx_v_h;
-      __pyx_t_22 = __pyx_v_w;
-      __pyx_v_mode = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32 *) ( /* dim=0 */ (__pyx_v_m_mv.data + __pyx_t_23 * __pyx_v_m_mv.strides[0]) )) + __pyx_t_22)) )));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":494
- *             mode = m_mv[h, w]
- * 
- *             h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
- *             out_mv[h, w] = wrap_hue(h0 + u * (h1_adj - h0))
+ *             # Map u_x to line index
+ *             idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *             idx_lo = <Py_ssize_t>floor(idx_f)
  * 
 */
-      __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
+      __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":495
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":155
+ *             # Map u_x to line index
+ *             idx_f = u_x * L_minus_1
+ *             idx_lo = <Py_ssize_t>floor(idx_f)             # <<<<<<<<<<<<<<
  * 
- *             h1_adj = adjust_end_for_mode(h0, h1, mode)
- *             out_mv[h, w] = wrap_hue(h0 + u * (h1_adj - h0))             # <<<<<<<<<<<<<<
+ *             if idx_lo < 0:
+*/
+      __pyx_v_idx_lo = ((Py_ssize_t)floor(__pyx_v_idx_f));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":157
+ *             idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+ *             if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+*/
+      __pyx_t_2 = (__pyx_v_idx_lo < 0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":158
+ * 
+ *             if idx_lo < 0:
+ *                 idx_lo = 0             # <<<<<<<<<<<<<<
+ *             if idx_lo >= L - 1:
+ *                 idx_lo = L - 2
+*/
+        __pyx_v_idx_lo = 0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":157
+ *             idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+ *             if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+*/
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":159
+ *             if idx_lo < 0:
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *                 idx_lo = L - 2
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_idx_lo >= (__pyx_v_L - 1));
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":160
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:
+ *                 idx_lo = L - 2             # <<<<<<<<<<<<<<
+ * 
+ *             idx_hi = idx_lo + 1
+*/
+        __pyx_v_idx_lo = (__pyx_v_L - 2);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":159
+ *             if idx_lo < 0:
+ *                 idx_lo = 0
+ *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *                 idx_lo = L - 2
+ * 
+*/
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":162
+ *                 idx_lo = L - 2
+ * 
+ *             idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ *             frac = idx_f - <f64>idx_lo
+ * 
+*/
+      __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":163
+ * 
+ *             idx_hi = idx_lo + 1
+ *             frac = idx_f - <f64>idx_lo             # <<<<<<<<<<<<<<
+ * 
+ *             if frac < 0.0:
+*/
+      __pyx_v_frac = (__pyx_v_idx_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_idx_lo));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":165
+ *             frac = idx_f - <f64>idx_lo
+ * 
+ *             if frac < 0.0:             # <<<<<<<<<<<<<<
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+*/
+      __pyx_t_2 = (__pyx_v_frac < 0.0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":166
+ * 
+ *             if frac < 0.0:
+ *                 frac = 0.0             # <<<<<<<<<<<<<<
+ *             elif frac > 1.0:
+ *                 frac = 1.0
+*/
+        __pyx_v_frac = 0.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":165
+ *             frac = idx_f - <f64>idx_lo
+ * 
+ *             if frac < 0.0:             # <<<<<<<<<<<<<<
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+*/
+        goto __pyx_L16;
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":167
+ *             if frac < 0.0:
+ *                 frac = 0.0
+ *             elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *                 frac = 1.0
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_frac > 1.0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":168
+ *                 frac = 0.0
+ *             elif frac > 1.0:
+ *                 frac = 1.0             # <<<<<<<<<<<<<<
+ * 
+ *             # Process each channel
+*/
+        __pyx_v_frac = 1.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":167
+ *             if frac < 0.0:
+ *                 frac = 0.0
+ *             elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *                 frac = 1.0
+ * 
+*/
+      }
+      __pyx_L16:;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":171
+ * 
+ *             # Process each channel
+ *             for ch in range(C):             # <<<<<<<<<<<<<<
+ *                 v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *                 v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+*/
+      __pyx_t_26 = __pyx_v_C;
+      __pyx_t_27 = __pyx_t_26;
+      for (__pyx_t_28 = 0; __pyx_t_28 < __pyx_t_27; __pyx_t_28+=1) {
+        __pyx_v_ch = __pyx_t_28;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":172
+ *             # Process each channel
+ *             for ch in range(C):
+ *                 v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])             # <<<<<<<<<<<<<<
+ *                 v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+ *                 out_mv[h, w, ch] = v0 + u_y * (v1 - v0)
+*/
+        __pyx_t_23 = __pyx_v_idx_lo;
+        __pyx_t_24 = __pyx_v_ch;
+        __pyx_t_25 = __pyx_v_idx_hi;
+        __pyx_t_29 = __pyx_v_ch;
+        __pyx_t_30 = __pyx_v_idx_lo;
+        __pyx_t_31 = __pyx_v_ch;
+        __pyx_v_v0 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_23 * __pyx_v_l0.strides[0]) )) + __pyx_t_24)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_25 * __pyx_v_l0.strides[0]) )) + __pyx_t_29)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_30 * __pyx_v_l0.strides[0]) )) + __pyx_t_31)) ))))));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":173
+ *             for ch in range(C):
+ *                 v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *                 v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])             # <<<<<<<<<<<<<<
+ *                 out_mv[h, w, ch] = v0 + u_y * (v1 - v0)
+ * 
+*/
+        __pyx_t_31 = __pyx_v_idx_lo;
+        __pyx_t_30 = __pyx_v_ch;
+        __pyx_t_29 = __pyx_v_idx_hi;
+        __pyx_t_25 = __pyx_v_ch;
+        __pyx_t_24 = __pyx_v_idx_lo;
+        __pyx_t_23 = __pyx_v_ch;
+        __pyx_v_v1 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_31 * __pyx_v_l1.strides[0]) )) + __pyx_t_30)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_29 * __pyx_v_l1.strides[0]) )) + __pyx_t_25)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_24 * __pyx_v_l1.strides[0]) )) + __pyx_t_23)) ))))));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":174
+ *                 v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *                 v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+ *                 out_mv[h, w, ch] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
  * 
  *     return out
 */
-      __pyx_t_22 = __pyx_v_h;
-      __pyx_t_23 = __pyx_v_w;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_22 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_23)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_wrap_hue((__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0))));
+        __pyx_t_23 = __pyx_v_h;
+        __pyx_t_24 = __pyx_v_w;
+        __pyx_t_25 = __pyx_v_ch;
+        *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_23 * __pyx_v_out_mv.strides[0]) ) + __pyx_t_24 * __pyx_v_out_mv.strides[1]) )) + __pyx_t_25)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
+      }
     }
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":497
- *             out_mv[h, w] = wrap_hue(h0 + u * (h1_adj - h0))
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":176
+ *                 out_mv[h, w, ch] = v0 + u_y * (v1 - v0)
  * 
  *     return out             # <<<<<<<<<<<<<<
  * 
@@ -24237,12 +20792,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_r = ((PyObject *)__pyx_v_out);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":438
- * # 2D Grid Hue Lerp with per-pixel mode
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":101
+ * # Multi-channel version: lines have shape (L, C)
  * # =============================================================================
- * def hue_lerp_2d_with_modes(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=2] h0_grid,
- *     np.ndarray[f64, ndim=2] h1_grid,
+ * def lerp_between_lines_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
 */
 
   /* function exit code */
@@ -24255,60 +20810,57 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
   { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_2d_with_modes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coeffs.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h0_grid.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_h1_grid.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_modes.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
   __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __pyx_L2:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_h0_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_h1_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c_mv, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_m_mv, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l0, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l1, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
   __Pyx_XDECREF((PyObject *)__pyx_v_out);
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_h0_grid);
-  __Pyx_XDECREF((PyObject *)__pyx_v_h1_grid);
-  __Pyx_XDECREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_XDECREF((PyObject *)__pyx_v_modes);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":503
- * # Hue interpolation between lines (Section 6 style)
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":182
+ * # Flat coordinates version: coords shape (N, 2) -> output (N,) or (N, C)
  * # =============================================================================
- * def hue_lerp_between_lines(             # <<<<<<<<<<<<<<
+ * def lerp_between_lines_flat_1ch(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] line0,
  *     np.ndarray[f64, ndim=1] line1,
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_11hue_lerp_between_lines(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_5lerp_between_lines_flat_1ch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_10hue_lerp_between_lines, "\n    Interpolate hue between two 1D lines with modes for each axis.\n    \n    Args:\n        line0: First hue line, shape (L,)\n        line1: Second hue line, shape (L,)\n        coords: Coordinate grid, shape (H, W, 2)\n                coords[..., 0] = u_x (position along lines)\n                coords[..., 1] = u_y (blend between lines)\n        mode_x: Interpolation mode for sampling within lines\n        mode_y: Interpolation mode for blending between lines\n    \n    Returns:\n        Interpolated hues, shape (H, W), values in [0, 360)\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_11hue_lerp_between_lines = {"hue_lerp_between_lines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_11hue_lerp_between_lines, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_10hue_lerp_between_lines};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_11hue_lerp_between_lines(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_4lerp_between_lines_flat_1ch, "\n    Interpolate at arbitrary (u_x, u_y) points (flat list).\n    \n    Args:\n        line0: First line, shape (L,)\n        line1: Second line, shape (L,)\n        coords: Coordinate pairs, shape (N, 2)\n    \n    Returns:\n        Interpolated values, shape (N,)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_5lerp_between_lines_flat_1ch = {"lerp_between_lines_flat_1ch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_5lerp_between_lines_flat_1ch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_4lerp_between_lines_flat_1ch};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_5lerp_between_lines_flat_1ch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24318,19 +20870,17 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   PyArrayObject *__pyx_v_line0 = 0;
   PyArrayObject *__pyx_v_line1 = 0;
   PyArrayObject *__pyx_v_coords = 0;
-  int __pyx_v_mode_x;
-  int __pyx_v_mode_y;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[5] = {0,0,0,0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_between_lines (wrapper)", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_flat_1ch (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -24340,91 +20890,62 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,&__pyx_mstate_global->__pyx_n_u_mode_x,&__pyx_mstate_global->__pyx_n_u_mode_y,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 503, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 182, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
-        case  5:
-        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 503, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 503, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 503, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 182, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 503, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 182, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 503, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 182, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_between_lines", 0) < (0)) __PYX_ERR(0, 503, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_flat_1ch", 0) < (0)) __PYX_ERR(0, 182, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_between_lines", 0, 3, 5, i); __PYX_ERR(0, 503, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_flat_1ch", 1, 3, 3, i); __PYX_ERR(0, 182, __pyx_L3_error) }
       }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
     } else {
-      switch (__pyx_nargs) {
-        case  5:
-        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 503, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 503, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 503, __pyx_L3_error)
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 503, __pyx_L3_error)
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 503, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 182, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 182, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 182, __pyx_L3_error)
     }
     __pyx_v_line0 = ((PyArrayObject *)values[0]);
     __pyx_v_line1 = ((PyArrayObject *)values[1]);
     __pyx_v_coords = ((PyArrayObject *)values[2]);
-    if (values[3]) {
-      __pyx_v_mode_x = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_mode_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 507, __pyx_L3_error)
-    } else {
-      __pyx_v_mode_x = ((int)((int)2));
-    }
-    if (values[4]) {
-      __pyx_v_mode_y = __Pyx_PyLong_As_int(values[4]); if (unlikely((__pyx_v_mode_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L3_error)
-    } else {
-      __pyx_v_mode_y = ((int)((int)2));
-    }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_between_lines", 0, 3, 5, __pyx_nargs); __PYX_ERR(0, 503, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_flat_1ch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 182, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_between_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_flat_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 504, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 505, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 506, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_10hue_lerp_between_lines(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords, __pyx_v_mode_x, __pyx_v_mode_y);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_4lerp_between_lines_flat_1ch(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -24443,30 +20964,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_10hue_lerp_between_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords, int __pyx_v_mode_x, int __pyx_v_mode_y) {
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_4lerp_between_lines_flat_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
   Py_ssize_t __pyx_v_L;
-  Py_ssize_t __pyx_v_H;
-  Py_ssize_t __pyx_v_W;
+  Py_ssize_t __pyx_v_N;
   __Pyx_memviewslice __pyx_v_l0 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_l1 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyArrayObject *__pyx_v_out = 0;
   __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_h;
-  Py_ssize_t __pyx_v_w;
+  Py_ssize_t __pyx_v_n;
   Py_ssize_t __pyx_v_idx_lo;
   Py_ssize_t __pyx_v_idx_hi;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u_x;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u_y;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_idx_f;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_frac;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0_lo;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h0_hi;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_lo;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_h1_hi;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_v0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_v1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
   __Pyx_Buffer __pyx_pybuffer_coords;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
@@ -24492,20 +21007,16 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_t_14 = NULL;
   PyObject *__pyx_t_15 = NULL;
-  __Pyx_memviewslice __pyx_t_16 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_16;
   Py_ssize_t __pyx_t_17;
   Py_ssize_t __pyx_t_18;
   Py_ssize_t __pyx_t_19;
   Py_ssize_t __pyx_t_20;
   Py_ssize_t __pyx_t_21;
-  Py_ssize_t __pyx_t_22;
-  Py_ssize_t __pyx_t_23;
-  Py_ssize_t __pyx_t_24;
-  Py_ssize_t __pyx_t_25;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_between_lines", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_flat_1ch", 0);
   __Pyx_INCREF((PyObject *)__pyx_v_line0);
   __Pyx_INCREF((PyObject *)__pyx_v_line1);
   __Pyx_INCREF((PyObject *)__pyx_v_coords);
@@ -24527,63 +21038,54 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 503, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 182, __pyx_L1_error)
   }
   __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 503, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 182, __pyx_L1_error)
   }
   __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 503, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 182, __pyx_L1_error)
   }
-  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1];
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":525
- *         Interpolated hues, shape (H, W), values in [0, 360)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":198
+ *         Interpolated values, shape (N,)
  *     """
  *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t H = coords.shape[0]
- *     cdef Py_ssize_t W = coords.shape[1]
+ *     cdef Py_ssize_t N = coords.shape[0]
+ * 
 */
   __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":526
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":199
  *     """
  *     cdef Py_ssize_t L = line0.shape[0]
- *     cdef Py_ssize_t H = coords.shape[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t W = coords.shape[1]
- * 
-*/
-  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":527
- *     cdef Py_ssize_t L = line0.shape[0]
- *     cdef Py_ssize_t H = coords.shape[0]
- *     cdef Py_ssize_t W = coords.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t N = coords.shape[0]             # <<<<<<<<<<<<<<
  * 
  *     if line1.shape[0] != L:
 */
-  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
+  __pyx_v_N = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":529
- *     cdef Py_ssize_t W = coords.shape[1]
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":201
+ *     cdef Py_ssize_t N = coords.shape[0]
  * 
  *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
  *         raise ValueError("Lines must have same length")
- *     if coords.shape[2] != 2:
+ *     if coords.shape[1] != 2:
 */
   __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":530
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":202
  * 
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")             # <<<<<<<<<<<<<<
- *     if coords.shape[2] != 2:
- *         raise ValueError("coords must have shape (H, W, 2)")
+ *     if coords.shape[1] != 2:
+ *         raise ValueError("coords must have shape (N, 2)")
 */
     __pyx_t_3 = NULL;
     __pyx_t_4 = 1;
@@ -24591,79 +21093,79 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_length};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 530, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 530, __pyx_L1_error)
+    __PYX_ERR(0, 202, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":529
- *     cdef Py_ssize_t W = coords.shape[1]
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":201
+ *     cdef Py_ssize_t N = coords.shape[0]
  * 
  *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
  *         raise ValueError("Lines must have same length")
- *     if coords.shape[2] != 2:
+ *     if coords.shape[1] != 2:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":531
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":203
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")
- *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
- *         raise ValueError("coords must have shape (H, W, 2)")
+ *     if coords.shape[1] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (N, 2)")
  * 
 */
-  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]) != 2);
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]) != 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":532
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":204
  *         raise ValueError("Lines must have same length")
- *     if coords.shape[2] != 2:
- *         raise ValueError("coords must have shape (H, W, 2)")             # <<<<<<<<<<<<<<
+ *     if coords.shape[1] != 2:
+ *         raise ValueError("coords must have shape (N, 2)")             # <<<<<<<<<<<<<<
  * 
  *     if not line0.flags['C_CONTIGUOUS']:
 */
     __pyx_t_3 = NULL;
     __pyx_t_4 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_H_W_2};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_N_2};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 532, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 532, __pyx_L1_error)
+    __PYX_ERR(0, 204, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":531
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":203
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")
- *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
- *         raise ValueError("coords must have shape (H, W, 2)")
+ *     if coords.shape[1] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (N, 2)")
  * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":534
- *         raise ValueError("coords must have shape (H, W, 2)")
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":206
+ *         raise ValueError("coords must have shape (N, 2)")
  * 
  *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":535
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":207
  * 
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
@@ -24671,9 +21173,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *         line1 = np.ascontiguousarray(line1)
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 535, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 535, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_4 = 1;
@@ -24693,17 +21195,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 535, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 535, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 207, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -24712,13 +21214,13 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
       __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 535, __pyx_L1_error)
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 207, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":534
- *         raise ValueError("coords must have shape (H, W, 2)")
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":206
+ *         raise ValueError("coords must have shape (N, 2)")
  * 
  *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         line0 = np.ascontiguousarray(line0)
@@ -24726,24 +21228,24 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":536
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":208
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 536, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 536, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 536, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":537
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":209
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
@@ -24751,9 +21253,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *         coords = np.ascontiguousarray(coords)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 537, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 537, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_4 = 1;
@@ -24773,17 +21275,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 537, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 537, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 209, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -24792,12 +21294,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 537, __pyx_L1_error)
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 209, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":536
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":208
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -24806,24 +21308,24 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":538
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":210
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         coords = np.ascontiguousarray(coords)
  * 
 */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 538, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 538, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 538, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":539
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":211
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:
  *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
@@ -24831,9 +21333,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *     cdef f64[::1] l0 = line0
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_4 = 1;
@@ -24853,17 +21355,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
     }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 539, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 211, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -24871,13 +21373,13 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         }
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
-      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 211, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":538
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":210
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -24886,71 +21388,61 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":541
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":213
  *         coords = np.ascontiguousarray(coords)
  * 
  *     cdef f64[::1] l0 = line0             # <<<<<<<<<<<<<<
  *     cdef f64[::1] l1 = line1
- *     cdef f64[:, :, ::1] c = coords
+ *     cdef f64[:, ::1] c = coords
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
   __pyx_v_l0 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":542
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":214
  * 
  *     cdef f64[::1] l0 = line0
  *     cdef f64[::1] l1 = line1             # <<<<<<<<<<<<<<
- *     cdef f64[:, :, ::1] c = coords
+ *     cdef f64[:, ::1] c = coords
  * 
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 214, __pyx_L1_error)
   __pyx_v_l1 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":543
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":215
  *     cdef f64[::1] l0 = line0
  *     cdef f64[::1] l1 = line1
- *     cdef f64[:, :, ::1] c = coords             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] c = coords             # <<<<<<<<<<<<<<
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
+ *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 543, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
   __pyx_v_c = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":545
- *     cdef f64[:, :, ::1] c = coords
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":217
+ *     cdef f64[:, ::1] c = coords
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)             # <<<<<<<<<<<<<<
- *     cdef f64[:, ::1] out_mv = out
+ *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef f64[::1] out_mv = out
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_N); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 545, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_14);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 545, __pyx_L1_error);
-  __pyx_t_7 = 0;
-  __pyx_t_14 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 545, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 545, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -24965,337 +21457,287 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   }
   #endif
   {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_15};
-    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 545, __pyx_L1_error)
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_7};
+    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 217, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 545, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_15, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 217, __pyx_L1_error)
     __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 545, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 217, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 545, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 217, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 545, __pyx_L1_error)
-    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
+      __PYX_ERR(0, 217, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0];
     }
   }
   __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":546
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":218
  * 
- *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
- *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
+ *     cdef f64[::1] out_mv = out             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t h, w
+ *     cdef Py_ssize_t n, idx_lo, idx_hi
 */
-  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 546, __pyx_L1_error)
-  __pyx_v_out_mv = __pyx_t_16;
-  __pyx_t_16.memview = NULL;
-  __pyx_t_16.data = NULL;
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":553
- *     cdef f64 h0_lo, h0_hi, h1_lo, h1_hi
- *     cdef f64 v0, v1, h_adj
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":222
+ *     cdef Py_ssize_t n, idx_lo, idx_hi
+ *     cdef f64 u_x, u_y, idx_f, frac, v0, v1
  *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
  * 
- *     for h in range(H):
+ *     for n in range(N):
 */
-  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)(__pyx_v_L - 1));
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":555
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":224
  *     cdef f64 L_minus_1 = <f64>(L - 1)
  * 
- *     for h in range(H):             # <<<<<<<<<<<<<<
- *         for w in range(W):
- *             u_x = c[h, w, 0]
+ *     for n in range(N):             # <<<<<<<<<<<<<<
+ *         u_x = c[n, 0]
+ *         u_y = c[n, 1]
 */
-  __pyx_t_17 = __pyx_v_H;
-  __pyx_t_18 = __pyx_t_17;
-  for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-    __pyx_v_h = __pyx_t_19;
+  __pyx_t_16 = __pyx_v_N;
+  __pyx_t_17 = __pyx_t_16;
+  for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
+    __pyx_v_n = __pyx_t_18;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":556
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":225
  * 
- *     for h in range(H):
- *         for w in range(W):             # <<<<<<<<<<<<<<
- *             u_x = c[h, w, 0]
- *             u_y = c[h, w, 1]
-*/
-    __pyx_t_20 = __pyx_v_W;
-    __pyx_t_21 = __pyx_t_20;
-    for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
-      __pyx_v_w = __pyx_t_22;
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":557
- *     for h in range(H):
- *         for w in range(W):
- *             u_x = c[h, w, 0]             # <<<<<<<<<<<<<<
- *             u_y = c[h, w, 1]
+ *     for n in range(N):
+ *         u_x = c[n, 0]             # <<<<<<<<<<<<<<
+ *         u_y = c[n, 1]
  * 
 */
-      __pyx_t_23 = __pyx_v_h;
-      __pyx_t_24 = __pyx_v_w;
-      __pyx_t_25 = 0;
-      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_23 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
+    __pyx_t_19 = __pyx_v_n;
+    __pyx_t_20 = 0;
+    __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_c.data + __pyx_t_19 * __pyx_v_c.strides[0]) )) + __pyx_t_20)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":558
- *         for w in range(W):
- *             u_x = c[h, w, 0]
- *             u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":226
+ *     for n in range(N):
+ *         u_x = c[n, 0]
+ *         u_y = c[n, 1]             # <<<<<<<<<<<<<<
  * 
- *             # Map u_x to line index
+ *         idx_f = u_x * L_minus_1
 */
-      __pyx_t_25 = __pyx_v_h;
-      __pyx_t_24 = __pyx_v_w;
-      __pyx_t_23 = 1;
-      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_25 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_23)) )));
+    __pyx_t_20 = __pyx_v_n;
+    __pyx_t_19 = 1;
+    __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_c.data + __pyx_t_20 * __pyx_v_c.strides[0]) )) + __pyx_t_19)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":561
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":228
+ *         u_y = c[n, 1]
  * 
- *             # Map u_x to line index
- *             idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
- *             idx_lo = <Py_ssize_t>floor(idx_f)
+ *         idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
  * 
 */
-      __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+    __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":562
- *             # Map u_x to line index
- *             idx_f = u_x * L_minus_1
- *             idx_lo = <Py_ssize_t>floor(idx_f)             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":229
  * 
- *             if idx_lo < 0:
-*/
-      __pyx_v_idx_lo = ((Py_ssize_t)floor(__pyx_v_idx_f));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":564
- *             idx_lo = <Py_ssize_t>floor(idx_f)
+ *         idx_f = u_x * L_minus_1
+ *         idx_lo = <Py_ssize_t>floor(idx_f)             # <<<<<<<<<<<<<<
  * 
- *             if idx_lo < 0:             # <<<<<<<<<<<<<<
- *                 idx_lo = 0
- *             if idx_lo >= L - 1:
+ *         if idx_lo < 0:
 */
-      __pyx_t_5 = (__pyx_v_idx_lo < 0);
-      if (__pyx_t_5) {
+    __pyx_v_idx_lo = ((Py_ssize_t)floor(__pyx_v_idx_f));
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":565
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":231
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
  * 
- *             if idx_lo < 0:
- *                 idx_lo = 0             # <<<<<<<<<<<<<<
- *             if idx_lo >= L - 1:
- *                 idx_lo = L - 2
+ *         if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
 */
-        __pyx_v_idx_lo = 0;
+    __pyx_t_5 = (__pyx_v_idx_lo < 0);
+    if (__pyx_t_5) {
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":564
- *             idx_lo = <Py_ssize_t>floor(idx_f)
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":232
  * 
- *             if idx_lo < 0:             # <<<<<<<<<<<<<<
- *                 idx_lo = 0
- *             if idx_lo >= L - 1:
+ *         if idx_lo < 0:
+ *             idx_lo = 0             # <<<<<<<<<<<<<<
+ *         if idx_lo >= L - 1:
+ *             idx_lo = L - 2
 */
-      }
+      __pyx_v_idx_lo = 0;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":566
- *             if idx_lo < 0:
- *                 idx_lo = 0
- *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
- *                 idx_lo = L - 2
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":231
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
  * 
+ *         if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
 */
-      __pyx_t_5 = (__pyx_v_idx_lo >= (__pyx_v_L - 1));
-      if (__pyx_t_5) {
+    }
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":567
- *                 idx_lo = 0
- *             if idx_lo >= L - 1:
- *                 idx_lo = L - 2             # <<<<<<<<<<<<<<
- * 
- *             idx_hi = idx_lo + 1
-*/
-        __pyx_v_idx_lo = (__pyx_v_L - 2);
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":566
- *             if idx_lo < 0:
- *                 idx_lo = 0
- *             if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
- *                 idx_lo = L - 2
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":233
+ *         if idx_lo < 0:
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *             idx_lo = L - 2
  * 
 */
-      }
+    __pyx_t_5 = (__pyx_v_idx_lo >= (__pyx_v_L - 1));
+    if (__pyx_t_5) {
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":569
- *                 idx_lo = L - 2
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":234
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
+ *             idx_lo = L - 2             # <<<<<<<<<<<<<<
  * 
- *             idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
- *             frac = idx_f - <f64>idx_lo
+ *         idx_hi = idx_lo + 1
+*/
+      __pyx_v_idx_lo = (__pyx_v_L - 2);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":233
+ *         if idx_lo < 0:
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *             idx_lo = L - 2
  * 
 */
-      __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+    }
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":570
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":236
+ *             idx_lo = L - 2
  * 
- *             idx_hi = idx_lo + 1
- *             frac = idx_f - <f64>idx_lo             # <<<<<<<<<<<<<<
- * 
- *             if frac < 0.0:
-*/
-      __pyx_v_frac = (__pyx_v_idx_f - ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)__pyx_v_idx_lo));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":572
- *             frac = idx_f - <f64>idx_lo
- * 
- *             if frac < 0.0:             # <<<<<<<<<<<<<<
- *                 frac = 0.0
- *             elif frac > 1.0:
-*/
-      __pyx_t_5 = (__pyx_v_frac < 0.0);
-      if (__pyx_t_5) {
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":573
- * 
- *             if frac < 0.0:
- *                 frac = 0.0             # <<<<<<<<<<<<<<
- *             elif frac > 1.0:
- *                 frac = 1.0
-*/
-        __pyx_v_frac = 0.0;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":572
- *             frac = idx_f - <f64>idx_lo
- * 
- *             if frac < 0.0:             # <<<<<<<<<<<<<<
- *                 frac = 0.0
- *             elif frac > 1.0:
-*/
-        goto __pyx_L14;
-      }
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":574
- *             if frac < 0.0:
- *                 frac = 0.0
- *             elif frac > 1.0:             # <<<<<<<<<<<<<<
- *                 frac = 1.0
+ *         idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ *         frac = idx_f - <f64>idx_lo
  * 
 */
-      __pyx_t_5 = (__pyx_v_frac > 1.0);
-      if (__pyx_t_5) {
+    __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":575
- *                 frac = 0.0
- *             elif frac > 1.0:
- *                 frac = 1.0             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":237
  * 
- *             # Sample line0 at u_x with hue mode
-*/
-        __pyx_v_frac = 1.0;
-
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":574
- *             if frac < 0.0:
- *                 frac = 0.0
- *             elif frac > 1.0:             # <<<<<<<<<<<<<<
- *                 frac = 1.0
+ *         idx_hi = idx_lo + 1
+ *         frac = idx_f - <f64>idx_lo             # <<<<<<<<<<<<<<
  * 
+ *         if frac < 0.0:
 */
-      }
-      __pyx_L14:;
+    __pyx_v_frac = (__pyx_v_idx_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_idx_lo));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":578
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":239
+ *         frac = idx_f - <f64>idx_lo
  * 
- *             # Sample line0 at u_x with hue mode
- *             h0_lo = l0[idx_lo]             # <<<<<<<<<<<<<<
- *             h0_hi = l0[idx_hi]
- *             v0 = lerp_hue_single(h0_lo, h0_hi, frac, mode_x)
+ *         if frac < 0.0:             # <<<<<<<<<<<<<<
+ *             frac = 0.0
+ *         elif frac > 1.0:
 */
-      __pyx_t_23 = __pyx_v_idx_lo;
-      __pyx_v_h0_lo = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l0.data) + __pyx_t_23)) )));
+    __pyx_t_5 = (__pyx_v_frac < 0.0);
+    if (__pyx_t_5) {
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":579
- *             # Sample line0 at u_x with hue mode
- *             h0_lo = l0[idx_lo]
- *             h0_hi = l0[idx_hi]             # <<<<<<<<<<<<<<
- *             v0 = lerp_hue_single(h0_lo, h0_hi, frac, mode_x)
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":240
  * 
+ *         if frac < 0.0:
+ *             frac = 0.0             # <<<<<<<<<<<<<<
+ *         elif frac > 1.0:
+ *             frac = 1.0
 */
-      __pyx_t_23 = __pyx_v_idx_hi;
-      __pyx_v_h0_hi = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l0.data) + __pyx_t_23)) )));
+      __pyx_v_frac = 0.0;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":580
- *             h0_lo = l0[idx_lo]
- *             h0_hi = l0[idx_hi]
- *             v0 = lerp_hue_single(h0_lo, h0_hi, frac, mode_x)             # <<<<<<<<<<<<<<
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":239
+ *         frac = idx_f - <f64>idx_lo
  * 
- *             # Sample line1 at u_x with hue mode
+ *         if frac < 0.0:             # <<<<<<<<<<<<<<
+ *             frac = 0.0
+ *         elif frac > 1.0:
 */
-      __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_v_h0_lo, __pyx_v_h0_hi, __pyx_v_frac, __pyx_v_mode_x);
+      goto __pyx_L12;
+    }
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":583
- * 
- *             # Sample line1 at u_x with hue mode
- *             h1_lo = l1[idx_lo]             # <<<<<<<<<<<<<<
- *             h1_hi = l1[idx_hi]
- *             v1 = lerp_hue_single(h1_lo, h1_hi, frac, mode_x)
-*/
-      __pyx_t_23 = __pyx_v_idx_lo;
-      __pyx_v_h1_lo = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l1.data) + __pyx_t_23)) )));
-
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":584
- *             # Sample line1 at u_x with hue mode
- *             h1_lo = l1[idx_lo]
- *             h1_hi = l1[idx_hi]             # <<<<<<<<<<<<<<
- *             v1 = lerp_hue_single(h1_lo, h1_hi, frac, mode_x)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":241
+ *         if frac < 0.0:
+ *             frac = 0.0
+ *         elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *             frac = 1.0
  * 
 */
-      __pyx_t_23 = __pyx_v_idx_hi;
-      __pyx_v_h1_hi = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l1.data) + __pyx_t_23)) )));
+    __pyx_t_5 = (__pyx_v_frac > 1.0);
+    if (__pyx_t_5) {
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":585
- *             h1_lo = l1[idx_lo]
- *             h1_hi = l1[idx_hi]
- *             v1 = lerp_hue_single(h1_lo, h1_hi, frac, mode_x)             # <<<<<<<<<<<<<<
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":242
+ *             frac = 0.0
+ *         elif frac > 1.0:
+ *             frac = 1.0             # <<<<<<<<<<<<<<
  * 
- *             # Blend between lines with hue mode
+ *         v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])
 */
-      __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_v_h1_lo, __pyx_v_h1_hi, __pyx_v_frac, __pyx_v_mode_x);
+      __pyx_v_frac = 1.0;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":588
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":241
+ *         if frac < 0.0:
+ *             frac = 0.0
+ *         elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *             frac = 1.0
  * 
- *             # Blend between lines with hue mode
- *             out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+*/
+    }
+    __pyx_L12:;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":244
+ *             frac = 1.0
+ * 
+ *         v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])             # <<<<<<<<<<<<<<
+ *         v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])
+ *         out_mv[n] = v0 + u_y * (v1 - v0)
+*/
+    __pyx_t_19 = __pyx_v_idx_lo;
+    __pyx_t_20 = __pyx_v_idx_hi;
+    __pyx_t_21 = __pyx_v_idx_lo;
+    __pyx_v_v0 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_19)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_20)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_21)) ))))));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":245
+ * 
+ *         v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])
+ *         v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])             # <<<<<<<<<<<<<<
+ *         out_mv[n] = v0 + u_y * (v1 - v0)
+ * 
+*/
+    __pyx_t_21 = __pyx_v_idx_lo;
+    __pyx_t_20 = __pyx_v_idx_hi;
+    __pyx_t_19 = __pyx_v_idx_lo;
+    __pyx_v_v1 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_21)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_20)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_19)) ))))));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":246
+ *         v0 = l0[idx_lo] + frac * (l0[idx_hi] - l0[idx_lo])
+ *         v1 = l1[idx_lo] + frac * (l1[idx_hi] - l1[idx_lo])
+ *         out_mv[n] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
  * 
  *     return out
 */
-      __pyx_t_23 = __pyx_v_h;
-      __pyx_t_24 = __pyx_v_w;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_23 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_24)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
-    }
+    __pyx_t_19 = __pyx_v_n;
+    *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_out_mv.data) + __pyx_t_19)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":590
- *             out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":248
+ *         out_mv[n] = v0 + u_y * (v1 - v0)
  * 
  *     return out             # <<<<<<<<<<<<<<
  * 
- * # =============================================================================
+ * 
 */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF((PyObject *)__pyx_v_out);
   __pyx_r = ((PyObject *)__pyx_v_out);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":503
- * # Hue interpolation between lines (Section 6 style)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":182
+ * # Flat coordinates version: coords shape (N, 2) -> output (N,) or (N, C)
  * # =============================================================================
- * def hue_lerp_between_lines(             # <<<<<<<<<<<<<<
+ * def lerp_between_lines_flat_1ch(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] line0,
  *     np.ndarray[f64, ndim=1] line1,
 */
@@ -25310,7 +21752,6 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_15);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_16, 1);
   { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -25320,7 +21761,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_between_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_flat_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -25342,25 +21783,25 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":595
- * # Hue interpolation between lines with discrete x-sampling (Section 6 style)
- * # =============================================================================
- * def hue_lerp_between_lines_x_discrete(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] line0,
- *     np.ndarray[f64, ndim=1] line1,
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":251
+ * 
+ * 
+ * def lerp_between_lines_flat_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_13hue_lerp_between_lines_x_discrete(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_7lerp_between_lines_flat_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_12hue_lerp_between_lines_x_discrete, "\n    Interpolate hue between two 1D lines with discrete x-sampling (nearest index).\n    \n    Args:\n        line0: First hue line, shape (L,)\n        line1: Second hue line, shape (L,)\n        coords: Coordinate grid, shape (H, W, 2)\n                coords[..., 0] = u_x (position along lines, maps to nearest index)\n                coords[..., 1] = u_y (blend between lines)\n        mode_y: Interpolation mode for blending between lines\n    \n    Returns:\n        Interpolated hues, shape (H, W), values in [0, 360)\n    \n    Note:\n        For efficiency when L = W, use this function instead of hue_lerp_between_lines.\n        The x-coordinate is mapped to the nearest index by rounding.\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_13hue_lerp_between_lines_x_discrete = {"hue_lerp_between_lines_x_discrete", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_13hue_lerp_between_lines_x_discrete, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_12hue_lerp_between_lines_x_discrete};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_13hue_lerp_between_lines_x_discrete(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_6lerp_between_lines_flat_multichannel, "\n    Interpolate at arbitrary (u_x, u_y) points (flat list), multi-channel.\n    \n    Args:\n        line0: First line, shape (L, C)\n        line1: Second line, shape (L, C)\n        coords: Coordinate pairs, shape (N, 2)\n    \n    Returns:\n        Interpolated values, shape (N, C)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_7lerp_between_lines_flat_multichannel = {"lerp_between_lines_flat_multichannel", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_7lerp_between_lines_flat_multichannel, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_6lerp_between_lines_flat_multichannel};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_7lerp_between_lines_flat_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25370,18 +21811,17 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   PyArrayObject *__pyx_v_line0 = 0;
   PyArrayObject *__pyx_v_line1 = 0;
   PyArrayObject *__pyx_v_coords = 0;
-  int __pyx_v_mode_y;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_lerp_between_lines_x_discrete (wrapper)", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_flat_multichannel (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -25391,78 +21831,62 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,&__pyx_mstate_global->__pyx_n_u_mode_y,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 595, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 251, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 595, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 595, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 251, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 595, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 251, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 595, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 251, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_lerp_between_lines_x_discrete", 0) < (0)) __PYX_ERR(0, 595, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_flat_multichannel", 0) < (0)) __PYX_ERR(0, 251, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_lerp_between_lines_x_discrete", 0, 3, 4, i); __PYX_ERR(0, 595, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_flat_multichannel", 1, 3, 3, i); __PYX_ERR(0, 251, __pyx_L3_error) }
       }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
     } else {
-      switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 595, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 595, __pyx_L3_error)
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 595, __pyx_L3_error)
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 595, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 251, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 251, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 251, __pyx_L3_error)
     }
     __pyx_v_line0 = ((PyArrayObject *)values[0]);
     __pyx_v_line1 = ((PyArrayObject *)values[1]);
     __pyx_v_coords = ((PyArrayObject *)values[2]);
-    if (values[3]) {
-      __pyx_v_mode_y = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_mode_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 599, __pyx_L3_error)
-    } else {
-      __pyx_v_mode_y = ((int)((int)2));
-    }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_lerp_between_lines_x_discrete", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 595, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_flat_multichannel", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 251, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_between_lines_x_discrete", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_flat_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 596, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 597, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 598, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_12hue_lerp_between_lines_x_discrete(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords, __pyx_v_mode_y);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 252, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 253, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_6lerp_between_lines_flat_multichannel(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -25481,7 +21905,2176 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_12hue_lerp_between_lines_x_discrete(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords, int __pyx_v_mode_y) {
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_6lerp_between_lines_flat_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
+  Py_ssize_t __pyx_v_L;
+  Py_ssize_t __pyx_v_C;
+  Py_ssize_t __pyx_v_N;
+  __Pyx_memviewslice __pyx_v_l0 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_l1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyArrayObject *__pyx_v_out = 0;
+  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_v_n;
+  Py_ssize_t __pyx_v_ch;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
+  __Pyx_Buffer __pyx_pybuffer_coords;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
+  __Pyx_Buffer __pyx_pybuffer_line0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line1;
+  __Pyx_Buffer __pyx_pybuffer_line1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  Py_ssize_t __pyx_t_15;
+  Py_ssize_t __pyx_t_16;
+  Py_ssize_t __pyx_t_17;
+  Py_ssize_t __pyx_t_18;
+  Py_ssize_t __pyx_t_19;
+  Py_ssize_t __pyx_t_20;
+  Py_ssize_t __pyx_t_21;
+  Py_ssize_t __pyx_t_22;
+  Py_ssize_t __pyx_t_23;
+  Py_ssize_t __pyx_t_24;
+  Py_ssize_t __pyx_t_25;
+  Py_ssize_t __pyx_t_26;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("lerp_between_lines_flat_multichannel", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
+  __pyx_pybuffer_out.pybuffer.buf = NULL;
+  __pyx_pybuffer_out.refcount = 0;
+  __pyx_pybuffernd_out.data = NULL;
+  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
+  __pyx_pybuffer_line0.pybuffer.buf = NULL;
+  __pyx_pybuffer_line0.refcount = 0;
+  __pyx_pybuffernd_line0.data = NULL;
+  __pyx_pybuffernd_line0.rcbuffer = &__pyx_pybuffer_line0;
+  __pyx_pybuffer_line1.pybuffer.buf = NULL;
+  __pyx_pybuffer_line1.refcount = 0;
+  __pyx_pybuffernd_line1.data = NULL;
+  __pyx_pybuffernd_line1.rcbuffer = &__pyx_pybuffer_line1;
+  __pyx_pybuffer_coords.pybuffer.buf = NULL;
+  __pyx_pybuffer_coords.refcount = 0;
+  __pyx_pybuffernd_coords.data = NULL;
+  __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1];
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":267
+ *         Interpolated values, shape (N, C)
+ *     """
+ *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t N = coords.shape[0]
+*/
+  __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":268
+ *     """
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t N = coords.shape[0]
+ * 
+*/
+  __pyx_v_C = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":269
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t N = coords.shape[0]             # <<<<<<<<<<<<<<
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+*/
+  __pyx_v_N = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":271
+ *     cdef Py_ssize_t N = coords.shape[0]
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[1] != 2:
+*/
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[1]) != __pyx_v_C);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":272
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")             # <<<<<<<<<<<<<<
+ *     if coords.shape[1] != 2:
+ *         raise ValueError("coords must have shape (N, 2)")
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_shape};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 272, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":271
+ *     cdef Py_ssize_t N = coords.shape[0]
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[1] != 2:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":273
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[1] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (N, 2)")
+ * 
+*/
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]) != 2);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":274
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[1] != 2:
+ *         raise ValueError("coords must have shape (N, 2)")             # <<<<<<<<<<<<<<
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_N_2};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 274, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":273
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[1] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (N, 2)")
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":276
+ *         raise ValueError("coords must have shape (N, 2)")
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 276, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":277
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+*/
+    __pyx_t_3 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+      assert(__pyx_t_3);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_line0)};
+      __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 277, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 277, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_4));
+    __pyx_t_4 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":276
+ *         raise ValueError("coords must have shape (N, 2)")
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":278
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = (!__pyx_t_2);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":279
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)
+*/
+    __pyx_t_4 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_6))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+      assert(__pyx_t_4);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_6, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_v_line1)};
+      __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+    }
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 279, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
+        }
+        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
+      }
+      __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 279, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
+    __pyx_t_7 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":278
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":280
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":281
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64[:, ::1] l0 = line0
+*/
+    __pyx_t_7 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+      assert(__pyx_t_7);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coords)};
+      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+    }
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 281, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 281, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
+    __pyx_t_6 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":280
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":283
+ *         coords = np.ascontiguousarray(coords)
+ * 
+ *     cdef f64[:, ::1] l0 = line0             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, ::1] c = coords
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_v_l0 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":284
+ * 
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] c = coords
+ * 
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_v_l1 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":285
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, ::1] c = coords             # <<<<<<<<<<<<<<
+ * 
+ *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_v_c = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":287
+ *     cdef f64[:, ::1] c = coords
+ * 
+ *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] out_mv = out
+ * 
+*/
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_N); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_13 = PyLong_FromSsize_t(__pyx_v_C); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __Pyx_GIVEREF(__pyx_t_7);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 287, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_13);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_13) != (0)) __PYX_ERR(0, 287, __pyx_L1_error);
+  __pyx_t_7 = 0;
+  __pyx_t_13 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_14};
+    __pyx_t_13 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_13);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_13, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_13);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+  }
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 287, __pyx_L1_error)
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 287, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
+    }
+  }
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
+  __pyx_t_6 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":288
+ * 
+ *     cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)
+ *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Py_ssize_t n, ch, idx_lo, idx_hi
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":292
+ *     cdef Py_ssize_t n, ch, idx_lo, idx_hi
+ *     cdef f64 u_x, u_y, idx_f, frac, v0, v1
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ * 
+ *     for n in range(N):
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":294
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ * 
+ *     for n in range(N):             # <<<<<<<<<<<<<<
+ *         u_x = c[n, 0]
+ *         u_y = c[n, 1]
+*/
+  __pyx_t_15 = __pyx_v_N;
+  __pyx_t_16 = __pyx_t_15;
+  for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
+    __pyx_v_n = __pyx_t_17;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":295
+ * 
+ *     for n in range(N):
+ *         u_x = c[n, 0]             # <<<<<<<<<<<<<<
+ *         u_y = c[n, 1]
+ * 
+*/
+    __pyx_t_18 = __pyx_v_n;
+    __pyx_t_19 = 0;
+    __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_c.data + __pyx_t_18 * __pyx_v_c.strides[0]) )) + __pyx_t_19)) )));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":296
+ *     for n in range(N):
+ *         u_x = c[n, 0]
+ *         u_y = c[n, 1]             # <<<<<<<<<<<<<<
+ * 
+ *         idx_f = u_x * L_minus_1
+*/
+    __pyx_t_19 = __pyx_v_n;
+    __pyx_t_18 = 1;
+    __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_c.data + __pyx_t_19 * __pyx_v_c.strides[0]) )) + __pyx_t_18)) )));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":298
+ *         u_y = c[n, 1]
+ * 
+ *         idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+*/
+    __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":299
+ * 
+ *         idx_f = u_x * L_minus_1
+ *         idx_lo = <Py_ssize_t>floor(idx_f)             # <<<<<<<<<<<<<<
+ * 
+ *         if idx_lo < 0:
+*/
+    __pyx_v_idx_lo = ((Py_ssize_t)floor(__pyx_v_idx_f));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":301
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+ *         if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
+*/
+    __pyx_t_2 = (__pyx_v_idx_lo < 0);
+    if (__pyx_t_2) {
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":302
+ * 
+ *         if idx_lo < 0:
+ *             idx_lo = 0             # <<<<<<<<<<<<<<
+ *         if idx_lo >= L - 1:
+ *             idx_lo = L - 2
+*/
+      __pyx_v_idx_lo = 0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":301
+ *         idx_lo = <Py_ssize_t>floor(idx_f)
+ * 
+ *         if idx_lo < 0:             # <<<<<<<<<<<<<<
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
+*/
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":303
+ *         if idx_lo < 0:
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *             idx_lo = L - 2
+ * 
+*/
+    __pyx_t_2 = (__pyx_v_idx_lo >= (__pyx_v_L - 1));
+    if (__pyx_t_2) {
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":304
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:
+ *             idx_lo = L - 2             # <<<<<<<<<<<<<<
+ * 
+ *         idx_hi = idx_lo + 1
+*/
+      __pyx_v_idx_lo = (__pyx_v_L - 2);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":303
+ *         if idx_lo < 0:
+ *             idx_lo = 0
+ *         if idx_lo >= L - 1:             # <<<<<<<<<<<<<<
+ *             idx_lo = L - 2
+ * 
+*/
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":306
+ *             idx_lo = L - 2
+ * 
+ *         idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ *         frac = idx_f - <f64>idx_lo
+ * 
+*/
+    __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":307
+ * 
+ *         idx_hi = idx_lo + 1
+ *         frac = idx_f - <f64>idx_lo             # <<<<<<<<<<<<<<
+ * 
+ *         if frac < 0.0:
+*/
+    __pyx_v_frac = (__pyx_v_idx_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_idx_lo));
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":309
+ *         frac = idx_f - <f64>idx_lo
+ * 
+ *         if frac < 0.0:             # <<<<<<<<<<<<<<
+ *             frac = 0.0
+ *         elif frac > 1.0:
+*/
+    __pyx_t_2 = (__pyx_v_frac < 0.0);
+    if (__pyx_t_2) {
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":310
+ * 
+ *         if frac < 0.0:
+ *             frac = 0.0             # <<<<<<<<<<<<<<
+ *         elif frac > 1.0:
+ *             frac = 1.0
+*/
+      __pyx_v_frac = 0.0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":309
+ *         frac = idx_f - <f64>idx_lo
+ * 
+ *         if frac < 0.0:             # <<<<<<<<<<<<<<
+ *             frac = 0.0
+ *         elif frac > 1.0:
+*/
+      goto __pyx_L14;
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":311
+ *         if frac < 0.0:
+ *             frac = 0.0
+ *         elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *             frac = 1.0
+ * 
+*/
+    __pyx_t_2 = (__pyx_v_frac > 1.0);
+    if (__pyx_t_2) {
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":312
+ *             frac = 0.0
+ *         elif frac > 1.0:
+ *             frac = 1.0             # <<<<<<<<<<<<<<
+ * 
+ *         for ch in range(C):
+*/
+      __pyx_v_frac = 1.0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":311
+ *         if frac < 0.0:
+ *             frac = 0.0
+ *         elif frac > 1.0:             # <<<<<<<<<<<<<<
+ *             frac = 1.0
+ * 
+*/
+    }
+    __pyx_L14:;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":314
+ *             frac = 1.0
+ * 
+ *         for ch in range(C):             # <<<<<<<<<<<<<<
+ *             v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *             v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+*/
+    __pyx_t_20 = __pyx_v_C;
+    __pyx_t_21 = __pyx_t_20;
+    for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
+      __pyx_v_ch = __pyx_t_22;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":315
+ * 
+ *         for ch in range(C):
+ *             v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])             # <<<<<<<<<<<<<<
+ *             v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+ *             out_mv[n, ch] = v0 + u_y * (v1 - v0)
+*/
+      __pyx_t_18 = __pyx_v_idx_lo;
+      __pyx_t_19 = __pyx_v_ch;
+      __pyx_t_23 = __pyx_v_idx_hi;
+      __pyx_t_24 = __pyx_v_ch;
+      __pyx_t_25 = __pyx_v_idx_lo;
+      __pyx_t_26 = __pyx_v_ch;
+      __pyx_v_v0 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_18 * __pyx_v_l0.strides[0]) )) + __pyx_t_19)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_23 * __pyx_v_l0.strides[0]) )) + __pyx_t_24)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_25 * __pyx_v_l0.strides[0]) )) + __pyx_t_26)) ))))));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":316
+ *         for ch in range(C):
+ *             v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *             v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])             # <<<<<<<<<<<<<<
+ *             out_mv[n, ch] = v0 + u_y * (v1 - v0)
+ * 
+*/
+      __pyx_t_26 = __pyx_v_idx_lo;
+      __pyx_t_25 = __pyx_v_ch;
+      __pyx_t_24 = __pyx_v_idx_hi;
+      __pyx_t_23 = __pyx_v_ch;
+      __pyx_t_19 = __pyx_v_idx_lo;
+      __pyx_t_18 = __pyx_v_ch;
+      __pyx_v_v1 = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_26 * __pyx_v_l1.strides[0]) )) + __pyx_t_25)) ))) + (__pyx_v_frac * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_24 * __pyx_v_l1.strides[0]) )) + __pyx_t_23)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_19 * __pyx_v_l1.strides[0]) )) + __pyx_t_18)) ))))));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":317
+ *             v0 = l0[idx_lo, ch] + frac * (l0[idx_hi, ch] - l0[idx_lo, ch])
+ *             v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
+ *             out_mv[n, ch] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
+ * 
+ *     return out
+*/
+      __pyx_t_18 = __pyx_v_n;
+      __pyx_t_19 = __pyx_v_ch;
+      *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_18 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_19)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
+    }
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":319
+ *             out_mv[n, ch] = v0 + u_y * (v1 - v0)
+ * 
+ *     return out             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF((PyObject *)__pyx_v_out);
+  __pyx_r = ((PyObject *)__pyx_v_out);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":251
+ * 
+ * 
+ * def lerp_between_lines_flat_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_flat_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l0, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l1, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_out);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":326
+ * # planes shape (H, W) or (H, W, C), coords shape (D1, D2, ..., 3)
+ * # =============================================================================
+ * def lerp_between_planes_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] plane0,
+ *     np.ndarray[f64, ndim=2] plane1,
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_9lerp_between_planes_1ch(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_8lerp_between_planes_1ch, "\n    Interpolate between two 2D planes using a 3D grid of (u_x, u_y, u_z) coordinates.\n    \n    Args:\n        plane0: First plane, shape (H_src, W_src)\n        plane1: Second plane, shape (H_src, W_src)\n        coords: Coordinate grid, shape (D, H, W, 3)\n                coords[..., 0] = u_x (x position in planes)\n                coords[..., 1] = u_y (y position in planes)\n                coords[..., 2] = u_z (blend factor between planes)\n    \n    Returns:\n        Interpolated values, shape (D, H, W)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_9lerp_between_planes_1ch = {"lerp_between_planes_1ch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_9lerp_between_planes_1ch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_8lerp_between_planes_1ch};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_9lerp_between_planes_1ch(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_plane0 = 0;
+  PyArrayObject *__pyx_v_plane1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lerp_between_planes_1ch (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_plane0,&__pyx_mstate_global->__pyx_n_u_plane1,&__pyx_mstate_global->__pyx_n_u_coords,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 326, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 326, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 326, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 326, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_planes_1ch", 0) < (0)) __PYX_ERR(0, 326, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_planes_1ch", 1, 3, 3, i); __PYX_ERR(0, 326, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 326, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 326, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 326, __pyx_L3_error)
+    }
+    __pyx_v_plane0 = ((PyArrayObject *)values[0]);
+    __pyx_v_plane1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("lerp_between_planes_1ch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 326, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_planes_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_plane0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "plane0", 0))) __PYX_ERR(0, 327, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_plane1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "plane1", 0))) __PYX_ERR(0, 328, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_8lerp_between_planes_1ch(__pyx_self, __pyx_v_plane0, __pyx_v_plane1, __pyx_v_coords);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_8lerp_between_planes_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_plane0, PyArrayObject *__pyx_v_plane1, PyArrayObject *__pyx_v_coords) {
+  Py_ssize_t __pyx_v_H_src;
+  Py_ssize_t __pyx_v_W_src;
+  Py_ssize_t __pyx_v_D_out;
+  Py_ssize_t __pyx_v_H_out;
+  Py_ssize_t __pyx_v_W_out;
+  __Pyx_memviewslice __pyx_v_p0 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_p1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyArrayObject *__pyx_v_out = 0;
+  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_v_d;
+  Py_ssize_t __pyx_v_h;
+  Py_ssize_t __pyx_v_w;
+  Py_ssize_t __pyx_v_x_lo;
+  Py_ssize_t __pyx_v_x_hi;
+  Py_ssize_t __pyx_v_y_lo;
+  Py_ssize_t __pyx_v_y_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_z;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_x_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_y_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_x_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_y_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v00_0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v01_0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v10_0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v11_0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v00_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v01_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v10_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v11_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_H_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_W_minus_1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
+  __Pyx_Buffer __pyx_pybuffer_coords;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_plane0;
+  __Pyx_Buffer __pyx_pybuffer_plane0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_plane1;
+  __Pyx_Buffer __pyx_pybuffer_plane1;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_15 = NULL;
+  PyObject *__pyx_t_16 = NULL;
+  __Pyx_memviewslice __pyx_t_17 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_18;
+  Py_ssize_t __pyx_t_19;
+  Py_ssize_t __pyx_t_20;
+  Py_ssize_t __pyx_t_21;
+  Py_ssize_t __pyx_t_22;
+  Py_ssize_t __pyx_t_23;
+  Py_ssize_t __pyx_t_24;
+  Py_ssize_t __pyx_t_25;
+  Py_ssize_t __pyx_t_26;
+  Py_ssize_t __pyx_t_27;
+  Py_ssize_t __pyx_t_28;
+  Py_ssize_t __pyx_t_29;
+  Py_ssize_t __pyx_t_30;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("lerp_between_planes_1ch", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_plane0);
+  __Pyx_INCREF((PyObject *)__pyx_v_plane1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
+  __pyx_pybuffer_out.pybuffer.buf = NULL;
+  __pyx_pybuffer_out.refcount = 0;
+  __pyx_pybuffernd_out.data = NULL;
+  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
+  __pyx_pybuffer_plane0.pybuffer.buf = NULL;
+  __pyx_pybuffer_plane0.refcount = 0;
+  __pyx_pybuffernd_plane0.data = NULL;
+  __pyx_pybuffernd_plane0.rcbuffer = &__pyx_pybuffer_plane0;
+  __pyx_pybuffer_plane1.pybuffer.buf = NULL;
+  __pyx_pybuffer_plane1.refcount = 0;
+  __pyx_pybuffernd_plane1.data = NULL;
+  __pyx_pybuffernd_plane1.rcbuffer = &__pyx_pybuffer_plane1;
+  __pyx_pybuffer_coords.pybuffer.buf = NULL;
+  __pyx_pybuffer_coords.refcount = 0;
+  __pyx_pybuffernd_coords.data = NULL;
+  __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer, (PyObject*)__pyx_v_plane0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_plane0.diminfo[0].strides = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_plane0.diminfo[0].shape = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_plane0.diminfo[1].strides = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_plane0.diminfo[1].shape = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer, (PyObject*)__pyx_v_plane1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_plane1.diminfo[0].strides = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_plane1.diminfo[0].shape = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_plane1.diminfo[1].strides = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_plane1.diminfo[1].shape = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 4, 0, __pyx_stack) == -1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2]; __pyx_pybuffernd_coords.diminfo[3].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[3]; __pyx_pybuffernd_coords.diminfo[3].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[3];
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":345
+ *         Interpolated values, shape (D, H, W)
+ *     """
+ *     cdef Py_ssize_t H_src = plane0.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t W_src = plane0.shape[1]
+ *     cdef Py_ssize_t D_out = coords.shape[0]
+*/
+  __pyx_v_H_src = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_plane0))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":346
+ *     """
+ *     cdef Py_ssize_t H_src = plane0.shape[0]
+ *     cdef Py_ssize_t W_src = plane0.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t D_out = coords.shape[0]
+ *     cdef Py_ssize_t H_out = coords.shape[1]
+*/
+  __pyx_v_W_src = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_plane0))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":347
+ *     cdef Py_ssize_t H_src = plane0.shape[0]
+ *     cdef Py_ssize_t W_src = plane0.shape[1]
+ *     cdef Py_ssize_t D_out = coords.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t H_out = coords.shape[1]
+ *     cdef Py_ssize_t W_out = coords.shape[2]
+*/
+  __pyx_v_D_out = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":348
+ *     cdef Py_ssize_t W_src = plane0.shape[1]
+ *     cdef Py_ssize_t D_out = coords.shape[0]
+ *     cdef Py_ssize_t H_out = coords.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t W_out = coords.shape[2]
+ * 
+*/
+  __pyx_v_H_out = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":349
+ *     cdef Py_ssize_t D_out = coords.shape[0]
+ *     cdef Py_ssize_t H_out = coords.shape[1]
+ *     cdef Py_ssize_t W_out = coords.shape[2]             # <<<<<<<<<<<<<<
+ * 
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:
+*/
+  __pyx_v_W_out = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":351
+ *     cdef Py_ssize_t W_out = coords.shape[2]
+ * 
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Planes must have same shape")
+ *     if coords.shape[3] != 3:
+*/
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_plane1))[0]) != __pyx_v_H_src);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_plane1))[1]) != __pyx_v_W_src);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":352
+ * 
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:
+ *         raise ValueError("Planes must have same shape")             # <<<<<<<<<<<<<<
+ *     if coords.shape[3] != 3:
+ *         raise ValueError("coords last dim must be 3")
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_Planes_must_have_same_shape};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 352, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":351
+ *     cdef Py_ssize_t W_out = coords.shape[2]
+ * 
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Planes must have same shape")
+ *     if coords.shape[3] != 3:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":353
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:
+ *         raise ValueError("Planes must have same shape")
+ *     if coords.shape[3] != 3:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords last dim must be 3")
+ * 
+*/
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[3]) != 3);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":354
+ *         raise ValueError("Planes must have same shape")
+ *     if coords.shape[3] != 3:
+ *         raise ValueError("coords last dim must be 3")             # <<<<<<<<<<<<<<
+ * 
+ *     if not plane0.flags['C_CONTIGUOUS']:
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_coords_last_dim_must_be_3};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 354, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":353
+ *     if plane1.shape[0] != H_src or plane1.shape[1] != W_src:
+ *         raise ValueError("Planes must have same shape")
+ *     if coords.shape[3] != 3:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords last dim must be 3")
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":356
+ *         raise ValueError("coords last dim must be 3")
+ * 
+ *     if not plane0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane0 = np.ascontiguousarray(plane0)
+ *     if not plane1.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":357
+ * 
+ *     if not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0)             # <<<<<<<<<<<<<<
+ *     if not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1)
+*/
+    __pyx_t_3 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+      assert(__pyx_t_3);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_plane0)};
+      __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 357, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer, (PyObject*)__pyx_v_plane0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_plane0.diminfo[0].strides = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_plane0.diminfo[0].shape = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_plane0.diminfo[1].strides = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_plane0.diminfo[1].shape = __pyx_pybuffernd_plane0.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 357, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_plane0, ((PyArrayObject *)__pyx_t_4));
+    __pyx_t_4 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":356
+ *         raise ValueError("coords last dim must be 3")
+ * 
+ *     if not plane0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane0 = np.ascontiguousarray(plane0)
+ *     if not plane1.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":358
+ *     if not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0)
+ *     if not plane1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane1 = np.ascontiguousarray(plane1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 358, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = (!__pyx_t_2);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":359
+ *         plane0 = np.ascontiguousarray(plane0)
+ *     if not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1)             # <<<<<<<<<<<<<<
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)
+*/
+    __pyx_t_4 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 359, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_6))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+      assert(__pyx_t_4);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_6, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_v_plane1)};
+      __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 359, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+    }
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 359, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer, (PyObject*)__pyx_v_plane1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
+        }
+        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
+      }
+      __pyx_pybuffernd_plane1.diminfo[0].strides = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_plane1.diminfo[0].shape = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_plane1.diminfo[1].strides = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_plane1.diminfo[1].shape = __pyx_pybuffernd_plane1.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 359, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_plane1, ((PyArrayObject *)__pyx_t_7));
+    __pyx_t_7 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":358
+ *     if not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0)
+ *     if not plane1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane1 = np.ascontiguousarray(plane1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":360
+ *     if not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":361
+ *         plane1 = np.ascontiguousarray(plane1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64[:, ::1] p0 = plane0
+*/
+    __pyx_t_7 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+      assert(__pyx_t_7);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coords)};
+      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 361, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+    }
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 361, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 4, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 4, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2]; __pyx_pybuffernd_coords.diminfo[3].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[3]; __pyx_pybuffernd_coords.diminfo[3].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[3];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 361, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
+    __pyx_t_6 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":360
+ *     if not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":363
+ *         coords = np.ascontiguousarray(coords)
+ * 
+ *     cdef f64[:, ::1] p0 = plane0             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] p1 = plane1
+ *     cdef f64[:, :, :, ::1] c = coords
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_plane0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_v_p0 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":364
+ * 
+ *     cdef f64[:, ::1] p0 = plane0
+ *     cdef f64[:, ::1] p1 = plane1             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, :, ::1] c = coords
+ * 
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_plane1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_v_p1 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":365
+ *     cdef f64[:, ::1] p0 = plane0
+ *     cdef f64[:, ::1] p1 = plane1
+ *     cdef f64[:, :, :, ::1] c = coords             # <<<<<<<<<<<<<<
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((D_out, H_out, W_out), dtype=np.float64)
+*/
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __pyx_v_c = __pyx_t_13;
+  __pyx_t_13.memview = NULL;
+  __pyx_t_13.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":367
+ *     cdef f64[:, :, :, ::1] c = coords
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((D_out, H_out, W_out), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] out_mv = out
+ * 
+*/
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_D_out); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_H_out); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyLong_FromSsize_t(__pyx_v_W_out); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_16 = PyTuple_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __Pyx_GIVEREF(__pyx_t_7);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 367, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_14);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 367, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_15);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 367, __pyx_L1_error);
+  __pyx_t_7 = 0;
+  __pyx_t_14 = 0;
+  __pyx_t_15 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_16};
+    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 367, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_15);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_14, __pyx_t_15, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 367, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 367, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+  }
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 367, __pyx_L1_error)
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 367, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_out.diminfo[2].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_out.diminfo[2].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[2];
+    }
+  }
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
+  __pyx_t_6 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":368
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((D_out, H_out, W_out), dtype=np.float64)
+ *     cdef f64[:, :, ::1] out_mv = out             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Py_ssize_t d, h, w
+*/
+  __pyx_t_17 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_17;
+  __pyx_t_17.memview = NULL;
+  __pyx_t_17.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":376
+ *     cdef f64 v00_1, v01_1, v10_1, v11_1  # plane1 corners
+ *     cdef f64 v0, v1  # bilinear results
+ *     cdef f64 H_minus_1 = <f64>(H_src - 1)             # <<<<<<<<<<<<<<
+ *     cdef f64 W_minus_1 = <f64>(W_src - 1)
+ * 
+*/
+  __pyx_v_H_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_H_src - 1));
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":377
+ *     cdef f64 v0, v1  # bilinear results
+ *     cdef f64 H_minus_1 = <f64>(H_src - 1)
+ *     cdef f64 W_minus_1 = <f64>(W_src - 1)             # <<<<<<<<<<<<<<
+ * 
+ *     for d in range(D_out):
+*/
+  __pyx_v_W_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_W_src - 1));
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":379
+ *     cdef f64 W_minus_1 = <f64>(W_src - 1)
+ * 
+ *     for d in range(D_out):             # <<<<<<<<<<<<<<
+ *         for h in range(H_out):
+ *             for w in range(W_out):
+*/
+  __pyx_t_18 = __pyx_v_D_out;
+  __pyx_t_19 = __pyx_t_18;
+  for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
+    __pyx_v_d = __pyx_t_20;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":380
+ * 
+ *     for d in range(D_out):
+ *         for h in range(H_out):             # <<<<<<<<<<<<<<
+ *             for w in range(W_out):
+ *                 u_x = c[d, h, w, 0]
+*/
+    __pyx_t_21 = __pyx_v_H_out;
+    __pyx_t_22 = __pyx_t_21;
+    for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
+      __pyx_v_h = __pyx_t_23;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":381
+ *     for d in range(D_out):
+ *         for h in range(H_out):
+ *             for w in range(W_out):             # <<<<<<<<<<<<<<
+ *                 u_x = c[d, h, w, 0]
+ *                 u_y = c[d, h, w, 1]
+*/
+      __pyx_t_24 = __pyx_v_W_out;
+      __pyx_t_25 = __pyx_t_24;
+      for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
+        __pyx_v_w = __pyx_t_26;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":382
+ *         for h in range(H_out):
+ *             for w in range(W_out):
+ *                 u_x = c[d, h, w, 0]             # <<<<<<<<<<<<<<
+ *                 u_y = c[d, h, w, 1]
+ *                 u_z = c[d, h, w, 2]
+*/
+        __pyx_t_27 = __pyx_v_d;
+        __pyx_t_28 = __pyx_v_h;
+        __pyx_t_29 = __pyx_v_w;
+        __pyx_t_30 = 0;
+        __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=3 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_27 * __pyx_v_c.strides[0]) ) + __pyx_t_28 * __pyx_v_c.strides[1]) ) + __pyx_t_29 * __pyx_v_c.strides[2]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":383
+ *             for w in range(W_out):
+ *                 u_x = c[d, h, w, 0]
+ *                 u_y = c[d, h, w, 1]             # <<<<<<<<<<<<<<
+ *                 u_z = c[d, h, w, 2]
+ * 
+*/
+        __pyx_t_30 = __pyx_v_d;
+        __pyx_t_29 = __pyx_v_h;
+        __pyx_t_28 = __pyx_v_w;
+        __pyx_t_27 = 1;
+        __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=3 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_30 * __pyx_v_c.strides[0]) ) + __pyx_t_29 * __pyx_v_c.strides[1]) ) + __pyx_t_28 * __pyx_v_c.strides[2]) )) + __pyx_t_27)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":384
+ *                 u_x = c[d, h, w, 0]
+ *                 u_y = c[d, h, w, 1]
+ *                 u_z = c[d, h, w, 2]             # <<<<<<<<<<<<<<
+ * 
+ *                 # Map to source indices
+*/
+        __pyx_t_27 = __pyx_v_d;
+        __pyx_t_28 = __pyx_v_h;
+        __pyx_t_29 = __pyx_v_w;
+        __pyx_t_30 = 2;
+        __pyx_v_u_z = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=3 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_27 * __pyx_v_c.strides[0]) ) + __pyx_t_28 * __pyx_v_c.strides[1]) ) + __pyx_t_29 * __pyx_v_c.strides[2]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":387
+ * 
+ *                 # Map to source indices
+ *                 x_f = u_x * W_minus_1             # <<<<<<<<<<<<<<
+ *                 y_f = u_y * H_minus_1
+ * 
+*/
+        __pyx_v_x_f = (__pyx_v_u_x * __pyx_v_W_minus_1);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":388
+ *                 # Map to source indices
+ *                 x_f = u_x * W_minus_1
+ *                 y_f = u_y * H_minus_1             # <<<<<<<<<<<<<<
+ * 
+ *                 x_lo = <Py_ssize_t>floor(x_f)
+*/
+        __pyx_v_y_f = (__pyx_v_u_y * __pyx_v_H_minus_1);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":390
+ *                 y_f = u_y * H_minus_1
+ * 
+ *                 x_lo = <Py_ssize_t>floor(x_f)             # <<<<<<<<<<<<<<
+ *                 y_lo = <Py_ssize_t>floor(y_f)
+ * 
+*/
+        __pyx_v_x_lo = ((Py_ssize_t)floor(__pyx_v_x_f));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":391
+ * 
+ *                 x_lo = <Py_ssize_t>floor(x_f)
+ *                 y_lo = <Py_ssize_t>floor(y_f)             # <<<<<<<<<<<<<<
+ * 
+ *                 # Clamp
+*/
+        __pyx_v_y_lo = ((Py_ssize_t)floor(__pyx_v_y_f));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":394
+ * 
+ *                 # Clamp
+ *                 if x_lo < 0: x_lo = 0             # <<<<<<<<<<<<<<
+ *                 if x_lo >= W_src - 1: x_lo = W_src - 2
+ *                 if y_lo < 0: y_lo = 0
+*/
+        __pyx_t_2 = (__pyx_v_x_lo < 0);
+        if (__pyx_t_2) {
+          __pyx_v_x_lo = 0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":395
+ *                 # Clamp
+ *                 if x_lo < 0: x_lo = 0
+ *                 if x_lo >= W_src - 1: x_lo = W_src - 2             # <<<<<<<<<<<<<<
+ *                 if y_lo < 0: y_lo = 0
+ *                 if y_lo >= H_src - 1: y_lo = H_src - 2
+*/
+        __pyx_t_2 = (__pyx_v_x_lo >= (__pyx_v_W_src - 1));
+        if (__pyx_t_2) {
+          __pyx_v_x_lo = (__pyx_v_W_src - 2);
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":396
+ *                 if x_lo < 0: x_lo = 0
+ *                 if x_lo >= W_src - 1: x_lo = W_src - 2
+ *                 if y_lo < 0: y_lo = 0             # <<<<<<<<<<<<<<
+ *                 if y_lo >= H_src - 1: y_lo = H_src - 2
+ * 
+*/
+        __pyx_t_2 = (__pyx_v_y_lo < 0);
+        if (__pyx_t_2) {
+          __pyx_v_y_lo = 0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":397
+ *                 if x_lo >= W_src - 1: x_lo = W_src - 2
+ *                 if y_lo < 0: y_lo = 0
+ *                 if y_lo >= H_src - 1: y_lo = H_src - 2             # <<<<<<<<<<<<<<
+ * 
+ *                 x_hi = x_lo + 1
+*/
+        __pyx_t_2 = (__pyx_v_y_lo >= (__pyx_v_H_src - 1));
+        if (__pyx_t_2) {
+          __pyx_v_y_lo = (__pyx_v_H_src - 2);
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":399
+ *                 if y_lo >= H_src - 1: y_lo = H_src - 2
+ * 
+ *                 x_hi = x_lo + 1             # <<<<<<<<<<<<<<
+ *                 y_hi = y_lo + 1
+ * 
+*/
+        __pyx_v_x_hi = (__pyx_v_x_lo + 1);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":400
+ * 
+ *                 x_hi = x_lo + 1
+ *                 y_hi = y_lo + 1             # <<<<<<<<<<<<<<
+ * 
+ *                 x_frac = x_f - <f64>x_lo
+*/
+        __pyx_v_y_hi = (__pyx_v_y_lo + 1);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":402
+ *                 y_hi = y_lo + 1
+ * 
+ *                 x_frac = x_f - <f64>x_lo             # <<<<<<<<<<<<<<
+ *                 y_frac = y_f - <f64>y_lo
+ * 
+*/
+        __pyx_v_x_frac = (__pyx_v_x_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_x_lo));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":403
+ * 
+ *                 x_frac = x_f - <f64>x_lo
+ *                 y_frac = y_f - <f64>y_lo             # <<<<<<<<<<<<<<
+ * 
+ *                 if x_frac < 0.0: x_frac = 0.0
+*/
+        __pyx_v_y_frac = (__pyx_v_y_f - ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)__pyx_v_y_lo));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":405
+ *                 y_frac = y_f - <f64>y_lo
+ * 
+ *                 if x_frac < 0.0: x_frac = 0.0             # <<<<<<<<<<<<<<
+ *                 if x_frac > 1.0: x_frac = 1.0
+ *                 if y_frac < 0.0: y_frac = 0.0
+*/
+        __pyx_t_2 = (__pyx_v_x_frac < 0.0);
+        if (__pyx_t_2) {
+          __pyx_v_x_frac = 0.0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":406
+ * 
+ *                 if x_frac < 0.0: x_frac = 0.0
+ *                 if x_frac > 1.0: x_frac = 1.0             # <<<<<<<<<<<<<<
+ *                 if y_frac < 0.0: y_frac = 0.0
+ *                 if y_frac > 1.0: y_frac = 1.0
+*/
+        __pyx_t_2 = (__pyx_v_x_frac > 1.0);
+        if (__pyx_t_2) {
+          __pyx_v_x_frac = 1.0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":407
+ *                 if x_frac < 0.0: x_frac = 0.0
+ *                 if x_frac > 1.0: x_frac = 1.0
+ *                 if y_frac < 0.0: y_frac = 0.0             # <<<<<<<<<<<<<<
+ *                 if y_frac > 1.0: y_frac = 1.0
+ * 
+*/
+        __pyx_t_2 = (__pyx_v_y_frac < 0.0);
+        if (__pyx_t_2) {
+          __pyx_v_y_frac = 0.0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":408
+ *                 if x_frac > 1.0: x_frac = 1.0
+ *                 if y_frac < 0.0: y_frac = 0.0
+ *                 if y_frac > 1.0: y_frac = 1.0             # <<<<<<<<<<<<<<
+ * 
+ *                 # Bilinear sample plane0
+*/
+        __pyx_t_2 = (__pyx_v_y_frac > 1.0);
+        if (__pyx_t_2) {
+          __pyx_v_y_frac = 1.0;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":411
+ * 
+ *                 # Bilinear sample plane0
+ *                 v00_0 = p0[y_lo, x_lo]             # <<<<<<<<<<<<<<
+ *                 v01_0 = p0[y_lo, x_hi]
+ *                 v10_0 = p0[y_hi, x_lo]
+*/
+        __pyx_t_30 = __pyx_v_y_lo;
+        __pyx_t_29 = __pyx_v_x_lo;
+        __pyx_v_v00_0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p0.data + __pyx_t_30 * __pyx_v_p0.strides[0]) )) + __pyx_t_29)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":412
+ *                 # Bilinear sample plane0
+ *                 v00_0 = p0[y_lo, x_lo]
+ *                 v01_0 = p0[y_lo, x_hi]             # <<<<<<<<<<<<<<
+ *                 v10_0 = p0[y_hi, x_lo]
+ *                 v11_0 = p0[y_hi, x_hi]
+*/
+        __pyx_t_29 = __pyx_v_y_lo;
+        __pyx_t_30 = __pyx_v_x_hi;
+        __pyx_v_v01_0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p0.data + __pyx_t_29 * __pyx_v_p0.strides[0]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":413
+ *                 v00_0 = p0[y_lo, x_lo]
+ *                 v01_0 = p0[y_lo, x_hi]
+ *                 v10_0 = p0[y_hi, x_lo]             # <<<<<<<<<<<<<<
+ *                 v11_0 = p0[y_hi, x_hi]
+ *                 v0 = (v00_0 * (1 - x_frac) + v01_0 * x_frac) * (1 - y_frac) + \
+*/
+        __pyx_t_30 = __pyx_v_y_hi;
+        __pyx_t_29 = __pyx_v_x_lo;
+        __pyx_v_v10_0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p0.data + __pyx_t_30 * __pyx_v_p0.strides[0]) )) + __pyx_t_29)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":414
+ *                 v01_0 = p0[y_lo, x_hi]
+ *                 v10_0 = p0[y_hi, x_lo]
+ *                 v11_0 = p0[y_hi, x_hi]             # <<<<<<<<<<<<<<
+ *                 v0 = (v00_0 * (1 - x_frac) + v01_0 * x_frac) * (1 - y_frac) + \
+ *                      (v10_0 * (1 - x_frac) + v11_0 * x_frac) * y_frac
+*/
+        __pyx_t_29 = __pyx_v_y_hi;
+        __pyx_t_30 = __pyx_v_x_hi;
+        __pyx_v_v11_0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p0.data + __pyx_t_29 * __pyx_v_p0.strides[0]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":415
+ *                 v10_0 = p0[y_hi, x_lo]
+ *                 v11_0 = p0[y_hi, x_hi]
+ *                 v0 = (v00_0 * (1 - x_frac) + v01_0 * x_frac) * (1 - y_frac) + \             # <<<<<<<<<<<<<<
+ *                      (v10_0 * (1 - x_frac) + v11_0 * x_frac) * y_frac
+ * 
+*/
+        __pyx_v_v0 = ((((__pyx_v_v00_0 * (1.0 - __pyx_v_x_frac)) + (__pyx_v_v01_0 * __pyx_v_x_frac)) * (1.0 - __pyx_v_y_frac)) + (((__pyx_v_v10_0 * (1.0 - __pyx_v_x_frac)) + (__pyx_v_v11_0 * __pyx_v_x_frac)) * __pyx_v_y_frac));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":419
+ * 
+ *                 # Bilinear sample plane1
+ *                 v00_1 = p1[y_lo, x_lo]             # <<<<<<<<<<<<<<
+ *                 v01_1 = p1[y_lo, x_hi]
+ *                 v10_1 = p1[y_hi, x_lo]
+*/
+        __pyx_t_30 = __pyx_v_y_lo;
+        __pyx_t_29 = __pyx_v_x_lo;
+        __pyx_v_v00_1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p1.data + __pyx_t_30 * __pyx_v_p1.strides[0]) )) + __pyx_t_29)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":420
+ *                 # Bilinear sample plane1
+ *                 v00_1 = p1[y_lo, x_lo]
+ *                 v01_1 = p1[y_lo, x_hi]             # <<<<<<<<<<<<<<
+ *                 v10_1 = p1[y_hi, x_lo]
+ *                 v11_1 = p1[y_hi, x_hi]
+*/
+        __pyx_t_29 = __pyx_v_y_lo;
+        __pyx_t_30 = __pyx_v_x_hi;
+        __pyx_v_v01_1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p1.data + __pyx_t_29 * __pyx_v_p1.strides[0]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":421
+ *                 v00_1 = p1[y_lo, x_lo]
+ *                 v01_1 = p1[y_lo, x_hi]
+ *                 v10_1 = p1[y_hi, x_lo]             # <<<<<<<<<<<<<<
+ *                 v11_1 = p1[y_hi, x_hi]
+ *                 v1 = (v00_1 * (1 - x_frac) + v01_1 * x_frac) * (1 - y_frac) + \
+*/
+        __pyx_t_30 = __pyx_v_y_hi;
+        __pyx_t_29 = __pyx_v_x_lo;
+        __pyx_v_v10_1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p1.data + __pyx_t_30 * __pyx_v_p1.strides[0]) )) + __pyx_t_29)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":422
+ *                 v01_1 = p1[y_lo, x_hi]
+ *                 v10_1 = p1[y_hi, x_lo]
+ *                 v11_1 = p1[y_hi, x_hi]             # <<<<<<<<<<<<<<
+ *                 v1 = (v00_1 * (1 - x_frac) + v01_1 * x_frac) * (1 - y_frac) + \
+ *                      (v10_1 * (1 - x_frac) + v11_1 * x_frac) * y_frac
+*/
+        __pyx_t_29 = __pyx_v_y_hi;
+        __pyx_t_30 = __pyx_v_x_hi;
+        __pyx_v_v11_1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_p1.data + __pyx_t_29 * __pyx_v_p1.strides[0]) )) + __pyx_t_30)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":423
+ *                 v10_1 = p1[y_hi, x_lo]
+ *                 v11_1 = p1[y_hi, x_hi]
+ *                 v1 = (v00_1 * (1 - x_frac) + v01_1 * x_frac) * (1 - y_frac) + \             # <<<<<<<<<<<<<<
+ *                      (v10_1 * (1 - x_frac) + v11_1 * x_frac) * y_frac
+ * 
+*/
+        __pyx_v_v1 = ((((__pyx_v_v00_1 * (1.0 - __pyx_v_x_frac)) + (__pyx_v_v01_1 * __pyx_v_x_frac)) * (1.0 - __pyx_v_y_frac)) + (((__pyx_v_v10_1 * (1.0 - __pyx_v_x_frac)) + (__pyx_v_v11_1 * __pyx_v_x_frac)) * __pyx_v_y_frac));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":427
+ * 
+ *                 # Blend between planes
+ *                 out_mv[d, h, w] = v0 + u_z * (v1 - v0)             # <<<<<<<<<<<<<<
+ * 
+ *     return out
+*/
+        __pyx_t_30 = __pyx_v_d;
+        __pyx_t_29 = __pyx_v_h;
+        __pyx_t_28 = __pyx_v_w;
+        *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_30 * __pyx_v_out_mv.strides[0]) ) + __pyx_t_29 * __pyx_v_out_mv.strides[1]) )) + __pyx_t_28)) )) = (__pyx_v_v0 + (__pyx_v_u_z * (__pyx_v_v1 - __pyx_v_v0)));
+      }
+    }
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":429
+ *                 out_mv[d, h, w] = v0 + u_z * (v1 - v0)
+ * 
+ *     return out             # <<<<<<<<<<<<<<
+ * 
+ * # =============================================================================
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF((PyObject *)__pyx_v_out);
+  __pyx_r = ((PyObject *)__pyx_v_out);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":326
+ * # planes shape (H, W) or (H, W, C), coords shape (D1, D2, ..., 3)
+ * # =============================================================================
+ * def lerp_between_planes_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] plane0,
+ *     np.ndarray[f64, ndim=2] plane1,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_17, 1);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_planes_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane0.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_plane1.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_p0, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_p1, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_out);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_plane0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_plane1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":434
+ * # Discrete x-sampling versions (nearest neighbor in x-direction)
+ * # =============================================================================
+ * def lerp_between_lines_x_discrete_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=1] line0,
+ *     np.ndarray[f64, ndim=1] line1,
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_11lerp_between_lines_x_discrete_1ch(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_10lerp_between_lines_x_discrete_1ch, "\n    Interpolate between two 1D lines with discrete x-sampling (nearest index).\n    \n    Args:\n        line0: First line, shape (L,)\n        line1: Second line, shape (L,)\n        coords: Coordinate grid, shape (H, W, 2)\n                coords[..., 0] = u_x (position along lines, maps to nearest index)\n                coords[..., 1] = u_y (blend between lines)\n    \n    Returns:\n        Interpolated values, shape (H, W)\n        \n    Note:\n        For efficiency when L = W, use this function instead of lerp_between_lines_1ch.\n        The x-coordinate is mapped to the nearest index by rounding.\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_11lerp_between_lines_x_discrete_1ch = {"lerp_between_lines_x_discrete_1ch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_11lerp_between_lines_x_discrete_1ch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_10lerp_between_lines_x_discrete_1ch};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_11lerp_between_lines_x_discrete_1ch(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_line0 = 0;
+  PyArrayObject *__pyx_v_line1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lerp_between_lines_x_discrete_1ch (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 434, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 434, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 434, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 434, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_x_discrete_1ch", 0) < (0)) __PYX_ERR(0, 434, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_x_discrete_1ch", 1, 3, 3, i); __PYX_ERR(0, 434, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 434, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 434, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 434, __pyx_L3_error)
+    }
+    __pyx_v_line0 = ((PyArrayObject *)values[0]);
+    __pyx_v_line1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_x_discrete_1ch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 434, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_x_discrete_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 435, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 436, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_10lerp_between_lines_x_discrete_1ch(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_10lerp_between_lines_x_discrete_1ch(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
   Py_ssize_t __pyx_v_L;
   Py_ssize_t __pyx_v_H;
   Py_ssize_t __pyx_v_W;
@@ -25493,12 +24086,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   Py_ssize_t __pyx_v_h;
   Py_ssize_t __pyx_v_w;
   Py_ssize_t __pyx_v_idx;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u_x;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_u_y;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_idx_f;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_v0;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_v1;
-  __pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
   __Pyx_Buffer __pyx_pybuffer_coords;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
@@ -25537,7 +24130,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_lerp_between_lines_x_discrete", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_x_discrete_1ch", 0);
   __Pyx_INCREF((PyObject *)__pyx_v_line0);
   __Pyx_INCREF((PyObject *)__pyx_v_line1);
   __Pyx_INCREF((PyObject *)__pyx_v_coords);
@@ -25559,21 +24152,21 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 595, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 434, __pyx_L1_error)
   }
   __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 595, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 434, __pyx_L1_error)
   }
   __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 595, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 434, __pyx_L1_error)
   }
   __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":619
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":456
  *         The x-coordinate is mapped to the nearest index by rounding.
  *     """
  *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
@@ -25582,7 +24175,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":620
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":457
  *     """
  *     cdef Py_ssize_t L = line0.shape[0]
  *     cdef Py_ssize_t H = coords.shape[0]             # <<<<<<<<<<<<<<
@@ -25591,7 +24184,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":621
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":458
  *     cdef Py_ssize_t L = line0.shape[0]
  *     cdef Py_ssize_t H = coords.shape[0]
  *     cdef Py_ssize_t W = coords.shape[1]             # <<<<<<<<<<<<<<
@@ -25600,7 +24193,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":623
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":460
  *     cdef Py_ssize_t W = coords.shape[1]
  * 
  *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
@@ -25610,7 +24203,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":624
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":461
  * 
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")             # <<<<<<<<<<<<<<
@@ -25623,14 +24216,14 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_length};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 624, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 461, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 624, __pyx_L1_error)
+    __PYX_ERR(0, 461, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":623
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":460
  *     cdef Py_ssize_t W = coords.shape[1]
  * 
  *     if line1.shape[0] != L:             # <<<<<<<<<<<<<<
@@ -25639,7 +24232,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":625
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":462
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")
  *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
@@ -25649,7 +24242,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]) != 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":626
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":463
  *         raise ValueError("Lines must have same length")
  *     if coords.shape[2] != 2:
  *         raise ValueError("coords must have shape (H, W, 2)")             # <<<<<<<<<<<<<<
@@ -25662,14 +24255,14 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_H_W_2};
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 626, __pyx_L1_error)
+    __PYX_ERR(0, 463, __pyx_L1_error)
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":625
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":462
  *     if line1.shape[0] != L:
  *         raise ValueError("Lines must have same length")
  *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
@@ -25678,24 +24271,24 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":628
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":465
  *         raise ValueError("coords must have shape (H, W, 2)")
  * 
  *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":629
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":466
  * 
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
@@ -25703,9 +24296,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *         line1 = np.ascontiguousarray(line1)
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 629, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 629, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_4 = 1;
@@ -25725,17 +24318,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 629, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 629, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 466, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_3), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -25744,12 +24337,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
       __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 629, __pyx_L1_error)
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 466, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":628
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":465
  *         raise ValueError("coords must have shape (H, W, 2)")
  * 
  *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -25758,24 +24351,24 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":630
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":467
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 630, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 630, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 630, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":631
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":468
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
@@ -25783,9 +24376,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *         coords = np.ascontiguousarray(coords)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 631, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 631, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_4 = 1;
@@ -25805,17 +24398,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 631, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 468, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 631, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 468, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -25824,12 +24417,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 631, __pyx_L1_error)
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 468, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":630
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":467
  *     if not line0.flags['C_CONTIGUOUS']:
  *         line0 = np.ascontiguousarray(line0)
  *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -25838,24 +24431,24 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":632
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":469
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         coords = np.ascontiguousarray(coords)
  * 
 */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":633
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":470
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:
  *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
@@ -25863,9 +24456,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  *     cdef f64[::1] l0 = line0
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 633, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 470, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 633, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_4 = 1;
@@ -25885,17 +24478,17 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 633, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 470, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
     }
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 633, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 470, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
-      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
       if (unlikely(__pyx_t_8 < 0)) {
         PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -25904,12 +24497,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
       }
       __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
-      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 633, __pyx_L1_error)
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 470, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":632
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":469
  *     if not line1.flags['C_CONTIGUOUS']:
  *         line1 = np.ascontiguousarray(line1)
  *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -25918,43 +24511,43 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":635
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":472
  *         coords = np.ascontiguousarray(coords)
  * 
  *     cdef f64[::1] l0 = line0             # <<<<<<<<<<<<<<
  *     cdef f64[::1] l1 = line1
  *     cdef f64[:, :, ::1] c = coords
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 472, __pyx_L1_error)
   __pyx_v_l0 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":636
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":473
  * 
  *     cdef f64[::1] l0 = line0
  *     cdef f64[::1] l1 = line1             # <<<<<<<<<<<<<<
  *     cdef f64[:, :, ::1] c = coords
  * 
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 636, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 473, __pyx_L1_error)
   __pyx_v_l1 = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":637
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":474
  *     cdef f64[::1] l0 = line0
  *     cdef f64[::1] l1 = line1
  *     cdef f64[:, :, ::1] c = coords             # <<<<<<<<<<<<<<
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 637, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 474, __pyx_L1_error)
   __pyx_v_c = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":639
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":476
  *     cdef f64[:, :, ::1] c = coords
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -25962,26 +24555,26 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 639, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 476, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_14);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 639, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 476, __pyx_L1_error);
   __pyx_t_7 = 0;
   __pyx_t_14 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __pyx_t_4 = 1;
@@ -25998,73 +24591,73 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_15};
-    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 639, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_14, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 476, __pyx_L1_error)
     __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 639, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 639, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 476, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 639, __pyx_L1_error)
+      __PYX_ERR(0, 476, __pyx_L1_error)
     } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
     }
   }
   __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":640
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":477
  * 
  *     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
  *     cdef f64[:, ::1] out_mv = out             # <<<<<<<<<<<<<<
  * 
  *     cdef Py_ssize_t h, w
 */
-  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 477, __pyx_L1_error)
   __pyx_v_out_mv = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":648
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":485
  * 
  *     # Handle edge case when L == 1
  *     if L == 1:             # <<<<<<<<<<<<<<
- *         # Only one index available, so v0 and v1 are simply the first elements
  *         v0 = l0[0]
+ *         v1 = l1[0]
 */
   __pyx_t_5 = (__pyx_v_L == 1);
   if (__pyx_t_5) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":650
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":486
+ *     # Handle edge case when L == 1
  *     if L == 1:
- *         # Only one index available, so v0 and v1 are simply the first elements
  *         v0 = l0[0]             # <<<<<<<<<<<<<<
  *         v1 = l1[0]
  *         for h in range(H):
 */
     __pyx_t_17 = 0;
-    __pyx_v_v0 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l0.data) + __pyx_t_17)) )));
+    __pyx_v_v0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_17)) )));
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":651
- *         # Only one index available, so v0 and v1 are simply the first elements
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":487
+ *     if L == 1:
  *         v0 = l0[0]
  *         v1 = l1[0]             # <<<<<<<<<<<<<<
  *         for h in range(H):
  *             for w in range(W):
 */
     __pyx_t_17 = 0;
-    __pyx_v_v1 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l1.data) + __pyx_t_17)) )));
+    __pyx_v_v1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_17)) )));
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":652
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":488
  *         v0 = l0[0]
  *         v1 = l1[0]
  *         for h in range(H):             # <<<<<<<<<<<<<<
@@ -26076,33 +24669,33 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
       __pyx_v_h = __pyx_t_20;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":653
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":489
  *         v1 = l1[0]
  *         for h in range(H):
  *             for w in range(W):             # <<<<<<<<<<<<<<
  *                 u_y = c[h, w, 1]
- *                 # Clamp u_y to [0, 1] for safety
+ *                 if u_y < 0.0:
 */
       __pyx_t_21 = __pyx_v_W;
       __pyx_t_22 = __pyx_t_21;
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_w = __pyx_t_23;
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":654
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":490
  *         for h in range(H):
  *             for w in range(W):
  *                 u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
- *                 # Clamp u_y to [0, 1] for safety
  *                 if u_y < 0.0:
+ *                     u_y = 0.0
 */
         __pyx_t_17 = __pyx_v_h;
         __pyx_t_24 = __pyx_v_w;
         __pyx_t_25 = 1;
-        __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_17 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
+        __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_17 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":656
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":491
+ *             for w in range(W):
  *                 u_y = c[h, w, 1]
- *                 # Clamp u_y to [0, 1] for safety
  *                 if u_y < 0.0:             # <<<<<<<<<<<<<<
  *                     u_y = 0.0
  *                 elif u_y > 1.0:
@@ -26110,8 +24703,8 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         __pyx_t_5 = (__pyx_v_u_y < 0.0);
         if (__pyx_t_5) {
 
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":657
- *                 # Clamp u_y to [0, 1] for safety
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":492
+ *                 u_y = c[h, w, 1]
  *                 if u_y < 0.0:
  *                     u_y = 0.0             # <<<<<<<<<<<<<<
  *                 elif u_y > 1.0:
@@ -26119,9 +24712,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
           __pyx_v_u_y = 0.0;
 
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":656
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":491
+ *             for w in range(W):
  *                 u_y = c[h, w, 1]
- *                 # Clamp u_y to [0, 1] for safety
  *                 if u_y < 0.0:             # <<<<<<<<<<<<<<
  *                     u_y = 0.0
  *                 elif u_y > 1.0:
@@ -26129,51 +24722,51 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
           goto __pyx_L13;
         }
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":658
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":493
  *                 if u_y < 0.0:
  *                     u_y = 0.0
  *                 elif u_y > 1.0:             # <<<<<<<<<<<<<<
  *                     u_y = 1.0
- *                 # Blend between the single values from each line
+ *                 out_mv[h, w] = v0 + u_y * (v1 - v0)
 */
         __pyx_t_5 = (__pyx_v_u_y > 1.0);
         if (__pyx_t_5) {
 
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":659
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":494
  *                     u_y = 0.0
  *                 elif u_y > 1.0:
  *                     u_y = 1.0             # <<<<<<<<<<<<<<
- *                 # Blend between the single values from each line
- *                 out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+ *                 out_mv[h, w] = v0 + u_y * (v1 - v0)
+ *         return out
 */
           __pyx_v_u_y = 1.0;
 
-          /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":658
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":493
  *                 if u_y < 0.0:
  *                     u_y = 0.0
  *                 elif u_y > 1.0:             # <<<<<<<<<<<<<<
  *                     u_y = 1.0
- *                 # Blend between the single values from each line
+ *                 out_mv[h, w] = v0 + u_y * (v1 - v0)
 */
         }
         __pyx_L13:;
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":661
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":495
+ *                 elif u_y > 1.0:
  *                     u_y = 1.0
- *                 # Blend between the single values from each line
- *                 out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+ *                 out_mv[h, w] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
  *         return out
  * 
 */
         __pyx_t_25 = __pyx_v_h;
         __pyx_t_24 = __pyx_v_w;
-        *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_25 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_24)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
+        *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_25 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_24)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
       }
     }
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":662
- *                 # Blend between the single values from each line
- *                 out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":496
+ *                     u_y = 1.0
+ *                 out_mv[h, w] = v0 + u_y * (v1 - v0)
  *         return out             # <<<<<<<<<<<<<<
  * 
  *     cdef f64 L_minus_1 = <f64>(L - 1)
@@ -26183,25 +24776,25 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     __pyx_r = ((PyObject *)__pyx_v_out);
     goto __pyx_L0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":648
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":485
  * 
  *     # Handle edge case when L == 1
  *     if L == 1:             # <<<<<<<<<<<<<<
- *         # Only one index available, so v0 and v1 are simply the first elements
  *         v0 = l0[0]
+ *         v1 = l1[0]
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":664
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":498
  *         return out
  * 
  *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
  * 
  *     for h in range(H):
 */
-  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64)(__pyx_v_L - 1));
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":666
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":500
  *     cdef f64 L_minus_1 = <f64>(L - 1)
  * 
  *     for h in range(H):             # <<<<<<<<<<<<<<
@@ -26213,7 +24806,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
     __pyx_v_h = __pyx_t_20;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":667
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":501
  * 
  *     for h in range(H):
  *         for w in range(W):             # <<<<<<<<<<<<<<
@@ -26225,7 +24818,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
       __pyx_v_w = __pyx_t_23;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":668
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":502
  *     for h in range(H):
  *         for w in range(W):
  *             u_x = c[h, w, 0]             # <<<<<<<<<<<<<<
@@ -26235,9 +24828,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_24 = __pyx_v_h;
       __pyx_t_25 = __pyx_v_w;
       __pyx_t_17 = 0;
-      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_24 * __pyx_v_c.strides[0]) ) + __pyx_t_25 * __pyx_v_c.strides[1]) )) + __pyx_t_17)) )));
+      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_24 * __pyx_v_c.strides[0]) ) + __pyx_t_25 * __pyx_v_c.strides[1]) )) + __pyx_t_17)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":669
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":503
  *         for w in range(W):
  *             u_x = c[h, w, 0]
  *             u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
@@ -26247,9 +24840,9 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_17 = __pyx_v_h;
       __pyx_t_25 = __pyx_v_w;
       __pyx_t_24 = 1;
-      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_17 * __pyx_v_c.strides[0]) ) + __pyx_t_25 * __pyx_v_c.strides[1]) )) + __pyx_t_24)) )));
+      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_17 * __pyx_v_c.strides[0]) ) + __pyx_t_25 * __pyx_v_c.strides[1]) )) + __pyx_t_24)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":672
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":506
  * 
  *             # Map u_x to nearest index by rounding
  *             idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
@@ -26258,7 +24851,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
       __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":673
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":507
  *             # Map u_x to nearest index by rounding
  *             idx_f = u_x * L_minus_1
  *             idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest             # <<<<<<<<<<<<<<
@@ -26267,7 +24860,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
       __pyx_v_idx = ((Py_ssize_t)floor((__pyx_v_idx_f + 0.5)));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":676
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":510
  * 
  *             # Clamp index to valid range [0, L-1]
  *             if idx < 0:             # <<<<<<<<<<<<<<
@@ -26277,7 +24870,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_5 = (__pyx_v_idx < 0);
       if (__pyx_t_5) {
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":677
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":511
  *             # Clamp index to valid range [0, L-1]
  *             if idx < 0:
  *                 idx = 0             # <<<<<<<<<<<<<<
@@ -26286,7 +24879,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
         __pyx_v_idx = 0;
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":676
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":510
  * 
  *             # Clamp index to valid range [0, L-1]
  *             if idx < 0:             # <<<<<<<<<<<<<<
@@ -26296,7 +24889,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         goto __pyx_L18;
       }
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":678
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":512
  *             if idx < 0:
  *                 idx = 0
  *             elif idx >= L:             # <<<<<<<<<<<<<<
@@ -26306,7 +24899,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_5 = (__pyx_v_idx >= __pyx_v_L);
       if (__pyx_t_5) {
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":679
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":513
  *                 idx = 0
  *             elif idx >= L:
  *                 idx = L - 1             # <<<<<<<<<<<<<<
@@ -26315,7 +24908,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
         __pyx_v_idx = (__pyx_v_L - 1);
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":678
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":512
  *             if idx < 0:
  *                 idx = 0
  *             elif idx >= L:             # <<<<<<<<<<<<<<
@@ -26325,7 +24918,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       }
       __pyx_L18:;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":682
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":516
  * 
  *             # Clamp u_y to [0, 1] for safety
  *             if u_y < 0.0:             # <<<<<<<<<<<<<<
@@ -26335,7 +24928,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_5 = (__pyx_v_u_y < 0.0);
       if (__pyx_t_5) {
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":683
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":517
  *             # Clamp u_y to [0, 1] for safety
  *             if u_y < 0.0:
  *                 u_y = 0.0             # <<<<<<<<<<<<<<
@@ -26344,7 +24937,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
         __pyx_v_u_y = 0.0;
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":682
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":516
  * 
  *             # Clamp u_y to [0, 1] for safety
  *             if u_y < 0.0:             # <<<<<<<<<<<<<<
@@ -26354,7 +24947,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
         goto __pyx_L19;
       }
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":684
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":518
  *             if u_y < 0.0:
  *                 u_y = 0.0
  *             elif u_y > 1.0:             # <<<<<<<<<<<<<<
@@ -26364,7 +24957,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       __pyx_t_5 = (__pyx_v_u_y > 1.0);
       if (__pyx_t_5) {
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":685
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":519
  *                 u_y = 0.0
  *             elif u_y > 1.0:
  *                 u_y = 1.0             # <<<<<<<<<<<<<<
@@ -26373,7 +24966,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
 */
         __pyx_v_u_y = 1.0;
 
-        /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":684
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":518
  *             if u_y < 0.0:
  *                 u_y = 0.0
  *             elif u_y > 1.0:             # <<<<<<<<<<<<<<
@@ -26383,7 +24976,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
       }
       __pyx_L19:;
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":688
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":522
  * 
  *             # Sample lines at discrete index
  *             v0 = l0[idx]             # <<<<<<<<<<<<<<
@@ -26391,47 +24984,47 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
  * 
 */
       __pyx_t_24 = __pyx_v_idx;
-      __pyx_v_v0 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l0.data) + __pyx_t_24)) )));
+      __pyx_v_v0 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l0.data) + __pyx_t_24)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":689
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":523
  *             # Sample lines at discrete index
  *             v0 = l0[idx]
  *             v1 = l1[idx]             # <<<<<<<<<<<<<<
  * 
- *             # Blend between lines with hue mode in y-direction
+ *             # Blend between lines
 */
       __pyx_t_24 = __pyx_v_idx;
-      __pyx_v_v1 = (*((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) __pyx_v_l1.data) + __pyx_t_24)) )));
+      __pyx_v_v1 = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) __pyx_v_l1.data) + __pyx_t_24)) )));
 
-      /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":692
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":526
  * 
- *             # Blend between lines with hue mode in y-direction
- *             out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+ *             # Blend between lines
+ *             out_mv[h, w] = v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
  * 
  *     return out
 */
       __pyx_t_24 = __pyx_v_h;
       __pyx_t_25 = __pyx_v_w;
-      *((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_24 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_25)) )) = __pyx_f_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
+      *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_24 * __pyx_v_out_mv.strides[0]) )) + __pyx_t_25)) )) = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
     }
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":694
- *             out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":528
+ *             out_mv[h, w] = v0 + u_y * (v1 - v0)
  * 
  *     return out             # <<<<<<<<<<<<<<
- * # =============================================================================
- * # Dispatcher for multi-dim hue lerp
+ * 
+ * 
 */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF((PyObject *)__pyx_v_out);
   __pyx_r = ((PyObject *)__pyx_v_out);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":595
- * # Hue interpolation between lines with discrete x-sampling (Section 6 style)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":434
+ * # Discrete x-sampling versions (nearest neighbor in x-direction)
  * # =============================================================================
- * def hue_lerp_between_lines_x_discrete(             # <<<<<<<<<<<<<<
+ * def lerp_between_lines_x_discrete_1ch(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] line0,
  *     np.ndarray[f64, ndim=1] line1,
 */
@@ -26456,7 +25049,7 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_lerp_between_lines_x_discrete", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_x_discrete_1ch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -26478,46 +25071,45 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":698
- * # Dispatcher for multi-dim hue lerp
- * # =============================================================================
- * def hue_multidim_lerp(             # <<<<<<<<<<<<<<
- *     np.ndarray starts,
- *     np.ndarray ends,
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":531
+ * 
+ * 
+ * def lerp_between_lines_x_discrete_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_15hue_multidim_lerp(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_13lerp_between_lines_x_discrete_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_14hue_multidim_lerp, "\n    Dispatcher for multi-dimensional hue interpolation.\n    \n    Args:\n        starts: Corner values, shape (2^{N-1},)\n        ends: Corner values, shape (2^{N-1},)\n        coeffs: Coefficient grid, shape (..., N) where N is num dimensions\n        modes: Mode per dimension, shape (N,)\n    \n    Returns:\n        Interpolated hues with shape matching coeffs[..., 0]\n    ");
-static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_15hue_multidim_lerp = {"hue_multidim_lerp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_15hue_multidim_lerp, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_14hue_multidim_lerp};
-static PyObject *__pyx_pw_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_15hue_multidim_lerp(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_12lerp_between_lines_x_discrete_multichannel, "\n    Interpolate between two multi-channel 1D lines with discrete x-sampling.\n    \n    Args:\n        line0: First line, shape (L, C)\n        line1: Second line, shape (L, C)\n        coords: Coordinate grid, shape (H, W, 2)\n                coords[..., 0] = u_x (position along lines, maps to nearest index)\n                coords[..., 1] = u_y (blend between lines)\n    \n    Returns:\n        Interpolated values, shape (H, W, C)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_13lerp_between_lines_x_discrete_multichannel = {"lerp_between_lines_x_discrete_multichannel", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_13lerp_between_lines_x_discrete_multichannel, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_12lerp_between_lines_x_discrete_multichannel};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_13lerp_between_lines_x_discrete_multichannel(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  PyArrayObject *__pyx_v_starts = 0;
-  PyArrayObject *__pyx_v_ends = 0;
-  PyArrayObject *__pyx_v_coeffs = 0;
-  PyArrayObject *__pyx_v_modes = 0;
+  PyArrayObject *__pyx_v_line0 = 0;
+  PyArrayObject *__pyx_v_line1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hue_multidim_lerp (wrapper)", 0);
+  __Pyx_RefNannySetupContext("lerp_between_lines_x_discrete_multichannel (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -26527,70 +25119,62 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_starts,&__pyx_mstate_global->__pyx_n_u_ends,&__pyx_mstate_global->__pyx_n_u_coeffs,&__pyx_mstate_global->__pyx_n_u_modes,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 698, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 531, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
-        case  4:
-        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 698, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 698, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 531, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 698, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 531, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 698, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 531, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "hue_multidim_lerp", 0) < (0)) __PYX_ERR(0, 698, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("hue_multidim_lerp", 1, 4, 4, i); __PYX_ERR(0, 698, __pyx_L3_error) }
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines_x_discrete_multichannel", 0) < (0)) __PYX_ERR(0, 531, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines_x_discrete_multichannel", 1, 3, 3, i); __PYX_ERR(0, 531, __pyx_L3_error) }
       }
-    } else if (unlikely(__pyx_nargs != 4)) {
+    } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 698, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 531, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 698, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 531, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 698, __pyx_L3_error)
-      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 698, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 531, __pyx_L3_error)
     }
-    __pyx_v_starts = ((PyArrayObject *)values[0]);
-    __pyx_v_ends = ((PyArrayObject *)values[1]);
-    __pyx_v_coeffs = ((PyArrayObject *)values[2]);
-    __pyx_v_modes = ((PyArrayObject *)values[3]);
+    __pyx_v_line0 = ((PyArrayObject *)values[0]);
+    __pyx_v_line1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("hue_multidim_lerp", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 698, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines_x_discrete_multichannel", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 531, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_multidim_lerp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_x_discrete_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "starts", 0))) __PYX_ERR(0, 699, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "ends", 0))) __PYX_ERR(0, 700, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coeffs", 0))) __PYX_ERR(0, 701, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "modes", 0))) __PYX_ERR(0, 702, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_14hue_multidim_lerp(__pyx_self, __pyx_v_starts, __pyx_v_ends, __pyx_v_coeffs, __pyx_v_modes);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 532, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 533, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_12lerp_between_lines_x_discrete_multichannel(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -26609,8 +25193,1157 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_14hue_multidim_lerp(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_starts, PyArrayObject *__pyx_v_ends, PyArrayObject *__pyx_v_coeffs, PyArrayObject *__pyx_v_modes) {
-  int __pyx_v_spatial_ndims;
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_12lerp_between_lines_x_discrete_multichannel(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
+  Py_ssize_t __pyx_v_L;
+  Py_ssize_t __pyx_v_C;
+  Py_ssize_t __pyx_v_H;
+  Py_ssize_t __pyx_v_W;
+  __Pyx_memviewslice __pyx_v_l0 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_l1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_c = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyArrayObject *__pyx_v_out = 0;
+  __Pyx_memviewslice __pyx_v_out_mv = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_v_h;
+  Py_ssize_t __pyx_v_w;
+  Py_ssize_t __pyx_v_ch;
+  Py_ssize_t __pyx_v_idx;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_x;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_u_y;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_idx_f;
+  __pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 __pyx_v_L_minus_1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_coords;
+  __Pyx_Buffer __pyx_pybuffer_coords;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line0;
+  __Pyx_Buffer __pyx_pybuffer_line0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_line1;
+  __Pyx_Buffer __pyx_pybuffer_line1;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_15 = NULL;
+  PyObject *__pyx_t_16 = NULL;
+  Py_ssize_t __pyx_t_17;
+  Py_ssize_t __pyx_t_18;
+  Py_ssize_t __pyx_t_19;
+  Py_ssize_t __pyx_t_20;
+  Py_ssize_t __pyx_t_21;
+  Py_ssize_t __pyx_t_22;
+  Py_ssize_t __pyx_t_23;
+  Py_ssize_t __pyx_t_24;
+  Py_ssize_t __pyx_t_25;
+  Py_ssize_t __pyx_t_26;
+  Py_ssize_t __pyx_t_27;
+  Py_ssize_t __pyx_t_28;
+  Py_ssize_t __pyx_t_29;
+  Py_ssize_t __pyx_t_30;
+  Py_ssize_t __pyx_t_31;
+  Py_ssize_t __pyx_t_32;
+  Py_ssize_t __pyx_t_33;
+  Py_ssize_t __pyx_t_34;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("lerp_between_lines_x_discrete_multichannel", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
+  __pyx_pybuffer_out.pybuffer.buf = NULL;
+  __pyx_pybuffer_out.refcount = 0;
+  __pyx_pybuffernd_out.data = NULL;
+  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
+  __pyx_pybuffer_line0.pybuffer.buf = NULL;
+  __pyx_pybuffer_line0.refcount = 0;
+  __pyx_pybuffernd_line0.data = NULL;
+  __pyx_pybuffernd_line0.rcbuffer = &__pyx_pybuffer_line0;
+  __pyx_pybuffer_line1.pybuffer.buf = NULL;
+  __pyx_pybuffer_line1.refcount = 0;
+  __pyx_pybuffernd_line1.data = NULL;
+  __pyx_pybuffernd_line1.rcbuffer = &__pyx_pybuffer_line1;
+  __pyx_pybuffer_coords.pybuffer.buf = NULL;
+  __pyx_pybuffer_coords.refcount = 0;
+  __pyx_pybuffernd_coords.data = NULL;
+  __pyx_pybuffernd_coords.rcbuffer = &__pyx_pybuffer_coords;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 531, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 531, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 531, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":549
+ *         Interpolated values, shape (H, W, C)
+ *     """
+ *     cdef Py_ssize_t L = line0.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]
+*/
+  __pyx_v_L = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":550
+ *     """
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]
+*/
+  __pyx_v_C = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line0))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":551
+ *     cdef Py_ssize_t L = line0.shape[0]
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t W = coords.shape[1]
+ * 
+*/
+  __pyx_v_H = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[0]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":552
+ *     cdef Py_ssize_t C = line0.shape[1]
+ *     cdef Py_ssize_t H = coords.shape[0]
+ *     cdef Py_ssize_t W = coords.shape[1]             # <<<<<<<<<<<<<<
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+*/
+  __pyx_v_W = (__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[1]);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":554
+ *     cdef Py_ssize_t W = coords.shape[1]
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
+*/
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[0]) != __pyx_v_L);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_line1))[1]) != __pyx_v_C);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":555
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")             # <<<<<<<<<<<<<<
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_Lines_must_have_same_shape};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 555, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":554
+ *     cdef Py_ssize_t W = coords.shape[1]
+ * 
+ *     if line1.shape[0] != L or line1.shape[1] != C:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":556
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
+ * 
+*/
+  __pyx_t_1 = ((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_coords))[2]) != 2);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":557
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:
+ *         raise ValueError("coords must have shape (H, W, 2)")             # <<<<<<<<<<<<<<
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:
+*/
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_coords_must_have_shape_H_W_2};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 557, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 557, __pyx_L1_error)
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":556
+ *     if line1.shape[0] != L or line1.shape[1] != C:
+ *         raise ValueError("Lines must have same shape")
+ *     if coords.shape[2] != 2:             # <<<<<<<<<<<<<<
+ *         raise ValueError("coords must have shape (H, W, 2)")
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":559
+ *         raise ValueError("coords must have shape (H, W, 2)")
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 559, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 559, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":560
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)             # <<<<<<<<<<<<<<
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+*/
+    __pyx_t_3 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 560, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 560, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+      assert(__pyx_t_3);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_line0)};
+      __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 560, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 560, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line0.rcbuffer->pybuffer, (PyObject*)__pyx_v_line0, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_line0.diminfo[0].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line0.diminfo[0].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line0.diminfo[1].strides = __pyx_pybuffernd_line0.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line0.diminfo[1].shape = __pyx_pybuffernd_line0.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 560, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_4));
+    __pyx_t_4 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":559
+ *         raise ValueError("coords must have shape (H, W, 2)")
+ * 
+ *     if not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":561
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 561, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 561, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 561, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = (!__pyx_t_2);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":562
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)             # <<<<<<<<<<<<<<
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)
+*/
+    __pyx_t_4 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 562, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 562, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_6))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+      assert(__pyx_t_4);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_6, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_v_line1)};
+      __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 562, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+    }
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 562, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_7), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_line1.rcbuffer->pybuffer, (PyObject*)__pyx_v_line1, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_9);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_11, __pyx_t_10, __pyx_t_9);
+        }
+        __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
+      }
+      __pyx_pybuffernd_line1.diminfo[0].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_line1.diminfo[0].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_line1.diminfo[1].strides = __pyx_pybuffernd_line1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_line1.diminfo[1].shape = __pyx_pybuffernd_line1.rcbuffer->pybuffer.shape[1];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 562, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_7));
+    __pyx_t_7 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":561
+ *     if not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0)
+ *     if not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":563
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_2 = (!__pyx_t_1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":564
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64[:, ::1] l0 = line0
+*/
+    __pyx_t_7 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 564, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 564, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+      assert(__pyx_t_7);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, ((PyObject *)__pyx_v_coords)};
+      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 564, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+    }
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 564, __pyx_L1_error)
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+      __pyx_t_8 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack);
+      if (unlikely(__pyx_t_8 < 0)) {
+        PyErr_Fetch(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords, &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_9, __pyx_t_10, __pyx_t_11);
+        }
+        __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
+      }
+      __pyx_pybuffernd_coords.diminfo[0].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords.diminfo[0].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords.diminfo[1].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords.diminfo[1].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_coords.diminfo[2].strides = __pyx_pybuffernd_coords.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_coords.diminfo[2].shape = __pyx_pybuffernd_coords.rcbuffer->pybuffer.shape[2];
+      if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 564, __pyx_L1_error)
+    }
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_6));
+    __pyx_t_6 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":563
+ *     if not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1)
+ *     if not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords)
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":566
+ *         coords = np.ascontiguousarray(coords)
+ * 
+ *     cdef f64[:, ::1] l0 = line0             # <<<<<<<<<<<<<<
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line0), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __pyx_v_l0 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":567
+ * 
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] c = coords
+ * 
+*/
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_line1), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_v_l1 = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":568
+ *     cdef f64[:, ::1] l0 = line0
+ *     cdef f64[:, ::1] l1 = line1
+ *     cdef f64[:, :, ::1] c = coords             # <<<<<<<<<<<<<<
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+*/
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_coords), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __pyx_v_c = __pyx_t_13;
+  __pyx_t_13.memview = NULL;
+  __pyx_t_13.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":570
+ *     cdef f64[:, :, ::1] c = coords
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef f64[:, :, ::1] out_mv = out
+ * 
+*/
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_14 = PyLong_FromSsize_t(__pyx_v_W); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyLong_FromSsize_t(__pyx_v_C); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_16 = PyTuple_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __Pyx_GIVEREF(__pyx_t_7);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 570, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_14);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 570, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_15);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 570, __pyx_L1_error);
+  __pyx_t_7 = 0;
+  __pyx_t_14 = 0;
+  __pyx_t_15 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_16};
+    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 570, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_15);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_14, __pyx_t_15, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 570, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 570, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+  }
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 570, __pyx_L1_error)
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 570, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_out.diminfo[2].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_out.diminfo[2].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[2];
+    }
+  }
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_6);
+  __pyx_t_6 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":571
+ * 
+ *     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+ *     cdef f64[:, :, ::1] out_mv = out             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Py_ssize_t h, w, ch
+*/
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(((PyObject *)__pyx_v_out), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __pyx_v_out_mv = __pyx_t_13;
+  __pyx_t_13.memview = NULL;
+  __pyx_t_13.data = NULL;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":578
+ * 
+ *     # Handle edge case when L == 1
+ *     if L == 1:             # <<<<<<<<<<<<<<
+ *         for h in range(H):
+ *             for w in range(W):
+*/
+  __pyx_t_2 = (__pyx_v_L == 1);
+  if (__pyx_t_2) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":579
+ *     # Handle edge case when L == 1
+ *     if L == 1:
+ *         for h in range(H):             # <<<<<<<<<<<<<<
+ *             for w in range(W):
+ *                 u_y = c[h, w, 1]
+*/
+    __pyx_t_17 = __pyx_v_H;
+    __pyx_t_18 = __pyx_t_17;
+    for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
+      __pyx_v_h = __pyx_t_19;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":580
+ *     if L == 1:
+ *         for h in range(H):
+ *             for w in range(W):             # <<<<<<<<<<<<<<
+ *                 u_y = c[h, w, 1]
+ *                 if u_y < 0.0:
+*/
+      __pyx_t_20 = __pyx_v_W;
+      __pyx_t_21 = __pyx_t_20;
+      for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
+        __pyx_v_w = __pyx_t_22;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":581
+ *         for h in range(H):
+ *             for w in range(W):
+ *                 u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
+ *                 if u_y < 0.0:
+ *                     u_y = 0.0
+*/
+        __pyx_t_23 = __pyx_v_h;
+        __pyx_t_24 = __pyx_v_w;
+        __pyx_t_25 = 1;
+        __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_23 * __pyx_v_c.strides[0]) ) + __pyx_t_24 * __pyx_v_c.strides[1]) )) + __pyx_t_25)) )));
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":582
+ *             for w in range(W):
+ *                 u_y = c[h, w, 1]
+ *                 if u_y < 0.0:             # <<<<<<<<<<<<<<
+ *                     u_y = 0.0
+ *                 elif u_y > 1.0:
+*/
+        __pyx_t_2 = (__pyx_v_u_y < 0.0);
+        if (__pyx_t_2) {
+
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":583
+ *                 u_y = c[h, w, 1]
+ *                 if u_y < 0.0:
+ *                     u_y = 0.0             # <<<<<<<<<<<<<<
+ *                 elif u_y > 1.0:
+ *                     u_y = 1.0
+*/
+          __pyx_v_u_y = 0.0;
+
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":582
+ *             for w in range(W):
+ *                 u_y = c[h, w, 1]
+ *                 if u_y < 0.0:             # <<<<<<<<<<<<<<
+ *                     u_y = 0.0
+ *                 elif u_y > 1.0:
+*/
+          goto __pyx_L15;
+        }
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":584
+ *                 if u_y < 0.0:
+ *                     u_y = 0.0
+ *                 elif u_y > 1.0:             # <<<<<<<<<<<<<<
+ *                     u_y = 1.0
+ *                 for ch in range(C):
+*/
+        __pyx_t_2 = (__pyx_v_u_y > 1.0);
+        if (__pyx_t_2) {
+
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":585
+ *                     u_y = 0.0
+ *                 elif u_y > 1.0:
+ *                     u_y = 1.0             # <<<<<<<<<<<<<<
+ *                 for ch in range(C):
+ *                     out_mv[h, w, ch] = l0[0, ch] + u_y * (l1[0, ch] - l0[0, ch])
+*/
+          __pyx_v_u_y = 1.0;
+
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":584
+ *                 if u_y < 0.0:
+ *                     u_y = 0.0
+ *                 elif u_y > 1.0:             # <<<<<<<<<<<<<<
+ *                     u_y = 1.0
+ *                 for ch in range(C):
+*/
+        }
+        __pyx_L15:;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":586
+ *                 elif u_y > 1.0:
+ *                     u_y = 1.0
+ *                 for ch in range(C):             # <<<<<<<<<<<<<<
+ *                     out_mv[h, w, ch] = l0[0, ch] + u_y * (l1[0, ch] - l0[0, ch])
+ *         return out
+*/
+        __pyx_t_26 = __pyx_v_C;
+        __pyx_t_27 = __pyx_t_26;
+        for (__pyx_t_28 = 0; __pyx_t_28 < __pyx_t_27; __pyx_t_28+=1) {
+          __pyx_v_ch = __pyx_t_28;
+
+          /* "Chromatica/chromatica/v2core/interp_2d.pyx":587
+ *                     u_y = 1.0
+ *                 for ch in range(C):
+ *                     out_mv[h, w, ch] = l0[0, ch] + u_y * (l1[0, ch] - l0[0, ch])             # <<<<<<<<<<<<<<
+ *         return out
+ * 
+*/
+          __pyx_t_25 = 0;
+          __pyx_t_24 = __pyx_v_ch;
+          __pyx_t_23 = 0;
+          __pyx_t_29 = __pyx_v_ch;
+          __pyx_t_30 = 0;
+          __pyx_t_31 = __pyx_v_ch;
+          __pyx_t_32 = __pyx_v_h;
+          __pyx_t_33 = __pyx_v_w;
+          __pyx_t_34 = __pyx_v_ch;
+          *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_32 * __pyx_v_out_mv.strides[0]) ) + __pyx_t_33 * __pyx_v_out_mv.strides[1]) )) + __pyx_t_34)) )) = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_25 * __pyx_v_l0.strides[0]) )) + __pyx_t_24)) ))) + (__pyx_v_u_y * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_23 * __pyx_v_l1.strides[0]) )) + __pyx_t_29)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_30 * __pyx_v_l0.strides[0]) )) + __pyx_t_31)) ))))));
+        }
+      }
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":588
+ *                 for ch in range(C):
+ *                     out_mv[h, w, ch] = l0[0, ch] + u_y * (l1[0, ch] - l0[0, ch])
+ *         return out             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF((PyObject *)__pyx_v_out);
+    __pyx_r = ((PyObject *)__pyx_v_out);
+    goto __pyx_L0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":578
+ * 
+ *     # Handle edge case when L == 1
+ *     if L == 1:             # <<<<<<<<<<<<<<
+ *         for h in range(H):
+ *             for w in range(W):
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":590
+ *         return out
+ * 
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ * 
+ *     for h in range(H):
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64)(__pyx_v_L - 1));
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":592
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ * 
+ *     for h in range(H):             # <<<<<<<<<<<<<<
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]
+*/
+  __pyx_t_17 = __pyx_v_H;
+  __pyx_t_18 = __pyx_t_17;
+  for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
+    __pyx_v_h = __pyx_t_19;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":593
+ * 
+ *     for h in range(H):
+ *         for w in range(W):             # <<<<<<<<<<<<<<
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]
+*/
+    __pyx_t_20 = __pyx_v_W;
+    __pyx_t_21 = __pyx_t_20;
+    for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
+      __pyx_v_w = __pyx_t_22;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":594
+ *     for h in range(H):
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]             # <<<<<<<<<<<<<<
+ *             u_y = c[h, w, 1]
+ * 
+*/
+      __pyx_t_31 = __pyx_v_h;
+      __pyx_t_30 = __pyx_v_w;
+      __pyx_t_29 = 0;
+      __pyx_v_u_x = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_31 * __pyx_v_c.strides[0]) ) + __pyx_t_30 * __pyx_v_c.strides[1]) )) + __pyx_t_29)) )));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":595
+ *         for w in range(W):
+ *             u_x = c[h, w, 0]
+ *             u_y = c[h, w, 1]             # <<<<<<<<<<<<<<
+ * 
+ *             # Map u_x to nearest index by rounding
+*/
+      __pyx_t_29 = __pyx_v_h;
+      __pyx_t_30 = __pyx_v_w;
+      __pyx_t_31 = 1;
+      __pyx_v_u_y = (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_c.data + __pyx_t_29 * __pyx_v_c.strides[0]) ) + __pyx_t_30 * __pyx_v_c.strides[1]) )) + __pyx_t_31)) )));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":598
+ * 
+ *             # Map u_x to nearest index by rounding
+ *             idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *             idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest
+ * 
+*/
+      __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":599
+ *             # Map u_x to nearest index by rounding
+ *             idx_f = u_x * L_minus_1
+ *             idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest             # <<<<<<<<<<<<<<
+ * 
+ *             # Clamp index to valid range [0, L-1]
+*/
+      __pyx_v_idx = ((Py_ssize_t)floor((__pyx_v_idx_f + 0.5)));
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":602
+ * 
+ *             # Clamp index to valid range [0, L-1]
+ *             if idx < 0:             # <<<<<<<<<<<<<<
+ *                 idx = 0
+ *             elif idx >= L:
+*/
+      __pyx_t_2 = (__pyx_v_idx < 0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":603
+ *             # Clamp index to valid range [0, L-1]
+ *             if idx < 0:
+ *                 idx = 0             # <<<<<<<<<<<<<<
+ *             elif idx >= L:
+ *                 idx = L - 1
+*/
+        __pyx_v_idx = 0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":602
+ * 
+ *             # Clamp index to valid range [0, L-1]
+ *             if idx < 0:             # <<<<<<<<<<<<<<
+ *                 idx = 0
+ *             elif idx >= L:
+*/
+        goto __pyx_L22;
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":604
+ *             if idx < 0:
+ *                 idx = 0
+ *             elif idx >= L:             # <<<<<<<<<<<<<<
+ *                 idx = L - 1
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_idx >= __pyx_v_L);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":605
+ *                 idx = 0
+ *             elif idx >= L:
+ *                 idx = L - 1             # <<<<<<<<<<<<<<
+ * 
+ *             # Clamp u_y to [0, 1] for safety
+*/
+        __pyx_v_idx = (__pyx_v_L - 1);
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":604
+ *             if idx < 0:
+ *                 idx = 0
+ *             elif idx >= L:             # <<<<<<<<<<<<<<
+ *                 idx = L - 1
+ * 
+*/
+      }
+      __pyx_L22:;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":608
+ * 
+ *             # Clamp u_y to [0, 1] for safety
+ *             if u_y < 0.0:             # <<<<<<<<<<<<<<
+ *                 u_y = 0.0
+ *             elif u_y > 1.0:
+*/
+      __pyx_t_2 = (__pyx_v_u_y < 0.0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":609
+ *             # Clamp u_y to [0, 1] for safety
+ *             if u_y < 0.0:
+ *                 u_y = 0.0             # <<<<<<<<<<<<<<
+ *             elif u_y > 1.0:
+ *                 u_y = 1.0
+*/
+        __pyx_v_u_y = 0.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":608
+ * 
+ *             # Clamp u_y to [0, 1] for safety
+ *             if u_y < 0.0:             # <<<<<<<<<<<<<<
+ *                 u_y = 0.0
+ *             elif u_y > 1.0:
+*/
+        goto __pyx_L23;
+      }
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":610
+ *             if u_y < 0.0:
+ *                 u_y = 0.0
+ *             elif u_y > 1.0:             # <<<<<<<<<<<<<<
+ *                 u_y = 1.0
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_u_y > 1.0);
+      if (__pyx_t_2) {
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":611
+ *                 u_y = 0.0
+ *             elif u_y > 1.0:
+ *                 u_y = 1.0             # <<<<<<<<<<<<<<
+ * 
+ *             # Blend between lines at discrete index for each channel
+*/
+        __pyx_v_u_y = 1.0;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":610
+ *             if u_y < 0.0:
+ *                 u_y = 0.0
+ *             elif u_y > 1.0:             # <<<<<<<<<<<<<<
+ *                 u_y = 1.0
+ * 
+*/
+      }
+      __pyx_L23:;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":614
+ * 
+ *             # Blend between lines at discrete index for each channel
+ *             for ch in range(C):             # <<<<<<<<<<<<<<
+ *                 out_mv[h, w, ch] = l0[idx, ch] + u_y * (l1[idx, ch] - l0[idx, ch])
+ * 
+*/
+      __pyx_t_26 = __pyx_v_C;
+      __pyx_t_27 = __pyx_t_26;
+      for (__pyx_t_28 = 0; __pyx_t_28 < __pyx_t_27; __pyx_t_28+=1) {
+        __pyx_v_ch = __pyx_t_28;
+
+        /* "Chromatica/chromatica/v2core/interp_2d.pyx":615
+ *             # Blend between lines at discrete index for each channel
+ *             for ch in range(C):
+ *                 out_mv[h, w, ch] = l0[idx, ch] + u_y * (l1[idx, ch] - l0[idx, ch])             # <<<<<<<<<<<<<<
+ * 
+ *     return out
+*/
+        __pyx_t_31 = __pyx_v_idx;
+        __pyx_t_30 = __pyx_v_ch;
+        __pyx_t_29 = __pyx_v_idx;
+        __pyx_t_23 = __pyx_v_ch;
+        __pyx_t_24 = __pyx_v_idx;
+        __pyx_t_25 = __pyx_v_ch;
+        __pyx_t_34 = __pyx_v_h;
+        __pyx_t_33 = __pyx_v_w;
+        __pyx_t_32 = __pyx_v_ch;
+        *((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=2 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_out_mv.data + __pyx_t_34 * __pyx_v_out_mv.strides[0]) ) + __pyx_t_33 * __pyx_v_out_mv.strides[1]) )) + __pyx_t_32)) )) = ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_31 * __pyx_v_l0.strides[0]) )) + __pyx_t_30)) ))) + (__pyx_v_u_y * ((*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l1.data + __pyx_t_29 * __pyx_v_l1.strides[0]) )) + __pyx_t_23)) ))) - (*((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=1 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64 *) ( /* dim=0 */ (__pyx_v_l0.data + __pyx_t_24 * __pyx_v_l0.strides[0]) )) + __pyx_t_25)) ))))));
+      }
+    }
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":617
+ *                 out_mv[h, w, ch] = l0[idx, ch] + u_y * (l1[idx, ch] - l0[idx, ch])
+ * 
+ *     return out             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF((PyObject *)__pyx_v_out);
+  __pyx_r = ((PyObject *)__pyx_v_out);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":531
+ * 
+ * 
+ * def lerp_between_lines_x_discrete_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_13, 1);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines_x_discrete_multichannel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_coords.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line0.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_line1.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l0, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_l1, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_c, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_out);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_out_mv, 1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":620
+ * 
+ * 
+ * def lerp_between_planes(             # <<<<<<<<<<<<<<
+ *     np.ndarray plane0,
+ *     np.ndarray plane1,
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_15lerp_between_planes(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_14lerp_between_planes, "\n    Interpolate between two planes at arbitrary (u_x, u_y, u_z) coordinates.\n    \n    Extends Section 6 to higher dimensions.\n    \n    Args:\n        plane0: First plane, shape (H, W) or (H, W, C)\n        plane1: Second plane, shape (H, W) or (H, W, C)\n        coords: Coordinates, shape (..., 3) where last dim is (u_x, u_y, u_z)\n    \n    Returns:\n        Interpolated values\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_15lerp_between_planes = {"lerp_between_planes", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_15lerp_between_planes, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_14lerp_between_planes};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_15lerp_between_planes(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_plane0 = 0;
+  PyArrayObject *__pyx_v_plane1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lerp_between_planes (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_plane0,&__pyx_mstate_global->__pyx_n_u_plane1,&__pyx_mstate_global->__pyx_n_u_coords,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 620, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 620, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 620, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 620, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_planes", 0) < (0)) __PYX_ERR(0, 620, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_planes", 1, 3, 3, i); __PYX_ERR(0, 620, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 620, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 620, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 620, __pyx_L3_error)
+    }
+    __pyx_v_plane0 = ((PyArrayObject *)values[0]);
+    __pyx_v_plane1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("lerp_between_planes", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 620, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_planes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_plane0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "plane0", 0))) __PYX_ERR(0, 621, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_plane1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "plane1", 0))) __PYX_ERR(0, 622, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_14lerp_between_planes(__pyx_self, __pyx_v_plane0, __pyx_v_plane1, __pyx_v_coords);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_14lerp_between_planes(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_plane0, PyArrayObject *__pyx_v_plane1, PyArrayObject *__pyx_v_coords) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -26622,68 +26355,66 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   size_t __pyx_t_9;
-  PyObject *__pyx_t_10[3];
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("hue_multidim_lerp", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_starts);
-  __Pyx_INCREF((PyObject *)__pyx_v_ends);
-  __Pyx_INCREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_INCREF((PyObject *)__pyx_v_modes);
+  __Pyx_RefNannySetupContext("lerp_between_planes", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_plane0);
+  __Pyx_INCREF((PyObject *)__pyx_v_plane1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":716
- *         Interpolated hues with shape matching coeffs[..., 0]
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":638
+ *         Interpolated values
  *     """
- *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
+ *     if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane0), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_5) {
   } else {
     __pyx_t_1 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_starts), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_6 = (!__pyx_t_5);
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":717
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":639
  *     """
- *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
+ *     if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 639, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 639, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_9 = 1;
@@ -26699,83 +26430,83 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, ((PyObject *)__pyx_v_starts)};
-      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, ((PyObject *)__pyx_v_plane0)};
+      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 639, __pyx_L1_error)
       __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 639, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 717, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_starts, ((PyArrayObject *)__pyx_t_4));
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 639, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_plane0, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":716
- *         Interpolated hues with shape matching coeffs[..., 0]
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":638
+ *         Interpolated values
  *     """
- *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
+ *     if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":718
- *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":640
+ *     if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane1), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   if (!__pyx_t_6) {
   } else {
     __pyx_t_1 = __pyx_t_6;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ends), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_plane1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_5 = (!__pyx_t_6);
   __pyx_t_1 = __pyx_t_5;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":719
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":641
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 719, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 719, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 719, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 719, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_9 = 1;
@@ -26791,83 +26522,83 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_7, ((PyObject *)__pyx_v_ends)};
-      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 719, __pyx_L1_error)
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_7, ((PyObject *)__pyx_v_plane1)};
+      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 641, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 719, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 641, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_8, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 719, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 719, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_ends, ((PyArrayObject *)__pyx_t_2));
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 641, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_plane1, ((PyArrayObject *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":718
- *     if starts.dtype != np.float64 or not starts.flags['C_CONTIGUOUS']:
- *         starts = np.ascontiguousarray(starts, dtype=np.float64)
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":640
+ *     if plane0.dtype != np.float64 or not plane0.flags['C_CONTIGUOUS']:
+ *         plane0 = np.ascontiguousarray(plane0, dtype=np.float64)
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":720
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":642
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_8 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (!__pyx_t_5) {
   } else {
     __pyx_t_1 = __pyx_t_5;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coeffs), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_6 = (!__pyx_t_5);
   __pyx_t_1 = __pyx_t_6;
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":721
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)             # <<<<<<<<<<<<<<
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes, dtype=np.int32)
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":643
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)             # <<<<<<<<<<<<<<
+ * 
+ *     if plane0.ndim == 2 and coords.ndim == 4:
 */
     __pyx_t_8 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 721, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 721, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_9 = 1;
@@ -26883,85 +26614,337 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_8, ((PyObject *)__pyx_v_coeffs)};
-      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_8, ((PyObject *)__pyx_v_coords)};
+      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 721, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 643, __pyx_L1_error)
       __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 721, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 643, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 721, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_coeffs, ((PyArrayObject *)__pyx_t_4));
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 643, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":720
- *     if ends.dtype != np.float64 or not ends.flags['C_CONTIGUOUS']:
- *         ends = np.ascontiguousarray(ends, dtype=np.float64)
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":642
+ *     if plane1.dtype != np.float64 or not plane1.flags['C_CONTIGUOUS']:
+ *         plane1 = np.ascontiguousarray(plane1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":722
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes, dtype=np.int32)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":645
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
+ *     if plane0.ndim == 2 and coords.ndim == 4:             # <<<<<<<<<<<<<<
+ *         return lerp_between_planes_1ch(plane0, plane1, coords)
  * 
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_int32); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!__pyx_t_6) {
+  __pyx_t_6 = (__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_plane0) == 2);
+  if (__pyx_t_6) {
   } else {
     __pyx_t_1 = __pyx_t_6;
     goto __pyx_L13_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_modes), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = (!__pyx_t_6);
-  __pyx_t_1 = __pyx_t_5;
+  __pyx_t_6 = (__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coords) == 4);
+  __pyx_t_1 = __pyx_t_6;
   __pyx_L13_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":723
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:
- *         modes = np.ascontiguousarray(modes, dtype=np.int32)             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":646
  * 
- *     cdef int spatial_ndims = coeffs.ndim - 1
+ *     if plane0.ndim == 2 and coords.ndim == 4:
+ *         return lerp_between_planes_1ch(plane0, plane1, coords)             # <<<<<<<<<<<<<<
+ * 
+ *     raise ValueError("Unsupported shapes for lerp_between_planes")
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_3 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_lerp_between_planes_1ch); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_9 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+      assert(__pyx_t_3);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
+      __pyx_t_9 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[4] = {__pyx_t_3, ((PyObject *)__pyx_v_plane0), ((PyObject *)__pyx_v_plane1), ((PyObject *)__pyx_v_coords)};
+      __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_9, (4-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = 0;
+    goto __pyx_L0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":645
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
+ *     if plane0.ndim == 2 and coords.ndim == 4:             # <<<<<<<<<<<<<<
+ *         return lerp_between_planes_1ch(plane0, plane1, coords)
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":648
+ *         return lerp_between_planes_1ch(plane0, plane1, coords)
+ * 
+ *     raise ValueError("Unsupported shapes for lerp_between_planes")             # <<<<<<<<<<<<<<
+ * 
+ * # =============================================================================
+*/
+  __pyx_t_2 = NULL;
+  __pyx_t_9 = 1;
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_Unsupported_shapes_for_lerp_betw};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 648, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __PYX_ERR(0, 648, __pyx_L1_error)
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":620
+ * 
+ * 
+ * def lerp_between_planes(             # <<<<<<<<<<<<<<
+ *     np.ndarray plane0,
+ *     np.ndarray plane1,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_planes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_plane0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_plane1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/interp_2d.pyx":653
+ * # Dispatcher
+ * # =============================================================================
+ * def lerp_between_lines(             # <<<<<<<<<<<<<<
+ *     np.ndarray line0,
+ *     np.ndarray line1,
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_17lerp_between_lines(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_16lerp_between_lines, "\n    Interpolate between two lines at arbitrary (u_x, u_y) coordinates.\n    \n    This implements Section 6 of the interpolation article:\n    creating gradient planes by sampling between pre-existing gradient lines.\n    \n    Args:\n        line0: First line, shape (L,) or (L, C) for multi-channel\n        line1: Second line, shape (L,) or (L, C) for multi-channel\n        coords: Coordinates where to sample\n                - Shape (H, W, 2): grid of (u_x, u_y) pairs \342\206\222 output (H, W) or (H, W, C)\n                - Shape (N, 2): flat list of pairs \342\206\222 output (N,) or (N, C)\n                \n                u_x \342\210\210 [0, 1]: position along the lines\n                u_y \342\210\210 [0, 1]: blend factor (0 = line0, 1 = line1)\n    \n    Returns:\n        Interpolated values at each coordinate\n        \n    Example:\n        >>> # Create two RGB gradient lines\n        >>> line0 = np.linspace([255, 0, 0], [255, 255, 0], 100)  # Red \342\206\222 Yellow\n        >>> line1 = np.linspace([0, 0, 255], [0, 255, 0], 100)    # Blue \342\206\222 Green\n        >>> \n        >>> # Create coordinate grid\n        >>> H, W = 50, 100\n        >>> u_x = np.linspace(0, 1, W)  # Sample along lines\n        >>> u_y = np.linspace(0, 1, H)  # Blend between lines\n        >>> coords = np.stack(np.meshgrid(u_x, u_y, indexing='xy'), axis=-1)\n        >>> \n        >>> result = lerp_between_lines(line0, line1, coords)\n        >>> result.shape\n        (50, 100, 3)\n    ");
+static PyMethodDef __pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_17lerp_between_lines = {"lerp_between_lines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_17lerp_between_lines, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10Chromatica_10chromatica_6v2core_9interp_2d_16lerp_between_lines};
+static PyObject *__pyx_pw_10Chromatica_10chromatica_6v2core_9interp_2d_17lerp_between_lines(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_line0 = 0;
+  PyArrayObject *__pyx_v_line1 = 0;
+  PyArrayObject *__pyx_v_coords = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lerp_between_lines (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line0,&__pyx_mstate_global->__pyx_n_u_line1,&__pyx_mstate_global->__pyx_n_u_coords,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 653, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 653, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 653, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 653, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lerp_between_lines", 0) < (0)) __PYX_ERR(0, 653, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lerp_between_lines", 1, 3, 3, i); __PYX_ERR(0, 653, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 653, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 653, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 653, __pyx_L3_error)
+    }
+    __pyx_v_line0 = ((PyArrayObject *)values[0]);
+    __pyx_v_line1 = ((PyArrayObject *)values[1]);
+    __pyx_v_coords = ((PyArrayObject *)values[2]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("lerp_between_lines", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 653, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line0", 0))) __PYX_ERR(0, 654, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "line1", 0))) __PYX_ERR(0, 655, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coords", 0))) __PYX_ERR(0, 656, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_16lerp_between_lines(__pyx_self, __pyx_v_line0, __pyx_v_line1, __pyx_v_coords);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Chromatica_10chromatica_6v2core_9interp_2d_16lerp_between_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_line0, PyArrayObject *__pyx_v_line1, PyArrayObject *__pyx_v_coords) {
+  int __pyx_v_line_ndim;
+  int __pyx_v_coords_ndim;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  size_t __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("lerp_between_lines", 0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line0);
+  __Pyx_INCREF((PyObject *)__pyx_v_line1);
+  __Pyx_INCREF((PyObject *)__pyx_v_coords);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":693
+ *     """
+ *     # Ensure float64 contiguous
+ *     if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+*/
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!__pyx_t_5) {
+  } else {
+    __pyx_t_1 = __pyx_t_5;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line0), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = (!__pyx_t_5);
+  __pyx_t_1 = __pyx_t_6;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":694
+ *     # Ensure float64 contiguous
+ *     if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 723, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 694, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int32); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 723, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 694, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_9 = 1;
     #if CYTHON_UNPACK_METHODS
     if (unlikely(PyMethod_Check(__pyx_t_7))) {
@@ -26975,176 +26958,517 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
     }
     #endif
     {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, ((PyObject *)__pyx_v_modes)};
-      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 723, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, ((PyObject *)__pyx_v_line0)};
+      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 694, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 694, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 723, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_modes, ((PyArrayObject *)__pyx_t_2));
-    __pyx_t_2 = 0;
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 694, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_line0, ((PyArrayObject *)__pyx_t_4));
+    __pyx_t_4 = 0;
 
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":722
- *     if coeffs.dtype != np.float64 or not coeffs.flags['C_CONTIGUOUS']:
- *         coeffs = np.ascontiguousarray(coeffs, dtype=np.float64)
- *     if modes.dtype != np.int32 or not modes.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
- *         modes = np.ascontiguousarray(modes, dtype=np.int32)
- * 
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":693
+ *     """
+ *     # Ensure float64 contiguous
+ *     if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
 */
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":725
- *         modes = np.ascontiguousarray(modes, dtype=np.int32)
- * 
- *     cdef int spatial_ndims = coeffs.ndim - 1             # <<<<<<<<<<<<<<
- * 
- *     if spatial_ndims == 1:
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":695
+ *     if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
 */
-  __pyx_v_spatial_ndims = (__pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coeffs) - 1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  if (!__pyx_t_6) {
+  } else {
+    __pyx_t_1 = __pyx_t_6;
+    goto __pyx_L7_bool_binop_done;
+  }
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_line1), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = (!__pyx_t_6);
+  __pyx_t_1 = __pyx_t_5;
+  __pyx_L7_bool_binop_done:;
+  if (__pyx_t_1) {
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":727
- *     cdef int spatial_ndims = coeffs.ndim - 1
- * 
- *     if spatial_ndims == 1:             # <<<<<<<<<<<<<<
- *         return hue_lerp_1d_spatial(starts, ends, coeffs, modes)
- *     elif spatial_ndims == 2:
-*/
-  switch (__pyx_v_spatial_ndims) {
-    case 1:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":728
- * 
- *     if spatial_ndims == 1:
- *         return hue_lerp_1d_spatial(starts, ends, coeffs, modes)             # <<<<<<<<<<<<<<
- *     elif spatial_ndims == 2:
- *         return hue_lerp_2d_spatial(starts, ends, coeffs, modes)
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_hue_lerp_1d_spatial); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 728, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
-      assert(__pyx_t_7);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_7);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-      __pyx_t_9 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[5] = {__pyx_t_7, ((PyObject *)__pyx_v_starts), ((PyObject *)__pyx_v_ends), ((PyObject *)__pyx_v_coeffs), ((PyObject *)__pyx_v_modes)};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_9, (5-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":727
- *     cdef int spatial_ndims = coeffs.ndim - 1
- * 
- *     if spatial_ndims == 1:             # <<<<<<<<<<<<<<
- *         return hue_lerp_1d_spatial(starts, ends, coeffs, modes)
- *     elif spatial_ndims == 2:
-*/
-    break;
-    case 2:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":730
- *         return hue_lerp_1d_spatial(starts, ends, coeffs, modes)
- *     elif spatial_ndims == 2:
- *         return hue_lerp_2d_spatial(starts, ends, coeffs, modes)             # <<<<<<<<<<<<<<
- *     else:
- *         raise NotImplementedError(f"Hue lerp for {spatial_ndims}D not implemented")
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_hue_lerp_2d_spatial); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 730, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_9 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_7);
-      assert(__pyx_t_4);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-      __pyx_t_9 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[5] = {__pyx_t_4, ((PyObject *)__pyx_v_starts), ((PyObject *)__pyx_v_ends), ((PyObject *)__pyx_v_coeffs), ((PyObject *)__pyx_v_modes)};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (5-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 730, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
-    goto __pyx_L0;
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":729
- *     if spatial_ndims == 1:
- *         return hue_lerp_1d_spatial(starts, ends, coeffs, modes)
- *     elif spatial_ndims == 2:             # <<<<<<<<<<<<<<
- *         return hue_lerp_2d_spatial(starts, ends, coeffs, modes)
- *     else:
-*/
-    break;
-    default:
-
-    /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":732
- *         return hue_lerp_2d_spatial(starts, ends, coeffs, modes)
- *     else:
- *         raise NotImplementedError(f"Hue lerp for {spatial_ndims}D not implemented")             # <<<<<<<<<<<<<<
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":696
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
 */
     __pyx_t_7 = NULL;
-    __pyx_t_4 = __Pyx_PyUnicode_From_int(__pyx_v_spatial_ndims, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 732, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 696, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10[0] = __pyx_mstate_global->__pyx_kp_u_Hue_lerp_for;
-    __pyx_t_10[1] = __pyx_t_4;
-    __pyx_t_10[2] = __pyx_mstate_global->__pyx_kp_u_D_not_implemented;
-    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_10, 3, 13 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4) + 17, 127);
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 732, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 696, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_9 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_8);
+      assert(__pyx_t_7);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_8, __pyx__function);
+      __pyx_t_9 = 0;
+    }
+    #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_8};
-      __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_NotImplementedError)), __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_7, ((PyObject *)__pyx_v_line1)};
+      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 696, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 696, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_8, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 732, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 696, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 732, __pyx_L1_error)
-    break;
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 696, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_line1, ((PyArrayObject *)__pyx_t_2));
+    __pyx_t_2 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":695
+ *     if line0.dtype != np.float64 or not line0.flags['C_CONTIGUOUS']:
+ *         line0 = np.ascontiguousarray(line0, dtype=np.float64)
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+*/
   }
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":698
- * # Dispatcher for multi-dim hue lerp
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":697
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
+*/
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  if (!__pyx_t_5) {
+  } else {
+    __pyx_t_1 = __pyx_t_5;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_coords), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = (!__pyx_t_5);
+  __pyx_t_1 = __pyx_t_6;
+  __pyx_L10_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":698
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)             # <<<<<<<<<<<<<<
+ * 
+ *     # Determine shapes
+*/
+    __pyx_t_8 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_9 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
+      assert(__pyx_t_8);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+      __pyx_t_9 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_8, ((PyObject *)__pyx_v_coords)};
+      __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_7, __pyx_t_2, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 698, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 698, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_coords, ((PyArrayObject *)__pyx_t_4));
+    __pyx_t_4 = 0;
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":697
+ *     if line1.dtype != np.float64 or not line1.flags['C_CONTIGUOUS']:
+ *         line1 = np.ascontiguousarray(line1, dtype=np.float64)
+ *     if coords.dtype != np.float64 or not coords.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
+ *         coords = np.ascontiguousarray(coords, dtype=np.float64)
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":701
+ * 
+ *     # Determine shapes
+ *     line_ndim = line0.ndim             # <<<<<<<<<<<<<<
+ *     coords_ndim = coords.ndim
+ * 
+*/
+  __pyx_v_line_ndim = __pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_line0);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":702
+ *     # Determine shapes
+ *     line_ndim = line0.ndim
+ *     coords_ndim = coords.ndim             # <<<<<<<<<<<<<<
+ * 
+ *     # Grid coords (H, W, 2)
+*/
+  __pyx_v_coords_ndim = __pyx_f_5numpy_7ndarray_4ndim_ndim(__pyx_v_coords);
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":705
+ * 
+ *     # Grid coords (H, W, 2)
+ *     if coords_ndim == 3 and coords.shape[2] == 2:             # <<<<<<<<<<<<<<
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+*/
+  __pyx_t_6 = (__pyx_v_coords_ndim == 3);
+  if (__pyx_t_6) {
+  } else {
+    __pyx_t_1 = __pyx_t_6;
+    goto __pyx_L13_bool_binop_done;
+  }
+  __pyx_t_6 = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_coords)[2]) == 2);
+  __pyx_t_1 = __pyx_t_6;
+  __pyx_L13_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":706
+ *     # Grid coords (H, W, 2)
+ *     if coords_ndim == 3 and coords.shape[2] == 2:
+ *         if line_ndim == 1:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+*/
+    switch (__pyx_v_line_ndim) {
+      case 1:
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":707
+ *     if coords_ndim == 3 and coords.shape[2] == 2:
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_1ch(line0, line1, coords)             # <<<<<<<<<<<<<<
+ *         elif line_ndim == 2:
+ *             return lerp_between_lines_multichannel(line0, line1, coords)
+*/
+      __Pyx_XDECREF(__pyx_r);
+      __pyx_t_3 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_1ch); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 707, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_9 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+        assert(__pyx_t_3);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
+        __pyx_t_9 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[4] = {__pyx_t_3, ((PyObject *)__pyx_v_line0), ((PyObject *)__pyx_v_line1), ((PyObject *)__pyx_v_coords)};
+        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_9, (4-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 707, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __pyx_r = __pyx_t_4;
+      __pyx_t_4 = 0;
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":706
+ *     # Grid coords (H, W, 2)
+ *     if coords_ndim == 3 and coords.shape[2] == 2:
+ *         if line_ndim == 1:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+*/
+      break;
+      case 2:
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":709
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+ *             return lerp_between_lines_multichannel(line0, line1, coords)             # <<<<<<<<<<<<<<
+ * 
+ *     # Flat coords (N, 2)
+*/
+      __Pyx_XDECREF(__pyx_r);
+      __pyx_t_2 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_multichannel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 709, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_9 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+        assert(__pyx_t_2);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+        __pyx_t_9 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[4] = {__pyx_t_2, ((PyObject *)__pyx_v_line0), ((PyObject *)__pyx_v_line1), ((PyObject *)__pyx_v_coords)};
+        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_9, (4-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 709, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __pyx_r = __pyx_t_4;
+      __pyx_t_4 = 0;
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":708
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_multichannel(line0, line1, coords)
+ * 
+*/
+      break;
+      default: break;
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":705
+ * 
+ *     # Grid coords (H, W, 2)
+ *     if coords_ndim == 3 and coords.shape[2] == 2:             # <<<<<<<<<<<<<<
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_1ch(line0, line1, coords)
+*/
+    goto __pyx_L12;
+  }
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":712
+ * 
+ *     # Flat coords (N, 2)
+ *     elif coords_ndim == 2 and coords.shape[1] == 2:             # <<<<<<<<<<<<<<
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+*/
+  __pyx_t_6 = (__pyx_v_coords_ndim == 2);
+  if (__pyx_t_6) {
+  } else {
+    __pyx_t_1 = __pyx_t_6;
+    goto __pyx_L15_bool_binop_done;
+  }
+  __pyx_t_6 = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_coords)[1]) == 2);
+  __pyx_t_1 = __pyx_t_6;
+  __pyx_L15_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":713
+ *     # Flat coords (N, 2)
+ *     elif coords_ndim == 2 and coords.shape[1] == 2:
+ *         if line_ndim == 1:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+*/
+    switch (__pyx_v_line_ndim) {
+      case 1:
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":714
+ *     elif coords_ndim == 2 and coords.shape[1] == 2:
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)             # <<<<<<<<<<<<<<
+ *         elif line_ndim == 2:
+ *             return lerp_between_lines_flat_multichannel(line0, line1, coords)
+*/
+      __Pyx_XDECREF(__pyx_r);
+      __pyx_t_3 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_1ch); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 714, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_9 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+        assert(__pyx_t_3);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
+        __pyx_t_9 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[4] = {__pyx_t_3, ((PyObject *)__pyx_v_line0), ((PyObject *)__pyx_v_line1), ((PyObject *)__pyx_v_coords)};
+        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_9, (4-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 714, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __pyx_r = __pyx_t_4;
+      __pyx_t_4 = 0;
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":713
+ *     # Flat coords (N, 2)
+ *     elif coords_ndim == 2 and coords.shape[1] == 2:
+ *         if line_ndim == 1:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+*/
+      break;
+      case 2:
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":716
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:
+ *             return lerp_between_lines_flat_multichannel(line0, line1, coords)             # <<<<<<<<<<<<<<
+ * 
+ *     raise ValueError(
+*/
+      __Pyx_XDECREF(__pyx_r);
+      __pyx_t_2 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_multicha); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 716, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_9 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+        assert(__pyx_t_2);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+        __pyx_t_9 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[4] = {__pyx_t_2, ((PyObject *)__pyx_v_line0), ((PyObject *)__pyx_v_line1), ((PyObject *)__pyx_v_coords)};
+        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_9, (4-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 716, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __pyx_r = __pyx_t_4;
+      __pyx_t_4 = 0;
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/interp_2d.pyx":715
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+ *         elif line_ndim == 2:             # <<<<<<<<<<<<<<
+ *             return lerp_between_lines_flat_multichannel(line0, line1, coords)
+ * 
+*/
+      break;
+      default: break;
+    }
+
+    /* "Chromatica/chromatica/v2core/interp_2d.pyx":712
+ * 
+ *     # Flat coords (N, 2)
+ *     elif coords_ndim == 2 and coords.shape[1] == 2:             # <<<<<<<<<<<<<<
+ *         if line_ndim == 1:
+ *             return lerp_between_lines_flat_1ch(line0, line1, coords)
+*/
+  }
+  __pyx_L12:;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":718
+ *             return lerp_between_lines_flat_multichannel(line0, line1, coords)
+ * 
+ *     raise ValueError(             # <<<<<<<<<<<<<<
+ *         "Unsupported shapes for lerp_between_lines"
+ *     )
+*/
+  __pyx_t_3 = NULL;
+  __pyx_t_9 = 1;
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Unsupported_shapes_for_lerp_betw_2};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __PYX_ERR(0, 718, __pyx_L1_error)
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":653
+ * # Dispatcher
  * # =============================================================================
- * def hue_multidim_lerp(             # <<<<<<<<<<<<<<
- *     np.ndarray starts,
- *     np.ndarray ends,
+ * def lerp_between_lines(             # <<<<<<<<<<<<<<
+ *     np.ndarray line0,
+ *     np.ndarray line1,
 */
 
   /* function exit code */
@@ -27154,13 +27478,12 @@ static PyObject *__pyx_pf_10Chromatica_10chromatica_9gradients_6v2core_10interp_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("Chromatica.chromatica.gradients.v2core.interp_hue.hue_multidim_lerp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Chromatica.chromatica.v2core.interp_2d.lerp_between_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF((PyObject *)__pyx_v_starts);
-  __Pyx_XDECREF((PyObject *)__pyx_v_ends);
-  __Pyx_XDECREF((PyObject *)__pyx_v_coeffs);
-  __Pyx_XDECREF((PyObject *)__pyx_v_modes);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line0);
+  __Pyx_XDECREF((PyObject *)__pyx_v_line1);
+  __Pyx_XDECREF((PyObject *)__pyx_v_coords);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -27292,7 +27615,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "Chromatica.chromatica.gradients.v2core.interp_hue.array",
+  "Chromatica.chromatica.v2core.interp_2d.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -27326,7 +27649,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.gradients.v2core.interp_hue.""array", /*tp_name*/
+  "Chromatica.chromatica.v2core.interp_2d.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -27471,7 +27794,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "Chromatica.chromatica.gradients.v2core.interp_hue.Enum",
+  "Chromatica.chromatica.v2core.interp_2d.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -27481,7 +27804,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.gradients.v2core.interp_hue.""Enum", /*tp_name*/
+  "Chromatica.chromatica.v2core.interp_2d.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -27748,7 +28071,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "Chromatica.chromatica.gradients.v2core.interp_hue.memoryview",
+  "Chromatica.chromatica.v2core.interp_2d.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -27782,7 +28105,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.gradients.v2core.interp_hue.""memoryview", /*tp_name*/
+  "Chromatica.chromatica.v2core.interp_2d.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -27925,7 +28248,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "Chromatica.chromatica.gradients.v2core.interp_hue._memoryviewslice",
+  "Chromatica.chromatica.v2core.interp_2d._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -27935,7 +28258,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.gradients.v2core.interp_hue.""_memoryviewslice", /*tp_name*/
+  "Chromatica.chromatica.v2core.interp_2d.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -28395,10 +28718,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_interp_hue(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_interp_2d(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_interp_hue},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_interp_2d},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -28417,8 +28740,8 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "interp_hue",
-      __pyx_k_Hue_interpolation_with_cyclical, /* m_doc */
+      "interp_2d",
+      0, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
     #else
@@ -28455,8 +28778,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_interp_hue(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_interp_hue(void)
+__Pyx_PyMODINIT_FUNC PyInit_interp_2d(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_interp_2d(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -28563,7 +28886,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_2d(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -28579,7 +28902,6 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue(PyObject *__pyx_pyinit_
   size_t __pyx_t_6;
   static PyThread_type_lock __pyx_t_7[8];
   int __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -28587,7 +28909,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue(PyObject *__pyx_pyinit_
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'interp_hue' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'interp_2d' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -28603,7 +28925,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue(PyObject *__pyx_pyinit_
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "interp_hue" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "interp_2d" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -28631,7 +28953,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue(PyObject *__pyx_pyinit_
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_interp_hue", 0);
+__Pyx_RefNannySetupContext("PyInit_interp_2d", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -28642,13 +28964,13 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_Chromatica__chromatica__gradients__v2core__interp_hue) {
+  if (__pyx_module_is_main_Chromatica__chromatica__v2core__interp_2d) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "Chromatica.chromatica.gradients.v2core.interp_hue")) {
-      if (unlikely((PyDict_SetItemString(modules, "Chromatica.chromatica.gradients.v2core.interp_hue", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "Chromatica.chromatica.v2core.interp_2d")) {
+      if (unlikely((PyDict_SetItemString(modules, "Chromatica.chromatica.v2core.interp_2d", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -29157,219 +29479,164 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_4) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":13
- * """
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":3
+ * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
- * from libc.math cimport fmod, floor
+ * from libc.math cimport floor
 */
-  __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_numpy, 0, 0, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_numpy, 0, 0, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __pyx_t_4 = __pyx_t_1;
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_4) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_4) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":90
- * # 1D Hue Interpolation: coeffs (L, N), modes (N,) -> output (L,)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":14
+ * # Single channel version
  * # =============================================================================
- * def hue_lerp_1d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
-*/
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_1hue_lerp_1d_spatial, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_1d_spatial, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_1d_spatial, __pyx_t_4) < (0)) __PYX_ERR(0, 90, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":221
- * # 2D Hue Interpolation: coeffs (H, W, N), modes (N,) -> output (H, W)
- * # =============================================================================
- * def hue_lerp_2d_spatial(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] starts,
- *     np.ndarray[f64, ndim=1] ends,
-*/
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_3hue_lerp_2d_spatial, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_2d_spatial, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_2d_spatial, __pyx_t_4) < (0)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":349
- *     f64 h1,
- *     np.ndarray[f64, ndim=1] coeffs,
- *     int mode = HUE_SHORTEST,             # <<<<<<<<<<<<<<
- * ):
- *     """
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":345
- * # Simple 1D Hue Lerp: Single dimension interpolation
- * # =============================================================================
- * def hue_lerp_simple(             # <<<<<<<<<<<<<<
- *     f64 h0,
- *     f64 h1,
-*/
-  __pyx_t_5 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 345, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_5hue_lerp_simple, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_simple, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 345, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_5);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_simple, __pyx_t_4) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":386
- *     np.ndarray[f64, ndim=1] h1_arr,
- *     np.ndarray[f64, ndim=1] coeffs,
- *     int mode = HUE_SHORTEST,             # <<<<<<<<<<<<<<
- * ):
- *     """
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":382
- * # Vectorized Simple Lerp: Arrays of start/end pairs
- * # =============================================================================
- * def hue_lerp_arrays(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=1] h0_arr,
- *     np.ndarray[f64, ndim=1] h1_arr,
-*/
-  __pyx_t_5 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_7hue_lerp_arrays, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_arrays, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 382, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_5);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_arrays, __pyx_t_4) < (0)) __PYX_ERR(0, 382, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":438
- * # 2D Grid Hue Lerp with per-pixel mode
- * # =============================================================================
- * def hue_lerp_2d_with_modes(             # <<<<<<<<<<<<<<
- *     np.ndarray[f64, ndim=2] h0_grid,
- *     np.ndarray[f64, ndim=2] h1_grid,
-*/
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_9hue_lerp_2d_with_modes, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_2d_with_modes, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 438, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_2d_with_modes, __pyx_t_4) < (0)) __PYX_ERR(0, 438, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":507
- *     np.ndarray[f64, ndim=1] line1,
- *     np.ndarray[f64, ndim=3] coords,
- *     int mode_x = HUE_SHORTEST,             # <<<<<<<<<<<<<<
- *     int mode_y = HUE_SHORTEST,
- * ):
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 507, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":508
- *     np.ndarray[f64, ndim=3] coords,
- *     int mode_x = HUE_SHORTEST,
- *     int mode_y = HUE_SHORTEST,             # <<<<<<<<<<<<<<
- * ):
- *     """
-*/
-  __pyx_t_5 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 508, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":503
- * # Hue interpolation between lines (Section 6 style)
- * # =============================================================================
- * def hue_lerp_between_lines(             # <<<<<<<<<<<<<<
+ * def lerp_between_lines_1ch(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] line0,
  *     np.ndarray[f64, ndim=1] line1,
 */
-  __pyx_t_9 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 503, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_11hue_lerp_between_lines, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_between_lines, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 503, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_1lerp_between_lines_1ch, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_1ch, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_t_9);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_between_lines, __pyx_t_5) < (0)) __PYX_ERR(0, 503, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_1ch, __pyx_t_4) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":599
- *     np.ndarray[f64, ndim=1] line1,
- *     np.ndarray[f64, ndim=3] coords,
- *     int mode_y = HUE_SHORTEST,             # <<<<<<<<<<<<<<
- * ):
- *     """
-*/
-  __pyx_t_5 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 599, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":595
- * # Hue interpolation between lines with discrete x-sampling (Section 6 style)
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":101
+ * # Multi-channel version: lines have shape (L, C)
  * # =============================================================================
- * def hue_lerp_between_lines_x_discrete(             # <<<<<<<<<<<<<<
+ * def lerp_between_lines_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_3lerp_between_lines_multichannel, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_multichannel, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_multichannel, __pyx_t_4) < (0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":182
+ * # Flat coordinates version: coords shape (N, 2) -> output (N,) or (N, C)
+ * # =============================================================================
+ * def lerp_between_lines_flat_1ch(             # <<<<<<<<<<<<<<
  *     np.ndarray[f64, ndim=1] line0,
  *     np.ndarray[f64, ndim=1] line1,
 */
-  __pyx_t_9 = PyTuple_Pack(1, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 595, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_13hue_lerp_between_lines_x_discrete, 0, __pyx_mstate_global->__pyx_n_u_hue_lerp_between_lines_x_discret, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 595, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_5lerp_between_lines_flat_1ch, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_1ch, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_t_9);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_lerp_between_lines_x_discret, __pyx_t_5) < (0)) __PYX_ERR(0, 595, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_1ch, __pyx_t_4) < (0)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":698
- * # Dispatcher for multi-dim hue lerp
- * # =============================================================================
- * def hue_multidim_lerp(             # <<<<<<<<<<<<<<
- *     np.ndarray starts,
- *     np.ndarray ends,
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":251
+ * 
+ * 
+ * def lerp_between_lines_flat_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_15hue_multidim_lerp, 0, __pyx_mstate_global->__pyx_n_u_hue_multidim_lerp, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_gradients, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 698, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_7lerp_between_lines_flat_multichannel, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_multicha, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hue_multidim_lerp, __pyx_t_5) < (0)) __PYX_ERR(0, 698, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_flat_multicha, __pyx_t_4) < (0)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/gradients/v2core/interp_hue.pyx":1
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":326
+ * # planes shape (H, W) or (H, W, C), coords shape (D1, D2, ..., 3)
+ * # =============================================================================
+ * def lerp_between_planes_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] plane0,
+ *     np.ndarray[f64, ndim=2] plane1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_9lerp_between_planes_1ch, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_planes_1ch, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_planes_1ch, __pyx_t_4) < (0)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":434
+ * # Discrete x-sampling versions (nearest neighbor in x-direction)
+ * # =============================================================================
+ * def lerp_between_lines_x_discrete_1ch(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=1] line0,
+ *     np.ndarray[f64, ndim=1] line1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_11lerp_between_lines_x_discrete_1ch, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_x_discrete_1c, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_x_discrete_1c, __pyx_t_4) < (0)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":531
+ * 
+ * 
+ * def lerp_between_lines_x_discrete_multichannel(             # <<<<<<<<<<<<<<
+ *     np.ndarray[f64, ndim=2] line0,
+ *     np.ndarray[f64, ndim=2] line1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_13lerp_between_lines_x_discrete_multichannel, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_x_discrete_mu, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 531, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines_x_discrete_mu, __pyx_t_4) < (0)) __PYX_ERR(0, 531, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":620
+ * 
+ * 
+ * def lerp_between_planes(             # <<<<<<<<<<<<<<
+ *     np.ndarray plane0,
+ *     np.ndarray plane1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_15lerp_between_planes, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_planes, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_planes, __pyx_t_4) < (0)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":653
+ * # Dispatcher
+ * # =============================================================================
+ * def lerp_between_lines(             # <<<<<<<<<<<<<<
+ *     np.ndarray line0,
+ *     np.ndarray line1,
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10Chromatica_10chromatica_6v2core_9interp_2d_17lerp_between_lines, 0, __pyx_mstate_global->__pyx_n_u_lerp_between_lines, NULL, __pyx_mstate_global->__pyx_n_u_Chromatica_chromatica_v2core_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lerp_between_lines, __pyx_t_4) < (0)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "Chromatica/chromatica/v2core/interp_2d.pyx":1
  * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False             # <<<<<<<<<<<<<<
  * 
- * """
+ * import numpy as np
 */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_5) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_lerp_between_lines_line_653, __pyx_mstate_global->__pyx_kp_u_Interpolate_between_two_lines_a) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_4) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -29377,10 +29644,9 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue", 0);
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_9);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init Chromatica.chromatica.gradients.v2core.interp_hue", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init Chromatica.chromatica.v2core.interp_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -29394,7 +29660,7 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init Chromatica.chromatica.gradients.v2core.interp_hue");
+    PyErr_SetString(PyExc_ImportError, "init Chromatica.chromatica.v2core.interp_2d");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -29502,34 +29768,34 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{53},{17},{26},{34},{34},{13},{29},{33},{45},{22},{27},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{21},{15},{23},{25},{32},{7},{6},{2},{6},{35},{39},{22},{9},{30},{46},{20},{50},{39},{34},{8},{21},{37},{20},{32},{22},{30},{37},{5},{12},{49},{8},{1},{1},{9},{1},{11},{1},{20},{8},{15},{1},{1},{7},{3},{15},{17},{18},{1},{7},{4},{1},{4},{9},{17},{18},{6},{9},{6},{5},{9},{8},{5},{15},{5},{6},{4},{7},{9},{5},{5},{7},{6},{7},{4},{8},{12},{1},{2},{6},{7},{5},{5},{5},{2},{6},{6},{7},{5},{5},{5},{5},{4},{19},{19},{22},{15},{22},{33},{15},{17},{1},{2},{3},{5},{6},{6},{10},{5},{5},{13},{5},{8},{1},{2},{2},{5},{5},{4},{8},{7},{4},{6},{6},{5},{8},{10},{4},{8},{4},{7},{2},{11},{8},{10},{5},{3},{3},{6},{1},{4},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{6},{9},{12},{10},{12},{19},{5},{4},{13},{5},{6},{9},{4},{4},{6},{8},{1},{3},{3},{6},{6},{2},{2},{6},{1},{1},{470},{513},{851},{266},{113},{398},{841},{249},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2962 bytes) */
-const char* const cstring = "BZh91AY&SYU\005\222\024\000\003O\377\377\377\377\377\377\377\367\377\367\277\347\377\344\277\377\377\365\300@@@@@@@@\000@@@\000@\000`\014?\000i\331f\202\353s\031l`JPU6\325It\020\000\270\004\241\022$\006\203COSOPh\310\017\030\321\010\201\246\236\243\364\247\250\r4\032\032\001\240\006G\251\246&\206\201(@\020\232i\251\246$\310\332\246\312i\206\232OP4i\220\001\240\000\000\000\000hh4\304\001\246\201\022L\247\246\210\365\036\220\006\215\000\r\000\000\000\0324\000\000\000\0004\000\004\030\000\000\000\000\000\000\000\000L\000\000\000\004`\000&\000\020`\000\000\000\000\000\000\000\0010\000\000\000\021\200\000\230\000\022$\020\024\302\003@\2304\032\"\233Q\345\006\324\364@i\240\000d\365\03146H\006&C#\324\364i-\014\332\332e\032\330\0077Ux\207\261\323lX\221\353\245\361|b_\360\017\372\274\253\314\212\024$\322S\0171*\314a\377\200\205\004\252\004\224\253?9\347C\032\032i\2614\304\330\323i\215&\r4\r\266\003cM\t\212\264(m\200\276TM\026\205)~\372\371\222V\005\211\026 \251Tp\205\210\0214ZP\245\250\300X\014m\003`\r\261\202V\253B!\026\233\265\242P\020\252U1\2416\201\246\324\204\261@\302g\315\t&1l\246J\210\252M1\014\345)@\030\254(\254\tL\023\014\212\360\310\262,\312\263Jl\014\256z\363&\347\021\010q9\334\0067\210\312\\F\005\350\274\014\002\365\202\302\240\260\005\235bg0\340n\245\345\351e\316\r \251\2752h_}\022\205\345)pV\247)\206.D,\013\035+D3\013%\220\213\0135\200\252(s2\362\245Urk\tbT\271&V\206aH\354\277S\262f\005\266H\230\323a\270@\252c~c\002\210e\203 \006\306e<\337\001\364\036\220\337El\303\353\313\372\360\347-\251\306\261\254>\333mfdZ\245\210\267(K\225\031N'\205V,\033\362\374\335K;r\264g=\361\233\\\277\306Dn\257k\205\377\2661\253\256\354c\352\326s\311V\023),\243\232\314\">Ps\231\013\025\353h\251\002i%\354\325\242\247\313\026y[\224q[\315\372\2308\265\270\225!`\234*\226w\017q\212\263#\222\016n\255Y\2146\255\227-\311\264\370\316C\227\214\005\324\222\372zu\013\241W\240v\026\020\323m\2040c\240\324\272\243W\332.*\\Yj*z\n\201B\345\366\322\233\267\002\265\350\014C\324\005u\206RI-\376w\305\265`""\\&\0269\016\036O \366\374\331\365\376\275\271c\370\320\311\312\337^O&\214:\007\016\247CK\"\214\210\336\331\351KU<\323\374\307\317\250\r\326\265\364\222\330\005\314\213\301r&\021\341jbo\212\000\230G\247Y)\324\311\354\336d0\014\013\025\330\027\033\224\022\242\242\375\376\307\356\270\252\310Ux\214(\225\320_ VXX\024\232\251\340h\240\375\353\0103\355j\324C\262\363\307\351d\027\355\274\227\273\206Tk\n\205\351#1\202\200\223r\034\266\2512SUeBt\322\322\234\347S\340\320{\274y:\016\252\317.\"1\3041\360ue\251\0227\241\313\353oh\307a\020\240R\354\367_\024. gt\311\344\365\263\017\217\353\370Xml4J\332N\304\367U\253\367\305\253\277\3008\370%\374\r(\251\030{\2040\302\240\211Q*\014\003\205\"1)\017g\252\203\305G$V)\013\353\2712\204\211\244\302g\007Z\374x\262\330\026\taxc\217,\202D\203\341\317\303rW\"\343\227\231\314$\257X\364\314\262\205\014q\317)\272 1|\001\217\313Lo\235\334\032\252\000\0338\250\225\327:n\016.O)\255J\356Z(]&\374]g\006\313\224y\251\032\215\226R\332UQ5\272\232qo\016\003\264+*\275*YU\352\036OM\200\235\244g9\034\313Zy\251nE)G:C/Ex\024|\231\020\277\316\201\322\354e\216\014\252\313\n_\350\252\354\340^\245\235M\236\324.EZ\255\364W\227\345.:\36001\375\371\246~\316\302\352Sl\2756a7\341\231\024'\257%\021\005`\3513\300\274\205\2734W\246p\226}\255\200\273\255\340ro\355-\033i\342\241\342R\206\t\204\367\013\221\3400v\225a\331\324\000jA\2505\003K\260r%2\214\2418Tm8n\215\0339\370\364r\233\245\347\033h\322\020\001\340\345-\013.\273\211\0173\217\227v\315\274\200\374\201\232\021\312\r/Lk\304h\376-eR\246\245\373\226\302\316\246\376wC\272\030\034\36025\366\201\"\364\3107Q\006\031\263\0045\261B\303\200\016\003|\327\261\r/\202\347\004\016A#l\205\317\333\314c\321^\005zs\312\341Hk\000\203+\251I\312\0059`\311&\231\336\234\352N\206\2267:0\235\266\206p\315\216\207\362d!\365\307\017N\363Z)\273U@\262N&\251I\222\321,H\251\210\332\350\253cR\325{\306\261\232\n\262|\200\251@\205Z\345N\332\202\251&\261\315Y\246\354\023=`+\2470\267\210}%\321ce\037(4\235\205\362\212E\260:\202\243\301p\274\222\346\347""\352{\352\022\002z\215\014K\251\302\345H\352l\264D\200\242\325\371\253\203c\221\313\262\310\361U\232\272+\014\3463F\3462\255\344q\002KSqM\203\277^:&\361\301\230<m\032$)\240LB\345rB\354sM<\216~8\276\324\237v\206\010\030o\022\014\221\347\266\0258\271\335\t'.\201 \252^\024\36068\321\325\277\301.k\245)Kz\242\254\236\360\014\271\034\260\336f\324\020\216\3747#{\204\261n\033\246\027\005\030>\177_6y\214\014\365\356c*\253\217+ln5\254\r\223\027\272\271jdb\263d\327r\032\244\236\341T2\243\374&e\357\245\232\354\370\356q\366\271\260\312\226\250\252[`\205\003 >\361\346\305\313\257\2175\270o\333\177uN\262\016\305Z\216:\001fUa\033\231\337\037,qT4\\\033\257\202\356%%C]\033\200e\301<\360r\344\326\251\207\207\177\354Z\212g\250A,\310\314\333Jdu\030\203\201nidL\356\220e\250\n\204f\211H\271\340\355\275]\013\010\262\321+Q\232.MH\355R\3610&\314Lk\r\216'\301)L!\314\210\264\372\363.\327\271Rx\273\222;\227\252\221\001Z6B\305\347a\215\226\310*\016jH\343\260\331m\246\306Yp\352\026\244\354\266\223\202a\n,\315\273\256R\356)Y\220\273%\021\254\322\246c\022\354\322\0165\274\322k\216\2413,\360E\305\036\306,#\320\237\252I\026%nJp'\230\240a\275I+\002\014\251A\275\220\033\033K[?\021=!vK\215k\245S*\211u\262\322\224\267i\021M\305\0323t0\037\253[\213\026\265\356g\216\346\\\266\243\265\212'\333zN\350\227\316K\260\3562A\366ZA\341e\005O\014\020L\224\210\272/\035qM,\212\310\273\273{\242\243\321\342@LN9\2538\2068\242\302\223\262\330%{C/\344\225\024\261\346\013&M#\210\335b\2060\220\240,\204\275\265\2347\r\264\033\211m\233kh\350\355A\223\027\004FB\204\310\343r\215yV\310S\220U\233\325\2261J\326\034\337J4\342Rq\006C\357^0\205\254\t\215\201\221\032\330\307\226\274\211\267\2729c+\022.\306\030\272D\032\361\037\014D|E\262\n\243\227]m\267\246\2122\2234\304c\300\001\300o\2224\032\036V\270\306\241\014\236\311\256Re\3566k\tid\260\253\252\325\254\343\232\"\026=,\2139ETJ>\256\202\314\202\245\235\032>cg\221\241\332@\365\321\032\0215\231\203\264\036bW\353<\227\002\306\270\314\235\264\026\247;\346\243*\224I)\26258\3036\260\023""\220h\327\2444a\243\3730-\013\374\266\336\020\206\327Y\345j\232\013\271G\270\330u\260\347\216\214\347\016\210\355\0077=\374TX<D\375F\027p\213\204\353\344\357g\357\336\030\035\350\332GDM\221\244\332RY2\013!\245\032M!\333\316\203AaG1\242\2659\226Y\"\341V\233\210\301\235\356\\\301\006\005\340\241Mq\024[\333|\356\216\254\034,\026\230G4\004\207\203\310\tM%EB\323JUX\270\316\233\032\031\334\275\364\274\236\362\023bCb\361\22063\"\367\3226@^4x\223A\335\0279\r\002\200\317A\213\"y\365\370\236\360r\tx\364\211\355\027\026\360\303\262\005\0215\221:!\357\376\263\307\344B\373\351\014\220\206H_\201&z\310f\360N\003\313\003!~U\354\003h;C>S\331\204\026\222~\343\366\375Tj&y\r5=\242\200L\242pRG!5\244~U\347\351\223\351D@?\342\271\322\204~A\2469\014k\334\rD\344-Nr\030I\324(@\331A\035\035+\342\006\220j\210r=2CR\202\020\302\0078<I\177\201\243\251v\010g\350?\251\355\0219\271\237\032b\252\2520\3679\024\315Z\310\227\004Q\254\262\014\345Z\357\260\017\325Q\303u\302D#\035@\242\201\2503\225\234\203\226\365\203Z5Q\010.\263\n3\0213\306Fa\212\336]@#\325xi\032\002\221\251Y\277\0035\200zC\365 W\0325$\215\204W\232m*\006\215\342\361\257\004 )dW\252\217'\2460\263\222gM\020\2673H\2136i\270\035\3311\311\211\323`4I\207;\035\222\312\314P<\351\020\236r\330\347D>\"\203M\013s\276\320n\305\005\266\257\246\305\335p\240Kb\243\007\367\256\313\222\014\212n\025\025S\031\022\201P\310\0202M\310\312+\321L\205\267\325-\344Z\004\330\333\344\270\263\t\202d\276%\333Q=\327\355\332\224 O\273H\213\264i\254\3119\2530\341\030e\324!\231\261\004j\351$\212\221\244r@\226;\006a#\235\007EcYk\307%\325t\242\334?\322\307$\314B\371BKD\346\233\220t\312\371\205y8\357\201\034\320\204\337X\021\313r\347Tp\223\245\"\224\262\345\365\034f\275\3203\226\t:\317\206W\204r\014$e\2053/\243\254\021\245c\232r\003m\3328\371HcepE\253\213\226\362\242p.\370\352aa\013o}i\014\"J\353Y\016I\313\301\253O?<\244\234\256X\024\301s\237{\275\353\032\214\377X\372G@\327\177Q\022\031-e\rX\352@\334\312\225\n\316\214\301\3402\316H\016b \003\"A\n\"0:\025f\n\242\262(T\022\320""\360\035\315Q\n\204\014\"@\210)*\250\010\2543A\245\0344$\0262\026d\300.\301\334\244\025\200X\250`\314\242e\330\255\001P\312\243.$@)\tW\022\215\025R\026\020\226\251\n\252A\241\n\2572\244\022!\234\314H\222)G\245 0\204ZJ\227p\264@\260\211hZp\027\376.\344\212p\241 \252\013$(";
-    PyObject *data = __Pyx_DecompressString(cstring, 2962, 2);
+    const struct { const unsigned int length: 11; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{42},{26},{34},{29},{33},{1416},{45},{22},{27},{26},{15},{179},{37},{27},{30},{32},{42},{41},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{25},{32},{29},{7},{6},{2},{6},{35},{9},{30},{29},{50},{39},{34},{8},{21},{20},{32},{22},{30},{37},{5},{1},{12},{38},{5},{8},{1},{9},{5},{5},{1},{9},{1},{20},{8},{15},{1},{9},{5},{5},{3},{15},{17},{18},{4},{1},{2},{9},{17},{18},{6},{11},{5},{1},{8},{5},{15},{5},{6},{9},{5},{5},{7},{6},{7},{4},{8},{12},{1},{2},{3},{5},{6},{6},{10},{5},{13},{5},{8},{2},{2},{18},{22},{27},{36},{31},{33},{42},{19},{23},{5},{5},{9},{8},{7},{4},{10},{1},{4},{8},{4},{7},{2},{5},{3},{3},{6},{2},{2},{4},{6},{6},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{8},{3},{3},{3},{6},{6},{2},{5},{5},{5},{5},{2},{5},{5},{5},{5},{6},{1},{1},{3},{6},{4},{4},{3},{6},{4},{4},{775},{296},{506},{563},{470},{462},{512},{418},{177},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (3377 bytes) */
+const char* const cstring = "BZh91AY&SY\220\002\246t\000\004\312\177\377\377\377\377\377\377\367\377\327\277\347\377\356\277\377\377\364A@P@@@@@@@@@P\000@\000`\016?\007@{\300\317W`5\327\267\243\235\006^\236\271M\232\001Z\327&\265\302\2400\200%\022)\223#$\336\203A=L\321\351FMM\036\247\345F'\244\000h\323@\000\001\3524\006\201\2404\032\000\031\010\023\024\301M=&\212~\246\230\247\250\323\032\206\206\203\023@\3654i\240\000\000\000\000\006\232\017S\324\000\324\321\242\0224\3654z\203 \001\352\000\000\r4\000\000\000\000\000\000\000\320\000\004\246\211\004)\240\323j6P\315'\250\r4\003\324\000\364\200\r\0004\000\032\003@244\321\246@\203\000\004\300\000L\023\000\000\000\000\004\300&\002\030\000\0020\000\000\022$\010@ \320\247\212z\004\306\000\2324\324OA\244\311\211\220\032\032\006\232\000h\003CCj=\t\246\\\367\023\355@\372\347\014F\203)n\345\250\230\220\322\367\233\027\267\376\204\276A\036C\312yW\220\220P\027\225\213\3127\344ABHD\211\324\230\202iL\271X\371\303\347\023`10\030\323K#A\r1\003\030\301\244\r(@X\261`\265\306\300#\345J\241T\024>\204\205!)\010\306\267\004\201\2231\343\006\220\330\332H\030\320\230\315\324\250\225\213\032Y\212\346\340\222\316CP\304\345\035\306\361\2628\3665\340\033;\310\215\302\240\\\212\000t\000\360\200\360y\000\003\031\00103\244Hbd\005\032A\377\231{\032r&\2134$\333i\r\361\212`\024V\230\230i\2415D\006\3127\r\263e)\004\241-\300\223\024%\014S\211\006A+\225\310\031\232\0170W$T\025\341\266\260(\205z\003p\300\274;(c\013\314x#z\201\241\034\266\312\256\266R\246\001qb\342\0060\310\225\306\0268\354%a\242\2501\001l`\250g\025C\020\302\306B\0054*\222*j\n\205\016\202\002\026\001\200Q\035\023\001\203G|a\210\234\006\312\332B_hh\020g[\214I\223k\342B-\230\006\t7\340\316\201\331\002yf\254\265\373\372w7\214P\230\n\221Y\317\255\374\317>\3165jpu\205@U\022\271\277\327\347\347BI\205\355d\304\333\320\023\006\234\300\243\235Ml\250\026\251\242\210\210=F\212=t\3004\334c\372F\354\004z\353`\257b:\262\315\263n\001ec\205\271\227\024\274\247\245\337t\032\251(_]l6\255\030\212\322\236\375D\254q\022\3009C,k\215\241""\317\305YZ.\344\300A\371\334\211d\235YQ\207\023=1\023\240\342\\\304q\315`\201\311\230\212=\330\260z{\253]\032\340?{l6\325\037\242V:\374\331\rb\354\"\331\004\020r\205\023ek\003\263\262-r{\300\200J\254\332(\027Bf\0250\245g\237\031\332\202/\020\177,\000\271\001p.C\243\243\252\200@\322U\030M?\010\320D\202\005U!QW\320;~&\027\027\"\344\\\034\352^\330\225B\262\017q\n\305g?rin\364jy\225\361\202*(\231\017;Pu\200\214\025\007\377\014*\323$\357\254\257!\237\260\272/:2\3329{\010\361\220b\335\360\036o\346\306\306\217\220k\371\344\034M\221/\344jhl,sKc>\214$wRa\214\323P\313\326\3331_!\256\204\354\374F\016:i\311\211\244\202\337\231#\256\312 V-\035w\032\341\234\361#\000\223Ji\254\206\200<\232RJ\354\253)\356\205\004\034w\035\004\201\344\244]sr\013\251s\225\232\355%\266$t\035\344\216\223\227\214\242\016fU\025\025Y \226`\320\306\361\030\212\005\002\245\310\327\274\014E\372\256\344+\222.E\310\267\303\255\351X\245/\013\364\327\221\023\324\022\2701\230\314\227\355:\240\251Q\025\014V(\024\014\323\361\3245\315\343\373=\275\276.!\3433]\323\322C\375\363A\325\212`\275}u\000\274\360P\261\316\336-}A\013p\330\322I\004\364\036\214\311\"f\322s-G1M\301O\353\201\335\220PU,\036qP\370\276?;\321\323\251\314uVw\006D#\"2\031\314\246n~\253\005\213*\256\376\321\243ga+\006B\022\276I^\262\037\036\275\2543\2002p6~8U&mV\233K-\353\n\354\360n\233\234\210\254\312\013\257V\226md}1x\2379D\262\234\002.\260\273\244\002\223\006D\240:\304\322\353A;\033\232w\202\341\025.W\027\207+\257}\017E\007\004\310\234\346m\241\361-x\017x\346\354m\357\353k\023\230\346;\227#\210\014H\304\006qqz\273\270X0.3\205\346p\303\315i\272\234\347}\3426\300\210o@ \302I\203\021D\372\331V\330\001P\322\2048\371\242\354\244\237\305\256\220i\227\212[f\204\224Ct\314$\355\352\272\022A\022\013>\323\312\02783\202*\260MNUf`\312\344e\220!IH\335b`\305j\225\036\023\274\"\365\017\366\246\212\31531\021Z$\351\334\351\261@\200_\236\250nE\221D\202a\014\000[\241\374\270r\236\036;\nx\\2\200\352p\212\013oQ\372\270]y@\023\243\254\272\266\357\260\201y*\342\034\007I\230""\222\361nRF\312\003,h\003\323R\315\0026\332\rXi\311\312\314\242\245Q\325\017\020\320\014_\r\20127\305Q&.k\201\035\260K}o\263})\036\201\302\0206\022\227E\022\244\3502\026}\257`\354\031V\343]\244,\333AP&\211\263\020\214\014k2\357,\347\247\326\336\311\271\2230Jn\240\345\010\006B\001-\034\342\213\004\032%k\000\241\216\250\r\206\023\204vpB\324\307\332\212!\304$\036?o\246^\225>\267\261\214oS\265cE\214\211\031\315\210!\255V\312\227\235p:\341\326+mxCK\343r\210\206\344CDH\274\3157\277\303\217\216\273\305\351\316\256F\010\313\025S&\232:\301\212D\223L\330\2619N\200\330Jl'}\301\234\303\027\023\341b\363q\374\325\253\243P\342\225\331\03569\321j\022\211Ml\350\276\205\363\355\006\276B\3300\200W\227\303\255\363\207\212$]\"r\244\242\215\326r\215\027%K\343'<%\362\261,F\243\232b\247yC\306\272\365*\035;\000\265:\000\000\351\312J\031\360D\031\356{\0369\030\3428\202\026\001-8\240&\304\317\317\221\200:JJ\0105\371\352\201\021\333\024k\336^\204\325\333Y\305\221\353\215m\347-!\3165F\203,\240\330\246=s\013\324\034\220\325\367\200%\321\002j\316 T\317\200\340\255\200\211\0224\244\211\313\253VZ)Y\nA>~\275`\326\201{}\355mj\224kB\320\221\276\024A\226\234\021\222\343\251\243\255\233~\372\206\223\247{86\321\253\331i\264\0221!\251\276\344\363\236\323(\024G\241\r\340\035D\215\232\326\240I\266K\026\335\3612Hj\370\226\253\316\025L\364\220\223\336\326\no\314)\203#F\223Y\205\253)\204\341\2132J\214^1\240\206S<\215\0325\252\036\177y>\002\374\005\205\021\002$h\010\264t\350\005\203\024\013\033\304K\245\301\r\274\037]\311O\220\023\232\370\346\016.1N\230'\000Xar\370\272\264\036\262\030\201{\217\001q\240\017_\001\265S\254IS\357\306\035\366h\324.\037\2479\317A\032\207\005\001\370\256\222\215m\030L7[l\013\271 fwW^\343\345\\U,\321\"\301\030.@\214\262a\3102t\324(\200\216\322\274\014\317\220\001H\203\003\030Z\342\375J\362bb\210mi\0241\022\211RYR\303$R\222!\341\313J\"@\352\030gzLi\0254\332Z\245!D\366UT\231#\006\274\025\013(\200\260\300\233C\244\031\035\350b\233\033M\266\223\263\204Pe\316\024\346#\321\261f\330\330\311""\300m\273\311Yj<\005\200apc\027\n\204\200\016\030%\233\232 b#G\347Cr\005B!\210\270O\026;\343e;5K*\2364^\211\371\261\222\002)\341\300\257Q@\242\\\255\006\031\252\330n\215\206\240*\006IAQA\231([\231\201\261\261e\321\331.\331\014z\313.C\321\231\252\266q\213\217\263cU\241y\301\332\255\353&\366\206\220\315\367\003t\216\346+h[\005\355[\032\305#a<\231/\2713\314\321\236\306\260\327k*;\365\340\003\302\200\360\370O\014\203\300\317Zp\222%:\225\2213\244\312+\332L;9\231\331P\022[(\335\330,\n{0\032N\277hd\366Di\322\276\254YT\273\233.d\321\217\202)\271=M\360\325\2411\006\252\036t\344\2114\356p\227\3534\244l\244l\201\266\203h\27408|\311D\214y\311\251\014r\224\346\2312;\016QJ\314\314:4P\325\225\2478\213\223,\312\025\036\312\023\"\036\330=\343\001\332\273\205\326\0134\235\254\333\216$:\260\264\035[\266\240y\265\021bY\005\234m\0322\317\033\324,\311\230\360\365\323!\225;\221\214\226=\241\"\303X\013\026\365\004\367\352\370wz\342ehxD0\236\274^\021\024\022\236i\313\305M4\025\233\363\242%\005\372\265\226\024\255\361]\372\013\014U\251&\206\310hx^\311+\203!\247J\307%\204@hC\021\263\234\236Y\027\227\200\206\262\001o\023}&\241mI`\221YYc\241K\252.G\210\272\365kB\001\233#\277x\210\353\241\035\320\331\330)\312\352\310\230\2568\251R\237\355\342pn\025\367T\276h(\354\252\252\255\021\217\265C1\227h\034j\014\260\021f\315Eu&\242\343\"e\014\347*\004\000@\231\241\232FF\266\230\305U\241\300\234oOa\035\271\271\233\313A\2472\026c)\300\036\326\246\204\032\340\030\224A\032n\013rb\260\303!\016\r\335\316\314wk\032\226\016\255\252Q\351CF\034\376\257\016l\335\332\367/\030\373zY\357\305\n\356\217\006L5\364\345\223\350\233\026ip=\354@\255\014*\204LI\037\253x}\373\244fg\354?\243cbCb\033O\350\006\226C\256~S\342A\252\2041{\304h\232\002*\236p\327D\300\202l\242\007<\200\024\302y\201U\306#\024\3110\035\242bP\014\370Z\220($~\210cIs%\360 \200\220\036\342_`Z\244e\210\320\t;\030\354\331\340'\007f\314(\004Y\017\354\375Rv\t\317\202`\3216\032 \273\246\013y\302\0002\202\227\016\326\024\214\200A\362\021l\370\216eN\316\016\306`3""\263f\303c\202\003\230#%\231\304\322\211\310\034I\203'j\306\0318\316\314\0168#\324#\024\002\004\022\005\004\007\3702\006l1\036\370{\001\376~Ay\013\217\204(s\226\361\027\242D\313\"\341\264\211\222<\211s\332b\350C\0168\343\220!5\301\311#\364\302p\270\321p\004\0062P0c\031\000\310\017t\351\010R],\203\3359\327\204\377\254:\211\215NH`A\306w\274\241\336#\274A\361\023>\312\202\201\362\314:N\370t\251\036\016\204\014;\3070\317\231@\274\204\210]\002>n\217\237\300.\204It\02288\216S\227\237\230\3459\016@\037aq\212C\017\256?\240\247\254\034\307\n|\341\306r%\343A\310r\013).I\2213\325$\247 \335\005\304!\234'*\016S\224\343\t\370\313T\354 \344a\352\t\021\352\034|\314&\036\231\330\371\020q\256B a\302zG\027\276\226S\220\245/\0166\337\000\370\270\344\316%\303\375\374@JI|a#\271\276\034!\007\262\216\331\377\002\340\313\332\256D$Y\227\010\277\303C\001\352\035\014\303b$>!\021n\330\3045U\305\006\341\264[E\323!4\216Qm\3013\225\245\010KE\275\003|\212#X\255\264F,\200\324$\014p\221\243\0022\314`\301MmH!\204\325\263\032Ysy`\262`\312\307\256\225\257\225\251\027\237*\n^\342\245C8;%\324}4n\027_)\027\n$e\003tCh\265<\274l\235\317d\356\375->\356\201,\350V\r\221s\261=\275d\240\211w\024\001\003dv\033\0166AP\316\2452u\251\025\225h\207\025\2209\223-\021$\251\020R\240\246M\005ERjs\234\202\241\014&A2D\212\020T\235\252:\224\006\350\252JD\302\305\211\320\261!\302PP\234\302\204\354T\261R\021a;Z\242pR\215\271\311LaI\215\222d\305\"\323\251F\353\360\n\245e\027\024'b\203rs\nM\270\225\323\206\335P\177\361w$S\205\t\t\000*g@";
+    PyObject *data = __Pyx_DecompressString(cstring, 3377, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2878 bytes) */
-const char* const cstring = "x\332\335VKs\023W\026\266A\302f\342\200%\313\017\022H\332\306`\230\"\3022\016\311\244\030R\362\003pU\002\261\r8\251JU\327U\367\225\325\320\352\226\372!KTj&K-{\331\313^\366\262\227Z\362\023\274\324R?\201\2370\337\271-\353\341\327\220\251\314,\246\312\276\272}\237\347|\347;\337\271\337Iy]\227T\255\314\r[3\r[\252X\\\341\252f\354\367\007\245[\252TvmG*pI3T^\347\252\304\014U2LG\262u\r\313\327\334b\221[RM\343\007\222jr[L\361z\305\264\271d;\226\246r{\235\031\222i\350\rI\2618s\270\304\244B\274\311)1G\322lI1\rG\333wM\327\306%R\231\227M\253\221\305.:\212\331\266\266oH\216)a\263\372\2258'^AWv\027u\017>\2604\207\025t\336]\020\033U\264\314\362y{\205[\322\201\346\224$\247Q\341\322Rw\334\261\230a\0137\372[\342e\330\241\001*g\000\273\365\022na\216\246\260\373J\277\273o1U\343\206c\337\257\255(\246\305\357k\206\303\255\212\\ry\266\322\250o\010\254\264rE\3478\307\341\352\306 \354Z\014e|\325f\271\3424$\273\304`\240\343b\203T4-Ii8%\323\3102\313b\215'L\323\021\034\340\304t\335T\004\034\246\365\226\242\031\243m?s\271\244\343z\261uKxm\272\216d\026\245\202\351\032\252-\335au\\zK\275\273u\322\3018\342n\245bZ0t\313\2501]\0035L\225\337\243hc1._R\226$\234\275\204\013\010\275\245{\322>v\035-\216\255G\200\3055?h\006\310\"\270Ub5p\205\225\311<c\337)=\372Q\000\376\232\000\207u\317M\370\"\250\262.\374%dT\256k\005n\301K\204\224h\206\373\005\237\014\351\247\315\237\276Z\375vU\320\324\342o`\231\r\303\013\212\016&\341Fr\327\325t\007vP\270\355\254\264U\224\032\246+\031<\206\257\202u\203\033\234\0227$\233;\324\221\226\0047\020]\323\220\261\035\350.u#\244\301\007\354~\302t\233g_\014\341\n\223\273\204g\212\302\355#\240w\035^\221\312\254!\240E~\275\343\226\331\217\301+C0\031G\";j\334\002Q\034^\246o\263@Ne\037/\335\375\236\251\252l\020<\344\254\004\204\226\353\212\311\213E\273\013vY\263AE\245\244\230\272N6\"\220YVP\036\r$\034\355\214=x||\370\210\347\217\025\323\264\324\241`\211\323\357<\273'\355\335\223V\356\252\232M\306ra\362\276\"\335\241\260\357\013\362\222\333\304A^w(\021(\374}q)-\313\340\256\270\253\224""\023\335S\371\200\271}\253G\240#\2374;\276O%\\l\355\035\227\036\375]Z>\221\027D\321A\323\343#%^u\231Nh\032ny\200\346\361\352\341\213\014\023t+2Ww$Y\266\270\352*\\\226%\325\025\3011L\343+\320\257\246\3414YV4Csd\031gV\032Y\231R>[\306>MX\"\025{)\212\234G\212\014.sqU\351\304\212n\254\037\333\\/f\rB\244\253\n\317Md\217\303,'\216\0247\324\263r)\326`u(\316'\307(m{\341\036\232\357\215\272=B\366\004&vKe\016\313\2362\033\243Hgt\353@6\277\273\276\265\265.\257\277x\376r\353\351\253\027\257v\373\262\231\355\313f\266'\233\331X6\263}\331\334\324u\255bk\366\263\037~\220\313\232\341\332r\356\307\037\363?\343\310\235\347\233;\273\317e\371\247F\035\377\033\020\004\3719H\267\303\213\273\21057\024Nz\222\355K\313\036c2 T\336\"!\216l\226\343<ev?\023\204\217\314n\030\212ffa\r$\223\224\253P\2107\027\230\315\025E.\327\020|\022\014Y>\352\354s\207\230I\237\330 k\020\014\213)\274\200Mq\216\306-\266\306\351\245@,\034\305\265,\231\310,\313*\271 \253$R\242\2215[\216\351\300\251\030\300#p\225\002O\3778\205\203NB\021\271e\231VQg\373vQ7\231\363p\025)\001d\273\242\\\204\021\262\\t\r\205L\205\221p\003\216\313\245\322r\234\216h)\333\360S\322\320\350&\232r\255\224\243\014U\337\304y\332\315H\374`M\216\326\344h\215X\300\364\"\002%S\245\221s\252lW\020T\246\367\206VN\035\242\272*\213\344\353\215\n\340\373\237\005\356\034\300]\231\300<cT\256\0034\033o\001\207\367\026\330\242\274\322\247HDd\272\030\327\320S\353\370\223\213\324\2244juS\226\343\274\303/\325G\360\356\301\n\341\336\213{\2545]\301y\243/\3539\272y\231\232\\Y\260\240\314\020i\031O\006z/\220G\364/\327E\033\213\221h\342\265\246\352\352\300\2362\273\327\222\211\262\301\017\320T\020R\272\333@\365\246.\246\304o\305\204e\266\220\0170\002\226\341\017\007V*\340V\305\254\3102\036\027\262R\342\312[\033\253\305W7\312\324\025d\022=\327\250h\312[X\260i\034\255\253\211\007\024Q\203\00426\251\257z\275^\254\260\003\003\274N\335}\315F\246Z\334\006\326q+\374D\365\354z\207^WKE\277k\325@\377\350`!\036\004r\227,\002\027;\226<\321\304-\216\307\215\025\3331\361o\271\2241""\016\204Q\226]W\256\273r\003\036\002\023\267\002\215\342\265\345Z\016/\021\227\333\007\365\337G?\214\217$/\265\023\311\017\013#\311k~\322\177\035\344\202|;1\347_\362\213A>\330\036\350v\022c\277\273\315'\336\274\367\300S\374T{\374J\363\215?\212\016\306k\315\327^\316[\367l\177\2767N\353\235\346\327\336%\217y\325\366\370\244w\3410\275\030\237y\356\304Co\306\253\372\243\355\361\224\227>\234\272\025l\007\254\223\230\305\312\270\271\356\347;\211\245\300\ngB+\232\2126Z\227Z\205\367\243\355\304\027>\373pe$\371\231?\343[A:\310u\022\343\315d\363\025\314\315\265\307'\232\233\336\264\270n\"M#]S\007?>\\\032\371t\332\333\360/\320\370\264\367k0\035\260\240\332\231\270\332<\360\n0g\362\032\\\025_\212\237\366W\374m\032\021\235\016\226\357\371k>kOLy\0171\366u0J\373\\o\315c\355I\262:5\023\237\201~|\317ZlL\346\250\223\362\276\014F\203\331p,\254E\333\037\271dJ\204\202\373\337\207\363\341j\350D_\267F;\211O\232\271nT?\334\371\177\010\351\344Hr\374w\2539\325\314w\306?m\3564\253\036\216\351u\006\342:\351%\275W\376\274\237kO\316\320\210\177\321\177\340\263\316\344\224\267\352Yp)\363\031\034\231\246\220\345D\277#\226\331\376-\377\237!\003z\253\221\333\312\267\307\2576\253\235\304\265?\205Di\357\236\317\001\376\223p!\314\323\314d\323\361V\274ma`;5\355\355\022%\210\031\027\342\235\307\347wp\025\365i.\355\245qI\236h :\377\206\000\213\024\373\223\001o'\276\364k\301\3530\027\202\021\013\301\355\360\022|\257v\272AJy7\205M\20348\215\036\235\263\202\032G{\265Y\363\266\341\001\260\264\016S7c\372\235\273\343\024\342t(\372\202\032\355\304\"\035p\003\211v\026I&F\2227\003\2020\tH\332\t\004\204L\374\rf\263\36392\346W\203\004\256\373EP\340Q\313z\237:>\265\027\346\303\227\321\365\326N\253\332\231$\246Nf\274M\177\332g~\265\235\231\363/\007\251\340f\260\033\216\2663\237\373\337\222\257\035\214&\375W\301|\220k\317\335\360\367\004\356\375\316\374\341\374j\224\217^\2662-|}\211[\222\301\317\341v\250D\351h%\332m\215\221\021\235\314\254\367\216\010H+\336\205S\010\327\334\027te0\026T\303\004L\332\303\031{\255\315""\367\351\367X\003\200\372t>\020\272ED&@.7/5\213^\036zF\247\201\316C\237c\"\2656\275)\210\214\210\360'\315\225\346.\242\241\n\224\216\177^\356$\222\347\001\212\014\360\377\0067_\206\327\243\235\250\332\037\374\006h\254\006\277\301\301\355\377\010\304m\261\262\337\031\006\021\312\014\277\353@\346b\270\022\356\204v\264\324J\267rg\201h\007\013\301ZP\0147\201\370q\360\252\220\330T\007.\346\233\333\355\370gHS\257\237\236W\235s\005\363L\336\377\221\211N\202\004,n`\355\231\271\360\027\212yO\263>=\321I\035\246\026E\2102\341vg8\226\243P\200\256\236\221\254P \326qI:|\020\356S<\317A\"6\246\032]\214\036\022\364\355\304\347\340Dl\347\314\341\314\3350\025.\206j4O[/\017**\360m2\202\213\241\\>\363\363\376np\001\341Y\017\016\302B4\254fcP.\001\320\334Q\227\320=\020t\336\205\332\257`\357XP\023\2514\025\345\317(f\013\376zW\001\327\301\223\3713\264.\215\332\301\203\2070\373f\270\033\215\036\213\3477\336m\261e<\355-\034fnS\276\265\317\237\370c\312\007\232\267\343F\310\337y\345q\342\030\236\275h\246DG\324\247\201\356\244\227\020h\215\322SeU\024\311\034\236/\207\323w\302Q\020\342e\224\372\210\360\337\036I.\0043\002i\366\347\024\224\266Pk\252\323\031\377\227\240\000\201[\013\205o\343\377\323:3\037\244\272u\346\257(\331O\242yT\204\332\373\235\367\325\336\353\362#\252L\247\373\036x\352\347\374\r\250\3115Q\234\177k\255@\251\216M\315\n\320\177\025Z51\347\343\3218\240\247\031o\013j\247\300$\274\032\353$L\270\031\217\202\236l^\363gI\254\006:7\016o,G\243Q\006\272\230\"%\315\371\233\301\234\340\360\216`\316S2\202N\311x\337\371;t\306\347\376w\261\354~F\227\372O\201\341\006\214\232\305)\263\255$\325\274vF\242\327\3544\220\346B\306s\377\235\322r\245\371\026*>\177\274\300\304dd^\003\036f\202_\205b\367\006\017\000\204\023<\202o\251\217\301o\250\350P\315\240u\375\3160z\261\303's\000\357\311\323\260{\340\027 \\\267\303$\240\036\306,\007Q\333>\275\242,\022\301k\315=\010\223\345_C\005|\211\024\307\343>b\003\324-\205\305h-bG\002s\023\257\302Fp\021\325\324\t\037F)R\260\036\375\237\204\267\243\013\030\021\202""\367\321\247\272\315\247@\263\000Q\265\203\305\200\037\235\332K\221=d\302B\224'Yz\rIL\2079\242\375?\342\304\276zxu\001\244\370\026\273\346\000\333\345\331\270\374\r\017w\306\257\034^Ar\005\367\351\350\027\377\002;\315\311\n";
-    PyObject *data = __Pyx_DecompressString(cstring, 2878, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (3149 bytes) */
+const char* const cstring = "x\332\315WKS\024Y\026\266\004l\332\306\226\342\245\36483\027m\205\232\300\352*\020\354 \324\t(\037\030\341\240\200JO\364tdde\336\242\262\255\312,\362QP\035\275p5Q\313\214Y\3452\227\265\254e-Y\272tYK\242\177\201?a\276so\326K@\260\307\351\0201\271y\037\347\236\307w\276sr\211-\027\nL7\212\334t\014\313tX\311\346\032\327\rs\2733\311\256\353\254\3509.\313rf\230:\337\343:SM\235\231\226\313\234\202\201\355+^.\307mV6\370.\323-\356\210%\276W\262\034\316\034\3276t\356dT\223Yf\241\3024\233\253.g*\313\312Cn^u\231\3410\3152]c\333\263<\007\227\260\"/Zv%\211S$Ju\034c\333d\256\305pX\277)\344\310\035te\264)\022\274k\033\256\232-\360h\203T*g[\305\017\235\025f\261]\303\3153\267R\342l:\232wm\325t\204\031\235#r\033N\030p\225\333\345\273L\036\267\250\256\241\251\337i\235ayN\263l\376\235a\272\334.)sz\262T\331\273\337\355ZC\272K\212{P,\271\025\346\344U(\341z%\230\221\263l\246U\334\274e&U\333V+\217\205\252\226\3472+\307\262\226g\352\016\233Q\367 \345\272\236x|X+\031&\257T\262l\227\353\347\031~\036\013]\254\002\271+\313\335]\316\341\333]\213\025\014\023\261C8T;k\300txo\306S\366f\231\247T\022\010\220e\003\0308\344$\205\030\361x\236\307\315F\021\232\342B\327a\233\270\235\014[$\365\334<!\246u\031M\2536\234R\340K\342\254\210\030Am\333Vu\003\307Y\251\240\222\nY\270@\205LZk)\010`\336\3440\263\367\200P\271K\235e{\333\221\302\351\207VSK\354\241a;r\353l\344\332\231'\263\t\006\307\342/\313$\204\217\213^\3015njy\004\236\027z$\244\227\310*\013\210\377]\"\204\337\234%\226\351\370\217\355\346\271\315\t\317\302L\336\336\333\372\271\3116\345%\253\263lk\226\315%\226`\262\241\223O\273\"RRa\030\373\355\337\377!8\224\200\010\261]j%\017f\022\307\213^\223rs\210\014\014s\004\236\016K\\\213\254\\;R\330\241\t(\307~\253V\331\217\251Y\226\376i\211!w\014\031\370\202\205\270\021 D\310\2168X\3519\210\014\206\303s\252\346\322\355)vW\006\023\213\3210\235\350D}\203\273\236mv\005\276\013\341:+\253\005O\342\232\253Z\276\013\307\347{\314x\260'b\321\021r\357\336=v\215e$\255P~l<Zy\017y={\205\202\320\316,%1tJ\252\306g~\234[X\230eP"";\365\323,\223/r\006\257\351T*\301p\303\006t$\227\377\223\027\n\326\356!\221\351\367E\246\204@\210!\221\251C\002I\344\n,\0262\037\331\310\235\036\221G\233\327q\212\000Z\317&\202\022tXH\211\033z\226(\334\275\332\321&\001B\310\336\024\016\215B\177\330_\024\362\243\016\257&\244\t\004\200V\366\037>-\323J\np\\U{5\203A\221;y\322\277\235$\263\222\332\301\031w\247\367*\323\211YFTy\367f:q\274Sl\356 \221\tf\304\330\221\006\212\320`&\002\241\210\313l\244C\342\210\323IA\022\355\205\231\310y\263l>\021Q0P\211\204.Z:\030\005\245\022\264\t\030Lk\323\224m\323`\023*=\323\263l\033\354\335\332,\211\007\325Q\320\375\023\301\326\2420\347\3252'*Arqs\333\315\037\271$N\337\371\207\250c/\251\216!\337\327,\2026U\340\214(1T\214t^0\262\334\006\024P)\251zC3Q\246M\366\354\301\263\233\267\276\277%\252\277\315\177\206\316\016JKV+\240@\343B*H\236\001\0164E\025u\222\354q\216U,\217\231\034\266\201\355J\330\327}\000t`2\207\273\202\027\246E\311\025eB\301q\204l:*\212FYp\345C\265\340\360\344\323\236\312\007\225\243>B\3254\356\264J\3413YG\216\362\300\246\313K\254\250VD]DG\363\013\267\255N\001}a\212\336\001\267\201\360\313\334Fk\340\362\"\275[Y\262\367\205\331.\245R\234#\230\277\007)\262\210\235f\247\254^\367\246\023\177Wu]1)\030\344Z\242\252\324\236f\025\n\262\230:I5\253\335\351j\220h\223t\315\275\367\247[}\311\275(?\340i\321\r\264;\270\371h\241\3137\275\245\346\270uQ/t\303!\007q\341\246m\215\315\020>\267E\373BQ\240\332\314\367\\\321\t\000\005\235\026\322p\344\021\235\334\351\030\277pv\347.K\035jn\016{\207\211\224c\213\013\363\t\323\0026s*\345\246\242\330\\\3674\256(L\367D\270L\313\274\t\254\226\r\265\200U\3150\rWQL\257X\252$\025j\300\222\2428\213KPU\214\202\004$\032\027D\250{\233\207\266-\177hG\024\375{\016/\344\222&a)\352\332\326,\223\337\221-\256\336\023\226\303s\224\330\355\350\364\254\267g\2756\372T\224\002M\364\311Bc]u\325\344\021\25324$#j\263\223\313\233\231\307\2173\031%\363t\355\371\343G/\236\276\330\354\264\245\311N[\232\224mi\262\335\226\336WP\361\037\024\nF\3111\234\325U\245h\230\236\243\244Wiz""Uql\355\311\223\326\334\232\242<\253\354\341\377}P\203\262\206xo\360\334&\337\361\270\251qb\226d\207d\266\266Z\247\266H\322\026I\002\230[\006(2yU\247\203ba\260\352TL\315\260\222\320\021\247\010\007Y\325\341\232\226Gh\211;\024\2455\330\346.A\212^\261M1\300\0356JI\026\005A\002Y>\025\270\270\250\2013\\]Qt\322[\321\211\243\304C1\034E\006\230S\373\r3\300\312\034\250\020,\310m\333\262\321%m;\271\202\245\272\213\267\000Z81\242\350\034nS\224\234gj\244\023\264A-\202]J\336\320\r}\017\277J\216\036y\203\236\005KQ$\240\360\227\352\022\335\334\266Q\246F\224\037\205T!}8\033\016\317(i-\177\304,uu\037Z\022\331\020u\252G\3549ay\017.t\320\275\303\320\243\357\350\332p\254(I\223GL\t\231TgE\225\025a\245\350)JQEx\025|\211\321g\030UN\274X\272W\300_\223\222\022\177\344S\3546\371.\036%\221\334\210.|\214_\245X.\245Jit\033\257\304e)\361L\227\254\222\242\340\303L\321\362\\{\345xE\371\026\305\222\206\002'b\344\231%C{\205K\037\230\255}e\361\305I\000\330\361\324\202T\242CQ\355\221d\272\256\t\000\000\303m4\337\334V\024\024\302\310\000\214\"\246\023\343H\215\256qK\222,,\200\013\246m\254\361\222\343Z\370o{\204p|i\340\211V\010\215\220\247\374\002\305a\266W\002\231\360r\252\234J)\342\221.\247\3224Jc\204\1774\233\246\3314\315\246iV\364\317\273{\2002~\201w\2023\201\271\242\344*b\242\202\211\n&^\307\336\33583\360\347\340ax\243\026\253\305\233\375WN=<\350\377\342u\271\372\322O\373\031\337\tn\204}\341bm\242\266S\357\253\317\327\325\346\340\327\325\237\203X\200\003\335\273\246\332\363t\332\255.\372\023\376N\020k\016\306\375\221\267\243\327\303\365Pm~\364\302A\3777\020,\037\177\rv\016\372\247C\033\232\330\365K\215/\032{\373\3457\033ov\232\375Sa\374\335\360\231\201o\202\211\240\034n\204\230\231l\r\017\372\007\253\003\325\027\376\224\237n\016\016U\037\370\343\276\352\3574\207\206\375\001\377E0\025\244\233\303\0234\023\364\005\363\201\026\306?\374\372\356\334\231\370%_\017\256\006\313\264\"\006\007\303\227\374_\303\005\341\301\316\220v\216\371\013\301\331\340Z\260\025b\367(^\372\202\305p$\234\017\267k/\353s\365u""9\371\241\035$\333\013V\002\265\331\032\034\014O\006c\301F\340\321\211\366\360\000\207oC\231\007\341dm\252y\272\027\322p\022\267O\341Jh~\371\244\341\204\237\0132\201\r\365\276\257\315\t\365~hl\356\237\335\277\272\277\372f\2719q\345\320\342Fc\347\217\272\343\022\202\344\300\217/\302k\010\272[\233\257i\365\221z\372\240\377\253j\032i\360,vf`\360\265W}\344\317\373\331\340\313p4\274_\033\200\204t}\27198\354\237};\362m\270\034n\325\036\326\257b\006X\374\210\255\345\352\026\340o\007\223\270\3729\240Y\256\257S\212\264!\234\257\345\352+u\025Z\016\304\201\271\365f\377\210\177#\210\321\373\340\353_\305-\375Q\332\215\3262\265\235\346\340W\325%\177\023i04\372v4Q\213\327\246\001\366X\363\302%\221c49W\237\252\337nL\357\023\310\316O`\357\331\340\333 \027>\254M\t\303\343\275\"\2225\265\266[\337n\254w\213\270]\337A\002\355\356#\301\316W\377\346\303\266/\341'vf`2\030\010^\206i\240\253\377r\367\360\034.X\016\327\273\206\007\302O\017\221Y\363\276\026\214 A8X\"^\273V\333\254\307N\344\010i\277[]\360\317\211\204\354\370v]\222\301\261\013'\260\304\025dd\233%F\353\231\272\333X\334\037\331OK\226\030\222,A J\037G\r#4\023\251\333\375\002\225/\214\373\367\t\255\315\241q\377_\341x\250\202`\206.Vw\021\304\030\245c\274)\336\310\035s\301:\315\210\301\001\266o\2114\036\032\365\0271\267\020\306\350\234\347\257\370\"\265w\232\361\t)\003c\272'\016\353y\220&\232\031\3677`\357`\330\037\256\204\034\001\316\326c\365\313\2151@\337\336\217\357\317\274\231:\325\226\211(C^\202\\\262\265~ \315!\004\2672\344\333?.\362\007\037\016\357\377'\356_\023\332\354\352hu\371\344*\240\022M\336BJ\307\233c$z\234\242\230\226\343\3411\377ap=\330\tc\342]T\205\t\\J\306?\007\345\334\252;\215\253\215e\220V\377\376\312~\366M\354\315(\210k\360b\025\205h\362\223\000o\304\237\205\273\323\310\366\253\265eZ\031\256\272\376\034x\205,h\306\307E\336\017\023\232\316\312\223\357\257\003*b\374\036\314:\000\231\203ky\355\026\3348V\337l\234mL5\026\332\326\214\277Q[\2209\231,>K\234L\222\344\016N\3567\3165\262\373\261f\377_\002\365\335\340q\354""\360uU\255\356\370}=\303\003\334\334/\022\0307]A\351\231\302!0\357m\377*\370\024\031\277\336\024o\327\340q\302\322\320\270\034\034`\373%\021K\300\242\2149\017\310\305\316\005\377\254O\344\214K.\214H\031\243t\313\020<x]X4\004\213\340\246\325\340~x6\274\036:\204\200\332\017\365\347\215\221\306\\c\275\221\337WO\265eD\004D\026\332\261p\263\326\207j\272~\034\021\234\224\375\361?\232\351\211,\345\343\275\214\357\211\344\247\347y\231J\277\207\351\345\311\343\271~$\n\331\n\322\203\3109V\273\014&\231\243>\342\024\313\243\"\020\034\311\225\005\377gd\310[\321\234\375\344\321\374\244Yy\272X\016wq\367\205\352\006\262/\3265\370\237\330\\\222\336\365\300\t\257\242\317\353\223\245\363\363\245k\t\205\345V\226/\237\030\177vt\374?\223\240wQ1}Z.\202\244P\256\377\024\244?O\"\226\220\033\304\t\t\230\345\360\207\332\006\340\032\257O5?\274H\252z\342+a,\330\304\307\364\\\330\315\267\203\247\375\206\370\210\317\215\217\330\332\372\326\357|\211\364\325\340\336\213o/\336\000\357\355\325\366\352;\321G\202\277\376\364\277\275o\361p";
+    PyObject *data = __Pyx_DecompressString(cstring, 3149, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (6514 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/gradients/v2core/interp_hue.pyxD not implementedDimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersHue lerp for Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis Lines must have same length<MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xcoeffs shape mismatchcollections.abc<contiguous and direct><contiguous and indirect>coords must have shape (H, W, 2)disableenablegc (got got differing extents in dimension h0_arr and h1_arr must have same lengthh1_grid shape mismatchisenableditemsize <= 0 for cython.arraymodes must have length equal to num dimensionsmodes shape mismatchno default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same length<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSChromatica.chromatica.gradients.v2core.interp_hueEllipsisHLL_minus_1MMAX_CORNERSN__Pyx_PyDict_NextRefSequenceView.MemoryViewWaa_stackabcallocate_bufferascontiguousarrayasyncio.coroutinesbb_stackbasecc_mv__class____class_getitem__cline_in_tracebackcoeffscoeffs_mvcoordscountcurr_size__dict__dtypedtype_is_objectemptyencodeendsends_mve""numerateerrorflagsfloat64formatfortranfrac__func____getstate__hh0h0_arrh0_gridh0_hih0_loh0_mvh1h1_adjh1_arrh1_gridh1_hih1_loh1_mvh_adjhalfhue_lerp_1d_spatialhue_lerp_2d_spatialhue_lerp_2d_with_modeshue_lerp_arrayshue_lerp_between_lineshue_lerp_between_lines_x_discretehue_lerp_simplehue_multidim_lerpiididxidx_fidx_hiidx_lo__import__indexint32_is_coroutineitemsitemsizejl0l1line0line1m_mv__main__memviewmodemode_xmode_ymodesmodes_mv__module__name__name__ndim__new__npnum_cornersnum_dimsnum_pointsnumpyobjoutout_mvppackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerresultresult_mv__set_name__setdefault__setstate____setstate_cython__shapesizespatial_ndimsstartstartsstarts_mvstepstopstruct__test__uu_xu_yunpackupdatev0v1valueswx\200\001\360\010\000\005\006\330\004\005\360\"\000\005\031\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\027\220q\330\004\027\220q\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\016\000\005\032\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\025\220\\\240\025\240a\240q\340\014\017\210w\220b\230\001\330\020\031\230\021\330\014\017\210w\220c\230\022\2302\230Q\330\020\031\230\022\2302\230Q\340\014\025\220W\230B\230a\330\014\023\2206\230\022\2305\240\001\340\014\017\210u\220B\220a\330\020\027\220q\330\021\026\220b\230""\001\330\020\027\220q\360\006\000\r\025\220B\220a\220q\330\014\024\220B\220a\220q\330\014\021\220\037\240\001\240\027\250\007\250v\260Q\360\006\000\r\025\220B\220a\220q\330\014\024\220B\220a\220q\330\014\021\220\037\240\001\240\027\250\007\250v\260Q\360\006\000\r\023\220!\2203\220e\230?\250!\2504\250t\2605\270\001\340\004\013\2101\200\001\360\010\000\005\006\360(\000\005\031\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\027\220q\330\004\027\220q\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\020\000\005\010\200r\210\023\210A\340\010\r\210R\210q\220\001\330\010\r\210R\210q\220\001\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\003\2303\230a\340\020\023\2204\220r\230\021\330\024\032\230!\330\025\031\230\022\2301\330\024\032\230!\340\020\026\220a\220s\230%\230\177\250a\250t\2604\260u\270A\330\010\017\210q\340\004\031\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\022\220,\230e\2401\240F\250\"\250A\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220S\230\001\330\020\026\220b\230\002\230!\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220R\220q\330\020\026\220a\360\006\000\r\022\220\022\2201\220A\330\014\021\220\022\2201\220A\360\006\000\r\023\220!\2203\220e\230?\250!\2504\250t\2605\270\001\340\004\013\2101\200\001\360$\000\005\031\230\006""\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\037\230v\240V\2501\250A\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240A\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\340\004\036\230a\330\004\034\230A\330\004$\240A\330\004\035\230Q\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\007\230q\240\004\240A\240Y\250a\250t\260<\270r\300\021\330\020\026\220a\220q\230\007\230q\240\004\240A\240W\250A\250T\260\034\270R\270q\340\020\034\230A\340\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\330\024\033\2308\2401\240A\340\024\030\230\005\230U\240!\2401\330\030\035\230W\240A\240Q\330\030\035\230W\240A\240Q\330\030!\320!4\260A\260T\270\024\270Q\330\030\037\230q\240\005\240X\250Q\250c\260\022\2602\260S\270\007\270r\300\021\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230q\240\007\240q\250\004\250A\250W\260A\260W\270E\300\022\3001\330\030$\240A\340\020\026\220a\220s\230%\230w\240a\240q\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\t\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220s\230!\2309\240A\240T\250\034\260R""\260q\330\020\026\220a\220s\230!\2307\240!\2404\240|\2602\260Q\340\020\034\230A\340\020\024\220E\230\025\230a\230q\330\024\030\230\t\240\021\240#\240S\250\001\330\024\033\2308\2401\240A\340\024\030\230\005\230U\240!\2401\330\030\035\230Q\230a\230q\330\030\035\230Q\230a\230q\330\030!\320!4\260A\260T\270\024\270Q\330\030\031\230\021\230%\230x\240q\250\003\2502\250R\250s\260'\270\022\2701\340\024\027\220z\240\022\2401\330\030\037\230z\250\023\250A\330\030\036\230a\230s\240\"\240B\240f\250E\260\022\2601\330\030$\240A\340\020\026\220a\220s\230%\230q\240\001\240\021\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360\010\000\005\006\360\034\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\032\230!\330\004\032\230!\330\004\026\220a\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\n\000\005\t\210\005\210U\220!\2201\330\010\r\210U\220!\2201\330\010\r\210U\220!\2201\330\010\021\320\021$\240A\240T\250\024\250Q\340\010\014\210E\220\025\220a\220q\330\014\020\220\001\220\021\220!\330\014\022\220!\2203\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\004\013\2101\200\001\360\010\000\005\006\360\034\000\005\031\230\006\230f\240A\240Q\330\004'\240r\250\026\250q\260\003\2606\270\022\2701\330\004\033\2301\330\004\026\220a\340\004\026\320\026)\250\021\250$\250d\260!\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210A\210Q\210a\330\010\016\210a\210u\220H\230A\230S\240\002\240\"\240C\240w\250b\260\001\340\004\013\2101\200\001\360$\000\005\031\230\007\230v\240Q\240a\330\004\030\230\007\230v\240Q\240a\340\004\007\200w\210f\220A\220S\230\003\2302\230S\240\007\240v\250Q\250c\260""\023\260A\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230\"\230C\230v\240V\2501\250C\250s\260!\330\010\016\210j\230\001\230\021\330\004\007\200u\210F\220!\2203\220c\230\022\2303\230e\2406\250\021\250#\250S\260\001\330\010\016\210j\230\001\230\021\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\340\004\035\230Q\330\004\035\230Q\330\004\034\230A\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005\t\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\021\220\025\220a\220s\230!\330\014\021\220\025\220a\220s\230!\330\014\020\220\004\220A\220S\230\001\330\014\023\2204\220q\230\003\2301\340\014\025\320\025(\250\001\250\024\250T\260\021\330\014\022\220!\2203\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\004\013\2101\200\001\360&\000\005\"\240\026\240v\250Q\250a\330\004\037\230v\240V\2501\250A\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200|\2204\220r\230\024\230Y\240b\250\004\250B\250a\360\014\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240A\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\340\004\036\230a\330\004\034\230A\330\004!\240\021\330\004\035\230Q\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\016\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220""\025\220a\220q\340\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\024\250\\\270\022\2701\340\014\030\230\001\340\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\360\006\000\021\025\220E\230\025\230a\230q\330\024\031\230\027\240\001\240\021\330\024\031\230\027\240\001\240\021\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\033\2301\230E\240\030\250\021\250#\250R\250r\260\023\260G\2702\270Q\360\006\000\021\024\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a\220w\230a\230t\240<\250r\260\021\340\014\030\230\001\340\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\340\020\024\220E\230\025\230a\230q\330\024\031\230\021\230!\2301\330\024\031\230\021\230!\2301\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\025\220Q\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101\200\001\360$\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!""\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200u\210G\2203\220b\230\007\230s\240$\240e\2506\260\021\260!\330\010\020\220\002\320\022$\240A\240W\250F\260\"\260A\340\004\035\230V\2406\250\022\2501\340\004\007\200~\220S\230\001\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\330\t\027\220s\230!\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\340\010\016\320\016!\240\021\240/\260\021\260!O";
+    #else /* compression: none (8354 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/v2core/interp_2d.pyxDimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supported\n    Interpolate between two lines at arbitrary (u_x, u_y) coordinates.\n    \n    This implements Section 6 of the interpolation article:\n    creating gradient planes by sampling between pre-existing gradient lines.\n    \n    Args:\n        line0: First line, shape (L,) or (L, C) for multi-channel\n        line1: Second line, shape (L,) or (L, C) for multi-channel\n        coords: Coordinates where to sample\n                - Shape (H, W, 2): grid of (u_x, u_y) pairs \342\206\222 output (H, W) or (H, W, C)\n                - Shape (N, 2): flat list of pairs \342\206\222 output (N,) or (N, C)\n                \n                u_x \342\210\210 [0, 1]: position along the lines\n                u_y \342\210\210 [0, 1]: blend factor (0 = line0, 1 = line1)\n    \n    Returns:\n        Interpolated values at each coordinate\n        \n    Example:\n        >>> # Create two RGB gradient lines\n        >>> line0 = np.linspace([255, 0, 0], [255, 255, 0], 100)  # Red \342\206\222 Yellow\n        >>> line1 = np.linspace([0, 0, 255], [0, 255, 0], 100)    # Blue \342\206\222 Green\n        >>> \n        >>> # Create coordinate grid\n        >>> H, W = 50, 100\n        >>> u_x = np.linspace(0, 1, W)  # Sample along lines\n        >>> u_y = np.linspace(0, 1, H)  # Blend between lines\n        >>> coords = np.stack(np.meshgrid(u_x, u_y, indexing='xy'), axis=-1)\n        >>> \n        >>> result = lerp_between_lines(line0, line1, coords)\n        >>> result.shape\n        (50, 100, 3)\n    I""nvalid mode, expected 'c' or 'fortran', got Invalid shape in axis Lines must have same lengthLines must have same shape<MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Planes must have same shapeStep may not be zero (axis %d)Unable to convert item to objectUnsupported shapes for lerp_between_planesUnsupported shapes for lerp_between_lines.>')?add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>coords last dim must be 3coords must have shape (H, W, 2)coords must have shape (N, 2)disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraylerp_between_lines (line 653)no default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not None<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIICC_CONTIGUOUSChromatica.chromatica.v2core.interp_2dD_outEllipsisHH_minus_1H_outH_srcLL_minus_1N__Pyx_PyDict_NextRefSequenceView.MemoryViewWW_minus_1W_outW_srcabcallocate_bufferascontiguousarrayasyncio.coroutinesbasecch__class____class_getitem__cline_in_tracebackcoordscoords_ndimcountd__dict__dtypedtype_is_objectemptyencodeenumerateerrorflagsfloat64formatfortranfrac__func____getstate__hididxidx_fidx_hiidx_lo__import__index_is_coroutineitemsitemsizel0l1lerp_between_lineslerp_between_lines_1chlerp_between_lines_flat_1chlerp_between_lines_flat_multichannellerp_between_lines_multichannellerp_between_lines_x_discrete_1chlerp_between_lines_x_discrete_multichannellerp_between_planeslerp_between_planes_1chline0line1line_ndim__main__memviewmode__module__nname__name__ndim__new__npnumpyobjoutout_mvp0p1packplane0plane1pop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vta""ble____qualname____reduce____reduce_cython____reduce_ex__register__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstruct__test__u_xu_yu_zunpackupdatev0v00_0v00_1v01_0v01_1v1v10_0v10_1v11_0v11_1valueswxx_fx_fracx_hix_loy_fy_fracy_hiy_lo\200\001\360&\000\005\035\230F\240&\250\001\250\021\330\004\034\230F\240&\250\001\250\021\330\004\034\230F\240&\250\001\250\021\330\004\034\230F\240&\250\001\250\021\330\004\034\230F\240&\250\001\250\021\340\004\007\200v\210V\2201\220C\220s\230&\240\003\2406\250\026\250q\260\003\2603\260a\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\032\230!\330\004\032\230!\330\004\037\230q\340\004'\240r\250\026\250r\260\027\270\007\270x\300v\310R\310q\330\004!\240\021\360\020\000\005\032\230\026\230v\240R\240q\330\004\031\230\026\230v\240R\240q\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\003\2303\230c\240\021\330\020\026\220a\220q\230\003\2303\230c\240\021\330\020\026\220a\220q\230\003\2303\230c\240\021\360\006\000\021\027\220d\230\"\230A\330\020\026\220d\230\"\230A\340\020\027\220|\2405\250\001\250\021\330\020\027\220|\2405\250\001\250\021\360\006\000\021\024\2205\230\002\230#\230W\240A\330\020\023\2205\230\003\2306\240\022\2403\240g\250V\2602\260Q\330\020\023\2205\230\002\230#\230W\240A\330\020\023\2205\230\003\2306\240\022\2403\240g\250V\2602\260Q\340\020\027\220u\230B\230a\330\020\027\220u\230B\230a\340\020\031\230\024\230R\230u\240A\330\020\031\230\024\230R\230u\240A\340\020\023\2207\230\"\230E\240\031\250!\330\020\023\2207\230\"\230E\240\031\250!\330\020\023\2207\230\"\230E\240\031\250!\330\020\023\2207\230\"\230E\240\031""\250!\360\006\000\021\031\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\026\220f\230C\230r\240\022\2408\2502\250V\2602\260X\270S\300\002\300\"\300H\310A\330\026\034\230C\230r\240\022\2408\2502\250V\2602\260X\270R\270q\360\006\000\021\031\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\030\230\002\230!\2306\240\021\330\020\026\220f\230C\230r\240\022\2408\2502\250V\2602\260X\270S\300\002\300\"\300H\310A\330\026\034\230C\230r\240\022\2408\2502\250V\2602\260X\270R\270q\360\006\000\021\027\220a\220s\230#\230U\240#\240R\240t\2503\250c\260\022\2601\340\004\013\2101\200\001\360P\001\000\005\010\200u\210G\2203\220b\230\t\240\023\240D\250\005\250V\2601\260A\330\010\020\220\002\320\022$\240A\240W\250F\260\"\260A\330\004\007\200u\210G\2203\220b\230\t\240\023\240D\250\005\250V\2601\260A\330\010\020\220\002\320\022$\240A\240W\250F\260\"\260A\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\360\006\000\005\021\220\005\220Q\330\004\022\220&\230\001\360\006\000\005\010\200|\2203\220b\230\004\230F\240&\250\001\250\023\250C\250q\330\010\013\210:\220S\230\001\330\014\023\320\023)\250\021\250'\260\027\270\001\330\r\027\220s\230!\330\014\023\320\0232\260!\2607\270'\300\021\360\006\000\n\026\220S\230\002\230$\230f\240F\250!\2503\250c\260\021\330\010\013\210:\220S\230\001\330\014\023\320\023.\250a\250w\260g\270Q\330\r\027\220s\230!\330\014\023\320\0237\260q\270\007\270w\300a\340\004\n\210*\220A\330\010\t\200\001\360 \000\005\031\230\005\230V\2401\240A\330\004\030\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\022\2303\230e\2406\250\021\250#\250S\260\001\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\360""\006\000\005\010\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\032\230!\330\004\032\230!\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260C\260t\2706\300\022\3001\330\004!\240\021\360\014\000\005\032\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\025\220\\\240\025\240a\240q\340\014\017\210w\220b\230\001\330\020\031\230\021\330\014\017\210w\220c\230\022\2302\230Q\330\020\031\230\022\2302\230Q\340\014\025\220W\230B\230a\330\014\023\2206\230\022\2305\240\001\340\014\017\210u\220B\220a\330\020\027\220q\330\021\026\220b\230\001\330\020\027\220q\360\006\000\r\021\220\006\220e\2301\230A\330\020\025\220R\220q\230\010\240\004\240B\240e\2503\250b\260\001\260\030\270\024\270R\270r\300\021\300(\310!\330\020\025\220R\220q\230\010\240\004\240B\240e\2503\250b\260\001\260\030\270\024\270R\270r\300\021\300(\310!\330\020\026\220a\220s\230#\230V\2403\240b\250\004\250C\250s\260\"\260A\340\004\013\2101\200\001\360$\000\005\031\230\005\230V\2401\240A\330\004\030\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\022\2303\230e\2406\250\021\250#\250S\260\001\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\032\230!\330\004\032\230!\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260C\260t\2706\300\022\3001\330\004!\240\021\360\016\000\005\010\200r""\210\023\210A\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\003\2303\230a\330\020\023\2204\220r\230\021\330\024\032\230!\330\025\031\230\022\2301\330\024\032\230!\330\020\024\220F\230%\230q\240\001\330\024\032\230!\2303\230c\240\026\240r\250\021\250#\250T\260\022\2604\260s\270\"\270A\270S\300\004\300B\300b\310\001\310\023\310A\330\010\017\210q\340\004\031\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\022\220,\230e\2401\240F\250\"\250A\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220S\230\001\330\020\026\220b\230\002\230!\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220R\220q\330\020\026\220a\360\006\000\r\021\220\006\220e\2301\230A\330\020\026\220a\220s\230#\230V\2402\240Q\240e\2504\250r\260\024\260S\270\002\270!\2705\300\004\300B\300b\310\001\310\025\310a\340\004\013\2101\200\001\360 \000\005\031\230\005\230V\2401\240A\330\004\030\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\022\2303\230e\2406\250\021\250#\250S\260\001\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\032\230!\330\004\032\230!\330\004\031\230\021\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\010\000\005\032\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\016\210a\210q\220\003\2201\330\010\016\210a\210q\220\003\2201\340\010\020\220\004\220B\220a\330\010\021\220\034\230U\240!\2401\340\010\013\2107\220\"\220A\330\014\025\220Q\330\010\013\2107""\220#\220R\220r\230\021\330\014\025\220R\220r\230\021\340\010\021\220\027\230\002\230!\330\010\017\210v\220R\220u\230A\340\010\013\2105\220\002\220!\330\014\023\2201\330\r\022\220\"\220A\330\014\023\2201\340\010\014\210F\220%\220q\230\001\330\014\021\220\022\2201\220H\230D\240\002\240%\240s\250\"\250A\250X\260T\270\022\2702\270Q\270h\300a\330\014\021\220\022\2201\220H\230D\240\002\240%\240s\250\"\250A\250X\260T\270\022\2702\270Q\270h\300a\330\014\022\220!\2203\220f\230C\230r\240\024\240S\250\003\2502\250Q\340\004\013\2101\200\001\360$\000\005\031\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\360\006\000\005\010\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\027\220q\330\004\027\220q\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\014\000\005\032\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\025\220\\\240\025\240a\240q\360\006\000\r\020\210w\220b\230\001\330\020\031\230\021\330\014\017\210w\220c\230\022\2302\230Q\330\020\031\230\022\2302\230Q\340\014\025\220W\230B\230a\330\014\023\2206\230\022\2305\240\001\360\006\000\r\020\210u\220B\220a\330\020\027\220q\330\021\026\220b\230\001\330\020\027\220q\360\006\000\r\022\220\022\2201\220H\230B\230e\2403\240b\250\001\250\030\260\022\2602\260Q\260a\360\006\000\r\022\220\022\2201\220H\230B\230e\2403\240b\250\001\250\030\260\022\2602\260Q\260a\360\006\000\r\023\220!\2203\220e\2303\230b\240\004\240C\240s\250\"\250A\340\004\013\2101""\200\001\360,\000\005\031\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\027\220q\330\004\027\220q\330\004\034\230A\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\020\000\005\010\200r\210\023\210A\330\010\r\210R\210q\220\001\330\010\r\210R\210q\220\001\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2301\330\020\026\220a\220q\230\003\2303\230a\330\020\023\2204\220r\230\021\330\024\032\230!\330\025\031\230\022\2301\330\024\032\230!\330\020\026\220a\220s\230%\230s\240\"\240D\250\003\2503\250b\260\001\330\010\017\210q\340\004\031\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220C\220s\230!\330\014\022\220!\2201\220C\220s\230!\360\006\000\r\025\220D\230\002\230!\330\014\022\220,\230e\2401\240F\250\"\250A\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220S\230\001\330\020\026\220b\230\002\230!\360\006\000\r\020\210t\2202\220Q\330\020\026\220a\330\021\025\220R\220q\330\020\026\220a\360\006\000\r\022\220\022\2201\220A\330\014\021\220\022\2201\220A\360\006\000\r\023\220!\2203\220e\2303\230b\240\004\240C\240s\250\"\250A\340\004\013\2101\200\001\360 \000\005\031\230\005\230V\2401\240A\330\004\030\230\006\230f\240A\240Q\340\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\330\004\007\200t\2105\220\006\220a\220q\330\010\020""\220\002\320\022$\240A\240Q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\027\220q\330\004\027\220q\330\004\031\230\021\340\004'\240r\250\026\250q\260\003\2606\270\022\2701\330\004\033\2301\360\010\000\005\032\230\026\230r\240\022\2401\340\004\010\210\005\210U\220!\2201\330\010\016\210a\210q\220\003\2201\330\010\016\210a\210q\220\003\2201\340\010\020\220\004\220B\220a\330\010\021\220\034\230U\240!\2401\340\010\013\2107\220\"\220A\330\014\025\220Q\330\010\013\2107\220#\220R\220r\230\021\330\014\025\220R\220r\230\021\340\010\021\220\027\230\002\230!\330\010\017\210v\220R\220u\230A\340\010\013\2105\220\002\220!\330\014\023\2201\330\r\022\220\"\220A\330\014\023\2201\340\010\r\210R\210q\220\010\230\002\230%\230s\240\"\240A\240X\250R\250r\260\021\260!\330\010\r\210R\210q\220\010\230\002\230%\230s\240\"\240A\240X\250R\250r\260\021\260!\330\010\016\210a\210u\220C\220r\230\024\230S\240\003\2402\240Q\340\004\013\2101\200\001\360$\000\005\010\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\340\004\007\200v\210V\2203\220b\230\004\230F\240&\250\003\2501\330\010\017\320\017&\240a\240x\250x\260q\340\004\n\210*\220A\220QO";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 209; i++) {
+    for (int i = 0; i < 198; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
-      if (likely(string) && i >= 59) PyUnicode_InternInPlace(&string);
+      if (likely(string) && i >= 58) PyUnicode_InternInPlace(&string);
       if (unlikely(!string)) {
         Py_XDECREF(data);
         __PYX_ERR(0, 1, __pyx_L1_error)
@@ -29537,7 +29803,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 209; i < 218; i++) {
+    for (int i = 198; i < 208; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -29548,15 +29814,15 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 218; i++) {
+    for (Py_ssize_t i = 0; i < 208; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 209;
-      for (Py_ssize_t i=0; i<9; ++i) {
+      PyObject **table = stringtab + 198;
+      for (Py_ssize_t i=0; i<10; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
         #else
@@ -29593,10 +29859,10 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
 }
 /* #### Code section: init_codeobjects ### */
 typedef struct {
-    unsigned int argcount : 3;
+    unsigned int argcount : 2;
     unsigned int num_posonly_args : 1;
     unsigned int num_kwonly_args : 1;
-    unsigned int nlocals : 5;
+    unsigned int nlocals : 6;
     unsigned int flags : 10;
     unsigned int first_line : 10;
 } __Pyx_PyCode_New_function_description;
@@ -29615,44 +29881,49 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 28, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 90};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_starts, __pyx_mstate->__pyx_n_u_ends, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_modes, __pyx_mstate->__pyx_n_u_num_points, __pyx_mstate->__pyx_n_u_num_dims, __pyx_mstate->__pyx_n_u_num_corners, __pyx_mstate->__pyx_n_u_starts_mv, __pyx_mstate->__pyx_n_u_ends_mv, __pyx_mstate->__pyx_n_u_coeffs_mv, __pyx_mstate->__pyx_n_u_modes_mv, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_result_mv, __pyx_mstate->__pyx_n_u_p, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_half, __pyx_mstate->__pyx_n_u_curr_size, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_h0, __pyx_mstate->__pyx_n_u_h1, __pyx_mstate->__pyx_n_u_h1_adj, __pyx_mstate->__pyx_n_u_mode, __pyx_mstate->__pyx_n_u_MAX_CORNERS, __pyx_mstate->__pyx_n_u_a_stack, __pyx_mstate->__pyx_n_u_b_stack, __pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_b};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_1d_spatial, __pyx_mstate->__pyx_kp_b_iso88591_vQa_vV1A_aq_t6_S_j_uF_3c_j_4r_Y, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 22, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 14};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_idx_lo, __pyx_mstate->__pyx_n_u_idx_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_frac, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_1ch, __pyx_mstate->__pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 30, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 221};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_starts, __pyx_mstate->__pyx_n_u_ends, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_modes, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_num_dims, __pyx_mstate->__pyx_n_u_num_corners, __pyx_mstate->__pyx_n_u_starts_mv, __pyx_mstate->__pyx_n_u_ends_mv, __pyx_mstate->__pyx_n_u_coeffs_mv, __pyx_mstate->__pyx_n_u_modes_mv, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_half, __pyx_mstate->__pyx_n_u_curr_size, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_h0, __pyx_mstate->__pyx_n_u_h1, __pyx_mstate->__pyx_n_u_h1_adj, __pyx_mstate->__pyx_n_u_mode, __pyx_mstate->__pyx_n_u_MAX_CORNERS, __pyx_mstate->__pyx_n_u_a_stack, __pyx_mstate->__pyx_n_u_b_stack, __pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_b};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_2d_spatial, __pyx_mstate->__pyx_kp_b_iso88591_fAQ_fAQ_vV1A_aq_t6_S_j_uF_3c_j, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 24, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 101};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_C, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_ch, __pyx_mstate->__pyx_n_u_idx_lo, __pyx_mstate->__pyx_n_u_idx_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_frac, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_multichannel, __pyx_mstate->__pyx_kp_b_iso88591_V1A_V1A_fAQ_fAQ_uF_3c_3e6_S_j_v, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 345};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_h0, __pyx_mstate->__pyx_n_u_h1, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_mode, __pyx_mstate->__pyx_n_u_N, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_h1_adj, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_u};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_simple, __pyx_mstate->__pyx_kp_b_iso88591_fAQ_r_q_6_1_1_a_d_U_1_AQa_auHAS, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 20, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 182};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_N, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_n, __pyx_mstate->__pyx_n_u_idx_lo, __pyx_mstate->__pyx_n_u_idx_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_frac, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_flat_1ch, __pyx_mstate->__pyx_kp_b_iso88591_V1A_fAQ_uF_3c_j_vV1Cs_j_t5_aq_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 17, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 382};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_h0_arr, __pyx_mstate->__pyx_n_u_h1_arr, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_mode, __pyx_mstate->__pyx_n_u_M, __pyx_mstate->__pyx_n_u_N, __pyx_mstate->__pyx_n_u_h0_mv, __pyx_mstate->__pyx_n_u_h1_mv, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_h0, __pyx_mstate->__pyx_n_u_h1, __pyx_mstate->__pyx_n_u_h1_adj};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_arrays, __pyx_mstate->__pyx_kp_b_iso88591_fAQ_fAQ_vV1Cs_j_t6_q_Qa_t6_q_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 22, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 251};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_C, __pyx_mstate->__pyx_n_u_N, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_n, __pyx_mstate->__pyx_n_u_ch, __pyx_mstate->__pyx_n_u_idx_lo, __pyx_mstate->__pyx_n_u_idx_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_frac, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_flat_multicha, __pyx_mstate->__pyx_kp_b_iso88591_V1A_V1A_fAQ_uF_3c_3e6_S_j_vV1Cs, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 19, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 438};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_h0_grid, __pyx_mstate->__pyx_n_u_h1_grid, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_modes, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_h0_mv, __pyx_mstate->__pyx_n_u_h1_mv, __pyx_mstate->__pyx_n_u_c_mv, __pyx_mstate->__pyx_n_u_m_mv, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_h0, __pyx_mstate->__pyx_n_u_h1, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_h1_adj, __pyx_mstate->__pyx_n_u_mode};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_2d_with_modes, __pyx_mstate->__pyx_kp_b_iso88591_vQa_vQa_wfAS_2S_vQc_A_j_vV1Cs_C, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 39, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 326};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_plane0, __pyx_mstate->__pyx_n_u_plane1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_H_src, __pyx_mstate->__pyx_n_u_W_src, __pyx_mstate->__pyx_n_u_D_out, __pyx_mstate->__pyx_n_u_H_out, __pyx_mstate->__pyx_n_u_W_out, __pyx_mstate->__pyx_n_u_p0, __pyx_mstate->__pyx_n_u_p1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_d, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_x_lo, __pyx_mstate->__pyx_n_u_x_hi, __pyx_mstate->__pyx_n_u_y_lo, __pyx_mstate->__pyx_n_u_y_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_u_z, __pyx_mstate->__pyx_n_u_x_f, __pyx_mstate->__pyx_n_u_y_f, __pyx_mstate->__pyx_n_u_x_frac, __pyx_mstate->__pyx_n_u_y_frac, __pyx_mstate->__pyx_n_u_v00_0, __pyx_mstate->__pyx_n_u_v01_0, __pyx_mstate->__pyx_n_u_v10_0, __pyx_mstate->__pyx_n_u_v11_0, __pyx_mstate->__pyx_n_u_v00_1, __pyx_mstate->__pyx_n_u_v01_1, __pyx_mstate->__pyx_n_u_v10_1, __pyx_mstate->__pyx_n_u_v11_1, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_H_minus_1, __pyx_mstate->__pyx_n_u_W_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_planes_1ch, __pyx_mstate->__pyx_kp_b_iso88591_F_F_F_F_F_vV1Cs_6_q_3a_j_vV1Cs, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 29, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 503};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_mode_x, __pyx_mstate->__pyx_n_u_mode_y, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_idx_lo, __pyx_mstate->__pyx_n_u_idx_hi, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_frac, __pyx_mstate->__pyx_n_u_h0_lo, __pyx_mstate->__pyx_n_u_h0_hi, __pyx_mstate->__pyx_n_u_h1_lo, __pyx_mstate->__pyx_n_u_h1_hi, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_h_adj, __pyx_mstate->__pyx_n_u_L_minus_1};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_between_lines, __pyx_mstate->__pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 20, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 434};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_idx, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_x_discrete_1c, __pyx_mstate->__pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 21, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 595};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_mode_y, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_idx, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_v0, __pyx_mstate->__pyx_n_u_v1, __pyx_mstate->__pyx_n_u_L_minus_1};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_lerp_between_lines_x_discret, __pyx_mstate->__pyx_kp_b_iso88591_V1A_fAQ_fAQ_uF_3c_j_vV1Cs_j_t5_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 20, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 531};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_L, __pyx_mstate->__pyx_n_u_C, __pyx_mstate->__pyx_n_u_H, __pyx_mstate->__pyx_n_u_W, __pyx_mstate->__pyx_n_u_l0, __pyx_mstate->__pyx_n_u_l1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_out_mv, __pyx_mstate->__pyx_n_u_h, __pyx_mstate->__pyx_n_u_w, __pyx_mstate->__pyx_n_u_ch, __pyx_mstate->__pyx_n_u_idx, __pyx_mstate->__pyx_n_u_u_x, __pyx_mstate->__pyx_n_u_u_y, __pyx_mstate->__pyx_n_u_idx_f, __pyx_mstate->__pyx_n_u_L_minus_1};
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines_x_discrete_mu, __pyx_mstate->__pyx_kp_b_iso88591_V1A_V1A_fAQ_fAQ_uF_3c_3e6_S_j_v_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 698};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_starts, __pyx_mstate->__pyx_n_u_ends, __pyx_mstate->__pyx_n_u_coeffs, __pyx_mstate->__pyx_n_u_modes, __pyx_mstate->__pyx_n_u_spatial_ndims};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_gradients_2, __pyx_mstate->__pyx_n_u_hue_multidim_lerp, __pyx_mstate->__pyx_kp_b_iso88591_vWCr_T_vQa_QhfBa_t7_Ry_4t6_r_1F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 620};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_plane0, __pyx_mstate->__pyx_n_u_plane1, __pyx_mstate->__pyx_n_u_coords};
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_planes, __pyx_mstate->__pyx_kp_b_iso88591_vWCr_T_vQa_QhfBa_vWCr_T_vQa_Qhf, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 653};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line0, __pyx_mstate->__pyx_n_u_line1, __pyx_mstate->__pyx_n_u_coords, __pyx_mstate->__pyx_n_u_line_ndim, __pyx_mstate->__pyx_n_u_coords_ndim};
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Chromatica_chromatica_v2core_int_2, __pyx_mstate->__pyx_n_u_lerp_between_lines, __pyx_mstate->__pyx_kp_b_iso88591_P_uG3b_D_V1A_AWF_A_uG3b_D_V1A_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -35762,28 +36033,6 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       return retval;
   }
   
-/* CIntFromPyVerify */
-  #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
-      __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
-  #define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
-      __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
-  #define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
-      {\
-          func_type value = func_value;\
-          if (sizeof(target_type) < sizeof(func_type)) {\
-              if (unlikely(value != (func_type) (target_type) value)) {\
-                  func_type zero = 0;\
-                  if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
-                      return (target_type) -1;\
-                  if (is_unsigned && unlikely(value < zero))\
-                      goto raise_neg_overflow;\
-                  else\
-                      goto raise_overflow;\
-              }\
-          }\
-          return (target_type) value;\
-      }
-  
 /* TypeInfoCompare (used by MemviewSliceValidateAndInit) */
   static int
   __pyx_typeinfo_cmp(const __Pyx_TypeInfo *a, const __Pyx_TypeInfo *b)
@@ -36008,7 +36257,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -36019,7 +36268,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
@@ -36031,53 +36280,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *obj, int writable_flag) {
-      __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
-      __Pyx_BufFmt_StackElem stack[1];
-      int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
-      int retcode;
-      if (obj == Py_None) {
-          result.memview = (struct __pyx_memoryview_obj *) Py_None;
-          return result;
-      }
-      retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
-                                                   (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 2,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, stack,
-                                                   &result, obj);
-      if (unlikely(retcode == -1))
-          goto __pyx_fail;
-      return result;
-  __pyx_fail:
-      result.memview = NULL;
-      result.data = NULL;
-      return result;
-  }
-  
-/* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(PyObject *obj, int writable_flag) {
-      __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
-      __Pyx_BufFmt_StackElem stack[1];
-      int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
-      int retcode;
-      if (obj == Py_None) {
-          result.memview = (struct __pyx_memoryview_obj *) Py_None;
-          return result;
-      }
-      retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
-                                                   (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, stack,
-                                                   &result, obj);
-      if (unlikely(retcode == -1))
-          goto __pyx_fail;
-      return result;
-  __pyx_fail:
-      result.memview = NULL;
-      result.data = NULL;
-      return result;
-  }
-  
-/* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -36088,7 +36291,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 3,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_f64, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
@@ -36100,7 +36303,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   }
   
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *obj, int writable_flag) {
       __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
       __Pyx_BufFmt_StackElem stack[1];
       int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -36111,7 +36314,30 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       }
       retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                    (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 2,
-                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_9gradients_6v2core_10interp_hue_i32, stack,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, stack,
+                                                   &result, obj);
+      if (unlikely(retcode == -1))
+          goto __pyx_fail;
+      return result;
+  __pyx_fail:
+      result.memview = NULL;
+      result.data = NULL;
+      return result;
+  }
+  
+/* ObjectToMemviewSlice */
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_d_dc_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64(PyObject *obj, int writable_flag) {
+      __Pyx_memviewslice result = __Pyx_MEMSLICE_INIT;
+      __Pyx_BufFmt_StackElem stack[1];
+      int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
+      int retcode;
+      if (obj == Py_None) {
+          result.memview = (struct __pyx_memoryview_obj *) Py_None;
+          return result;
+      }
+      retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
+                                                   (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 4,
+                                                   &__Pyx_TypeInfo_nn___pyx_t_10Chromatica_10chromatica_6v2core_9interp_2d_f64, stack,
                                                    &result, obj);
       if (unlikely(retcode == -1))
           goto __pyx_fail;
@@ -36657,6 +36883,141 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       return new_mvs;
   }
   
+/* PyObjectCall2Args (used by PyObjectCallMethod1) */
+  static CYTHON_INLINE PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
+      PyObject *args[3] = {NULL, arg1, arg2};
+      return __Pyx_PyObject_FastCall(function, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
+  }
+  
+/* PyObjectCallMethod1 (used by UpdateUnpickledDict) */
+  #if !(CYTHON_VECTORCALL && (__PYX_LIMITED_VERSION_HEX >= 0x030C0000 || (!CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x03090000)))
+  static PyObject* __Pyx__PyObject_CallMethod1(PyObject* method, PyObject* arg) {
+      PyObject *result = __Pyx_PyObject_CallOneArg(method, arg);
+      Py_DECREF(method);
+      return result;
+  }
+  #endif
+  static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg) {
+  #if CYTHON_VECTORCALL && (__PYX_LIMITED_VERSION_HEX >= 0x030C0000 || (!CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x03090000))
+      PyObject *args[2] = {obj, arg};
+      (void) __Pyx_PyObject_CallOneArg;
+      (void) __Pyx_PyObject_Call2Args;
+      return PyObject_VectorcallMethod(method_name, args, 2 | PY_VECTORCALL_ARGUMENTS_OFFSET, NULL);
+  #else
+      PyObject *method = NULL, *result;
+      int is_method = __Pyx_PyObject_GetMethod(obj, method_name, &method);
+      if (likely(is_method)) {
+          result = __Pyx_PyObject_Call2Args(method, obj, arg);
+          Py_DECREF(method);
+          return result;
+      }
+      if (unlikely(!method)) return NULL;
+      return __Pyx__PyObject_CallMethod1(method, arg);
+  #endif
+  }
+  
+/* UpdateUnpickledDict */
+  static int __Pyx__UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
+      PyObject *state_dict = __Pyx_PySequence_ITEM(state, index);
+      if (unlikely(!state_dict)) {
+          return -1;
+      }
+      int non_empty = PyObject_IsTrue(state_dict);
+      if (non_empty == 0) {
+          Py_DECREF(state_dict);
+          return 0;
+      } else if (unlikely(non_empty == -1)) {
+          return -1;
+      }
+      PyObject *dict;
+      #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
+      dict = PyObject_GetAttrString(obj, "__dict__");
+      #else
+      dict = PyObject_GenericGetDict(obj, NULL);
+      #endif
+      if (unlikely(!dict)) {
+          Py_DECREF(state_dict);
+          return -1;
+      }
+      int result;
+      if (likely(PyDict_CheckExact(dict))) {
+          result = PyDict_Update(dict, state_dict);
+      } else {
+          PyObject *obj_result = __Pyx_PyObject_CallMethod1(dict, __pyx_mstate_global->__pyx_n_u_update, state_dict);
+          if (likely(obj_result)) {
+              Py_DECREF(obj_result);
+              result = 0;
+          } else {
+              result = -1;
+          }
+      }
+      Py_DECREF(state_dict);
+      Py_DECREF(dict);
+      return result;
+  }
+  static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
+      Py_ssize_t state_size = __Pyx_PyTuple_GET_SIZE(state);
+      #if !CYTHON_ASSUME_SAFE_SIZE
+      if (unlikely(state_size == -1)) return -1;
+      #endif
+      if (state_size <= index) {
+          return 0;
+      }
+      return __Pyx__UpdateUnpickledDict(obj, state, index);
+  }
+  
+/* CheckUnpickleChecksum */
+  static void __Pyx_RaiseUnpickleChecksumError(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
+      PyObject *pickle_module = PyImport_ImportModule("pickle");
+      if (unlikely(!pickle_module)) return;
+      PyObject *pickle_error = PyObject_GetAttrString(pickle_module, "PickleError");
+      Py_DECREF(pickle_module);
+      if (unlikely(!pickle_error)) return;
+      if (checksum2 == checksum1) {
+          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x) = (%s))",
+              checksum, checksum1, members);
+      } else if (checksum3 == checksum2) {
+          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x) = (%s))",
+              checksum, checksum1, checksum2, members);
+      } else {
+          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x, 0x%x) = (%s))",
+              checksum, checksum1, checksum2, checksum3, members);
+      }
+      Py_DECREF(pickle_error);
+  }
+  static int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
+      int found = 0;
+      found |= checksum1 == checksum;
+      found |= checksum2 == checksum;
+      found |= checksum3 == checksum;
+      if (likely(found))
+          return 0;
+      __Pyx_RaiseUnpickleChecksumError(checksum, checksum1, checksum2, checksum3, members);
+      return -1;
+  }
+  
+/* CIntFromPyVerify (used by CIntFromPy) */
+  #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
+      __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
+  #define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
+      __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
+  #define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
+      {\
+          func_type value = func_value;\
+          if (sizeof(target_type) < sizeof(func_type)) {\
+              if (unlikely(value != (func_type) (target_type) value)) {\
+                  func_type zero = 0;\
+                  if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
+                      return (target_type) -1;\
+                  if (is_unsigned && unlikely(value < zero))\
+                      goto raise_neg_overflow;\
+                  else\
+                      goto raise_overflow;\
+              }\
+          }\
+          return (target_type) value;\
+      }
+  
 /* CIntFromPy */
   static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *x) {
   #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -36907,188 +37268,6 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       return (int) -1;
   }
   
-/* CIntToPy */
-  static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
-  #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wconversion"
-  #endif
-      const int neg_one = (int) -1, const_zero = (int) 0;
-  #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-  #pragma GCC diagnostic pop
-  #endif
-      const int is_unsigned = neg_one > const_zero;
-      if (is_unsigned) {
-          if (sizeof(int) < sizeof(long)) {
-              return PyLong_FromLong((long) value);
-          } else if (sizeof(int) <= sizeof(unsigned long)) {
-              return PyLong_FromUnsignedLong((unsigned long) value);
-  #if !CYTHON_COMPILING_IN_PYPY
-          } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-              return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-  #endif
-          }
-      } else {
-          if (sizeof(int) <= sizeof(long)) {
-              return PyLong_FromLong((long) value);
-          } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-              return PyLong_FromLongLong((PY_LONG_LONG) value);
-          }
-      }
-      {
-          unsigned char *bytes = (unsigned char *)&value;
-  #if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-          if (is_unsigned) {
-              return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-          } else {
-              return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-          }
-  #elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-          int one = 1; int little = (int)*(unsigned char *)&one;
-          return _PyLong_FromByteArray(bytes, sizeof(int),
-                                       little, !is_unsigned);
-  #else
-          int one = 1; int little = (int)*(unsigned char *)&one;
-          PyObject *from_bytes, *result = NULL, *kwds = NULL;
-          PyObject *py_bytes = NULL, *order_str = NULL;
-          from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-          if (!from_bytes) return NULL;
-          py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
-          if (!py_bytes) goto limited_bad;
-          order_str = PyUnicode_FromString(little ? "little" : "big");
-          if (!order_str) goto limited_bad;
-          {
-              PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-              if (!is_unsigned) {
-                  kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                  if (!kwds) goto limited_bad;
-                  if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-              }
-              result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-          }
-          limited_bad:
-          Py_XDECREF(kwds);
-          Py_XDECREF(order_str);
-          Py_XDECREF(py_bytes);
-          Py_XDECREF(from_bytes);
-          return result;
-  #endif
-      }
-  }
-  
-/* PyObjectCall2Args (used by PyObjectCallMethod1) */
-  static CYTHON_INLINE PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
-      PyObject *args[3] = {NULL, arg1, arg2};
-      return __Pyx_PyObject_FastCall(function, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
-  }
-  
-/* PyObjectCallMethod1 (used by UpdateUnpickledDict) */
-  #if !(CYTHON_VECTORCALL && (__PYX_LIMITED_VERSION_HEX >= 0x030C0000 || (!CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x03090000)))
-  static PyObject* __Pyx__PyObject_CallMethod1(PyObject* method, PyObject* arg) {
-      PyObject *result = __Pyx_PyObject_CallOneArg(method, arg);
-      Py_DECREF(method);
-      return result;
-  }
-  #endif
-  static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg) {
-  #if CYTHON_VECTORCALL && (__PYX_LIMITED_VERSION_HEX >= 0x030C0000 || (!CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x03090000))
-      PyObject *args[2] = {obj, arg};
-      (void) __Pyx_PyObject_CallOneArg;
-      (void) __Pyx_PyObject_Call2Args;
-      return PyObject_VectorcallMethod(method_name, args, 2 | PY_VECTORCALL_ARGUMENTS_OFFSET, NULL);
-  #else
-      PyObject *method = NULL, *result;
-      int is_method = __Pyx_PyObject_GetMethod(obj, method_name, &method);
-      if (likely(is_method)) {
-          result = __Pyx_PyObject_Call2Args(method, obj, arg);
-          Py_DECREF(method);
-          return result;
-      }
-      if (unlikely(!method)) return NULL;
-      return __Pyx__PyObject_CallMethod1(method, arg);
-  #endif
-  }
-  
-/* UpdateUnpickledDict */
-  static int __Pyx__UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
-      PyObject *state_dict = __Pyx_PySequence_ITEM(state, index);
-      if (unlikely(!state_dict)) {
-          return -1;
-      }
-      int non_empty = PyObject_IsTrue(state_dict);
-      if (non_empty == 0) {
-          Py_DECREF(state_dict);
-          return 0;
-      } else if (unlikely(non_empty == -1)) {
-          return -1;
-      }
-      PyObject *dict;
-      #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
-      dict = PyObject_GetAttrString(obj, "__dict__");
-      #else
-      dict = PyObject_GenericGetDict(obj, NULL);
-      #endif
-      if (unlikely(!dict)) {
-          Py_DECREF(state_dict);
-          return -1;
-      }
-      int result;
-      if (likely(PyDict_CheckExact(dict))) {
-          result = PyDict_Update(dict, state_dict);
-      } else {
-          PyObject *obj_result = __Pyx_PyObject_CallMethod1(dict, __pyx_mstate_global->__pyx_n_u_update, state_dict);
-          if (likely(obj_result)) {
-              Py_DECREF(obj_result);
-              result = 0;
-          } else {
-              result = -1;
-          }
-      }
-      Py_DECREF(state_dict);
-      Py_DECREF(dict);
-      return result;
-  }
-  static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
-      Py_ssize_t state_size = __Pyx_PyTuple_GET_SIZE(state);
-      #if !CYTHON_ASSUME_SAFE_SIZE
-      if (unlikely(state_size == -1)) return -1;
-      #endif
-      if (state_size <= index) {
-          return 0;
-      }
-      return __Pyx__UpdateUnpickledDict(obj, state, index);
-  }
-  
-/* CheckUnpickleChecksum */
-  static void __Pyx_RaiseUnpickleChecksumError(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
-      PyObject *pickle_module = PyImport_ImportModule("pickle");
-      if (unlikely(!pickle_module)) return;
-      PyObject *pickle_error = PyObject_GetAttrString(pickle_module, "PickleError");
-      Py_DECREF(pickle_module);
-      if (unlikely(!pickle_error)) return;
-      if (checksum2 == checksum1) {
-          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x) = (%s))",
-              checksum, checksum1, members);
-      } else if (checksum3 == checksum2) {
-          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x) = (%s))",
-              checksum, checksum1, checksum2, members);
-      } else {
-          PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x, 0x%x) = (%s))",
-              checksum, checksum1, checksum2, checksum3, members);
-      }
-      Py_DECREF(pickle_error);
-  }
-  static int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
-      int found = 0;
-      found |= checksum1 == checksum;
-      found |= checksum2 == checksum;
-      found |= checksum3 == checksum;
-      if (likely(found))
-          return 0;
-      __Pyx_RaiseUnpickleChecksumError(checksum, checksum1, checksum2, checksum3, members);
-      return -1;
-  }
-  
 /* CIntFromPy */
   static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *x) {
   #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -37337,6 +37516,75 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
       PyErr_SetString(PyExc_OverflowError,
           "can't convert negative value to long");
       return (long) -1;
+  }
+  
+/* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
+  #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wconversion"
+  #endif
+      const int neg_one = (int) -1, const_zero = (int) 0;
+  #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+  #pragma GCC diagnostic pop
+  #endif
+      const int is_unsigned = neg_one > const_zero;
+      if (is_unsigned) {
+          if (sizeof(int) < sizeof(long)) {
+              return PyLong_FromLong((long) value);
+          } else if (sizeof(int) <= sizeof(unsigned long)) {
+              return PyLong_FromUnsignedLong((unsigned long) value);
+  #if !CYTHON_COMPILING_IN_PYPY
+          } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+              return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+  #endif
+          }
+      } else {
+          if (sizeof(int) <= sizeof(long)) {
+              return PyLong_FromLong((long) value);
+          } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+              return PyLong_FromLongLong((PY_LONG_LONG) value);
+          }
+      }
+      {
+          unsigned char *bytes = (unsigned char *)&value;
+  #if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+          if (is_unsigned) {
+              return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+          } else {
+              return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+          }
+  #elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+          int one = 1; int little = (int)*(unsigned char *)&one;
+          return _PyLong_FromByteArray(bytes, sizeof(int),
+                                       little, !is_unsigned);
+  #else
+          int one = 1; int little = (int)*(unsigned char *)&one;
+          PyObject *from_bytes, *result = NULL, *kwds = NULL;
+          PyObject *py_bytes = NULL, *order_str = NULL;
+          from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+          if (!from_bytes) return NULL;
+          py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
+          if (!py_bytes) goto limited_bad;
+          order_str = PyUnicode_FromString(little ? "little" : "big");
+          if (!order_str) goto limited_bad;
+          {
+              PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
+              if (!is_unsigned) {
+                  kwds = __Pyx_MakeVectorcallBuilderKwds(1);
+                  if (!kwds) goto limited_bad;
+                  if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
+              }
+              result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
+          }
+          limited_bad:
+          Py_XDECREF(kwds);
+          Py_XDECREF(order_str);
+          Py_XDECREF(py_bytes);
+          Py_XDECREF(from_bytes);
+          return result;
+  #endif
+      }
   }
   
 /* CIntToPy */

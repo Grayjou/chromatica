@@ -1,7 +1,7 @@
 """
 Hue interpolation utilities (deprecated, uses Cython backend).
 
-This module is deprecated. Use chromatica.gradients.v2core.core directly instead.
+This module is deprecated. Use chromatica.v2core.core directly instead.
 """
 
 import warnings
@@ -10,7 +10,7 @@ from numpy import ndarray as NDArray
 from typing import Optional
 
 # Import from the new Cython backend
-from ..gradients.v2core.core import hue_lerp, HueMode
+from ..v2core.core import hue_lerp, HueMode
 
 
 def _convert_direction_to_mode(direction: Optional[str]) -> HueMode:
@@ -36,7 +36,7 @@ def interpolate_hue(
     """
     Interpolate hue values with wrapping support.
     
-    Deprecated: Use chromatica.gradients.v2core.core.hue_lerp instead.
+    Deprecated: Use chromatica.v2core.core.hue_lerp instead.
     
     Args:
         h0: Start hue(s) in degrees [0, 360)
@@ -48,7 +48,7 @@ def interpolate_hue(
         Interpolated hue values in [0, 360)
     """
     warnings.warn(
-        "interpolate_hue is deprecated. Use chromatica.gradients.v2core.core.hue_lerp instead.",
+        "interpolate_hue is deprecated. Use chromatica.v2core.core.hue_lerp instead.",
         DeprecationWarning,
         stacklevel=2
     )
@@ -87,7 +87,7 @@ def interpolate_hue_line(
     """
     Interpolate a hue line between two endpoints using a parameter array.
     
-    Deprecated: Use chromatica.gradients.v2core.core.hue_lerp instead.
+    Deprecated: Use chromatica.v2core.core.hue_lerp instead.
 
     Args:
         start: Start hue value
@@ -99,7 +99,7 @@ def interpolate_hue_line(
         NDArray of interpolated hue values
     """
     warnings.warn(
-        "interpolate_hue_line is deprecated. Use chromatica.gradients.v2core.core.hue_lerp instead.",
+        "interpolate_hue_line is deprecated. Use chromatica.v2core.core.hue_lerp instead.",
         DeprecationWarning,
         stacklevel=2
     )

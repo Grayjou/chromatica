@@ -5,8 +5,8 @@ Helper utilities for gradient1dv2 operations.
 from .interpolation import (
     interpolate_transformed_non_hue,
     interpolate_transformed_hue_space,
-    transform_non_hue_channels,
-    transform_hue_space,
+    transform_1dchannels,
+
 )
 
 from .segment_utils import (
@@ -24,8 +24,8 @@ __all__ = [
     # Interpolation
     'interpolate_transformed_non_hue',
     'interpolate_transformed_hue_space',
-    'transform_non_hue_channels',
-    'transform_hue_space',
+    'transform_1dchannels',
+
     
     # Segment utilities
     'get_segment_lengths',

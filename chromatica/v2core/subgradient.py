@@ -5,7 +5,7 @@ Base classes for gradient segments and cells.
 from abc import ABC, abstractmethod
 from typing import Optional
 import numpy as np
-from ...types.color_types import ColorSpace
+from ..types.color_types import ColorSpace
 
 
 class SubGradient(ABC):
@@ -63,5 +63,8 @@ class SubGradient(ABC):
         """
         pass
 
+    def invalidate_cache(self):
+        """Invalidate the cached value, forcing recomputation on next access."""
+        self._value = None
 
 __all__ = ['SubGradient']

@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Literal, Tuple, Union
 import numpy as np
 from numpy import ndarray
+from enum import IntEnum
 
 Scalar = int | float
 IntVector = Tuple[int, ...]
@@ -40,3 +41,17 @@ def is_hue_space(color_space: ColorSpace) -> bool:
         True if hue-based, False otherwise
     """
     return color_space.lower() in HUE_SPACES
+
+class HueMode(IntEnum):
+    """
+    Hue interpolation modes for cyclical color space.
+    
+    CW:       Clockwise (increasing hue direction)
+    CCW:      Counterclockwise (decreasing hue direction)
+    SHORTEST: Shortest path (≤180° arc) - most common
+    LONGEST:  Longest path (≥180° arc)
+    """
+    CW = 0
+    CCW = 1
+    SHORTEST = 2
+    LONGEST = 3

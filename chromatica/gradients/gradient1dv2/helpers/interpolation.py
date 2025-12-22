@@ -7,7 +7,7 @@ import numpy as np
 
 from ....types.color_types import ColorSpace, is_hue_space
 from boundednumbers import BoundType
-from ...v2core import multival1d_lerp
+from ....v2core import multival1d_lerp
 
 
 def interpolate_transformed_non_hue(
@@ -66,7 +66,7 @@ def interpolate_transformed_hue_space(
     return np.column_stack((hue, rest))
 
 
-def transform_non_hue_channels(
+def transform_1dchannels(
     local_us: List[np.ndarray],
     per_channel_transforms: Optional[dict],
     indices: range,
@@ -91,41 +91,10 @@ def transform_non_hue_channels(
         return local_us
 
 
-def transform_hue_space(
-    local_us: List[np.ndarray],
-    per_channel_transforms: Optional[dict],
-    num_channels: int = 3,
-) -> np.ndarray:
-    """
-    Apply per-channel transform to hue channel and non-hue channels.
-    
-    Args:
-        local_us: List of interpolation parameters for each channel
-        per_channel_transforms: Dictionary mapping channel index to transform function
-        num_channels: Number of color channels
-        
-    Returns:
-        Stacked transformed interpolation parameters
-    """
-    if not per_channel_transforms:
-        return np.column_stack(local_us)
-    
-    hue_transform = per_channel_transforms.get(0) if per_channel_transforms else None
-    rest_transformed = transform_non_hue_channels(
-        local_us[1:], per_channel_transforms, range(1, num_channels)
-    )
-    
-    if hue_transform:
-        hue_transformed = hue_transform(local_us[0])
-    else:
-        hue_transformed = local_us[0]
-    
-    return np.column_stack((hue_transformed, *rest_transformed))
-
 
 __all__ = [
     'interpolate_transformed_non_hue',
     'interpolate_transformed_hue_space',
-    'transform_non_hue_channels',
-    'transform_hue_space',
+    'transform_1dchannels',
+
 ]

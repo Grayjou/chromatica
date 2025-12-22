@@ -7,8 +7,8 @@ This module re-exports from the helpers subpackage for backward compatibility.
 from .helpers import (
     interpolate_transformed_non_hue,
     interpolate_transformed_hue_space,
-    transform_non_hue_channels,
-    transform_hue_space,
+    transform_1dchannels,
+
     get_segment_lengths,
     get_segment_indices,
     merge_endpoint_scaled_u,
@@ -22,8 +22,8 @@ from .helpers import (
 __all__ = [
     'interpolate_transformed_non_hue',
     'interpolate_transformed_hue_space',
-    'transform_non_hue_channels',
-    'transform_hue_space',
+    'transform_1dchannels',
+
     'get_segment_lengths',
     'get_segment_indices',
     'merge_endpoint_scaled_u',
