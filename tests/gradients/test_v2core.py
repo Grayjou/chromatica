@@ -1,4 +1,4 @@
-from ...chromatica.gradients.v2core import multival1d_lerp
+from ...chromatica.v2core import multival1d_lerp
 import numpy as np
 from boundednumbers import BoundType
 
@@ -83,7 +83,7 @@ def test_4len_lerp():
 
     assert np.allclose(result, expected)
 
-from ...chromatica.gradients.v2core import single_channel_multidim_lerp
+from ...chromatica.v2core import single_channel_multidim_lerp
 
 def test_1d_multidim_lerp_equivalent():
     start = np.array([0.0])

@@ -4,7 +4,7 @@ Tests for core2d.py wrapper functions.
 
 import pytest
 import numpy as np
-from ...chromatica.gradients.v2core.core2d import (
+from ...chromatica.v2core.core2d import (
     sample_between_lines_continuous,
     sample_between_lines_discrete,
     sample_hue_between_lines_continuous,
@@ -12,7 +12,7 @@ from ...chromatica.gradients.v2core.core2d import (
     multival2d_lerp_between_lines_continuous,
     multival2d_lerp_between_lines_discrete,
 )
-from ...chromatica.gradients.v2core.core import HueMode
+from ...chromatica.v2core.core import HueMode
 from boundednumbers import BoundType
 from unitfield import upbm_2d
 
@@ -53,6 +53,47 @@ def test_sample_between_lines_discrete():
     assert result[0, 0] >= 0 and result[0, 0] <= 1
     assert result[-1, -1] >= 0 and result[-1, -1] <= 1
 
+def test_between_lines_discrete_multichannel():
+    """Test discrete line interpolation for multi-channel data."""
+    L = 10
+    num_channels = 3
+    
+    # Create RGB gradient lines
+    starts_lines = [np.linspace(0, 1, L) for _ in range(num_channels)]
+    ends_lines = [np.linspace(1, 0, L) for _ in range(num_channels)]
+    
+    H, W = 5, 10
+    coords = [upbm_2d(width=W, height=H) for _ in range(num_channels)]
+    
+    result = multival2d_lerp_between_lines_discrete(
+        starts_lines, ends_lines, coords,
+        bound_types=BoundType.CLAMP
+    )
+    
+    assert result.shape == (H, W, num_channels)
+    # Check all values are in [0, 1] range due to clamping
+    assert np.all((result >= 0) & (result <= 1))
+
+def test_between_lines_continuous_multichannel():
+    """Test continuous line interpolation for multi-channel data."""
+    L = 10
+    num_channels = 3
+    
+    # Create RGB gradient lines
+    starts_lines = [np.linspace(0, 1, L) for _ in range(num_channels)]
+    ends_lines = [np.linspace(1, 0, L) for _ in range(num_channels)]
+    
+    H, W = 5, 10
+    coords = [upbm_2d(width=W, height=H) for _ in range(num_channels)]
+    
+    result = multival2d_lerp_between_lines_continuous(
+        starts_lines, ends_lines, coords,
+        bound_types=BoundType.CLAMP
+    )
+    
+    assert result.shape == (H, W, num_channels)
+    # Check all values are in [0, 1] range due to clamping
+    assert np.all((result >= 0) & (result <= 1))
 
 def test_sample_hue_between_lines_continuous():
     """Test continuous hue line interpolation."""
@@ -140,13 +181,16 @@ def test_multival2d_lerp_between_lines_discrete():
 def test_bound_type_support():
     """Test that BoundType parameter works correctly."""
     L = 10
-    line0 = np.linspace(-0.5, 1.5, L)  # Values outside [0, 1]
-    line1 = np.linspace(1.5, -0.5, L)
+    line0 = np.linspace(0, 1, L)  # Values outside [0, 1]
+    line1 = np.linspace(1, 0, L)
     
     H, W = 5, 10
     coords = upbm_2d(width=W, height=H)
-    
+    x_values = coords[:, :, 0] - 0.5  # Shift x coords to go outside [0, 1]
+    y_values = coords[:, :, 1] + 0.5  # Shift y coords to go outside [0, 1]
+    coords = np.stack((x_values, y_values), axis=-1)
     # With CLAMP, should be bounded to [0, 1]
+
     result_clamp = sample_between_lines_continuous(
         line0, line1, coords,
         bound_type=BoundType.CLAMP
@@ -158,9 +202,7 @@ def test_bound_type_support():
         line0, line1, coords,
         bound_type=BoundType.IGNORE
     )
-    # Should have some values outside [0, 1]
-    # (Actually depends on interpolation, but let's just check it runs)
-    assert result_ignore.shape == (H, W)
+    assert np.any(result_ignore < 0) or np.any(result_ignore > 1)
 
 
 if __name__ == '__main__':

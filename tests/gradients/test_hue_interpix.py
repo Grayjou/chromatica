@@ -1,11 +1,11 @@
-from ...chromatica.gradients.v2core.interp_hue import (
+from ...chromatica.v2core.interp_hue import (
     hue_lerp_simple, 
     hue_lerp_arrays, 
     hue_lerp_between_lines, 
     hue_lerp_between_lines_x_discrete, 
     hue_multidim_lerp,
     hue_lerp_2d_spatial,)
-from ...chromatica.gradients.v2core.core import HueMode
+from ...chromatica.v2core.core import HueMode
 import numpy as np
 from unitfield import upbm_2d, unit_positional_basematrix_ndim
 import pytest
