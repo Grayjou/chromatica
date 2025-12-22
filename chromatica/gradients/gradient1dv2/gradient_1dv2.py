@@ -227,7 +227,6 @@ class Gradient1D(_Gradient1DInterpolator):
             offset=offset,
             global_unit_transform=global_unit_transform,
         )
-        print("u_scaled:", u_scaled)
         result = cls._interpolate_all_segments_scaled_u(
             colors=colors, u_scaled=u_scaled, num_segments=num_segments,
             total_steps=actual_total_steps, input_color_spaces=input_color_spaces,
@@ -236,7 +235,6 @@ class Gradient1D(_Gradient1DInterpolator):
             per_channel_transforms=per_channel_transforms, bound_type=bound_type,
             method=method
         )
-        print("Result shape:", result.shape, result)
         if output_color_space is None:
             output_color_space = most_common_element(color_spaces)
         
