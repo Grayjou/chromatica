@@ -198,7 +198,6 @@ def get_transformed_segment(
         value=value,
     )    
     
-#Let's make a get_transformed_segment function
 
 class TransformedGradientSegment(SegmentBase):
     __slots__ = ('start_color', 'end_color', 'local_us', 'color_space', '_value', 'hue_direction', 'bound_types')
