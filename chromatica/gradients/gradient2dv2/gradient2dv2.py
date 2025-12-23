@@ -20,4 +20,4 @@ class Gradient2D(Color2DArr):
         unit_transform_y: Optional[UnitTransform] = None,
         hue_direction: HueDirection = "shortest"
         perpendicular_
-        )
+        )    

@@ -33,17 +33,10 @@ BORDER_OVERFLOW = 4
 # Helper Functions
 # =============================================================================
 cdef inline f64 tri2(f64 x) nogil:
-    """
-    Triangle wave function for mirror repeat.
-    Returns value in [0, 1] that mirrors back and forth.
-    
-    Args:
-        x: Input value
-        
-    Returns:
-        Mirrored value in [0, 1]
-    """
-    return 1.0 - fabs(fmod(x, 2.0) - 1.0)
+    cdef f64 m = fmod(x, 2.0)
+    if m < 0:
+        m += 2.0
+    return 1.0 - fabs(m - 1.0)
 
 
 cdef inline f64 clamp(f64 value, f64 min_val, f64 max_val) nogil:
