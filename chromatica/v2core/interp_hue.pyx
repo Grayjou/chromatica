@@ -17,7 +17,7 @@ from libc.string cimport memcpy
 from libc.stdlib cimport malloc, free
 
 # Import border handling
-from ..border_handling cimport (
+from .border_handling cimport (
     handle_border_lines_2d,
     BORDER_REPEAT,
     BORDER_MIRROR,
