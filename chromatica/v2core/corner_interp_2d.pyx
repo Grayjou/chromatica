@@ -4,7 +4,7 @@
 import numpy as np
 cimport numpy as np
 from libc.math cimport floor, fmod, fabs
-from ..border_handling cimport (
+from .border_handling cimport (
     BORDER_REPEAT,
     BORDER_MIRROR,
     BORDER_CONSTANT,

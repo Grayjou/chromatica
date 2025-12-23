@@ -27,7 +27,7 @@ from .core import (
 
 # Import 2D interpolation functions from interp_2d
 try:
-    from .interpolation.interp_2d import (
+    from .interp_2d import (
         lerp_between_lines,
         lerp_between_planes,
     )
