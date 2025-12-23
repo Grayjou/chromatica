@@ -451,7 +451,24 @@ class CornersCellDual(CellBase):
         self.invalidate_cache()
     @property
     def top_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
-        """Extract x-coordinates from top row for horizontal segment interpolation."""
+        """
+        Extract x-coordinates from top row for horizontal segment interpolation.
+        
+        For a 2D cell with coordinates of shape (height, width, 2), where the last
+        dimension contains [x, y] coordinates, this property extracts only the
+        x-coordinates from the top row (index 0).
+        
+        Returns:
+            If per_channel_coords is a list: List of 1D arrays, each of shape (width,)
+            If per_channel_coords is an array: 1D array of shape (width,)
+            
+        Note:
+            This method assumes per_channel_coords has the expected shape:
+            - List[np.ndarray]: Each element has shape (height, width, 2)
+            - np.ndarray: Shape is (height, width, 2)
+            The extraction uses indexing [0, :, 0] which means:
+            - [0, :, 0]: First row (top), all columns, first coordinate (x)
+        """
         if isinstance(self.per_channel_coords, list):
             # Extract x-coordinates (first element of coordinate pair) from top row
             return [pc[0, :, 0] for pc in self.per_channel_coords]
@@ -460,7 +477,24 @@ class CornersCellDual(CellBase):
             return self.per_channel_coords[0, :, 0]
     @property
     def bottom_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
-        """Extract x-coordinates from bottom row for horizontal segment interpolation."""
+        """
+        Extract x-coordinates from bottom row for horizontal segment interpolation.
+        
+        For a 2D cell with coordinates of shape (height, width, 2), where the last
+        dimension contains [x, y] coordinates, this property extracts only the
+        x-coordinates from the bottom row (index -1).
+        
+        Returns:
+            If per_channel_coords is a list: List of 1D arrays, each of shape (width,)
+            If per_channel_coords is an array: 1D array of shape (width,)
+            
+        Note:
+            This method assumes per_channel_coords has the expected shape:
+            - List[np.ndarray]: Each element has shape (height, width, 2)
+            - np.ndarray: Shape is (height, width, 2)
+            The extraction uses indexing [-1, :, 0] which means:
+            - [-1, :, 0]: Last row (bottom), all columns, first coordinate (x)
+        """
         if isinstance(self.per_channel_coords, list):
             # Extract x-coordinates (first element of coordinate pair) from bottom row
             return [pc[-1, :, 0] for pc in self.per_channel_coords]
