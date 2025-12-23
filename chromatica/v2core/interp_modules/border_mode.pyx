@@ -1,6 +1,6 @@
 
 
-BORDER_REPEAT = 0 # Module repeat
+BORDER_REPEAT = 0 # Modulo repeat
 BORDER_MIRROR = 1 # Mirror repeat
 BORDER_CONSTANT = 2 # Constant color fill
 BORDER_CLAMP = 3 # Clamp to edge
