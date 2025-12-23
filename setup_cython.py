@@ -42,6 +42,12 @@ extensions = [
         include_dirs=[np.get_include()],
         extra_compile_args=['-O3'],
     ),
+    Extension(
+        "chromatica.v2core.corner_interp_2d",
+        [os.path.join(V2CORE_DIR, "corner_interp_2d.pyx")],
+        include_dirs=[np.get_include()],
+        extra_compile_args=['-O3'],
+    ),
 ]
 
 # Compiler directives for Cython
@@ -75,4 +81,5 @@ print("  from chromatica.v2core import border_handling")
 print("  from chromatica.v2core import interp")
 print("  from chromatica.v2core import interp_2d")
 print("  from chromatica.v2core import interp_hue")
+print("  from chromatica.v2core import corner_interp_2d")
 print("=" * 70)

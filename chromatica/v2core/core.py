@@ -108,7 +108,7 @@ def _apply_bound(arr: np.ndarray, bound_type: BoundType) -> np.ndarray:
 def apply_bounds(arr: np.ndarray | List[np.ndarray], bound_types: BoundTypeSequence) -> np.ndarray | List[np.ndarray]:
     """Apply bounding to array(s) based on bound_types."""
     if isinstance(arr, list):
-        return [apply_bounds(a, bound_types[i] if i < len(bound_types) else BoundType.CLAMP)
+        return [apply_bounds(a, [bound_types[i] if i < len(bound_types) else BoundType.CLAMP])
                 for i, a in enumerate(arr)]
     else:
         if len(bound_types) == 1:

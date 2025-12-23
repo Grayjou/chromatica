@@ -1524,12 +1524,12 @@ static const char* const __pyx_f[] = {
 
 /* #### Code section: numeric_typedefs ### */
 
-/* "chromatica/v2core/border_handling.pyx":12
- * from libc.math cimport fmod, fabs
+/* "chromatica/v2core/border_handling.pxd":3
+ * # border_handling.pxd
  * 
  * ctypedef double f64             # <<<<<<<<<<<<<<
  * 
- * # =============================================================================
+ * # Exported border mode constants (C-level)
 */
 typedef double __pyx_t_10chromatica_6v2core_15border_handling_f64;
 /* #### Code section: complex_type_declarations ### */
@@ -1812,109 +1812,14 @@ static CYTHON_INLINE int __Pyx_ParseKeywords(
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
-/* PyErrExceptionMatches.proto (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
-#else
-#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
-#endif
+/* VoidPtrExport.proto */
+static int __Pyx_ExportVoidPtr(PyObject *api_dict, const char *name, void *p, const char *sig);
 
-/* PyThreadStateGet.proto (used by PyErrFetchRestore) */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
-#define __Pyx_PyThreadState_assign  __pyx_tstate = __Pyx_PyThreadState_Current;
-#if PY_VERSION_HEX >= 0x030C00A6
-#define __Pyx_PyErr_Occurred()  (__pyx_tstate->current_exception != NULL)
-#define __Pyx_PyErr_CurrentExceptionType()  (__pyx_tstate->current_exception ? (PyObject*) Py_TYPE(__pyx_tstate->current_exception) : (PyObject*) NULL)
-#else
-#define __Pyx_PyErr_Occurred()  (__pyx_tstate->curexc_type != NULL)
-#define __Pyx_PyErr_CurrentExceptionType()  (__pyx_tstate->curexc_type)
-#endif
-#else
-#define __Pyx_PyThreadState_declare
-#define __Pyx_PyThreadState_assign
-#define __Pyx_PyErr_Occurred()  (PyErr_Occurred() != NULL)
-#define __Pyx_PyErr_CurrentExceptionType()  PyErr_Occurred()
-#endif
+/* GetApiDict.proto */
+static PyObject *__Pyx_ApiExport_GetApiDict(void);
 
-/* PyErrFetchRestore.proto (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
-#define __Pyx_ErrRestoreWithState(type, value, tb)  __Pyx_ErrRestoreInState(PyThreadState_GET(), type, value, tb)
-#define __Pyx_ErrFetchWithState(type, value, tb)    __Pyx_ErrFetchInState(PyThreadState_GET(), type, value, tb)
-#define __Pyx_ErrRestore(type, value, tb)  __Pyx_ErrRestoreInState(__pyx_tstate, type, value, tb)
-#define __Pyx_ErrFetch(type, value, tb)    __Pyx_ErrFetchInState(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A6
-#define __Pyx_PyErr_SetNone(exc) (Py_INCREF(exc), __Pyx_ErrRestore((exc), NULL, NULL))
-#else
-#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
-#endif
-#else
-#define __Pyx_PyErr_Clear() PyErr_Clear()
-#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
-#define __Pyx_ErrRestoreWithState(type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetchWithState(type, value, tb)  PyErr_Fetch(type, value, tb)
-#define __Pyx_ErrRestoreInState(tstate, type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetchInState(tstate, type, value, tb)  PyErr_Fetch(type, value, tb)
-#define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
-#endif
-
-/* PyObjectGetAttrStrNoError.proto (used by GetBuiltinName) */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
-
-/* GetBuiltinName.proto (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name);
-
-/* PyDictVersioning.proto (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
-#else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
-
-/* GetModuleGlobalName.proto */
-#if CYTHON_USE_DICT_VERSIONS
-#define __Pyx_GetModuleGlobalName(var, name)  do {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_mstate_global->__pyx_d))) ?\
-        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
-        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
-    PY_UINT64_T __pyx_dict_version;\
-    PyObject *__pyx_dict_cached_value;\
-    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
-#else
-#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
-#endif
+/* FunctionExport.proto */
+static int __Pyx_ExportFunction(PyObject *api_dict, const char *name, void (*f)(void), const char *sig);
 
 /* dict_setdefault.proto (used by FetchCommonType) */
 static CYTHON_INLINE PyObject *__Pyx_PyDict_SetDefault(PyObject *d, PyObject *key, PyObject *default_value);
@@ -2061,6 +1966,86 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml,
                                       PyObject *module, PyObject *globals,
                                       PyObject* code);
 
+/* PyDictVersioning.proto (used by CLineInTraceback) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* PyErrExceptionMatches.proto (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
+/* PyThreadStateGet.proto (used by PyErrFetchRestore) */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
+#define __Pyx_PyThreadState_assign  __pyx_tstate = __Pyx_PyThreadState_Current;
+#if PY_VERSION_HEX >= 0x030C00A6
+#define __Pyx_PyErr_Occurred()  (__pyx_tstate->current_exception != NULL)
+#define __Pyx_PyErr_CurrentExceptionType()  (__pyx_tstate->current_exception ? (PyObject*) Py_TYPE(__pyx_tstate->current_exception) : (PyObject*) NULL)
+#else
+#define __Pyx_PyErr_Occurred()  (__pyx_tstate->curexc_type != NULL)
+#define __Pyx_PyErr_CurrentExceptionType()  (__pyx_tstate->curexc_type)
+#endif
+#else
+#define __Pyx_PyThreadState_declare
+#define __Pyx_PyThreadState_assign
+#define __Pyx_PyErr_Occurred()  (PyErr_Occurred() != NULL)
+#define __Pyx_PyErr_CurrentExceptionType()  PyErr_Occurred()
+#endif
+
+/* PyErrFetchRestore.proto (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
+#define __Pyx_ErrRestoreWithState(type, value, tb)  __Pyx_ErrRestoreInState(PyThreadState_GET(), type, value, tb)
+#define __Pyx_ErrFetchWithState(type, value, tb)    __Pyx_ErrFetchInState(PyThreadState_GET(), type, value, tb)
+#define __Pyx_ErrRestore(type, value, tb)  __Pyx_ErrRestoreInState(__pyx_tstate, type, value, tb)
+#define __Pyx_ErrFetch(type, value, tb)    __Pyx_ErrFetchInState(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
+static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A6
+#define __Pyx_PyErr_SetNone(exc) (Py_INCREF(exc), __Pyx_ErrRestore((exc), NULL, NULL))
+#else
+#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
+#endif
+#else
+#define __Pyx_PyErr_Clear() PyErr_Clear()
+#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
+#define __Pyx_ErrRestoreWithState(type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetchWithState(type, value, tb)  PyErr_Fetch(type, value, tb)
+#define __Pyx_ErrRestoreInState(tstate, type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetchInState(tstate, type, value, tb)  PyErr_Fetch(type, value, tb)
+#define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
+#endif
+
+/* PyObjectGetAttrStrNoError.proto (used by CLineInTraceback) */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
+
 /* CLineInTraceback.proto (used by AddTraceback) */
 #if CYTHON_CLINE_IN_TRACEBACK && CYTHON_CLINE_IN_TRACEBACK_RUNTIME
 static int __Pyx_CLineForTraceback(PyThreadState *tstate, int c_line);
@@ -2102,6 +2087,23 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
 
+/* FormatTypeName.proto */
+#if CYTHON_COMPILING_IN_LIMITED_API
+typedef PyObject *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%U"
+#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
+#else
+static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
+#endif
+#else  // !LIMITED_API
+typedef const char *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%.200s"
+#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
+#define __Pyx_DECREF_TypeName(obj)
+#endif
+
 /* PyObjectVectorCallKwBuilder.proto (used by CIntToPy) */
 CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
 #if CYTHON_VECTORCALL
@@ -2118,26 +2120,6 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
 #define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
-#endif
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
-
-/* FormatTypeName.proto */
-#if CYTHON_COMPILING_IN_LIMITED_API
-typedef PyObject *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%U"
-#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
-#else
-static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
-#endif
-#else  // !LIMITED_API
-typedef const char *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%.200s"
-#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
-#define __Pyx_DECREF_TypeName(obj)
 #endif
 
 /* CIntToPy.proto */
@@ -2236,11 +2218,18 @@ static int __Pyx_State_RemoveModule(void*);
 /* Module declarations from "libc.math" */
 
 /* Module declarations from "chromatica.v2core.border_handling" */
+static int __pyx_v_10chromatica_6v2core_15border_handling_BORDER_REPEAT;
+static int __pyx_v_10chromatica_6v2core_15border_handling_BORDER_MIRROR;
+static int __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CONSTANT;
+static int __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CLAMP;
+static int __pyx_v_10chromatica_6v2core_15border_handling_BORDER_OVERFLOW;
 static int __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT;
 static int __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR;
 static int __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CONSTANT;
 static int __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP;
 static int __pyx_v_10chromatica_6v2core_15border_handling__BORDER_OVERFLOW;
+static PyObject *__pyx_f_10chromatica_6v2core_15border_handling_handle_border_edges_2d(__pyx_t_10chromatica_6v2core_15border_handling_f64, __pyx_t_10chromatica_6v2core_15border_handling_f64, int, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_10chromatica_6v2core_15border_handling_handle_border_lines_2d(__pyx_t_10chromatica_6v2core_15border_handling_f64, __pyx_t_10chromatica_6v2core_15border_handling_f64, int, int __pyx_skip_dispatch); /*proto*/
 static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_t_10chromatica_6v2core_15border_handling_f64); /*proto*/
 static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_t_10chromatica_6v2core_15border_handling_f64, __pyx_t_10chromatica_6v2core_15border_handling_f64, __pyx_t_10chromatica_6v2core_15border_handling_f64); /*proto*/
 /* #### Code section: typeinfo ### */
@@ -2280,8 +2269,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_codeobj_tab[2];
-  PyObject *__pyx_string_tab[34];
-  PyObject *__pyx_number_tab[5];
+  PyObject *__pyx_string_tab[28];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
 PyTypeObject *__pyx_CommonTypesMetaclassType;
@@ -2324,43 +2312,32 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 /* #### Code section: constant_name_defines ### */
 #define __pyx_kp_u_ __pyx_string_tab[0]
 #define __pyx_kp_u_chromatica_v2core_border_handlin_2 __pyx_string_tab[1]
-#define __pyx_n_u_BORDER_CLAMP __pyx_string_tab[2]
-#define __pyx_n_u_BORDER_CONSTANT __pyx_string_tab[3]
-#define __pyx_n_u_BORDER_MIRROR __pyx_string_tab[4]
-#define __pyx_n_u_BORDER_OVERFLOW __pyx_string_tab[5]
-#define __pyx_n_u_BORDER_REPEAT __pyx_string_tab[6]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[7]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[8]
-#define __pyx_n_u_border_mode __pyx_string_tab[9]
-#define __pyx_n_u_chromatica_v2core_border_handlin __pyx_string_tab[10]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[11]
-#define __pyx_n_u_effective_mode __pyx_string_tab[12]
-#define __pyx_n_u_func __pyx_string_tab[13]
-#define __pyx_n_u_handle_border_edges_2d __pyx_string_tab[14]
-#define __pyx_n_u_handle_border_lines_2d __pyx_string_tab[15]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[16]
-#define __pyx_n_u_items __pyx_string_tab[17]
-#define __pyx_n_u_main __pyx_string_tab[18]
-#define __pyx_n_u_module __pyx_string_tab[19]
-#define __pyx_n_u_name __pyx_string_tab[20]
-#define __pyx_n_u_new_x __pyx_string_tab[21]
-#define __pyx_n_u_new_y __pyx_string_tab[22]
-#define __pyx_n_u_out_of_bounds __pyx_string_tab[23]
-#define __pyx_n_u_pop __pyx_string_tab[24]
-#define __pyx_n_u_qualname __pyx_string_tab[25]
-#define __pyx_n_u_set_name __pyx_string_tab[26]
-#define __pyx_n_u_setdefault __pyx_string_tab[27]
-#define __pyx_n_u_test __pyx_string_tab[28]
-#define __pyx_n_u_values __pyx_string_tab[29]
-#define __pyx_n_u_x __pyx_string_tab[30]
-#define __pyx_n_u_y __pyx_string_tab[31]
-#define __pyx_kp_b_iso88591_0_Q_Q_a_r_4s_Bd_Rr_S_A_3a_1_1_1 __pyx_string_tab[32]
-#define __pyx_kp_b_iso88591_Q_Q_a_a_r_4s_Bd_Rr_S_A_3a_1_1_1 __pyx_string_tab[33]
-#define __pyx_int_0 __pyx_number_tab[0]
-#define __pyx_int_1 __pyx_number_tab[1]
-#define __pyx_int_2 __pyx_number_tab[2]
-#define __pyx_int_3 __pyx_number_tab[3]
-#define __pyx_int_4 __pyx_number_tab[4]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[2]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[3]
+#define __pyx_n_u_border_mode __pyx_string_tab[4]
+#define __pyx_n_u_chromatica_v2core_border_handlin __pyx_string_tab[5]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[6]
+#define __pyx_n_u_func __pyx_string_tab[7]
+#define __pyx_n_u_handle_border_edges_2d __pyx_string_tab[8]
+#define __pyx_n_u_handle_border_lines_2d __pyx_string_tab[9]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[10]
+#define __pyx_n_u_items __pyx_string_tab[11]
+#define __pyx_n_u_main __pyx_string_tab[12]
+#define __pyx_n_u_module __pyx_string_tab[13]
+#define __pyx_n_u_name __pyx_string_tab[14]
+#define __pyx_n_u_pop __pyx_string_tab[15]
+#define __pyx_n_u_pyx_capi __pyx_string_tab[16]
+#define __pyx_n_u_qualname __pyx_string_tab[17]
+#define __pyx_n_u_set_name __pyx_string_tab[18]
+#define __pyx_n_u_setdefault __pyx_string_tab[19]
+#define __pyx_n_u_test __pyx_string_tab[20]
+#define __pyx_n_u_values __pyx_string_tab[21]
+#define __pyx_n_u_x __pyx_string_tab[22]
+#define __pyx_n_u_y __pyx_string_tab[23]
+#define __pyx_kp_b_PyObject___pyx_t_10chromatica_6v __pyx_string_tab[24]
+#define __pyx_kp_b_int_BORDER_CLAMP_BORDER_CONSTANT __pyx_string_tab[25]
+#define __pyx_kp_b_iso88591_0_Q_Q_a_r_4s_Bd_Rr_S_A_3a_1_1_1 __pyx_string_tab[26]
+#define __pyx_kp_b_iso88591_Q_Q_a_r_4s_Bd_Rr_S_A_3a_1_1_1_3 __pyx_string_tab[27]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2376,8 +2353,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   __Pyx_State_RemoveModule(NULL);
   #endif
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<34; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
-  for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
+  for (int i=0; i<28; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
 Py_CLEAR(clear_module_state->__pyx_CommonTypesMetaclassType);
@@ -2401,8 +2377,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<34; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
-  for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
+  for (int i=0; i<28; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
 Py_VISIT(traverse_module_state->__pyx_CommonTypesMetaclassType);
@@ -2416,33 +2391,72 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "chromatica/v2core/border_handling.pyx":35
+/* "chromatica/v2core/border_handling.pyx":37
  * # Helper Functions
  * # =============================================================================
  * cdef inline f64 tri2(f64 x) nogil:             # <<<<<<<<<<<<<<
- *     """
- *     Triangle wave function for mirror repeat.
+ *     cdef f64 m = fmod(x, 2.0)
+ *     if m < 0:
 */
 
 static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_x) {
+  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_m;
   __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_r;
+  int __pyx_t_1;
 
-  /* "chromatica/v2core/border_handling.pyx":46
- *         Mirrored value in [0, 1]
- *     """
- *     return 1.0 - fabs(fmod(x, 2.0) - 1.0)             # <<<<<<<<<<<<<<
+  /* "chromatica/v2core/border_handling.pyx":38
+ * # =============================================================================
+ * cdef inline f64 tri2(f64 x) nogil:
+ *     cdef f64 m = fmod(x, 2.0)             # <<<<<<<<<<<<<<
+ *     if m < 0:
+ *         m += 2.0
+*/
+  __pyx_v_m = fmod(__pyx_v_x, 2.0);
+
+  /* "chromatica/v2core/border_handling.pyx":39
+ * cdef inline f64 tri2(f64 x) nogil:
+ *     cdef f64 m = fmod(x, 2.0)
+ *     if m < 0:             # <<<<<<<<<<<<<<
+ *         m += 2.0
+ *     return 1.0 - fabs(m - 1.0)
+*/
+  __pyx_t_1 = (__pyx_v_m < 0.0);
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":40
+ *     cdef f64 m = fmod(x, 2.0)
+ *     if m < 0:
+ *         m += 2.0             # <<<<<<<<<<<<<<
+ *     return 1.0 - fabs(m - 1.0)
+ * 
+*/
+    __pyx_v_m = (__pyx_v_m + 2.0);
+
+    /* "chromatica/v2core/border_handling.pyx":39
+ * cdef inline f64 tri2(f64 x) nogil:
+ *     cdef f64 m = fmod(x, 2.0)
+ *     if m < 0:             # <<<<<<<<<<<<<<
+ *         m += 2.0
+ *     return 1.0 - fabs(m - 1.0)
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":41
+ *     if m < 0:
+ *         m += 2.0
+ *     return 1.0 - fabs(m - 1.0)             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  __pyx_r = (1.0 - fabs((fmod(__pyx_v_x, 2.0) - 1.0)));
+  __pyx_r = (1.0 - fabs((__pyx_v_m - 1.0)));
   goto __pyx_L0;
 
-  /* "chromatica/v2core/border_handling.pyx":35
+  /* "chromatica/v2core/border_handling.pyx":37
  * # Helper Functions
  * # =============================================================================
  * cdef inline f64 tri2(f64 x) nogil:             # <<<<<<<<<<<<<<
- *     """
- *     Triangle wave function for mirror repeat.
+ *     cdef f64 m = fmod(x, 2.0)
+ *     if m < 0:
 */
 
   /* function exit code */
@@ -2450,7 +2464,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
   return __pyx_r;
 }
 
-/* "chromatica/v2core/border_handling.pyx":49
+/* "chromatica/v2core/border_handling.pyx":44
  * 
  * 
  * cdef inline f64 clamp(f64 value, f64 min_val, f64 max_val) nogil:             # <<<<<<<<<<<<<<
@@ -2462,7 +2476,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
   __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_r;
   int __pyx_t_1;
 
-  /* "chromatica/v2core/border_handling.pyx":61
+  /* "chromatica/v2core/border_handling.pyx":56
  *         Clamped value
  *     """
  *     if value < min_val:             # <<<<<<<<<<<<<<
@@ -2472,7 +2486,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
   __pyx_t_1 = (__pyx_v_value < __pyx_v_min_val);
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":62
+    /* "chromatica/v2core/border_handling.pyx":57
  *     """
  *     if value < min_val:
  *         return min_val             # <<<<<<<<<<<<<<
@@ -2482,7 +2496,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
     __pyx_r = __pyx_v_min_val;
     goto __pyx_L0;
 
-    /* "chromatica/v2core/border_handling.pyx":61
+    /* "chromatica/v2core/border_handling.pyx":56
  *         Clamped value
  *     """
  *     if value < min_val:             # <<<<<<<<<<<<<<
@@ -2491,7 +2505,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":63
+  /* "chromatica/v2core/border_handling.pyx":58
  *     if value < min_val:
  *         return min_val
  *     elif value > max_val:             # <<<<<<<<<<<<<<
@@ -2501,7 +2515,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
   __pyx_t_1 = (__pyx_v_value > __pyx_v_max_val);
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":64
+    /* "chromatica/v2core/border_handling.pyx":59
  *         return min_val
  *     elif value > max_val:
  *         return max_val             # <<<<<<<<<<<<<<
@@ -2511,7 +2525,7 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
     __pyx_r = __pyx_v_max_val;
     goto __pyx_L0;
 
-    /* "chromatica/v2core/border_handling.pyx":63
+    /* "chromatica/v2core/border_handling.pyx":58
  *     if value < min_val:
  *         return min_val
  *     elif value > max_val:             # <<<<<<<<<<<<<<
@@ -2520,17 +2534,17 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":65
+  /* "chromatica/v2core/border_handling.pyx":60
  *     elif value > max_val:
  *         return max_val
  *     return value             # <<<<<<<<<<<<<<
  * 
- * 
+ * # =============================================================================
 */
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "chromatica/v2core/border_handling.pyx":49
+  /* "chromatica/v2core/border_handling.pyx":44
  * 
  * 
  * cdef inline f64 clamp(f64 value, f64 min_val, f64 max_val) nogil:             # <<<<<<<<<<<<<<
@@ -2543,13 +2557,584 @@ static CYTHON_INLINE __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_f_
   return __pyx_r;
 }
 
-/* "chromatica/v2core/border_handling.pyx":71
+/* "chromatica/v2core/border_handling.pyx":65
  * # Border Handling Functions
  * # =============================================================================
- * def handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+ * cpdef handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
  *     """
  *     Handle border conditions for 2D edge-based interpolation.
 */
+
+static PyObject *__pyx_pw_10chromatica_6v2core_15border_handling_1handle_border_edges_2d(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_10chromatica_6v2core_15border_handling_handle_border_edges_2d(__pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_x, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_y, int __pyx_v_border_mode, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_x;
+  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_y;
+  int __pyx_v_out_of_bounds;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("handle_border_edges_2d", 0);
+
+  /* "chromatica/v2core/border_handling.pyx":89
+ *         BORDER_OVERFLOW (4): No handling, allows overflow
+ *     """
+ *     cdef f64 new_x = x             # <<<<<<<<<<<<<<
+ *     cdef f64 new_y = y
+ *     cdef bint out_of_bounds = False
+*/
+  __pyx_v_new_x = __pyx_v_x;
+
+  /* "chromatica/v2core/border_handling.pyx":90
+ *     """
+ *     cdef f64 new_x = x
+ *     cdef f64 new_y = y             # <<<<<<<<<<<<<<
+ *     cdef bint out_of_bounds = False
+ * 
+*/
+  __pyx_v_new_y = __pyx_v_y;
+
+  /* "chromatica/v2core/border_handling.pyx":91
+ *     cdef f64 new_x = x
+ *     cdef f64 new_y = y
+ *     cdef bint out_of_bounds = False             # <<<<<<<<<<<<<<
+ * 
+ *     # Check if coordinates are out of bounds
+*/
+  __pyx_v_out_of_bounds = 0;
+
+  /* "chromatica/v2core/border_handling.pyx":94
+ * 
+ *     # Check if coordinates are out of bounds
+ *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
+ *         out_of_bounds = True
+ * 
+*/
+  __pyx_t_2 = (__pyx_v_x < 0.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_x > 1.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_y < 0.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_y > 1.0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":95
+ *     # Check if coordinates are out of bounds
+ *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:
+ *         out_of_bounds = True             # <<<<<<<<<<<<<<
+ * 
+ *     # BORDER_CONSTANT: return None for out of bounds
+*/
+    __pyx_v_out_of_bounds = 1;
+
+    /* "chromatica/v2core/border_handling.pyx":94
+ * 
+ *     # Check if coordinates are out of bounds
+ *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
+ *         out_of_bounds = True
+ * 
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":98
+ * 
+ *     # BORDER_CONSTANT: return None for out of bounds
+ *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
+ *         if out_of_bounds:
+ *             return None
+*/
+  __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CONSTANT);
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":99
+ *     # BORDER_CONSTANT: return None for out of bounds
+ *     if border_mode == BORDER_CONSTANT:
+ *         if out_of_bounds:             # <<<<<<<<<<<<<<
+ *             return None
+ *         return (x, y)
+*/
+    if (__pyx_v_out_of_bounds) {
+
+      /* "chromatica/v2core/border_handling.pyx":100
+ *     if border_mode == BORDER_CONSTANT:
+ *         if out_of_bounds:
+ *             return None             # <<<<<<<<<<<<<<
+ *         return (x, y)
+ * 
+*/
+      __Pyx_XDECREF(__pyx_r);
+      __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+      goto __pyx_L0;
+
+      /* "chromatica/v2core/border_handling.pyx":99
+ *     # BORDER_CONSTANT: return None for out of bounds
+ *     if border_mode == BORDER_CONSTANT:
+ *         if out_of_bounds:             # <<<<<<<<<<<<<<
+ *             return None
+ *         return (x, y)
+*/
+    }
+
+    /* "chromatica/v2core/border_handling.pyx":101
+ *         if out_of_bounds:
+ *             return None
+ *         return (x, y)             # <<<<<<<<<<<<<<
+ * 
+ *     # BORDER_OVERFLOW: no handling
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_3);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 101, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_4);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 101, __pyx_L1_error);
+    __pyx_t_3 = 0;
+    __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
+    goto __pyx_L0;
+
+    /* "chromatica/v2core/border_handling.pyx":98
+ * 
+ *     # BORDER_CONSTANT: return None for out of bounds
+ *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
+ *         if out_of_bounds:
+ *             return None
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":104
+ * 
+ *     # BORDER_OVERFLOW: no handling
+ *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
+ *         return (x, y)
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling_BORDER_OVERFLOW);
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":105
+ *     # BORDER_OVERFLOW: no handling
+ *     if border_mode == BORDER_OVERFLOW:
+ *         return (x, y)             # <<<<<<<<<<<<<<
+ * 
+ *     # Apply border handling to x coordinate
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_5);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 105, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_4);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 105, __pyx_L1_error);
+    __pyx_t_5 = 0;
+    __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
+    goto __pyx_L0;
+
+    /* "chromatica/v2core/border_handling.pyx":104
+ * 
+ *     # BORDER_OVERFLOW: no handling
+ *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
+ *         return (x, y)
+ * 
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":108
+ * 
+ *     # Apply border handling to x coordinate
+ *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_x = fmod(x, 1.0)
+*/
+  __pyx_t_2 = (__pyx_v_x < 0.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L12_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_x > 1.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L12_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L12_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_x == 1.0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L12_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":109
+ *     # Apply border handling to x coordinate
+ *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
+ *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+ *             new_x = fmod(x, 1.0)
+ *             if new_x < 0.0:
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":110
+ *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_x = fmod(x, 1.0)             # <<<<<<<<<<<<<<
+ *             if new_x < 0.0:
+ *                 new_x += 1.0
+*/
+      __pyx_v_new_x = fmod(__pyx_v_x, 1.0);
+
+      /* "chromatica/v2core/border_handling.pyx":111
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_x = fmod(x, 1.0)
+ *             if new_x < 0.0:             # <<<<<<<<<<<<<<
+ *                 new_x += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+*/
+      __pyx_t_1 = (__pyx_v_new_x < 0.0);
+      if (__pyx_t_1) {
+
+        /* "chromatica/v2core/border_handling.pyx":112
+ *             new_x = fmod(x, 1.0)
+ *             if new_x < 0.0:
+ *                 new_x += 1.0             # <<<<<<<<<<<<<<
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_x = tri2(x)
+*/
+        __pyx_v_new_x = (__pyx_v_new_x + 1.0);
+
+        /* "chromatica/v2core/border_handling.pyx":111
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_x = fmod(x, 1.0)
+ *             if new_x < 0.0:             # <<<<<<<<<<<<<<
+ *                 new_x += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+*/
+      }
+
+      /* "chromatica/v2core/border_handling.pyx":109
+ *     # Apply border handling to x coordinate
+ *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
+ *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+ *             new_x = fmod(x, 1.0)
+ *             if new_x < 0.0:
+*/
+      goto __pyx_L16;
+    }
+
+    /* "chromatica/v2core/border_handling.pyx":113
+ *             if new_x < 0.0:
+ *                 new_x += 1.0
+ *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *             new_x = tri2(x)
+ *         elif border_mode == _BORDER_CLAMP:
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":114
+ *                 new_x += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_x = tri2(x)             # <<<<<<<<<<<<<<
+ *         elif border_mode == _BORDER_CLAMP:
+ *             new_x = clamp(x, 0.0, 1.0)
+*/
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_x); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_v_new_x = __pyx_t_6;
+
+      /* "chromatica/v2core/border_handling.pyx":113
+ *             if new_x < 0.0:
+ *                 new_x += 1.0
+ *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *             new_x = tri2(x)
+ *         elif border_mode == _BORDER_CLAMP:
+*/
+      goto __pyx_L16;
+    }
+
+    /* "chromatica/v2core/border_handling.pyx":115
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_x = tri2(x)
+ *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *             new_x = clamp(x, 0.0, 1.0)
+ * 
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":116
+ *             new_x = tri2(x)
+ *         elif border_mode == _BORDER_CLAMP:
+ *             new_x = clamp(x, 0.0, 1.0)             # <<<<<<<<<<<<<<
+ * 
+ *     # Apply border handling to y coordinate
+*/
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_x, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+      __pyx_v_new_x = __pyx_t_6;
+
+      /* "chromatica/v2core/border_handling.pyx":115
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_x = tri2(x)
+ *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *             new_x = clamp(x, 0.0, 1.0)
+ * 
+*/
+    }
+    __pyx_L16:;
+
+    /* "chromatica/v2core/border_handling.pyx":108
+ * 
+ *     # Apply border handling to x coordinate
+ *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_x = fmod(x, 1.0)
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":119
+ * 
+ *     # Apply border handling to y coordinate
+ *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_y = fmod(y, 1.0)
+*/
+  __pyx_t_2 = (__pyx_v_y < 0.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L19_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_y > 1.0);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L19_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L19_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_y == 1.0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L19_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "chromatica/v2core/border_handling.pyx":120
+ *     # Apply border handling to y coordinate
+ *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
+ *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+ *             new_y = fmod(y, 1.0)
+ *             if new_y < 0.0:
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":121
+ *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_y = fmod(y, 1.0)             # <<<<<<<<<<<<<<
+ *             if new_y < 0.0:
+ *                 new_y += 1.0
+*/
+      __pyx_v_new_y = fmod(__pyx_v_y, 1.0);
+
+      /* "chromatica/v2core/border_handling.pyx":122
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_y = fmod(y, 1.0)
+ *             if new_y < 0.0:             # <<<<<<<<<<<<<<
+ *                 new_y += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+*/
+      __pyx_t_1 = (__pyx_v_new_y < 0.0);
+      if (__pyx_t_1) {
+
+        /* "chromatica/v2core/border_handling.pyx":123
+ *             new_y = fmod(y, 1.0)
+ *             if new_y < 0.0:
+ *                 new_y += 1.0             # <<<<<<<<<<<<<<
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_y = tri2(y)
+*/
+        __pyx_v_new_y = (__pyx_v_new_y + 1.0);
+
+        /* "chromatica/v2core/border_handling.pyx":122
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_y = fmod(y, 1.0)
+ *             if new_y < 0.0:             # <<<<<<<<<<<<<<
+ *                 new_y += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+*/
+      }
+
+      /* "chromatica/v2core/border_handling.pyx":120
+ *     # Apply border handling to y coordinate
+ *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
+ *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+ *             new_y = fmod(y, 1.0)
+ *             if new_y < 0.0:
+*/
+      goto __pyx_L23;
+    }
+
+    /* "chromatica/v2core/border_handling.pyx":124
+ *             if new_y < 0.0:
+ *                 new_y += 1.0
+ *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *             new_y = tri2(y)
+ *         elif border_mode == _BORDER_CLAMP:
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":125
+ *                 new_y += 1.0
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_y = tri2(y)             # <<<<<<<<<<<<<<
+ *         elif border_mode == _BORDER_CLAMP:
+ *             new_y = clamp(y, 0.0, 1.0)
+*/
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_y); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_v_new_y = __pyx_t_6;
+
+      /* "chromatica/v2core/border_handling.pyx":124
+ *             if new_y < 0.0:
+ *                 new_y += 1.0
+ *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *             new_y = tri2(y)
+ *         elif border_mode == _BORDER_CLAMP:
+*/
+      goto __pyx_L23;
+    }
+
+    /* "chromatica/v2core/border_handling.pyx":126
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_y = tri2(y)
+ *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *             new_y = clamp(y, 0.0, 1.0)
+ * 
+*/
+    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
+    if (__pyx_t_1) {
+
+      /* "chromatica/v2core/border_handling.pyx":127
+ *             new_y = tri2(y)
+ *         elif border_mode == _BORDER_CLAMP:
+ *             new_y = clamp(y, 0.0, 1.0)             # <<<<<<<<<<<<<<
+ * 
+ *     return (new_x, new_y)
+*/
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_y, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
+      __pyx_v_new_y = __pyx_t_6;
+
+      /* "chromatica/v2core/border_handling.pyx":126
+ *         elif border_mode == _BORDER_MIRROR:
+ *             new_y = tri2(y)
+ *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *             new_y = clamp(y, 0.0, 1.0)
+ * 
+*/
+    }
+    __pyx_L23:;
+
+    /* "chromatica/v2core/border_handling.pyx":119
+ * 
+ *     # Apply border handling to y coordinate
+ *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
+ *         if border_mode == _BORDER_REPEAT:
+ *             new_y = fmod(y, 1.0)
+*/
+  }
+
+  /* "chromatica/v2core/border_handling.pyx":129
+ *             new_y = clamp(y, 0.0, 1.0)
+ * 
+ *     return (new_x, new_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_new_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_new_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_3);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 129, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_4);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 129, __pyx_L1_error);
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = 0;
+  goto __pyx_L0;
+
+  /* "chromatica/v2core/border_handling.pyx":65
+ * # Border Handling Functions
+ * # =============================================================================
+ * cpdef handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+ *     """
+ *     Handle border conditions for 2D edge-based interpolation.
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("chromatica.v2core.border_handling.handle_border_edges_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
 
 /* Python wrapper */
 static PyObject *__pyx_pw_10chromatica_6v2core_15border_handling_1handle_border_edges_2d(PyObject *__pyx_self, 
@@ -2593,46 +3178,46 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_x,&__pyx_mstate_global->__pyx_n_u_y,&__pyx_mstate_global->__pyx_n_u_border_mode,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 71, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 65, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 71, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 65, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 71, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 65, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 71, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 65, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "handle_border_edges_2d", 0) < (0)) __PYX_ERR(0, 71, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "handle_border_edges_2d", 0) < (0)) __PYX_ERR(0, 65, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("handle_border_edges_2d", 1, 3, 3, i); __PYX_ERR(0, 71, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("handle_border_edges_2d", 1, 3, 3, i); __PYX_ERR(0, 65, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 71, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 65, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 71, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 65, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 71, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 65, __pyx_L3_error)
     }
-    __pyx_v_x = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L3_error)
-    __pyx_v_y = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L3_error)
-    __pyx_v_border_mode = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_border_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L3_error)
+    __pyx_v_x = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L3_error)
+    __pyx_v_border_mode = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_border_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("handle_border_edges_2d", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 71, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("handle_border_edges_2d", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 65, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2654,9 +3239,52 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_edges_2d(CYTHON_UNUSED PyObject *__pyx_self, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_x, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_y, int __pyx_v_border_mode) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("handle_border_edges_2d", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_10chromatica_6v2core_15border_handling_handle_border_edges_2d(__pyx_v_x, __pyx_v_y, __pyx_v_border_mode, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("chromatica.v2core.border_handling.handle_border_edges_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "chromatica/v2core/border_handling.pyx":132
+ * 
+ * 
+ * cpdef handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+ *     """
+ *     Handle border conditions for 2D line-based interpolation.
+*/
+
+static PyObject *__pyx_pw_10chromatica_6v2core_15border_handling_3handle_border_lines_2d(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_10chromatica_6v2core_15border_handling_handle_border_lines_2d(__pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_x, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_y, int __pyx_v_border_mode, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_x;
   __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_y;
   int __pyx_v_out_of_bounds;
+  int __pyx_v_effective_mode_X;
+  int __pyx_v_effective_mode_Y;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2668,10 +3296,10 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("handle_border_edges_2d", 0);
+  __Pyx_RefNannySetupContext("handle_border_lines_2d", 0);
 
-  /* "chromatica/v2core/border_handling.pyx":95
- *         BORDER_OVERFLOW (4): No handling, allows overflow
+  /* "chromatica/v2core/border_handling.pyx":154
+ *         line interpolation is index-based.
  *     """
  *     cdef f64 new_x = x             # <<<<<<<<<<<<<<
  *     cdef f64 new_y = y
@@ -2679,26 +3307,44 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
   __pyx_v_new_x = __pyx_v_x;
 
-  /* "chromatica/v2core/border_handling.pyx":96
+  /* "chromatica/v2core/border_handling.pyx":155
  *     """
  *     cdef f64 new_x = x
  *     cdef f64 new_y = y             # <<<<<<<<<<<<<<
  *     cdef bint out_of_bounds = False
- * 
+ *     cdef int effective_mode_X = border_mode
 */
   __pyx_v_new_y = __pyx_v_y;
 
-  /* "chromatica/v2core/border_handling.pyx":97
+  /* "chromatica/v2core/border_handling.pyx":156
  *     cdef f64 new_x = x
  *     cdef f64 new_y = y
  *     cdef bint out_of_bounds = False             # <<<<<<<<<<<<<<
- * 
- *     # Check if coordinates are out of bounds
+ *     cdef int effective_mode_X = border_mode
+ *     cdef int effective_mode_Y = border_mode
 */
   __pyx_v_out_of_bounds = 0;
 
-  /* "chromatica/v2core/border_handling.pyx":100
- * 
+  /* "chromatica/v2core/border_handling.pyx":157
+ *     cdef f64 new_y = y
+ *     cdef bint out_of_bounds = False
+ *     cdef int effective_mode_X = border_mode             # <<<<<<<<<<<<<<
+ *     cdef int effective_mode_Y = border_mode
+ *     # Check if coordinates are out of bounds
+*/
+  __pyx_v_effective_mode_X = __pyx_v_border_mode;
+
+  /* "chromatica/v2core/border_handling.pyx":158
+ *     cdef bint out_of_bounds = False
+ *     cdef int effective_mode_X = border_mode
+ *     cdef int effective_mode_Y = border_mode             # <<<<<<<<<<<<<<
+ *     # Check if coordinates are out of bounds
+ *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:
+*/
+  __pyx_v_effective_mode_Y = __pyx_v_border_mode;
+
+  /* "chromatica/v2core/border_handling.pyx":160
+ *     cdef int effective_mode_Y = border_mode
  *     # Check if coordinates are out of bounds
  *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
  *         out_of_bounds = True
@@ -2727,7 +3373,7 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":101
+    /* "chromatica/v2core/border_handling.pyx":161
  *     # Check if coordinates are out of bounds
  *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:
  *         out_of_bounds = True             # <<<<<<<<<<<<<<
@@ -2736,8 +3382,8 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
     __pyx_v_out_of_bounds = 1;
 
-    /* "chromatica/v2core/border_handling.pyx":100
- * 
+    /* "chromatica/v2core/border_handling.pyx":160
+ *     cdef int effective_mode_Y = border_mode
  *     # Check if coordinates are out of bounds
  *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
  *         out_of_bounds = True
@@ -2745,25 +3391,17 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":104
+  /* "chromatica/v2core/border_handling.pyx":164
  * 
  *     # BORDER_CONSTANT: return None for out of bounds
  *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
  *         if out_of_bounds:
  *             return None
 */
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_border_mode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_CONSTANT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CONSTANT);
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":105
+    /* "chromatica/v2core/border_handling.pyx":165
  *     # BORDER_CONSTANT: return None for out of bounds
  *     if border_mode == BORDER_CONSTANT:
  *         if out_of_bounds:             # <<<<<<<<<<<<<<
@@ -2772,7 +3410,7 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
     if (__pyx_v_out_of_bounds) {
 
-      /* "chromatica/v2core/border_handling.pyx":106
+      /* "chromatica/v2core/border_handling.pyx":166
  *     if border_mode == BORDER_CONSTANT:
  *         if out_of_bounds:
  *             return None             # <<<<<<<<<<<<<<
@@ -2783,7 +3421,7 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
       __pyx_r = Py_None; __Pyx_INCREF(Py_None);
       goto __pyx_L0;
 
-      /* "chromatica/v2core/border_handling.pyx":105
+      /* "chromatica/v2core/border_handling.pyx":165
  *     # BORDER_CONSTANT: return None for out of bounds
  *     if border_mode == BORDER_CONSTANT:
  *         if out_of_bounds:             # <<<<<<<<<<<<<<
@@ -2792,31 +3430,31 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
     }
 
-    /* "chromatica/v2core/border_handling.pyx":107
+    /* "chromatica/v2core/border_handling.pyx":167
  *         if out_of_bounds:
  *             return None
  *         return (x, y)             # <<<<<<<<<<<<<<
  * 
- *     # BORDER_OVERFLOW: no handling
+ *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_5);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 107, __pyx_L1_error);
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_3);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 167, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 107, __pyx_L1_error);
-    __pyx_t_5 = 0;
-    __pyx_t_4 = 0;
-    __pyx_r = __pyx_t_3;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 167, __pyx_L1_error);
     __pyx_t_3 = 0;
+    __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "chromatica/v2core/border_handling.pyx":104
+    /* "chromatica/v2core/border_handling.pyx":164
  * 
  *     # BORDER_CONSTANT: return None for out of bounds
  *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
@@ -2825,62 +3463,39 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":110
+  /* "chromatica/v2core/border_handling.pyx":170
  * 
- *     # BORDER_OVERFLOW: no handling
+ *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
  *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
- *         return (x, y)
+ *         effective_mode_X = _BORDER_CLAMP
  * 
 */
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_border_mode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_OVERFLOW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling_BORDER_OVERFLOW);
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":111
- *     # BORDER_OVERFLOW: no handling
+    /* "chromatica/v2core/border_handling.pyx":171
+ *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
  *     if border_mode == BORDER_OVERFLOW:
- *         return (x, y)             # <<<<<<<<<<<<<<
+ *         effective_mode_X = _BORDER_CLAMP             # <<<<<<<<<<<<<<
  * 
- *     # Apply border handling to x coordinate
+ *     # Apply border handling to x coordinate (line axis)
 */
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_5);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
-    __pyx_t_5 = 0;
-    __pyx_t_4 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
+    __pyx_v_effective_mode_X = __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP;
 
-    /* "chromatica/v2core/border_handling.pyx":110
+    /* "chromatica/v2core/border_handling.pyx":170
  * 
- *     # BORDER_OVERFLOW: no handling
+ *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
  *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
- *         return (x, y)
+ *         effective_mode_X = _BORDER_CLAMP
  * 
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":114
+  /* "chromatica/v2core/border_handling.pyx":174
  * 
- *     # Apply border handling to x coordinate
- *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
- *         if border_mode == _BORDER_REPEAT:
+ *     # Apply border handling to x coordinate (line axis)
+ *     if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
+ *         if effective_mode_X == _BORDER_REPEAT:
  *             new_x = fmod(x, 1.0)
 */
   __pyx_t_2 = (__pyx_v_x < 0.0);
@@ -2895,7 +3510,7 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L12_bool_binop_done;
   }
-  __pyx_t_2 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+  __pyx_t_2 = (__pyx_v_effective_mode_X == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
@@ -2906,137 +3521,137 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
   __pyx_L12_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":115
- *     # Apply border handling to x coordinate
- *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
- *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+    /* "chromatica/v2core/border_handling.pyx":175
+ *     # Apply border handling to x coordinate (line axis)
+ *     if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):
+ *         if effective_mode_X == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
  *             new_x = fmod(x, 1.0)
  *             if new_x < 0.0:
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+    __pyx_t_1 = (__pyx_v_effective_mode_X == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":116
- *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
- *         if border_mode == _BORDER_REPEAT:
+      /* "chromatica/v2core/border_handling.pyx":176
+ *     if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):
+ *         if effective_mode_X == _BORDER_REPEAT:
  *             new_x = fmod(x, 1.0)             # <<<<<<<<<<<<<<
  *             if new_x < 0.0:
  *                 new_x += 1.0
 */
       __pyx_v_new_x = fmod(__pyx_v_x, 1.0);
 
-      /* "chromatica/v2core/border_handling.pyx":117
- *         if border_mode == _BORDER_REPEAT:
+      /* "chromatica/v2core/border_handling.pyx":177
+ *         if effective_mode_X == _BORDER_REPEAT:
  *             new_x = fmod(x, 1.0)
  *             if new_x < 0.0:             # <<<<<<<<<<<<<<
  *                 new_x += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_X == _BORDER_MIRROR:
 */
       __pyx_t_1 = (__pyx_v_new_x < 0.0);
       if (__pyx_t_1) {
 
-        /* "chromatica/v2core/border_handling.pyx":118
+        /* "chromatica/v2core/border_handling.pyx":178
  *             new_x = fmod(x, 1.0)
  *             if new_x < 0.0:
  *                 new_x += 1.0             # <<<<<<<<<<<<<<
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_X == _BORDER_MIRROR:
  *             new_x = tri2(x)
 */
         __pyx_v_new_x = (__pyx_v_new_x + 1.0);
 
-        /* "chromatica/v2core/border_handling.pyx":117
- *         if border_mode == _BORDER_REPEAT:
+        /* "chromatica/v2core/border_handling.pyx":177
+ *         if effective_mode_X == _BORDER_REPEAT:
  *             new_x = fmod(x, 1.0)
  *             if new_x < 0.0:             # <<<<<<<<<<<<<<
  *                 new_x += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_X == _BORDER_MIRROR:
 */
       }
 
-      /* "chromatica/v2core/border_handling.pyx":115
- *     # Apply border handling to x coordinate
- *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):
- *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+      /* "chromatica/v2core/border_handling.pyx":175
+ *     # Apply border handling to x coordinate (line axis)
+ *     if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):
+ *         if effective_mode_X == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
  *             new_x = fmod(x, 1.0)
  *             if new_x < 0.0:
 */
       goto __pyx_L16;
     }
 
-    /* "chromatica/v2core/border_handling.pyx":119
+    /* "chromatica/v2core/border_handling.pyx":179
  *             if new_x < 0.0:
  *                 new_x += 1.0
- *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_X == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
  *             new_x = tri2(x)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_X == _BORDER_CLAMP:
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
+    __pyx_t_1 = (__pyx_v_effective_mode_X == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":120
+      /* "chromatica/v2core/border_handling.pyx":180
  *                 new_x += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_X == _BORDER_MIRROR:
  *             new_x = tri2(x)             # <<<<<<<<<<<<<<
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_X == _BORDER_CLAMP:
  *             new_x = clamp(x, 0.0, 1.0)
 */
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_x); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_x); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
       __pyx_v_new_x = __pyx_t_6;
 
-      /* "chromatica/v2core/border_handling.pyx":119
+      /* "chromatica/v2core/border_handling.pyx":179
  *             if new_x < 0.0:
  *                 new_x += 1.0
- *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_X == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
  *             new_x = tri2(x)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_X == _BORDER_CLAMP:
 */
       goto __pyx_L16;
     }
 
-    /* "chromatica/v2core/border_handling.pyx":121
- *         elif border_mode == _BORDER_MIRROR:
+    /* "chromatica/v2core/border_handling.pyx":181
+ *         elif effective_mode_X == _BORDER_MIRROR:
  *             new_x = tri2(x)
- *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_X == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
  *             new_x = clamp(x, 0.0, 1.0)
  * 
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
+    __pyx_t_1 = (__pyx_v_effective_mode_X == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":122
+      /* "chromatica/v2core/border_handling.pyx":182
  *             new_x = tri2(x)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_X == _BORDER_CLAMP:
  *             new_x = clamp(x, 0.0, 1.0)             # <<<<<<<<<<<<<<
  * 
- *     # Apply border handling to y coordinate
+ *     # Apply border handling to y coordinate (perpendicular axis)
 */
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_x, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_x, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
       __pyx_v_new_x = __pyx_t_6;
 
-      /* "chromatica/v2core/border_handling.pyx":121
- *         elif border_mode == _BORDER_MIRROR:
+      /* "chromatica/v2core/border_handling.pyx":181
+ *         elif effective_mode_X == _BORDER_MIRROR:
  *             new_x = tri2(x)
- *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_X == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
  *             new_x = clamp(x, 0.0, 1.0)
  * 
 */
     }
     __pyx_L16:;
 
-    /* "chromatica/v2core/border_handling.pyx":114
+    /* "chromatica/v2core/border_handling.pyx":174
  * 
- *     # Apply border handling to x coordinate
- *     if x < 0.0 or x > 1.0 or (border_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
- *         if border_mode == _BORDER_REPEAT:
+ *     # Apply border handling to x coordinate (line axis)
+ *     if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
+ *         if effective_mode_X == _BORDER_REPEAT:
  *             new_x = fmod(x, 1.0)
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":125
+  /* "chromatica/v2core/border_handling.pyx":185
  * 
- *     # Apply border handling to y coordinate
- *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
- *         if border_mode == _BORDER_REPEAT:
+ *     # Apply border handling to y coordinate (perpendicular axis)
+ *     if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
+ *         if effective_mode_Y == _BORDER_REPEAT:
  *             new_y = fmod(y, 1.0)
 */
   __pyx_t_2 = (__pyx_v_y < 0.0);
@@ -3051,7 +3666,7 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L19_bool_binop_done;
   }
-  __pyx_t_2 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+  __pyx_t_2 = (__pyx_v_effective_mode_Y == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
@@ -3062,162 +3677,160 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
   __pyx_L19_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "chromatica/v2core/border_handling.pyx":126
- *     # Apply border handling to y coordinate
- *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
- *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+    /* "chromatica/v2core/border_handling.pyx":186
+ *     # Apply border handling to y coordinate (perpendicular axis)
+ *     if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):
+ *         if effective_mode_Y == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
  *             new_y = fmod(y, 1.0)
  *             if new_y < 0.0:
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
+    __pyx_t_1 = (__pyx_v_effective_mode_Y == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":127
- *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
- *         if border_mode == _BORDER_REPEAT:
+      /* "chromatica/v2core/border_handling.pyx":187
+ *     if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):
+ *         if effective_mode_Y == _BORDER_REPEAT:
  *             new_y = fmod(y, 1.0)             # <<<<<<<<<<<<<<
  *             if new_y < 0.0:
  *                 new_y += 1.0
 */
       __pyx_v_new_y = fmod(__pyx_v_y, 1.0);
 
-      /* "chromatica/v2core/border_handling.pyx":128
- *         if border_mode == _BORDER_REPEAT:
+      /* "chromatica/v2core/border_handling.pyx":188
+ *         if effective_mode_Y == _BORDER_REPEAT:
  *             new_y = fmod(y, 1.0)
  *             if new_y < 0.0:             # <<<<<<<<<<<<<<
  *                 new_y += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_Y == _BORDER_MIRROR:
 */
       __pyx_t_1 = (__pyx_v_new_y < 0.0);
       if (__pyx_t_1) {
 
-        /* "chromatica/v2core/border_handling.pyx":129
+        /* "chromatica/v2core/border_handling.pyx":189
  *             new_y = fmod(y, 1.0)
  *             if new_y < 0.0:
  *                 new_y += 1.0             # <<<<<<<<<<<<<<
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_Y == _BORDER_MIRROR:
  *             new_y = tri2(y)
 */
         __pyx_v_new_y = (__pyx_v_new_y + 1.0);
 
-        /* "chromatica/v2core/border_handling.pyx":128
- *         if border_mode == _BORDER_REPEAT:
+        /* "chromatica/v2core/border_handling.pyx":188
+ *         if effective_mode_Y == _BORDER_REPEAT:
  *             new_y = fmod(y, 1.0)
  *             if new_y < 0.0:             # <<<<<<<<<<<<<<
  *                 new_y += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_Y == _BORDER_MIRROR:
 */
       }
 
-      /* "chromatica/v2core/border_handling.pyx":126
- *     # Apply border handling to y coordinate
- *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):
- *         if border_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
+      /* "chromatica/v2core/border_handling.pyx":186
+ *     # Apply border handling to y coordinate (perpendicular axis)
+ *     if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):
+ *         if effective_mode_Y == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
  *             new_y = fmod(y, 1.0)
  *             if new_y < 0.0:
 */
       goto __pyx_L23;
     }
 
-    /* "chromatica/v2core/border_handling.pyx":130
+    /* "chromatica/v2core/border_handling.pyx":190
  *             if new_y < 0.0:
  *                 new_y += 1.0
- *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_Y == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
  *             new_y = tri2(y)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_Y == _BORDER_CLAMP:
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
+    __pyx_t_1 = (__pyx_v_effective_mode_Y == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":131
+      /* "chromatica/v2core/border_handling.pyx":191
  *                 new_y += 1.0
- *         elif border_mode == _BORDER_MIRROR:
+ *         elif effective_mode_Y == _BORDER_MIRROR:
  *             new_y = tri2(y)             # <<<<<<<<<<<<<<
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_Y == _BORDER_CLAMP:
  *             new_y = clamp(y, 0.0, 1.0)
 */
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_y); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_y); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
       __pyx_v_new_y = __pyx_t_6;
 
-      /* "chromatica/v2core/border_handling.pyx":130
+      /* "chromatica/v2core/border_handling.pyx":190
  *             if new_y < 0.0:
  *                 new_y += 1.0
- *         elif border_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_Y == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
  *             new_y = tri2(y)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_Y == _BORDER_CLAMP:
 */
       goto __pyx_L23;
     }
 
-    /* "chromatica/v2core/border_handling.pyx":132
- *         elif border_mode == _BORDER_MIRROR:
+    /* "chromatica/v2core/border_handling.pyx":192
+ *         elif effective_mode_Y == _BORDER_MIRROR:
  *             new_y = tri2(y)
- *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_Y == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
  *             new_y = clamp(y, 0.0, 1.0)
  * 
 */
-    __pyx_t_1 = (__pyx_v_border_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
+    __pyx_t_1 = (__pyx_v_effective_mode_Y == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
     if (__pyx_t_1) {
 
-      /* "chromatica/v2core/border_handling.pyx":133
+      /* "chromatica/v2core/border_handling.pyx":193
  *             new_y = tri2(y)
- *         elif border_mode == _BORDER_CLAMP:
+ *         elif effective_mode_Y == _BORDER_CLAMP:
  *             new_y = clamp(y, 0.0, 1.0)             # <<<<<<<<<<<<<<
  * 
  *     return (new_x, new_y)
 */
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_y, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_y, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 193, __pyx_L1_error)
       __pyx_v_new_y = __pyx_t_6;
 
-      /* "chromatica/v2core/border_handling.pyx":132
- *         elif border_mode == _BORDER_MIRROR:
+      /* "chromatica/v2core/border_handling.pyx":192
+ *         elif effective_mode_Y == _BORDER_MIRROR:
  *             new_y = tri2(y)
- *         elif border_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
+ *         elif effective_mode_Y == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
  *             new_y = clamp(y, 0.0, 1.0)
  * 
 */
     }
     __pyx_L23:;
 
-    /* "chromatica/v2core/border_handling.pyx":125
+    /* "chromatica/v2core/border_handling.pyx":185
  * 
- *     # Apply border handling to y coordinate
- *     if y < 0.0 or y > 1.0 or (border_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
- *         if border_mode == _BORDER_REPEAT:
+ *     # Apply border handling to y coordinate (perpendicular axis)
+ *     if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
+ *         if effective_mode_Y == _BORDER_REPEAT:
  *             new_y = fmod(y, 1.0)
 */
   }
 
-  /* "chromatica/v2core/border_handling.pyx":135
+  /* "chromatica/v2core/border_handling.pyx":195
  *             new_y = clamp(y, 0.0, 1.0)
  * 
  *     return (new_x, new_y)             # <<<<<<<<<<<<<<
- * 
- * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_new_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_new_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_new_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 135, __pyx_L1_error);
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_new_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_5);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 195, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 135, __pyx_L1_error);
-  __pyx_t_3 = 0;
-  __pyx_t_4 = 0;
-  __pyx_r = __pyx_t_5;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 195, __pyx_L1_error);
   __pyx_t_5 = 0;
+  __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "chromatica/v2core/border_handling.pyx":71
- * # Border Handling Functions
- * # =============================================================================
- * def handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+  /* "chromatica/v2core/border_handling.pyx":132
+ * 
+ * 
+ * cpdef handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
  *     """
- *     Handle border conditions for 2D edge-based interpolation.
+ *     Handle border conditions for 2D line-based interpolation.
 */
 
   /* function exit code */
@@ -3225,21 +3838,13 @@ static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_handle_border_e
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("chromatica.v2core.border_handling.handle_border_edges_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
+  __Pyx_AddTraceback("chromatica.v2core.border_handling.handle_border_lines_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-
-/* "chromatica/v2core/border_handling.pyx":138
- * 
- * 
- * def handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
- *     """
- *     Handle border conditions for 2D line-based interpolation.
-*/
 
 /* Python wrapper */
 static PyObject *__pyx_pw_10chromatica_6v2core_15border_handling_3handle_border_lines_2d(PyObject *__pyx_self, 
@@ -3283,46 +3888,46 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_x,&__pyx_mstate_global->__pyx_n_u_y,&__pyx_mstate_global->__pyx_n_u_border_mode,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 132, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "handle_border_lines_2d", 0) < (0)) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "handle_border_lines_2d", 0) < (0)) __PYX_ERR(0, 132, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("handle_border_lines_2d", 1, 3, 3, i); __PYX_ERR(0, 138, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("handle_border_lines_2d", 1, 3, 3, i); __PYX_ERR(0, 132, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 132, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 132, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 132, __pyx_L3_error)
     }
-    __pyx_v_x = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
-    __pyx_v_y = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
-    __pyx_v_border_mode = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_border_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
+    __pyx_v_x = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
+    __pyx_v_border_mode = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_border_mode == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("handle_border_lines_2d", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("handle_border_lines_2d", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 132, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3344,646 +3949,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_pf_10chromatica_6v2core_15border_handling_2handle_border_lines_2d(CYTHON_UNUSED PyObject *__pyx_self, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_x, __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_y, int __pyx_v_border_mode) {
-  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_x;
-  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_v_new_y;
-  int __pyx_v_out_of_bounds;
-  int __pyx_v_effective_mode;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  __pyx_t_10chromatica_6v2core_15border_handling_f64 __pyx_t_6;
+  PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("handle_border_lines_2d", 0);
-
-  /* "chromatica/v2core/border_handling.pyx":160
- *         line interpolation is index-based.
- *     """
- *     cdef f64 new_x = x             # <<<<<<<<<<<<<<
- *     cdef f64 new_y = y
- *     cdef bint out_of_bounds = False
-*/
-  __pyx_v_new_x = __pyx_v_x;
-
-  /* "chromatica/v2core/border_handling.pyx":161
- *     """
- *     cdef f64 new_x = x
- *     cdef f64 new_y = y             # <<<<<<<<<<<<<<
- *     cdef bint out_of_bounds = False
- *     cdef int effective_mode = border_mode
-*/
-  __pyx_v_new_y = __pyx_v_y;
-
-  /* "chromatica/v2core/border_handling.pyx":162
- *     cdef f64 new_x = x
- *     cdef f64 new_y = y
- *     cdef bint out_of_bounds = False             # <<<<<<<<<<<<<<
- *     cdef int effective_mode = border_mode
- * 
-*/
-  __pyx_v_out_of_bounds = 0;
-
-  /* "chromatica/v2core/border_handling.pyx":163
- *     cdef f64 new_y = y
- *     cdef bint out_of_bounds = False
- *     cdef int effective_mode = border_mode             # <<<<<<<<<<<<<<
- * 
- *     # Check if coordinates are out of bounds
-*/
-  __pyx_v_effective_mode = __pyx_v_border_mode;
-
-  /* "chromatica/v2core/border_handling.pyx":166
- * 
- *     # Check if coordinates are out of bounds
- *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
- *         out_of_bounds = True
- * 
-*/
-  __pyx_t_2 = (__pyx_v_x < 0.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_x > 1.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_y < 0.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_y > 1.0);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L4_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "chromatica/v2core/border_handling.pyx":167
- *     # Check if coordinates are out of bounds
- *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:
- *         out_of_bounds = True             # <<<<<<<<<<<<<<
- * 
- *     # BORDER_CONSTANT: return None for out of bounds
-*/
-    __pyx_v_out_of_bounds = 1;
-
-    /* "chromatica/v2core/border_handling.pyx":166
- * 
- *     # Check if coordinates are out of bounds
- *     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:             # <<<<<<<<<<<<<<
- *         out_of_bounds = True
- * 
-*/
-  }
-
-  /* "chromatica/v2core/border_handling.pyx":170
- * 
- *     # BORDER_CONSTANT: return None for out of bounds
- *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
- *         if out_of_bounds:
- *             return None
-*/
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_border_mode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_CONSTANT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__pyx_t_1) {
-
-    /* "chromatica/v2core/border_handling.pyx":171
- *     # BORDER_CONSTANT: return None for out of bounds
- *     if border_mode == BORDER_CONSTANT:
- *         if out_of_bounds:             # <<<<<<<<<<<<<<
- *             return None
- *         return (x, y)
-*/
-    if (__pyx_v_out_of_bounds) {
-
-      /* "chromatica/v2core/border_handling.pyx":172
- *     if border_mode == BORDER_CONSTANT:
- *         if out_of_bounds:
- *             return None             # <<<<<<<<<<<<<<
- *         return (x, y)
- * 
-*/
-      __Pyx_XDECREF(__pyx_r);
-      __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-      goto __pyx_L0;
-
-      /* "chromatica/v2core/border_handling.pyx":171
- *     # BORDER_CONSTANT: return None for out of bounds
- *     if border_mode == BORDER_CONSTANT:
- *         if out_of_bounds:             # <<<<<<<<<<<<<<
- *             return None
- *         return (x, y)
-*/
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":173
- *         if out_of_bounds:
- *             return None
- *         return (x, y)             # <<<<<<<<<<<<<<
- * 
- *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_5);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 173, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 173, __pyx_L1_error);
-    __pyx_t_5 = 0;
-    __pyx_t_4 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
-
-    /* "chromatica/v2core/border_handling.pyx":170
- * 
- *     # BORDER_CONSTANT: return None for out of bounds
- *     if border_mode == BORDER_CONSTANT:             # <<<<<<<<<<<<<<
- *         if out_of_bounds:
- *             return None
-*/
-  }
-
-  /* "chromatica/v2core/border_handling.pyx":176
- * 
- *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
- *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
- *         effective_mode = _BORDER_CLAMP
- * 
-*/
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_border_mode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_OVERFLOW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__pyx_t_1) {
-
-    /* "chromatica/v2core/border_handling.pyx":177
- *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
- *     if border_mode == BORDER_OVERFLOW:
- *         effective_mode = _BORDER_CLAMP             # <<<<<<<<<<<<<<
- * 
- *     # Apply border handling to x coordinate (line axis)
-*/
-    __pyx_v_effective_mode = __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP;
-
-    /* "chromatica/v2core/border_handling.pyx":176
- * 
- *     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
- *     if border_mode == BORDER_OVERFLOW:             # <<<<<<<<<<<<<<
- *         effective_mode = _BORDER_CLAMP
- * 
-*/
-  }
-
-  /* "chromatica/v2core/border_handling.pyx":180
- * 
- *     # Apply border handling to x coordinate (line axis)
- *     if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
- *         if effective_mode == _BORDER_REPEAT:
- *             new_x = fmod(x, 1.0)
-*/
-  __pyx_t_2 = (__pyx_v_x < 0.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L12_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_x > 1.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L12_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
-  if (__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L12_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_x == 1.0);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L12_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "chromatica/v2core/border_handling.pyx":181
- *     # Apply border handling to x coordinate (line axis)
- *     if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):
- *         if effective_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
- *             new_x = fmod(x, 1.0)
- *             if new_x < 0.0:
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":182
- *     if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):
- *         if effective_mode == _BORDER_REPEAT:
- *             new_x = fmod(x, 1.0)             # <<<<<<<<<<<<<<
- *             if new_x < 0.0:
- *                 new_x += 1.0
-*/
-      __pyx_v_new_x = fmod(__pyx_v_x, 1.0);
-
-      /* "chromatica/v2core/border_handling.pyx":183
- *         if effective_mode == _BORDER_REPEAT:
- *             new_x = fmod(x, 1.0)
- *             if new_x < 0.0:             # <<<<<<<<<<<<<<
- *                 new_x += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
-*/
-      __pyx_t_1 = (__pyx_v_new_x < 0.0);
-      if (__pyx_t_1) {
-
-        /* "chromatica/v2core/border_handling.pyx":184
- *             new_x = fmod(x, 1.0)
- *             if new_x < 0.0:
- *                 new_x += 1.0             # <<<<<<<<<<<<<<
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_x = tri2(x)
-*/
-        __pyx_v_new_x = (__pyx_v_new_x + 1.0);
-
-        /* "chromatica/v2core/border_handling.pyx":183
- *         if effective_mode == _BORDER_REPEAT:
- *             new_x = fmod(x, 1.0)
- *             if new_x < 0.0:             # <<<<<<<<<<<<<<
- *                 new_x += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
-*/
-      }
-
-      /* "chromatica/v2core/border_handling.pyx":181
- *     # Apply border handling to x coordinate (line axis)
- *     if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):
- *         if effective_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
- *             new_x = fmod(x, 1.0)
- *             if new_x < 0.0:
-*/
-      goto __pyx_L16;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":185
- *             if new_x < 0.0:
- *                 new_x += 1.0
- *         elif effective_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_x = tri2(x)
- *         elif effective_mode == _BORDER_CLAMP:
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":186
- *                 new_x += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_x = tri2(x)             # <<<<<<<<<<<<<<
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_x = clamp(x, 0.0, 1.0)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_x); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
-      __pyx_v_new_x = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":185
- *             if new_x < 0.0:
- *                 new_x += 1.0
- *         elif effective_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_x = tri2(x)
- *         elif effective_mode == _BORDER_CLAMP:
-*/
-      goto __pyx_L16;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":187
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_x = tri2(x)
- *         elif effective_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_x = clamp(x, 0.0, 1.0)
- * 
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":188
- *             new_x = tri2(x)
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_x = clamp(x, 0.0, 1.0)             # <<<<<<<<<<<<<<
- * 
- *     # Apply border handling to y coordinate (perpendicular axis)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_x, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L1_error)
-      __pyx_v_new_x = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":187
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_x = tri2(x)
- *         elif effective_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_x = clamp(x, 0.0, 1.0)
- * 
-*/
-    }
-    __pyx_L16:;
-
-    /* "chromatica/v2core/border_handling.pyx":180
- * 
- *     # Apply border handling to x coordinate (line axis)
- *     if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):             # <<<<<<<<<<<<<<
- *         if effective_mode == _BORDER_REPEAT:
- *             new_x = fmod(x, 1.0)
-*/
-  }
-
-  /* "chromatica/v2core/border_handling.pyx":191
- * 
- *     # Apply border handling to y coordinate (perpendicular axis)
- *     if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
- *         if effective_mode == _BORDER_REPEAT:
- *             new_y = fmod(y, 1.0)
-*/
-  __pyx_t_2 = (__pyx_v_y < 0.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L19_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_y > 1.0);
-  if (!__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L19_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
-  if (__pyx_t_2) {
-  } else {
-    __pyx_t_1 = __pyx_t_2;
-    goto __pyx_L19_bool_binop_done;
-  }
-  __pyx_t_2 = (__pyx_v_y == 1.0);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L19_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "chromatica/v2core/border_handling.pyx":192
- *     # Apply border handling to y coordinate (perpendicular axis)
- *     if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):
- *         if effective_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
- *             new_y = fmod(y, 1.0)
- *             if new_y < 0.0:
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":193
- *     if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):
- *         if effective_mode == _BORDER_REPEAT:
- *             new_y = fmod(y, 1.0)             # <<<<<<<<<<<<<<
- *             if new_y < 0.0:
- *                 new_y += 1.0
-*/
-      __pyx_v_new_y = fmod(__pyx_v_y, 1.0);
-
-      /* "chromatica/v2core/border_handling.pyx":194
- *         if effective_mode == _BORDER_REPEAT:
- *             new_y = fmod(y, 1.0)
- *             if new_y < 0.0:             # <<<<<<<<<<<<<<
- *                 new_y += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
-*/
-      __pyx_t_1 = (__pyx_v_new_y < 0.0);
-      if (__pyx_t_1) {
-
-        /* "chromatica/v2core/border_handling.pyx":195
- *             new_y = fmod(y, 1.0)
- *             if new_y < 0.0:
- *                 new_y += 1.0             # <<<<<<<<<<<<<<
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_y = tri2(y)
-*/
-        __pyx_v_new_y = (__pyx_v_new_y + 1.0);
-
-        /* "chromatica/v2core/border_handling.pyx":194
- *         if effective_mode == _BORDER_REPEAT:
- *             new_y = fmod(y, 1.0)
- *             if new_y < 0.0:             # <<<<<<<<<<<<<<
- *                 new_y += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
-*/
-      }
-
-      /* "chromatica/v2core/border_handling.pyx":192
- *     # Apply border handling to y coordinate (perpendicular axis)
- *     if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):
- *         if effective_mode == _BORDER_REPEAT:             # <<<<<<<<<<<<<<
- *             new_y = fmod(y, 1.0)
- *             if new_y < 0.0:
-*/
-      goto __pyx_L23;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":196
- *             if new_y < 0.0:
- *                 new_y += 1.0
- *         elif effective_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_y = tri2(y)
- *         elif effective_mode == _BORDER_CLAMP:
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":197
- *                 new_y += 1.0
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_y = tri2(y)             # <<<<<<<<<<<<<<
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_y); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L1_error)
-      __pyx_v_new_y = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":196
- *             if new_y < 0.0:
- *                 new_y += 1.0
- *         elif effective_mode == _BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_y = tri2(y)
- *         elif effective_mode == _BORDER_CLAMP:
-*/
-      goto __pyx_L23;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":198
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_y = tri2(y)
- *         elif effective_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_y = clamp(y, 0.0, 1.0)
- *         elif effective_mode == BORDER_MIRROR:
-*/
-    __pyx_t_1 = (__pyx_v_effective_mode == __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP);
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":199
- *             new_y = tri2(y)
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)             # <<<<<<<<<<<<<<
- *         elif effective_mode == BORDER_MIRROR:
- *             new_y = tri2(y)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_y, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
-      __pyx_v_new_y = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":198
- *         elif effective_mode == _BORDER_MIRROR:
- *             new_y = tri2(y)
- *         elif effective_mode == _BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_y = clamp(y, 0.0, 1.0)
- *         elif effective_mode == BORDER_MIRROR:
-*/
-      goto __pyx_L23;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":200
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)
- *         elif effective_mode == BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_y = tri2(y)
- *         elif effective_mode == BORDER_CLAMP:
-*/
-    __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_effective_mode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_MIRROR); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 200, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":201
- *             new_y = clamp(y, 0.0, 1.0)
- *         elif effective_mode == BORDER_MIRROR:
- *             new_y = tri2(y)             # <<<<<<<<<<<<<<
- *         elif effective_mode == BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_tri2(__pyx_v_y); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
-      __pyx_v_new_y = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":200
- *         elif effective_mode == _BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)
- *         elif effective_mode == BORDER_MIRROR:             # <<<<<<<<<<<<<<
- *             new_y = tri2(y)
- *         elif effective_mode == BORDER_CLAMP:
-*/
-      goto __pyx_L23;
-    }
-
-    /* "chromatica/v2core/border_handling.pyx":202
- *         elif effective_mode == BORDER_MIRROR:
- *             new_y = tri2(y)
- *         elif effective_mode == BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_y = clamp(y, 0.0, 1.0)
- * 
-*/
-    __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_effective_mode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_BORDER_CLAMP); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (__pyx_t_1) {
-
-      /* "chromatica/v2core/border_handling.pyx":203
- *             new_y = tri2(y)
- *         elif effective_mode == BORDER_CLAMP:
- *             new_y = clamp(y, 0.0, 1.0)             # <<<<<<<<<<<<<<
- * 
- *     return (new_x, new_y)
-*/
-      __pyx_t_6 = __pyx_f_10chromatica_6v2core_15border_handling_clamp(__pyx_v_y, 0.0, 1.0); if (unlikely(__pyx_t_6 == ((__pyx_t_10chromatica_6v2core_15border_handling_f64)-1) && PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L1_error)
-      __pyx_v_new_y = __pyx_t_6;
-
-      /* "chromatica/v2core/border_handling.pyx":202
- *         elif effective_mode == BORDER_MIRROR:
- *             new_y = tri2(y)
- *         elif effective_mode == BORDER_CLAMP:             # <<<<<<<<<<<<<<
- *             new_y = clamp(y, 0.0, 1.0)
- * 
-*/
-    }
-    __pyx_L23:;
-
-    /* "chromatica/v2core/border_handling.pyx":191
- * 
- *     # Apply border handling to y coordinate (perpendicular axis)
- *     if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):             # <<<<<<<<<<<<<<
- *         if effective_mode == _BORDER_REPEAT:
- *             new_y = fmod(y, 1.0)
-*/
-  }
-
-  /* "chromatica/v2core/border_handling.pyx":205
- *             new_y = clamp(y, 0.0, 1.0)
- * 
- *     return (new_x, new_y)             # <<<<<<<<<<<<<<
-*/
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_new_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_new_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5) != (0)) __PYX_ERR(0, 205, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 205, __pyx_L1_error);
-  __pyx_t_5 = 0;
-  __pyx_t_4 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_t_1 = __pyx_f_10chromatica_6v2core_15border_handling_handle_border_lines_2d(__pyx_v_x, __pyx_v_y, __pyx_v_border_mode, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
-
-  /* "chromatica/v2core/border_handling.pyx":138
- * 
- * 
- * def handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
- *     """
- *     Handle border conditions for 2D line-based interpolation.
-*/
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("chromatica.v2core.border_handling.handle_border_lines_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4023,19 +4005,75 @@ static int __Pyx_modinit_global_init_code(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_modinit_variable_export_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannyDeclarations
   CYTHON_UNUSED_VAR(__pyx_mstate);
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_variable_export_code", 0);
   /*--- Variable export code ---*/
+  {
+    __pyx_t_1 = __Pyx_ApiExport_GetApiDict(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    const char * __pyx_export_signature = __Pyx_PyBytes_AsString(__pyx_mstate_global->__pyx_kp_b_int_BORDER_CLAMP_BORDER_CONSTANT);
+    #if !CYTHON_ASSUME_SAFE_MACROS
+    if (unlikely(!__pyx_export_signature)) __PYX_ERR(0, 1, __pyx_L1_error)
+    #endif
+    const char * __pyx_export_name = __pyx_export_signature + 8;
+    void *const __pyx_export_pointers[] = {(void *)&__pyx_v_10chromatica_6v2core_15border_handling_BORDER_CLAMP, (void *)&__pyx_v_10chromatica_6v2core_15border_handling_BORDER_CONSTANT, (void *)&__pyx_v_10chromatica_6v2core_15border_handling_BORDER_MIRROR, (void *)&__pyx_v_10chromatica_6v2core_15border_handling_BORDER_OVERFLOW, (void *)&__pyx_v_10chromatica_6v2core_15border_handling_BORDER_REPEAT, (void *) NULL};
+    void *const *__pyx_export_pointer = __pyx_export_pointers;
+    const char *__pyx_export_current_signature = __pyx_export_signature;
+    while (*__pyx_export_pointer) {
+      if (__Pyx_ExportVoidPtr(__pyx_t_1, __pyx_export_name, *__pyx_export_pointer, __pyx_export_current_signature) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+      ++__pyx_export_pointer;
+      __pyx_export_name = strchr(__pyx_export_name, '\0') + 1;
+      __pyx_export_signature = strchr(__pyx_export_signature, '\0') + 1;
+      if (*__pyx_export_signature != '\0') __pyx_export_current_signature = __pyx_export_signature;
+    }
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  }
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_modinit_function_export_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannyDeclarations
   CYTHON_UNUSED_VAR(__pyx_mstate);
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_export_code", 0);
   /*--- Function export code ---*/
+  {
+    __pyx_t_1 = __Pyx_ApiExport_GetApiDict(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    const char * __pyx_export_signature = __Pyx_PyBytes_AsString(__pyx_mstate_global->__pyx_kp_b_PyObject___pyx_t_10chromatica_6v);
+    #if !CYTHON_ASSUME_SAFE_MACROS
+    if (unlikely(!__pyx_export_signature)) __PYX_ERR(0, 1, __pyx_L1_error)
+    #endif
+    const char * __pyx_export_name = __pyx_export_signature + 146;
+    void (*const __pyx_export_pointers[])(void) = {(void (*)(void))&__pyx_f_10chromatica_6v2core_15border_handling_handle_border_edges_2d, (void (*)(void))&__pyx_f_10chromatica_6v2core_15border_handling_handle_border_lines_2d, (void (*)(void)) NULL};
+    void (*const *__pyx_export_pointer)(void) = __pyx_export_pointers;
+    const char *__pyx_export_current_signature = __pyx_export_signature;
+    while (*__pyx_export_pointer) {
+      if (__Pyx_ExportFunction(__pyx_t_1, __pyx_export_name, *__pyx_export_pointer, __pyx_export_current_signature) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+      ++__pyx_export_pointer;
+      __pyx_export_name = strchr(__pyx_export_name, '\0') + 1;
+      __pyx_export_signature = strchr(__pyx_export_signature, '\0') + 1;
+      if (*__pyx_export_signature != '\0') __pyx_export_current_signature = __pyx_export_signature;
+    }
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  }
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
@@ -4332,15 +4370,15 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
   if (__Pyx_CreateCodeObjects(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   /*--- Global type/function init code ---*/
   (void)__Pyx_modinit_global_init_code(__pyx_mstate);
-  (void)__Pyx_modinit_variable_export_code(__pyx_mstate);
-  (void)__Pyx_modinit_function_export_code(__pyx_mstate);
+  if (unlikely((__Pyx_modinit_variable_export_code(__pyx_mstate) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (unlikely((__Pyx_modinit_function_export_code(__pyx_mstate) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
   (void)__Pyx_modinit_type_init_code(__pyx_mstate);
   (void)__Pyx_modinit_type_import_code(__pyx_mstate);
   (void)__Pyx_modinit_variable_import_code(__pyx_mstate);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "chromatica/v2core/border_handling.pyx":19
+  /* "chromatica/v2core/border_handling.pyx":21
  * # Border modes for handling coordinates outside [0, 1] range
  * # Using cdef for internal use and module-level Python ints for export
  * cdef int _BORDER_REPEAT = 0    # Modulo repeat             # <<<<<<<<<<<<<<
@@ -4349,7 +4387,7 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
 */
   __pyx_v_10chromatica_6v2core_15border_handling__BORDER_REPEAT = 0;
 
-  /* "chromatica/v2core/border_handling.pyx":20
+  /* "chromatica/v2core/border_handling.pyx":22
  * # Using cdef for internal use and module-level Python ints for export
  * cdef int _BORDER_REPEAT = 0    # Modulo repeat
  * cdef int _BORDER_MIRROR = 1    # Mirror repeat             # <<<<<<<<<<<<<<
@@ -4358,7 +4396,7 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
 */
   __pyx_v_10chromatica_6v2core_15border_handling__BORDER_MIRROR = 1;
 
-  /* "chromatica/v2core/border_handling.pyx":21
+  /* "chromatica/v2core/border_handling.pyx":23
  * cdef int _BORDER_REPEAT = 0    # Modulo repeat
  * cdef int _BORDER_MIRROR = 1    # Mirror repeat
  * cdef int _BORDER_CONSTANT = 2  # Constant color fill             # <<<<<<<<<<<<<<
@@ -4367,7 +4405,7 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
 */
   __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CONSTANT = 2;
 
-  /* "chromatica/v2core/border_handling.pyx":22
+  /* "chromatica/v2core/border_handling.pyx":24
  * cdef int _BORDER_MIRROR = 1    # Mirror repeat
  * cdef int _BORDER_CONSTANT = 2  # Constant color fill
  * cdef int _BORDER_CLAMP = 3     # Clamp to edge             # <<<<<<<<<<<<<<
@@ -4376,7 +4414,7 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
 */
   __pyx_v_10chromatica_6v2core_15border_handling__BORDER_CLAMP = 3;
 
-  /* "chromatica/v2core/border_handling.pyx":23
+  /* "chromatica/v2core/border_handling.pyx":25
  * cdef int _BORDER_CONSTANT = 2  # Constant color fill
  * cdef int _BORDER_CLAMP = 3     # Clamp to edge
  * cdef int _BORDER_OVERFLOW = 4  # Allow overflow (no border handling)             # <<<<<<<<<<<<<<
@@ -4385,79 +4423,79 @@ __Pyx_RefNannySetupContext("PyInit_border_handling", 0);
 */
   __pyx_v_10chromatica_6v2core_15border_handling__BORDER_OVERFLOW = 4;
 
-  /* "chromatica/v2core/border_handling.pyx":26
+  /* "chromatica/v2core/border_handling.pyx":28
  * 
  * # Export constants to Python
  * BORDER_REPEAT = 0             # <<<<<<<<<<<<<<
  * BORDER_MIRROR = 1
  * BORDER_CONSTANT = 2
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_BORDER_REPEAT, __pyx_mstate_global->__pyx_int_0) < (0)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_v_10chromatica_6v2core_15border_handling_BORDER_REPEAT = 0;
 
-  /* "chromatica/v2core/border_handling.pyx":27
+  /* "chromatica/v2core/border_handling.pyx":29
  * # Export constants to Python
  * BORDER_REPEAT = 0
  * BORDER_MIRROR = 1             # <<<<<<<<<<<<<<
  * BORDER_CONSTANT = 2
  * BORDER_CLAMP = 3
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_BORDER_MIRROR, __pyx_mstate_global->__pyx_int_1) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_v_10chromatica_6v2core_15border_handling_BORDER_MIRROR = 1;
 
-  /* "chromatica/v2core/border_handling.pyx":28
+  /* "chromatica/v2core/border_handling.pyx":30
  * BORDER_REPEAT = 0
  * BORDER_MIRROR = 1
  * BORDER_CONSTANT = 2             # <<<<<<<<<<<<<<
  * BORDER_CLAMP = 3
  * BORDER_OVERFLOW = 4
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_BORDER_CONSTANT, __pyx_mstate_global->__pyx_int_2) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CONSTANT = 2;
 
-  /* "chromatica/v2core/border_handling.pyx":29
+  /* "chromatica/v2core/border_handling.pyx":31
  * BORDER_MIRROR = 1
  * BORDER_CONSTANT = 2
  * BORDER_CLAMP = 3             # <<<<<<<<<<<<<<
  * BORDER_OVERFLOW = 4
  * 
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_BORDER_CLAMP, __pyx_mstate_global->__pyx_int_3) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_v_10chromatica_6v2core_15border_handling_BORDER_CLAMP = 3;
 
-  /* "chromatica/v2core/border_handling.pyx":30
+  /* "chromatica/v2core/border_handling.pyx":32
  * BORDER_CONSTANT = 2
  * BORDER_CLAMP = 3
  * BORDER_OVERFLOW = 4             # <<<<<<<<<<<<<<
  * 
  * # =============================================================================
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_BORDER_OVERFLOW, __pyx_mstate_global->__pyx_int_4) < (0)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_v_10chromatica_6v2core_15border_handling_BORDER_OVERFLOW = 4;
 
-  /* "chromatica/v2core/border_handling.pyx":71
+  /* "chromatica/v2core/border_handling.pyx":65
  * # Border Handling Functions
  * # =============================================================================
- * def handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+ * cpdef handle_border_edges_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
  *     """
  *     Handle border conditions for 2D edge-based interpolation.
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_6v2core_15border_handling_1handle_border_edges_2d, 0, __pyx_mstate_global->__pyx_n_u_handle_border_edges_2d, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_v2core_border_handlin, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_6v2core_15border_handling_1handle_border_edges_2d, 0, __pyx_mstate_global->__pyx_n_u_handle_border_edges_2d, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_v2core_border_handlin, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_handle_border_edges_2d, __pyx_t_2) < (0)) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_handle_border_edges_2d, __pyx_t_2) < (0)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "chromatica/v2core/border_handling.pyx":138
+  /* "chromatica/v2core/border_handling.pyx":132
  * 
  * 
- * def handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
+ * cpdef handle_border_lines_2d(f64 x, f64 y, int border_mode):             # <<<<<<<<<<<<<<
  *     """
  *     Handle border conditions for 2D line-based interpolation.
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_6v2core_15border_handling_3handle_border_lines_2d, 0, __pyx_mstate_global->__pyx_n_u_handle_border_lines_2d, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_v2core_border_handlin, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10chromatica_6v2core_15border_handling_3handle_border_lines_2d, 0, __pyx_mstate_global->__pyx_n_u_handle_border_lines_2d, NULL, __pyx_mstate_global->__pyx_n_u_chromatica_v2core_border_handlin, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_handle_border_lines_2d, __pyx_t_2) < (0)) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_handle_border_lines_2d, __pyx_t_2) < (0)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "chromatica/v2core/border_handling.pyx":1
@@ -4530,31 +4568,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 9; } index[] = {{1},{37},{12},{15},{13},{15},{13},{20},{18},{11},{33},{18},{14},{8},{22},{22},{13},{5},{8},{10},{8},{5},{5},{13},{3},{12},{12},{10},{8},{6},{1},{1},{322},{361}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (612 bytes) */
-const char* const cstring = "BZh91AY&SYJvS\372\000\000\212\377\377\377N\377e<\005\374\004\277\247\377\200\277\357\377\344@@@@@@@@@@\000@@\000@\000@\002\034-B\300J\232\232G\246\251\350\321\036\247\250\310\311\240\000\030\214\203\0042hh\003\324\003M4\r\023$h\231OF\246\323)\246F\232\000\000\320\000\000\000\000\006@\340\3104h\003&\230\206\232\014\203\020\302\006\200\321\211\210\320\000\000T\244\232h\241\214\246A\243 \000\006\203M\000\323@\323M4\365\001\246\233Q\372\024\261\032\234\377<\340\205\252?lkX\346VX\316&dTM\024i%Di(\216I\225Q\\\317\222dK\252\205\022e^_X\324)\315Er\362\310\320L+\220\243\n\243C\347\372\305\273r\225\3370\251?\2557\025p\254xh\332\334\331\300\300-\333\273\271\275\306L\365\344\2562W\014\313\365\342\370E\330\271\201\331\177\252U\376\324q\326u\250\\OD\261\360\3152\207\305;!\270\034Q\211\340a\335\244g\017\236\013Q\342\021\210\312\350\276(\216\302\260\312\301\227\325\262\363s>\316\000c\331n\270\030_v\"1\344DSS\031\226>I\371\305\217i\252\302\023$\t\026x!2\010\343r\024\310\374)\263\351\325\325\367\031\003\234\267\005\023\020U\204\203d\004\321zZ\346\030\036\232\206\315%\224\274\374\210A\222\232`V\010-\324\277\021\034M\020\260\314F!\032\023\255E30\324r\244n\014k\003\352u\302\304\020\2307\340\240REu\307\300c\300.+\nrJ\005\273D)\200p\250\220IZ\314\n\n\300\022\220\252\371\025\240c\204\023\301\242Jl\253\rd\023i\202\214MVy_\234\342\245\010P\372j\217\326\313e\010C3U\262\262B\002x\353\223k\242\350.\031\301\306\365\221E\021X\016\361H\034\346\024\372\036\331\201-}\237Y\230\306\237\224\233\355\366\271i\357M\203#\305\017\343\335\034.\005\024\224\241CE\352w\0341C\2201\245\260\377L\206$\302\3513F\233u\221\260\325k\263\227Z\316\243\230\276\332X\333^f<\322\215EZ\315\345T*Q\350\231\226*\\SV+\241QR\305,\245w\227\024\177\305\334\221N\024$\022\235\224\376\200";
-    PyObject *data = __Pyx_DecompressString(cstring, 612, 2);
+    const struct { const unsigned int length: 9; } index[] = {{1},{37},{20},{18},{11},{33},{18},{8},{22},{22},{13},{5},{8},{10},{8},{3},{12},{12},{12},{10},{8},{6},{1},{1},{191},{80},{322},{332}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (685 bytes) */
+const char* const cstring = "BZh91AY&SY\200\373T\321\000\000\237\177\377\377\316\377m|u\377\004\277\247\377\200\277\377\377d@@@@@@@@@@@@@\000@\000@\002|\032T\250\016\006\200\320h\3202h\0004\000\030\232\032h\032h\001\243F\200\006\215\004\250&\215LSd\217I\232&\200\323F\206\200\000\000\000\006\200\000\000\016\006\200\320h\3202h\0004\000\030\232\032h\032h\001\243F\200\006\215\002\250\2124#iS\332S\3124\362db\2312\007\2441\036S\321\03244\036\243\324z2!\352l'\205OD\2733~\r\276\326\377\217\305\344\275\370\375\345?\341\353K\231\316\352tFh\314\213\361\014\360u\252G\275\006w]\025Aq#d\222\261i\210\221\221\027T\022EV\2570/6\315\242\233L+\027\r\206\274U\235k\t\355\243QTK\022\207\203\223\346\325\340\266|\374\334\276z\317\205\231\177\354m\030\315\204\351K\330\\(yWQc\324\272\252\274]\336\036\263Dn\366\314(\320\\|P\313pg|\267=\\P0\027\031\325g\242\033=\211S\217t\240\\\370\246H\342\323\010V \020\266L\353R\n\257\004\203\\\235\324\372q\3350\260\230\036\373!\332{QrsYI)'U\357\\\364s\350W\331\273\3115\302\223F\3132\267V\250Y\344\242\263~\210\277\023\212{\213K:rf\357_\217\010\275\217\033\300\251n\2013\251Dyz\236k(M\246\013\251A\377~\021\346S\365\006\300\327\342\006\032P\353Ab\342\376\210\263M\026\031ubK\276\356\316\\\r\312\335\266\220c\254\312\273\036\343\266\322p\227A\244\031\256-J\005\205G\303*\213#q\"R\r\2526\263\256C|\310\243`-\321A\003\211\224r\210-\n\215\372D\325\270\333\017\000\352\004Q%\t#@D!kl\322\277\243\327\222\335&\271\216\r]\010F\341/\331\026.\230\355\246\r\005j\303\337\"\023\000\260\\[$\256\370\271d\202\004\302\352\302Q_\257Sey\345\034\0352d\201r\"lY\346\235)\330\206\271\301\301\346\343\221\266\217\315\310\211p\277\004z\016\030\304\214\217K\2263\235(\377\010\346s<fC\314\215\363+xs\277#\241\304\224\242M7\306\350$\351\324\035L\210\345FW\033I\345o\033\214\346\263\211\225\274\331Z\3605\035\366\262\253\313\254\014K\316\343\0339\277\257*3\251\336q\251%\022\330\\x\224\252`\241z\342\311\262f\251K\377\027rE8P\220\200\373T\321";
+    PyObject *data = __Pyx_DecompressString(cstring, 685, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (487 bytes) */
-const char* const cstring = "x\332\275PMo\323@\020mJ\213\"\021\324\226\026D%\204\324\206#JI\340\210T\271\215AHm\234l\002\034G\333\365\272\265\352\217\304\273\016\266\304\241G\037\367\270\307\034}\344\330\243\217\374\004\037\371\t\375\t\254\261)I\205\200KY\311\343\235\3317\357\275\231}r\026\370.\3466\301{\323\016\361\003\272w\342\007&\r\340\014{\246c{\247\255q\034\035\030\250\253#8<\322\216\373?\357Fo8\322z\243*=~\207\220\201\252\304\370\240\2437G\306\307*Ez_\327F\000\3758R_\327&\034z4\342\210Z\230\305\036\261\375\226\322\365Cn{\224U\342\256o\322_\316Z\245\263\326\rgD\005\n\266\007<\300\204\236`rN-\213\022nO\351\017\002\000+\364\010\224x\nU75O)\203\216\271X-\250\212*\330\014\256\335\330\234\272\014\300\305JC\035\305\031\252\016u<\354\252\277G?AT\204X\301\301\267\024W\350\231l\354\217\001&!vJ\024\000\243\274\352P7SM\035:\034\200S\246\342\024;!eQ|Q\273z\261\264\372H\014\362\225\207Ex*\361\325\335\245\325\372E\220<H^%L\354\212\003a\312\246D2\230m\315\206\351r\272\233jy\375\261\254\225\270\317\342\245\300y\375^\322\316\033\233\242\235\327\327\305\035\321^x\233\253,\262>\223N\332L\341\262\233-g\315lP\260\274\026L\356\344\215-\321\2255\271)\265\274\261\226L\005\022\223|}[n\344\367\267\313b\371>\237\353rC\271|?\333\371oB\337V\032\311[\321V\033|~c\203\267\263Fe\353\367\263\371\351\360\313\332%\317:\331\360k\255\340\330WB\203?\314\366D\036\312\311\334l\327\371_\226x\013B\377\202\251\026\375\035X\306\224\373";
-    PyObject *data = __Pyx_DecompressString(cstring, 487, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (543 bytes) */
+const char* const cstring = "x\332\275P\277o\332@\0305)i\221B\325\244\241U\243V\010B\207\266\212 \244i\246J\025\t\264\252\224\000qh:~:\316Gp\003\266\361\235\021H\0352z\274\361FF\217\035;z\354\230\321c\376\204\374\t=b \200P\206\252\3557<\373\373\365\276{\357\003n\332f\0331\035\243\\w\007\2336\311\325M[#64\221\241\265t\343,k\365{\000U\t\325~Q\307\014\312\244\307T\322@\264o`\335\314\312\035\323a\272A\350h\261mj\344\2265\033\262f\347X\261\004\002\272\001\314F\230\324\021>\007h8\006\206p\202\300h\236hg\204\302\2166[\035.\017\253\240S\230\334\327\031iS\2006\222\2542\3443\034\271!\303@m\371\265LK\202\224\201\221\245\017\313\035\007\265\302\026\000%l4&\3774)\316i1\000F\250\304.j9\204\366\372\325~\245\376\215`\226z\363*$b\220\337\276\025\n{\241R\310\277\233\323\n\215\275\335\255\324\237\354\350\006\273\201\3212=\327-\320tj!\206\233\257\025e\261U\312b\257$\2152\214\375\212Z,\251ppX8\252N\222J\371\244V(\327\306\371\321gU\255\250\343\254rZR?\036V\276\216s\265T-\025j\027\221\353me\371)?\016\242O\206\220\024\350\372\276\262\034\273\260\335\307\356\256K\371&\337\347\232\310\010U\330\203\304\340\304[\3626\275B\020{&\"\341\334w\376\226\243 \266\342\346\203\370:\317\007\261U~\217\347gzS\225Y\326\227\242\345e<\370Y\364\227\374\214\177<dy\317\251H\007\361\004/\212\210X\027\205 \376\310\355r\225w\202\325\r\261\026<\334\010\213a\177:/\2115\371\312/\203\364\177;t\025\215\273\237x^:\2705\347`\020M\r\"7p\025}\3607\235|.\026\373x\231\314y\364G\316O\370\252O\177\245%\311\345\312\013q :w\010L\n<X\233\0228\311\357v\362\337\234\032y\371\033\253S\3067";
+    PyObject *data = __Pyx_DecompressString(cstring, 543, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (1075 bytes) */
-const char* const bytes = "?chromatica/v2core/border_handling.pyxBORDER_CLAMPBORDER_CONSTANTBORDER_MIRRORBORDER_OVERFLOWBORDER_REPEAT__Pyx_PyDict_NextRefasyncio.coroutinesborder_modechromatica.v2core.border_handlingcline_in_tracebackeffective_mode__func__handle_border_edges_2dhandle_border_lines_2d_is_coroutineitems__main____module____name__new_xnew_yout_of_boundspop__qualname____set_name__setdefault__test__valuesxy\200\001\3600\000\005\026\220Q\330\004\025\220Q\330\004\036\230a\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230#\230R\230r\240\024\240S\250\002\250\"\250A\330\010\030\230\001\360\006\000\005\010\200|\2203\220a\330\010\013\2101\330\014\023\2201\330\010\020\220\003\2201\360\006\000\005\010\200|\2203\220a\330\010\020\220\003\2201\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230l\250#\250_\270D\300\002\300#\300Q\330\010\013\210<\220s\230!\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\031\230\023\230A\330\014\024\220D\230\001\230\021\330\r\031\230\023\230A\330\014\024\220E\230\021\230#\230U\240!\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230l\250#\250_\270D\300\002\300#\300Q\330\010\013\210<\220s\230!\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\031\230\023\230A\330\014\024\220D\230\001\230\021\330\r\031\230\023\230A\330\014\024\220E\230\021\230#\230U\240!\340\004\014\210G\2201\200\001\360,\000\005\026\220Q\330\004\025\220Q\330\004\036\230a\330\004\036\230a\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230#\230R\230r\240\024\240S\250\002\250\"\250A\330\010\030\230\001\360\006\000\005\010\200|\2203\220a\330\010\013\2101\330\014\023\2201\330\010\020\220\003\2201\360\006\000\005\010\200|\2203\220a\330\010\031\230\021\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230o\250S\260\017\270t\3002\300S\310\001\330\010\013\210?\230#\230Q\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021""\330\r\034\230C\230q\330\014\024\220D\230\001\230\021\330\r\034\230C\230q\330\014\024\220E\230\021\230#\230U\240!\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230o\250S\260\017\270t\3002\300S\310\001\330\010\013\210?\230#\230Q\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\034\230C\230q\330\014\024\220D\230\001\230\021\330\r\034\230C\230q\330\014\024\220E\230\021\230#\230U\240!\330\r\034\230C\230q\330\014\024\220D\230\001\230\021\330\r\034\230C\230q\330\014\024\220E\230\021\230#\230U\240!\340\004\014\210G\2201";
+    #else /* compression: none (1224 bytes) */
+const char* const bytes = "?chromatica/v2core/border_handling.pyx__Pyx_PyDict_NextRefasyncio.coroutinesborder_modechromatica.v2core.border_handlingcline_in_traceback__func__handle_border_edges_2dhandle_border_lines_2d_is_coroutineitems__main____module____name__pop__pyx_capi____qualname____set_name__setdefault__test__valuesxyPyObject *(__pyx_t_10chromatica_6v2core_15border_handling_f64, __pyx_t_10chromatica_6v2core_15border_handling_f64, int, int __pyx_skip_dispatch)\000\000handle_border_edges_2d\000handle_border_lines_2dint\000\000\000\000\000BORDER_CLAMP\000BORDER_CONSTANT\000BORDER_MIRROR\000BORDER_OVERFLOW\000BORDER_REPEAT\200\001\3600\000\005\026\220Q\330\004\025\220Q\330\004\036\230a\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230#\230R\230r\240\024\240S\250\002\250\"\250A\330\010\030\230\001\360\006\000\005\010\200|\2203\220a\330\010\013\2101\330\014\023\2201\330\010\020\220\003\2201\360\006\000\005\010\200|\2203\220a\330\010\020\220\003\2201\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230l\250#\250_\270D\300\002\300#\300Q\330\010\013\210<\220s\230!\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\031\230\023\230A\330\014\024\220D\230\001\230\021\330\r\031\230\023\230A\330\014\024\220E\230\021\230#\230U\240!\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\230l\250#\250_\270D\300\002\300#\300Q\330\010\013\210<\220s\230!\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\031\230\023\230A\330\014\024\220D\230\001\230\021\330\r\031\230\023\230A\330\014\024\220E\230\021\230#\230U\240!\340\004\014\210G\2201\200\001\360,\000\005\026\220Q\330\004\025\220Q\330\004\036\230a\330\004 \240\001\330\004 \240\001\340\004\007\200r\210\022\2104\210s\220\"\220B\220d\230#\230R\230r\240\024\240S\250\002\250\"\250A\330\010\030\230\001\360\006\000\005\010\200|\2203\220a\330\010\013\2101\330\014\023\2201\330\010\020\220\003\2201\360\006\000\005\010\200|\2203\220a\330\010\033\2301""\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\320\036/\250s\260/\300\024\300R\300s\310!\330\010\013\320\013\034\230C\230q\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\036\230c\240\021\330\014\024\220D\230\001\230\021\330\r\036\230c\240\021\330\014\024\220E\230\021\230#\230U\240!\360\006\000\005\010\200r\210\022\2104\210s\220\"\220B\220d\230$\320\036/\250s\260/\300\024\300R\300s\310!\330\010\013\320\013\034\230C\230q\330\014\024\220D\230\001\230\023\230A\330\014\017\210v\220R\220q\330\020\031\230\021\330\r\036\230c\240\021\330\014\024\220D\230\001\230\021\330\r\036\230c\240\021\330\014\024\220E\230\021\230#\230U\240!\340\004\014\210G\2201";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < 24; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 2) PyUnicode_InternInPlace(&string);
@@ -4565,7 +4603,7 @@ const char* const bytes = "?chromatica/v2core/border_handling.pyxBORDER_CLAMPBOR
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 32; i < 34; i++) {
+    for (int i = 24; i < 28; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -4576,15 +4614,15 @@ const char* const bytes = "?chromatica/v2core/border_handling.pyxBORDER_CLAMPBOR
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 34; i++) {
+    for (Py_ssize_t i = 0; i < 28; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 32;
-      for (Py_ssize_t i=0; i<2; ++i) {
+      PyObject **table = stringtab + 24;
+      for (Py_ssize_t i=0; i<4; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
         #else
@@ -4594,26 +4632,6 @@ const char* const bytes = "?chromatica/v2core/border_handling.pyxBORDER_CLAMPBOR
     }
     #endif
   }
-  {
-    PyObject **numbertab = __pyx_mstate->__pyx_number_tab + 0;
-    int8_t const cint_constants_1[] = {0,1,2,3,4};
-    for (int i = 0; i < 5; i++) {
-      numbertab[i] = PyLong_FromLong(cint_constants_1[i - 0]);
-      if (unlikely(!numbertab[i])) __PYX_ERR(0, 1, __pyx_L1_error)
-    }
-  }
-  #if CYTHON_IMMORTAL_CONSTANTS
-  {
-    PyObject **table = __pyx_mstate->__pyx_number_tab;
-    for (Py_ssize_t i=0; i<5; ++i) {
-      #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
-      Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
-      #else
-      Py_SET_REFCNT(table[i], _Py_IMMORTAL_INITIAL_REFCNT);
-      #endif
-    }
-  }
-  #endif
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4623,7 +4641,7 @@ typedef struct {
     unsigned int argcount : 2;
     unsigned int num_posonly_args : 1;
     unsigned int num_kwonly_args : 1;
-    unsigned int nlocals : 3;
+    unsigned int nlocals : 2;
     unsigned int flags : 10;
     unsigned int first_line : 8;
 } __Pyx_PyCode_New_function_description;
@@ -4642,14 +4660,14 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 71};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_border_mode, __pyx_mstate->__pyx_n_u_new_x, __pyx_mstate->__pyx_n_u_new_y, __pyx_mstate->__pyx_n_u_out_of_bounds};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 65};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_border_mode};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_chromatica_v2core_border_handlin_2, __pyx_mstate->__pyx_n_u_handle_border_edges_2d, __pyx_mstate->__pyx_kp_b_iso88591_0_Q_Q_a_r_4s_Bd_Rr_S_A_3a_1_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 138};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_border_mode, __pyx_mstate->__pyx_n_u_new_x, __pyx_mstate->__pyx_n_u_new_y, __pyx_mstate->__pyx_n_u_out_of_bounds, __pyx_mstate->__pyx_n_u_effective_mode};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_chromatica_v2core_border_handlin_2, __pyx_mstate->__pyx_n_u_handle_border_lines_2d, __pyx_mstate->__pyx_kp_b_iso88591_Q_Q_a_a_r_4s_Bd_Rr_S_A_3a_1_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 132};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_border_mode};
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_chromatica_v2core_border_handlin_2, __pyx_mstate->__pyx_n_u_handle_border_lines_2d, __pyx_mstate->__pyx_kp_b_iso88591_Q_Q_a_r_4s_Bd_Rr_S_A_3a_1_1_1_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -5767,205 +5785,57 @@ static void __Pyx_RaiseArgtupleInvalid(
                  (num_expected == 1) ? "" : "s", num_found);
 }
 
-/* PyErrExceptionMatches (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
+/* VoidPtrExport */
+static int __Pyx_ExportVoidPtr(PyObject *api_dict, const char *name, void *p, const char *sig) {
+    PyObject *cobj;
+    cobj = PyCapsule_New(p, sig, 0);
+    if (!cobj)
+        goto bad;
+    if (PyDict_SetItemString(api_dict, name, cobj) < 0)
+        goto bad;
+    Py_DECREF(cobj);
     return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    int result;
-    PyObject *exc_type;
-#if PY_VERSION_HEX >= 0x030C00A6
-    PyObject *current_exception = tstate->current_exception;
-    if (unlikely(!current_exception)) return 0;
-    exc_type = (PyObject*) Py_TYPE(current_exception);
-    if (exc_type == err) return 1;
-#else
-    exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-#endif
-    #if CYTHON_AVOID_BORROWED_REFS
-    Py_INCREF(exc_type);
-    #endif
-    if (unlikely(PyTuple_Check(err))) {
-        result = __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    } else {
-        result = __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
-    }
-    #if CYTHON_AVOID_BORROWED_REFS
-    Py_DECREF(exc_type);
-    #endif
-    return result;
-}
-#endif
-
-/* PyErrFetchRestore (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
-#if PY_VERSION_HEX >= 0x030C00A6
-    PyObject *tmp_value;
-    assert(type == NULL || (value != NULL && type == (PyObject*) Py_TYPE(value)));
-    if (value) {
-        #if CYTHON_COMPILING_IN_CPYTHON
-        if (unlikely(((PyBaseExceptionObject*) value)->traceback != tb))
-        #endif
-            PyException_SetTraceback(value, tb);
-    }
-    tmp_value = tstate->current_exception;
-    tstate->current_exception = value;
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(type);
-    Py_XDECREF(tb);
-#else
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    tmp_type = tstate->curexc_type;
-    tmp_value = tstate->curexc_value;
-    tmp_tb = tstate->curexc_traceback;
-    tstate->curexc_type = type;
-    tstate->curexc_value = value;
-    tstate->curexc_traceback = tb;
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-#endif
-}
-static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-#if PY_VERSION_HEX >= 0x030C00A6
-    PyObject* exc_value;
-    exc_value = tstate->current_exception;
-    tstate->current_exception = 0;
-    *value = exc_value;
-    *type = NULL;
-    *tb = NULL;
-    if (exc_value) {
-        *type = (PyObject*) Py_TYPE(exc_value);
-        Py_INCREF(*type);
-        #if CYTHON_COMPILING_IN_CPYTHON
-        *tb = ((PyBaseExceptionObject*) exc_value)->traceback;
-        Py_XINCREF(*tb);
-        #else
-        *tb = PyException_GetTraceback(exc_value);
-        #endif
-    }
-#else
-    *type = tstate->curexc_type;
-    *value = tstate->curexc_value;
-    *tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-#endif
-}
-#endif
-
-/* PyObjectGetAttrStrNoError (used by GetBuiltinName) */
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    if (likely(__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
-        __Pyx_PyErr_Clear();
-}
-#endif
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name) {
-    PyObject *result;
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-    (void) PyObject_GetOptionalAttr(obj, attr_name, &result);
-    return result;
-#else
-#if CYTHON_COMPILING_IN_CPYTHON && CYTHON_USE_TYPE_SLOTS
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_getattro == PyObject_GenericGetAttr)) {
-        return _PyObject_GenericGetAttrWithDict(obj, attr_name, NULL, 1);
-    }
-#endif
-    result = __Pyx_PyObject_GetAttrStr(obj, attr_name);
-    if (unlikely(!result)) {
-        __Pyx_PyObject_GetAttrStr_ClearAttributeError();
-    }
-    return result;
-#endif
+bad:
+    Py_XDECREF(cobj);
+    return -1;
 }
 
-/* GetBuiltinName (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
-    if (unlikely(!result) && !PyErr_Occurred()) {
-        PyErr_Format(PyExc_NameError,
-            "name '%U' is not defined", name);
-    }
-    return result;
-}
-
-/* PyDictVersioning (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
-    }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
-}
-#endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
-#else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
-#endif
-{
-    PyObject *result;
-#if CYTHON_COMPILING_IN_LIMITED_API
-    if (unlikely(!__pyx_m)) {
-        if (!PyErr_Occurred())
-            PyErr_SetNone(PyExc_NameError);
+/* GetApiDict */
+static PyObject *__Pyx_ApiExport_GetApiDict(void) {
+    PyObject *d;
+    if (__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_capi, &d) == -1)
         return NULL;
+    if (!d) {
+        d = PyDict_New();
+        if (!d)
+            goto bad;
+        if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_pyx_capi, d) < 0)
+            goto bad;
     }
-    result = PyObject_GetAttr(__pyx_m, name);
-    if (likely(result)) {
-        return result;
-    }
-    PyErr_Clear();
-#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
-    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return result;
-    }
-#else
-    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-    PyErr_Clear();
-#endif
-    return __Pyx_GetBuiltinName(name);
+    return d;
+bad:
+    Py_XDECREF(d);
+    return NULL;
+}
+
+/* FunctionExport */
+static int __Pyx_ExportFunction(PyObject *api_dict, const char *name, void (*f)(void), const char *sig) {
+    PyObject *cobj;
+    union {
+        void (*fp)(void);
+        void *p;
+    } tmp;
+    tmp.fp = f;
+    cobj = PyCapsule_New(tmp.p, sig, 0);
+    if (!cobj)
+        goto bad;
+    if (PyDict_SetItemString(api_dict, name, cobj) < 0)
+        goto bad;
+    Py_DECREF(cobj);
+    return 0;
+bad:
+    Py_XDECREF(cobj);
+    return -1;
 }
 
 /* dict_setdefault (used by FetchCommonType) */
@@ -7507,6 +7377,161 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qual
     return op;
 }
 
+/* PyDictVersioning (used by CLineInTraceback) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* PyErrExceptionMatches (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    int result;
+    PyObject *exc_type;
+#if PY_VERSION_HEX >= 0x030C00A6
+    PyObject *current_exception = tstate->current_exception;
+    if (unlikely(!current_exception)) return 0;
+    exc_type = (PyObject*) Py_TYPE(current_exception);
+    if (exc_type == err) return 1;
+#else
+    exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+#endif
+    #if CYTHON_AVOID_BORROWED_REFS
+    Py_INCREF(exc_type);
+    #endif
+    if (unlikely(PyTuple_Check(err))) {
+        result = __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    } else {
+        result = __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+    }
+    #if CYTHON_AVOID_BORROWED_REFS
+    Py_DECREF(exc_type);
+    #endif
+    return result;
+}
+#endif
+
+/* PyErrFetchRestore (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
+#if PY_VERSION_HEX >= 0x030C00A6
+    PyObject *tmp_value;
+    assert(type == NULL || (value != NULL && type == (PyObject*) Py_TYPE(value)));
+    if (value) {
+        #if CYTHON_COMPILING_IN_CPYTHON
+        if (unlikely(((PyBaseExceptionObject*) value)->traceback != tb))
+        #endif
+            PyException_SetTraceback(value, tb);
+    }
+    tmp_value = tstate->current_exception;
+    tstate->current_exception = value;
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(type);
+    Py_XDECREF(tb);
+#else
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    tmp_type = tstate->curexc_type;
+    tmp_value = tstate->curexc_value;
+    tmp_tb = tstate->curexc_traceback;
+    tstate->curexc_type = type;
+    tstate->curexc_value = value;
+    tstate->curexc_traceback = tb;
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+#endif
+}
+static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+#if PY_VERSION_HEX >= 0x030C00A6
+    PyObject* exc_value;
+    exc_value = tstate->current_exception;
+    tstate->current_exception = 0;
+    *value = exc_value;
+    *type = NULL;
+    *tb = NULL;
+    if (exc_value) {
+        *type = (PyObject*) Py_TYPE(exc_value);
+        Py_INCREF(*type);
+        #if CYTHON_COMPILING_IN_CPYTHON
+        *tb = ((PyBaseExceptionObject*) exc_value)->traceback;
+        Py_XINCREF(*tb);
+        #else
+        *tb = PyException_GetTraceback(exc_value);
+        #endif
+    }
+#else
+    *type = tstate->curexc_type;
+    *value = tstate->curexc_value;
+    *tb = tstate->curexc_traceback;
+    tstate->curexc_type = 0;
+    tstate->curexc_value = 0;
+    tstate->curexc_traceback = 0;
+#endif
+}
+#endif
+
+/* PyObjectGetAttrStrNoError (used by CLineInTraceback) */
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (likely(__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        __Pyx_PyErr_Clear();
+}
+#endif
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name) {
+    PyObject *result;
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+    (void) PyObject_GetOptionalAttr(obj, attr_name, &result);
+    return result;
+#else
+#if CYTHON_COMPILING_IN_CPYTHON && CYTHON_USE_TYPE_SLOTS
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_getattro == PyObject_GenericGetAttr)) {
+        return _PyObject_GenericGetAttrWithDict(obj, attr_name, NULL, 1);
+    }
+#endif
+    result = __Pyx_PyObject_GetAttrStr(obj, attr_name);
+    if (unlikely(!result)) {
+        __Pyx_PyObject_GetAttrStr_ClearAttributeError();
+    }
+    return result;
+#endif
+}
+
 /* CLineInTraceback (used by AddTraceback) */
 #if CYTHON_CLINE_IN_TRACEBACK && CYTHON_CLINE_IN_TRACEBACK_RUNTIME
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
@@ -8073,107 +8098,6 @@ raise_neg_overflow:
     return (int) -1;
 }
 
-/* PyObjectVectorCallKwBuilder (used by CIntToPy) */
-#if CYTHON_VECTORCALL
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_PyObject_FastCallDict;
-    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
-    Py_INCREF(key);
-    args[n] = value;
-    return 0;
-}
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_VectorcallBuilder_AddArgStr;
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
-}
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    PyObject *pyKey = PyUnicode_FromString(key);
-    if (!pyKey) return -1;
-    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
-}
-#else // CYTHON_VECTORCALL
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return PyDict_SetItem(builder, key, value);
-}
-#endif
-
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const int neg_one = (int) -1, const_zero = (int) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
 /* FormatTypeName */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static __Pyx_TypeName
@@ -8210,6 +8134,38 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
         result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u_);
     }
     goto done;
+}
+#endif
+
+/* PyObjectVectorCallKwBuilder (used by CIntToPy) */
+#if CYTHON_VECTORCALL
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_PyObject_FastCallDict;
+    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
+    Py_INCREF(key);
+    args[n] = value;
+    return 0;
+}
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_VectorcallBuilder_AddArgStr;
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
+}
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    PyObject *pyKey = PyUnicode_FromString(key);
+    if (!pyKey) return -1;
+    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
+}
+#else // CYTHON_VECTORCALL
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return PyDict_SetItem(builder, key, value);
 }
 #endif
 

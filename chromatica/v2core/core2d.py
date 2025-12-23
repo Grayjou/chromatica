@@ -261,7 +261,7 @@ def multival2d_lerp_between_lines_continuous(
     H, W = coords[0].shape[:2]
     
     bound_types = _prepare_bound_types(bound_types, num_channels=num_channels)
-    coords = _apply_bound(coords, bound_types)
+    coords = apply_bounds(coords, bound_types)
     border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     
     out = np.empty((H, W, num_channels), dtype=np.float64)
