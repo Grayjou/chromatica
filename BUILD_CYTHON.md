@@ -29,9 +29,12 @@ pip install cython numpy
 The setup script compiles the following modules:
 
 1. **border_handling.pyx** - Border handling for 2D interpolation (no numpy dependency)
-2. **interp.pyx** - Core interpolation functions (requires numpy)
-3. **interp_2d.pyx** - 2D interpolation between lines (requires numpy)
-4. **interp_hue.pyx** - Hue interpolation for cyclical color spaces (requires numpy)
+2. **interpolation/interp.pyx** - Core interpolation functions (requires numpy)
+3. **interpolation/interp_2d.pyx** - 2D interpolation between lines (requires numpy)
+4. **interpolation/interp_hue.pyx** - Hue interpolation for cyclical color spaces (requires numpy)
+5. **interpolation/corner_interp_2d.pyx** - Corner-based 2D interpolation (requires numpy)
+
+All interpolation modules are now organized in the `chromatica/v2core/interpolation/` subdirectory for better code organization.
 
 ## Troubleshooting
 
@@ -80,6 +83,7 @@ To force a complete rebuild:
 ```bash
 rm -rf build/
 rm chromatica/v2core/*.so chromatica/v2core/*.c
+rm chromatica/v2core/interpolation/*.so chromatica/v2core/interpolation/*.c
 python setup_cython.py build_ext --inplace
 ```
 

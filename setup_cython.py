@@ -15,6 +15,7 @@ import os
 # Get the directory containing this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 V2CORE_DIR = os.path.join(BASE_DIR, "chromatica", "v2core")
+INTERP_DIR = os.path.join(V2CORE_DIR, "interpolation")
 
 # Define extensions
 extensions = [
@@ -25,26 +26,26 @@ extensions = [
         extra_compile_args=['-O3'],
     ),
     Extension(
-        "chromatica.v2core.interp",
-        [os.path.join(V2CORE_DIR, "interp.pyx")],
+        "chromatica.v2core.interpolation.interp",
+        [os.path.join(INTERP_DIR, "interp.pyx")],
         include_dirs=[np.get_include()],
         extra_compile_args=['-O3'],
     ),
     Extension(
-        "chromatica.v2core.interp_2d",
-        [os.path.join(V2CORE_DIR, "interp_2d.pyx")],
+        "chromatica.v2core.interpolation.interp_2d",
+        [os.path.join(INTERP_DIR, "interp_2d.pyx")],
         include_dirs=[np.get_include()],
         extra_compile_args=['-O3'],
     ),
     Extension(
-        "chromatica.v2core.interp_hue",
-        [os.path.join(V2CORE_DIR, "interp_hue.pyx")],
+        "chromatica.v2core.interpolation.interp_hue",
+        [os.path.join(INTERP_DIR, "interp_hue.pyx")],
         include_dirs=[np.get_include()],
         extra_compile_args=['-O3'],
     ),
     Extension(
-        "chromatica.v2core.corner_interp_2d",
-        [os.path.join(V2CORE_DIR, "corner_interp_2d.pyx")],
+        "chromatica.v2core.interpolation.corner_interp_2d",
+        [os.path.join(INTERP_DIR, "corner_interp_2d.pyx")],
         include_dirs=[np.get_include()],
         extra_compile_args=['-O3'],
     ),
@@ -78,8 +79,8 @@ for ext in extensions:
     print(f"  - {ext.name}")
 print("\nYou can now import these modules in Python:")
 print("  from chromatica.v2core import border_handling")
-print("  from chromatica.v2core import interp")
-print("  from chromatica.v2core import interp_2d")
-print("  from chromatica.v2core import interp_hue")
-print("  from chromatica.v2core import corner_interp_2d")
+print("  from chromatica.v2core.interpolation import interp")
+print("  from chromatica.v2core.interpolation import interp_2d")
+print("  from chromatica.v2core.interpolation import interp_hue")
+print("  from chromatica.v2core.interpolation import corner_interp_2d")
 print("=" * 70)
