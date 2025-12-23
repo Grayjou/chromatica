@@ -451,16 +451,22 @@ class CornersCellDual(CellBase):
         self.invalidate_cache()
     @property
     def top_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
+        """Extract x-coordinates from top row for horizontal segment interpolation."""
         if isinstance(self.per_channel_coords, list):
-            return [pc[0:1, :, :] for pc in self.per_channel_coords]
+            # Extract x-coordinates (first element of coordinate pair) from top row
+            return [pc[0, :, 0] for pc in self.per_channel_coords]
         else:
-            return self.per_channel_coords[0:1, :, :]
+            # Shape: (height, width, 2) -> extract top row, all widths, x-coord only
+            return self.per_channel_coords[0, :, 0]
     @property
     def bottom_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
+        """Extract x-coordinates from bottom row for horizontal segment interpolation."""
         if isinstance(self.per_channel_coords, list):
-            return [pc[-1:, :, :] for pc in self.per_channel_coords]
+            # Extract x-coordinates (first element of coordinate pair) from bottom row
+            return [pc[-1, :, 0] for pc in self.per_channel_coords]
         else:
-            return self.per_channel_coords[-1:, :, :]
+            # Shape: (height, width, 2) -> extract bottom row, all widths, x-coord only
+            return self.per_channel_coords[-1, :, 0]
     @property
     def per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
         return self._per_channel_coords
@@ -516,6 +522,7 @@ class CornersCellDual(CellBase):
             hue_direction_x=self.hue_direction_x,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
             boundtypes=self.boundtypes,
+            input_format=FormatType.FLOAT,  # Segments return float values
         )
         return lines_cell.get_value()
     @property
