@@ -1,16 +1,18 @@
 from ...chromatica.gradients.gradient2dv2.cell import (
     get_transformed_corners_cell,
     get_transformed_lines_cell,
-    CellMode,
-    LineInterpMethods,
-    HueMode,
-    ColorSpace,
-    PartitionInterval as PInt,
+
+
+
+
+
     get_transformed_corners_cell_dual,
-    PerpendicularDualPartition,
+
     CornersCellDual
 
 )
+from ...chromatica.types.color_types import HueMode
+from ...chromatica.gradients.gradient2dv2 import LineInterpMethods, PartitionInterval as PInt, PerpendicularDualPartition
 import numpy as np
 from unitfield import upbm_2d
 from boundednumbers import BoundType

@@ -6,8 +6,9 @@ from ...chromatica.gradients.gradient1dv2.segment import get_transformed_segment
 from ...chromatica.gradients.gradient2dv2.cell import (
     get_transformed_corners_cell,
     get_transformed_lines_cell,
-    LineInterpMethods,
+
 )
+from ...chromatica.gradients.gradient2dv2 import LineInterpMethods
 from ...chromatica.types.color_types import HueMode
 from boundednumbers import BoundType
 from unitfield import upbm_2d
