@@ -10,12 +10,12 @@ from typing import List, Tuple, Union, Sequence
 
 from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
-from .interp import (  # type: ignore
+from .interpolation.interp import (  # type: ignore
     lerp_bounded_1d_spatial_fast,
     lerp_bounded_2d_spatial_fast,
     single_channel_multidim_lerp_bounded_cython_fast,
 )
-from .interp_hue import (  # type: ignore
+from .interpolation.interp_hue import (  # type: ignore
     hue_lerp_1d_spatial,
     hue_lerp_2d_spatial,
     hue_lerp_simple,
@@ -24,7 +24,7 @@ from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_multidim_lerp,
 )
-from .interp_2d import (  # type: ignore
+from .interpolation.interp_2d import (  # type: ignore
     lerp_between_lines,
     lerp_between_planes,
 )
@@ -108,7 +108,7 @@ def _apply_bound(arr: np.ndarray, bound_type: BoundType) -> np.ndarray:
 def apply_bounds(arr: np.ndarray | List[np.ndarray], bound_types: BoundTypeSequence) -> np.ndarray | List[np.ndarray]:
     """Apply bounding to array(s) based on bound_types."""
     if isinstance(arr, list):
-        return [apply_bounds(a, bound_types[i] if i < len(bound_types) else BoundType.CLAMP)
+        return [apply_bounds(a, [bound_types[i] if i < len(bound_types) else BoundType.CLAMP])
                 for i, a in enumerate(arr)]
     else:
         if len(bound_types) == 1:

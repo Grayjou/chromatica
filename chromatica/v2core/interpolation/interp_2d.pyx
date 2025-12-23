@@ -4,7 +4,7 @@ import numpy as np
 cimport numpy as np
 from libc.math cimport floor, fmod, fabs
 from libc.stdlib cimport malloc, free
-from .border_handling cimport (
+from ..border_handling cimport (
     handle_border_edges_2d,
     handle_border_lines_2d,
     BORDER_REPEAT,

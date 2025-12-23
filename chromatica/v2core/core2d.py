@@ -9,18 +9,18 @@ from enum import IntEnum
 
 from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
-from .interp_2d import (  # type: ignore
+from .interpolation.interp_2d import (  # type: ignore
     lerp_between_lines,
     lerp_between_lines_x_discrete_1ch,
     lerp_between_lines_multichannel,
     lerp_between_lines_x_discrete_multichannel,
     lerp_between_planes,
 )
-from .interp_hue import (  # type: ignore
+from .interpolation.interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
 )
-from .interp import lerp_bounded_2d_spatial_fast
+from .interpolation.interp import lerp_bounded_2d_spatial_fast
 from .core import (
     HueMode,
     HueModeSequence,
@@ -261,7 +261,7 @@ def multival2d_lerp_between_lines_continuous(
     H, W = coords[0].shape[:2]
     
     bound_types = _prepare_bound_types(bound_types, num_channels=num_channels)
-    coords = _apply_bound(coords, bound_types)
+    coords = apply_bounds(coords, bound_types)
     border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     
     out = np.empty((H, W, num_channels), dtype=np.float64)
@@ -331,7 +331,7 @@ def multival2d_lerp_between_lines_discrete(
 # =============================================================================
 # Corner-based 2D Interpolation
 # =============================================================================
-from .corner_interp_2d import lerp_from_corners # type: ignore
+from .interpolation.corner_interp_2d import lerp_from_corners # type: ignore
 def multival2d_lerp_from_corners(
     corners: np.ndarray,
     coords: List[CoordArray2D],
