@@ -9,22 +9,18 @@ from enum import IntEnum
 
 from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
-from .interp_modules.interp_2d import (  # type: ignore
+from .interp_2d import (  # type: ignore
     lerp_between_lines,
-    lerp_between_planes,
-)
-from .interp_modules.interp_2d_1ch import (  # type: ignore
     lerp_between_lines_x_discrete_1ch,
-)
-from .interp_modules.interp_2d_multichannel import (  # type: ignore
     lerp_between_lines_multichannel,
     lerp_between_lines_x_discrete_multichannel,
+    lerp_between_planes,
 )
-from .interp_modules.interp_hue_between_lines import (  # type: ignore
+from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
 )
-from .interp_modules.interp import lerp_bounded_2d_spatial_fast
+from .interp import lerp_bounded_2d_spatial_fast
 from .core import (
     HueMode,
     HueModeSequence,

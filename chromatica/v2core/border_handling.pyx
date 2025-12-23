@@ -190,5 +190,9 @@ def handle_border_lines_2d(f64 x, f64 y, int border_mode):
             new_y = tri2(y)
         elif effective_mode == _BORDER_CLAMP:
             new_y = clamp(y, 0.0, 1.0)
+        elif effective_mode == BORDER_MIRROR:
+            new_y = tri2(y)
+        elif effective_mode == BORDER_CLAMP:
+            new_y = clamp(y, 0.0, 1.0)
     
     return (new_x, new_y)
