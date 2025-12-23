@@ -16,8 +16,19 @@ from libc.math cimport fmod, floor
 from libc.string cimport memcpy
 from libc.stdlib cimport malloc, free
 
+# Import border handling
+from .border_handling cimport (
+    handle_border_lines_2d,
+    BORDER_REPEAT,
+    BORDER_MIRROR,
+    BORDER_CONSTANT,
+    BORDER_CLAMP,
+    BORDER_OVERFLOW,
+)
+
 ctypedef np.float64_t f64
 ctypedef np.int32_t i32
+
 
 # =============================================================================
 # Hue Mode Constants
@@ -500,12 +511,15 @@ def hue_lerp_2d_with_modes(
 # =============================================================================
 # Hue interpolation between lines (Section 6 style)
 # =============================================================================
+
 def hue_lerp_between_lines(
     np.ndarray[f64, ndim=1] line0,
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
     int mode_x = HUE_SHORTEST,
     int mode_y = HUE_SHORTEST,
+    int border_mode = BORDER_CLAMP,
+    f64 border_constant = 0.0,
 ):
     """
     Interpolate hue between two 1D lines with modes for each axis.
@@ -518,6 +532,8 @@ def hue_lerp_between_lines(
                 coords[..., 1] = u_y (blend between lines)
         mode_x: Interpolation mode for sampling within lines
         mode_y: Interpolation mode for blending between lines
+        border_mode: Border handling mode (default: BORDER_CLAMP)
+        border_constant: Hue value for BORDER_CONSTANT mode (default: 0.0)
     
     Returns:
         Interpolated hues, shape (H, W), values in [0, 360)
@@ -549,16 +565,43 @@ def hue_lerp_between_lines(
     cdef Py_ssize_t idx_lo, idx_hi
     cdef f64 u_x, u_y, idx_f, frac
     cdef f64 h0_lo, h0_hi, h1_lo, h1_hi
-    cdef f64 v0, v1, h_adj
+    cdef f64 v0, v1
     cdef f64 L_minus_1 = <f64>(L - 1)
+    
+    # Border handling variables
+    cdef tuple border_result
+    cdef f64 new_u_x, new_u_y
+    
+    # Wrap border_constant to valid hue range
+    cdef f64 wrapped_border = wrap_hue(border_constant)
     
     for h in range(H):
         for w in range(W):
             u_x = c[h, w, 0]
             u_y = c[h, w, 1]
             
-            # Map u_x to line index
-            idx_f = u_x * L_minus_1
+            # Handle border conditions
+            if border_mode == BORDER_CONSTANT:
+                # Check if coordinates are out of bounds
+                if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
+                    out_mv[h, w] = wrapped_border
+                    continue
+                new_u_x = u_x
+                new_u_y = u_y
+            elif border_mode == BORDER_OVERFLOW:
+                # No border handling - just use the coordinates
+                new_u_x = u_x
+                new_u_y = u_y
+            else:
+                # Use border handling function for other modes (CLAMP, REPEAT, MIRROR)
+                border_result = handle_border_lines_2d(u_x, u_y, border_mode)
+                if border_result is None:
+                    out_mv[h, w] = wrapped_border
+                    continue
+                new_u_x, new_u_y = border_result
+            
+            # Map new_u_x to line index
+            idx_f = new_u_x * L_minus_1
             idx_lo = <Py_ssize_t>floor(idx_f)
             
             if idx_lo < 0:
@@ -574,18 +617,18 @@ def hue_lerp_between_lines(
             elif frac > 1.0:
                 frac = 1.0
             
-            # Sample line0 at u_x with hue mode
+            # Sample line0 at new_u_x with hue mode
             h0_lo = l0[idx_lo]
             h0_hi = l0[idx_hi]
             v0 = lerp_hue_single(h0_lo, h0_hi, frac, mode_x)
             
-            # Sample line1 at u_x with hue mode
+            # Sample line1 at new_u_x with hue mode
             h1_lo = l1[idx_lo]
             h1_hi = l1[idx_hi]
             v1 = lerp_hue_single(h1_lo, h1_hi, frac, mode_x)
             
             # Blend between lines with hue mode
-            out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+            out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
     
     return out
 
@@ -597,6 +640,8 @@ def hue_lerp_between_lines_x_discrete(
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
     int mode_y = HUE_SHORTEST,
+    int border_mode = BORDER_CLAMP,
+    f64 border_constant = 0.0,
 ):
     """
     Interpolate hue between two 1D lines with discrete x-sampling (nearest index).
@@ -608,13 +653,11 @@ def hue_lerp_between_lines_x_discrete(
                 coords[..., 0] = u_x (position along lines, maps to nearest index)
                 coords[..., 1] = u_y (blend between lines)
         mode_y: Interpolation mode for blending between lines
+        border_mode: Border handling mode (default: BORDER_CLAMP)
+        border_constant: Hue value for BORDER_CONSTANT mode (default: 0.0)
     
     Returns:
         Interpolated hues, shape (H, W), values in [0, 360)
-    
-    Note:
-        For efficiency when L = W, use this function instead of hue_lerp_between_lines.
-        The x-coordinate is mapped to the nearest index by rounding.
     """
     cdef Py_ssize_t L = line0.shape[0]
     cdef Py_ssize_t H = coords.shape[0]
@@ -644,21 +687,45 @@ def hue_lerp_between_lines_x_discrete(
     cdef f64 u_x, u_y, idx_f
     cdef f64 v0, v1
     
+    # Border handling variables
+    cdef tuple border_result
+    cdef f64 new_u_x, new_u_y
+    
+    # Wrap border_constant to valid hue range
+    cdef f64 wrapped_border = wrap_hue(border_constant)
+    
     # Handle edge case when L == 1
     if L == 1:
-        # Only one index available, so v0 and v1 are simply the first elements
         v0 = l0[0]
         v1 = l1[0]
         for h in range(H):
             for w in range(W):
+                u_x = c[h, w, 0]
                 u_y = c[h, w, 1]
-                # Clamp u_y to [0, 1] for safety
-                if u_y < 0.0:
-                    u_y = 0.0
-                elif u_y > 1.0:
-                    u_y = 1.0
-                # Blend between the single values from each line
-                out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+                
+                # Handle border conditions
+                if border_mode == BORDER_CONSTANT:
+                    if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
+                        out_mv[h, w] = wrapped_border
+                        continue
+                    new_u_y = u_y
+                elif border_mode == BORDER_OVERFLOW:
+                    new_u_y = u_y
+                else:
+                    border_result = handle_border_lines_2d(u_x, u_y, border_mode)
+                    if border_result is None:
+                        out_mv[h, w] = wrapped_border
+                        continue
+                    new_u_y = border_result[1]
+                
+                # Clamp u_y for safety (only if not using OVERFLOW)
+                if border_mode != BORDER_OVERFLOW:
+                    if new_u_y < 0.0:
+                        new_u_y = 0.0
+                    elif new_u_y > 1.0:
+                        new_u_y = 1.0
+                
+                out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
         return out
     
     cdef f64 L_minus_1 = <f64>(L - 1)
@@ -668,9 +735,26 @@ def hue_lerp_between_lines_x_discrete(
             u_x = c[h, w, 0]
             u_y = c[h, w, 1]
             
-            # Map u_x to nearest index by rounding
-            idx_f = u_x * L_minus_1
-            idx = <Py_ssize_t>floor(idx_f + 0.5)  # Round to nearest
+            # Handle border conditions
+            if border_mode == BORDER_CONSTANT:
+                if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
+                    out_mv[h, w] = wrapped_border
+                    continue
+                new_u_x = u_x
+                new_u_y = u_y
+            elif border_mode == BORDER_OVERFLOW:
+                new_u_x = u_x
+                new_u_y = u_y
+            else:
+                border_result = handle_border_lines_2d(u_x, u_y, border_mode)
+                if border_result is None:
+                    out_mv[h, w] = wrapped_border
+                    continue
+                new_u_x, new_u_y = border_result
+            
+            # Map new_u_x to nearest index by rounding
+            idx_f = new_u_x * L_minus_1
+            idx = <Py_ssize_t>floor(idx_f + 0.5)
             
             # Clamp index to valid range [0, L-1]
             if idx < 0:
@@ -678,18 +762,12 @@ def hue_lerp_between_lines_x_discrete(
             elif idx >= L:
                 idx = L - 1
             
-            # Clamp u_y to [0, 1] for safety
-            if u_y < 0.0:
-                u_y = 0.0
-            elif u_y > 1.0:
-                u_y = 1.0
-            
             # Sample lines at discrete index
             v0 = l0[idx]
             v1 = l1[idx]
             
-            # Blend between lines with hue mode in y-direction
-            out_mv[h, w] = lerp_hue_single(v0, v1, u_y, mode_y)
+            # Blend between lines with hue mode
+            out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
     
     return out
 # =============================================================================

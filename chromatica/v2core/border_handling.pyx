@@ -7,9 +7,11 @@ This module provides border handling functions for gradient interpolation
 with different wrapping/clamping behaviors at boundaries.
 """
 
+
+
 from libc.math cimport fmod, fabs
 
-ctypedef double f64
+
 
 # =============================================================================
 # Border Mode Constants
@@ -57,11 +59,10 @@ cdef inline f64 clamp(f64 value, f64 min_val, f64 max_val) nogil:
         return max_val
     return value
 
-
 # =============================================================================
 # Border Handling Functions
 # =============================================================================
-def handle_border_edges_2d(f64 x, f64 y, int border_mode):
+cpdef handle_border_edges_2d(f64 x, f64 y, int border_mode):
     """
     Handle border conditions for 2D edge-based interpolation.
     
@@ -128,7 +129,7 @@ def handle_border_edges_2d(f64 x, f64 y, int border_mode):
     return (new_x, new_y)
 
 
-def handle_border_lines_2d(f64 x, f64 y, int border_mode):
+cpdef handle_border_lines_2d(f64 x, f64 y, int border_mode):
     """
     Handle border conditions for 2D line-based interpolation.
     
@@ -153,8 +154,8 @@ def handle_border_lines_2d(f64 x, f64 y, int border_mode):
     cdef f64 new_x = x
     cdef f64 new_y = y
     cdef bint out_of_bounds = False
-    cdef int effective_mode = border_mode
-    
+    cdef int effective_mode_X = border_mode
+    cdef int effective_mode_Y = border_mode
     # Check if coordinates are out of bounds
     if x < 0.0 or x > 1.0 or y < 0.0 or y > 1.0:
         out_of_bounds = True
@@ -167,32 +168,28 @@ def handle_border_lines_2d(f64 x, f64 y, int border_mode):
     
     # BORDER_OVERFLOW becomes BORDER_CLAMP for line axis
     if border_mode == BORDER_OVERFLOW:
-        effective_mode = _BORDER_CLAMP
+        effective_mode_X = _BORDER_CLAMP
     
     # Apply border handling to x coordinate (line axis)
-    if x < 0.0 or x > 1.0 or (effective_mode == _BORDER_REPEAT and x == 1.0):
-        if effective_mode == _BORDER_REPEAT:
+    if x < 0.0 or x > 1.0 or (effective_mode_X == _BORDER_REPEAT and x == 1.0):
+        if effective_mode_X == _BORDER_REPEAT:
             new_x = fmod(x, 1.0)
             if new_x < 0.0:
                 new_x += 1.0
-        elif effective_mode == _BORDER_MIRROR:
+        elif effective_mode_X == _BORDER_MIRROR:
             new_x = tri2(x)
-        elif effective_mode == _BORDER_CLAMP:
+        elif effective_mode_X == _BORDER_CLAMP:
             new_x = clamp(x, 0.0, 1.0)
     
     # Apply border handling to y coordinate (perpendicular axis)
-    if y < 0.0 or y > 1.0 or (effective_mode == _BORDER_REPEAT and y == 1.0):
-        if effective_mode == _BORDER_REPEAT:
+    if y < 0.0 or y > 1.0 or (effective_mode_Y == _BORDER_REPEAT and y == 1.0):
+        if effective_mode_Y == _BORDER_REPEAT:
             new_y = fmod(y, 1.0)
             if new_y < 0.0:
                 new_y += 1.0
-        elif effective_mode == _BORDER_MIRROR:
+        elif effective_mode_Y == _BORDER_MIRROR:
             new_y = tri2(y)
-        elif effective_mode == _BORDER_CLAMP:
-            new_y = clamp(y, 0.0, 1.0)
-        elif effective_mode == BORDER_MIRROR:
-            new_y = tri2(y)
-        elif effective_mode == BORDER_CLAMP:
+        elif effective_mode_Y == _BORDER_CLAMP:
             new_y = clamp(y, 0.0, 1.0)
     
     return (new_x, new_y)

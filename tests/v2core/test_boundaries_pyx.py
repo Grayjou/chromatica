@@ -1,4 +1,4 @@
-from ...chromatica.v2core.border_handling import (
+from ...chromatica.v2core.border_handler import (
     handle_border_edges_2d,
     handle_border_lines_2d, 
     BORDER_REPEAT,
@@ -17,9 +17,13 @@ def test_import_border_handling():
     x_constant = [None, None, 0, .99, None]
     for i, x in enumerate(x_values):
         assert handle_border_edges_2d(x, x, BORDER_REPEAT)[0] == x_repeat[i]
+        assert handle_border_edges_2d(x, x, BORDER_REPEAT)[1] == x_repeat[i]
         assert handle_border_edges_2d(x, x, BORDER_MIRROR)[0] == x_mirror[i]  
+        assert handle_border_edges_2d(x, x, BORDER_MIRROR)[1] == x_mirror[i]
         assert handle_border_edges_2d(x, x, BORDER_CLAMP)[0] == x_clamp[i]
+        assert handle_border_edges_2d(x, x, BORDER_CLAMP)[1] == x_clamp[i]
         assert handle_border_edges_2d(x, x, BORDER_OVERFLOW)[0] == x
+        assert handle_border_edges_2d(x, x, BORDER_OVERFLOW)[1] == x
         if x_constant[i] is None:
             assert handle_border_edges_2d(x, x, BORDER_CONSTANT) is None
         else:
@@ -36,7 +40,8 @@ def test_import_border_lines():
         assert handle_border_lines_2d(y, y, BORDER_REPEAT)[1] == y_repeat[i]
         assert handle_border_lines_2d(y, y, BORDER_MIRROR)[1] == y_mirror[i]  
         assert handle_border_lines_2d(y, y, BORDER_CLAMP)[1] == y_clamp[i]
-        assert handle_border_lines_2d(y, y, BORDER_OVERFLOW)[1] == y_clamp[i]
+        assert handle_border_lines_2d(y, y, BORDER_OVERFLOW)[1] == y
+        assert handle_border_lines_2d(y, y, BORDER_OVERFLOW)[0] == y_clamp[i] #clamps line axis
         if y_constant[i] is None:
             assert handle_border_lines_2d(y, y, BORDER_CONSTANT) is None
         else:

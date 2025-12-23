@@ -27,7 +27,19 @@ from .core import (
     BoundTypeSequence,
     _prepare_bound_types,
     _apply_bound,
+    apply_bounds
 )
+from .border_handler import (
+    handle_border_edges_2d,
+    handle_border_lines_2d,
+    BorderMode
+)
+
+def _optimize_border_mode(bound_type: BoundType, border_mode: BorderMode) -> BorderMode:
+    if bound_type != BoundType.IGNORE:
+        #if we are bounding, no need for complex border handling
+        return BorderMode.OVERFLOW
+    return border_mode
 
 # =============================================================================
 # Type Aliases
@@ -52,6 +64,8 @@ def sample_between_lines_continuous(
     line1: LineArray,
     coords: Union[CoordArray2D, CoordArrayFlat],
     bound_type: BoundType = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Sample between two pre-computed gradient lines with continuous x-interpolation.
@@ -79,6 +93,7 @@ def sample_between_lines_continuous(
         >>> 
         >>> result = sample_between_lines_continuous(line0, line1, coords)
     """
+    border_mode = _optimize_border_mode(bound_type, border_mode)
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
     # Detect if single or multi-channel
@@ -87,11 +102,11 @@ def sample_between_lines_continuous(
         if coords.ndim == 2:
             # Flat coords not supported for discrete version yet
             raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines(line0, line1, coords)
+        return lerp_between_lines(line0, line1, coords, border_mode=border_mode, border_constant=border_constant)
     elif line0.ndim == 2:
         if coords.ndim == 2:
             raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines_multichannel(line0, line1, coords)
+        return lerp_between_lines_multichannel(line0, line1, coords, border_mode=border_mode, border_constant=border_constant)
     else:
         raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
 
@@ -102,6 +117,8 @@ def sample_between_lines_discrete(
     line1: LineArray,
     coords: Union[CoordArray2D, CoordArrayFlat],
     bound_type: BoundType = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Sample between two pre-computed gradient lines with discrete x-sampling.
@@ -120,6 +137,7 @@ def sample_between_lines_discrete(
     Returns:
         Sampled values, shape matching coords spatial dims + channels if any
     """
+    border_mode = _optimize_border_mode(bound_type, border_mode)
     line0 = np.asarray(line0, dtype=np.float64)
     line1 = np.asarray(line1, dtype=np.float64)
     coords = np.asarray(coords, dtype=np.float64)
@@ -131,11 +149,11 @@ def sample_between_lines_discrete(
         if coords.ndim == 2:
             # Flat coords not supported for discrete version yet
             raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines_x_discrete_1ch(line0, line1, coords)
+        return lerp_between_lines_x_discrete_1ch(line0, line1, coords, border_mode=border_mode, border_constant=border_constant or 0.0)
     elif line0.ndim == 2:
         if coords.ndim == 2:
             raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines_x_discrete_multichannel(line0, line1, coords)
+        return lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode=border_mode, border_constant=border_constant)
     else:
         raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
 
@@ -150,6 +168,8 @@ def sample_hue_between_lines_continuous(
     mode_x: HueMode = HueMode.SHORTEST,
     mode_y: HueMode = HueMode.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Sample hue between two pre-computed hue gradient lines with continuous x-interpolation.
@@ -171,10 +191,11 @@ def sample_hue_between_lines_continuous(
     line1 = np.asarray(line1, dtype=np.float64)
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
+    border_mode = _optimize_border_mode(bound_type, border_mode)
     # Detect if single or multi-channel
 
         
-    return hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y))
+    return hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y), border_mode=border_mode, border_constant=border_constant or 0.0)
 
 
 def sample_hue_between_lines_discrete(
@@ -183,6 +204,8 @@ def sample_hue_between_lines_discrete(
     coords: CoordArray2D,
     mode_y: HueMode = HueMode.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Sample hue between two pre-computed hue gradient lines with discrete x-sampling.
@@ -199,12 +222,13 @@ def sample_hue_between_lines_discrete(
     Returns:
         Interpolated hues, shape (H, W), values in [0, 360)
     """
+    border_mode = _optimize_border_mode(bound_type, border_mode)
     line0 = np.asarray(line0, dtype=np.float64)
     line1 = np.asarray(line1, dtype=np.float64)
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
 
-    return hue_lerp_between_lines_x_discrete(line0, line1, coords, int(mode_y))
+    return hue_lerp_between_lines_x_discrete(line0, line1, coords, int(mode_y), border_mode=border_mode, border_constant=border_constant or 0.0)
 
 
 # =============================================================================
@@ -215,6 +239,8 @@ def multival2d_lerp_between_lines_continuous(
     ends_lines: List[np.ndarray],
     coords: List[CoordArray2D],
     bound_types: Union[BoundType, BoundTypeSequence] = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Multi-channel 2D interpolation via line sampling with per-channel coordinates.
@@ -234,13 +260,9 @@ def multival2d_lerp_between_lines_continuous(
     
     H, W = coords[0].shape[:2]
     
-    # Prepare bound types
-    if isinstance(bound_types, BoundType):
-        bound_types = [bound_types] * num_channels
-    else:
-        bound_types = list(bound_types)
-        if len(bound_types) < num_channels:
-            bound_types += [BoundType.CLAMP] * (num_channels - len(bound_types))
+    bound_types = _prepare_bound_types(bound_types, num_channels=num_channels)
+    coords = _apply_bound(coords, bound_types)
+    border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     
     out = np.empty((H, W, num_channels), dtype=np.float64)
     
@@ -250,6 +272,8 @@ def multival2d_lerp_between_lines_continuous(
             ends_lines[ch],
             coords[ch],
             bound_types[ch],
+            border_mode=border_mode,
+            border_constant=border_constant,
         )
     
     return out
@@ -260,6 +284,8 @@ def multival2d_lerp_between_lines_discrete(
     ends_lines: List[np.ndarray] | np.ndarray,
     coords: List[CoordArray2D],
     bound_types: Union[BoundType, BoundTypeSequence] = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Multi-channel 2D interpolation via discrete line sampling with per-channel coordinates.
@@ -283,13 +309,9 @@ def multival2d_lerp_between_lines_discrete(
     
     H, W = coords[0].shape[:2]
     
-    # Prepare bound types
-    if isinstance(bound_types, BoundType):
-        bound_types = [bound_types] * num_channels
-    else:
-        bound_types = list(bound_types)
-        if len(bound_types) < num_channels:
-            bound_types += [BoundType.CLAMP] * (num_channels - len(bound_types))
+    bound_types = _prepare_bound_types(bound_types, num_channels=num_channels) 
+    coords = apply_bounds(coords, bound_types)
+    border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     
     out = np.empty((H, W, num_channels), dtype=np.float64)
     
@@ -299,6 +321,8 @@ def multival2d_lerp_between_lines_discrete(
             ends_lines[ch],
             coords[ch],
             bound_types[ch],
+            border_mode=border_mode,
+            border_constant=border_constant or 0.0,
         )
     
     return out
@@ -307,10 +331,13 @@ def multival2d_lerp_between_lines_discrete(
 # =============================================================================
 # Corner-based 2D Interpolation
 # =============================================================================
+from .corner_interp_2d import lerp_from_corners # type: ignore
 def multival2d_lerp_from_corners(
     corners: np.ndarray,
     coords: List[CoordArray2D],
     bound_types: Union[BoundType, BoundTypeSequence] = BoundType.CLAMP,
+    border_mode: BorderMode = BorderMode.OVERFLOW,
+    border_constant: Optional[float] = None,
 ) -> np.ndarray:
     """
     Multi-channel 2D interpolation from corner values with per-channel coordinates.
@@ -326,47 +353,17 @@ def multival2d_lerp_from_corners(
         Interpolated values, shape (H, W, num_channels)
     """
     from .core import multival2d_lerp
-    
+    border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     num_channels = corners.shape[1]
-    if len(coords) != num_channels:
-        raise ValueError("coords must have one array per channel")
-    
+    bound_types = _prepare_bound_types(bound_types, num_channels=num_channels) 
+    coords = apply_bounds(coords, bound_types)
     H, W = coords[0].shape[:2]
-    
-    # Prepare bound types
-    if isinstance(bound_types, BoundType):
-        bound_types = [bound_types] * num_channels
-    else:
-        bound_types = list(bound_types)
-        if len(bound_types) < num_channels:
-            bound_types += [BoundType.CLAMP] * (num_channels - len(bound_types))
-    
-    out = np.empty((H, W, num_channels), dtype=np.float64)
-    
-    # For each channel, use bilinear interpolation from corners
-    for ch in range(num_channels):
-        tl, tr, bl, br = corners[:, ch]
-        
-        # Get coordinates for this channel
-        coord = coords[ch]  # Shape (H, W, 2)
-        u_x = coord[:, :, 0]  # Horizontal interpolation parameter
-        u_y = coord[:, :, 1]  # Vertical interpolation parameter
-        
-        # Apply bounding to coordinates
-        from .core import bound_coeffs, _prepare_bound_types
-        bt = _prepare_bound_types(bound_types[ch])
-        u_x_bounded = bound_coeffs([u_x], [bt[0]])[0]
-        u_y_bounded = bound_coeffs([u_y], [bt[0]])[0]
-        
-        # Bilinear interpolation: lerp top edge, lerp bottom edge, then lerp vertically
-        # top_edge = lerp(tl, tr, u_x)
-        top_edge = tl + (tr - tl) * u_x_bounded
-        # bottom_edge = lerp(bl, br, u_x)
-        bottom_edge = bl + (br - bl) * u_x_bounded
-        # result = lerp(top_edge, bottom_edge, u_y)
-        out[:, :, ch] = top_edge + (bottom_edge - top_edge) * u_y_bounded
-    
-    return out
+    return lerp_from_corners(
+        corners,
+        coords,
+        border_mode=border_mode,
+        border_constant=border_constant,
+    )
 
 
 # =============================================================================

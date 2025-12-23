@@ -28,6 +28,7 @@ from .interp_2d import (  # type: ignore
     lerp_between_lines,
     lerp_between_planes,
 )
+from ..utils.list_mismatch import handle_list_size_mismatch
 
 # =============================================================================
 # Type Aliases
@@ -77,17 +78,23 @@ def _prepare_hue_modes(
 # =============================================================================
 def _prepare_bound_types(
     bound_types: Union[BoundType, BoundTypeSequence],
+    num_channels: int = 1
 ) -> BoundTypeSequence:
     """Normalize bound_types to a sequence."""
     if isinstance(bound_types, BoundType):
-        return [bound_types]
-    if isinstance(bound_types, (list, tuple)):
-        return bound_types
-    raise ValueError("Invalid bound_types argument")
-
+        bt =  [bound_types]
+    elif isinstance(bound_types, (list, tuple)):
+        bt = list(bound_types)
+    else:
+        raise ValueError(f"Invalid bound_types argument: {bound_types}", type(bound_types))
+    if len(bt) < num_channels:
+        bt = handle_list_size_mismatch(input_list=bt, target_size=num_channels, 
+                                       fill_value=BoundType.CLAMP)
+    return bt
 
 def _bound_stacked(U: np.ndarray, bound_type: BoundType) -> np.ndarray:
     """Apply a single bound type to an array."""
+
     fn = bound_type_to_np_function[bound_type]
     return fn(U, 0.0, 1.0)
 
@@ -98,6 +105,17 @@ def _apply_bound(arr: np.ndarray, bound_type: BoundType) -> np.ndarray:
         return arr
     return _bound_stacked(arr, bound_type)
 
+def apply_bounds(arr: np.ndarray | List[np.ndarray], bound_types: BoundTypeSequence) -> np.ndarray | List[np.ndarray]:
+    """Apply bounding to array(s) based on bound_types."""
+    if isinstance(arr, list):
+        return [apply_bounds(a, bound_types[i] if i < len(bound_types) else BoundType.CLAMP)
+                for i, a in enumerate(arr)]
+    else:
+        if len(bound_types) == 1:
+            bt = bound_types[0]
+        else:
+            bt = bound_types[0]  # For single array, use first bound type
+        return _apply_bound(arr, bt)
 
 def bound_coeffs(
     coeffs: List[ndarray_1d],

@@ -261,10 +261,10 @@ class TestBorderLines2D:
         result = handle_border_lines_2d(2.0, 0.5, BORDER_OVERFLOW)
         assert result[0] == 1.0, "Overflow should clamp to 1 for line axis"
         
-        # Compare with CLAMP mode - should be the same
+        # Compare with CLAMP mode - should be the same in line axis
         result_overflow = handle_border_lines_2d(-0.5, 1.5, BORDER_OVERFLOW)
         result_clamp = handle_border_lines_2d(-0.5, 1.5, BORDER_CLAMP)
-        assert result_overflow == result_clamp
+        assert result_overflow == (result_clamp[0], result_overflow[1])
     
     def test_other_modes_work_same_as_edges(self):
         """Test that non-OVERFLOW modes work the same as edge handling."""

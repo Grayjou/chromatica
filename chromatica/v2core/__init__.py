@@ -52,27 +52,17 @@ from .core2d import (
 from .subgradient import SubGradient
 
 # Import border handling
-try:
-    from .border_handling import (
-        handle_border_edges_2d,
-        handle_border_lines_2d,
-        BORDER_REPEAT,
-        BORDER_MIRROR,
-        BORDER_CONSTANT,
-        BORDER_CLAMP,
-        BORDER_OVERFLOW,
-    )
-except ImportError:
-    # If Cython extension is not built, use Python fallback
-    from .border_handling_fallback import (
-        handle_border_edges_2d,
-        handle_border_lines_2d,
-        BORDER_REPEAT,
-        BORDER_MIRROR,
-        BORDER_CONSTANT,
-        BORDER_CLAMP,
-        BORDER_OVERFLOW,
-    )
+
+from .border_handler import (
+    handle_border_edges_2d,
+    handle_border_lines_2d,
+    BORDER_REPEAT,
+    BORDER_MIRROR,
+    BORDER_CONSTANT,
+    BORDER_CLAMP,
+    BORDER_OVERFLOW,
+)
+
 
 __all__ = [
     # 1D/2D multi-value interpolation
