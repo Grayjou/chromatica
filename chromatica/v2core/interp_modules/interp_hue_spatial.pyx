@@ -5,9 +5,12 @@ cimport numpy as np
 from libc.string cimport memcpy
 from libc.stdlib cimport malloc, free
 from .hue_common cimport (
-    f64, i32, HUE_CW, HUE_CCW, HUE_SHORTEST, HUE_LONGEST,
+    HUE_CW, HUE_CCW, HUE_SHORTEST, HUE_LONGEST,
     wrap_hue, adjust_end_for_mode, lerp_hue_single
 )
+
+ctypedef np.float64_t f64
+ctypedef np.int32_t i32
 
 # =============================================================================
 # 1D Hue Interpolation: coeffs (L, N), modes (N,) -> output (L,)

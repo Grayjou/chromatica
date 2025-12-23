@@ -3,9 +3,12 @@
 import numpy as np
 cimport numpy as np
 from .hue_common cimport (
-    f64, i32, HUE_CW, HUE_CCW, HUE_SHORTEST, HUE_LONGEST,
+    HUE_CW, HUE_CCW, HUE_SHORTEST, HUE_LONGEST,
     wrap_hue, adjust_end_for_mode, lerp_hue_single
 )
+
+ctypedef np.float64_t f64
+ctypedef np.int32_t i32
 
 # =============================================================================
 # Simple 1D Hue Interpolation

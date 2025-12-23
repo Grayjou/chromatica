@@ -10,25 +10,21 @@ Supports four interpolation modes:
 - LONGEST (3): Longest path (≥180°)
 """
 
-import numpy as np
-cimport numpy as np
-from libc.math cimport fmod, floor
-
-ctypedef np.float64_t f64
-ctypedef np.int32_t i32
+from libc.math cimport fmod
 
 # =============================================================================
-# Hue Mode Constants
+# Hue Mode Constants (using cdef enum for proper Cython support)
 # =============================================================================
-DEF HUE_CW = 0
-DEF HUE_CCW = 1
-DEF HUE_SHORTEST = 2
-DEF HUE_LONGEST = 3
+cdef enum:
+    HUE_CW = 0
+    HUE_CCW = 1
+    HUE_SHORTEST = 2
+    HUE_LONGEST = 3
 
 # =============================================================================
 # Inline Helpers
 # =============================================================================
-cdef inline f64 wrap_hue(f64 h) noexcept nogil:
+cdef inline double wrap_hue(double h) noexcept nogil:
     """Wrap hue to [0, 360)."""
     h = fmod(h, 360.0)
     if h < 0.0:
@@ -36,12 +32,12 @@ cdef inline f64 wrap_hue(f64 h) noexcept nogil:
     return h
 
 
-cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:
+cdef inline double adjust_end_for_mode(double h0, double h1, int mode) noexcept nogil:
     """
     Adjust h1 relative to h0 based on interpolation mode.
     Returns adjusted h1 (may be outside [0, 360)).
     """
-    cdef f64 d = h1 - h0
+    cdef double d = h1 - h0
     
     if mode == HUE_CW:
         # Clockwise: ensure h1 > h0
@@ -75,8 +71,8 @@ cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:
     return h1
 
 
-cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:
+cdef inline double lerp_hue_single(double h0, double h1, double u, int mode) noexcept nogil:
     """Lerp between two hues with mode, returning wrapped result."""
-    cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
-    cdef f64 result = h0 + u * (h1_adj - h0)
+    cdef double h1_adj = adjust_end_for_mode(h0, h1, mode)
+    cdef double result = h0 + u * (h1_adj - h0)
     return wrap_hue(result)
