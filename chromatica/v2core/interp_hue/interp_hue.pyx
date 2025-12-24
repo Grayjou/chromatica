@@ -36,6 +36,7 @@ from .interp_hue_utils cimport (
 
 
 
+
 from .interp_hue2d cimport (
     hue_lerp_2d_spatial,
     hue_lerp_between_lines,
@@ -43,10 +44,11 @@ from .interp_hue2d cimport (
     hue_lerp_2d_with_modes,
 
 )
-
-
 ctypedef np.float64_t f64
 ctypedef np.int32_t i32
+
+
+
 
 
 # =============================================================================

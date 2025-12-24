@@ -9,7 +9,9 @@ from enum import IntEnum
 
 from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
-from .interp_2d import (  # type: ignore
+from .corner_interp_2d import lerp_from_corners # type: ignore
+from .interp_2d import (
+    lerp_from_corners,
     lerp_between_lines,
     lerp_between_lines_x_discrete_1ch,
     lerp_between_lines_multichannel,
@@ -331,7 +333,7 @@ def multival2d_lerp_between_lines_discrete(
 # =============================================================================
 # Corner-based 2D Interpolation
 # =============================================================================
-from .corner_interp_2d import lerp_from_corners # type: ignore
+
 def multival2d_lerp_from_corners(
     corners: np.ndarray,
     coords: List[CoordArray2D],
