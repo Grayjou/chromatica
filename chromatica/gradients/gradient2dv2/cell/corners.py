@@ -24,9 +24,7 @@ class CornersCell(CellBase):
             color_space: ColorSpace,
             hue_direction_y: Optional[str] = None,
             hue_direction_x: Optional[str] = None,
-            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
-            border_mode: Optional[int] = None,
-            border_value: Optional[float] = None,
+            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, 
             *, 
             value: Optional[np.ndarray] = None) -> None:
         self.color_space = color_space
@@ -34,8 +32,6 @@ class CornersCell(CellBase):
         self.hue_direction_x = hue_direction_x
         self.per_channel_coords = per_channel_coords
         self.boundtypes = boundtypes
-        self.border_mode = border_mode
-        self.border_value = border_value
         self.top_left = top_left
         self.top_right = top_right
         self.bottom_left = bottom_left
@@ -53,8 +49,6 @@ class CornersCell(CellBase):
             huemode_x=self.hue_direction_x,
             huemode_y=self.hue_direction_y,
             bound_types=self.boundtypes,
-            border_mode=self.border_mode,
-            border_value=self.border_value,
         )
     
     def convert_to_space(self, color_space: ColorSpace, render_before: bool = False) -> CornersCell:
@@ -77,8 +71,6 @@ class CornersCell(CellBase):
             self.hue_direction_y,
             self.hue_direction_x,
             self.boundtypes,
-            self.border_mode,
-            self.border_value,
             value=converted_value,
         )
     
@@ -206,8 +198,6 @@ class CornersCell(CellBase):
                 hue_direction_y=hue_dir_y or self.hue_direction_y,  # Use partition's hue_dir_y
                 hue_direction_x=hue_dir_x or self.hue_direction_x,  # Use partition's hue_dir_x
                 boundtypes=self.boundtypes,
-                border_mode=self.border_mode,
-                border_value=self.border_value,
                 value=sliced_value,
             )
             
