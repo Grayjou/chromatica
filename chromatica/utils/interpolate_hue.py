@@ -10,6 +10,7 @@ from numpy import ndarray as NDArray
 from typing import Optional
 
 # Import from the new Cython backend
+
 from ..v2core.core import hue_lerp, HueMode
 
 

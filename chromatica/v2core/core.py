@@ -15,7 +15,9 @@ from .interp import (  # type: ignore
     lerp_bounded_2d_spatial_fast,
     single_channel_multidim_lerp_bounded_cython_fast,
 )
-from .interp_hue import (  # type: ignore
+
+
+from .interp_hue import (
     hue_lerp_1d_spatial,
     hue_lerp_2d_spatial,
     hue_lerp_simple,
@@ -24,6 +26,7 @@ from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_multidim_lerp,
 )
+
 from .interp_2d import (  # type: ignore
     lerp_between_lines,
     lerp_between_planes,
