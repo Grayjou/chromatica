@@ -82,6 +82,20 @@ def get_transformed_lines_cell(
     )
     
 
+def _get_corners_color_spaces(
+        color_space: ColorSpace,
+        top_left_color_space: Optional[ColorSpace] = None,
+        top_right_color_space: Optional[ColorSpace] = None,
+        bottom_left_color_space: Optional[ColorSpace] = None,
+        bottom_right_color_space: Optional[ColorSpace] = None,
+    ) -> tuple[ColorSpace, ColorSpace, ColorSpace, ColorSpace]:
+    """Determine the color spaces for each corner."""
+    tl_space = top_left_color_space or color_space
+    tr_space = top_right_color_space or color_space
+    bl_space = bottom_left_color_space or color_space
+    br_space = bottom_right_color_space or color_space
+    return tl_space, tr_space, bl_space, br_space
+
 def get_transformed_corners_cell(
         top_left: np.ndarray,
         top_right: np.ndarray,
@@ -101,40 +115,14 @@ def get_transformed_corners_cell(
         border_mode: Optional[int] = None,
         border_value: Optional[float] = None,
         ) -> CornersCell:
-    """Create a transformed CornersCell with proper color space conversion.
-    
-    Args:
-        top_left: Top-left corner color
-        top_right: Top-right corner color
-        bottom_left: Bottom-left corner color
-        bottom_right: Bottom-right corner color
-        per_channel_coords: Per-channel coordinate arrays
-        color_space: Target color space for the cell
-        top_left_color_space: Color space of top-left corner. Defaults to color_space if not specified.
-        top_right_color_space: Color space of top-right corner. Defaults to color_space if not specified.
-        bottom_left_color_space: Color space of bottom-left corner. Defaults to color_space if not specified.
-        bottom_right_color_space: Color space of bottom-right corner. Defaults to color_space if not specified.
-        hue_direction_y: Hue direction for vertical interpolation
-        hue_direction_x: Hue direction for horizontal interpolation
-        input_format: Format of input color data
-        per_channel_transforms: Optional per-channel transformations
-        boundtypes: Boundary types for coordinate handling
-        border_mode: Border handling mode (e.g., BORDER_CLAMP, BORDER_REPEAT)
-        border_value: Border constant value for BORDER_CONSTANT mode
-        
-    Returns:
-        CornersCell instance with converted colors
-    """
-    # Default corner color spaces to the target color_space if not specified
-    if top_left_color_space is None:
-        top_left_color_space = color_space
-    if top_right_color_space is None:
-        top_right_color_space = color_space
-    if bottom_left_color_space is None:
-        bottom_left_color_space = color_space
-    if bottom_right_color_space is None:
-        bottom_right_color_space = color_space
-
+    """Create a transformed CornersCell with proper color space conversion."""
+    top_left_color_space, top_right_color_space, bottom_left_color_space, bottom_right_color_space = _get_corners_color_spaces(
+        color_space,
+        top_left_color_space,
+        top_right_color_space,
+        bottom_left_color_space,
+        bottom_right_color_space,
+    )
     top_left_converted = convert_to_space_float(
         top_left, top_left_color_space, input_format, color_space
     ).value
