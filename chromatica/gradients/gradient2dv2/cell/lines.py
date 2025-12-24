@@ -23,7 +23,9 @@ class LinesCell(CellBase):
             hue_direction_y: Optional[str] = None,
             line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
             hue_direction_x: Optional[str] = None,
-            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, 
+            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
+            border_mode: Optional[int] = None,
+            border_value: Optional[float] = None,
             *, 
             value: Optional[np.ndarray] = None) -> None:
         self.line_method = line_method
@@ -32,6 +34,8 @@ class LinesCell(CellBase):
         self.hue_direction_x = hue_direction_x
         self.per_channel_coords = per_channel_coords
         self.boundtypes = boundtypes
+        self.border_mode = border_mode
+        self.border_value = border_value
         self.top_line = top_line
         self.bottom_line = bottom_line
         self._value = value
@@ -46,6 +50,8 @@ class LinesCell(CellBase):
             huemode_x=self.hue_direction_x,
             line_method=self.line_method,
             bound_types=self.boundtypes,
+            border_mode=self.border_mode,
+            border_value=self.border_value,
         )
     
     def convert_to_space(self, color_space: ColorSpace, render_before: bool = False) -> LinesCell:
@@ -67,6 +73,8 @@ class LinesCell(CellBase):
             self.line_method,
             self.hue_direction_x,
             self.boundtypes,
+            self.border_mode,
+            self.border_value,
             value=converted_value,
         )
     
@@ -127,6 +135,8 @@ class LinesCell(CellBase):
                 line_method=self.line_method,
                 hue_direction_x=hue_dir_x or self.hue_direction_x,  # Keep original x direction
                 boundtypes=self.boundtypes,
+                border_mode=self.border_mode,
+                border_value=self.border_value,
                 value=sliced_value,
             )
             #cell_slice.get_value()

@@ -18,16 +18,44 @@ def get_transformed_lines_cell(
         bottom_line: np.ndarray,
         per_channel_coords: List[np.ndarray] | np.ndarray,
         color_space: ColorSpace,
-        top_line_color_space: ColorSpace,
-        bottom_line_color_space: ColorSpace,
+        top_line_color_space: Optional[ColorSpace] = None,
+        bottom_line_color_space: Optional[ColorSpace] = None,
         hue_direction_y: Optional[str] = None,
         input_format: FormatType = FormatType.INT,
         hue_direction_x: Optional[str] = None,
         per_channel_transforms: Optional[dict] = None,
         line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
         boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
+        border_mode: Optional[int] = None,
+        border_value: Optional[float] = None,
         ) -> LinesCell:
-    """Create a transformed LinesCell with proper color space conversion."""
+    """Create a transformed LinesCell with proper color space conversion.
+    
+    Args:
+        top_line: Top line array
+        bottom_line: Bottom line array
+        per_channel_coords: Per-channel coordinate arrays
+        color_space: Target color space for the cell
+        top_line_color_space: Color space of top line. Defaults to color_space if not specified.
+        bottom_line_color_space: Color space of bottom line. Defaults to color_space if not specified.
+        hue_direction_y: Hue direction for vertical interpolation
+        input_format: Format of input color data
+        hue_direction_x: Hue direction for horizontal interpolation
+        per_channel_transforms: Optional per-channel transformations
+        line_method: Line interpolation method
+        boundtypes: Boundary types for coordinate handling
+        border_mode: Border handling mode (e.g., BORDER_CLAMP, BORDER_REPEAT)
+        border_value: Border constant value for BORDER_CONSTANT mode
+        
+    Returns:
+        LinesCell instance with converted colors
+    """
+    # Default line color spaces to the target color_space if not specified
+    if top_line_color_space is None:
+        top_line_color_space = color_space
+    if bottom_line_color_space is None:
+        bottom_line_color_space = color_space
+    
     top_line_converted = convert_to_space_float(
         top_line, top_line_color_space, input_format, color_space
     ).value
@@ -49,6 +77,8 @@ def get_transformed_lines_cell(
         hue_direction_x=hue_direction_x,
         line_method=line_method,
         boundtypes=boundtypes,
+        border_mode=border_mode,
+        border_value=border_value,
     )
     
 
@@ -82,6 +112,8 @@ def get_transformed_corners_cell(
         input_format: FormatType = FormatType.INT,
         per_channel_transforms: Optional[dict] = None,
         boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
+        border_mode: Optional[int] = None,
+        border_value: Optional[float] = None,
         ) -> CornersCell:
     """Create a transformed CornersCell with proper color space conversion."""
     top_left_color_space, top_right_color_space, bottom_left_color_space, bottom_right_color_space = _get_corners_color_spaces(
@@ -120,6 +152,8 @@ def get_transformed_corners_cell(
         hue_direction_y=hue_direction_y,
         hue_direction_x=hue_direction_x,
         boundtypes=boundtypes,
+        border_mode=border_mode,
+        border_value=border_value,
     )
 
 
@@ -131,12 +165,12 @@ def get_transformed_corners_cell_dual(
         per_channel_coords: List[np.ndarray] | np.ndarray,
         horizontal_color_space: ColorSpace,
         vertical_color_space: ColorSpace,
-        top_left_color_space: ColorSpace,
-        top_right_color_space: ColorSpace,
-        bottom_left_color_space: ColorSpace,
-        bottom_right_color_space: ColorSpace,
-        hue_direction_y: Optional[str],
-        hue_direction_x: Optional[str],
+        top_left_color_space: Optional[ColorSpace] = None,
+        top_right_color_space: Optional[ColorSpace] = None,
+        bottom_left_color_space: Optional[ColorSpace] = None,
+        bottom_right_color_space: Optional[ColorSpace] = None,
+        hue_direction_y: Optional[str] = None,
+        hue_direction_x: Optional[str] = None,
         input_format: FormatType = FormatType.INT,
         per_channel_transforms: Optional[dict] = None,
         boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
@@ -145,7 +179,42 @@ def get_transformed_corners_cell_dual(
         top_segment_color_space: Optional[ColorSpace] = None,
         bottom_segment_color_space: Optional[ColorSpace] = None
         ) -> CornersCellDual:
-    """Create a transformed CornersCellDual with proper color space conversion."""
+    """Create a transformed CornersCellDual with proper color space conversion.
+    
+    Args:
+        top_left: Top-left corner color
+        top_right: Top-right corner color
+        bottom_left: Bottom-left corner color
+        bottom_right: Bottom-right corner color
+        per_channel_coords: Per-channel coordinate arrays
+        horizontal_color_space: Horizontal color space for the cell
+        vertical_color_space: Vertical color space for the cell
+        top_left_color_space: Color space of top-left corner. Defaults to horizontal_color_space if not specified.
+        top_right_color_space: Color space of top-right corner. Defaults to horizontal_color_space if not specified.
+        bottom_left_color_space: Color space of bottom-left corner. Defaults to horizontal_color_space if not specified.
+        bottom_right_color_space: Color space of bottom-right corner. Defaults to horizontal_color_space if not specified.
+        hue_direction_y: Hue direction for vertical interpolation
+        hue_direction_x: Hue direction for horizontal interpolation
+        input_format: Format of input color data
+        per_channel_transforms: Optional per-channel transformations
+        boundtypes: Boundary types for coordinate handling
+        top_segment_hue_direction_x: Hue direction for top segment horizontal interpolation
+        bottom_segment_hue_direction_x: Hue direction for bottom segment horizontal interpolation
+        top_segment_color_space: Color space for top segment
+        bottom_segment_color_space: Color space for bottom segment
+        
+    Returns:
+        CornersCellDual instance with converted colors
+    """
+    # Default corner color spaces to the horizontal_color_space if not specified
+    if top_left_color_space is None:
+        top_left_color_space = horizontal_color_space
+    if top_right_color_space is None:
+        top_right_color_space = horizontal_color_space
+    if bottom_left_color_space is None:
+        bottom_left_color_space = horizontal_color_space
+    if bottom_right_color_space is None:
+        bottom_right_color_space = horizontal_color_space
 
     top_left_converted = convert_to_space_float(
         top_left, top_left_color_space, input_format, horizontal_color_space

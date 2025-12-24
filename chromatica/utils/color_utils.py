@@ -28,6 +28,7 @@ def convert_to_space_float(
     Returns:
         ColorBase object in target space with float format
     """
+
     from_class = unified_tuple_to_class[(from_space, format_type)]
     to_float_class = unified_tuple_to_class[(to_space, FormatType.FLOAT)]
     return to_float_class(from_class(color))
