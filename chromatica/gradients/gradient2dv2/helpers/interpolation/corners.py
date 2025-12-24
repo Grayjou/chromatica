@@ -28,8 +28,6 @@ def _interp_transformed_non_hue_space_2d_corners(
     c_br: np.ndarray,
     transformed: List[np.ndarray],
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
 ) -> np.ndarray:
     """
     Interpolate non-hue values from 4 corner values using transformed coordinates in multidimensional space.
@@ -39,8 +37,6 @@ def _interp_transformed_non_hue_space_2d_corners(
         corners=corners_array,
         coords=transformed,
         bound_types=bound_types,
-        border_mode=border_mode,
-        border_constant=border_value,
     )
 
 
@@ -52,8 +48,6 @@ def _interp_transformed_hue_space_2d_corners(
     transformed: List[np.ndarray],
     huemode_x: HueMode,
     huemode_y: HueMode,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
 ) -> np.ndarray:
     """
     Interpolate hue values from 4 corner hues using transformed coordinates in multidimensional space.
@@ -74,8 +68,6 @@ def _interp_transformed_hue_space_2d_corners(
         corners=corner_data['rest'],
         coords=transformed[1:],  # Skip hue channel coordinates
         bound_types=BoundType.CLAMP,
-        border_mode=border_mode,
-        border_constant=border_value,
     )
     
     return combine_hue_and_rest_channels(result_hue, result_rest)
@@ -91,8 +83,6 @@ def interp_transformed_2d_from_corners(
     huemode_x: Optional[HueMode] = None,
     huemode_y: Optional[HueMode] = None,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
 ) -> np.ndarray:
     """
     Interpolate values from 4 corner values using transformed coordinates in multidimensional space.
@@ -101,11 +91,9 @@ def interp_transformed_2d_from_corners(
         if huemode_x is None or huemode_y is None:
             raise ValueError("Hue modes must be provided for hue color spaces.")
         return _interp_transformed_hue_space_2d_corners(
-            c_tl, c_tr, c_bl, c_br, transformed, huemode_x, huemode_y,
-            border_mode, border_value
+            c_tl, c_tr, c_bl, c_br, transformed, huemode_x, huemode_y
         )
     else:
         return _interp_transformed_non_hue_space_2d_corners(
-            c_tl, c_tr, c_bl, c_br, transformed, bound_types,
-            border_mode, border_value
+            c_tl, c_tr, c_bl, c_br, transformed, bound_types
         )
