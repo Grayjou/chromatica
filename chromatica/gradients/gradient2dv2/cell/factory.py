@@ -52,6 +52,20 @@ def get_transformed_lines_cell(
     )
     
 
+def _get_corners_color_spaces(
+        color_space: ColorSpace,
+        top_left_color_space: Optional[ColorSpace] = None,
+        top_right_color_space: Optional[ColorSpace] = None,
+        bottom_left_color_space: Optional[ColorSpace] = None,
+        bottom_right_color_space: Optional[ColorSpace] = None,
+    ) -> tuple[ColorSpace, ColorSpace, ColorSpace, ColorSpace]:
+    """Determine the color spaces for each corner."""
+    tl_space = top_left_color_space or color_space
+    tr_space = top_right_color_space or color_space
+    bl_space = bottom_left_color_space or color_space
+    br_space = bottom_right_color_space or color_space
+    return tl_space, tr_space, bl_space, br_space
+
 def get_transformed_corners_cell(
         top_left: np.ndarray,
         top_right: np.ndarray,
@@ -59,18 +73,24 @@ def get_transformed_corners_cell(
         bottom_right: np.ndarray,
         per_channel_coords: List[np.ndarray] | np.ndarray,
         color_space: ColorSpace,
-        top_left_color_space: ColorSpace,
-        top_right_color_space: ColorSpace,
-        bottom_left_color_space: ColorSpace,
-        bottom_right_color_space: ColorSpace,
-        hue_direction_y: Optional[str],
-        hue_direction_x: Optional[str],
+        top_left_color_space: Optional[ColorSpace] = None,
+        top_right_color_space: Optional[ColorSpace] = None,
+        bottom_left_color_space: Optional[ColorSpace] = None,
+        bottom_right_color_space: Optional[ColorSpace] = None,
+        hue_direction_y: Optional[str] = None,
+        hue_direction_x: Optional[str] = None,
         input_format: FormatType = FormatType.INT,
         per_channel_transforms: Optional[dict] = None,
         boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
         ) -> CornersCell:
     """Create a transformed CornersCell with proper color space conversion."""
-
+    top_left_color_space, top_right_color_space, bottom_left_color_space, bottom_right_color_space = _get_corners_color_spaces(
+        color_space,
+        top_left_color_space,
+        top_right_color_space,
+        bottom_left_color_space,
+        bottom_right_color_space,
+    )
     top_left_converted = convert_to_space_float(
         top_left, top_left_color_space, input_format, color_space
     ).value

@@ -205,6 +205,38 @@ class CornersCell(CellBase):
         
         return slices
     
+    def copy_with(self,
+            top_left: Optional[np.ndarray] = None,
+            top_right: Optional[np.ndarray] = None,
+            bottom_left: Optional[np.ndarray] = None,
+            bottom_right: Optional[np.ndarray] = None,
+            per_channel_coords: Optional[List[np.ndarray] | np.ndarray] = None,
+            color_space: Optional[ColorSpace] = None,
+            hue_direction_y: Optional[str] = None,
+            hue_direction_x: Optional[str] = None,
+            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, ):
+        top_left = top_left or self.top_left
+        top_right = top_right or self.top_right
+        bottom_left = bottom_left or self.bottom_left
+        bottom_right = bottom_right or self.bottom_right
+        per_channel_coords = per_channel_coords or self.per_channel_coords
+        color_space = color_space or self.color_space
+        hue_direction_y = hue_direction_y or self.hue_direction_y
+        hue_direction_x = hue_direction_x or self.hue_direction_x
+        boundtypes = boundtypes or self.boundtypes
+        return CornersCell(
+            top_left,
+            top_right,
+            bottom_left,
+            bottom_right,
+            per_channel_coords,
+            color_space,
+            hue_direction_y,
+            hue_direction_x,
+            boundtypes,
+        )
+
+
     @classmethod
     def get_top_lines(cls, cells: List[CornersCell]) -> np.ndarray:
         """
