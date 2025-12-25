@@ -34,6 +34,7 @@ def _interp_transformed_non_hue_space_2d_corners(
     """
     Interpolate non-hue values from 4 corner values using transformed coordinates in multidimensional space.
     """
+
     corners_array = np.array([c_tl, c_tr, c_bl, c_br])
     return multival2d_lerp_from_corners(
         corners=corners_array,
@@ -97,6 +98,7 @@ def interp_transformed_2d_from_corners(
     """
     Interpolate values from 4 corner values using transformed coordinates in multidimensional space.
     """
+
     if is_hue_space(color_space):
         if huemode_x is None or huemode_y is None:
             raise ValueError("Hue modes must be provided for hue color spaces.")

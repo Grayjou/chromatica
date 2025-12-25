@@ -85,7 +85,7 @@ def _prepare_bound_types(
 ) -> BoundTypeSequence:
     """Normalize bound_types to a sequence."""
     if isinstance(bound_types, BoundType):
-        bt =  [bound_types]
+        bt =  [bound_types]*num_channels
     elif isinstance(bound_types, (list, tuple)):
         bt = list(bound_types)
     else:

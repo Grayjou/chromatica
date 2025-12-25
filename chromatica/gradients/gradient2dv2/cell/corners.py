@@ -43,6 +43,7 @@ class CornersCell(CellBase):
         self._value = value
     
     def _render_value(self):
+
         return interp_transformed_2d_from_corners(
             c_tl=self.top_left,
             c_tr=self.top_right,
@@ -229,7 +230,7 @@ class CornersCell(CellBase):
         top_right = top_right or self.top_right
         bottom_left = bottom_left or self.bottom_left
         bottom_right = bottom_right or self.bottom_right
-        per_channel_coords = per_channel_coords or self.per_channel_coords
+        per_channel_coords = per_channel_coords or self.per_channel_coords.copy()
         color_space = color_space or self.color_space
         hue_direction_y = hue_direction_y or self.hue_direction_y
         hue_direction_x = hue_direction_x or self.hue_direction_x

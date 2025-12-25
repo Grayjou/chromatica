@@ -11,36 +11,47 @@ import numpy as np
 
 # Import Cython functions as internal
 try:
-    from .interp_2d import (
-        lerp_between_lines as _lerp_between_lines,
-        lerp_between_lines_x_discrete_1ch as _lerp_between_lines_x_discrete_1ch,
-        lerp_between_lines_multichannel as _lerp_between_lines_multichannel,
-        lerp_between_lines_x_discrete_multichannel as _lerp_between_lines_x_discrete_multichannel,
+
+    from .interp_2d_fast import (
+        lerp_between_lines_x_discrete_1ch_fast as _lerp_between_lines_x_discrete_1ch,#_fast,
+        lerp_between_lines_multichannel_fast as _lerp_between_lines_multichannel,#_fast,
+        lerp_between_lines_full_fast as _lerp_between_lines,#_fast,
+        lerp_between_lines_x_discrete_full_fast as _lerp_between_lines_x_discrete_multichannel,#_fast,
+
     )
-    from .corner_interp_2d import (
-        lerp_from_corners_1ch_flat as _lerp_from_corners_1ch_flat,
-        lerp_from_corners_multichannel as _lerp_from_corners_multichannel,
-        lerp_from_corners_multichannel_same_coords as _lerp_from_corners_multichannel_same_coords,
-        lerp_from_corners_multichannel_flat as _lerp_from_corners_multichannel_flat,
-        lerp_from_corners_multichannel_flat_same_coords as _lerp_from_corners_multichannel_flat_same_coords,
-        lerp_from_corners as _lerp_from_corners,
+
+    from .corner_interp_2d_fast import (
+        lerp_from_corners_1ch_flat_fast as _lerp_from_corners_1ch_flat,#_fast,
+        lerp_from_corners_multichannel_fast as _lerp_from_corners_multichannel,#_fast,
+        lerp_from_corners_multichannel_same_coords_fast as _lerp_from_corners_multichannel_same_coords,#_fast,
+        lerp_from_corners_multichannel_flat_fast as _lerp_from_corners_multichannel_flat,#_fast,
+        lerp_from_corners_multichannel_flat_same_coords_fast as _lerp_from_corners_multichannel_flat_same_coords,#_fast,
+        lerp_from_corners_fast as _lerp_from_corners,#_fast,
     )
     from .interp_planes import (
         lerp_between_planes as _lerp_between_planes,
     )
     CYTHON_AVAILABLE = True
-except ImportError:
+except ImportError as e:
     CYTHON_AVAILABLE = False
-
+    print("Cython interp_2d extensions not available:", e)
 
 # =============================================================================
 # Line Interpolation Functions
 # =============================================================================
 
+def _ensure_coords_array(
+    coords: np.ndarray | list[np.ndarray]
+) -> np.ndarray:
+    """Ensure coords is a single numpy array."""
+    if isinstance(coords, list):
+        return np.array(coords)
+    return coords
+
 def lerp_between_lines(
     line0: np.ndarray,
     line1: np.ndarray,
-    coords: np.ndarray,
+    coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
 ) -> np.ndarray:
@@ -63,6 +74,7 @@ def lerp_between_lines(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    coords = _ensure_coords_array(coords)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
     return _lerp_between_lines(line0, line1, coords, border_mode, border_constant)
@@ -71,7 +83,7 @@ def lerp_between_lines(
 def lerp_between_lines_x_discrete_1ch(
     line0: np.ndarray,
     line1: np.ndarray,
-    coords: np.ndarray,
+    coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
 ) -> np.ndarray:
@@ -95,15 +107,16 @@ def lerp_between_lines_x_discrete_1ch(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    coords = _ensure_coords_array(coords)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    return _lerp_between_lines_x_discrete_1ch(line0, line1, coords, border_mode, border_constant)
+    return _lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode, border_constant)
 
 
 def lerp_between_lines_multichannel(
     line0: np.ndarray,
     line1: np.ndarray,
-    coords: np.ndarray,
+    coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
 ) -> np.ndarray:
@@ -125,15 +138,16 @@ def lerp_between_lines_multichannel(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    coords = _ensure_coords_array(coords)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    return _lerp_between_lines_multichannel(line0, line1, coords, border_mode, border_constant)
+    return lerp_between_lines(line0, line1, coords, border_mode, border_constant)
 
 
 def lerp_between_lines_x_discrete_multichannel(
     line0: np.ndarray,
     line1: np.ndarray,
-    coords: np.ndarray,
+    coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
 ) -> np.ndarray:
@@ -155,6 +169,7 @@ def lerp_between_lines_x_discrete_multichannel(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    coords = _ensure_coords_array(coords)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
     return _lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode, border_constant)

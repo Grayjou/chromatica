@@ -43,6 +43,40 @@ def _optimize_border_mode(bound_type: BoundType, border_mode: BorderMode) -> Bor
         return BorderMode.OVERFLOW
     return border_mode
 
+# core2d.py - Add this helper function
+
+def _prepare_border_constant(
+    border_constant: Optional[Union[float, np.ndarray, List[float]]],
+    num_channels: int,
+) -> np.ndarray:
+    """
+    Pre-resolve border_constant to a contiguous float64 array.
+    
+    This allows Cython to receive typed data and release the GIL.
+    
+    Args:
+        border_constant: Scalar, array-like, or None
+        num_channels: Number of channels (C)
+        
+    Returns:
+        Contiguous float64 array of shape (C,)
+    """
+    if border_constant is None:
+        return np.zeros(num_channels, dtype=np.float64)
+    elif isinstance(border_constant, (int, float)):
+        return np.full(num_channels, float(border_constant), dtype=np.float64)
+    else:
+        arr = np.asarray(border_constant, dtype=np.float64)
+        if arr.ndim != 1 or arr.shape[0] != num_channels:
+            raise ValueError(
+                f"border_constant must be scalar or array of length {num_channels}, "
+                f"got shape {arr.shape}"
+            )
+        if not arr.flags['C_CONTIGUOUS']:
+            arr = np.ascontiguousarray(arr)
+        return arr
+
+
 # =============================================================================
 # Type Aliases
 # =============================================================================
@@ -354,12 +388,14 @@ def multival2d_lerp_from_corners(
     Returns:
         Interpolated values, shape (H, W, num_channels)
     """
-    from .core import multival2d_lerp
+
     border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
+
     num_channels = corners.shape[1]
     bound_types = _prepare_bound_types(bound_types, num_channels=num_channels) 
     coords = apply_bounds(coords, bound_types)
     H, W = coords[0].shape[:2]
+
     return lerp_from_corners(
         corners,
         coords,
