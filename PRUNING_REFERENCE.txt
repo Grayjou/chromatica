@@ -1,0 +1,91 @@
+# V2Core Methods - Quick Reference for Pruning
+
+## UNUSED METHODS
+
+No unused methods detected in v2core.
+
+## REPEATED METHODS (Candidates for Review)
+
+### Border Handling - Intentional Cython + Python Fallback Pattern
+
+chromatica/v2core/border_handling.pyx {
+  clamp,
+  tri2,
+  handle_border_edges_2d,
+  handle_border_lines_2d,
+}
+
+chromatica/v2core/border_handling_fallback.py {
+  clamp,
+  tri2,
+  handle_border_edges_2d,
+  handle_border_lines_2d,
+}
+
+NOTE: These are intentional duplicates. .pyx is optimized Cython, .py is Python fallback.
+Recommendation: KEEP BOTH
+
+### Hue Interpolation - Cython Implementation + Python Wrappers
+
+chromatica/v2core/interp_hue/interp_hue.pyx {
+  hue_lerp_1d_spatial,
+  hue_lerp_simple,
+  hue_lerp_arrays,
+  hue_multidim_lerp,
+}
+
+chromatica/v2core/interp_hue/wrappers.py {
+  hue_lerp_1d_spatial,
+  hue_lerp_simple,
+  hue_lerp_arrays,
+  hue_multidim_lerp,
+}
+
+NOTE: wrappers.py provides type-hinted interface to .pyx implementations.
+Recommendation: KEEP BOTH (architectural pattern for better IDE support)
+
+### 2D Interpolation - Cython Implementation + Python Wrappers
+
+chromatica/v2core/interp_2d/interp_planes.pyx {
+  lerp_between_planes,
+}
+
+chromatica/v2core/interp_2d/wrappers.py {
+  lerp_between_planes,
+}
+
+NOTE: Same pattern as above - wrappers provide type hints.
+Recommendation: KEEP BOTH
+
+## EXPECTED CYTHON PAIRS (.pxd + .pyx) - NOT DUPLICATES
+
+These are declaration (.pxd) + implementation (.pyx) pairs, which is standard Cython practice:
+
+chromatica/v2core/border_handling.pxd + chromatica/v2core/border_handling.pyx {
+  handle_border_edges_2d,
+  handle_border_lines_2d,
+}
+
+chromatica/v2core/interp_2d/helpers.pxd + chromatica/v2core/interp_2d/helpers.pyx {
+  handle_border_1d,
+  is_out_of_bounds_1d,
+  is_out_of_bounds_2d,
+  is_out_of_bounds_3d,
+}
+
+chromatica/v2core/interp_hue/interp_hue_utils.pxd + chromatica/v2core/interp_hue/interp_hue_utils.pyx {
+  adjust_end_for_mode,
+  lerp_hue_single,
+  wrap_hue,
+}
+
+Recommendation: KEEP ALL (required for Cython C-level imports)
+
+## FINAL RECOMMENDATION
+
+No pruning necessary. All "duplicates" are intentional architectural patterns:
+1. Cython + Python fallback (for portability)
+2. Cython implementation + Python wrappers (for type safety and IDE support)
+3. .pxd + .pyx pairs (standard Cython practice)
+
+The v2core refactor is clean and well-organized.
