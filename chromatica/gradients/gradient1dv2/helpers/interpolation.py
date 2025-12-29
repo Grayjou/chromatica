@@ -6,7 +6,7 @@ Interpolation utilities for 1D gradient segments.
 from typing import List, Optional
 import numpy as np
 
-from ....types.color_types import ColorSpace, is_hue_space
+from ....types.color_types import ColorSpaces, is_hue_space
 from boundednumbers import BoundType
 from ....v2core import multival1d_lerp
 

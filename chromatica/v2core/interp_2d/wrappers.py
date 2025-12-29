@@ -13,11 +13,10 @@ import numpy as np
 try:
 
     from .interp_2d_fast import (
-        lerp_between_lines_x_discrete_1ch_fast as _lerp_between_lines_x_discrete_1ch,#_fast,
-        lerp_between_lines_multichannel_fast as _lerp_between_lines_multichannel,#_fast,
         lerp_between_lines_full_fast as _lerp_between_lines,#_fast,
         lerp_between_lines_x_discrete_full_fast as _lerp_between_lines_x_discrete_multichannel,#_fast,
-
+        lerp_between_lines_2d_multichannel_same_coords as _lerp_between_lines_multichannel_same_coords,#_fast,
+        lerp_between_lines_2d_x_discrete_multichannel_same_coords as _lerp_between_lines_x_discrete_multichannel_same_coords,#_fast,
     )
 
     from .corner_interp_2d_fast import (
@@ -48,6 +47,22 @@ def _ensure_coords_array(
         return np.array(coords)
     return coords
 
+def _infer_same_coords_lines_2d(
+    coords: np.ndarray | list[np.ndarray],
+    line: np.ndarray,
+            
+    ) -> bool:
+    """Infer if coords represent same-coords for multichannel lines."""
+    if isinstance(coords, list):
+        return False
+    if coords.ndim != 3:
+        return False
+    if line.ndim != 2:
+        return False
+    if coords.shape[-1] != 2:
+        return False
+    return True
+
 def lerp_between_lines(
     line0: np.ndarray,
     line1: np.ndarray,
@@ -61,9 +76,10 @@ def lerp_between_lines(
     Args:
         line0: First line, shape (L,)
         line1: Second line, shape (L,)
-        coords: Coordinate grid, shape (H, W, 2)
-                coords[h, w, 0] = u_x (position along lines, 0-1, continuous)
-                coords[h, w, 1] = u_y (blend factor between lines, 0-1)
+        coords: Handles all coordinate configurations:
+            - Single channel: (H, W, 2) or (N, 2)
+            - Multi-channel same coords: (H, W, 2) or (N, 2)  
+            - Multi-channel per-channel coords: (C, H, W, 2) or (C, N, 2)
         border_mode: Border handling mode (default: BORDER_CLAMP=3)
                     0=REPEAT, 1=MIRROR, 2=CONSTANT, 3=CLAMP, 4=OVERFLOW
         border_constant: Value for out-of-bounds coordinates when border_mode=CONSTANT
@@ -75,8 +91,11 @@ def lerp_between_lines(
         ImportError: If Cython extensions are not built
     """
     coords = _ensure_coords_array(coords)
+    same_coords = _infer_same_coords_lines_2d(coords, line0)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
+    if same_coords:
+        return _lerp_between_lines_multichannel_same_coords(line0, line1, coords.astype(np.float64), border_mode, border_constant)
     return _lerp_between_lines(line0, line1, coords, border_mode, border_constant)
 
 
@@ -95,9 +114,10 @@ def lerp_between_lines_x_discrete_1ch(
     Args:
         line0: First line, shape (L,)
         line1: Second line, shape (L,)
-        coords: Coordinate grid, shape (H, W, 2)
-                coords[h, w, 0] = u_x (maps to nearest index in lines, 0-1)
-                coords[h, w, 1] = u_y (blend factor between lines, 0-1)
+        coords: CHandles all coordinate configurations:
+            - Single channel: (H, W, 2) or (N, 2)
+            - Multi-channel same coords: (H, W, 2) or (N, 2)  
+            - Multi-channel per-channel coords: (C, H, W, 2) or (C, N, 2)
         border_mode: Border handling mode (default: BORDER_CLAMP=3)
         border_constant: Value for out-of-bounds coordinates when border_mode=CONSTANT
         
@@ -113,35 +133,6 @@ def lerp_between_lines_x_discrete_1ch(
     return _lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode, border_constant)
 
 
-def lerp_between_lines_multichannel(
-    line0: np.ndarray,
-    line1: np.ndarray,
-    coords: np.ndarray | list[np.ndarray],
-    border_mode: int = 3,  # BORDER_CLAMP
-    border_constant: float = 0.0,
-) -> np.ndarray:
-    """
-    Interpolate between two multichannel lines using 2D coordinates with continuous x-interpolation.
-    
-    Args:
-        line0: First line, shape (L, C) where C is number of channels
-        line1: Second line, shape (L, C)
-        coords: Coordinate grid, shape (H, W, 2)
-                coords[h, w, 0] = u_x (position along lines, 0-1, continuous)
-                coords[h, w, 1] = u_y (blend factor between lines, 0-1)
-        border_mode: Border handling mode (default: BORDER_CLAMP=3)
-        border_constant: Value for out-of-bounds coordinates when border_mode=CONSTANT
-        
-    Returns:
-        Interpolated values, shape (H, W, C)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    coords = _ensure_coords_array(coords)
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    return lerp_between_lines(line0, line1, coords, border_mode, border_constant)
 
 
 def lerp_between_lines_x_discrete_multichannel(
@@ -150,6 +141,7 @@ def lerp_between_lines_x_discrete_multichannel(
     coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
+    num_channels: Optional[int] = None,
 ) -> np.ndarray:
     """
     Interpolate between two multichannel lines using 2D coordinates with discrete x-sampling.
@@ -169,9 +161,16 @@ def lerp_between_lines_x_discrete_multichannel(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    if num_channels is None:
+        num_channels = line0.shape[1]
+    if border_constant is not None and not isinstance(border_constant, np.ndarray):
+        border_constant = np.full((num_channels,), border_constant, dtype=np.float64)
     coords = _ensure_coords_array(coords)
+    same_coords = _infer_same_coords_lines_2d(coords, line0)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
+    if same_coords:
+        return _lerp_between_lines_x_discrete_multichannel_same_coords(line0, line1, coords.astype(np.float64), border_mode, border_constant)
     return _lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode, border_constant)
 
 
@@ -205,38 +204,6 @@ def lerp_from_corners(
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
     return _lerp_from_corners(corners, coords_list, border_mode, border_constant)
-
-
-def lerp_from_corners_1ch_flat(
-    c_tl: float,
-    c_tr: float,
-    c_bl: float,
-    c_br: float,
-    coords: np.ndarray,
-    border_mode: int = 3,
-    border_constant: float = 0.0,
-) -> np.ndarray:
-    """
-    Interpolate from 4 corner scalars using flat coordinates.
-    
-    Args:
-        c_tl: Top-left corner value
-        c_tr: Top-right corner value
-        c_bl: Bottom-left corner value
-        c_br: Bottom-right corner value
-        coords: Flat coordinate array, shape (N, 2)
-        border_mode: Border handling mode (default: BORDER_CLAMP=3)
-        border_constant: Value for out-of-bounds coordinates when border_mode=CONSTANT
-        
-    Returns:
-        Interpolated values, shape (N,)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    return _lerp_from_corners_1ch_flat(c_tl, c_tr, c_bl, c_br, coords, border_mode, border_constant)
 
 
 def lerp_from_corners_multichannel(

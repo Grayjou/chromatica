@@ -39,12 +39,12 @@ cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:
     cdef f64 d = h1 - h0
     
     if mode == HUE_CW:
-        if h0 >= h1:
+        if h0 > h1:
             return h1 + 360.0
         return h1
         
     elif mode == HUE_CCW:
-        if h0 <= h1:
+        if h0 < h1:
             return h1 - 360.0
         return h1
         

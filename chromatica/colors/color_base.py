@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import Any, ClassVar, Tuple, cast, Self, Callable, Union
-from ..conversions import convert, ColorSpace, FormatType, np_convert
+from ..conversions import convert, FormatType, np_convert
 from ..types.format_type import format_classes, format_valid_dtypes, default_format_dtypes
-from ..types.color_types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES
+from ..types.color_types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES, ColorSpace
 from ..utils import get_dimension
 from abc import ABC
 from numpy import ndarray
@@ -243,4 +243,10 @@ class WithAlpha(ABC):
         self._validate_alpha_shape(new_vals)
         return self.__class__(new_vals)  # type: ignore
     
+
+def build_registry(*classes: type[ColorBase]):
+    return {
+        (cls.mode, cls.format_type): cls
+        for cls in classes
+    }
 

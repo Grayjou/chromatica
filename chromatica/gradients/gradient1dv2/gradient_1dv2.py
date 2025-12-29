@@ -14,7 +14,7 @@ from unitfield import flat_1d_upbm
 from boundednumbers import BoundType
 from .interpolator import _Gradient1DInterpolator, SequenceMethod
 
-
+ 
 
 # ===================== Gradient1D Class =====================
 

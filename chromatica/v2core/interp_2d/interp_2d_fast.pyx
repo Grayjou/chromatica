@@ -365,6 +365,9 @@ cdef inline void _lerp_flat_multichannel_kernel_parallel(
             v1 = l1[idx_lo, ch] + frac * (l1[idx_hi, ch] - l1[idx_lo, ch])
             out_mv[n, ch] = v0 + new_u_y * (v1 - v0)
 
+
+
+
 # =============================================================================
 # Public API - Single Channel
 # =============================================================================
@@ -702,139 +705,11 @@ def lerp_between_lines_flat_multichannel_fast(
 # =============================================================================
 # Threshold for enabling parallelization (avoid overhead for small arrays)
 DEF MIN_PARALLEL_SIZE = 10000
-def lerp_between_lines_fast(
-    np.ndarray line0,
-    np.ndarray line1,
-    np.ndarray coords,
-    int border_mode=BORDER_CLAMP,
-    object border_constant=None,
-    int num_threads=-1,
-):
-    """
-    Smart dispatcher for fast interpolation between lines.
-    ...
-    """
-    # ALL cdef declarations MUST be at the top
-    cdef Py_ssize_t total_size
-    cdef int use_threads = num_threads
-    cdef Py_ssize_t C
-    cdef np.ndarray[f64, ndim=1] bc_arr
-    cdef f64 bc_scalar
-    
-    # Now executable code can begin
-    if line0.dtype != np.float64:
-        line0 = np.ascontiguousarray(line0, dtype=np.float64)
-    if line1.dtype != np.float64:
-        line1 = np.ascontiguousarray(line1, dtype=np.float64)
-    if coords.dtype != np.float64:
-        coords = np.ascontiguousarray(coords, dtype=np.float64)
-    
-    # Calculate size for parallelization decision
-    if coords.ndim == 3:
-        total_size = coords.shape[0] * coords.shape[1]
-    else:
-        total_size = coords.shape[0]
-    
-    # Disable parallelization for small arrays
-    if total_size < MIN_PARALLEL_SIZE and num_threads < 0:
-        use_threads = 1
-    
-    # Dispatch based on shapes
-    if line0.ndim == 1:
-        # Single channel
-        bc_scalar = 0.0 if border_constant is None else float(border_constant)
-        
-        if coords.ndim == 3:
-            return lerp_between_lines_1ch_fast(
-                line0, line1, coords, border_mode, bc_scalar, use_threads
-            )
-        else:
-            return lerp_between_lines_flat_1ch_fast(
-                line0, line1, coords, border_mode, bc_scalar, use_threads
-            )
-    
-    elif line0.ndim == 2:
-        # Multi-channel - prepare border constant
-        C = line0.shape[1]
-        
-        if border_constant is None:
-            bc_arr = np.zeros(C, dtype=np.float64)
-        elif isinstance(border_constant, (int, float)):
-            bc_arr = np.full(C, float(border_constant), dtype=np.float64)
-        else:
-            bc_arr = np.ascontiguousarray(border_constant, dtype=np.float64)
-            if bc_arr.shape[0] != C:
-                raise ValueError(f"border_constant must have length {C}")
-        
-        if coords.ndim == 3:
-            return lerp_between_lines_multichannel_fast(
-                line0, line1, coords, border_mode, bc_arr, use_threads
-            )
-        else:
-            return lerp_between_lines_flat_multichannel_fast(
-                line0, line1, coords, border_mode, bc_arr, use_threads
-            )
-    
-    raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
-
-
-def lerp_between_lines_x_discrete_fast(
-    np.ndarray line0,
-    np.ndarray line1,
-    np.ndarray coords,
-    int border_mode=BORDER_CLAMP,
-    object border_constant=None,
-    int num_threads=-1,
-):
-    """Smart dispatcher for discrete x-sampling interpolation."""
-    # ALL cdef declarations at the top
-    cdef Py_ssize_t total_size
-    cdef int use_threads = num_threads
-    cdef Py_ssize_t C
-    cdef np.ndarray[f64, ndim=1] bc_arr
-    cdef f64 bc_scalar
-    
-    # Now executable code
-    if line0.dtype != np.float64:
-        line0 = np.ascontiguousarray(line0, dtype=np.float64)
-    if line1.dtype != np.float64:
-        line1 = np.ascontiguousarray(line1, dtype=np.float64)
-    if coords.dtype != np.float64:
-        coords = np.ascontiguousarray(coords, dtype=np.float64)
-    
-    if coords.ndim != 3 or coords.shape[2] != 2:
-        raise ValueError("coords must have shape (H, W, 2)")
-    
-    total_size = coords.shape[0] * coords.shape[1]
-    
-    if total_size < MIN_PARALLEL_SIZE and num_threads < 0:
-        use_threads = 1
-    
-    if line0.ndim == 1:
-        bc_scalar = 0.0 if border_constant is None else float(border_constant)
-        return lerp_between_lines_x_discrete_1ch_fast(
-            line0, line1, coords, border_mode, bc_scalar, use_threads
-        )
-    
-    elif line0.ndim == 2:
-        C = line0.shape[1]
-        
-        if border_constant is None:
-            bc_arr = np.zeros(C, dtype=np.float64)
-        elif isinstance(border_constant, (int, float)):
-            bc_arr = np.full(C, float(border_constant), dtype=np.float64)
-        else:
-            bc_arr = np.ascontiguousarray(border_constant, dtype=np.float64)
-        
-        return lerp_between_lines_x_discrete_multichannel_fast(
-            line0, line1, coords, border_mode, bc_arr, use_threads
-        )
-    
-    raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
-
 # =============================================================================
 # Per-Channel Coords Kernels - FIXED
 # =============================================================================
+
+
 cdef inline void _lerp_lines_multichannel_per_channel_kernel_parallel(
     const f64[:, ::1] lines0,  # (L, C) - FIXED: was [:, :, ::1]
     const f64[:, ::1] lines1,  # (L, C) - FIXED: was [:, :, ::1]
@@ -1230,9 +1105,6 @@ def lerp_between_lines_flat_multichannel_per_channel_fast(
 # =============================================================================
 # Updated Smart Dispatchers (with per-channel support)
 # =============================================================================
-# =============================================================================
-# Updated Smart Dispatchers (with per-channel support)
-# =============================================================================
 def lerp_between_lines_full_fast(
     np.ndarray line0,
     np.ndarray line1,
@@ -1410,3 +1282,173 @@ def lerp_between_lines_x_discrete_full_fast(
             raise ValueError(f"Invalid coords shape: ndim={coords_ndim}")
     
     raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
+
+# =============================================================================
+# Public API - Multichannel 2D Interpolation (Same Coords)
+# =============================================================================
+def lerp_between_lines_2d_multichannel_same_coords(
+    np.ndarray[f64, ndim=2] line0,
+    np.ndarray[f64, ndim=2] line1,
+    np.ndarray[f64, ndim=3] coords,
+    int border_mode=BORDER_CLAMP,
+    np.ndarray[f64, ndim=1] border_constant=None,
+    int num_threads=-1,
+):
+    """
+    Fast parallel multichannel line interpolation using 2D grid coordinates.
+    
+    Interpolates between two lines (L, C) using a 2D coordinate grid (H, W, 2)
+    where the same coordinates are used for all channels.
+    
+    Args:
+        line0: First line values, shape (L, C)
+        line1: Second line values, shape (L, C)
+        coords: 2D coordinate grid, shape (H, W, 2) with (u_x, u_y) values
+        border_mode: Border handling mode (BORDER_CLAMP, BORDER_REPEAT, etc.)
+        border_constant: Constant value for BORDER_CONSTANT mode, shape (C,)
+        num_threads: Number of threads (-1=auto, 0=serial, >0=specific)
+    
+    Returns:
+        Interpolated values, shape (H, W, C)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t C = line0.shape[1]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+
+    # Validation
+    if line1.shape[0] != L or line1.shape[1] != C:
+        raise ValueError("Lines must have same shape (L, C)")
+    if coords.shape[2] != 2:
+        raise ValueError("coords must have shape (H, W, 2)")
+
+    # Handle border constant
+    if border_constant is None:
+        border_constant = np.zeros(C, dtype=np.float64)
+    elif border_constant.shape[0] != C:
+        raise ValueError(f"border_constant must have length {C}")
+
+    # Thread count logic
+    cdef int n_threads = num_threads
+    cdef Py_ssize_t total_size = H * W
+    if n_threads < 0:
+        if total_size < MIN_PARALLEL_SIZE:
+            n_threads = 1
+        else:
+            import os
+            n_threads = os.cpu_count() or 4
+    elif n_threads == 0:
+        n_threads = 1
+
+    # Ensure contiguity
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    if not border_constant.flags['C_CONTIGUOUS']:
+        border_constant = np.ascontiguousarray(border_constant)
+
+    # Memory views
+    cdef f64[:, ::1] l0 = line0
+    cdef f64[:, ::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    cdef f64[::1] bc = border_constant
+
+    # Output array
+    cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+    cdef f64[:, :, ::1] out_mv = out
+
+    # Call kernel
+    with nogil:
+        _lerp_multichannel_kernel_parallel(
+            l0, l1, c, out_mv, bc, H, W, L, C, border_mode, n_threads
+        )
+
+    return out
+
+# =============================================================================
+# Public API - Multichannel 2D Interpolation (Same Coords) - Discrete X
+# =============================================================================
+def lerp_between_lines_2d_x_discrete_multichannel_same_coords(
+    np.ndarray[f64, ndim=2] line0,
+    np.ndarray[f64, ndim=2] line1,
+    np.ndarray[f64, ndim=3] coords,
+    int border_mode=BORDER_CLAMP,
+    np.ndarray[f64, ndim=1] border_constant=None,
+    int num_threads=-1,
+):
+    """
+    Fast parallel multichannel discrete x-sampling interpolation using 2D grid coordinates.
+    
+    Snaps u_x to nearest line index (no interpolation along x), interpolates continuously along y.
+    Uses the same coordinates for all channels.
+    
+    Args:
+        line0: First line values, shape (L, C)
+        line1: Second line values, shape (L, C)
+        coords: 2D coordinate grid, shape (H, W, 2) with (u_x, u_y) values
+        border_mode: Border handling mode (BORDER_CLAMP, BORDER_REPEAT, etc.)
+        border_constant: Constant value for BORDER_CONSTANT mode, shape (C,)
+        num_threads: Number of threads (-1=auto, 0=serial, >0=specific)
+    
+    Returns:
+        Interpolated values, shape (H, W, C)
+    """
+    cdef Py_ssize_t L = line0.shape[0]
+    cdef Py_ssize_t C = line0.shape[1]
+    cdef Py_ssize_t H = coords.shape[0]
+    cdef Py_ssize_t W = coords.shape[1]
+
+    # Validation
+    if line1.shape[0] != L or line1.shape[1] != C:
+        raise ValueError("Lines must have same shape (L, C)")
+    if coords.shape[2] != 2:
+        raise ValueError("coords must have shape (H, W, 2)")
+
+    # Handle border constant
+    if border_constant is None:
+        border_constant = np.zeros(C, dtype=np.float64)
+    elif border_constant.shape[0] != C:
+        raise ValueError(f"border_constant must have length {C}")
+
+    # Thread count logic
+    cdef int n_threads = num_threads
+    cdef Py_ssize_t total_size = H * W
+    if n_threads < 0:
+        if total_size < MIN_PARALLEL_SIZE:
+            n_threads = 1
+        else:
+            import os
+            n_threads = os.cpu_count() or 4
+    elif n_threads == 0:
+        n_threads = 1
+
+    # Ensure contiguity
+    if not line0.flags['C_CONTIGUOUS']:
+        line0 = np.ascontiguousarray(line0)
+    if not line1.flags['C_CONTIGUOUS']:
+        line1 = np.ascontiguousarray(line1)
+    if not coords.flags['C_CONTIGUOUS']:
+        coords = np.ascontiguousarray(coords)
+    if not border_constant.flags['C_CONTIGUOUS']:
+        border_constant = np.ascontiguousarray(border_constant)
+
+    # Memory views
+    cdef f64[:, ::1] l0 = line0
+    cdef f64[:, ::1] l1 = line1
+    cdef f64[:, :, ::1] c = coords
+    cdef f64[::1] bc = border_constant
+
+    # Output array
+    cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
+    cdef f64[:, :, ::1] out_mv = out
+
+    # Call kernel (already exists!)
+    with nogil:
+        _lerp_x_discrete_multichannel_kernel_parallel(
+            l0, l1, c, out_mv, bc, H, W, L, C, border_mode, n_threads
+        )
+
+    return out

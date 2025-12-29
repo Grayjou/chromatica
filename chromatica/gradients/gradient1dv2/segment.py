@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import List, Optional, Union, Tuple
 import numpy as np
-from ...types.color_types import ColorSpace, is_hue_space
+from ...types.color_types import ColorSpaces, is_hue_space
 from abc import abstractmethod
 from ...v2core.subgradient import SubGradient
 from boundednumbers import BoundType
@@ -29,12 +29,12 @@ class SegmentBase(SubGradient):
         super().__init__()
     
     @abstractmethod
-    def start_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+    def start_as_color_space(self, color_space: ColorSpaces) -> np.ndarray:
         """Get start color in specified color space."""
         pass
     
     @abstractmethod
-    def end_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+    def end_as_color_space(self, color_space: ColorSpaces) -> np.ndarray:
         """Get end color in specified color space."""
         pass
 
@@ -43,7 +43,7 @@ def get_transformed_segment(
     already_converted_start_color: Optional[np.ndarray] = None,
     already_converted_end_color: Optional[np.ndarray] = None,
     per_channel_coords: List[np.ndarray] = None,
-    color_space: ColorSpace = None,
+    color_space: ColorSpaces = None,
     hue_direction: Optional[str] = None,
     per_channel_transforms: Optional[dict] = None,
     bound_types: Optional[List[BoundType] | BoundType] = BoundType.CLAMP,
@@ -53,8 +53,8 @@ def get_transformed_segment(
     # New parameters for conversion
     start_color: Optional[Union[ColorBase, Tuple, List, ndarray_1d]] = None,
     end_color: Optional[Union[ColorBase, Tuple, List, ndarray_1d]] = None,
-    start_color_space: Optional[ColorSpace] = None,
-    end_color_space: Optional[ColorSpace] = None,
+    start_color_space: Optional[ColorSpaces] = None,
+    end_color_space: Optional[ColorSpaces] = None,
     format_type: Optional[FormatType] = None,
 ) -> TransformedGradientSegment:
     """
@@ -146,7 +146,7 @@ class TransformedGradientSegment(SegmentBase):
                  already_converted_start_color:np.ndarray, 
                  already_converted_end_color:np.ndarray, 
                  per_channel_coords:np.ndarray, 
-                 color_space:ColorSpace, 
+                 color_space:ColorSpaces, 
                  hue_direction: Optional[str]=None, 
                  bound_types: Optional[List[BoundType] | BoundType]=BoundType.CLAMP, *, value: Optional[np.ndarray]=None):
         self.start_color = already_converted_start_color
@@ -172,7 +172,7 @@ class TransformedGradientSegment(SegmentBase):
                 self.per_channel_coords,
                 self.bound_types,
             )
-    def convert_to_space(self, color_space: ColorSpace) -> TransformedGradientSegment:
+    def convert_to_space(self, color_space: ColorSpaces) -> TransformedGradientSegment:
         if self.color_space == color_space:
             return self
         converted_start = np_convert(self.start_color, self.color_space, color_space, fmt="float", output_type='float')
@@ -188,17 +188,17 @@ class TransformedGradientSegment(SegmentBase):
             value=converted_value,
         )
     
-    def start_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+    def start_as_color_space(self, color_space: ColorSpaces) -> np.ndarray:
         if self.color_space == color_space:
             return self.start_color
         return np_convert(self.start_color, self.color_space, color_space, fmt="float", output_type='float')
-    def end_as_color_space(self, color_space: ColorSpace) -> np.ndarray:
+    def end_as_color_space(self, color_space: ColorSpaces) -> np.ndarray:
         if self.color_space == color_space:
             return self.end_color
         return np_convert(self.end_color, self.color_space, color_space, fmt="float", output_type='float')
 
 
-    def build_next(self, new_end_color:np.ndarray, new_u_local:np.ndarray, new_end_color_space:ColorSpace, new_end_hue_direction:Optional[str]=None, new_bound_types:Optional[List[BoundType] | BoundType]=BoundType.CLAMP) -> TransformedGradientSegment:
+    def build_next(self, new_end_color:np.ndarray, new_u_local:np.ndarray, new_end_color_space:ColorSpaces, new_end_hue_direction:Optional[str]=None, new_bound_types:Optional[List[BoundType] | BoundType]=BoundType.CLAMP) -> TransformedGradientSegment:
         return TransformedGradientSegment(
             already_converted_start_color=self.end_as_color_space(new_end_color_space),
             already_converted_end_color=new_end_color,
@@ -212,7 +212,7 @@ class UniformGradientSegment(TransformedGradientSegment):
     def __init__(self, 
                  already_converted_start_color:np.ndarray, 
                  already_converted_end_color:np.ndarray, 
-                 u_local:np.ndarray, color_space:ColorSpace, 
+                 u_local:np.ndarray, color_space:ColorSpaces, 
                  hue_direction: Optional[str]=None, 
                  bound_types: Optional[List[BoundType] | BoundType]=BoundType.CLAMP, *, value: Optional[np.ndarray]=None):
         per_channel_coords = [u_local]*len(color_space)

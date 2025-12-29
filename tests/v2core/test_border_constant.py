@@ -177,7 +177,7 @@ def test_border_constant_lines_full_automatic_border_constant():
     # Manually compute expected automatic border constant
 
     expected_border_constant = 0
-    print(result.shape)
+
     expected = np.full_like(result, expected_border_constant)
     # all but bottom-right corner should be border constant
     assert np.sum(np.all(result == expected, axis=-1)) >= 15, "Automatic border constant handling failed"

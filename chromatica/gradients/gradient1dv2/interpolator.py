@@ -9,7 +9,7 @@ from ...types.transform_types import PerChannelTransform
 from ...types.color_types import ColorSpace, HueDirection, is_hue_space
 from ...utils.dimension import most_common_element
 from ...v2core import multival1d_lerp
-from ...colors import ColorBase
+from ...colors import ColorBase 
 from boundednumbers import BoundType
 from .unit_builder import _Gradient1DUnitBuilder
 from enum import Enum

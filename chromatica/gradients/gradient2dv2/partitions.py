@@ -2,7 +2,9 @@
 from bisect import bisect_left
 from typing import Generic, List, TypeVar, Literal, Generator
 from boundednumbers import UnitFloat
-from ...types.color_types import ColorSpace
+from ...types.color_types import ColorSpaces
+from enum import StrEnum
+import numpy as np
 T = TypeVar("T")
 
 
@@ -68,7 +70,7 @@ class ColorSpacePartition(Partition[str]):
         return self.get_value(position)
     
 class PartitionInterval:
-    def __init__(self, color_space: ColorSpace, hue_direction_y: HueDirection | None = None, hue_direction_x: HueDirection | None = None) -> None:
+    def __init__(self, color_space: ColorSpaces, hue_direction_y: HueDirection | None = None, hue_direction_x: HueDirection | None = None) -> None:
         self.color_space = color_space
         self.hue_direction_y = hue_direction_y
         self.hue_direction_x = hue_direction_x
@@ -82,18 +84,28 @@ Check the CellDual init T_T
             bottom_left: np.ndarray,
             bottom_right: np.ndarray,
             per_channel_coords: List[np.ndarray] | np.ndarray,
-            horizontal_color_space: ColorSpace,
-            vertical_color_space: ColorSpace,
+            horizontal_color_space: ColorSpaces,
+            vertical_color_space: ColorSpaces,
             hue_direction_y: HueMode,
             hue_direction_x: HueMode,
             boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, *, value: Optional[np.ndarray] = None, 
             top_segment_hue_direction_x: Optional[HueMode] = None,
             bottom_segment_hue_direction_x: Optional[HueMode] = None,
-            top_segment_color_space: Optional[ColorSpace] = None,
-            bottom_segment_color_space: Optional[ColorSpace] = None
+            top_segment_color_space: Optional[ColorSpaces] = None,
+            bottom_segment_color_space: Optional[ColorSpaces] = None
             ) -> None:
 """
 
+class IndexRoundingMode(StrEnum):
+    ROUND = "round"
+    FLOOR = "floor"
+    CEIL = "ceil"
+
+index_rounding_mode_functions = {
+    IndexRoundingMode.ROUND: np.round,
+    IndexRoundingMode.FLOOR: np.floor,
+    IndexRoundingMode.CEIL: np.ceil,
+}
 
 class PerpendicularPartition(Partition[tuple[PartitionInterval, ...]]):
     def __init__(
@@ -102,7 +114,7 @@ class PerpendicularPartition(Partition[tuple[PartitionInterval, ...]]):
         values: List[tuple[PartitionInterval, ...]],
     ) -> None:
         super().__init__(breakpoints, values)
-    def get_color_space(self, position: UnitFloat) -> ColorSpace:
+    def get_color_space(self, position: UnitFloat) -> ColorSpaces:
         return self.get_value(position)[0].color_space
     def get_hue_direction(self, position: UnitFloat) -> HueDirection:
         if self.get_value(position)[1].hue_direction_y is None:
@@ -121,12 +133,12 @@ class PerpendicularPartition(Partition[tuple[PartitionInterval, ...]]):
         yield (prev_bp, 1.0, self.values[-1])
 
 class CellDualPartitionInterval:
-    def __init__(self, horizontal_color_space: ColorSpace, 
-                 vertical_color_space: ColorSpace,
+    def __init__(self, horizontal_color_space: ColorSpaces, 
+                 vertical_color_space: ColorSpaces,
                  hue_direction_y: HueDirection | None = None,
                  hue_direction_x: HueDirection | None = None,
-                 top_segment_color_space: ColorSpace | None = None,
-                 bottom_segment_color_space: ColorSpace | None = None,
+                 top_segment_color_space: ColorSpaces | None = None,
+                 bottom_segment_color_space: ColorSpaces | None = None,
                  top_segment_hue_direction_x: HueDirection | None = None,
                  bottom_segment_hue_direction_x: HueDirection | None = None,) -> None:
         self.horizontal_color_space = horizontal_color_space
@@ -147,9 +159,9 @@ class PerpendicularDualPartition(Partition[tuple[CellDualPartitionInterval, ...]
         values: List[tuple[CellDualPartitionInterval, ...]],
     ) -> None:
         super().__init__(breakpoints, values)
-    def get_horizontal_color_space(self, position: UnitFloat) -> ColorSpace:
+    def get_horizontal_color_space(self, position: UnitFloat) -> ColorSpaces:
         return self.get_value(position)[0].horizontal_color_space
-    def get_vertical_color_space(self, position: UnitFloat) -> ColorSpace:
+    def get_vertical_color_space(self, position: UnitFloat) -> ColorSpaces:
         return self.get_value(position)[0].vertical_color_space
     def get_hue_direction_y(self, position: UnitFloat) -> HueDirection:
         if self.get_value(position)[0].hue_direction_y is None:

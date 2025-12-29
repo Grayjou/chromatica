@@ -1,4 +1,4 @@
-from .interp_2d import (lerp_from_corners_1ch_flat,
+from .interp_2d import (
                                lerp_from_corners_multichannel,
                                lerp_from_corners_multichannel_same_coords,
                                lerp_from_corners_multichannel_flat,

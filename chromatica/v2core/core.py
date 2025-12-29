@@ -15,7 +15,7 @@ from .interp import (  # type: ignore
     lerp_bounded_2d_spatial_fast,
     single_channel_multidim_lerp_bounded_cython_fast,
 )
-
+from ..types.color_types import HueMode
 
 from .interp_hue import (
     hue_lerp_1d_spatial,
@@ -38,23 +38,6 @@ from ..utils.list_mismatch import handle_list_size_mismatch
 # =============================================================================
 BoundTypeSequence = Union[List[BoundType], Tuple[BoundType, ...]]
 
-
-# =============================================================================
-# Hue Interpolation Mode
-# =============================================================================
-class HueMode(IntEnum):
-    """
-    Hue interpolation modes for cyclical color space.
-    
-    CW:       Clockwise (increasing hue direction)
-    CCW:      Counterclockwise (decreasing hue direction)
-    SHORTEST: Shortest path (≤180° arc) - most common
-    LONGEST:  Longest path (≥180° arc)
-    """
-    CW = 0
-    CCW = 1
-    SHORTEST = 2
-    LONGEST = 3
 
 
 HueModeSequence = Union[List[HueMode], Tuple[HueMode, ...], HueMode]

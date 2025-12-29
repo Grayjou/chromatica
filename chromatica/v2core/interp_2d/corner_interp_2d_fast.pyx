@@ -329,6 +329,7 @@ cdef inline void _corner_multichannel_flat_per_channel_kernel_parallel(
             out_mv[n, ch] = top_edge + (bottom_edge - top_edge) * new_u_y
 
 
+
 # =============================================================================
 # Public API - Single Channel
 # =============================================================================
@@ -808,3 +809,4 @@ def lerp_from_corners_fast(
             )
         else:
             raise ValueError(f"Invalid coords shape for multi-channel: {coords_arr.shape}")
+

@@ -29,6 +29,15 @@ def convert_to_space_float(
         ColorBase object in target space with float format
     """
 
+    from_space, to_space = ColorSpace(from_space), ColorSpace(to_space)
     from_class = unified_tuple_to_class[(from_space, format_type)]
     to_float_class = unified_tuple_to_class[(to_space, FormatType.FLOAT)]
     return to_float_class(from_class(color))
+
+def is_hue_color_grayscale(color:np.ndarray, thresh=1e-5) -> bool:
+    """Check if a color in HSV space is grayscale (zero saturation)."""
+    return color[1] < thresh
+
+def is_hue_color_arr_grayscale(color:np.ndarray, thresh=1e-5) -> np.ndarray:
+    """Masks for colors in HSV space that are grayscale (zero saturation)."""
+    return color[:, 1] < thresh

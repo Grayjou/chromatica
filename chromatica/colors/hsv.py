@@ -1,11 +1,11 @@
 from typing import ClassVar, Tuple
 from ..types.format_type import FormatType
-from ..conversions import ColorSpace
-from .color_base import ColorBase, WithAlpha
+from ..types.color_types import ColorSpace
+from .color_base import ColorBase, WithAlpha, build_registry
 
 class ColorHSVINT(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode:       ClassVar[ColorSpace] = "hsv"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSV
     _type:      ClassVar[type] = int
     maxima:     ClassVar[Tuple[int, int, int]] = (360, 255, 255)
     null_value: ClassVar[Tuple[int, int, int]] = (0, 0, 0)
@@ -13,7 +13,7 @@ class ColorHSVINT(ColorBase):
 
 class ColorHSVAINT(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode:       ClassVar[ColorSpace] = "hsva"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSVA
     _type:      ClassVar[type] = int
     maxima:     ClassVar[Tuple[int, int, int, int]] = (360, 255, 255, 255)
     null_value: ClassVar[Tuple[int, int, int, int]] = (0, 0, 0, 0)
@@ -21,7 +21,7 @@ class ColorHSVAINT(ColorBase, WithAlpha):
 
 class UnitHSV(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode:       ClassVar[ColorSpace] = "hsv"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSV
     _type:      ClassVar[type] = float
     maxima:     ClassVar[Tuple[float, float, float]] = (360.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -29,7 +29,7 @@ class UnitHSV(ColorBase):
 
 class UnitHSVA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode:       ClassVar[ColorSpace] = "hsva"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSVA
     _type:      ClassVar[type] = float
     maxima:     ClassVar[Tuple[float, float, float, float]] = (360.0, 1.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)
@@ -37,7 +37,7 @@ class UnitHSVA(ColorBase, WithAlpha):
 
 class PercentageHSV(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode:       ClassVar[ColorSpace] = "hsv"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSV
     _type:      ClassVar[type] = float
     maxima:     ClassVar[Tuple[float, float, float]] = (360.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -45,7 +45,7 @@ class PercentageHSV(ColorBase):
 
 class PercentageHSVA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode:       ClassVar[ColorSpace] = "hsva"
+    mode:       ClassVar[ColorSpace] = ColorSpace.HSVA
     _type:      ClassVar[type] = float
     maxima:     ClassVar[Tuple[float, float, float, float]] = (360.0, 100.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)
@@ -54,11 +54,13 @@ class PercentageHSVA(ColorBase, WithAlpha):
 HSV = ColorHSVINT
 HSVA = ColorHSVAINT
 
-hsv_tuple_to_class: dict[tuple[ColorSpace, FormatType], type[ColorBase]]  = {
-    ("hsv", FormatType.INT): ColorHSVINT,
-    ("hsva", FormatType.INT): ColorHSVAINT,
-    ("hsv", FormatType.FLOAT): UnitHSV,
-    ("hsva", FormatType.FLOAT): UnitHSVA,
-    ("hsv", FormatType.PERCENTAGE): PercentageHSV,
-    ("hsva", FormatType.PERCENTAGE): PercentageHSVA,
-}
+
+
+hsv_tuple_to_class = build_registry(
+    ColorHSVINT,
+    ColorHSVAINT,
+    UnitHSV,
+    UnitHSVA,
+    PercentageHSV,
+    PercentageHSVA,
+)

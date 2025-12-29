@@ -1,563 +1,705 @@
+# chromatica/gradients/gradient2dv2/cell/corners_dual.py
 """CornersCellDual implementation for 2D gradient cells with dual color spaces."""
 
 from __future__ import annotations
-from typing import List, Optional
+from typing import List, Optional, Union
 import numpy as np
-from ....types.color_types import ColorSpace, is_hue_space, HueDirection
-from ....conversions import np_convert
+
+from boundednumbers import BoundType, UnitFloat
+
+from ....types.color_types import ColorSpace, HueMode, is_hue_space
 from ....types.format_type import FormatType
-from boundednumbers import BoundType
-from ..partitions import PerpendicularDualPartition
-from .base import CellBase, CellMode
+from ....conversions import np_convert
+from ....utils.color_utils import convert_to_space_float, is_hue_color_grayscale, is_hue_color_arr_grayscale
+from ....utils.default import value_or_default
+from ....utils.num_utils import is_close_to_int
+from unitfield import flat_1d_upbm
+
+from .base import CellMode
+from .corners_base import CornersBase, CornerIndex
+from ._descriptors import CellPropertyDescriptor
+from ._cell_coords import extract_edge, extract_point, lerp_point
+from ..helpers import LineInterpMethods, interp_transformed_2d_from_corners
+from ..helpers.interpolation.corners import interp_hue_2d_from_corners
+from ...gradient1dv2.segment import get_transformed_segment
 
 
-class CornersCellDual(CellBase):
+class CornersCellDual(CornersBase):
+    """2D gradient cell with separate horizontal and vertical color spaces.
+    
+    This cell type allows different color spaces for horizontal interpolation
+    (along each edge) and vertical interpolation (between edges). Each edge
+    can also have its own color space and hue direction.
+    
+    Attributes:
+        vertical_color_space: Color space for vertical interpolation
+        horizontal_color_space: Default color space for horizontal interpolation
+        top_segment_color_space: Color space for top edge interpolation
+        bottom_segment_color_space: Color space for bottom edge interpolation
+        top_segment_hue_direction_x: Hue direction for top edge
+        bottom_segment_hue_direction_x: Hue direction for bottom edge
+    """
+    
     mode: CellMode = CellMode.CORNERS_DUAL
-    """2D gradient cell defined by dual corner colors."""
     
-    def __init__(self,
-            top_left: np.ndarray,
-            top_right: np.ndarray,
-            bottom_left: np.ndarray,
-            bottom_right: np.ndarray,
-            per_channel_coords: List[np.ndarray] | np.ndarray,
-            horizontal_color_space: ColorSpace,
-            vertical_color_space: ColorSpace,
-            hue_direction_y: Optional[str],
-            hue_direction_x: Optional[str],
-            boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, 
-            *, 
-            value: Optional[np.ndarray] = None, 
-            top_segment_hue_direction_x: Optional[str] = None,
-            bottom_segment_hue_direction_x: Optional[str] = None,
-            top_segment_color_space: Optional[ColorSpace] = None,
-            bottom_segment_color_space: Optional[ColorSpace] = None
-            ) -> None:
-
-        self.horizontal_color_space = horizontal_color_space
-        self.vertical_color_space = vertical_color_space
-        self.hue_direction_y = hue_direction_y
-        self.hue_direction_x = hue_direction_x
-        self._per_channel_coords = per_channel_coords
-        self.boundtypes = boundtypes
-        self._top_left = top_left
-        self._top_right = top_right
-        self._bottom_left = bottom_left
-        self._bottom_right = bottom_right
-        self._value = value
-        self.top_segment = None
-        self.bottom_segment = None
-        self.top_segment_hue_direction_x = top_segment_hue_direction_x or hue_direction_x
-        self.bottom_segment_hue_direction_x = bottom_segment_hue_direction_x or hue_direction_x
-        self.top_segment_color_space = top_segment_color_space or horizontal_color_space
-        self.bottom_segment_color_space = bottom_segment_color_space or horizontal_color_space
+    # === Segment Properties (invalidate segments + cache) ===
+    top_segment_hue_direction_x: Optional[str] = CellPropertyDescriptor(
+        'top_segment_hue_direction_x', invalidates_segments=True
+    )
+    bottom_segment_hue_direction_x: Optional[str] = CellPropertyDescriptor(
+        'bottom_segment_hue_direction_x', invalidates_segments=True
+    )
+    top_segment_color_space: ColorSpace = CellPropertyDescriptor(
+        'top_segment_color_space', invalidates_segments=True
+    )
+    bottom_segment_color_space: ColorSpace = CellPropertyDescriptor(
+        'bottom_segment_color_space', invalidates_segments=True
+    )
     
-    def _invalidate_cached_segments(self):
-        self.top_segment = None
-        self.bottom_segment = None
+    # === Read-only Color Space Properties ===
+    vertical_color_space: ColorSpace = CellPropertyDescriptor(
+        'vertical_color_space', readonly=True
+    )
+    horizontal_color_space: ColorSpace = CellPropertyDescriptor(
+        'horizontal_color_space', readonly=True
+    )
     
-    @property
-    def top_left(self) -> np.ndarray:
-        return self._top_left
-    
-    @top_left.setter
-    def top_left(self, value: np.ndarray):
-        self._top_left = value
-        self._invalidate_cached_segments()
-        self.invalidate_cache()
-    
-    @property
-    def top_right(self) -> np.ndarray:
-        return self._top_right
-    
-    @top_right.setter
-    def top_right(self, value: np.ndarray):
-        self._top_right = value
-        self._invalidate_cached_segments()
-        self.invalidate_cache()
-    
-    @property
-    def bottom_left(self) -> np.ndarray:
-        return self._bottom_left
-    
-    @bottom_left.setter
-    def bottom_left(self, value: np.ndarray):
-        self._bottom_left = value
-        self._invalidate_cached_segments()
-        self.invalidate_cache()
-    
-    @property
-    def bottom_right(self) -> np.ndarray:
-        return self._bottom_right
-    
-    @bottom_right.setter
-    def bottom_right(self, value: np.ndarray):
-        self._bottom_right = value
-        self._invalidate_cached_segments()
-        self.invalidate_cache()
-    
-    @property
-    def top_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
-        """
-        Extract x-coordinates from top row for horizontal segment interpolation.
+    def __init__(
+        self,
+        top_left: np.ndarray,
+        top_right: np.ndarray,
+        bottom_left: np.ndarray,
+        bottom_right: np.ndarray,
+        per_channel_coords: Union[List[np.ndarray], np.ndarray],
+        vertical_color_space: ColorSpace,
+        horizontal_color_space: Optional[ColorSpace] = None,
+        hue_direction_y: Optional[str] = None,
+        hue_direction_x: Optional[str] = None,
+        boundtypes: Union[List[BoundType], BoundType] = BoundType.CLAMP,
+        border_mode: Optional[int] = None,
+        border_value: Optional[float] = None,
+        *,
+        value: Optional[np.ndarray] = None,
+        top_segment_hue_direction_x: Optional[str] = None,
+        bottom_segment_hue_direction_x: Optional[str] = None,
+        top_segment_color_space: Optional[ColorSpace] = None,
+        bottom_segment_color_space: Optional[ColorSpace] = None,
+        top_left_grayscale_hue: Optional[float] = None,
+        top_right_grayscale_hue: Optional[float] = None,
+        bottom_left_grayscale_hue: Optional[float] = None,
+        bottom_right_grayscale_hue: Optional[float] = None,
+    ) -> None:
+        # Validate color space requirements
+        if horizontal_color_space is None:
+            if top_segment_color_space is None or bottom_segment_color_space is None:
+                raise ValueError(
+                    "Either horizontal_color_space or both top_segment_color_space "
+                    "and bottom_segment_color_space must be provided."
+                )
         
-        For a 2D cell with coordinates of shape (height, width, 2), where the last
-        dimension contains [x, y] coordinates, this property extracts only the
-        x-coordinates from the top row (index 0).
-        
-        Returns:
-            If per_channel_coords is a list: List of 1D arrays, each of shape (width,)
-            If per_channel_coords is an array: 1D array of shape (width,)
-            
-        Note:
-            This method assumes per_channel_coords has the expected shape:
-            - List[np.ndarray]: Each element has shape (height, width, 2)
-            - np.ndarray: Shape is (height, width, 2)
-            The extraction uses indexing [0, :, 0] which means:
-            - [0, :, 0]: First row (top), all columns, first coordinate (x)
-        """
-        if isinstance(self.per_channel_coords, list):
-            # Extract x-coordinates (first element of coordinate pair) from top row
-            return [pc[0, :, 0] for pc in self.per_channel_coords]
-        else:
-            # Shape: (height, width, 2) -> extract top row, all widths, x-coord only
-            return self.per_channel_coords[0, :, 0]
-    
-    @property
-    def bottom_per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
-        """
-        Extract x-coordinates from bottom row for horizontal segment interpolation.
-        
-        For a 2D cell with coordinates of shape (height, width, 2), where the last
-        dimension contains [x, y] coordinates, this property extracts only the
-        x-coordinates from the bottom row (index -1).
-        
-        Returns:
-            If per_channel_coords is a list: List of 1D arrays, each of shape (width,)
-            If per_channel_coords is an array: 1D array of shape (width,)
-            
-        Note:
-            This method assumes per_channel_coords has the expected shape:
-            - List[np.ndarray]: Each element has shape (height, width, 2)
-            - np.ndarray: Shape is (height, width, 2)
-            The extraction uses indexing [-1, :, 0] which means:
-            - [-1, :, 0]: Last row (bottom), all columns, first coordinate (x)
-        """
-        if isinstance(self.per_channel_coords, list):
-            # Extract x-coordinates (first element of coordinate pair) from bottom row
-            return [pc[-1, :, 0] for pc in self.per_channel_coords]
-        else:
-            # Shape: (height, width, 2) -> extract bottom row, all widths, x-coord only
-            return self.per_channel_coords[-1, :, 0]
-    
-    @property
-    def per_channel_coords(self) -> List[np.ndarray] | np.ndarray:
-        return self._per_channel_coords
-    
-    @per_channel_coords.setter
-    def per_channel_coords(self, value: List[np.ndarray] | np.ndarray):
-        self._per_channel_coords = value
-        self._invalidate_cached_segments()
-        self.invalidate_cache()
-    
-    def get_top_segment(self):
-        """Get or create the top segment for horizontal interpolation."""
-        from ...gradient1dv2.segment import get_transformed_segment
-        
-        if self.top_segment is None:
-            self.top_segment = get_transformed_segment(
-                start_color=self.top_left,
-                end_color=self.top_right,
-                per_channel_coords=self.top_per_channel_coords,
-                color_space=self.top_segment_color_space,
-                hue_direction=self.top_segment_hue_direction_x,
-                bound_types=self.boundtypes,
-                format_type=FormatType.FLOAT,
-                start_color_space=self.top_segment_color_space,
-                end_color_space=self.top_segment_color_space,
-            )
-        return self.top_segment
-    
-    def get_bottom_segment(self):
-        """Get or create the bottom segment for horizontal interpolation."""
-        from ...gradient1dv2.segment import get_transformed_segment
-        
-        if self.bottom_segment is None:
-            self.bottom_segment = get_transformed_segment(
-                start_color=self.bottom_left,
-                end_color=self.bottom_right,
-                per_channel_coords=self.bottom_per_channel_coords,
-                color_space=self.bottom_segment_color_space,
-                hue_direction=self.bottom_segment_hue_direction_x,
-                bound_types=self.boundtypes,
-                format_type=FormatType.FLOAT,
-                start_color_space=self.bottom_segment_color_space,
-                end_color_space=self.bottom_segment_color_space,
-            )
-        return self.bottom_segment
-    
-    def invalidate_cache(self):
-        return super().invalidate_cache()
-    
-    def _render_value(self):
-        from .lines import LinesCell
-        from ..helpers import LineInterpMethods
-        
-        top_segment = self.get_top_segment().get_value()
-        bottom_segment = self.get_bottom_segment().get_value()
-        
-        # Import factory function to create LinesCell
-        from .factory import get_transformed_lines_cell
-        
-        # Construct a lines cell and interpolate
-        lines_cell = get_transformed_lines_cell(
-            top_line=top_segment,
-            bottom_line=bottom_segment,
-            per_channel_coords=self.per_channel_coords,
-            color_space=self.vertical_color_space,
-            top_line_color_space=self.top_segment_color_space,
-            bottom_line_color_space=self.bottom_segment_color_space,
-            hue_direction_y=self.hue_direction_y,
-            hue_direction_x=self.hue_direction_x,
-            line_method=LineInterpMethods.LINES_CONTINUOUS,
-            boundtypes=self.boundtypes,
-            input_format=FormatType.FLOAT,  # Segments return float values
+        # Initialize base with vertical color space
+        super().__init__(
+            top_left=top_left,
+            top_right=top_right,
+            bottom_left=bottom_left,
+            bottom_right=bottom_right,
+            per_channel_coords=per_channel_coords,
+            color_space=vertical_color_space,
+            hue_direction_y=hue_direction_y,
+            hue_direction_x=hue_direction_x,
+            boundtypes=boundtypes,
+            border_mode=border_mode,
+            border_value=border_value,
+            value=value,
         )
-        return lines_cell.get_value()
+        
+        # Dual color space settings
+        self._vertical_color_space = vertical_color_space
+        self._horizontal_color_space = value_or_default(
+            horizontal_color_space, vertical_color_space
+        )
+        
+        # Segment-specific settings
+        self._top_segment_color_space = value_or_default(
+            top_segment_color_space, self._horizontal_color_space
+        )
+        self._bottom_segment_color_space = value_or_default(
+            bottom_segment_color_space, self._horizontal_color_space
+        )
+        self._top_segment_hue_direction_x = value_or_default(
+            top_segment_hue_direction_x, hue_direction_x
+        )
+        self._bottom_segment_hue_direction_x = value_or_default(
+            bottom_segment_hue_direction_x, hue_direction_x
+        )
+        # Grayscale hue settings
+        self._top_left_grayscale_hue = top_left_grayscale_hue
+        self._top_right_grayscale_hue = top_right_grayscale_hue
+        self._bottom_left_grayscale_hue = bottom_left_grayscale_hue
+        self._bottom_right_grayscale_hue = bottom_right_grayscale_hue
+    # === Color Space Properties ===
     
     @property
     def color_space(self) -> ColorSpace:
-        """Return the output color space (vertical space, as that's the final render space)."""
-        return self.vertical_color_space
+        """Primary color space (vertical)."""
+        return self._vertical_color_space
+    
+    @property
+    def top_left_color_space(self) -> ColorSpace:
+        """Color space of top-left corner."""
+        return self._top_segment_color_space
+    
+    @property
+    def top_right_color_space(self) -> ColorSpace:
+        """Color space of top-right corner."""
+        return self._top_segment_color_space
+    
+    @property
+    def bottom_left_color_space(self) -> ColorSpace:
+        """Color space of bottom-left corner."""
+        return self._bottom_segment_color_space
+    
+    @property
+    def bottom_right_color_space(self) -> ColorSpace:
+        """Color space of bottom-right corner."""
+        return self._bottom_segment_color_space
+    
+    # === Segment Creation ===
+    
+    def get_top_segment_untransformed(self) -> np.ndarray:
+        """Get or create the top segment in uniform coordinates.
+        
+        Returns:
+            Array of shape (1, width, channels)
+        """
+        if self._value is not None and self._top_segment is None:
+            self._top_segment = self._value[0:1, :, :]
+        
+        if self._top_segment is not None:
+            return self._top_segment
+        
+        uniform_coords = [flat_1d_upbm(self.width)]
+        
+        segment = get_transformed_segment(
+            already_converted_start_color=self._top_left,
+            already_converted_end_color=self._top_right,
+            per_channel_coords=uniform_coords,
+            color_space=self._top_segment_color_space,
+            hue_direction=self._top_segment_hue_direction_x,
+            bound_types=self._boundtypes,
+            homogeneous_per_channel_coords=True,
+        )
+        
+        self._top_segment = segment.get_value().reshape(1, self.width, -1)
+        return self._top_segment
+    
+    def get_bottom_segment_untransformed(self) -> np.ndarray:
+        """Get or create the bottom segment in uniform coordinates.
+        
+        Returns:
+            Array of shape (1, width, channels)
+        """
+        if self._value is not None and self._bottom_segment is None:
+            self._bottom_segment = self._value[-1:, :, :]
+        
+        if self._bottom_segment is not None:
+            return self._bottom_segment
+        
+        uniform_coords = [flat_1d_upbm(self.width)]
+        
+        segment = get_transformed_segment(
+            already_converted_start_color=self._bottom_left,
+            already_converted_end_color=self._bottom_right,
+            per_channel_coords=uniform_coords,
+            color_space=self._bottom_segment_color_space,
+            hue_direction=self._bottom_segment_hue_direction_x,
+            bound_types=self._boundtypes,
+            homogeneous_per_channel_coords=True,
+        )
+        
+        self._bottom_segment = segment.get_value().reshape(1, self.width, -1)
+        return self._bottom_segment
+    
+    # === Core Interpolation ===
+    
+    def _interpolate_in_space(
+        self,
+        coords: List[np.ndarray],
+        space: ColorSpace,
+        hue_x: Optional[str],
+    ) -> np.ndarray:
+        """Interpolate corners in a specific color space."""
+        c_tl = self.convert_corner(CornerIndex.TOP_LEFT, space)
+        c_tr = self.convert_corner(CornerIndex.TOP_RIGHT, space)
+        c_bl = self.convert_corner(CornerIndex.BOTTOM_LEFT, space)
+        c_br = self.convert_corner(CornerIndex.BOTTOM_RIGHT, space)
+        
+        return interp_transformed_2d_from_corners(
+            c_tl=c_tl,
+            c_tr=c_tr,
+            c_bl=c_bl,
+            c_br=c_br,
+            transformed=coords,
+            color_space=space,
+            huemode_x=hue_x or HueMode.SHORTEST,
+            huemode_y=self._hue_direction_y or HueMode.SHORTEST,
+            bound_types=self._boundtypes,
+            border_mode=self._border_mode,
+            border_value=self._border_value,
+        )
+    
+    def _interpolate_at_coords(self, coords_list: List[np.ndarray]) -> np.ndarray:
+        """Core interpolation at specific coordinates."""
+        return self._interpolate_in_space(
+            coords_list,
+            self._vertical_color_space,
+            self._hue_direction_y,
+        )[0, 0, :]
+    
+    # === Edge Interpolation ===
+    
+    def interpolate_edge_continuous(
+        self,
+        horizontal_pos: float,
+        vertical_idx: int,
+    ) -> np.ndarray:
+        """Continuous interpolation along an edge.
+        
+        Args:
+            horizontal_pos: Position along edge, 0.0 = left, 1.0 = right
+            vertical_idx: Row index (0 = top edge, height-1 = bottom edge)
+            
+        Returns:
+            Interpolated color as numpy array
+        """
+        # Fast path: exact pixel in cache
+        if self._value is not None:
+            exact_idx = horizontal_pos * (self.width - 1)
+            if is_close_to_int(exact_idx):
+                idx = int(round(exact_idx))
+                return self._value[vertical_idx, idx, :].copy()
+        
+        exact_idx = horizontal_pos * (self.width - 1)
+        is_top_edge = vertical_idx == 0
+        edge_coords = extract_edge(self._per_channel_coords, vertical_idx)
+        
+        if is_close_to_int(exact_idx):
+            coords = extract_point(edge_coords, int(round(exact_idx)))
+        else:
+            coords = lerp_point(edge_coords, exact_idx)
+        
+        if is_top_edge:
+            return self._interpolate_in_space(
+                coords, self._top_segment_color_space, self._top_segment_hue_direction_x
+            )[0, 0, :]
+        else:
+            return self._interpolate_in_space(
+                coords, self._bottom_segment_color_space, self._bottom_segment_hue_direction_x
+            )[0, 0, :]
+    
+    def index_interpolate_edge_discrete(
+        self,
+        horizontal_index: int,
+        vertical_index: int,
+    ) -> np.ndarray:
+        """Discrete interpolation at a specific pixel.
+        
+        Args:
+            horizontal_index: Column index (supports negative indexing)
+            vertical_index: Row index (supports negative indexing)
+            
+        Returns:
+            Color at the specified pixel
+        """
+        # Fast path: direct cache access
+        if self._value is not None:
+            if 0 <= horizontal_index < self.width and 0 <= vertical_index < self.height:
+                return self._value[vertical_index, horizontal_index, :].copy()
+        
+        # Normalize negative indices
+        if vertical_index < 0:
+            vertical_index += self.height
+        if horizontal_index < 0:
+            horizontal_index += self.width
+        
+        is_top_edge = vertical_index == 0
+        coords = extract_point(
+            extract_edge(self._per_channel_coords, vertical_index),
+            horizontal_index,
+        )
+        
+        if is_top_edge:
+            return self._interpolate_in_space(
+                coords, self._top_segment_color_space, self._top_segment_hue_direction_x
+            )[0, 0, :]
+        else:
+            return self._interpolate_in_space(
+                coords, self._bottom_segment_color_space, self._bottom_segment_hue_direction_x
+            )[0, 0, :]
+    def _resolve_hue(self, *fallback_order: Optional[float], default: float = 0.0) -> float:
+        """Return first non-None value from fallback order, or default."""
+        for hue in fallback_order:
+            if hue is not None:
+                return hue
+        return default
 
-    def convert_to_space(self, color_space: ColorSpace, render_before: bool = False) -> CornersCellDual:
-        """Convert to a unified color space (both horizontal and vertical become the same)."""
-        if (self.horizontal_color_space == color_space and 
-            self.vertical_color_space == color_space and
-            self.top_segment_color_space == color_space and
-            self.bottom_segment_color_space == color_space):
+    def _get_resolved_grayscale_hues(self) -> tuple[float, float, float, float]:
+        """Resolve grayscale hues with fallback logic."""
+        tl = self._top_left_grayscale_hue
+        tr = self._top_right_grayscale_hue
+        bl = self._bottom_left_grayscale_hue
+        br = self._bottom_right_grayscale_hue
+        
+        return (
+            self._resolve_hue(tl, tr, bl, br),  # top-left: horizontal, then vertical, then diagonal
+            self._resolve_hue(tr, tl, br, bl),  # top-right
+            self._resolve_hue(bl, br, tl, tr),  # bottom-left
+            self._resolve_hue(br, bl, tr, tl),  # bottom-right
+        )
+    def interpolate_edge(
+        self,
+        horizontal_pos: UnitFloat,
+        is_top_edge: bool,
+    ) -> np.ndarray:
+        """Public interface for edge interpolation.
+        
+        Args:
+            horizontal_pos: Position along edge, 0.0 = left, 1.0 = right
+            is_top_edge: If True, interpolate top edge; else bottom edge
+            
+        Returns:
+            Interpolated color as numpy array
+        """
+        vertical_idx = 0 if is_top_edge else self.height - 1
+        return self.interpolate_edge_continuous(float(horizontal_pos), vertical_idx)
+    
+    # === Rendering ===
+    
+    def _render_value(self) -> np.ndarray:
+        """Render full 2D gradient."""
+        from .factory import get_transformed_lines_cell
+        
+        # Get segments in their respective spaces
+        top_segment = self.get_top_segment_untransformed()
+        bottom_segment = self.get_bottom_segment_untransformed()
+        if is_hue_space(self._vertical_color_space): 
+            mask_and_replace_top_hue = self._top_segment_color_space == ColorSpace.RGB
+            mask_and_replace_bottom_hue = self._bottom_segment_color_space == ColorSpace.RGB
+        else:
+            mask_and_replace_top_hue = False
+            mask_and_replace_bottom_hue = False
+
+
+        # Convert segments to vertical space if needed
+        if self._top_segment_color_space != self._vertical_color_space:
+            top_segment = np_convert(
+                top_segment,
+                self._top_segment_color_space,
+                self._vertical_color_space,
+                input_type="float",
+                output_type="float",
+            )
+        
+        if self._bottom_segment_color_space != self._vertical_color_space:
+            bottom_segment = np_convert(
+                bottom_segment,
+                self._bottom_segment_color_space,
+                self._vertical_color_space,
+                input_type="float",
+                output_type="float",
+            )
+        # Reshape for lines cell: (1, width, channels) -> (width, channels)
+        top_line = top_segment.reshape(top_segment.shape[1], top_segment.shape[2])
+        bottom_line = bottom_segment.reshape(bottom_segment.shape[1], bottom_segment.shape[2])
+
+        if mask_and_replace_top_hue:
+            where_grayscale_top = is_hue_color_arr_grayscale(top_line)
+            if np.any(where_grayscale_top):
+                tl_ghue, tr_ghue, bl_ghue, br_ghue = self._get_resolved_grayscale_hues()
+                
+                top_coords = self.top_edge_coords
+                if isinstance(top_coords, list):
+                    top_coords = top_coords[0]
+                elif isinstance(top_coords, np.ndarray) and top_coords.ndim == 4:
+                    top_coords = top_coords[0]
+                # Replace grayscale hues Top_line is flattened (width, channels)
+                top_line[where_grayscale_top, 0] = interp_hue_2d_from_corners(
+                    tl_ghue, tr_ghue, bl_ghue, br_ghue,
+                    top_coords[:, where_grayscale_top].astype(np.float64),
+                    self._hue_direction_x or HueMode.SHORTEST,
+                    self._hue_direction_y or HueMode.SHORTEST,
+                )
+        if mask_and_replace_bottom_hue:
+
+            where_grayscale_bottom = is_hue_color_arr_grayscale(bottom_line)
+
+            if np.any(where_grayscale_bottom):
+                tl_ghue, tr_ghue, bl_ghue, br_ghue = self._get_resolved_grayscale_hues()
+                
+                bottom_coords = self.bottom_edge_coords
+                if isinstance(bottom_coords, list):
+                    bottom_coords = bottom_coords[0]
+                elif isinstance(bottom_coords, np.ndarray) and bottom_coords.ndim == 4:
+                    bottom_coords = bottom_coords[0]
+                    
+                bottom_line[where_grayscale_bottom, 0] = interp_hue_2d_from_corners(
+                    tl_ghue, tr_ghue, bl_ghue, br_ghue,
+                    bottom_coords[:, where_grayscale_bottom].astype(np.float64),
+                    self._hue_direction_x or HueMode.SHORTEST,
+                    self._hue_direction_y or HueMode.SHORTEST,
+                )
+            
+        
+        lines_cell = get_transformed_lines_cell(
+            top_line=top_line,
+            bottom_line=bottom_line,
+            per_channel_coords=self._per_channel_coords,
+            color_space=self._vertical_color_space,
+            top_line_color_space=self._vertical_color_space,
+            bottom_line_color_space=self._vertical_color_space,
+            hue_direction_y=self._hue_direction_y or HueMode.SHORTEST,
+            hue_direction_x=self._hue_direction_x or HueMode.SHORTEST,
+            line_method=LineInterpMethods.LINES_CONTINUOUS,
+            boundtypes=self._boundtypes,
+            border_mode=self._border_mode,
+            border_value=self._border_value,
+            input_format=FormatType.FLOAT,
+        )
+        
+        return lines_cell.get_value()
+    
+    # === Color Space Conversion ===
+    
+    def convert_to_space(
+        self,
+        color_space: ColorSpace,
+        render_before: bool = False,
+    ) -> CornersCellDual:
+        """Convert to a unified color space.
+        
+        Args:
+            color_space: Target color space for all interpolation
+            render_before: If True, render current value before converting
+            
+        Returns:
+            New cell instance in target color space
+        """
+        # Check if already in target space
+        if (
+            self._horizontal_color_space == color_space
+            and self._vertical_color_space == color_space
+            and self._top_segment_color_space == color_space
+            and self._bottom_segment_color_space == color_space
+        ):
             return self
         
         if render_before:
             self.get_value()
         
-        # Convert corners from horizontal_color_space
-        converted_top_left = np_convert(
-            self.top_left, self.horizontal_color_space, color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_top_right = np_convert(
-            self.top_right, self.horizontal_color_space, color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_bottom_left = np_convert(
-            self.bottom_left, self.horizontal_color_space, color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_bottom_right = np_convert(
-            self.bottom_right, self.horizontal_color_space, color_space, 
-            input_type="float", output_type='float'
-        )
+        # Convert corners
+        converted_corners = [
+            np_convert(
+                corner,
+                self._horizontal_color_space,
+                color_space,
+                input_type="float",
+                output_type="float",
+            )
+            for corner in [self._top_left, self._top_right, self._bottom_left, self._bottom_right]
+        ]
         
-        # Convert cached value from vertical_color_space if exists
+        # Convert cached value if present
         converted_value = None
         if self._value is not None:
             converted_value = np_convert(
-                self._value, self.vertical_color_space, color_space, 
-                input_type="float", output_type='float'
+                self._value,
+                self._vertical_color_space,
+                color_space,
+                input_type="float",
+                output_type="float",
             )
         
-        # Copy per_channel_coords
-        if isinstance(self.per_channel_coords, list):
-            copied_coords = [pc.copy() for pc in self.per_channel_coords]
-        else:
-            copied_coords = self.per_channel_coords.copy()
-        
         return CornersCellDual(
-            top_left=converted_top_left,
-            top_right=converted_top_right,
-            bottom_left=converted_bottom_left,
-            bottom_right=converted_bottom_right,
-            per_channel_coords=copied_coords,
+            top_left=converted_corners[0],
+            top_right=converted_corners[1],
+            bottom_left=converted_corners[2],
+            bottom_right=converted_corners[3],
+            per_channel_coords=self._per_channel_coords,
             horizontal_color_space=color_space,
             vertical_color_space=color_space,
-            hue_direction_y=self.hue_direction_y,
-            hue_direction_x=self.hue_direction_x,
-            boundtypes=self.boundtypes,
+            hue_direction_y=self._hue_direction_y,
+            hue_direction_x=self._hue_direction_x,
+            boundtypes=self._boundtypes,
+            border_mode=self._border_mode,
+            border_value=self._border_value,
             value=converted_value,
-            top_segment_hue_direction_x=self.top_segment_hue_direction_x,
-            bottom_segment_hue_direction_x=self.bottom_segment_hue_direction_x,
+            top_segment_hue_direction_x=self._top_segment_hue_direction_x,
+            bottom_segment_hue_direction_x=self._bottom_segment_hue_direction_x,
             top_segment_color_space=color_space,
             bottom_segment_color_space=color_space,
         )
-
+    
     def convert_to_spaces(
-        self, 
-        horizontal_color_space: ColorSpace, 
+        self,
+        horizontal_color_space: ColorSpace,
         vertical_color_space: ColorSpace,
         top_segment_color_space: Optional[ColorSpace] = None,
         bottom_segment_color_space: Optional[ColorSpace] = None,
-        render_before: bool = False
+        render_before: bool = False,
     ) -> CornersCellDual:
-        """Convert to specific horizontal and vertical color spaces."""
+        """Convert to specific horizontal and vertical spaces.
+        
+        Args:
+            horizontal_color_space: Target horizontal color space
+            vertical_color_space: Target vertical color space
+            top_segment_color_space: Target top segment space (defaults to horizontal)
+            bottom_segment_color_space: Target bottom segment space (defaults to horizontal)
+            render_before: If True, render current value before converting
+            
+        Returns:
+            New cell instance in target color spaces
+        """
         top_seg_space = top_segment_color_space or horizontal_color_space
         bottom_seg_space = bottom_segment_color_space or horizontal_color_space
         
         # Check if already in target spaces
-        if (self.horizontal_color_space == horizontal_color_space and 
-            self.vertical_color_space == vertical_color_space and
-            self.top_segment_color_space == top_seg_space and
-            self.bottom_segment_color_space == bottom_seg_space):
+        if (
+            self._horizontal_color_space == horizontal_color_space
+            and self._vertical_color_space == vertical_color_space
+            and self._top_segment_color_space == top_seg_space
+            and self._bottom_segment_color_space == bottom_seg_space
+        ):
             return self
         
         if render_before:
             self.get_value()
         
-        # Convert corners from horizontal_color_space to new horizontal space
-        converted_top_left = np_convert(
-            self.top_left, self.horizontal_color_space, horizontal_color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_top_right = np_convert(
-            self.top_right, self.horizontal_color_space, horizontal_color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_bottom_left = np_convert(
-            self.bottom_left, self.horizontal_color_space, horizontal_color_space, 
-            input_type="float", output_type='float'
-        )
-        converted_bottom_right = np_convert(
-            self.bottom_right, self.horizontal_color_space, horizontal_color_space, 
-            input_type="float", output_type='float'
-        )
+        # Convert corners to horizontal space
+        converted_corners = [
+            np_convert(
+                corner,
+                self._horizontal_color_space,
+                horizontal_color_space,
+                input_type="float",
+                output_type="float",
+            )
+            for corner in [self._top_left, self._top_right, self._bottom_left, self._bottom_right]
+        ]
         
-        # Convert cached value from vertical_color_space if exists
+        # Convert cached value if present
         converted_value = None
         if self._value is not None:
             converted_value = np_convert(
-                self._value, self.vertical_color_space, vertical_color_space, 
-                input_type="float", output_type='float'
+                self._value,
+                self._vertical_color_space,
+                vertical_color_space,
+                input_type="float",
+                output_type="float",
             )
         
-        # Copy per_channel_coords
-        if isinstance(self.per_channel_coords, list):
-            copied_coords = [pc.copy() for pc in self.per_channel_coords]
-        else:
-            copied_coords = self.per_channel_coords.copy()
-        
         return CornersCellDual(
-            top_left=converted_top_left,
-            top_right=converted_top_right,
-            bottom_left=converted_bottom_left,
-            bottom_right=converted_bottom_right,
-            per_channel_coords=copied_coords,
+            top_left=converted_corners[0],
+            top_right=converted_corners[1],
+            bottom_left=converted_corners[2],
+            bottom_right=converted_corners[3],
+            per_channel_coords=self._per_channel_coords,
             horizontal_color_space=horizontal_color_space,
             vertical_color_space=vertical_color_space,
-            hue_direction_y=self.hue_direction_y,
-            hue_direction_x=self.hue_direction_x,
-            boundtypes=self.boundtypes,
+            hue_direction_y=self._hue_direction_y,
+            hue_direction_x=self._hue_direction_x,
+            boundtypes=self._boundtypes,
+            border_mode=self._border_mode,
+            border_value=self._border_value,
             value=converted_value,
-            top_segment_hue_direction_x=self.top_segment_hue_direction_x,
-            bottom_segment_hue_direction_x=self.bottom_segment_hue_direction_x,
+            top_segment_hue_direction_x=self._top_segment_hue_direction_x,
+            bottom_segment_hue_direction_x=self._bottom_segment_hue_direction_x,
             top_segment_color_space=top_seg_space,
             bottom_segment_color_space=bottom_seg_space,
         )
-
-    def partition_slice(
-        self, 
-        partition: PerpendicularDualPartition, 
-        render_before: bool = False
-    ) -> List[CornersCellDual]:
-        """Slice this cell along the width (perpendicular axis) using the dual partition."""
-        from ...gradient1dv2.helpers.interpolation import (
-            interpolate_transformed_hue_space, 
-            interpolate_transformed_non_hue
+    
+    def _get_corner_color_space(self, corner: CornerIndex) -> ColorSpace:
+        if corner == CornerIndex.TOP_LEFT:
+            return self._top_segment_color_space
+        elif corner == CornerIndex.TOP_RIGHT:
+            return self._top_segment_color_space
+        elif corner == CornerIndex.BOTTOM_LEFT:
+            return self._bottom_segment_color_space
+        elif corner == CornerIndex.BOTTOM_RIGHT:
+            return self._bottom_segment_color_space
+        else:
+            raise ValueError(f"Invalid corner index: {corner}")
+    def _get_corner_color(self, corner: CornerIndex) -> np.ndarray:
+        if corner == CornerIndex.TOP_LEFT:
+            return self._top_left
+        elif corner == CornerIndex.TOP_RIGHT:
+            return self._top_right
+        elif corner == CornerIndex.BOTTOM_LEFT:
+            return self._bottom_left
+        elif corner == CornerIndex.BOTTOM_RIGHT:
+            return self._bottom_right
+        else:
+            raise ValueError(f"Invalid corner index: {corner}")
+        
+    def _get_corner_grayscale_hue(self, corner: CornerIndex) -> Optional[float]:
+        if corner == CornerIndex.TOP_LEFT:
+            return self._top_left_grayscale_hue
+        elif corner == CornerIndex.TOP_RIGHT:
+            return self._top_right_grayscale_hue
+        elif corner == CornerIndex.BOTTOM_LEFT:
+            return self._bottom_left_grayscale_hue
+        elif corner == CornerIndex.BOTTOM_RIGHT:
+            return self._bottom_right_grayscale_hue
+        else:
+            raise ValueError(f"Invalid corner index: {corner}")
+    def convert_corner(self, corner: CornerIndex, to_space: ColorSpace, from_space: ColorSpace=None):
+        if from_space is None:
+            from_space = self._get_corner_color_space(corner)
+        corner_color = self._get_corner_color(corner)
+        converted = np_convert(
+            corner_color,
+            from_space,
+            to_space,
+            input_type="float",
+            output_type="float",
         )
+        if is_hue_space(to_space) and is_hue_color_grayscale(converted):
+            grayscale_hue = self._get_corner_grayscale_hue(corner)
+            if grayscale_hue is not None:
+                converted[0] = grayscale_hue
+        return converted
         
-        slices: List[CornersCellDual] = []
-        
-        # Get width from per_channel_coords
-        if isinstance(self.per_channel_coords, list):
-            width = self.per_channel_coords[0].shape[1]
-        else:
-            width = self.per_channel_coords.shape[1]
-        
-        def interpolate_edge(horizontal_index: int, is_top_edge: bool) -> np.ndarray:
-            """Interpolate at a specific position along top or bottom edge."""
-            if is_top_edge:
-                start, end = self.top_left, self.top_right
-                segment_color_space = self.top_segment_color_space
-                hue_dir = self.top_segment_hue_direction_x
-            else:
-                start, end = self.bottom_left, self.bottom_right
-                segment_color_space = self.bottom_segment_color_space
-                hue_dir = self.bottom_segment_hue_direction_x
-            
-            # Get local coordinates at this position
-            vertical_index = 0 if is_top_edge else -1
-            if isinstance(self.per_channel_coords, list):
-                x_coord = self.per_channel_coords[0][vertical_index, horizontal_index, 0]
-            else:
-                x_coord = self.per_channel_coords[vertical_index, horizontal_index, 0]
-            
-            per_channel_coords = [np.array([x_coord])] * len(start)
-            
-            if is_hue_space(segment_color_space):
-                return interpolate_transformed_hue_space(
-                    start=start,
-                    end=end,
-                    per_channel_coords=per_channel_coords,
-                    hue_direction=hue_dir,
-                    bound_types=self.boundtypes,
-                )[0]
-            else:
-                return interpolate_transformed_non_hue(
-                    starts=[start],
-                    ends=[end],
-                    per_channel_coords=per_channel_coords,
-                    bound_types=self.boundtypes,
-                )[0]
-        
-        if render_before:
-            self.get_value()
-        
-        for start, end, partition_interval in partition.intervals():
-            start_idx = int(start * width + 0.5)
-            end_idx = int(end * width + 0.5)
-            
-            if start_idx >= end_idx:
-                continue
-            
-            # Extract partition settings
-            h_space = partition_interval.horizontal_color_space
-            v_space = partition_interval.vertical_color_space
-            hue_dir_y = partition_interval.hue_direction_y
-            hue_dir_x = partition_interval.hue_direction_x
-            top_seg_space = partition_interval.top_segment_color_space
-            bottom_seg_space = partition_interval.bottom_segment_color_space
-            top_seg_hue_x = partition_interval.top_segment_hue_direction_x
-            bottom_seg_hue_x = partition_interval.bottom_segment_hue_direction_x
-            
-            # Get new corners by interpolating at slice boundaries
-            tl = interpolate_edge(start_idx, is_top_edge=True)
-            tr = interpolate_edge(end_idx - 1, is_top_edge=True)
-            bl = interpolate_edge(start_idx, is_top_edge=False)
-            br = interpolate_edge(end_idx - 1, is_top_edge=False)
-            
-            # Convert corners to target horizontal color space
-            converted_tl = np_convert(
-                tl, self.horizontal_color_space, h_space, 
-                input_type="float", output_type='float'
-            )
-            converted_tr = np_convert(
-                tr, self.horizontal_color_space, h_space, 
-                input_type="float", output_type='float'
-            )
-            converted_bl = np_convert(
-                bl, self.horizontal_color_space, h_space, 
-                input_type="float", output_type='float'
-            )
-            converted_br = np_convert(
-                br, self.horizontal_color_space, h_space, 
-                input_type="float", output_type='float'
-            )
-            
-            # Slice and normalize per_channel_coords
-            interval_length = end - start
-            if isinstance(self.per_channel_coords, list):
-                sliced_coords = [pc[:, start_idx:end_idx].copy() for pc in self.per_channel_coords]
-                for sliced_pc in sliced_coords:
-                    x_coords = sliced_pc[..., 0]
-                    sliced_pc[..., 0] = (x_coords - start) / interval_length
-            else:
-                sliced_coords = self.per_channel_coords[:, start_idx:end_idx].copy()
-                x_coords = sliced_coords[..., 0]
-                sliced_coords[..., 0] = (x_coords - start) / interval_length
-            
-            # Try to reuse cached value
-            sliced_value = self._get_sliced_cached_value(
-                start_idx, end_idx, v_space, hue_dir_y
-            )
-            
-            cell_slice = CornersCellDual(
-                top_left=converted_tl,
-                top_right=converted_tr,
-                bottom_left=converted_bl,
-                bottom_right=converted_br,
-                per_channel_coords=sliced_coords,
-                horizontal_color_space=h_space,
-                vertical_color_space=v_space,
-                hue_direction_y=hue_dir_y or self.hue_direction_y,
-                hue_direction_x=hue_dir_x or self.hue_direction_x,
-                boundtypes=self.boundtypes,
-                value=sliced_value,
-                top_segment_hue_direction_x=top_seg_hue_x or self.top_segment_hue_direction_x,
-                bottom_segment_hue_direction_x=bottom_seg_hue_x or self.bottom_segment_hue_direction_x,
-                top_segment_color_space=top_seg_space or self.top_segment_color_space,
-                bottom_segment_color_space=bottom_seg_space or self.bottom_segment_color_space,
-            )
-            
-            slices.append(cell_slice)
-        
-        return slices
-
-    def _get_sliced_cached_value(
-        self, 
-        start_idx: int, 
-        end_idx: int,
-        target_space: ColorSpace, 
-        target_hue_dir_y: HueDirection
-    ) -> Optional[np.ndarray]:
-        """Get sliced portion of cached value if conditions allow reuse."""
-        if self._value is None:
-            return None
-        
-        # Check against vertical_color_space since that's what _value is rendered in
-        spaces_match = self.vertical_color_space == target_space
-        
-        if is_hue_space(self.vertical_color_space):
-            hue_match = self.hue_direction_y == target_hue_dir_y
-            can_reuse = spaces_match and hue_match
-        else:
-            can_reuse = spaces_match
-        
-        if can_reuse:
-            return self._value[:, start_idx:end_idx].copy()
-        
-        return None
+    # === Copy ===
     
-    @classmethod
-    def get_top_lines(cls, cells: List[CornersCellDual]) -> np.ndarray:
-        """
-        Concatenate top line (top_left to top_right) from multiple cells for future stacking.
-        
-        Args:
-            cells: List of CornersCellDual instances
-            
-        Returns:
-            Concatenated top corners as array: [tl1, tr1, tl2, tr2, ...]
-        """
-        if not cells:
-            raise ValueError("Cannot concatenate empty list of cells")
-        result = []
-        for cell in cells:
-            result.extend([cell.top_left, cell.top_right])
-        return np.array(result)
+    def copy_with(self, **kwargs) -> CornersCellDual:
+        """Create a copy with overridden values."""
+        defaults = {
+            'top_left': self._top_left,
+            'top_right': self._top_right,
+            'bottom_left': self._bottom_left,
+            'bottom_right': self._bottom_right,
+            'per_channel_coords': self._per_channel_coords,
+            'horizontal_color_space': self._horizontal_color_space,
+            'vertical_color_space': self._vertical_color_space,
+            'hue_direction_y': self._hue_direction_y,
+            'hue_direction_x': self._hue_direction_x,
+            'boundtypes': self._boundtypes,
+            'border_mode': self._border_mode,
+            'border_value': self._border_value,
+            'top_segment_hue_direction_x': self._top_segment_hue_direction_x,
+            'bottom_segment_hue_direction_x': self._bottom_segment_hue_direction_x,
+            'top_segment_color_space': self._top_segment_color_space,
+            'bottom_segment_color_space': self._bottom_segment_color_space,
+            'value': self._value,
+        }
+        defaults.update(kwargs)
+        return CornersCellDual(**defaults)
     
-    @classmethod
-    def get_bottom_lines(cls, cells: List[CornersCellDual]) -> np.ndarray:
-        """
-        Concatenate bottom line (bottom_left to bottom_right) from multiple cells for future stacking.
-        
-        Args:
-            cells: List of CornersCellDual instances
-            
-        Returns:
-            Concatenated bottom corners as array: [bl1, br1, bl2, br2, ...]
-        """
-        if not cells:
-            raise ValueError("Cannot concatenate empty list of cells")
-        result = []
-        for cell in cells:
-            result.extend([cell.bottom_left, cell.bottom_right])
-        return np.array(result)
+    # === Representation ===
+    
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__name__}("
+            f"shape={self.shape}, "
+            f"vertical_space={self._vertical_color_space!r}, "
+            f"horizontal_space={self._horizontal_color_space!r})"
+        )

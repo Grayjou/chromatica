@@ -15,10 +15,10 @@ ctypedef np.int32_t i32
 # Hue Mode Constants (C-level enum)
 # =============================================================================
 cdef enum HueMode:
-    HUE_CW = 0
-    HUE_CCW = 1
-    HUE_SHORTEST = 2
-    HUE_LONGEST = 3
+    HUE_CW = 1
+    HUE_CCW = 2
+    HUE_SHORTEST = 3
+    HUE_LONGEST = 4
  
 # =============================================================================
 # Function Declarations

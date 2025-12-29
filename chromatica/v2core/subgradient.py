@@ -5,7 +5,7 @@ Base classes for gradient segments and cells.
 from abc import ABC, abstractmethod
 from typing import Optional
 import numpy as np
-from ..types.color_types import ColorSpace
+from ..types.color_types import ColorSpaces
 
 
 class SubGradient(ABC):
@@ -51,7 +51,7 @@ class SubGradient(ABC):
         return "float"
     
     @abstractmethod
-    def convert_to_space(self, color_space: ColorSpace) -> 'SubGradient':
+    def convert_to_space(self, color_space: ColorSpaces) -> 'SubGradient':
         """
         Convert this gradient subsection to a different color space.
         

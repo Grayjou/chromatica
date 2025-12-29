@@ -8,7 +8,7 @@ from ...colors.color_base import ColorBase
 from ...types.format_type import FormatType
 from ...types.transform_types import PerChannelTransform
 from ...types.array_types import ndarray_1d
-from ...types.color_types import ColorSpace, HueDirection
+from ...types.color_types import ColorSpaces, HueDirection
 from ...utils.list_mismatch import handle_list_size_mismatch
 
 
@@ -31,9 +31,9 @@ class _Gradient1DNormalizer(Color1DArr):
 
     @staticmethod
     def _normalize_input_spaces(
-        spaces: Optional[Union[ColorSpace, List[ColorSpace]]],
+        spaces: Optional[Union[ColorSpaces, List[ColorSpaces]]],
         num_colors: int,
-    ) -> List[ColorSpace]:
+    ) -> List[ColorSpaces]:
         """Normalize input color spaces to match number of colors."""
         if spaces is None:
             return ["rgb"] * num_colors
@@ -46,12 +46,12 @@ class _Gradient1DNormalizer(Color1DArr):
     def _normalize_gradient_sequence_settings(
         cls,
         colors: List[Union[ColorBase, Tuple, List, ndarray_1d]],
-        color_spaces: Optional[Union[ColorSpace, List[ColorSpace]]] = None,
-        input_color_spaces: Optional[Union[ColorSpace, List[ColorSpace]]] = None,
+        color_spaces: Optional[Union[ColorSpaces, List[ColorSpaces]]] = None,
+        input_color_spaces: Optional[Union[ColorSpaces, List[ColorSpaces]]] = None,
         hue_directions: Optional[List[HueDirection]] = None,
         per_channel_transforms: Optional[List[PerChannelTransform]] = None,
         num_segments: Optional[int] = None,
-        ) -> Tuple[List[ColorSpace], List[ColorSpace], List[HueDirection], List[Optional[PerChannelTransform]]]:
+        ) -> Tuple[List[ColorSpaces], List[ColorSpaces], List[HueDirection], List[Optional[PerChannelTransform]]]:
 
         # Normalize all list parameters
         input_color_spaces = cls._normalize_input_spaces(input_color_spaces, len(colors))

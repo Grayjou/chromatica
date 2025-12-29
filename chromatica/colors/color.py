@@ -4,9 +4,9 @@ from .hsl import hsl_tuple_to_class
 from .rgb import rgb_tuple_to_class
 from .hsv import hsv_tuple_to_class
 from ..types.format_type import FormatType, max_non_hue
-from ..conversions import ColorSpace, convert, np_convert
-from ..types.color_types import ColorElement, ScalarVector
-from typing import Optional, ClassVar, Tuple
+from ..conversions import convert, np_convert
+from ..types.color_types import  ColorSpace
+from typing import Optional
 from numpy import ndarray
 import numpy as np
 unified_tuple_to_class: dict[tuple[ColorSpace, FormatType], type[ColorBase]]  = {**rgb_tuple_to_class, **hsl_tuple_to_class, **hsv_tuple_to_class}
@@ -57,29 +57,21 @@ def color_convert(self: ColorBase, to_space: ColorSpace | None = None, to_format
     cls = unified_tuple_to_class[(to_space, to_format)]
     return cls(result)
 
+ALPHA_SPACE = {
+    ColorSpace.RGB:  ColorSpace.RGBA,
+    ColorSpace.HSL:  ColorSpace.HSLA,
+    ColorSpace.HSV:  ColorSpace.HSVA,
+}
+
 def with_alpha(self: ColorBase, alpha: Optional[ColorValue] = None) -> ColorBase:
-    """
-    Return an RGBA/HSVA/HSLA color with the specified alpha.
-
-    Args:
-        alpha: Alpha value to set. If None, uses maximum alpha for the format.
-               Can be a scalar or array matching the shape of the color array.
-
-    Returns:
-        New ColorBase instance with alpha channel.
-    """
-    i_have_alpha = self.has_alpha
-    if i_have_alpha:
+    if self.has_alpha:
         return self
 
     if alpha is None:
-        max_alpha = max_non_hue[self.format_type]
-        alpha = max_alpha
+        alpha = max_non_hue[self.format_type]
 
     if isinstance(self.value, ndarray):
-        # Handle array case
         if isinstance(alpha, ndarray):
-            # Alpha is an array - must match color array shape (excluding channels)
             expected_shape = self.value.shape[:-1]
             if alpha.shape != expected_shape:
                 raise ValueError(
@@ -87,25 +79,27 @@ def with_alpha(self: ColorBase, alpha: Optional[ColorValue] = None) -> ColorBase
                 )
             alpha_array = np.expand_dims(alpha, axis=-1)
         else:
-            # Alpha is scalar - broadcast to all elements
-            alpha_array = np.full(self.value.shape[:-1] + (1,), alpha, dtype=self.value.dtype)
-        
+            alpha_array = np.full(
+                self.value.shape[:-1] + (1,),
+                alpha,
+                dtype=self.value.dtype,
+            )
         new_value = np.concatenate([self.value, alpha_array], axis=-1)
     else:
-        # Handle scalar/tuple case
         if isinstance(alpha, ndarray):
             raise TypeError("Cannot use array alpha with scalar color value")
         new_value = tuple(self.value) + (alpha,)
 
-    new_mode = self.mode + "a"
-    cls = unified_tuple_to_class[(new_mode, self.format_type)] # type: ignore
-    return cls(new_value) # type: ignore
+    new_mode = ALPHA_SPACE[self.mode]
+    cls = unified_tuple_to_class[(new_mode, self.format_type)]
+    return cls(new_value)
 
 ColorBase.convert = color_convert
 ColorBase.with_alpha = with_alpha
 
 
-def get_color_class(color_space: str, format_type: FormatType):
+def get_color_class(color_space: ColorSpace, format_type: FormatType):
+    color_space = ColorSpace(color_space)
     color_class = unified_tuple_to_class.get((color_space, format_type))
     if color_class is None:
         raise ValueError(
@@ -114,7 +108,7 @@ def get_color_class(color_space: str, format_type: FormatType):
     return color_class
 
 
-def convert_color(value, color_space: str, format_type: FormatType):
+def convert_color(value, color_space: ColorSpace, format_type: FormatType):
     color_class = get_color_class(color_space, format_type)
     if isinstance(value, ColorBase):
         return value.convert(color_space, format_type)  # type: ignore

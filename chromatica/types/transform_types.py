@@ -1,9 +1,11 @@
 
-from typing import Callable, Dict, Optional, Tuple, TypeAlias
+from typing import Callable, Dict, Optional, Tuple, TypeAlias, Union, List
 from numpy.typing import NDArray
 
 from unitfield import Unit2DMappedEndomorphism, UnitNdimField
+import numpy as np
 
+PerChannelCoords = Union[np.ndarray, List[np.ndarray]]
 UnitTransform = Callable[[NDArray], NDArray]
 CoordsArray: TypeAlias = Tuple[NDArray, NDArray]
 Remap2D = Callable[[NDArray, NDArray], CoordsArray] | Unit2DMappedEndomorphism

@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Literal, Tuple, Union
 import numpy as np
 from numpy import ndarray
-from enum import IntEnum
+from enum import IntEnum, Enum, StrEnum
 
 Scalar = int | float
 IntVector = Tuple[int, ...]
@@ -11,7 +11,7 @@ IntElement = Union[int, IntVector]
 FloatElement = Union[float, Tuple[float, ...]]
 ColorElement = Union[IntElement, FloatElement]
 ColorValue = Union[ColorElement, ndarray]  # Includes array support
-ColorSpace = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
+ColorSpaces = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
 HUE_SPACES = {"hsl", "hsla", "hsv", "hsva"}
 HueDirection = Literal["cw", "ccw", "shortest", "longest"]
 
@@ -31,7 +31,7 @@ def element_to_array(element: Union[ColorElement, ndarray]) -> np.ndarray:
         return np.array([element])
     return np.array(element)
 
-def is_hue_space(color_space: ColorSpace) -> bool:
+def is_hue_space(color_space: ColorSpaces) -> bool:
     """
     Check if the given color space is a hue-based space (HSV or HSL).
     
@@ -51,7 +51,15 @@ class HueMode(IntEnum):
     SHORTEST: Shortest path (≤180° arc) - most common
     LONGEST:  Longest path (≥180° arc)
     """
-    CW = 0
-    CCW = 1
-    SHORTEST = 2
-    LONGEST = 3
+    CW = 1
+    CCW = 2
+    SHORTEST = 3
+    LONGEST = 4
+
+class ColorSpace(StrEnum):
+    RGB = "rgb"
+    RGBA = "rgba"
+    HSV = "hsv"
+    HSVA = "hsva"
+    HSL = "hsl"
+    HSLA = "hsla"

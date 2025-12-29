@@ -2,7 +2,7 @@ import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional
 from .....v2core.core import HueMode, _prepare_bound_types
-from .....types.color_types import is_hue_space, ColorSpace
+from .....types.color_types import is_hue_space, ColorSpaces
 
 
 def prepare_hue_and_rest_channels(data: np.ndarray, is_hue: bool = True):

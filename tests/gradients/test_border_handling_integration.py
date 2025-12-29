@@ -9,7 +9,7 @@ import pytest
 import numpy as np
 
 try:
-    from ...chromatica.types.color_types import ColorSpace
+    from ...chromatica.types.color_types import ColorSpaces
     from ...chromatica.gradients.gradient2dv2.cell.factory import (
         get_transformed_lines_cell,
         get_transformed_corners_cell,

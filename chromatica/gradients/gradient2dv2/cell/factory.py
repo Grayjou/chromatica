@@ -1,11 +1,12 @@
 """Factory functions for creating gradient cells with proper color space conversion."""
-
+#chromatica\gradients\gradient2dv2\cell\factory.py
 from __future__ import annotations
 from typing import List, Optional
 import numpy as np
-from ....types.color_types import ColorSpace
+from ....types.color_types import ColorSpace, HueMode, is_hue_space
 from ....types.format_type import FormatType
-from ....utils.color_utils import convert_to_space_float
+from ....utils.color_utils import convert_to_space_float, is_hue_color_grayscale
+from ....utils.default import value_or_default
 from boundednumbers import BoundType
 from ..helpers import LineInterpMethods, apply_per_channel_transforms_2d
 from .lines import LinesCell
@@ -156,6 +157,18 @@ def get_transformed_corners_cell(
         border_value=border_value,
     )
 
+def _determine_grayscale_hue(
+        color: np.ndarray,
+        colorspace: ColorSpace,
+    ) -> Optional[float]:
+    if not is_hue_space(colorspace):
+        return None
+    if is_hue_color_grayscale(color):
+        return color[0]
+    
+
+
+    
 
 def get_transformed_corners_cell_dual(
         top_left: np.ndarray,
@@ -163,21 +176,26 @@ def get_transformed_corners_cell_dual(
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
         per_channel_coords: List[np.ndarray] | np.ndarray,
-        horizontal_color_space: ColorSpace,
+
         vertical_color_space: ColorSpace,
+        horizontal_color_space: Optional[ColorSpace] = None,
         top_left_color_space: Optional[ColorSpace] = None,
         top_right_color_space: Optional[ColorSpace] = None,
         bottom_left_color_space: Optional[ColorSpace] = None,
         bottom_right_color_space: Optional[ColorSpace] = None,
-        hue_direction_y: Optional[str] = None,
-        hue_direction_x: Optional[str] = None,
+        hue_direction_y: Optional[HueMode] = None,
+        hue_direction_x: Optional[HueMode] = None,
         input_format: FormatType = FormatType.INT,
         per_channel_transforms: Optional[dict] = None,
         boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
         top_segment_hue_direction_x: Optional[str] = None,
         bottom_segment_hue_direction_x: Optional[str] = None,
         top_segment_color_space: Optional[ColorSpace] = None,
-        bottom_segment_color_space: Optional[ColorSpace] = None
+        bottom_segment_color_space: Optional[ColorSpace] = None,
+        top_left_grayscale_hue: Optional[float] = None,
+        top_right_grayscale_hue: Optional[float] = None,
+        bottom_left_grayscale_hue: Optional[float] = None,
+        bottom_right_grayscale_hue: Optional[float] = None,
         ) -> CornersCellDual:
     """Create a transformed CornersCellDual with proper color space conversion.
     
@@ -206,27 +224,44 @@ def get_transformed_corners_cell_dual(
     Returns:
         CornersCellDual instance with converted colors
     """
-    # Default corner color spaces to the horizontal_color_space if not specified
+
+    if horizontal_color_space is None:
+        if any([space is None] for space in [top_segment_color_space, bottom_segment_color_space]):
+            raise ValueError("Either horizontal_color_space or both top_segment_color_space and bottom_segment_color_space must be provided.")
+    top_segment_color_space = value_or_default(top_segment_color_space, horizontal_color_space)
+    bottom_segment_color_space = value_or_default(bottom_segment_color_space, horizontal_color_space)
     if top_left_color_space is None:
-        top_left_color_space = horizontal_color_space
+        if top_segment_color_space is not None:
+            top_left_color_space = top_segment_color_space
+        else:
+            top_left_color_space = horizontal_color_space
     if top_right_color_space is None:
-        top_right_color_space = horizontal_color_space
+        if top_segment_color_space is not None:
+            top_right_color_space = top_segment_color_space
+        else:
+            top_right_color_space = horizontal_color_space
     if bottom_left_color_space is None:
-        bottom_left_color_space = horizontal_color_space
+        if bottom_segment_color_space is not None:
+            bottom_left_color_space = bottom_segment_color_space
+        else:
+            bottom_left_color_space = horizontal_color_space
     if bottom_right_color_space is None:
-        bottom_right_color_space = horizontal_color_space
+        if bottom_segment_color_space is not None:
+            bottom_right_color_space = bottom_segment_color_space
+        else:
+            bottom_right_color_space = horizontal_color_space
 
     top_left_converted = convert_to_space_float(
-        top_left, top_left_color_space, input_format, horizontal_color_space
+        top_left, top_left_color_space, input_format, top_segment_color_space
     ).value
     top_right_converted = convert_to_space_float(
-        top_right, top_right_color_space, input_format, horizontal_color_space
+        top_right, top_right_color_space, input_format, top_segment_color_space
     ).value
     bottom_left_converted = convert_to_space_float(
-        bottom_left, bottom_left_color_space, input_format, horizontal_color_space
+        bottom_left, bottom_left_color_space, input_format, bottom_segment_color_space
     ).value
     bottom_right_converted = convert_to_space_float(
-        bottom_right, bottom_right_color_space, input_format, horizontal_color_space
+        bottom_right, bottom_right_color_space, input_format, bottom_segment_color_space
     ).value
     if per_channel_transforms is not None:
         per_channel_coords = apply_per_channel_transforms_2d(
@@ -234,6 +269,10 @@ def get_transformed_corners_cell_dual(
             per_channel_transforms=per_channel_transforms,
             num_channels=len(horizontal_color_space),
         )
+    top_left_grayscale_hue = value_or_default(top_left_grayscale_hue, _determine_grayscale_hue(top_left_converted, top_segment_color_space))
+    top_right_grayscale_hue = value_or_default(top_right_grayscale_hue, _determine_grayscale_hue(top_right_converted, top_segment_color_space))
+    bottom_left_grayscale_hue = value_or_default(bottom_left_grayscale_hue, _determine_grayscale_hue(bottom_left_converted, bottom_segment_color_space))
+    bottom_right_grayscale_hue = value_or_default(bottom_right_grayscale_hue, _determine_grayscale_hue(bottom_right_converted, bottom_segment_color_space))
     return CornersCellDual(
         top_left=top_left_converted,
         top_right=top_right_converted,
@@ -249,4 +288,9 @@ def get_transformed_corners_cell_dual(
         bottom_segment_hue_direction_x=bottom_segment_hue_direction_x,
         top_segment_color_space=top_segment_color_space,
         bottom_segment_color_space=bottom_segment_color_space,
+        top_left_grayscale_hue=top_left_grayscale_hue,
+        top_right_grayscale_hue=top_right_grayscale_hue,
+        bottom_left_grayscale_hue=bottom_left_grayscale_hue,
+        bottom_right_grayscale_hue=bottom_right_grayscale_hue,
     )
+
