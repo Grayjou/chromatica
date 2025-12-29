@@ -5,6 +5,38 @@ All notable changes to Chromatica will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **Cell Generator System**: Factory classes for creating and managing 2D gradient cells
+  - `CornersCellFactory`: Generate cells from four corner colors with bilinear interpolation
+  - `LinesCellFactory`: Generate cells from two horizontal lines
+  - `CornersCellDualFactory`: Advanced cells with independent top/bottom edge interpolation
+  - Cell partitioning: Split cells into regions with different color spaces and interpolation modes
+  - Per-channel coordinate transformations for complex gradient effects
+  
+- **Enhanced Gradient Features**
+  - Border handling modes: clamp, wrap, constant value, and overflow
+  - Discrete and continuous sampling methods for line interpolation
+  - Multi-channel interpolation with independent bound types per channel
+  - Support for mixed color space gradients through partitioning
+
+- **Documentation Improvements**
+  - Added `REDUNDANT_FUNCTIONS.md` documenting functions with overlapping functionality
+  - Added `OPTIMIZATION_HOTSPOTS.md` identifying performance-critical code paths
+  - Enhanced README with cell generator examples and usage patterns
+  - Improved type hints throughout cell and interpolation modules
+
+### Changed
+- **Build System**: Added Cython and numpy to build-system requirements in pyproject.toml
+- **Dependencies**: Updated project dependencies to include boundednumbers and unitfield
+- **Type Hints**: Improved type annotations for coordinate types in gradient2dv2 modules
+
+### Removed
+- Outdated documentation files: PR_SUMMARY.md, CODE_QUALITY_RECOMMENDATIONS.md, REFACTORING_SUMMARY.md, 
+  LIBRARY_REVIEW_V2.md, BORDER_HANDLING_IMPLEMENTATION.md, BUILD_CYTHON.md, 
+  CELL_REFACTORING_COMPLETE.md, UNUSED_METHODS_ANALYSIS.md
+
 ## [1.0.0] - 2025-12-05
 
 ### Added

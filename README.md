@@ -28,6 +28,14 @@ Chromatica is designed for developers, designers, and data visualization special
 ### Gradient Generation
 - **1D gradients**: Linear color interpolation with customizable steps and easing functions
 - **2D gradients**: Bilinear interpolation from four corner colors
+- **Cell-based gradients**: Flexible 2D gradient cells with advanced features:
+  - **Corner cells**: Bilinear interpolation from four corner colors
+  - **Line cells**: Interpolation between two horizontal lines with per-pixel color control
+  - **Dual corner cells**: Advanced cells with independent top and bottom edge interpolation
+  - **Cell generators**: Factory classes for creating and partitioning gradient cells
+  - **Partitioning**: Split cells into multiple regions with different color spaces
+  - **Per-channel transforms**: Apply different coordinate transformations to each color channel
+  - **Border handling**: Configurable edge behavior (clamp, wrap, constant, etc.)
 - **Radial gradients**: Circular gradients radiating from a center point with configurable radius
 - **Angular-radial gradients**: Advanced polar coordinate gradients with separate angular and radial interpolation
   - Simple angular-radial: Two-color gradients with angular and radial variation
@@ -156,6 +164,63 @@ python examples/basic_usage.py
 ```
 
 ## Advanced Features
+
+### Cell-Based 2D Gradients
+
+Chromatica provides powerful cell-based gradient generation with advanced control over interpolation and transformations:
+
+```python
+from chromatica.gradients.gradient2dv2.generators import CornersCellFactory
+from chromatica.gradients.gradient2dv2.partitions import PerpendicularPartition, PartitionInterval
+from chromatica.types.color_types import ColorSpace
+from chromatica.types.format_type import FormatType
+import numpy as np
+
+# Create a corners cell with custom transformations
+factory = CornersCellFactory(
+    width=500,
+    height=500,
+    top_left=np.array([0.0, 1.0, 0.5]),      # HSV color
+    top_right=np.array([120.0, 1.0, 0.5]),
+    bottom_left=np.array([240.0, 1.0, 0.5]),
+    bottom_right=np.array([360.0, 1.0, 0.5]),
+    color_space=ColorSpace.HSV,
+    hue_direction_x='cw',   # Clockwise hue interpolation horizontally
+    hue_direction_y='ccw',  # Counter-clockwise vertically
+)
+
+# Apply per-channel transforms for complex effects
+transforms = {
+    0: lambda coords: coords ** 2,  # Square transform on hue channel
+    1: lambda coords: coords ** 0.5,  # Sqrt transform on saturation
+}
+factory.per_channel_transforms = transforms
+
+# Get the rendered gradient
+cell = factory.get_cell()
+gradient_array = cell.get_value()  # NumPy array (H, W, 3)
+
+# Partition the cell for multiple color space regions
+partition = PerpendicularPartition(
+    breakpoints=[0.5],  # Split at 50%
+    intervals=[
+        PartitionInterval(color_space=ColorSpace.RGB),
+        PartitionInterval(color_space=ColorSpace.HSV, hue_direction='cw'),
+    ]
+)
+partitioned_cells = factory.partition_slice(partition)
+```
+
+**Cell Types:**
+- `CornersCellFactory`: Creates cells from four corner colors with bilinear interpolation
+- `LinesCellFactory`: Creates cells from two horizontal lines (top and bottom)
+- `CornersCellDualFactory`: Advanced cells with independent edge interpolation
+
+**Features:**
+- Per-channel coordinate transformations
+- Partitioning for multi-region gradients with different color spaces
+- Border handling modes (clamp, wrap, constant value)
+- Discrete and continuous sampling methods
 
 ### Angular-Radial Gradients
 
