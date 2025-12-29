@@ -125,5 +125,4 @@ def apply_per_channel_transforms_2d(
 __all__ = [
     'CellMode',
     'apply_per_channel_transforms_2d',
-    'separate_hue_and_non_hue_transforms',
 ]

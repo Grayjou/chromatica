@@ -7,30 +7,18 @@ This module re-exports from the helpers subpackage for backward compatibility.
 # Re-export everything from helpers subpackage
 from .helpers import (
     LineInterpMethods,
-    get_line_method,
-    interp_transformed_hue_2d_corners,
-    interp_transformed_hue_2d_lines_continuous,
-    interp_transformed_hue_2d_lines_discrete,
-    interp_transformed_non_hue_2d_corners,
-    interp_transformed_non_hue_2d_lines_continuous,
-    interp_transformed_non_hue_2d_lines_discrete,
+    interp_transformed_2d_from_corners,
+    interp_transformed_2d_lines,
     CellMode,
     apply_per_channel_transforms_2d,
-    separate_hue_and_non_hue_transforms,
     HueMode,
 )
 
 __all__ = [
     'LineInterpMethods',
-    'get_line_method',
-    'interp_transformed_hue_2d_corners',
-    'interp_transformed_hue_2d_lines_continuous',
-    'interp_transformed_hue_2d_lines_discrete',
-    'interp_transformed_non_hue_2d_corners',
-    'interp_transformed_non_hue_2d_lines_continuous',
-    'interp_transformed_non_hue_2d_lines_discrete',
+    'interp_transformed_2d_from_corners',
+    'interp_transformed_2d_lines',
     'CellMode',
     'apply_per_channel_transforms_2d',
-    'separate_hue_and_non_hue_transforms',
     'HueMode',
 ]
