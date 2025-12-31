@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...chromatica.v2core.interp_hue_.wrappers import (
+from chromatica.v2core.interp_hue_.wrappers import (
     hue_lerp_from_corners_array_border_typed,
     hue_lerp_between_lines_typed,
     hue_lerp_between_lines_typed_x_discrete,
