@@ -94,6 +94,7 @@ def _interp_transformed_hue_space_2d_lines_continuous(
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: Optional[int] = None,
     border_value: Optional[float] = None,
+    num_channels: Optional[int] = 3,
 ) -> np.ndarray:
     """
     Interpolate hue values between two lines using continuous sampling in multidimensional space.
@@ -117,9 +118,11 @@ def _interp_transformed_hue_space_2d_lines_continuous(
 
     hline0, rline0 = prepare_hue_and_rest_channels(line0, is_hue=True)
     hline1, rline1 = prepare_hue_and_rest_channels(line1, is_hue=True)
-    btypes_list = _prepare_bound_types(bound_types)
+    btypes_list = _prepare_bound_types(bound_types, num_channels=num_channels)
 
     # Interpolate hue channel
+    from time import perf_counter
+    #hstart = perf_counter()
     hresult = sample_hue_between_lines_continuous(
         hline0,
         hline1,
@@ -130,19 +133,26 @@ def _interp_transformed_hue_space_2d_lines_continuous(
         border_mode=border_mode,
         border_constant=border_value,
     )
-
+    #hend = perf_counter()
+    #print(f"Hue channel interpolation time: {hend - hstart:.6f} seconds")
     # Interpolate rest channels
     rlines0 = [rline0[..., i] for i in range(rline0.shape[-1])]
     rlines1 = [rline1[..., i] for i in range(rline1.shape[-1])]
+    if isinstance(border_value, (list, np.ndarray)):
+        rest_border_value = border_value[1:]
+    else:
+        rest_border_value = border_value
+    #rstart = perf_counter()
     rresult = multival2d_lerp_between_lines_continuous(
         rlines0,
         rlines1,
         transformed_r,
         bound_types=btypes_list[1:],
         border_mode=border_mode,
-        border_constant=border_value,
+        border_constant=rest_border_value,
     )
-
+    #rend = perf_counter()
+    #print(f"Rest channels interpolation time: {rend - rstart:.6f} seconds")
     return combine_hue_and_rest_channels(hresult, rresult)
 
 
@@ -155,6 +165,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: Optional[int] = None,
     border_value: Optional[float] = None,
+    num_channels: Optional[int] = 3,
 ) -> np.ndarray:
     """
     Interpolate hue values between two lines using discrete x-sampling in multidimensional space.
@@ -181,7 +192,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
         transformed_r = transformed[1:]
     hline0, rline0 = prepare_hue_and_rest_channels(line0, is_hue=True)
     hline1, rline1 = prepare_hue_and_rest_channels(line1, is_hue=True)
-    btypes_list = _prepare_bound_types(bound_types)
+    btypes_list = _prepare_bound_types(bound_types, num_channels=num_channels)
 
     # Interpolate hue channel
     hresult = sample_hue_between_lines_discrete(
@@ -194,7 +205,10 @@ def _interp_transformed_hue_space_2d_lines_discrete(
         border_mode=border_mode,
         border_constant=border_value,
     )
-    
+    if isinstance(border_value, (list, np.ndarray)):
+        rest_border_value = border_value[1:]
+    else:
+        rest_border_value = border_value
     # Interpolate rest channels
     # multival2d_lerp_between_lines_discrete expects list of lines, one per channel
     rlines0 = [rline0[..., i] for i in range(rline0.shape[-1])]
@@ -206,7 +220,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
         transformed_r,
         bound_types=btypes_list[1:],
         border_mode=border_mode,
-        border_constant=border_value,
+        border_constant=rest_border_value,
     )
     
     return combine_hue_and_rest_channels(hresult, rresult)
@@ -223,8 +237,9 @@ def interp_transformed_2d_lines(
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: Optional[int] = None,
     border_value: Optional[float] = None,
-
+    num_channels: Optional[int] = None,
 ) -> np.ndarray:
+
     """
     Interpolate values between two lines using transformed coordinates.
     
@@ -244,6 +259,8 @@ def interp_transformed_2d_lines(
         Interpolated values, shape (H, W, C)
     """
 
+    num_channels = num_channels or len(color_space)
+
     if is_hue_space(color_space):
         line_method = _get_line_method(line_method, huemode_x)
 
@@ -260,6 +277,7 @@ def interp_transformed_2d_lines(
                 bound_types=bound_types,
                 border_mode=border_mode,
                 border_value=border_value,
+                num_channels=num_channels,
             )
         else:
             return _interp_transformed_hue_space_2d_lines_discrete(
@@ -271,6 +289,7 @@ def interp_transformed_2d_lines(
                 bound_types=bound_types,
                 border_mode=border_mode,
                 border_value=border_value,
+                num_channels=num_channels,
             )
     else:
         if line_method == LineInterpMethods.LINES_CONTINUOUS:

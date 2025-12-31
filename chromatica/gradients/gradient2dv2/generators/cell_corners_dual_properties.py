@@ -116,23 +116,20 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         # === DETERMINE GRAYSCALE HUES BEFORE CONVERSION ===
         # This must happen BEFORE _convert_corner because conversion loses hue info
         self._top_left_grayscale_hue = value_or_default(
-            top_left_grayscale_hue,
-            self._detect_grayscale_hue(top_left, tl_space, input_format)
+            self._detect_grayscale_hue(top_left, tl_space, input_format), top_left_grayscale_hue
         )
         self._top_right_grayscale_hue = value_or_default(
-            top_right_grayscale_hue,
-            self._detect_grayscale_hue(top_right, tr_space, input_format)
+            self._detect_grayscale_hue(top_right, tr_space, input_format), top_right_grayscale_hue
         )
         self._bottom_left_grayscale_hue = value_or_default(
-            bottom_left_grayscale_hue,
-            self._detect_grayscale_hue(bottom_left, bl_space, input_format)
+            self._detect_grayscale_hue(bottom_left, bl_space, input_format), bottom_left_grayscale_hue
         )
         self._bottom_right_grayscale_hue = value_or_default(
-            bottom_right_grayscale_hue,
-            self._detect_grayscale_hue(bottom_right, br_space, input_format)
+            self._detect_grayscale_hue(bottom_right, br_space, input_format), bottom_right_grayscale_hue
         )
-        
+
         # Convert corners to their segment color spaces (AFTER grayscale hue detection)
+
         self._top_left = self._convert_corner(
             top_left, tl_space, self._top_segment_color_space, input_format
         )

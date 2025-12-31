@@ -71,6 +71,9 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                 top_right_grayscale_hue=self._top_right_grayscale_hue,
                 bottom_left_grayscale_hue=self._bottom_left_grayscale_hue,
                 bottom_right_grayscale_hue=self._bottom_right_grayscale_hue,
+                border_mode=self._border_mode,
+                border_value=self._border_value,
+
                 )
         return self._cell
     def _interpolate_grayscale_hue(
@@ -351,6 +354,10 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
             'top_right_grayscale_hue': self._top_right_grayscale_hue,
             'bottom_left_grayscale_hue': self._bottom_left_grayscale_hue,
             'bottom_right_grayscale_hue': self._bottom_right_grayscale_hue,
+            'top_left_color_space': self._top_segment_color_space,
+            'top_right_color_space': self._top_segment_color_space,
+            'bottom_left_color_space': self._bottom_segment_color_space,
+            'bottom_right_color_space': self._bottom_segment_color_space,
         }
         params.update(kwargs)
         return CornersCellDualFactory(**params)

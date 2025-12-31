@@ -181,8 +181,11 @@ def hue_lerp_between_lines(
     Raises:
         ImportError: If Cython extensions are not built
     """
+
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
+    if isinstance(border_constant, np.ndarray):
+        border_constant = border_constant[0]
     return _hue_lerp_between_lines(line0, line1, coords, mode_x, mode_y, border_mode, border_constant)
 
 
@@ -217,7 +220,8 @@ def hue_lerp_between_lines_x_discrete(
     """
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-
+    if isinstance(border_constant, np.ndarray):
+        border_constant = border_constant[0]
     return _hue_lerp_between_lines_x_discrete(line0, line1, coords, mode_y, border_mode, border_constant)
 
 

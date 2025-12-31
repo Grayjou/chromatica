@@ -378,7 +378,7 @@ class CornersCellDual(CornersBase):
     def _render_value(self) -> np.ndarray:
         """Render full 2D gradient."""
         from .factory import get_transformed_lines_cell
-        
+
         # Get segments in their respective spaces
         top_segment = self.get_top_segment_untransformed()
         bottom_segment = self.get_bottom_segment_untransformed()
@@ -449,7 +449,7 @@ class CornersCellDual(CornersBase):
                     self._hue_direction_y or HueMode.SHORTEST,
                 )
             
-        
+
         lines_cell = get_transformed_lines_cell(
             top_line=top_line,
             bottom_line=bottom_line,

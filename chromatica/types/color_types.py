@@ -13,7 +13,7 @@ ColorElement = Union[IntElement, FloatElement]
 ColorValue = Union[ColorElement, ndarray]  # Includes array support
 ColorSpaces = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
 HUE_SPACES = {"hsl", "hsla", "hsv", "hsva"}
-HueDirection = Literal["cw", "ccw", "shortest", "longest"]
+
 
 def element_to_array(element: Union[ColorElement, ndarray]) -> np.ndarray:
     """
@@ -56,6 +56,7 @@ class HueMode(IntEnum):
     SHORTEST = 3
     LONGEST = 4
 
+HueDirection = HueMode
 class ColorSpace(StrEnum):
     RGB = "rgb"
     RGBA = "rgba"

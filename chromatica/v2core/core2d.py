@@ -21,7 +21,7 @@ from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
 )
-from .interp import lerp_bounded_2d_spatial_fast
+
 from .core import (
     HueMode,
     HueModeSequence,
@@ -228,7 +228,7 @@ def sample_hue_between_lines_continuous(
     # Detect if single or multi-channel
 
 
-    result = hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y), border_mode=border_mode, border_constant=border_constant or 0.0)
+    result = hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y), border_mode=border_mode, border_constant=border_constant if border_constant is not None else 0.0)
 
     return result
 
@@ -294,13 +294,15 @@ def multival2d_lerp_between_lines_continuous(
         raise ValueError("All lists must have same length (num_channels)")
     
     H, W = coords[0].shape[:2]
-    
+
     bound_types = _prepare_bound_types(bound_types, num_channels=num_channels)
+
     coords = apply_bounds(coords, bound_types)
     border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
     #Make lines shape (L, C)
     start_line = np.stack(starts_lines, axis=-1).astype(np.float64)
     end_line = np.stack(ends_lines, axis=-1).astype(np.float64)
+
     return lerp_between_lines(
         line0=start_line,
         line1=end_line,
@@ -341,7 +343,7 @@ def multival2d_lerp_between_lines_discrete(
         raise ValueError("All lists must have same length (num_channels)")
     
     H, W = coords[0].shape[:2]
-    
+    print("multival2d_lerp_between_lines_discrete:", num_channels, H, W)
     bound_types = _prepare_bound_types(bound_types, num_channels=num_channels) 
     coords = apply_bounds(coords, bound_types)
     border_mode = _optimize_border_mode(bound_types if isinstance(bound_types, BoundType) else bound_types[0], border_mode)
@@ -426,8 +428,6 @@ def sample_between_planes(
 # Re-export from core.py for convenience
 # =============================================================================
 from .core import (
-    multival2d_lerp,
-    multival2d_lerp_uniform,
     hue_gradient_2d,
 )
 
@@ -450,7 +450,7 @@ __all__ = [
     
     # Re-exports
     'multival2d_lerp',
-    'multival2d_lerp_uniform',
+
     'hue_gradient_2d',
     
     # Types and enums

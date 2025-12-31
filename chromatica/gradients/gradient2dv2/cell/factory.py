@@ -5,6 +5,7 @@ from typing import List, Optional
 import numpy as np
 from ....types.color_types import ColorSpace, HueMode, is_hue_space
 from ....types.format_type import FormatType
+from ....types.transform_types import PerChannelCoords, TransformOutput
 from ....utils.color_utils import convert_to_space_float, is_hue_color_grayscale
 from ....utils.default import value_or_default
 from boundednumbers import BoundType
@@ -68,6 +69,7 @@ def get_transformed_lines_cell(
             coords=per_channel_coords,
             per_channel_transforms=per_channel_transforms,
             num_channels=len(color_space),
+            transform_output=TransformOutput.ARRAY3D, #Returns Array3D if no transforms applied
         )
     return LinesCell(
         top_line=top_line_converted,
@@ -142,6 +144,7 @@ def get_transformed_corners_cell(
             coords=per_channel_coords,
             per_channel_transforms=per_channel_transforms,
             num_channels=len(color_space),
+            transform_output=TransformOutput.ARRAY3D, #Returns Array3D if no transforms applied
         )
     return CornersCell(
         top_left=top_left_converted,
@@ -196,6 +199,8 @@ def get_transformed_corners_cell_dual(
         top_right_grayscale_hue: Optional[float] = None,
         bottom_left_grayscale_hue: Optional[float] = None,
         bottom_right_grayscale_hue: Optional[float] = None,
+        border_mode: Optional[int] = None,
+        border_value: Optional[float] = None,
         ) -> CornersCellDual:
     """Create a transformed CornersCellDual with proper color space conversion.
     
@@ -268,6 +273,7 @@ def get_transformed_corners_cell_dual(
             coords=per_channel_coords,
             per_channel_transforms=per_channel_transforms,
             num_channels=len(horizontal_color_space),
+            transform_output=TransformOutput.ARRAY3D, #Returns Array3D if no transforms applied
         )
     top_left_grayscale_hue = value_or_default(top_left_grayscale_hue, _determine_grayscale_hue(top_left_converted, top_segment_color_space))
     top_right_grayscale_hue = value_or_default(top_right_grayscale_hue, _determine_grayscale_hue(top_right_converted, top_segment_color_space))
@@ -292,5 +298,7 @@ def get_transformed_corners_cell_dual(
         top_right_grayscale_hue=top_right_grayscale_hue,
         bottom_left_grayscale_hue=bottom_left_grayscale_hue,
         bottom_right_grayscale_hue=bottom_right_grayscale_hue,
+        border_mode=border_mode,
+        border_value=border_value,
     )
 

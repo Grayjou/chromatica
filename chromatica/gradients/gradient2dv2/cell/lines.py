@@ -55,6 +55,7 @@ class LinesCell(LinesBase):
     # === Core rendering ===
     
     def _render_value(self) -> np.ndarray:
+
         return interp_transformed_2d_lines(
             line0=self._top_line,
             line1=self._bottom_line,

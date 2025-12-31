@@ -20,8 +20,8 @@ from unitfield import upbm_2d
 def test_sample_between_lines_continuous():
     """Test continuous line interpolation."""
     L = 10
-    line0 = np.linspace(0, 1, L)
-    line1 = np.linspace(1, 0, L)
+    line0 = np.linspace((0,0,0), (1,1,1), L)
+    line1 = np.linspace((1,1,1), (0,0,0), L)
     
     # Create a simple 2D coordinate grid
     H, W = 5, 10
@@ -29,7 +29,7 @@ def test_sample_between_lines_continuous():
     
     result = sample_between_lines_continuous(line0, line1, coords)
     
-    assert result.shape == (H, W)
+    assert result.shape == (H, W, 3)
     # Top row (u_y=0) should be close to line0
     # Bottom row (u_y=1) should be close to line1
     assert np.allclose(result[0, 0], line0[0], atol=0.1)
@@ -39,8 +39,8 @@ def test_sample_between_lines_continuous():
 def test_sample_between_lines_discrete():
     """Test discrete line interpolation."""
     L = 10
-    line0 = np.linspace(0, 1, L)
-    line1 = np.linspace(1, 0, L)
+    line0 = np.linspace((0,0,0, 0), (1,1,1, 1), L)
+    line1 = np.linspace((1,1,1, 1), (0,0,0, 0), L)
     
     # Create a simple 2D coordinate grid
     H, W = 5, 10
@@ -48,10 +48,10 @@ def test_sample_between_lines_discrete():
     
     result = sample_between_lines_discrete(line0, line1, coords)
     
-    assert result.shape == (H, W)
+    assert result.shape == (H, W, 4)
     # Check boundaries
-    assert result[0, 0] >= 0 and result[0, 0] <= 1
-    assert result[-1, -1] >= 0 and result[-1, -1] <= 1
+    assert np.all(result[0, 0] <= 1) and np.all(result[0, 0] >= 0)
+    assert np.all(result[-1, -1] >= 0) and np.all(result[-1, -1] <= 1)
 
 def test_between_lines_discrete_multichannel():
     """Test discrete line interpolation for multi-channel data."""
@@ -181,8 +181,8 @@ def test_multival2d_lerp_between_lines_discrete():
 def test_bound_type_support():
     """Test that BoundType parameter works correctly."""
     L = 10
-    line0 = np.linspace(0, 1, L)  # Values outside [0, 1]
-    line1 = np.linspace(1, 0, L)
+    line0 = np.linspace((0,0,0), (1,1,1), L)  # Values outside [0, 1]
+    line1 = np.linspace((1,1,1), (0,0,0), L)
     
     H, W = 5, 10
     coords = upbm_2d(width=W, height=H)

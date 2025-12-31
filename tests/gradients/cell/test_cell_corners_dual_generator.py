@@ -8,7 +8,7 @@ from ....chromatica.gradients.gradient2dv2.cell.corners_dual import CornersCellD
 from ....chromatica.gradients.gradient2dv2.partitions import (
     PerpendicularDualPartition, CellDualPartitionInterval, IndexRoundingMode
 )
-from ....chromatica.samples.colors import RED_FLOAT_RGB, GREEN_FLOAT_RGB, BLUE_FLOAT_RGB, YELLOW_FLOAT_RGB, CYAN_FLOAT_RGB, MAGENTA_FLOAT_RGB, WHITE_FLOAT_RGB, get_white_hsv
+from ....chromatica.samples.colors import RED_FLOAT_RGB, GREEN_FLOAT_RGB, BLUE_FLOAT_RGB, YELLOW_FLOAT_RGB, CYAN_FLOAT_RGB, MAGENTA_FLOAT_RGB, WHITE_FLOAT_RGB, get_white_hsv, RED_FLOAT_HSV, GREEN_FLOAT_HSV
 from ....chromatica.types.color_types import ColorSpace, HueMode
 from ....chromatica.types.format_type import FormatType
 from ....chromatica.conversions import np_convert
@@ -370,7 +370,10 @@ class TestCornersCellDualFactory:
             border_mode=1,
             border_value=0.5,
             input_format=FormatType.FLOAT,
-        )
+            top_left_color_space=ColorSpace.RGB,
+            top_right_color_space=ColorSpace.RGB,
+            bottom_left_color_space=ColorSpace.RGB, 
+            bottom_right_color_space=ColorSpace.RGB,)
         
         # Create a copy with modified properties
         copy_factory = factory.copy_with(
@@ -381,12 +384,13 @@ class TestCornersCellDualFactory:
             top_segment_color_space=ColorSpace.RGB,
             hue_direction_x=HueMode.CW,
             boundtypes=BoundType.CLAMP,
+            top_left_color_space=ColorSpace.RGB,
         )
         
         # Verify original unchanged
         assert factory.width == 3
         assert factory.height == 3
-        assert np.array_equal(factory.top_left, RED_FLOAT_RGB)
+        assert np.array_equal(factory.top_left, RED_FLOAT_HSV)
         assert factory.vertical_color_space == ColorSpace.RGB
         assert factory.top_segment_color_space == ColorSpace.HSV
         assert factory.hue_direction_x == HueMode.CCW
@@ -407,7 +411,9 @@ class TestCornersCellDualFactory:
         assert copy_factory.hue_direction_y == factory.hue_direction_y
         assert copy_factory.top_segment_hue_direction_x == factory.top_segment_hue_direction_x
         assert copy_factory.bottom_segment_hue_direction_x == factory.bottom_segment_hue_direction_x
-        assert np.array_equal(copy_factory.top_right, factory.top_right)
+
+        assert np.array_equal(copy_factory.top_right,  GREEN_FLOAT_RGB)
+        assert np.array_equal(factory.top_right,  GREEN_FLOAT_HSV)
         assert np.array_equal(copy_factory.bottom_left, factory.bottom_left)
         assert np.array_equal(copy_factory.bottom_right, factory.bottom_right)
         assert copy_factory.border_mode == factory.border_mode

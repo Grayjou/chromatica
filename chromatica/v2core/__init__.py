@@ -8,10 +8,10 @@ for 1D and 2D gradient operations.
 # Import main API from core module
 from .core import (
     multival1d_lerp,
-    multival2d_lerp,
+
     multival1d_lerp_uniform,
-    multival2d_lerp_uniform,
-    single_channel_multidim_lerp,
+
+
     bound_coeffs,
     bound_coeffs_fused,
     hue_lerp,
@@ -69,7 +69,7 @@ __all__ = [
     "multival1d_lerp",
     "multival2d_lerp",
     "multival1d_lerp_uniform",
-    "multival2d_lerp_uniform",
+
     "single_channel_multidim_lerp",
     
     # Hue interpolation

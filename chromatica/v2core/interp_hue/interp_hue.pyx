@@ -1,3 +1,4 @@
+#interp_hue.pyx
 # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
 
 """

@@ -113,6 +113,9 @@ def test_cell_lines_interpolation_discrete():
     assert result.shape == (H, W, 3)
     # Check values are within expected range
     assert np.all(result >= np.min(top_line)) and np.all(result <= np.max(bottom_line))
+    print("top_line:" , top_line)
+    print("bottom_line:" , bottom_line)
+    print(result*255)
     assert int(result[0][0][0]*255) == 0
     assert int(result[0][1][0]*255) == 0 # No interp between discrete steps
     assert int(result[0][2][0]*255) == inc 

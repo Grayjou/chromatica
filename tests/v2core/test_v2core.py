@@ -83,15 +83,3 @@ def test_4len_lerp():
 
     assert np.allclose(result, expected)
 
-from ...chromatica.v2core import single_channel_multidim_lerp
-
-def test_1d_multidim_lerp_equivalent():
-    start = np.array([0.0])
-    end = np.array([10.0])
-    coeffs = [np.array([-1.0, 0.0, 0.5, 1.0, 2.0])]
-
-    result_both = single_channel_multidim_lerp(start, end, np.stack(coeffs, axis=-1), bound_type=BoundType.CLAMP)
-    result_multi = multival1d_lerp(start, end, coeffs)
-    print("result_both:", result_both)
-    print("result_multi:", result_multi)
-    assert np.allclose(result_both, result_multi.flatten())

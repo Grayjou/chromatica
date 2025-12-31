@@ -12,24 +12,24 @@ from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
 from .interp import (  # type: ignore
     lerp_bounded_1d_spatial_fast,
-    lerp_bounded_2d_spatial_fast,
-    single_channel_multidim_lerp_bounded_cython_fast,
+
+
 )
 from ..types.color_types import HueMode
 
 from .interp_hue import (
-    hue_lerp_1d_spatial,
+
     hue_lerp_2d_spatial,
     hue_lerp_simple,
     hue_lerp_arrays,
-    hue_lerp_2d_with_modes,
+
     hue_lerp_between_lines,
     hue_multidim_lerp,
 )
 
 from .interp_2d import (  # type: ignore
     lerp_between_lines,
-    lerp_between_planes,
+
 )
 from ..utils.list_mismatch import handle_list_size_mismatch
 
@@ -158,18 +158,7 @@ def bound_coeffs_fused(
     return [U[..., i] for i in range(D)]
 
 
-# =============================================================================
-# Multi-dimensional Interpolation (Generic)
-# =============================================================================
-def single_channel_multidim_lerp(
-    starts: np.ndarray,
-    ends: np.ndarray,
-    coeffs: np.ndarray,
-    bound_type: BoundType = BoundType.CLAMP,
-) -> np.ndarray:
-    """Vectorized multi-dimensional linear interpolation."""
-    bounded = _bound_stacked(coeffs, bound_type)
-    return single_channel_multidim_lerp_bounded_cython_fast(starts, ends, bounded)
+
 
 
 # =============================================================================
@@ -213,43 +202,6 @@ def multival1d_lerp(
     return out
 
 
-def multival2d_lerp(
-    starts: np.ndarray,
-    ends: np.ndarray,
-    coeffs: List[np.ndarray],
-    bound_types: Union[BoundType, BoundTypeSequence] = BoundType.CLAMP,
-) -> np.ndarray:
-    """Multi-channel 2D linear interpolation over a spatial grid."""
-    starts = np.asarray(starts, dtype=np.float64).ravel()
-    ends = np.asarray(ends, dtype=np.float64).ravel()
-    coeffs = [np.asarray(c, dtype=np.float64) for c in coeffs]
-
-    num_channels = len(starts)
-    H, W = coeffs[0].shape[:2]
-
-    if len(ends) != num_channels:
-        raise ValueError("starts and ends must have same length")
-    if len(coeffs) != num_channels:
-        raise ValueError("coeffs must have one array per channel")
-    if any(c.shape[:2] != (H, W) for c in coeffs):
-        raise ValueError("All coeff arrays must have same spatial shape")
-
-    if bound_types is BoundType.IGNORE:
-        bounded = coeffs
-    else:
-        bounded = bound_coeffs(coeffs, _prepare_bound_types(bound_types))
-
-    out = np.empty((H, W, num_channels), dtype=np.float64)
-
-    for ch in range(num_channels):
-        U = bounded[ch][:, :, np.newaxis]
-        out[:, :, ch] = lerp_bounded_2d_spatial_fast(
-            np.array([starts[ch]], dtype=np.float64),
-            np.array([ends[ch]], dtype=np.float64),
-            U,
-        )
-
-    return out
 
 
 def multival1d_lerp_uniform(
@@ -264,16 +216,7 @@ def multival1d_lerp_uniform(
     return multival1d_lerp(starts, ends, coeffs, bound_types=bound_type)
 
 
-def multival2d_lerp_uniform(
-    starts: np.ndarray,
-    ends: np.ndarray,
-    coeff: np.ndarray,
-    bound_type: BoundType = BoundType.CLAMP,
-) -> np.ndarray:
-    """2D interpolation with same coefficient for all channels."""
-    num_channels = len(np.atleast_1d(starts))
-    coeffs = [coeff] * num_channels
-    return multival2d_lerp(starts, ends, coeffs, bound_types=bound_type)
+
 
 
 # =============================================================================

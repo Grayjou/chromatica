@@ -52,7 +52,7 @@ class Gradient1D(_Gradient1DInterpolator):
         color_array = cls._interpolate(
             start=left.value,
             end=right.value,
-            u=unit_transform(flat_1d_upbm(steps)) if unit_transform else flat_1d_upbm(steps),
+            u= unit_transform(flat_1d_upbm(steps)) if unit_transform else flat_1d_upbm(steps),
             is_hue=is_hue_space(color_space),
             hue_direction=hue_direction,
             per_channel_transforms=per_channel_transforms,

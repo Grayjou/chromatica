@@ -1,17 +1,8 @@
-# interp_hue2d.pyx
-# cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
-
 """
 Hue interpolation with cyclical color space support.
 
-Supports four interpolation modes per dimension:
-- CW (0): Clockwise interpolation (always positive direction)
-- CCW (1): Counterclockwise interpolation (always negative direction)
-- SHORTEST (2): Shortest angular distance (≤180°)
-- LONGEST (3): Longest angular distance (≥180°)
-
-Functions in this module handle hue interpolation in multi-dimensional spaces
-with proper handling of the cyclical nature of hue values (0-360° range).
+Modernized with feathering, distance modes, and array-border handling to
+mirror the corner interpolators. Includes prange support for parallelism.
 """
 
 import numpy as np
@@ -19,8 +10,9 @@ cimport numpy as np
 from libc.math cimport fmod, floor
 from libc.string cimport memcpy
 from libc.stdlib cimport malloc, free
+from cython.parallel cimport prange
 
-# Import border handling
+# Import border handling and modern features
 from ..border_handling cimport (
     handle_border_lines_2d,
     BORDER_REPEAT,
@@ -28,9 +20,20 @@ from ..border_handling cimport (
     BORDER_CONSTANT,
     BORDER_CLAMP,
     BORDER_OVERFLOW,
+
 )
- 
-# ADD f64, i32 to this import!
+from ..interp_utils cimport (
+    BorderResult,
+    process_border_2d,
+    MAX_NORM,
+    MANHATTAN,
+    SCALED_MANHATTAN,
+    ALPHA_MAX,
+    ALPHA_MAX_SIMPLE,
+    TAYLOR,
+    EUCLIDEAN,
+    WEIGHTED_MINMAX,
+)
 from .interp_hue_utils cimport (
     f64,                   
     i32,                   
@@ -41,13 +44,13 @@ from .interp_hue_utils cimport (
     HUE_LONGEST,
     wrap_hue,               
     adjust_end_for_mode,    
-    lerp_hue_single,       
+    lerp_hue_single,
+    _interp_line_1ch_hue,
+    _interp_line_discrete_hue,
+    process_hue_border_2d,
 )
 
-# =============================================================================
-# 2D Hue Interpolation: coeffs (H, W, N), modes (N,) -> output (H, W)
-# =============================================================================
-cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
+cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(
     np.ndarray[f64, ndim=1] starts,
     np.ndarray[f64, ndim=1] ends,
     np.ndarray[f64, ndim=3] coeffs,
@@ -57,7 +60,6 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
     Multi-dimensional hue interpolation over a 2D spatial grid.
     ... (rest of docstring)
     """
-    # ... rest of function body unchanged ...
     cdef Py_ssize_t H = coeffs.shape[0]
     cdef Py_ssize_t W = coeffs.shape[1]
     cdef Py_ssize_t num_dims = coeffs.shape[2]
@@ -166,10 +168,7 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
     return out
 
 
-# =============================================================================
-# Hue interpolation between lines (Section 6 style)
-# =============================================================================
-cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(   # <-- ADD RETURN TYPE
+cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(
     np.ndarray[f64, ndim=1] line0,
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
@@ -177,21 +176,23 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(   # <-- ADD RETURN TYPE
     int mode_y = HUE_SHORTEST,
     int border_mode = BORDER_CLAMP,
     f64 border_constant = 0.0,
+    f64 border_feathering = 0.0,
+    int num_threads = -1,
+    int distance_mode = ALPHA_MAX,
 ):
     """
     Interpolate hue between two 1D hue lines with 2D coordinate mapping.
-    ... (rest of docstring)
+    Adds feathering, distance mode, and threading support.
     """
-    # ... rest of function body unchanged ...
     cdef Py_ssize_t L = line0.shape[0]
     cdef Py_ssize_t H = coords.shape[0]
     cdef Py_ssize_t W = coords.shape[1]
+    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     
     if line1.shape[0] != L:
         raise ValueError("Lines must have same length")
     if coords.shape[2] != 2:
         raise ValueError("coords must have shape (H, W, 2)")
-    
     if not line0.flags['C_CONTIGUOUS']:
         line0 = np.ascontiguousarray(line0)
     if not line1.flags['C_CONTIGUOUS']:
@@ -202,96 +203,47 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(   # <-- ADD RETURN TYPE
     cdef f64[::1] l0 = line0
     cdef f64[::1] l1 = line1
     cdef f64[:, :, ::1] c = coords
-    
-    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     cdef f64[:, ::1] out_mv = out
     
-    cdef Py_ssize_t h, w
-    cdef Py_ssize_t idx_lo, idx_hi
-    cdef f64 u_x, u_y, idx_f, frac
-    cdef f64 h0_lo, h0_hi, h1_lo, h1_hi
-    cdef f64 v0, v1
-    cdef f64 L_minus_1 = <f64>(L - 1)
+    if num_threads < 0:
+        import os
+        num_threads = os.cpu_count() or 4
+    elif num_threads == 0:
+        num_threads = 1
     
-    cdef tuple border_result
-    cdef f64 new_u_x, new_u_y
-    cdef f64 wrapped_border = wrap_hue(border_constant)
-    
-    for h in range(H):
-        for w in range(W):
-            u_x = c[h, w, 0]
-            u_y = c[h, w, 1]
-            
-            if border_mode == BORDER_CONSTANT:
-                if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
-                    out_mv[h, w] = wrapped_border
-                    continue
-                new_u_x = u_x
-                new_u_y = u_y
-            elif border_mode == BORDER_OVERFLOW:
-                new_u_x = u_x
-                new_u_y = u_y
-            else:
-                border_result = handle_border_lines_2d(u_x, u_y, border_mode)
-                if border_result is None:
-                    out_mv[h, w] = wrapped_border
-                    continue
-                new_u_x, new_u_y = border_result
-            
-            idx_f = new_u_x * L_minus_1
-            idx_lo = <Py_ssize_t>floor(idx_f)
-            
-            if idx_lo < 0:
-                idx_lo = 0
-            if idx_lo >= L - 1:
-                idx_lo = L - 2
-            
-            idx_hi = idx_lo + 1
-            frac = idx_f - <f64>idx_lo
-            
-            if frac < 0.0:
-                frac = 0.0
-            elif frac > 1.0:
-                frac = 1.0
-            
-            h0_lo = l0[idx_lo]
-            h0_hi = l0[idx_hi]
-            v0 = lerp_hue_single(h0_lo, h0_hi, frac, mode_x)
-            
-            h1_lo = l1[idx_lo]
-            h1_hi = l1[idx_hi]
-            v1 = lerp_hue_single(h1_lo, h1_hi, frac, mode_x)
-            
-            out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
-    
+    _lerp_1ch_hue_feathered_kernel(
+        l0, l1, c, out_mv,
+        border_constant, border_feathering,
+        H, W, L, border_mode, num_threads,
+        mode_x, mode_y, distance_mode,
+    )
     return out
 
 
-# =============================================================================
-# Hue interpolation between lines with discrete x-sampling (Section 6 style)
-# =============================================================================
-cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(   # <-- ADD RETURN TYPE
+cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
     np.ndarray[f64, ndim=1] line0,
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
     int mode_y = HUE_SHORTEST,
     int border_mode = BORDER_CLAMP,
     f64 border_constant = 0.0,
+    f64 border_feathering = 0.0,
+    int num_threads = -1,
+    int distance_mode = ALPHA_MAX,
 ):
     """
     Interpolate hue between two 1D hue lines with nearest-neighbor x-sampling.
-    ... (rest of docstring)
+    Adds feathering, distance mode, and threading support.
     """
-    # ... rest of function body unchanged ...
     cdef Py_ssize_t L = line0.shape[0]
     cdef Py_ssize_t H = coords.shape[0]
     cdef Py_ssize_t W = coords.shape[1]
+    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     
     if line1.shape[0] != L:
         raise ValueError("Lines must have same length")
     if coords.shape[2] != 2:
         raise ValueError("coords must have shape (H, W, 2)")
-    
     if not line0.flags['C_CONTIGUOUS']:
         line0 = np.ascontiguousarray(line0)
     if not line1.flags['C_CONTIGUOUS']:
@@ -302,86 +254,20 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(   # <-- ADD RET
     cdef f64[::1] l0 = line0
     cdef f64[::1] l1 = line1
     cdef f64[:, :, ::1] c = coords
-    
-    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     cdef f64[:, ::1] out_mv = out
     
-    cdef Py_ssize_t h, w
-    cdef Py_ssize_t idx
-    cdef f64 u_x, u_y, idx_f
-    cdef f64 v0, v1
+    if num_threads < 0:
+        import os
+        num_threads = os.cpu_count() or 4
+    elif num_threads == 0:
+        num_threads = 1
     
-    cdef tuple border_result
-    cdef f64 new_u_x, new_u_y
-    cdef f64 wrapped_border = wrap_hue(border_constant)
-    
-    if L == 1:
-        v0 = l0[0]
-        v1 = l1[0]
-        for h in range(H):
-            for w in range(W):
-                u_x = c[h, w, 0]
-                u_y = c[h, w, 1]
-                
-                if border_mode == BORDER_CONSTANT:
-                    if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
-                        out_mv[h, w] = wrapped_border
-                        continue
-                    new_u_y = u_y
-                elif border_mode == BORDER_OVERFLOW:
-                    new_u_y = u_y
-                else:
-                    border_result = handle_border_lines_2d(u_x, u_y, border_mode)
-                    if border_result is None:
-                        out_mv[h, w] = wrapped_border
-                        continue
-                    new_u_y = border_result[1]
-                
-                if border_mode != BORDER_OVERFLOW:
-                    if new_u_y < 0.0:
-                        new_u_y = 0.0
-                    elif new_u_y > 1.0:
-                        new_u_y = 1.0
-                
-                out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
-        return out
-    
-    cdef f64 L_minus_1 = <f64>(L - 1)
-    
-    for h in range(H):
-        for w in range(W):
-            u_x = c[h, w, 0]
-            u_y = c[h, w, 1]
-            
-            if border_mode == BORDER_CONSTANT:
-                if u_x < 0.0 or u_x > 1.0 or u_y < 0.0 or u_y > 1.0:
-                    out_mv[h, w] = wrapped_border
-                    continue
-                new_u_x = u_x
-                new_u_y = u_y
-            elif border_mode == BORDER_OVERFLOW:
-                new_u_x = u_x
-                new_u_y = u_y
-            else:
-                border_result = handle_border_lines_2d(u_x, u_y, border_mode)
-                if border_result is None:
-                    out_mv[h, w] = wrapped_border
-                    continue
-                new_u_x, new_u_y = border_result
-            
-            idx_f = new_u_x * L_minus_1
-            idx = <Py_ssize_t>floor(idx_f + 0.5)
-            
-            if idx < 0:
-                idx = 0
-            elif idx >= L:
-                idx = L - 1
-            
-            v0 = l0[idx]
-            v1 = l1[idx]
-            
-            out_mv[h, w] = lerp_hue_single(v0, v1, new_u_y, mode_y)
-    
+    _lerp_1ch_hue_discrete_feathered_kernel(
+        l0, l1, c, out_mv,
+        border_constant, border_feathering,
+        H, W, L, border_mode, num_threads,
+        mode_y, distance_mode,
+    )
     return out
 
 

@@ -19,7 +19,6 @@ cdef int BORDER_OVERFLOW = 4  # Allow overflow (no border handling)
 
 from .helpers cimport (
     handle_border_1d,
-    is_out_of_bounds_1d,
     is_out_of_bounds_2d,
 )
 
@@ -369,6 +368,205 @@ cdef inline void _lerp_flat_multichannel_kernel_parallel(
 
 
 # =============================================================================
+# Smart Dispatchers
+# =============================================================================
+# Threshold for enabling parallelization (avoid overhead for small arrays)
+DEF MIN_PARALLEL_SIZE = 10000
+# =============================================================================
+# Per-Channel Coords Kernels - FIXED
+# =============================================================================
+
+
+cdef inline void _lerp_lines_multichannel_per_channel_kernel_parallel(
+    const f64[:, ::1] lines0,  # (L, C) - FIXED: was [:, :, ::1]
+    const f64[:, ::1] lines1,  # (L, C) - FIXED: was [:, :, ::1]
+    const f64[:, :, :, ::1] coords_mv,  # (C, H, W, 2)
+    f64[:, :, ::1] out_mv,  # (H, W, C)
+    const f64[::1] border_const_mv,
+    Py_ssize_t H,
+    Py_ssize_t W,
+    Py_ssize_t L,
+    Py_ssize_t C,
+    int border_mode,
+    int num_threads,
+) noexcept nogil:
+    """
+    Parallel multi-channel line interpolation with per-channel coordinates.
+    
+    lines0, lines1: shape (L, C)
+    coords: shape (C, H, W, 2)
+    """
+    cdef Py_ssize_t h, w, ch, idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac, v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    cdef f64 new_u_x, new_u_y
+    cdef f64 val0_lo, val0_hi, val1_lo, val1_hi  # Temp variables for subtraction
+
+    for h in prange(H, nogil=True, schedule='static', num_threads=num_threads):
+        for w in range(W):
+            for ch in range(C):
+                u_x = coords_mv[ch, h, w, 0]
+                u_y = coords_mv[ch, h, w, 1]
+
+                if border_mode == BORDER_CONSTANT:
+                    if is_out_of_bounds_2d(u_x, u_y):
+                        out_mv[h, w, ch] = border_const_mv[ch]
+                        continue
+                    new_u_x = u_x
+                    new_u_y = u_y
+                elif border_mode == BORDER_OVERFLOW:
+                    new_u_x = u_x
+                    new_u_y = u_y
+                else:
+                    new_u_x = handle_border_1d(u_x, border_mode)
+                    new_u_y = handle_border_1d(u_y, border_mode)
+
+                idx_f = new_u_x * L_minus_1
+                idx_lo = <Py_ssize_t>floor(idx_f)
+
+                if idx_lo < 0:
+                    idx_lo = 0
+                if idx_lo >= L - 1:
+                    idx_lo = L - 2
+
+                idx_hi = idx_lo + 1
+                frac = idx_f - <f64>idx_lo
+
+                if frac < 0.0:
+                    frac = 0.0
+                elif frac > 1.0:
+                    frac = 1.0
+
+                # Extract scalars to avoid memoryview slice subtraction
+                val0_lo = lines0[idx_lo, ch]
+                val0_hi = lines0[idx_hi, ch]
+                val1_lo = lines1[idx_lo, ch]
+                val1_hi = lines1[idx_hi, ch]
+                
+                v0 = val0_lo + frac * (val0_hi - val0_lo)
+                v1 = val1_lo + frac * (val1_hi - val1_lo)
+                out_mv[h, w, ch] = v0 + new_u_y * (v1 - v0)
+
+cdef inline void _lerp_lines_flat_multichannel_per_channel_kernel_parallel(
+    const f64[:, ::1] lines0,  # (L, C)
+    const f64[:, ::1] lines1,  # (L, C)
+    const f64[:, :, ::1] coords_mv,  # (C, N, 2)
+    f64[:, ::1] out_mv,  # (N, C)
+    const f64[::1] border_const_mv,
+    Py_ssize_t N,
+    Py_ssize_t L,
+    Py_ssize_t C,
+    int border_mode,
+    int num_threads,
+) noexcept nogil:
+    """Flat coords with per-channel coordinates."""
+    cdef Py_ssize_t n, ch, idx_lo, idx_hi
+    cdef f64 u_x, u_y, idx_f, frac, v0, v1
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    cdef f64 new_u_x, new_u_y
+    cdef f64 val0_lo, val0_hi, val1_lo, val1_hi
+
+    for n in prange(N, nogil=True, schedule='static', num_threads=num_threads):
+        for ch in range(C):
+            u_x = coords_mv[ch, n, 0]
+            u_y = coords_mv[ch, n, 1]
+
+            if border_mode == BORDER_CONSTANT:
+                if is_out_of_bounds_2d(u_x, u_y):
+                    out_mv[n, ch] = border_const_mv[ch]
+                    continue
+                new_u_x = u_x
+                new_u_y = u_y
+            elif border_mode == BORDER_OVERFLOW:
+                new_u_x = u_x
+                new_u_y = u_y
+            else:
+                new_u_x = handle_border_1d(u_x, border_mode)
+                new_u_y = handle_border_1d(u_y, border_mode)
+
+            idx_f = new_u_x * L_minus_1
+            idx_lo = <Py_ssize_t>floor(idx_f)
+
+            if idx_lo < 0:
+                idx_lo = 0
+            if idx_lo >= L - 1:
+                idx_lo = L - 2
+
+            idx_hi = idx_lo + 1
+            frac = idx_f - <f64>idx_lo
+
+            if frac < 0.0:
+                frac = 0.0
+            elif frac > 1.0:
+                frac = 1.0
+
+            # Extract scalars
+            val0_lo = lines0[idx_lo, ch]
+            val0_hi = lines0[idx_hi, ch]
+            val1_lo = lines1[idx_lo, ch]
+            val1_hi = lines1[idx_hi, ch]
+            
+            v0 = val0_lo + frac * (val0_hi - val0_lo)
+            v1 = val1_lo + frac * (val1_hi - val1_lo)
+            out_mv[n, ch] = v0 + new_u_y * (v1 - v0)
+
+
+# =============================================================================
+# Per-Channel Discrete X-Sampling Kernel
+# =============================================================================
+cdef inline void _lerp_lines_multichannel_per_channel_x_discrete_kernel_parallel(
+    const f64[:, ::1] lines0,  # (L, C)
+    const f64[:, ::1] lines1,  # (L, C)
+    const f64[:, :, :, ::1] coords_mv,  # (C, H, W, 2)
+    f64[:, :, ::1] out_mv,  # (H, W, C)
+    const f64[::1] border_const_mv,
+    Py_ssize_t H,
+    Py_ssize_t W,
+    Py_ssize_t L,
+    Py_ssize_t C,
+    int border_mode,
+    int num_threads,
+) noexcept nogil:
+    """Discrete x-sampling with per-channel coordinates."""
+    cdef Py_ssize_t h, w, ch, idx
+    cdef f64 u_x, u_y, idx_f
+    cdef f64 new_u_x, new_u_y
+    cdef f64 L_minus_1 = <f64>(L - 1)
+    cdef f64 val0, val1
+
+    for h in prange(H, nogil=True, schedule='static', num_threads=num_threads):
+        for w in range(W):
+            for ch in range(C):
+                u_x = coords_mv[ch, h, w, 0]
+                u_y = coords_mv[ch, h, w, 1]
+
+                if border_mode == BORDER_CONSTANT:
+                    if is_out_of_bounds_2d(u_x, u_y):
+                        out_mv[h, w, ch] = border_const_mv[ch]
+                        continue
+                    new_u_x = u_x
+                    new_u_y = u_y
+                elif border_mode == BORDER_OVERFLOW:
+                    new_u_x = u_x
+                    new_u_y = u_y
+                else:
+                    new_u_x = handle_border_1d(u_x, border_mode)
+                    new_u_y = handle_border_1d(u_y, border_mode)
+
+                idx_f = new_u_x * L_minus_1
+                idx = <Py_ssize_t>floor(idx_f + 0.5)
+
+                if idx < 0:
+                    idx = 0
+                elif idx >= L:
+                    idx = L - 1
+
+                val0 = lines0[idx, ch]
+                val1 = lines1[idx, ch]
+                out_mv[h, w, ch] = val0 + new_u_y * (val1 - val0)
+
+
+# =============================================================================
 # Public API - Single Channel
 # =============================================================================
 def lerp_between_lines_1ch_fast(
@@ -700,203 +898,6 @@ def lerp_between_lines_flat_multichannel_fast(
 
     return out
 
-# =============================================================================
-# Smart Dispatchers
-# =============================================================================
-# Threshold for enabling parallelization (avoid overhead for small arrays)
-DEF MIN_PARALLEL_SIZE = 10000
-# =============================================================================
-# Per-Channel Coords Kernels - FIXED
-# =============================================================================
-
-
-cdef inline void _lerp_lines_multichannel_per_channel_kernel_parallel(
-    const f64[:, ::1] lines0,  # (L, C) - FIXED: was [:, :, ::1]
-    const f64[:, ::1] lines1,  # (L, C) - FIXED: was [:, :, ::1]
-    const f64[:, :, :, ::1] coords_mv,  # (C, H, W, 2)
-    f64[:, :, ::1] out_mv,  # (H, W, C)
-    const f64[::1] border_const_mv,
-    Py_ssize_t H,
-    Py_ssize_t W,
-    Py_ssize_t L,
-    Py_ssize_t C,
-    int border_mode,
-    int num_threads,
-) noexcept nogil:
-    """
-    Parallel multi-channel line interpolation with per-channel coordinates.
-    
-    lines0, lines1: shape (L, C)
-    coords: shape (C, H, W, 2)
-    """
-    cdef Py_ssize_t h, w, ch, idx_lo, idx_hi
-    cdef f64 u_x, u_y, idx_f, frac, v0, v1
-    cdef f64 L_minus_1 = <f64>(L - 1)
-    cdef f64 new_u_x, new_u_y
-    cdef f64 val0_lo, val0_hi, val1_lo, val1_hi  # Temp variables for subtraction
-
-    for h in prange(H, nogil=True, schedule='static', num_threads=num_threads):
-        for w in range(W):
-            for ch in range(C):
-                u_x = coords_mv[ch, h, w, 0]
-                u_y = coords_mv[ch, h, w, 1]
-
-                if border_mode == BORDER_CONSTANT:
-                    if is_out_of_bounds_2d(u_x, u_y):
-                        out_mv[h, w, ch] = border_const_mv[ch]
-                        continue
-                    new_u_x = u_x
-                    new_u_y = u_y
-                elif border_mode == BORDER_OVERFLOW:
-                    new_u_x = u_x
-                    new_u_y = u_y
-                else:
-                    new_u_x = handle_border_1d(u_x, border_mode)
-                    new_u_y = handle_border_1d(u_y, border_mode)
-
-                idx_f = new_u_x * L_minus_1
-                idx_lo = <Py_ssize_t>floor(idx_f)
-
-                if idx_lo < 0:
-                    idx_lo = 0
-                if idx_lo >= L - 1:
-                    idx_lo = L - 2
-
-                idx_hi = idx_lo + 1
-                frac = idx_f - <f64>idx_lo
-
-                if frac < 0.0:
-                    frac = 0.0
-                elif frac > 1.0:
-                    frac = 1.0
-
-                # Extract scalars to avoid memoryview slice subtraction
-                val0_lo = lines0[idx_lo, ch]
-                val0_hi = lines0[idx_hi, ch]
-                val1_lo = lines1[idx_lo, ch]
-                val1_hi = lines1[idx_hi, ch]
-                
-                v0 = val0_lo + frac * (val0_hi - val0_lo)
-                v1 = val1_lo + frac * (val1_hi - val1_lo)
-                out_mv[h, w, ch] = v0 + new_u_y * (v1 - v0)
-
-cdef inline void _lerp_lines_flat_multichannel_per_channel_kernel_parallel(
-    const f64[:, ::1] lines0,  # (L, C)
-    const f64[:, ::1] lines1,  # (L, C)
-    const f64[:, :, ::1] coords_mv,  # (C, N, 2)
-    f64[:, ::1] out_mv,  # (N, C)
-    const f64[::1] border_const_mv,
-    Py_ssize_t N,
-    Py_ssize_t L,
-    Py_ssize_t C,
-    int border_mode,
-    int num_threads,
-) noexcept nogil:
-    """Flat coords with per-channel coordinates."""
-    cdef Py_ssize_t n, ch, idx_lo, idx_hi
-    cdef f64 u_x, u_y, idx_f, frac, v0, v1
-    cdef f64 L_minus_1 = <f64>(L - 1)
-    cdef f64 new_u_x, new_u_y
-    cdef f64 val0_lo, val0_hi, val1_lo, val1_hi
-
-    for n in prange(N, nogil=True, schedule='static', num_threads=num_threads):
-        for ch in range(C):
-            u_x = coords_mv[ch, n, 0]
-            u_y = coords_mv[ch, n, 1]
-
-            if border_mode == BORDER_CONSTANT:
-                if is_out_of_bounds_2d(u_x, u_y):
-                    out_mv[n, ch] = border_const_mv[ch]
-                    continue
-                new_u_x = u_x
-                new_u_y = u_y
-            elif border_mode == BORDER_OVERFLOW:
-                new_u_x = u_x
-                new_u_y = u_y
-            else:
-                new_u_x = handle_border_1d(u_x, border_mode)
-                new_u_y = handle_border_1d(u_y, border_mode)
-
-            idx_f = new_u_x * L_minus_1
-            idx_lo = <Py_ssize_t>floor(idx_f)
-
-            if idx_lo < 0:
-                idx_lo = 0
-            if idx_lo >= L - 1:
-                idx_lo = L - 2
-
-            idx_hi = idx_lo + 1
-            frac = idx_f - <f64>idx_lo
-
-            if frac < 0.0:
-                frac = 0.0
-            elif frac > 1.0:
-                frac = 1.0
-
-            # Extract scalars
-            val0_lo = lines0[idx_lo, ch]
-            val0_hi = lines0[idx_hi, ch]
-            val1_lo = lines1[idx_lo, ch]
-            val1_hi = lines1[idx_hi, ch]
-            
-            v0 = val0_lo + frac * (val0_hi - val0_lo)
-            v1 = val1_lo + frac * (val1_hi - val1_lo)
-            out_mv[n, ch] = v0 + new_u_y * (v1 - v0)
-
-
-# =============================================================================
-# Per-Channel Discrete X-Sampling Kernel
-# =============================================================================
-cdef inline void _lerp_lines_multichannel_per_channel_x_discrete_kernel_parallel(
-    const f64[:, ::1] lines0,  # (L, C)
-    const f64[:, ::1] lines1,  # (L, C)
-    const f64[:, :, :, ::1] coords_mv,  # (C, H, W, 2)
-    f64[:, :, ::1] out_mv,  # (H, W, C)
-    const f64[::1] border_const_mv,
-    Py_ssize_t H,
-    Py_ssize_t W,
-    Py_ssize_t L,
-    Py_ssize_t C,
-    int border_mode,
-    int num_threads,
-) noexcept nogil:
-    """Discrete x-sampling with per-channel coordinates."""
-    cdef Py_ssize_t h, w, ch, idx
-    cdef f64 u_x, u_y, idx_f
-    cdef f64 new_u_x, new_u_y
-    cdef f64 L_minus_1 = <f64>(L - 1)
-    cdef f64 val0, val1
-
-    for h in prange(H, nogil=True, schedule='static', num_threads=num_threads):
-        for w in range(W):
-            for ch in range(C):
-                u_x = coords_mv[ch, h, w, 0]
-                u_y = coords_mv[ch, h, w, 1]
-
-                if border_mode == BORDER_CONSTANT:
-                    if is_out_of_bounds_2d(u_x, u_y):
-                        out_mv[h, w, ch] = border_const_mv[ch]
-                        continue
-                    new_u_x = u_x
-                    new_u_y = u_y
-                elif border_mode == BORDER_OVERFLOW:
-                    new_u_x = u_x
-                    new_u_y = u_y
-                else:
-                    new_u_x = handle_border_1d(u_x, border_mode)
-                    new_u_y = handle_border_1d(u_y, border_mode)
-
-                idx_f = new_u_x * L_minus_1
-                idx = <Py_ssize_t>floor(idx_f + 0.5)
-
-                if idx < 0:
-                    idx = 0
-                elif idx >= L:
-                    idx = L - 1
-
-                val0 = lines0[idx, ch]
-                val1 = lines1[idx, ch]
-                out_mv[h, w, ch] = val0 + new_u_y * (val1 - val0)
 
 
 # =============================================================================

@@ -12,13 +12,17 @@ import numpy as np
 # Import Cython functions as internal
 try:
 
+    """        
     from .interp_2d_fast import (
         lerp_between_lines_full_fast as _lerp_between_lines,#_fast,
         lerp_between_lines_x_discrete_full_fast as _lerp_between_lines_x_discrete_multichannel,#_fast,
         lerp_between_lines_2d_multichannel_same_coords as _lerp_between_lines_multichannel_same_coords,#_fast,
         lerp_between_lines_2d_x_discrete_multichannel_same_coords as _lerp_between_lines_x_discrete_multichannel_same_coords,#_fast,
-    )
+    )"""
+    #Temporary overrides for testing
 
+    from ..interp_2d_.wrappers import (lerp_between_lines as _lerp_between_lines,
+                                       lerp_between_lines_x_discrete as _lerp_between_lines_x_discrete_multichannel)
     from .corner_interp_2d_fast import (
         lerp_from_corners_1ch_flat_fast as _lerp_from_corners_1ch_flat,#_fast,
         lerp_from_corners_multichannel_fast as _lerp_from_corners_multichannel,#_fast,
@@ -26,6 +30,10 @@ try:
         lerp_from_corners_multichannel_flat_fast as _lerp_from_corners_multichannel_flat,#_fast,
         lerp_from_corners_multichannel_flat_same_coords_fast as _lerp_from_corners_multichannel_flat_same_coords,#_fast,
         lerp_from_corners_fast as _lerp_from_corners,#_fast,
+    )
+    from ..interp_2d_.wrappers import (
+        lerp_from_corners as _lerp_from_corners,
+        lerp_from_unpacked_corners
     )
     from .interp_planes import (
         lerp_between_planes as _lerp_between_planes,
@@ -69,6 +77,7 @@ def lerp_between_lines(
     coords: np.ndarray | list[np.ndarray],
     border_mode: int = 3,  # BORDER_CLAMP
     border_constant: float = 0.0,
+    num_channels: Optional[int] = None,
 ) -> np.ndarray:
     """
     Interpolate between two 1D lines using 2D coordinates with continuous x-interpolation.
@@ -90,13 +99,8 @@ def lerp_between_lines(
     Raises:
         ImportError: If Cython extensions are not built
     """
-    coords = _ensure_coords_array(coords)
-    same_coords = _infer_same_coords_lines_2d(coords, line0)
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    if same_coords:
-        return _lerp_between_lines_multichannel_same_coords(line0, line1, coords.astype(np.float64), border_mode, border_constant)
     return _lerp_between_lines(line0, line1, coords, border_mode, border_constant)
+
 
 
 def lerp_between_lines_x_discrete_1ch(
@@ -161,17 +165,9 @@ def lerp_between_lines_x_discrete_multichannel(
     Raises:
         ImportError: If Cython extensions are not built
     """
-    if num_channels is None:
-        num_channels = line0.shape[1]
-    if border_constant is not None and not isinstance(border_constant, np.ndarray):
-        border_constant = np.full((num_channels,), border_constant, dtype=np.float64)
-    coords = _ensure_coords_array(coords)
-    same_coords = _infer_same_coords_lines_2d(coords, line0)
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
-    if same_coords:
-        return _lerp_between_lines_x_discrete_multichannel_same_coords(line0, line1, coords.astype(np.float64), border_mode, border_constant)
+
     return _lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode, border_constant)
+
 
 
 # =============================================================================
@@ -233,6 +229,8 @@ def lerp_from_corners_multichannel(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    return lerp_from_unpacked_corners(
+        c_tl, c_tr, c_bl, c_br, coords, border_mode, border_constant)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
     return _lerp_from_corners_multichannel(c_tl, c_tr, c_bl, c_br, coords, border_mode, border_constant)
@@ -265,6 +263,8 @@ def lerp_from_corners_multichannel_same_coords(
     Raises:
         ImportError: If Cython extensions are not built
     """
+    return lerp_from_unpacked_corners(
+        c_tl, c_tr, c_bl, c_br, coords, border_mode, border_constant)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_2d extensions not available. Please build extensions.")
     return _lerp_from_corners_multichannel_same_coords(c_tl, c_tr, c_bl, c_br, coords, border_mode, border_constant)

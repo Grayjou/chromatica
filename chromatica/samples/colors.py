@@ -39,13 +39,23 @@ BLACK_FLOAT_RGB = np.array([0.0, 0.0, 0.0], dtype=np.float32)
 BLACK_INT_RGB = np.array([0, 0, 0], dtype=np.uint8)
 BLACK_FLOAT_HSV = np.array([0.0, 0.0, 0.0], dtype=np.float32)
 
+#PURPLE
+PURPLE_FLOAT_RGB = np.array([128/255, 0.0, 1.0], dtype=np.float32)
+PURPLE_INT_RGB = np.array([128, 0, 255], dtype=np.uint8)
+PURPLE_FLOAT_HSV = np.array([270, 1.0, 1.0], dtype=np.float32)
+
+
+def get_gray_hsv(hue, brightness: float) -> np.ndarray:
+    """Get gray color in HSV with specified hue and brightness."""
+    return np.array([hue, 0.0, brightness], dtype=np.float32)
+
 def get_white_hsv(hue: float) -> np.ndarray:
     """Get white color in HSV with specified hue."""
-    return np.array([hue, 0.0, 1.0], dtype=np.float32)
+    return get_gray_hsv(hue, 1.0)
 
 def get_black_hsv(hue: float) -> np.ndarray:
     """Get black color in HSV with specified hue."""
-    return np.array([hue, 0.0, 0.0], dtype=np.float32)
+    return get_gray_hsv(hue, 0.0)
 
 __all__ = [
     "RED_FLOAT_RGB",
