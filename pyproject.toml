@@ -64,3 +64,7 @@ include-package-data = true
 where = ["."]
 include = ["chromatica*"]
 exclude = ["tests*", "examples*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
