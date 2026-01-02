@@ -11,7 +11,7 @@ blending with configurable hue mode for border mixing.
 import numpy as np
 cimport numpy as np
 from .interp_hue_utils cimport f64, i32, HUE_SHORTEST
-from ..border_handling_ cimport BORDER_CONSTANT
+from ..border_handling cimport BORDER_CONSTANT
 from ..interp_utils cimport EUCLIDEAN, ALPHA_MAX
 from .interp_hue2d_array_border cimport (
     hue_lerp_between_lines_array_border,

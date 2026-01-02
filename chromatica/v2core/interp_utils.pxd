@@ -1,7 +1,7 @@
 # interp_utils.pxd
 
 cimport numpy as np
-from .border_handling_ cimport (handle_border_1d,
+from .border_handling cimport (handle_border_1d,
                                     BorderMode,
                                     BORDER_REPEAT,
                                     BORDER_MIRROR,

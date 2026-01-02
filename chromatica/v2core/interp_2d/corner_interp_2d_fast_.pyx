@@ -17,7 +17,7 @@ cdef int BORDER_CONSTANT = 2
 cdef int BORDER_CLAMP = 3
 cdef int BORDER_OVERFLOW = 4
 
-from ..border_handling_ cimport handle_border_1d
+from ..border_handling cimport handle_border_1d
 from ..interp_utils cimport (
     DistanceMode,
     MAX_NORM,

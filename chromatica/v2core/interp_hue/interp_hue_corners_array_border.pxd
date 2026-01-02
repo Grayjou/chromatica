@@ -3,7 +3,7 @@ import numpy as np
 cimport numpy as np
 from .interp_hue_utils cimport f64, i32, HUE_SHORTEST
 from ..interp_utils cimport EUCLIDEAN
-from ..border_handling_ cimport BORDER_CONSTANT
+from ..border_handling cimport BORDER_CONSTANT
 
 # Single-channel with array border
 cpdef np.ndarray[f64, ndim=2] hue_lerp_from_corners_array_border(

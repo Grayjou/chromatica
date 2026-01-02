@@ -19,7 +19,7 @@ from libc.stdlib cimport malloc, free
 from cython.parallel cimport prange
 
 # Import border handling and modern features
-from ..border_handling_ cimport (
+from ..border_handling cimport (
     BORDER_REPEAT,
     BORDER_MIRROR,
     BORDER_CONSTANT,

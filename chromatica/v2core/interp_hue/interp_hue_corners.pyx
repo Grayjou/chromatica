@@ -23,7 +23,7 @@ from ..interp_utils cimport (
     clamp_01,
     process_border_2d,
 )
-from ..border_handling_ cimport (
+from ..border_handling cimport (
     BorderMode,
     BORDER_CLAMP,
     BORDER_CONSTANT,

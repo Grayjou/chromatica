@@ -20,7 +20,7 @@ from ..interp_utils cimport (
     ALPHA_MAX,
     process_border_2d,
 )
-from ..border_handling_ cimport (
+from ..border_handling cimport (
     BORDER_CONSTANT,
 )
 

@@ -18,7 +18,7 @@ from libc.string cimport memcpy
 from libc.stdlib cimport malloc, free
 
 # Import border handling enums
-from ..border_handling_ cimport (
+from ..border_handling cimport (
     BORDER_REPEAT,
     BORDER_MIRROR,
     BORDER_CONSTANT,

@@ -15,7 +15,7 @@ cimport numpy as np
 from cython.parallel cimport prange
 from libc.math cimport floor
 
-from ..border_handling_ cimport (
+from ..border_handling cimport (
     BORDER_CONSTANT,
     BORDER_CLAMP,
     BORDER_MIRROR,
