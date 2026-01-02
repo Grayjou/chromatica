@@ -34,6 +34,7 @@ EXTENSION_PATHS = [
     
     # Core utilities
     "v2core/interp_utils.pyx",
+    "v2core/border_handling.pyx",
 ]
 
 
