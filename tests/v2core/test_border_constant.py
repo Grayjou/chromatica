@@ -14,7 +14,7 @@ def test_border_constant_corners():
     border_constant = np.array((0.5, 0.5, 0))  # Gray for out-of-bounds
     result = lerp_from_corners(
         corners=corners,
-        coords_list=[coords]*3,
+        coords=[coords]*3,
         border_mode=BorderMode.CONSTANT,
         border_constant=border_constant
     )
@@ -82,7 +82,7 @@ def test_border_constant_corners_automatic_border_constant():
     coords = upbm_2d(4,4) - 1
     result = lerp_from_corners(
         corners=corners,
-        coords_list=[coords]*3,
+        coords=[coords]*3,
         border_mode=BorderMode.CONSTANT,
         border_constant=None  # Let the function compute automatic border constant
     )
@@ -107,7 +107,7 @@ def test_border_constant_wrong_shape():
     with pytest.raises(ValueError):
         lerp_from_corners(
             corners=corners,
-            coords_list=[coords]*3,
+            coords=[coords]*3,
             border_mode=BorderMode.CONSTANT,
             border_constant=border_constant
         )
@@ -124,7 +124,7 @@ def test_border_constant_scalar_value():
 
     result = lerp_from_corners(
         corners=corners,
-        coords_list=[coords]*3,
+        coords=[coords]*3,
         border_mode=BorderMode.CONSTANT,
         border_constant=border_constant
     )

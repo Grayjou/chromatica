@@ -14,65 +14,76 @@ import os
 
 # Get the directory containing this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-V2CORE_DIR = os.path.join(BASE_DIR, "chromatica", "v2core")
 
-# Define extensions
-extensions = [
-    Extension(
-        "chromatica.v2core.border_handling",
-        [os.path.join(V2CORE_DIR, "border_handling.pyx")],
-        include_dirs=[],
-        extra_compile_args=['-O3'],
-    ),
-    Extension(
-        "chromatica.v2core.interp",
-        [os.path.join(V2CORE_DIR, "interp.pyx")],
-        include_dirs=[np.get_include()],
-        extra_compile_args=['-O3'],
-    ),
-    Extension(
-        "chromatica.v2core.interp_2d",
-        [os.path.join(V2CORE_DIR, "interp_2d.pyx")],
-        include_dirs=[np.get_include()],
-        extra_compile_args=['-O3'],
-    ),
-    Extension(
-        "chromatica.v2core.interp_hue",
-        [os.path.join(V2CORE_DIR, "interp_hue.pyx")],
-        include_dirs=[np.get_include()],
-        extra_compile_args=['-O3'],
-    ),
+# Relative paths from chromatica/ directory
+EXTENSION_PATHS = [
+    # interp_2d modules
+    "v2core/interp_2d/corner_interp_2d_fast_.pyx",
+    "v2core/interp_2d/corner_interp_2d_border_.pyx",
+    "v2core/interp_2d/interp_2d_fast_.pyx",
+    "v2core/interp_2d/interp_2d_array_border.pyx",
+    
+    # interp_hue modules
+    "v2core/interp_hue/interp_hue.pyx",
+    "v2core/interp_hue/interp_hue2d.pyx",
+    "v2core/interp_hue/interp_hue2d_array_border.pyx",
+    "v2core/interp_hue/interp_hue_array_border.pyx",
+    "v2core/interp_hue/interp_hue_corners.pyx",
+    "v2core/interp_hue/interp_hue_corners_array_border.pyx",
+    "v2core/interp_hue/interp_hue_utils.pyx",
+    
+    # Core utilities
+    "v2core/interp_utils.pyx",
 ]
 
-# Compiler directives for Cython
-compiler_directives = {
-    'language_level': '3',
-    'boundscheck': False,
-    'wraparound': False,
-    'nonecheck': False,
-    'cdivision': True,
-    'initializedcheck': False,
-}
 
-setup(
-    name="chromatica-cython-extensions",
-    ext_modules=cythonize(
+def create_extension(rel_path: str) -> Extension:
+    """
+    Create an Extension object from a relative path.
+    
+    Args:
+        rel_path: Path relative to chromatica/ (e.g., "v2core/interp_2d/file.pyx")
+    
+    Returns:
+        Configured Extension object
+    """
+    # Convert path to module name
+    # e.g., "v2core/interp_2d/file.pyx" -> "chromatica.v2core.interp_2d.file"
+    module_name = "chromatica." + rel_path.replace("/", ".").replace(".pyx", "")
+    full_path = os.path.join(BASE_DIR, "chromatica", rel_path)
+    
+    if not os.path.exists(full_path):
+        raise FileNotFoundError(f"Cython source not found: {full_path}")
+    
+    return Extension(
+        name=module_name,
+        sources=[full_path],
+        include_dirs=[np.get_include()],
+        extra_compile_args=["-O3", "-ffast-math"],  # Adjust for your needs
+        define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
+    )
+
+
+def build_extensions():
+    """Build all extension modules."""
+    extensions = [create_extension(path) for path in EXTENSION_PATHS]
+    
+    return cythonize(
         extensions,
-        compiler_directives=compiler_directives,
-        annotate=False,  # Set to True to generate HTML annotation files
-    ),
-    include_dirs=[np.get_include()],
-)
+        compiler_directives={
+            "language_level": "3",
+            "boundscheck": False,
+            "wraparound": False,
+            "cdivision": True,
+            "initializedcheck": False,
+        },
+        annotate=True,  # Generates HTML annotation files for optimization review
+    )
 
-print("\n" + "=" * 70)
-print("Cython extensions built successfully!")
-print("=" * 70)
-print("\nBuilt extensions:")
-for ext in extensions:
-    print(f"  - {ext.name}")
-print("\nYou can now import these modules in Python:")
-print("  from chromatica.v2core import border_handling")
-print("  from chromatica.v2core import interp")
-print("  from chromatica.v2core import interp_2d")
-print("  from chromatica.v2core import interp_hue")
-print("=" * 70)
+
+if __name__ == "__main__":
+    setup(
+        name="chromatica-v2core",
+        ext_modules=build_extensions(),
+        zip_safe=False,
+    )

@@ -1,31 +1,22 @@
-"""
-2D Interpolation Module
-
-Provides type-hinted Python wrappers for Cython-optimized 2D interpolation functions.
-Functions are imported from wrappers.py which adds type hints to the Cython implementations.
-"""
-
 from .wrappers import (
-    lerp_between_lines,
-
-    lerp_between_lines_x_discrete_multichannel,
-    lerp_from_corners,
-    #lerp_from_corners_1ch_flat,
-
-
-
+    lerp_between_lines, lerp_between_lines_x_discrete,
+    lerp_between_lines_onto_array, lerp_between_lines_inplace,
+    lerp_between_lines_onto_array_x_discrete
 )
+from .wrappers import(
+    lerp_from_corners, lerp_from_unpacked_corners,
+    lerp_from_corners_array_border
+)
+
+from .wrappers import DistanceMode, BorderMode
 
 __all__ = [
     'lerp_between_lines',
-
-
-    'lerp_between_lines_x_discrete_multichannel',
+    'lerp_between_lines_x_discrete',
+    'lerp_between_lines_onto_array',
+    'lerp_between_lines_inplace',
     'lerp_from_corners',
-    'lerp_from_corners_1ch_flat',
-    'lerp_from_corners_multichannel',
-
-    'lerp_from_corners_multichannel_flat',
-
-
+    'lerp_from_unpacked_corners',
+    'DistanceMode',
+    'BorderMode',
 ]

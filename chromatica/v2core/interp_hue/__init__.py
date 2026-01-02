@@ -1,28 +1,20 @@
-"""
-Hue Interpolation Module
-
-Provides type-hinted Python wrappers for Cython-optimized hue interpolation functions.
-Functions are imported from wrappers.py which adds type hints to the Cython implementations.
-"""
-
 from .wrappers import (
-
-    hue_lerp_simple,
-
-
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
+    hue_lerp_from_corners,
     hue_lerp_2d_spatial,
-
+    hue_lerp_between_lines_array_border,
+    hue_lerp_between_lines_array_border_x_discrete,
+    hue_lerp_from_corners_array_border,
+    hue_lerp_between_lines_full,
+    hue_lerp_between_lines_full_x_discrete,
+    hue_lerp_between_lines_inplace,
+    hue_lerp_between_lines_inplace_x_discrete,
+    hue_lerp_from_unpacked_corners,
+    hue_lerp_between_lines_inplace_x_discrete,
+    hue_lerp_simple,
+    hue_multidim_lerp,
+    HueMode, 
+    DistanceMode,
+    BorderMode,
 )
-
-__all__ = [
-
-    'hue_lerp_simple',
-    'hue_lerp_arrays',
-    'hue_multidim_lerp',
-    'hue_lerp_between_lines',
-    'hue_lerp_between_lines_x_discrete',
-    'hue_lerp_2d_spatial',
-
-]

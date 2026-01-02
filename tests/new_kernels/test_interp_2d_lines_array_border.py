@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...chromatica.v2core.interp_2d_.wrappers import (
+from ...chromatica.v2core.interp_2d.wrappers import (
     lerp_between_lines_onto_array,
     lerp_between_lines_inplace,
 )

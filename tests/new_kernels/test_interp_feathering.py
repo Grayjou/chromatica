@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...chromatica.v2core.interp_2d_.wrappers import (
+from ...chromatica.v2core.interp_2d.wrappers import (
     BorderMode,
     DistanceMode,
     lerp_between_lines,

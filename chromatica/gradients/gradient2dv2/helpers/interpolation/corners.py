@@ -3,11 +3,11 @@ import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional, Union
 
-from .....v2core.interp_2d_ import (
+from .....v2core.interp_2d import (
     lerp_from_corners,
     lerp_from_corners_array_border,
 )
-from .....v2core.interp_hue_ import (
+from .....v2core.interp_hue import (
     hue_lerp_from_corners,
     hue_lerp_from_corners_array_border,
 )

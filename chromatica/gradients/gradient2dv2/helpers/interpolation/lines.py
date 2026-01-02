@@ -3,14 +3,14 @@ import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional
 
-from .....v2core.interp_2d_ import (
+from .....v2core.interp_2d import (
     lerp_between_lines,
     lerp_between_lines_x_discrete,
     lerp_between_lines_onto_array,
     lerp_between_lines_onto_array_x_discrete,
 
 )
-from .....v2core.interp_hue_ import(
+from .....v2core.interp_hue import(
     hue_lerp_between_lines,
     hue_lerp_between_lines_x_discrete,
     hue_lerp_between_lines_array_border,

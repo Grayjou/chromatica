@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from ...chromatica.v2core.interp_2d_.wrappers import (
+from ...chromatica.v2core.interp_2d.wrappers import (
     lerp_between_lines,
     lerp_between_lines_x_discrete,
 )

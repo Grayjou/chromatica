@@ -1,14 +1,7 @@
+# corner_interp_2d_fast_.pyx
 # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
 # distutils: extra_compile_args = -fopenmp
 # distutils: extra_link_args = -fopenmp
-
-"""
-Corner interpolation with array-based border values.
-
-This module allows blending interpolation results with an existing image/array
-at the borders, rather than using a constant value. Useful for compositing
-operations where out-of-bounds regions should show through to a background.
-"""
 
 import numpy as np
 cimport numpy as np
@@ -24,7 +17,7 @@ cdef int BORDER_CONSTANT = 2
 cdef int BORDER_CLAMP = 3
 cdef int BORDER_OVERFLOW = 4
 
-from .border_handling cimport handle_border_1d
+from ..border_handling_ cimport handle_border_1d
 from ..interp_utils cimport (
     DistanceMode,
     MAX_NORM,
@@ -40,6 +33,7 @@ from ..interp_utils cimport (
     clamp_01,
     process_border_2d
 )
+
 
 # =============================================================================
 # Bilinear Interpolation Helper Functions
@@ -69,22 +63,22 @@ cdef inline f64 _bilinear_interp_multichannel(
     return top + (bottom - top) * u_y
 
 # =============================================================================
-# Single-Channel Kernels with Array Border
+# Single-Channel Kernels with Feathering
 # =============================================================================
-cdef inline void _corner_1ch_array_border_kernel(
+cdef inline void _corner_1ch_feathered_kernel(
     f64 tl, f64 tr, f64 bl, f64 br,
     const f64[:, :, ::1] coords_mv,
     f64[:, ::1] out_mv,
-    const f64[:, ::1] border_array_mv,
+    f64 border_const,
     f64 border_feathering,
     Py_ssize_t H, Py_ssize_t W,
     int border_mode,
     i32 distance_mode,
     int num_threads,
 ) noexcept nogil:
-    """Single-channel bilinear interpolation with per-pixel border values."""
+    """Parallel single-channel bilinear interpolation with feathering."""
     cdef Py_ssize_t h, w
-    cdef f64 u_x, u_y, edge_val, border_val
+    cdef f64 u_x, u_y, edge_val
     cdef BorderResult border_res
     
     for h in prange(H, nogil=True, schedule='static', num_threads=num_threads):
@@ -95,30 +89,29 @@ cdef inline void _corner_1ch_array_border_kernel(
             border_res = process_border_2d(u_x, u_y, border_mode, border_feathering, distance_mode)
             
             if border_res.use_border_directly:
-                out_mv[h, w] = border_array_mv[h, w]
+                out_mv[h, w] = border_const
             else:
                 edge_val = _bilinear_interp_1ch(tl, tr, bl, br, 
                                                border_res.u_x_final, border_res.u_y_final)
                 if border_res.blend_factor > 0.0:
-                    border_val = border_array_mv[h, w]
-                    out_mv[h, w] = edge_val + border_res.blend_factor * (border_val - edge_val)
+                    out_mv[h, w] = edge_val + border_res.blend_factor * (border_const - edge_val)
                 else:
                     out_mv[h, w] = edge_val
 
-cdef inline void _corner_1ch_flat_array_border_kernel(
+cdef inline void _corner_1ch_flat_feathered_kernel(
     f64 tl, f64 tr, f64 bl, f64 br,
     const f64[:, ::1] coords_mv,
     f64[::1] out_mv,
-    const f64[::1] border_array_mv,
+    f64 border_const,
     f64 border_feathering,
     Py_ssize_t N,
     int border_mode,
     i32 distance_mode,
     int num_threads,
 ) noexcept nogil:
-    """Flat single-channel interpolation with per-point border values."""
+    """Parallel single-channel flat coordinates with feathering."""
     cdef Py_ssize_t n
-    cdef f64 u_x, u_y, edge_val, border_val
+    cdef f64 u_x, u_y, edge_val
     cdef BorderResult border_res
     
     for n in prange(N, nogil=True, schedule='static', num_threads=num_threads):
@@ -128,31 +121,30 @@ cdef inline void _corner_1ch_flat_array_border_kernel(
         border_res = process_border_2d(u_x, u_y, border_mode, border_feathering, distance_mode)
         
         if border_res.use_border_directly:
-            out_mv[n] = border_array_mv[n]
+            out_mv[n] = border_const
         else:
             edge_val = _bilinear_interp_1ch(tl, tr, bl, br, 
                                            border_res.u_x_final, border_res.u_y_final)
             if border_res.blend_factor > 0.0:
-                border_val = border_array_mv[n]
-                out_mv[n] = edge_val + border_res.blend_factor * (border_val - edge_val)
+                out_mv[n] = edge_val + border_res.blend_factor * (border_const - edge_val)
             else:
                 out_mv[n] = edge_val
 
 # =============================================================================
-# Multi-Channel Kernels with Array Border
+# Multi-Channel Kernels with Per-Channel Border Modes and Feathering
 # =============================================================================
-cdef inline void _corner_multichannel_array_border_kernel(
+cdef inline void _corner_multichannel_per_ch_border_feathered_kernel(
     const f64[:, ::1] corners_mv,
     const f64[:, :, ::1] coords_mv,
     f64[:, :, ::1] out_mv,
-    const f64[:, :, ::1] border_array_mv,
+    const f64[::1] border_const_mv,
     const i32[::1] border_modes_mv,
     const i32[::1] distance_modes_mv,
     f64 border_feathering,
     Py_ssize_t H, Py_ssize_t W, Py_ssize_t C,
     int num_threads,
 ) noexcept nogil:
-    """Multi-channel with same coords and per-pixel border values."""
+    """Multi-channel with same coords but per-channel border modes and feathering."""
     cdef Py_ssize_t h, w, ch
     cdef f64 u_x, u_y, edge_val, border_val
     cdef BorderResult border_res
@@ -166,29 +158,29 @@ cdef inline void _corner_multichannel_array_border_kernel(
                 border_res = process_border_2d(u_x, u_y, border_modes_mv[ch], border_feathering, distance_modes_mv[ch])
                 
                 if border_res.use_border_directly:
-                    out_mv[h, w, ch] = border_array_mv[h, w, ch]
+                    out_mv[h, w, ch] = border_const_mv[ch]
                 else:
                     edge_val = _bilinear_interp_multichannel(corners_mv, 
                                                             border_res.u_x_final, 
                                                             border_res.u_y_final, ch)
                     if border_res.blend_factor > 0.0:
-                        border_val = border_array_mv[h, w, ch]
+                        border_val = border_const_mv[ch]
                         out_mv[h, w, ch] = edge_val + border_res.blend_factor * (border_val - edge_val)
                     else:
                         out_mv[h, w, ch] = edge_val
 
-cdef inline void _corner_multichannel_flat_array_border_kernel(
+cdef inline void _corner_multichannel_flat_per_ch_border_feathered_kernel(
     const f64[:, ::1] corners_mv,
     const f64[:, ::1] coords_mv,
     f64[:, ::1] out_mv,
-    const f64[:, ::1] border_array_mv,
+    const f64[::1] border_const_mv,
     const i32[::1] border_modes_mv,
     const i32[::1] distance_modes_mv,
     f64 border_feathering,
     Py_ssize_t N, Py_ssize_t C,
     int num_threads,
 ) noexcept nogil:
-    """Flat multi-channel with per-point border values."""
+    """Flat multi-channel with per-channel border modes and feathering."""
     cdef Py_ssize_t n, ch
     cdef f64 u_x, u_y, edge_val, border_val
     cdef BorderResult border_res
@@ -201,32 +193,32 @@ cdef inline void _corner_multichannel_flat_array_border_kernel(
             border_res = process_border_2d(u_x, u_y, border_modes_mv[ch], border_feathering, distance_modes_mv[ch])
             
             if border_res.use_border_directly:
-                out_mv[n, ch] = border_array_mv[n, ch]
+                out_mv[n, ch] = border_const_mv[ch]
             else:
                 edge_val = _bilinear_interp_multichannel(corners_mv, 
                                                         border_res.u_x_final, 
                                                         border_res.u_y_final, ch)
                 if border_res.blend_factor > 0.0:
-                    border_val = border_array_mv[n, ch]
+                    border_val = border_const_mv[ch]
                     out_mv[n, ch] = edge_val + border_res.blend_factor * (border_val - edge_val)
                 else:
                     out_mv[n, ch] = edge_val
 
 # =============================================================================
-# Multi-Channel with Per-Channel Coordinates and Array Border
+# Multi-Channel with Per-Channel Coordinates
 # =============================================================================
-cdef inline void _corner_multichannel_per_ch_coords_array_border_kernel(
+cdef inline void _corner_multichannel_per_ch_coords_feathered_kernel(
     const f64[:, ::1] corners_mv,
     const f64[:, :, :, ::1] coords_mv,
     f64[:, :, ::1] out_mv,
-    const f64[:, :, ::1] border_array_mv,
+    const f64[::1] border_const_mv,
     const i32[::1] border_modes_mv,
     const i32[::1] distance_modes_mv,
     f64 border_feathering,
     Py_ssize_t H, Py_ssize_t W, Py_ssize_t C,
     int num_threads,
 ) noexcept nogil:
-    """Multi-channel with per-channel coords and per-pixel border values."""
+    """Multi-channel with per-channel coords and per-channel border modes."""
     cdef Py_ssize_t h, w, ch
     cdef f64 u_x, u_y, edge_val, border_val
     cdef BorderResult border_res
@@ -240,29 +232,29 @@ cdef inline void _corner_multichannel_per_ch_coords_array_border_kernel(
                 border_res = process_border_2d(u_x, u_y, border_modes_mv[ch], border_feathering, distance_modes_mv[ch])
                 
                 if border_res.use_border_directly:
-                    out_mv[h, w, ch] = border_array_mv[h, w, ch]
+                    out_mv[h, w, ch] = border_const_mv[ch]
                 else:
                     edge_val = _bilinear_interp_multichannel(corners_mv, 
                                                             border_res.u_x_final, 
                                                             border_res.u_y_final, ch)
                     if border_res.blend_factor > 0.0:
-                        border_val = border_array_mv[h, w, ch]
+                        border_val = border_const_mv[ch]
                         out_mv[h, w, ch] = edge_val + border_res.blend_factor * (border_val - edge_val)
                     else:
                         out_mv[h, w, ch] = edge_val
 
-cdef inline void _corner_multichannel_flat_per_ch_coords_array_border_kernel(
+cdef inline void _corner_multichannel_flat_per_ch_coords_feathered_kernel(
     const f64[:, ::1] corners_mv,
     const f64[:, :, ::1] coords_mv,
     f64[:, ::1] out_mv,
-    const f64[:, ::1] border_array_mv,
+    const f64[::1] border_const_mv,
     const i32[::1] border_modes_mv,
     const i32[::1] distance_modes_mv,
     f64 border_feathering,
     Py_ssize_t N, Py_ssize_t C,
     int num_threads,
 ) noexcept nogil:
-    """Flat multi-channel with per-channel coords and per-point border values."""
+    """Flat multi-channel with per-channel coords and per-channel border modes."""
     cdef Py_ssize_t n, ch
     cdef f64 u_x, u_y, edge_val, border_val
     cdef BorderResult border_res
@@ -275,54 +267,52 @@ cdef inline void _corner_multichannel_flat_per_ch_coords_array_border_kernel(
             border_res = process_border_2d(u_x, u_y, border_modes_mv[ch], border_feathering, distance_modes_mv[ch])
             
             if border_res.use_border_directly:
-                out_mv[n, ch] = border_array_mv[n, ch]
+                out_mv[n, ch] = border_const_mv[ch]
             else:
                 edge_val = _bilinear_interp_multichannel(corners_mv, 
                                                         border_res.u_x_final, 
                                                         border_res.u_y_final, ch)
                 if border_res.blend_factor > 0.0:
-                    border_val = border_array_mv[n, ch]
+                    border_val = border_const_mv[ch]
                     out_mv[n, ch] = edge_val + border_res.blend_factor * (border_val - edge_val)
                 else:
                     out_mv[n, ch] = edge_val
 
 # =============================================================================
-# Public API - Single Channel with Array Border
+# Public API - Single Channel
 # =============================================================================
-def lerp_from_corners_1ch_array_border(
+def lerp_from_corners_1ch_feathered(
     f64 tl,
     f64 tr,
     f64 bl,
     f64 br,
     np.ndarray[f64, ndim=3] coords,
-    np.ndarray[f64, ndim=2] border_array,
-    int border_mode=BORDER_CONSTANT,
+    int border_mode=BORDER_CLAMP,
+    f64 border_constant=0.0,
     f64 border_feathering=0.0,
     int distance_mode=ALPHA_MAX,
     int num_threads=-1,
 ):
     """
-    Single-channel bilinear interpolation with per-pixel border values.
+    Fast parallel single-channel bilinear interpolation from corners with feathering.
     
     Args:
         tl, tr, bl, br: Corner values
         coords: Coordinate grid, shape (H, W, 2)
-        border_array: Background/border values, shape (H, W)
-        border_mode: Border handling mode (typically BORDER_CONSTANT for compositing)
+        border_mode: Border handling mode
+        border_constant: Value for BORDER_CONSTANT mode
         border_feathering: Feathering width (0.0 = hard edge)
         distance_mode: Distance metric for 2D border computation
         num_threads: Thread count (-1=auto, 0=serial, >0=specific)
     
     Returns:
-        Interpolated values blended with border_array, shape (H, W)
+        Interpolated values, shape (H, W)
     """
     cdef Py_ssize_t H = coords.shape[0]
     cdef Py_ssize_t W = coords.shape[1]
     
     if coords.shape[2] != 2:
         raise ValueError("coords must have shape (H, W, 2)")
-    if border_array.shape[0] != H or border_array.shape[1] != W:
-        raise ValueError(f"border_array must have shape ({H}, {W})")
     
     cdef int n_threads = num_threads
     if n_threads < 0:
@@ -333,56 +323,37 @@ def lerp_from_corners_1ch_array_border(
     
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     
     cdef f64[:, :, ::1] coords_mv = coords
-    cdef f64[:, ::1] border_array_mv = border_array
     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     cdef f64[:, ::1] out_mv = out
     
     with nogil:
-        _corner_1ch_array_border_kernel(
+        _corner_1ch_feathered_kernel(
             tl, tr, bl, br, coords_mv, out_mv,
-            border_array_mv, border_feathering,
+            border_constant, border_feathering,
             H, W, border_mode, distance_mode, n_threads
         )
     
     return out
 
-def lerp_from_corners_1ch_flat_array_border(
+def lerp_from_corners_1ch_flat_feathered(
     f64 tl,
     f64 tr,
     f64 bl,
     f64 br,
     np.ndarray[f64, ndim=2] coords,
-    np.ndarray[f64, ndim=1] border_array,
-    int border_mode=BORDER_CONSTANT,
+    int border_mode=BORDER_CLAMP,
+    f64 border_constant=0.0,
     f64 border_feathering=0.0,
     int distance_mode=ALPHA_MAX,
     int num_threads=-1,
 ):
-    """
-    Flat single-channel interpolation with per-point border values.
-    
-    Args:
-        tl, tr, bl, br: Corner values
-        coords: Flat coordinates, shape (N, 2)
-        border_array: Background values, shape (N,)
-        border_mode: Border handling mode
-        border_feathering: Feathering width
-        distance_mode: Distance metric for 2D border computation
-        num_threads: Thread count (-1=auto)
-    
-    Returns:
-        Interpolated values blended with border_array, shape (N,)
-    """
+    """Fast parallel single-channel flat coordinates with feathering."""
     cdef Py_ssize_t N = coords.shape[0]
     
     if coords.shape[1] != 2:
         raise ValueError("coords must have shape (N, 2)")
-    if border_array.shape[0] != N:
-        raise ValueError(f"border_array must have shape ({N},)")
     
     cdef int n_threads = num_threads
     if n_threads < 0:
@@ -393,43 +364,40 @@ def lerp_from_corners_1ch_flat_array_border(
     
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     
     cdef f64[:, ::1] coords_mv = coords
-    cdef f64[::1] border_array_mv = border_array
     cdef np.ndarray[f64, ndim=1] out = np.empty(N, dtype=np.float64)
     cdef f64[::1] out_mv = out
     
     with nogil:
-        _corner_1ch_flat_array_border_kernel(
+        _corner_1ch_flat_feathered_kernel(
             tl, tr, bl, br, coords_mv, out_mv,
-            border_array_mv, border_feathering,
+            border_constant, border_feathering,
             N, border_mode, distance_mode, n_threads
         )
     
     return out
 
 # =============================================================================
-# Public API - Multi-Channel with Array Border
+# Public API - Multi-Channel (Per-Channel Border Modes)
 # =============================================================================
-def lerp_from_corners_multichannel_array_border(
+def lerp_from_corners_multichannel_per_ch_border_feathered(
     np.ndarray[f64, ndim=2] corners,
     np.ndarray[f64, ndim=3] coords,
-    np.ndarray[f64, ndim=3] border_array,
     np.ndarray[i32, ndim=1] border_modes,
+    np.ndarray[f64, ndim=1] border_constants,
     f64 border_feathering=0.0,
     object distance_mode=None,
     int num_threads=-1,
 ):
     """
-    Multi-channel bilinear interpolation with per-pixel border values.
+    Multi-channel bilinear interpolation with per-channel border modes and feathering.
     
     Args:
         corners: Corner values, shape (4, C)
         coords: Coordinate grid, shape (H, W, 2) - same for all channels
-        border_array: Background image, shape (H, W, C)
         border_modes: Border mode for each channel, shape (C,)
+        border_constants: Border constant for each channel, shape (C,)
         border_feathering: Feathering width
         distance_mode: Distance metric for 2D border computation
             - None: Use ALPHA_MAX (default)
@@ -438,7 +406,7 @@ def lerp_from_corners_multichannel_array_border(
         num_threads: Thread count (-1=auto)
     
     Returns:
-        Interpolated values blended with border_array, shape (H, W, C)
+        Interpolated values, shape (H, W, C)
     """
     cdef Py_ssize_t C = corners.shape[1]
     cdef Py_ssize_t H = coords.shape[0]
@@ -448,10 +416,10 @@ def lerp_from_corners_multichannel_array_border(
         raise ValueError("corners must have shape (4, C)")
     if coords.shape[2] != 2:
         raise ValueError("coords must have shape (H, W, 2)")
-    if border_array.shape[0] != H or border_array.shape[1] != W or border_array.shape[2] != C:
-        raise ValueError(f"border_array must have shape ({H}, {W}, {C})")
     if border_modes.shape[0] != C:
         raise ValueError(f"border_modes must have length {C}")
+    if border_constants.shape[0] != C:
+        raise ValueError(f"border_constants must have length {C}")
     
     # Handle distance_mode
     cdef np.ndarray[i32, ndim=1] dm_arr
@@ -475,55 +443,38 @@ def lerp_from_corners_multichannel_array_border(
         corners = np.ascontiguousarray(corners)
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     if not border_modes.flags['C_CONTIGUOUS']:
         border_modes = np.ascontiguousarray(border_modes, dtype=np.int32)
+    if not border_constants.flags['C_CONTIGUOUS']:
+        border_constants = np.ascontiguousarray(border_constants)
     
     cdef f64[:, ::1] corners_mv = corners
     cdef f64[:, :, ::1] coords_mv = coords
-    cdef f64[:, :, ::1] border_array_mv = border_array
     cdef i32[::1] bm_mv = border_modes
+    cdef f64[::1] bc_mv = border_constants
     cdef i32[::1] dm_mv = dm_arr
     
     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
     cdef f64[:, :, ::1] out_mv = out
     
     with nogil:
-        _corner_multichannel_array_border_kernel(
-            corners_mv, coords_mv, out_mv, border_array_mv, bm_mv, dm_mv,
+        _corner_multichannel_per_ch_border_feathered_kernel(
+            corners_mv, coords_mv, out_mv, bc_mv, bm_mv, dm_mv,
             border_feathering, H, W, C, n_threads
         )
     
     return out
 
-def lerp_from_corners_multichannel_flat_array_border(
+def lerp_from_corners_multichannel_flat_per_ch_border_feathered(
     np.ndarray[f64, ndim=2] corners,
     np.ndarray[f64, ndim=2] coords,
-    np.ndarray[f64, ndim=2] border_array,
     np.ndarray[i32, ndim=1] border_modes,
+    np.ndarray[f64, ndim=1] border_constants,
     f64 border_feathering=0.0,
     object distance_mode=None,
     int num_threads=-1,
 ):
-    """
-    Flat multi-channel interpolation with per-point border values.
-    
-    Args:
-        corners: Corner values, shape (4, C)
-        coords: Flat coordinates, shape (N, 2) - same for all channels
-        border_array: Background values, shape (N, C)
-        border_modes: Border mode for each channel, shape (C,)
-        border_feathering: Feathering width
-        distance_mode: Distance metric for 2D border computation
-            - None: Use ALPHA_MAX (default)
-            - int: Same for all channels
-            - array: Per-channel distance modes, shape (C,)
-        num_threads: Thread count (-1=auto)
-    
-    Returns:
-        Interpolated values blended with border_array, shape (N, C)
-    """
+    """Flat multi-channel with per-channel border modes and feathering."""
     cdef Py_ssize_t C = corners.shape[1]
     cdef Py_ssize_t N = coords.shape[0]
     
@@ -531,10 +482,10 @@ def lerp_from_corners_multichannel_flat_array_border(
         raise ValueError("corners must have shape (4, C)")
     if coords.shape[1] != 2:
         raise ValueError("coords must have shape (N, 2)")
-    if border_array.shape[0] != N or border_array.shape[1] != C:
-        raise ValueError(f"border_array must have shape ({N}, {C})")
     if border_modes.shape[0] != C:
         raise ValueError(f"border_modes must have length {C}")
+    if border_constants.shape[0] != C:
+        raise ValueError(f"border_constants must have length {C}")
     
     # Handle distance_mode
     cdef np.ndarray[i32, ndim=1] dm_arr
@@ -558,48 +509,48 @@ def lerp_from_corners_multichannel_flat_array_border(
         corners = np.ascontiguousarray(corners)
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     if not border_modes.flags['C_CONTIGUOUS']:
         border_modes = np.ascontiguousarray(border_modes, dtype=np.int32)
+    if not border_constants.flags['C_CONTIGUOUS']:
+        border_constants = np.ascontiguousarray(border_constants)
     
     cdef f64[:, ::1] corners_mv = corners
     cdef f64[:, ::1] coords_mv = coords
-    cdef f64[:, ::1] border_array_mv = border_array
     cdef i32[::1] bm_mv = border_modes
+    cdef f64[::1] bc_mv = border_constants
     cdef i32[::1] dm_mv = dm_arr
     
     cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)
     cdef f64[:, ::1] out_mv = out
     
     with nogil:
-        _corner_multichannel_flat_array_border_kernel(
-            corners_mv, coords_mv, out_mv, border_array_mv, bm_mv, dm_mv,
+        _corner_multichannel_flat_per_ch_border_feathered_kernel(
+            corners_mv, coords_mv, out_mv, bc_mv, bm_mv, dm_mv,
             border_feathering, N, C, n_threads
         )
     
     return out
 
 # =============================================================================
-# Public API - Multi-Channel with Per-Channel Coordinates and Array Border
+# Public API - Multi-Channel with Per-Channel Coordinates
 # =============================================================================
-def lerp_from_corners_multichannel_per_ch_coords_array_border(
+def lerp_from_corners_multichannel_per_ch_coords_feathered(
     np.ndarray[f64, ndim=2] corners,
     np.ndarray[f64, ndim=4] coords,
-    np.ndarray[f64, ndim=3] border_array,
     np.ndarray[i32, ndim=1] border_modes,
+    np.ndarray[f64, ndim=1] border_constants,
     f64 border_feathering=0.0,
     object distance_mode=None,
     int num_threads=-1,
 ):
     """
-    Multi-channel bilinear interpolation with per-channel coords and array border.
+    Multi-channel bilinear interpolation with per-channel coordinates.
     
     Args:
         corners: Corner values, shape (4, C)
         coords: Per-channel coordinate grids, shape (C, H, W, 2)
-        border_array: Background image, shape (H, W, C)
         border_modes: Border mode for each channel, shape (C,)
+        border_constants: Border constant for each channel, shape (C,)
         border_feathering: Feathering width
         distance_mode: Distance metric for 2D border computation
             - None: Use ALPHA_MAX (default)
@@ -608,7 +559,7 @@ def lerp_from_corners_multichannel_per_ch_coords_array_border(
         num_threads: Thread count (-1=auto)
     
     Returns:
-        Interpolated values blended with border_array, shape (H, W, C)
+        Interpolated values, shape (H, W, C)
     """
     cdef Py_ssize_t C = corners.shape[1]
     cdef Py_ssize_t C_coords = coords.shape[0]
@@ -621,10 +572,10 @@ def lerp_from_corners_multichannel_per_ch_coords_array_border(
         raise ValueError("coords must have shape (C, H, W, 2)")
     if C_coords != C:
         raise ValueError(f"coords channels ({C_coords}) must match corners ({C})")
-    if border_array.shape[0] != H or border_array.shape[1] != W or border_array.shape[2] != C:
-        raise ValueError(f"border_array must have shape ({H}, {W}, {C})")
     if border_modes.shape[0] != C:
         raise ValueError(f"border_modes must have length {C}")
+    if border_constants.shape[0] != C:
+        raise ValueError(f"border_constants must have length {C}")
     
     # Handle distance_mode
     cdef np.ndarray[i32, ndim=1] dm_arr
@@ -648,55 +599,38 @@ def lerp_from_corners_multichannel_per_ch_coords_array_border(
         corners = np.ascontiguousarray(corners)
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     if not border_modes.flags['C_CONTIGUOUS']:
         border_modes = np.ascontiguousarray(border_modes, dtype=np.int32)
+    if not border_constants.flags['C_CONTIGUOUS']:
+        border_constants = np.ascontiguousarray(border_constants)
     
     cdef f64[:, ::1] corners_mv = corners
     cdef f64[:, :, :, ::1] coords_mv = coords
-    cdef f64[:, :, ::1] border_array_mv = border_array
     cdef i32[::1] bm_mv = border_modes
+    cdef f64[::1] bc_mv = border_constants
     cdef i32[::1] dm_mv = dm_arr
     
     cdef np.ndarray[f64, ndim=3] out = np.empty((H, W, C), dtype=np.float64)
     cdef f64[:, :, ::1] out_mv = out
     
     with nogil:
-        _corner_multichannel_per_ch_coords_array_border_kernel(
-            corners_mv, coords_mv, out_mv, border_array_mv, bm_mv, dm_mv,
+        _corner_multichannel_per_ch_coords_feathered_kernel(
+            corners_mv, coords_mv, out_mv, bc_mv, bm_mv, dm_mv,
             border_feathering, H, W, C, n_threads
         )
     
     return out
 
-def lerp_from_corners_multichannel_flat_per_ch_coords_array_border(
+def lerp_from_corners_multichannel_flat_per_ch_coords_feathered(
     np.ndarray[f64, ndim=2] corners,
     np.ndarray[f64, ndim=3] coords,
-    np.ndarray[f64, ndim=2] border_array,
     np.ndarray[i32, ndim=1] border_modes,
+    np.ndarray[f64, ndim=1] border_constants,
     f64 border_feathering=0.0,
     object distance_mode=None,
     int num_threads=-1,
 ):
-    """
-    Flat multi-channel interpolation with per-channel coords and array border.
-    
-    Args:
-        corners: Corner values, shape (4, C)
-        coords: Per-channel flat coordinates, shape (C, N, 2)
-        border_array: Background values, shape (N, C)
-        border_modes: Border mode for each channel, shape (C,)
-        border_feathering: Feathering width
-        distance_mode: Distance metric for 2D border computation
-            - None: Use ALPHA_MAX (default)
-            - int: Same for all channels
-            - array: Per-channel distance modes, shape (C,)
-        num_threads: Thread count (-1=auto)
-    
-    Returns:
-        Interpolated values blended with border_array, shape (N, C)
-    """
+    """Flat multi-channel with per-channel coordinates."""
     cdef Py_ssize_t C = corners.shape[1]
     cdef Py_ssize_t C_coords = coords.shape[0]
     cdef Py_ssize_t N = coords.shape[1]
@@ -707,10 +641,10 @@ def lerp_from_corners_multichannel_flat_per_ch_coords_array_border(
         raise ValueError("coords must have shape (C, N, 2)")
     if C_coords != C:
         raise ValueError(f"coords channels ({C_coords}) must match corners ({C})")
-    if border_array.shape[0] != N or border_array.shape[1] != C:
-        raise ValueError(f"border_array must have shape ({N}, {C})")
     if border_modes.shape[0] != C:
         raise ValueError(f"border_modes must have length {C}")
+    if border_constants.shape[0] != C:
+        raise ValueError(f"border_constants must have length {C}")
     
     # Handle distance_mode
     cdef np.ndarray[i32, ndim=1] dm_arr
@@ -734,44 +668,44 @@ def lerp_from_corners_multichannel_flat_per_ch_coords_array_border(
         corners = np.ascontiguousarray(corners)
     if not coords.flags['C_CONTIGUOUS']:
         coords = np.ascontiguousarray(coords)
-    if not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
     if not border_modes.flags['C_CONTIGUOUS']:
         border_modes = np.ascontiguousarray(border_modes, dtype=np.int32)
+    if not border_constants.flags['C_CONTIGUOUS']:
+        border_constants = np.ascontiguousarray(border_constants)
     
     cdef f64[:, ::1] corners_mv = corners
     cdef f64[:, :, ::1] coords_mv = coords
-    cdef f64[:, ::1] border_array_mv = border_array
     cdef i32[::1] bm_mv = border_modes
+    cdef f64[::1] bc_mv = border_constants
     cdef i32[::1] dm_mv = dm_arr
     
     cdef np.ndarray[f64, ndim=2] out = np.empty((N, C), dtype=np.float64)
     cdef f64[:, ::1] out_mv = out
     
     with nogil:
-        _corner_multichannel_flat_per_ch_coords_array_border_kernel(
-            corners_mv, coords_mv, out_mv, border_array_mv, bm_mv, dm_mv,
+        _corner_multichannel_flat_per_ch_coords_feathered_kernel(
+            corners_mv, coords_mv, out_mv, bc_mv, bm_mv, dm_mv,
             border_feathering, N, C, n_threads
         )
     
     return out
 
 # =============================================================================
-# Smart Dispatcher for Array Border
+# Smart Dispatcher
 # =============================================================================
 DEF MIN_PARALLEL_SIZE = 10000
 
-def lerp_from_corners_array_border_full(
+def lerp_from_corners_full_feathered(
     corners,
     coords,
-    border_array,
     object border_mode=None,
+    object border_constant=None,
     f64 border_feathering=0.0,
     object distance_mode=None,
     int num_threads=-1,
 ):
     """
-    Smart dispatcher for corner interpolation with array-based border values.
+    Smart dispatcher for fast corner interpolation with full feature support.
     
     Automatically selects the appropriate kernel based on input shapes.
     Supports all combinations of:
@@ -780,7 +714,7 @@ def lerp_from_corners_array_border_full(
     - Same vs per-channel coordinates
     - Global vs per-channel border modes
     - Global vs per-channel distance modes
-    - Array-based border values
+    - Feathering support
     
     Args:
         corners: Corner values. Can be:
@@ -792,14 +726,12 @@ def lerp_from_corners_array_border_full(
             - (N, 2): Flat coords, same for all channels
             - (C, H, W, 2): Grid coords, per-channel
             - (C, N, 2): Flat coords, per-channel
-        border_array: Background/border array with values to blend with:
-            - (H, W) for single-channel grid
-            - (N,) for single-channel flat
-            - (H, W, C) for multi-channel grid
-            - (N, C) for multi-channel flat
         border_mode: Border mode(s):
             - int: Same for all channels
             - list/array: Per-channel modes, shape (C,)
+        border_constant: Border constant(s):
+            - float: Same for all channels
+            - list/array: Per-channel constants, shape (C,)
         border_feathering: Feathering width (0.0 = no feathering)
         distance_mode: Distance metric(s) for 2D border computation:
             - None: Use ALPHA_MAX (default)
@@ -808,7 +740,7 @@ def lerp_from_corners_array_border_full(
         num_threads: Thread count (-1=auto, 0=serial, >0=specific)
     
     Returns:
-        Interpolated values blended with border_array
+        Interpolated values
     """
     cdef Py_ssize_t total_size
     cdef int use_threads = num_threads
@@ -820,7 +752,6 @@ def lerp_from_corners_array_border_full(
     cdef int bm_scalar
     cdef int dm_scalar
     cdef int coords_ndim = coords.ndim
-    cdef int border_array_ndim = border_array.ndim
     
     # Convert corners
     cdef bint single_channel = False
@@ -856,16 +787,6 @@ def lerp_from_corners_array_border_full(
     
     coords_arr = coords
     
-    # Convert border_array
-    if not isinstance(border_array, np.ndarray):
-        border_array = np.asarray(border_array, dtype=np.float64)
-    if border_array.dtype != np.float64:
-        border_array = np.ascontiguousarray(border_array, dtype=np.float64)
-    elif not border_array.flags['C_CONTIGUOUS']:
-        border_array = np.ascontiguousarray(border_array)
-    
-    border_array_arr = border_array
-    
     # Calculate size for parallelization
     if coords_ndim == 3:
         if coords_arr.shape[2] == 2:  # (H, W, 2)
@@ -882,7 +803,11 @@ def lerp_from_corners_array_border_full(
     
     # Handle border mode
     if border_mode is None:
-        border_mode = BORDER_CONSTANT
+        border_mode = BORDER_CLAMP
+    
+    # Handle border constant
+    if border_constant is None:
+        border_constant = 0.0
     
     # Handle distance mode default
     if distance_mode is None:
@@ -890,30 +815,19 @@ def lerp_from_corners_array_border_full(
     
     # Single channel
     if single_channel:
+        bc_scalar = float(border_constant) if not isinstance(border_constant, np.ndarray) else float(border_constant[0])
         bm_scalar = int(border_mode) if not isinstance(border_mode, np.ndarray) else int(border_mode[0])
         dm_scalar = int(distance_mode) if not isinstance(distance_mode, np.ndarray) else int(distance_mode[0])
         
         if coords_ndim == 3 and coords_arr.shape[2] == 2:
-            # Grid coordinates (H, W, 2)
-            if border_array_ndim != 2:
-                raise ValueError(f"For grid coords, border_array must be 2D, got shape {border_array_arr.shape}")
-            if border_array_arr.shape[0] != coords_arr.shape[0] or border_array_arr.shape[1] != coords_arr.shape[1]:
-                raise ValueError(f"border_array shape {border_array_arr.shape} doesn't match coords shape {coords_arr.shape[:2]}")
-            
-            return lerp_from_corners_1ch_array_border(
+            return lerp_from_corners_1ch_feathered(
                 corners_arr[0], corners_arr[1], corners_arr[2], corners_arr[3],
-                coords_arr, border_array_arr, bm_scalar, border_feathering, dm_scalar, use_threads
+                coords_arr, bm_scalar, bc_scalar, border_feathering, dm_scalar, use_threads
             )
         elif coords_ndim == 2 and coords_arr.shape[1] == 2:
-            # Flat coordinates (N, 2)
-            if border_array_ndim != 1:
-                raise ValueError(f"For flat coords, border_array must be 1D, got shape {border_array_arr.shape}")
-            if border_array_arr.shape[0] != coords_arr.shape[0]:
-                raise ValueError(f"border_array length {border_array_arr.shape[0]} doesn't match coords length {coords_arr.shape[0]}")
-            
-            return lerp_from_corners_1ch_flat_array_border(
+            return lerp_from_corners_1ch_flat_feathered(
                 corners_arr[0], corners_arr[1], corners_arr[2], corners_arr[3],
-                coords_arr, border_array_arr, bm_scalar, border_feathering, dm_scalar, use_threads
+                coords_arr, bm_scalar, bc_scalar, border_feathering, dm_scalar, use_threads
             )
         else:
             raise ValueError(f"Invalid coords shape for single channel: {coords_arr.shape}")
@@ -930,6 +844,14 @@ def lerp_from_corners_array_border_full(
             if bm_arr.shape[0] != C:
                 raise ValueError(f"border_mode must have length {C}")
         
+        # Convert border_constant to array
+        if isinstance(border_constant, (int, float, np.floating)):
+            bc_arr = np.full(C, float(border_constant), dtype=np.float64)
+        else:
+            bc_arr = np.ascontiguousarray(border_constant, dtype=np.float64)
+            if bc_arr.shape[0] != C:
+                raise ValueError(f"border_constant must have length {C}")
+        
         # Convert distance_mode to array
         if isinstance(distance_mode, (int, np.integer)):
             dm_arr = np.full(C, int(distance_mode), dtype=np.int32)
@@ -940,27 +862,15 @@ def lerp_from_corners_array_border_full(
         
         # Grid coordinates (H, W, 2) - same for all channels
         if coords_ndim == 3 and coords_arr.shape[2] == 2:
-            if border_array_ndim != 3:
-                raise ValueError(f"For multi-channel grid, border_array must be 3D, got shape {border_array_arr.shape}")
-            if (border_array_arr.shape[0] != coords_arr.shape[0] or 
-                border_array_arr.shape[1] != coords_arr.shape[1] or
-                border_array_arr.shape[2] != C):
-                raise ValueError(f"border_array shape {border_array_arr.shape} doesn't match expected ({coords_arr.shape[0]}, {coords_arr.shape[1]}, {C})")
-            
-            return lerp_from_corners_multichannel_array_border(
-                corners_arr, coords_arr, border_array_arr, bm_arr,
+            return lerp_from_corners_multichannel_per_ch_border_feathered(
+                corners_arr, coords_arr, bm_arr, bc_arr,
                 border_feathering, dm_arr, use_threads
             )
         
         # Flat coordinates (N, 2) - same for all channels
         elif coords_ndim == 2 and coords_arr.shape[1] == 2:
-            if border_array_ndim != 2:
-                raise ValueError(f"For multi-channel flat, border_array must be 2D, got shape {border_array_arr.shape}")
-            if border_array_arr.shape[0] != coords_arr.shape[0] or border_array_arr.shape[1] != C:
-                raise ValueError(f"border_array shape {border_array_arr.shape} doesn't match expected ({coords_arr.shape[0]}, {C})")
-            
-            return lerp_from_corners_multichannel_flat_array_border(
-                corners_arr, coords_arr, border_array_arr, bm_arr,
+            return lerp_from_corners_multichannel_flat_per_ch_border_feathered(
+                corners_arr, coords_arr, bm_arr, bc_arr,
                 border_feathering, dm_arr, use_threads
             )
         
@@ -969,37 +879,41 @@ def lerp_from_corners_array_border_full(
             if coords_arr.shape[0] != C:
                 raise ValueError(f"coords channels ({coords_arr.shape[0]}) must match corners ({C})")
             
-            if border_array_ndim != 3:
-                raise ValueError(f"For per-channel grid, border_array must be 3D, got shape {border_array_arr.shape}")
-            if (border_array_arr.shape[0] != coords_arr.shape[1] or 
-                border_array_arr.shape[1] != coords_arr.shape[2] or
-                border_array_arr.shape[2] != C):
-                raise ValueError(f"border_array shape {border_array_arr.shape} doesn't match expected ({coords_arr.shape[1]}, {coords_arr.shape[2]}, {C})")
-            
-            return lerp_from_corners_multichannel_per_ch_coords_array_border(
-                corners_arr, coords_arr, border_array_arr, bm_arr,
+            return lerp_from_corners_multichannel_per_ch_coords_feathered(
+                corners_arr, coords_arr, bm_arr, bc_arr,
                 border_feathering, dm_arr, use_threads
             )
         
         # Per-channel flat coordinates (C, N, 2)
         elif coords_ndim == 3 and coords_arr.shape[2] == 2 and coords_arr.shape[0] == C:
-            if border_array_ndim != 2:
-                raise ValueError(f"For per-channel flat, border_array must be 2D, got shape {border_array_arr.shape}")
-            if border_array_arr.shape[0] != coords_arr.shape[1] or border_array_arr.shape[1] != C:
-                raise ValueError(f"border_array shape {border_array_arr.shape} doesn't match expected ({coords_arr.shape[1]}, {C})")
-            
-            return lerp_from_corners_multichannel_flat_per_ch_coords_array_border(
-                corners_arr, coords_arr, border_array_arr, bm_arr,
+            return lerp_from_corners_multichannel_flat_per_ch_coords_feathered(
+                corners_arr, coords_arr, bm_arr, bc_arr,
                 border_feathering, dm_arr, use_threads
             )
         
         else:
             raise ValueError(f"Invalid coords shape for multi-channel: {coords_arr.shape}")
     
-    raise ValueError(f"Unsupported corners dimensions: {corners_arr.ndim}")
+    #raise ValueError(f"Unsupported corners dimensions: {corners_arr.ndim}")
 
 # =============================================================================
-# Export constants
+# Legacy compatibility functions
+# =============================================================================
+def lerp_from_corners_fast(
+    corners,
+    coords,
+    int border_mode=BORDER_CLAMP,
+    object border_constant=None,
+    int num_threads=-1,
+):
+    """Legacy compatibility wrapper (no feathering)."""
+    return lerp_from_corners_full_feathered(
+        corners, coords, border_mode, border_constant,
+        0.0, ALPHA_MAX, num_threads
+    )
+
+# =============================================================================
+# Export border mode constants
 # =============================================================================
 BORDER_REPEAT = 0
 BORDER_MIRROR = 1
@@ -1007,7 +921,7 @@ BORDER_CONSTANT = 2
 BORDER_CLAMP = 3
 BORDER_OVERFLOW = 4
 
-# Distance mode exports
+# Export distance mode constants
 DIST_MAX_NORM = MAX_NORM
 DIST_MANHATTAN = MANHATTAN
 DIST_SCALED_MANHATTAN = SCALED_MANHATTAN

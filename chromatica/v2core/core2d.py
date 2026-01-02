@@ -13,8 +13,8 @@ from ..types.array_types import ndarray_1d
 from .interp_2d import (
     lerp_from_corners,
     lerp_between_lines,
-
-    lerp_between_lines_x_discrete_multichannel,
+    
+    lerp_between_lines_x_discrete as lerp_between_lines_x_discrete_multichannel,
 
 )
 from .interp_hue import (  # type: ignore
@@ -181,7 +181,8 @@ def sample_hue_between_lines_continuous(
     # Detect if single or multi-channel
 
 
-    result = hue_lerp_between_lines(line0, line1, coords, int(mode_x), int(mode_y), border_mode=border_mode, border_constant=border_constant if border_constant is not None else 0.0)
+    result = hue_lerp_between_lines(
+        line0=line0, line1=line1, coords=coords, mode_x=int(mode_x), mode_y=int(mode_y), border_mode=border_mode, border_constant=border_constant if border_constant is not None else 0.0)
 
     return result
 
@@ -216,7 +217,14 @@ def sample_hue_between_lines_discrete(
     coords = np.asarray(coords, dtype=np.float64)
     coords = _apply_bound(coords, bound_type)
 
-    return hue_lerp_between_lines_x_discrete(line0, line1, coords, int(mode_y), border_mode=border_mode, border_constant=border_constant or 0.0)
+    return hue_lerp_between_lines_x_discrete(
+        line0=line0, 
+        line1=line1, 
+        coords=coords,
+        mode_y=int(mode_y),
+        border_mode=border_mode,
+        border_constant=border_constant if border_constant is not None else 0.0,
+    )
 
 
 # =============================================================================
