@@ -20,7 +20,7 @@ from .corners_base import CornersBase, CornerIndex
 from ._descriptors import CellPropertyDescriptor
 from ._cell_coords import extract_edge, extract_point, lerp_point
 from ..helpers import LineInterpMethods, interp_transformed_2d_from_corners
-from ..helpers.interpolation.corners import interp_hue_2d_from_corners
+from ..helpers.interpolation.corners import hue_lerp_from_corners
 from ...gradient1dv2.segment import get_transformed_segment
 
 
@@ -235,10 +235,10 @@ class CornersCellDual(CornersBase):
         c_br = self.convert_corner(CornerIndex.BOTTOM_RIGHT, space)
         
         return interp_transformed_2d_from_corners(
-            c_tl=c_tl,
-            c_tr=c_tr,
-            c_bl=c_bl,
-            c_br=c_br,
+            top_left=c_tl,
+            top_right=c_tr,
+            bottom_left=c_bl,
+            bottom_right=c_br,
             transformed=coords,
             color_space=space,
             huemode_x=hue_x or HueMode.SHORTEST,
@@ -423,7 +423,7 @@ class CornersCellDual(CornersBase):
                 elif isinstance(top_coords, np.ndarray) and top_coords.ndim == 4:
                     top_coords = top_coords[0]
                 # Replace grayscale hues Top_line is flattened (width, channels)
-                top_line[where_grayscale_top, 0] = interp_hue_2d_from_corners(
+                top_line[where_grayscale_top, 0] = hue_lerp_from_corners(
                     tl_ghue, tr_ghue, bl_ghue, br_ghue,
                     top_coords[:, where_grayscale_top].astype(np.float64),
                     self._hue_direction_x or HueMode.SHORTEST,
@@ -442,11 +442,11 @@ class CornersCellDual(CornersBase):
                 elif isinstance(bottom_coords, np.ndarray) and bottom_coords.ndim == 4:
                     bottom_coords = bottom_coords[0]
                     
-                bottom_line[where_grayscale_bottom, 0] = interp_hue_2d_from_corners(
-                    tl_ghue, tr_ghue, bl_ghue, br_ghue,
-                    bottom_coords[:, where_grayscale_bottom].astype(np.float64),
-                    self._hue_direction_x or HueMode.SHORTEST,
-                    self._hue_direction_y or HueMode.SHORTEST,
+                bottom_line[where_grayscale_bottom, 0] = hue_lerp_from_corners(
+                    corners=[tl_ghue, tr_ghue, bl_ghue, br_ghue],
+                    coords=bottom_coords[:, where_grayscale_bottom].astype(np.float64),
+                    mode_x=self._hue_direction_x or HueMode.SHORTEST,
+                    mode_y=self._hue_direction_y or HueMode.SHORTEST,
                 )
             
 

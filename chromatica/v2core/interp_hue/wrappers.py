@@ -11,18 +11,13 @@ import numpy as np
 
 # Import Cython functions as internal
 try:
-    from .interp_hue import (
-        hue_lerp_1d_spatial as _hue_lerp_1d_spatial,
-        hue_lerp_simple as _hue_lerp_simple,
-        hue_lerp_arrays as _hue_lerp_arrays,
-        hue_multidim_lerp as _hue_multidim_lerp,
-    )
-    from .interp_hue2d import (
-        hue_lerp_between_lines as _hue_lerp_between_lines,
-        hue_lerp_between_lines_x_discrete as _hue_lerp_between_lines_x_discrete,
-        hue_lerp_2d_spatial as _hue_lerp_2d_spatial,
-        hue_lerp_2d_with_modes as _hue_lerp_2d_with_modes,
-    )
+
+    from ..interp_hue_.wrappers import (hue_lerp_between_lines as _hue_lerp_between_lines,
+                                        hue_lerp_between_lines_x_discrete as _hue_lerp_between_lines_x_discrete,
+                                        hue_lerp_simple as _hue_lerp_simple,
+                                        hue_lerp_from_corners
+
+                                        )
     CYTHON_AVAILABLE = True
 except ImportError:
     CYTHON_AVAILABLE = False
@@ -40,30 +35,7 @@ def _resolve_hue_modes(modes: Optional[np.ndarray | List[HueMode]], ndims=2):
         return np.array(modes, dtype=np.int32)
     return modes.astype(np.int32)
 
-def hue_lerp_1d_spatial(
-    start_hues: np.ndarray,
-    end_hues: np.ndarray,
-    coefficients: np.ndarray,
-    mode: int = HueMode.SHORTEST,
-) -> np.ndarray:
-    """
-    Spatially interpolate hues along a 1D array with a specific hue mode.
-    
-    Args:
-        start_hues: Starting hue values, shape (N,)
-        end_hues: Ending hue values, shape (N,)
-        coefficients: Interpolation coefficients in [0, 1], shape (N,)
-        mode: Hue interpolation mode (0=SHORTER, 1=LONGER, 2=INCREASING, 3=DECREASING)
-        
-    Returns:
-        Interpolated hue values, shape (N,)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    return _hue_lerp_1d_spatial(start_hues, end_hues, coefficients, mode)
+
 
 
 def hue_lerp_simple(
@@ -91,60 +63,6 @@ def hue_lerp_simple(
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
     return _hue_lerp_simple(start_hue, end_hue, coef, mode)
 
-
-def hue_lerp_arrays(
-    start_hues: np.ndarray,
-    end_hues: np.ndarray,
-    coefficients: np.ndarray,
-    mode: int = 0,  # SHORTER
-) -> np.ndarray:
-    """
-    Interpolate between arrays of hue values.
-    
-    Args:
-        start_hues: Starting hue values, shape (N,)
-        end_hues: Ending hue values, shape (N,)
-        coefficients: Interpolation coefficients in [0, 1], shape (N,)
-        mode: Hue interpolation mode (0=SHORTER, 1=LONGER, 2=INCREASING, 3=DECREASING)
-        
-    Returns:
-        Interpolated hue values, shape (N,)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    return _hue_lerp_arrays(start_hues, end_hues, coefficients, mode)
-
-
-def hue_multidim_lerp(
-    start_hues: np.ndarray,
-    end_hues: np.ndarray,
-    coefficients: np.ndarray,
-    modes: np.ndarray | List[HueMode] | None = None,  # SHORTER
-) -> np.ndarray:
-    """
-    Multidimensional hue interpolation.
-    
-    Handles arbitrary-shaped arrays for hue interpolation.
-    
-    Args:
-        start_hues: Starting hue values, shape (...,)
-        end_hues: Ending hue values, shape (...,)
-        coefficients: Interpolation coefficients in [0, 1], shape (...,)
-        mode: Hue interpolation mode (0=SHORTER, 1=LONGER, 2=INCREASING, 3=DECREASING)
-        
-    Returns:
-        Interpolated hue values, shape (...,)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    modes = _resolve_hue_modes(modes, ndims=start_hues.ndim)
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    return _hue_multidim_lerp(start_hues, end_hues, coefficients, modes)
 
 
 # =============================================================================
@@ -186,7 +104,16 @@ def hue_lerp_between_lines(
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
     if isinstance(border_constant, np.ndarray):
         border_constant = border_constant[0]
-    return _hue_lerp_between_lines(line0, line1, coords, mode_x, mode_y, border_mode, border_constant)
+    return _hue_lerp_between_lines(
+        line0=line0,
+        line1=line1,
+        coords=coords,
+        mode_x=mode_x,
+        mode_y=mode_y,
+        border_mode=border_mode,
+        border_constant=border_constant
+    )
+    #return _hue_lerp_between_lines(line0, line1, coords, mode_x, mode_y, border_mode, border_constant)
 
 
 def hue_lerp_between_lines_x_discrete(
@@ -220,9 +147,15 @@ def hue_lerp_between_lines_x_discrete(
     """
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    if isinstance(border_constant, np.ndarray):
-        border_constant = border_constant[0]
-    return _hue_lerp_between_lines_x_discrete(line0, line1, coords, mode_y, border_mode, border_constant)
+    return _hue_lerp_between_lines_x_discrete(
+        line0=line0,
+        line1=line1,
+        coords=coords,
+        mode_y=mode_y,
+        border_mode=border_mode,
+        border_constant=border_constant
+    )
+    #return _hue_lerp_between_lines_x_discrete(line0, line1, coords, mode_y, border_mode, border_constant)
 
 
 def hue_lerp_2d_spatial(
@@ -249,43 +182,26 @@ def hue_lerp_2d_spatial(
     modes = _resolve_hue_modes(modes, ndims=start_hues.ndim)
     if not CYTHON_AVAILABLE:
         raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    return _hue_lerp_2d_spatial(start_hues, end_hues, coeffs, modes)
+    corners = np.array([
+        start_hues[0], end_hues[0],
+        start_hues[-1], end_hues[-1]
+    ], dtype=np.float64)
+    return hue_lerp_from_corners(
+        corners=corners,
+        coords=coeffs,
+        mode_x=modes[0],
+        mode_y=modes[1],
+    )
 
 
-def hue_lerp_2d_with_modes(
-    start_hues: np.ndarray,
-    end_hues: np.ndarray,
-    coefficients: np.ndarray,
-    modes: np.ndarray,
-) -> np.ndarray:
-    """
-    2D hue interpolation with per-pixel mode selection.
-    
-    Args:
-        start_hues: Starting hue values, shape (H, W)
-        end_hues: Ending hue values, shape (H, W)
-        coefficients: Interpolation coefficients in [0, 1], shape (H, W)
-        modes: Hue mode per pixel, shape (H, W), values in {0, 1, 2, 3}
-              (0=SHORTER, 1=LONGER, 2=INCREASING, 3=DECREASING)
-        
-    Returns:
-        Interpolated hue values, shape (H, W)
-        
-    Raises:
-        ImportError: If Cython extensions are not built
-    """
-    if not CYTHON_AVAILABLE:
-        raise ImportError("Cython interp_hue extensions not available. Please build extensions.")
-    return _hue_lerp_2d_with_modes(start_hues, end_hues, coefficients, modes)
+
 
 
 __all__ = [
-    'hue_lerp_1d_spatial',
+
     'hue_lerp_simple',
-    'hue_lerp_arrays',
-    'hue_multidim_lerp',
     'hue_lerp_between_lines',
     'hue_lerp_between_lines_x_discrete',
     'hue_lerp_2d_spatial',
-    'hue_lerp_2d_with_modes',
+
 ]

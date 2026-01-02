@@ -21,10 +21,10 @@ from .interp_hue import (
 
     hue_lerp_2d_spatial,
     hue_lerp_simple,
-    hue_lerp_arrays,
+
 
     hue_lerp_between_lines,
-    hue_multidim_lerp,
+
 )
 
 from .interp_2d import (  # type: ignore
@@ -255,81 +255,7 @@ def hue_lerp(
     return hue_lerp_simple(float(h0), float(h1), coeffs, int(mode))
 
 
-def hue_lerp_multi(
-    h0_arr: np.ndarray,
-    h1_arr: np.ndarray,
-    coeffs: np.ndarray,
-    mode: HueMode = HueMode.SHORTEST,
-    bound_type: BoundType = BoundType.CLAMP,
-) -> np.ndarray:
-    """
-    Vectorized hue interpolation for multiple hue pairs.
-    
-    Args:
-        h0_arr: Start hues, shape (M,)
-        h1_arr: End hues, shape (M,)
-        coeffs: Interpolation coefficients, shape (N,)
-        mode: Interpolation mode
-        bound_type: How to bound coefficients
-        
-    Returns:
-        Interpolated hues, shape (N, M)
-    """
-    h0_arr = np.asarray(h0_arr, dtype=np.float64)
-    h1_arr = np.asarray(h1_arr, dtype=np.float64)
-    coeffs = np.asarray(coeffs, dtype=np.float64)
-    coeffs = _apply_bound(coeffs, bound_type)
-    return hue_lerp_arrays(h0_arr, h1_arr, coeffs, int(mode))
 
-
-def hue_multidim_lerp_bounded(
-    starts: np.ndarray,
-    ends: np.ndarray,
-    coeffs: np.ndarray,
-    modes: HueModeSequence = HueMode.SHORTEST,
-    bound_type: BoundType = BoundType.CLAMP,
-) -> np.ndarray:
-    """
-    Multi-dimensional hue interpolation with per-dimension modes.
-    
-    This is the hue-aware version of single_channel_multidim_lerp.
-    Each dimension can have a different interpolation mode.
-    
-    Args:
-        starts: Corner start values, shape (2^{N-1},)
-        ends: Corner end values, shape (2^{N-1},)
-        coeffs: Coefficient grid, shape (D_1, ..., D_k, N)
-        modes: Interpolation mode per dimension (single or sequence)
-        bound_type: How to bound coefficients
-        
-    Returns:
-        Interpolated hues, shape (D_1, ..., D_k), values in [0, 360)
-        
-    Example:
-        >>> # 2D hue gradient with different modes per axis
-        >>> starts = np.array([0.0])    # Red
-        >>> ends = np.array([240.0])    # Blue
-        >>> 
-        >>> H, W = 100, 200
-        >>> ux = np.linspace(0, 1, W)
-        >>> uy = np.linspace(0, 1, H)
-        >>> coeffs = np.stack(np.meshgrid(ux, uy, indexing='xy'), axis=-1)
-        >>> 
-        >>> # X-axis: shortest path, Y-axis: clockwise
-        >>> modes = [HueMode.SHORTEST, HueMode.CW]
-        >>> result = hue_multidim_lerp_bounded(starts, ends, coeffs, modes)
-    """
-    starts = np.asarray(starts, dtype=np.float64)
-    ends = np.asarray(ends, dtype=np.float64)
-    coeffs = np.asarray(coeffs, dtype=np.float64)
-    
-    n_dims = coeffs.shape[-1]
-    modes_arr = _prepare_hue_modes(modes, n_dims)
-    
-    # Bound coefficients
-    coeffs = _apply_bound(coeffs, bound_type)
-    
-    return hue_multidim_lerp(starts, ends, coeffs, modes_arr)
 
 
 def hue_gradient_1d(

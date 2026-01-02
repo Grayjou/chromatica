@@ -53,10 +53,10 @@ class CornersCell(CornersBase):
     def _interpolate_at_coords(self, coords_list: List[np.ndarray]) -> np.ndarray:
         """Core 2D interpolation at specific coordinates."""
         return interp_transformed_2d_from_corners(
-            c_tl=self.top_left,
-            c_tr=self.top_right,
-            c_bl=self.bottom_left,
-            c_br=self.bottom_right,
+            top_left=self.top_left,
+            top_right=self.top_right,
+            bottom_left=self.bottom_left,
+            bottom_right=self.bottom_right,
             transformed=coords_list,
             color_space=self.color_space,
             huemode_x=self.hue_direction_x,
@@ -168,10 +168,10 @@ class CornersCell(CornersBase):
     # === Rendering ===
     def _render_value(self):
         return interp_transformed_2d_from_corners(
-            c_tl=self.top_left,
-            c_tr=self.top_right,
-            c_bl=self.bottom_left,
-            c_br=self.bottom_right,
+            top_left=self.top_left,
+            top_right=self.top_right,
+            bottom_left=self.bottom_left,
+            bottom_right=self.bottom_right,
             transformed=self.per_channel_coords,
             color_space=self.color_space,
             huemode_x=self.hue_direction_x,

@@ -4,7 +4,7 @@ Interpolation dispatcher module.
 Provides unified interfaces for 2D line and corner interpolation with
 flexible border handling, feathering, and multi-threading support.
 """
-
+#chromatica\v2core\interp_2d_\wrappers.py
 from .interp_2d_fast_ import (
     lerp_between_lines_full_feathered as _lerp_between_lines,
 )
@@ -19,7 +19,7 @@ from .interp_2d_array_border import (
 from .corner_interp_2d_border_ import (
     lerp_from_corners_array_border_full as _lerp_from_corners_array_border,
 )
-from ..border_handler import BorderMode
+from ..border_handler import BorderMode, BorderModeInput, DistanceMode
 from typing import List, Optional, Union
 import numpy as np
 from ...types.array_types import ndarray_1d, ndarray_2d, ndarray_3d
@@ -27,23 +27,13 @@ from functools import partial
 from enum import IntEnum
 
 
-class DistanceMode(IntEnum):
-    """Distance metrics for 2D border computation."""
-    MAX_NORM = 1
-    MANHATTAN = 2
-    SCALED_MANHATTAN = 3
-    ALPHA_MAX = 4
-    ALPHA_MAX_SIMPLE = 5
-    TAYLOR = 6
-    EUCLIDEAN = 7
-    WEIGHTED_MINMAX = 8
 
 
 # =============================================================================
 # Type Aliases
 # =============================================================================
 
-BorderModeInput = Union[BorderMode, List[BorderMode], np.ndarray]
+
 BorderConstantInput = Optional[Union[float, List[float], ndarray_1d]]
 CoordsInput = Union[ndarray_2d, List[ndarray_2d]]
 

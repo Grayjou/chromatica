@@ -74,8 +74,10 @@ cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:
 
 cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:
     """Lerp between two hues with mode, returning wrapped result."""
+    
     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
     cdef f64 result = h0 + u * (h1_adj - h0)
+
     return wrap_hue(result)
 
 

@@ -6,7 +6,7 @@ import pytest
 import numpy as np
 from ...chromatica.v2core.core2d import (
     sample_between_lines_continuous,
-    sample_between_lines_discrete,
+
     sample_hue_between_lines_continuous,
     sample_hue_between_lines_discrete,
     multival2d_lerp_between_lines_continuous,
@@ -36,22 +36,6 @@ def test_sample_between_lines_continuous():
     assert np.allclose(result[-1, -1], line1[-1], atol=0.1)
 
 
-def test_sample_between_lines_discrete():
-    """Test discrete line interpolation."""
-    L = 10
-    line0 = np.linspace((0,0,0, 0), (1,1,1, 1), L)
-    line1 = np.linspace((1,1,1, 1), (0,0,0, 0), L)
-    
-    # Create a simple 2D coordinate grid
-    H, W = 5, 10
-    coords = upbm_2d(width=W, height=H)
-    
-    result = sample_between_lines_discrete(line0, line1, coords)
-    
-    assert result.shape == (H, W, 4)
-    # Check boundaries
-    assert np.all(result[0, 0] <= 1) and np.all(result[0, 0] >= 0)
-    assert np.all(result[-1, -1] >= 0) and np.all(result[-1, -1] <= 1)
 
 def test_between_lines_discrete_multichannel():
     """Test discrete line interpolation for multi-channel data."""

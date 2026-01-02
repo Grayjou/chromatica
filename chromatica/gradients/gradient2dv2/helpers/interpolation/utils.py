@@ -1,3 +1,4 @@
+#chromatica\gradients\gradient2dv2\helpers\interpolation\utils.py
 import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional

@@ -9,10 +9,10 @@ ctypedef int i32
 
 # Hue interpolation modes
 cdef enum HueMode:
-    HUE_CW = 0
-    HUE_CCW = 1
-    HUE_SHORTEST = 2
-    HUE_LONGEST = 3
+    HUE_CW = 1
+    HUE_CCW = 2
+    HUE_SHORTEST = 3
+    HUE_LONGEST = 4
 
 # Public function declarations
 cdef f64 wrap_hue(f64 h) noexcept nogil

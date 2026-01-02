@@ -1,7 +1,9 @@
 # __init__.py or main module file
-
+from typing import Union, List
+from enum import IntEnum
+from ..types.array_types import ndarray_1d, ndarray_2d
 # Define constants once at module level
-class BorderMode:
+class BorderMode(IntEnum):
     """Border mode constants."""
     REPEAT = 0
     MIRROR = 1
@@ -14,24 +16,18 @@ BORDER_CONSTANT = 2
 BORDER_CLAMP = 3
 BORDER_OVERFLOW = 4
 
-# Try to import Cython implementation first
-try:
-    from .border_handling import (
-        handle_border_edges_2d,
-        handle_border_lines_2d,
-    )
-    # Constants are already defined above, no need to reimport
-except ImportError:
-    # If Cython extension fails, use Python fallback
-    import warnings
-    warnings.warn(
-        "Cython border handling extension not found, using Python fallback. "
-        "Performance may be reduced.",
-        ImportWarning
-    )
-    
-    from .border_handling_fallback import (
-        handle_border_edges_2d,
-        handle_border_lines_2d,
-        # No need to import constants since they're defined above
-    )
+BorderModeInput = Union[BorderMode, List[BorderMode]]
+BorderConstant = Union[float, List[float], ndarray_1d]
+BorderArrayInput = Union[ndarray_2d, None]
+DistanceModeInput = Union[str, int]
+class DistanceMode(IntEnum):
+    """Distance metrics for 2D border computation."""
+    MAX_NORM = 1
+    MANHATTAN = 2
+    SCALED_MANHATTAN = 3
+    ALPHA_MAX = 4
+    ALPHA_MAX_SIMPLE = 5
+    TAYLOR = 6
+    EUCLIDEAN = 7
+    WEIGHTED_MINMAX = 8
+

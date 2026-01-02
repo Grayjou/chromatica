@@ -1,20 +1,27 @@
-#chromatica\gradients\gradient2dv2\helpers\interpolation\lines.py
+#chromatica\gradients\gradient2dv2\helpers\interpolation\lines.py  # NEW
 import numpy as np
 from boundednumbers import BoundType
 from typing import List, Optional
-from .....v2core.core import HueMode
-from .....v2core.core2d import (
-    sample_hue_between_lines_continuous,
-    sample_hue_between_lines_discrete,
-    multival2d_lerp_between_lines_continuous,
-    multival2d_lerp_between_lines_discrete,
+
+from .....v2core.interp_2d_ import (
     lerp_between_lines,
-    lerp_between_lines_x_discrete_multichannel,
+    lerp_between_lines_x_discrete,
+    lerp_between_lines_onto_array,
+    lerp_between_lines_onto_array_x_discrete,
+
 )
-from .....types.color_types import is_hue_space, ColorSpaces
+from .....v2core.interp_hue_ import(
+    hue_lerp_between_lines,
+    hue_lerp_between_lines_x_discrete,
+    hue_lerp_between_lines_array_border,
+    hue_lerp_between_lines_array_border_x_discrete,
+    hue_lerp_between_lines_inplace_x_discrete,
+    hue_lerp_between_lines_inplace,
+)
+from .....types.color_types import is_hue_space, ColorSpaces, HueMode
 from enum import Enum
 from .utils import prepare_hue_and_rest_channels, combine_hue_and_rest_channels
-
+from .....v2core.border_handler import BorderMode, BorderModeInput, BorderConstant, DistanceMode, BorderArrayInput, DistanceModeInput
  
 class LineInterpMethods(Enum):
     """Methods for interpolating between lines."""
@@ -42,48 +49,92 @@ def _interp_transformed_non_hue_space_2d_lines_discrete(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
+    
+    border_mode: BorderModeInput = BorderMode.CLAMP,
+    border_value: Optional[BorderConstant] = None,    
+    *,
+    border_constant: Optional[BorderConstant] = None,
+    border_array: BorderArrayInput = None,
+    border_feathering: float = 0.0,
+    distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
+    num_threads: int = -1,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
 ) -> np.ndarray:
     """
     Interpolate non-hue values between two lines using discrete x-sampling in multidimensional space.
     """
-    # multival2d_lerp_between_lines_discrete expects list of lines, one per channel
-    lines0 = [line0[..., i] for i in range(line0.shape[-1])]
-    lines1 = [line1[..., i] for i in range(line1.shape[-1])]
-    return multival2d_lerp_between_lines_discrete(
-        lines0,
-        lines1,
-        transformed,
-        bound_types=bound_types,
-        border_mode=border_mode,
-        border_constant=border_value,
-    )
+    # Bound types is legacy for border mode
+    border_constant = next((i for i in [border_value, border_constant] if i is not None), None)
+    
+    if border_array is not None:
+        return lerp_between_lines_onto_array_x_discrete(
+            line0=line0,
+            line1=line1,
+            coords=transformed,
+            background_array=border_array,
+            border_mode=border_mode,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+        )
+    else:
+        return lerp_between_lines_x_discrete(
+            line0=line0,
+            line1=line1,
+            coords=transformed,
+            border_mode=border_mode,
+            border_constant=border_constant,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+        )
 
 
 def _interp_transformed_non_hue_space_2d_lines_continuous(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
+    
+    border_mode: BorderModeInput = BorderMode.CLAMP,
+    border_value: Optional[BorderConstant] = None,    
+    *,
+    border_constant: Optional[BorderConstant] = None,
+    border_array: BorderArrayInput = None,
+    border_feathering: float = 0.0,
+    distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
+    num_threads: int = -1,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
 ) -> np.ndarray:
     """
     Interpolate non-hue values between two lines using continuous sampling in multidimensional space.
     """
-    lines0 = [line0[..., i] for i in range(line0.shape[-1])]
-    lines1 = [line1[..., i] for i in range(line1.shape[-1])]
-    return multival2d_lerp_between_lines_continuous(
-        lines0,
-        lines1,
-        transformed,
-        bound_types=bound_types,
-        border_mode=border_mode,
-        border_constant=border_value,
-    )
-
+    # Bound types is legacy for border mode
+    border_constant = next((i for i in [border_value, border_constant] if i is not None), None)
+    
+    if border_array is not None:
+        return lerp_between_lines_onto_array(
+            line0=line0,
+            line1=line1,
+            coords=transformed,
+            background_array=border_array,
+            border_mode=border_mode,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+            x_discrete=False,
+        )
+    else:
+        return lerp_between_lines(
+            line0=line0,
+            line1=line1,
+            coords=transformed,
+            border_mode=border_mode,
+            border_constant=border_constant,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+        )
+    
 
 def _interp_transformed_hue_space_2d_lines_continuous(
     line0: np.ndarray,
@@ -91,10 +142,18 @@ def _interp_transformed_hue_space_2d_lines_continuous(
     transformed: List[np.ndarray],
     huemode_x: HueMode,
     huemode_y: HueMode,
+    *,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
+    border_mode: BorderModeInput = BorderMode.CLAMP,
+    border_constant: BorderConstant = 0,
+    border_array: BorderArrayInput = None,
+    border_feathering: float = 0,
+    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
+    num_threads: int = -1,
+    x_discrete: bool = False,
     num_channels: Optional[int] = 3,
+    border_value: Optional[BorderConstant] = None,
 ) -> np.ndarray:
     """
     Interpolate hue values between two lines using continuous sampling in multidimensional space.
@@ -118,41 +177,73 @@ def _interp_transformed_hue_space_2d_lines_continuous(
 
     hline0, rline0 = prepare_hue_and_rest_channels(line0, is_hue=True)
     hline1, rline1 = prepare_hue_and_rest_channels(line1, is_hue=True)
-    btypes_list = _prepare_bound_types(bound_types, num_channels=num_channels)
+    #legacy
+    #btypes_list = _prepare_bound_types(bound_types, num_channels=num_channels)
 
     # Interpolate hue channel
-    from time import perf_counter
-    #hstart = perf_counter()
-    hresult = sample_hue_between_lines_continuous(
-        hline0,
-        hline1,
-        transformed_h,
+    border_constant = next((i for i in [border_value, border_constant] if i is not None), None)
+    if border_array is not None:
+        # If border_array is 3D
+        if border_array.ndim == 2:
+            hue_border_array = border_array
+            rest_border_array = border_array
+        elif border_array.ndim == 3:
+            hue_border_array = border_array[..., 0]
+            rest_border_array = border_array[..., 1:]
+        else:
+            raise ValueError("border_array must be 2D or 3D array.")
+    else:
+        hue_border_array = None
+        rest_border_array = None
+    hresult = hue_lerp_between_lines(
+        line0=hline0,
+        line1=hline1,
+        coords=transformed_h,
         mode_x=huemode_x,
         mode_y=huemode_y,
-        bound_type=btypes_list[0],
+
         border_mode=border_mode,
-        border_constant=border_value,
+        border_constant=border_constant,
+        border_array=hue_border_array,
+        border_feathering=border_feathering,
+        feather_hue_mode=feather_hue_mode,
+        distance_mode=distance_mode,
+        num_threads=num_threads,
     )
-    #hend = perf_counter()
-    #print(f"Hue channel interpolation time: {hend - hstart:.6f} seconds")
+
     # Interpolate rest channels
-    rlines0 = [rline0[..., i] for i in range(rline0.shape[-1])]
-    rlines1 = [rline1[..., i] for i in range(rline1.shape[-1])]
+    rlines0 = rline0
+    rlines1 = rline1
     if isinstance(border_value, (list, np.ndarray)):
         rest_border_value = border_value[1:]
     else:
         rest_border_value = border_value
-    #rstart = perf_counter()
-    rresult = multival2d_lerp_between_lines_continuous(
-        rlines0,
-        rlines1,
-        transformed_r,
-        bound_types=btypes_list[1:],
-        border_mode=border_mode,
-        border_constant=rest_border_value,
-    )
-    #rend = perf_counter()
-    #print(f"Rest channels interpolation time: {rend - rstart:.6f} seconds")
+
+    if rest_border_array is not None:
+        rresult = lerp_between_lines_onto_array(
+            line0=rlines0,
+            line1=rlines1,
+            coords=transformed_r,
+            background_array=rest_border_array,
+            border_mode=border_mode,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+            x_discrete=False,
+        )
+    else:
+        rresult = lerp_between_lines(
+            line0=rlines0,
+            line1=rlines1,
+            coords=transformed_r,
+            border_mode=border_mode,
+            border_constant=rest_border_value,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+            x_discrete=False,
+        )
+
     return combine_hue_and_rest_channels(hresult, rresult)
 
 
@@ -160,69 +251,104 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
-    #huemode_x: HueMode,
     huemode_y: HueMode,
+    *,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
+    border_mode: BorderModeInput = BorderMode.CLAMP,
+    border_constant: BorderConstant = 0,
+    border_array: BorderArrayInput = None,
+    border_feathering: float = 0,
+    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
+    num_threads: int = -1,
     num_channels: Optional[int] = 3,
+    border_value: Optional[BorderConstant] = None,
 ) -> np.ndarray:
     """
     Interpolate hue values between two lines using discrete x-sampling in multidimensional space.
     """
     from .....v2core.core import _prepare_bound_types
+    
     # Prepare channels
-
-
     if isinstance(transformed, np.ndarray) and transformed.ndim == 3:
-        #Same coords
-
+        # Same coords
         transformed_h = transformed.copy()
         num_channels = line0.shape[-1]
-        transformed_r = [transformed.copy() for _ in range(num_channels-1)]
+        transformed_r = [transformed.copy() for _ in range(num_channels - 1)]
     elif isinstance(transformed, list) and len(transformed) == 1 and transformed[0].ndim == 3:
-        #Same coords
-
+        # Same coords
         transformed_h = transformed[0].copy()
         num_channels = line0.shape[-1]
-        transformed_r = [transformed[0].copy() for _ in range(num_channels-1)]
+        transformed_r = [transformed[0].copy() for _ in range(num_channels - 1)]
     else:
-
         transformed_h = transformed[0]
         transformed_r = transformed[1:]
+
     hline0, rline0 = prepare_hue_and_rest_channels(line0, is_hue=True)
     hline1, rline1 = prepare_hue_and_rest_channels(line1, is_hue=True)
     btypes_list = _prepare_bound_types(bound_types, num_channels=num_channels)
 
     # Interpolate hue channel
-    hresult = sample_hue_between_lines_discrete(
-        hline0,
-        hline1,
-        transformed_h,
-        #mode_x=huemode_x,
+    border_constant = next((i for i in [border_value, border_constant] if i is not None), None)
+    if border_array is not None:
+        # If border_array is 3D
+        if border_array.ndim == 2:
+            hue_border_array = border_array
+            rest_border_array = border_array
+        elif border_array.ndim == 3:
+            hue_border_array = border_array[..., 0]
+            rest_border_array = border_array[..., 1:]
+        else:
+            raise ValueError("border_array must be 2D or 3D array.")
+    else:
+        hue_border_array = None
+        rest_border_array = None
+
+    hresult = hue_lerp_between_lines_x_discrete(
+        line0=hline0,
+        line1=hline1,
+        coords=transformed_h,
         mode_y=huemode_y,
-        bound_type=btypes_list[0],
         border_mode=border_mode,
-        border_constant=border_value,
+        border_constant=border_constant,
+        border_array=hue_border_array,
+        border_feathering=border_feathering,
+        feather_hue_mode=feather_hue_mode,
+        distance_mode=distance_mode,
+        num_threads=num_threads,
     )
+
+    # Interpolate rest channels
+    rlines0 = rline0
+    rlines1 = rline1
     if isinstance(border_value, (list, np.ndarray)):
         rest_border_value = border_value[1:]
     else:
         rest_border_value = border_value
-    # Interpolate rest channels
-    # multival2d_lerp_between_lines_discrete expects list of lines, one per channel
-    rlines0 = [rline0[..., i] for i in range(rline0.shape[-1])]
-    rlines1 = [rline1[..., i] for i in range(rline1.shape[-1])]
 
-    rresult = multival2d_lerp_between_lines_discrete(
-        rlines0,
-        rlines1,
-        transformed_r,
-        bound_types=btypes_list[1:],
-        border_mode=border_mode,
-        border_constant=rest_border_value,
-    )
-    
+    if rest_border_array is not None:
+        rresult = lerp_between_lines_onto_array_x_discrete(
+            line0=rlines0,
+            line1=rlines1,
+            coords=transformed_r,
+            background_array=rest_border_array,
+            border_mode=border_mode,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+        )
+    else:
+        rresult = lerp_between_lines_x_discrete(
+            line0=rlines0,
+            line1=rlines1,
+            coords=transformed_r,
+            border_mode=border_mode,
+            border_constant=rest_border_value,
+            border_feathering=border_feathering,
+            distance_mode=distance_mode,
+            num_threads=num_threads,
+        )
+
     return combine_hue_and_rest_channels(hresult, rresult)
 
 
@@ -235,11 +361,17 @@ def interp_transformed_2d_lines(
     huemode_y: Optional[HueMode] = None,
     line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
-    border_mode: Optional[int] = None,
-    border_value: Optional[float] = None,
+    border_mode: BorderModeInput = BorderMode.CLAMP,
+    border_constant: BorderConstant = 0,
+    border_array: BorderArrayInput = None,
+    border_feathering: float = 0.0,
+    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
+    num_threads: int = -1,
     num_channels: Optional[int] = None,
+    *,
+    border_value: Optional[BorderConstant] = None,  # Legacy parameter
 ) -> np.ndarray:
-
     """
     Interpolate values between two lines using transformed coordinates.
     
@@ -247,18 +379,27 @@ def interp_transformed_2d_lines(
         line0: First line, shape (L, C)
         line1: Second line, shape (L, C)
         transformed: Transformed coordinates, shape (H, W, 2)
-        is_hue_space: Whether the data is in hue space
+        color_space: Color space of the data
         huemode_x: Hue interpolation mode for x-axis (if is_hue_space is True)
         huemode_y: Hue interpolation mode for y-axis (if is_hue_space is True)
         line_method: Interpolation line_method to use
         bound_types: List of BoundType for each channel or a single BoundType
-        border_mode: Border handling mode (e.g., BORDER_CLAMP, BORDER_REPEAT)
-        border_value: Border constant value for BORDER_CONSTANT mode
+        border_mode: Border handling mode (e.g., BorderMode.CLAMP, BorderMode.REPEAT)
+        border_constant: Border constant value for BORDER_CONSTANT mode
+        border_array: Optional array to use as border/background
+        border_feathering: Amount of feathering to apply at borders
+        feather_hue_mode: Hue mode to use when feathering hue values
+        distance_mode: Mode for calculating distance (for feathering)
+        num_threads: Number of threads to use (-1 for auto)
+        num_channels: Number of channels (inferred from color_space if not provided)
+        border_value: Legacy parameter, use border_constant instead
         
     Returns:
         Interpolated values, shape (H, W, C)
     """
-
+    # Handle legacy border_value parameter
+    border_constant = next((i for i in [border_value, border_constant] if i is not None), 0)
+    
     num_channels = num_channels or len(color_space)
 
     if is_hue_space(color_space):
@@ -276,7 +417,12 @@ def interp_transformed_2d_lines(
                 huemode_y=huemode_y,
                 bound_types=bound_types,
                 border_mode=border_mode,
-                border_value=border_value,
+                border_constant=border_constant,
+                border_array=border_array,
+                border_feathering=border_feathering,
+                feather_hue_mode=feather_hue_mode,
+                distance_mode=distance_mode,
+                num_threads=num_threads,
                 num_channels=num_channels,
             )
         else:
@@ -284,11 +430,15 @@ def interp_transformed_2d_lines(
                 line0,
                 line1,
                 transformed,
-                #huemode_x=huemode_x,
                 huemode_y=huemode_y,
                 bound_types=bound_types,
                 border_mode=border_mode,
-                border_value=border_value,
+                border_constant=border_constant,
+                border_array=border_array,
+                border_feathering=border_feathering,
+                feather_hue_mode=feather_hue_mode,
+                distance_mode=distance_mode,
+                num_threads=num_threads,
                 num_channels=num_channels,
             )
     else:
@@ -299,7 +449,11 @@ def interp_transformed_2d_lines(
                 transformed,
                 bound_types=bound_types,
                 border_mode=border_mode,
-                border_value=border_value,
+                border_constant=border_constant,
+                border_array=border_array,
+                border_feathering=border_feathering,
+                distance_mode=distance_mode,
+                num_threads=num_threads,
             )
         else:
             return _interp_transformed_non_hue_space_2d_lines_discrete(
@@ -308,5 +462,9 @@ def interp_transformed_2d_lines(
                 transformed,
                 bound_types=bound_types,
                 border_mode=border_mode,
-                border_value=border_value,
+                border_constant=border_constant,
+                border_array=border_array,
+                border_feathering=border_feathering,
+                distance_mode=distance_mode,
+                num_threads=num_threads,
             )

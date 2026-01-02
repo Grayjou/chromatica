@@ -1,9 +1,9 @@
 from ...chromatica.v2core.interp_hue import (
     hue_lerp_simple, 
-    hue_lerp_arrays, 
+
     hue_lerp_between_lines, 
     hue_lerp_between_lines_x_discrete, 
-    hue_multidim_lerp,
+
     hue_lerp_2d_spatial,)
 from ...chromatica.v2core.core import HueMode
 import numpy as np
@@ -68,33 +68,7 @@ def test_hue_lerp_1d_spatial():
     expected_longest = np.array([30.0, 97.5, 165.0, 232.5, 300.0])
     np.testing.assert_allclose(result_longest, expected_longest, atol=1e-5)
 
-def test_hue_lerp_arrays():
-    """
-    Vectorized 1D hue interpolation for arrays of hue pairs.
-    
-    Args:
-        h0_arr: Start hues, shape (M,)
-        h1_arr: End hues, shape (M,)
-        coeffs: Interpolation coefficients, shape (N,)
-        mode: Interpolation mode
-    
-    Returns:
-        Interpolated hues, shape (N, M)
-    """
-    W = 5
-    H = 4
-    h0_arr = np.linspace(0, 360, W)
-    h1_arr = (h0_arr + 150) % 360
-    coeffs = np.linspace(0, 1, H)
-    result = hue_lerp_arrays(
-        h0_arr,
-        h1_arr,
-        coeffs,
-        HueMode.SHORTEST
-    )
-    columns = [ (0, 50, 100, 150), (90, 140, 190, 240), (180, 230, 280, 330), (270, 320, 10, 60), (0, 50, 100, 150) ]
-    expected = np.array(columns).T
-    np.testing.assert_allclose(result, expected, atol=1e-5)
+
 
 def test_hue_lerp_between_lines():
     """
@@ -168,35 +142,7 @@ def test_hue_lerp_between_lines_x_discrete():
     expected = np.array(columns).T
     np.testing.assert_allclose(result, expected, atol=1e-5)
 
-def test_hue_multidim_lerp():
-    starts = np.array([0, 60, 120, 180])
-    ends = np.array([180, 240, 300, 360])
-    coeffs = unit_positional_basematrix_ndim(4,4,4).astype(np.float64)
-    with pytest.raises(NotImplementedError):
-        hue_multidim_lerp(
-            starts,
-            ends,
-            coeffs,
-            modes= np.array([HueMode.SHORTEST, HueMode.CW, HueMode.CCW])
-        )
 
-def test_hue_multidim_lerp_2d():
-    starts = np.array([0, 60])
-    ends = np.array([180, 240])
-    coeffs = unit_positional_basematrix_ndim(4,4).astype(np.float64)
-    result = hue_multidim_lerp(
-        starts,
-        ends,
-        coeffs,
-        modes= np.array([HueMode.CW, HueMode.CCW]) #Y CW, X CCW 
-    )
-    expected = np.array([
-        [0.0, 260.0, 160.0, 60.0],
-        [60.0, 320.0, 220.0, 120.0],
-        [120.0, 20.0, 280.0, 180.0],
-        [180.0, 80.0, 340.0, 240.0],
-    ])
-    np.testing.assert_allclose(result, expected, atol=1e-5)
     
 def test_hue_lerp_2d_spatial_transformed():
     starts = np.array([0, 120]).astype(np.float64)

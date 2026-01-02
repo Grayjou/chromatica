@@ -2,10 +2,10 @@ import numpy as np
 
 from ...chromatica.v2core.interp_hue_.wrappers import (
     # Lines
-    hue_lerp_between_lines_typed,
-    hue_lerp_between_lines_typed_x_discrete,
+    hue_lerp_between_lines,
+    hue_lerp_between_lines_x_discrete,
     # Corners
-    hue_lerp_from_corners_typed,
+    hue_lerp_from_corners,
 )
 
 
@@ -29,7 +29,7 @@ def test_hue_corners_grid_matches_expected():
         dtype=np.float64,
     )
 
-    result = hue_lerp_from_corners_typed(corners, coords)
+    result = hue_lerp_from_corners(corners, coords)
     expected = np.array([[0.0, 90.0], [180.0, 270.0]], dtype=np.float64)
 
     assert np.allclose(result, expected)
@@ -37,14 +37,14 @@ def test_hue_corners_grid_matches_expected():
 
 def test_hue_corners_center_shortest_path():
     corners = np.array([0.0, 90.0, 180.0, 270.0], dtype=np.float64)
-    coords = np.array([[0.5, 0.5]], dtype=np.float64)
+    coords = np.array([[[0.5, 0.5]]], dtype=np.float64)
 
-    result = hue_lerp_from_corners_typed(corners, coords)
-
+    result = hue_lerp_from_corners(corners, coords)
+    print(result)
     top = _hue_lerp(0.0, 90.0, 0.5)
     bottom = _hue_lerp(180.0, 270.0, 0.5)
     expected = _hue_lerp(top, bottom, 0.5)
-
+    print(expected)
     assert np.allclose(result, expected)
 
 
@@ -52,7 +52,7 @@ def test_hue_corners_wraparound_shortest_path():
     corners = np.array([350.0, 10.0, 20.0, 40.0], dtype=np.float64)
     coords = np.array([[0.5, 0.5]], dtype=np.float64)
 
-    result = hue_lerp_from_corners_typed(corners, coords)
+    result = hue_lerp_from_corners(corners, coords)
 
     top = _hue_lerp(350.0, 10.0, 0.5)
     bottom = _hue_lerp(20.0, 40.0, 0.5)

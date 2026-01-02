@@ -9,13 +9,13 @@ from enum import IntEnum
 
 from boundednumbers import BoundType, bound_type_to_np_function
 from ..types.array_types import ndarray_1d
-from .corner_interp_2d import lerp_from_corners # type: ignore
+
 from .interp_2d import (
     lerp_from_corners,
     lerp_between_lines,
-    lerp_between_lines_x_discrete_1ch,
+
     lerp_between_lines_x_discrete_multichannel,
-    lerp_between_planes,
+
 )
 from .interp_hue import (  # type: ignore
     hue_lerp_between_lines,
@@ -31,8 +31,7 @@ from .core import (
     apply_bounds
 )
 from .border_handler import (
-    handle_border_edges_2d,
-    handle_border_lines_2d,
+
     BorderMode
 )
 
@@ -134,52 +133,6 @@ def sample_between_lines_continuous(
     # Detect if single or multi-channel
     # lerp_bertween_lines now detects this internally
     return lerp_between_lines(line0, line1, coords, border_mode=border_mode, border_constant=border_constant)
-
-
-def sample_between_lines_discrete(
-    line0: LineArray,
-    line1: LineArray,
-    coords: Union[CoordArray2D, CoordArrayFlat],
-    bound_type: BoundType = BoundType.CLAMP,
-    border_mode: BorderMode = BorderMode.OVERFLOW,
-    border_constant: Optional[float] = None,
-) -> np.ndarray:
-    """
-    Sample between two pre-computed gradient lines with discrete x-sampling.
-    
-    More efficient when the x-coordinate maps directly to line indices
-    (e.g., when L == W).
-    
-    Args:
-        line0: First gradient line, shape (L,) or (L, C)
-        line1: Second gradient line, shape (L,) or (L, C)
-        coords: Coordinate grid, shape (H, W, 2) or (N, 2)
-                coords[..., 0] = u_x (maps to nearest index in lines)
-                coords[..., 1] = u_y (blend between lines)
-        bound_type: How to bound coordinates
-        
-    Returns:
-        Sampled values, shape matching coords spatial dims + channels if any
-    """
-    border_mode = _optimize_border_mode(bound_type, border_mode)
-    line0 = np.asarray(line0, dtype=np.float64)
-    line1 = np.asarray(line1, dtype=np.float64)
-    coords = np.asarray(coords, dtype=np.float64)
-    coords = _apply_bound(coords, bound_type)
-    
-    # Detect if single or multi-channel
-    if line0.ndim == 1:
-        # Coordinates must be 3D for the Cython function
-        if coords.ndim == 2:
-            # Flat coords not supported for discrete version yet
-            raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines_x_discrete_1ch(line0, line1, coords, border_mode=border_mode, border_constant=border_constant or 0.0)
-    elif line0.ndim == 2:
-        if coords.ndim == 2:
-            raise NotImplementedError("Discrete line sampling only supports grid coords (H, W, 2)")
-        return lerp_between_lines_x_discrete_multichannel(line0, line1, coords, border_mode=border_mode, border_constant=border_constant)
-    else:
-        raise ValueError(f"Unsupported line dimensions: {line0.ndim}")
 
 
 # =============================================================================
@@ -397,31 +350,7 @@ def multival2d_lerp_from_corners(
     )
 
 
-# =============================================================================
-# Plane Interpolation
-# =============================================================================
-def sample_between_planes(
-    plane0: np.ndarray,
-    plane1: np.ndarray,
-    coords: np.ndarray,
-    bound_type: BoundType = BoundType.CLAMP,
-) -> np.ndarray:
-    """
-    Sample between two pre-computed gradient planes.
-    
-    Args:
-        plane0: First gradient plane, shape (H, W) or (H, W, C)
-        plane1: Second gradient plane, shape (H, W) or (H, W, C)
-        coords: Coordinate grid, shape (D, H, W, 3)
-                coords[..., 0] = u_x, coords[..., 1] = u_y, coords[..., 2] = u_z
-        bound_type: How to bound coordinates
-        
-    Returns:
-        Sampled values, shape (D, H, W) or (D, H, W, C)
-    """
-    coords = np.asarray(coords, dtype=np.float64)
-    coords = _apply_bound(coords, bound_type)
-    return lerp_between_planes(plane0, plane1, coords)
+
 
 
 # =============================================================================
@@ -434,7 +363,7 @@ from .core import (
 __all__ = [
     # Regular line interpolation
     'sample_between_lines_continuous',
-    'sample_between_lines_discrete',
+
     
     # Hue line interpolation
     'sample_hue_between_lines_continuous',
@@ -445,8 +374,7 @@ __all__ = [
     'multival2d_lerp_between_lines_discrete',
     'multival2d_lerp_from_corners',
     
-    # Plane interpolation
-    'sample_between_planes',
+
     
     # Re-exports
     'multival2d_lerp',

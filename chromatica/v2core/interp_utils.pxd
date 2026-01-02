@@ -135,3 +135,47 @@ cdef inline Py_ssize_t compute_interp_idx(f64 u_x, Py_ssize_t L, f64* frac) noex
         frac[0] = 1.0
     
     return idx_lo
+
+
+cdef struct BorderResult1D:
+    f64 u_final
+    f64 blend_factor
+    bint use_border_directly
+
+
+cdef inline BorderResult1D process_border_1d(
+    f64 u, int bmode, f64 feathering
+) noexcept nogil:
+    """
+    Process 1D border handling and feathering.
+    
+    Uses compute_extra_1d and handle_border_1d from interp_utils.
+    """
+    cdef BorderResult1D res
+    cdef f64 extra
+    
+    res.use_border_directly = False
+    res.blend_factor = 0.0
+    
+    if bmode == BORDER_CONSTANT:
+        extra = compute_extra_1d(u)
+        if extra <= 0.0:
+            res.u_final = u
+        elif feathering <= 0.0 or extra >= feathering:
+            res.use_border_directly = True
+            res.blend_factor = 1.0
+        else:
+            res.u_final = clamp_01(u)
+            res.blend_factor = extra / feathering
+    
+    elif bmode == BORDER_CLAMP:
+        res.u_final = clamp_01(u)
+    
+    elif bmode == BORDER_OVERFLOW:
+        res.u_final = u
+        res.use_border_directly = (u < 0.0 or u > 1.0)
+    
+    else:  # REPEAT or MIRROR
+        res.u_final = handle_border_1d(u, bmode)
+    
+    return res

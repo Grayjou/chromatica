@@ -5,13 +5,10 @@
 Hue interpolation with cyclical color space support.
 
 Supports four interpolation modes per dimension:
-- CW (0): Clockwise interpolation (always positive direction)
-- CCW (1): Counterclockwise interpolation (always negative direction)
-- SHORTEST (2): Shortest angular distance (≤180°)
-- LONGEST (3): Longest angular distance (≥180°)
-
-Functions in this module handle hue interpolation in multi-dimensional spaces
-with proper handling of the cyclical nature of hue values (0-360° range).
+- CW (1): Clockwise interpolation (always positive direction)
+- CCW (2): Counterclockwise interpolation (always negative direction)
+- SHORTEST (3): Shortest angular distance (≤180°)
+- LONGEST (4): Longest angular distance (≥180°)
 """
 
 import numpy as np
@@ -22,8 +19,7 @@ from libc.stdlib cimport malloc, free
 from cython.parallel cimport prange
 
 # Import border handling and modern features
-from ..border_handling cimport (
-    handle_border_lines_2d,
+from ..border_handling_ cimport (
     BORDER_REPEAT,
     BORDER_MIRROR,
     BORDER_CONSTANT,
@@ -45,7 +41,6 @@ from ..interp_utils cimport (
 from .interp_hue_utils cimport (
     f64,                   
     i32,                   
-    HueMode,
     HUE_CW,
     HUE_CCW,
     HUE_SHORTEST,
@@ -58,6 +53,7 @@ from .interp_hue_utils cimport (
     process_hue_border_2d,
 )
 
+
 # =============================================================================
 # Modern Hue Kernels with Feathering and Border Support
 # =============================================================================
@@ -67,7 +63,8 @@ cdef inline void _lerp_1ch_hue_feathered_kernel(
     f64 border_constant, f64 border_feathering,
     Py_ssize_t H, Py_ssize_t W, Py_ssize_t L,
     int border_mode, int num_threads,
-    int mode_x, int mode_y,
+    i32 mode_x, i32 mode_y,
+    i32 feather_hue_mode,  # NEW: hue mode for feathering blend
     i32 distance_mode,
 ) noexcept nogil:
     """Single-channel hue interpolation with feathering and modern border support."""
@@ -90,11 +87,10 @@ cdef inline void _lerp_1ch_hue_feathered_kernel(
                                                border_res.u_y_final, L,
                                                mode_x, mode_y)
                 if border_res.blend_factor > 0.0:
-                    # Blend with border using shortest hue path
                     border_val_wrapped = wrap_hue(border_constant)
                     out_mv[h, w] = lerp_hue_single(edge_val, border_val_wrapped,
                                                    border_res.blend_factor,
-                                                   HUE_SHORTEST)
+                                                   feather_hue_mode)  # FIXED
                 else:
                     out_mv[h, w] = edge_val
 
@@ -105,7 +101,8 @@ cdef inline void _lerp_1ch_hue_array_border_kernel(
     const f64[:, ::1] border_array_mv, f64 border_feathering,
     Py_ssize_t H, Py_ssize_t W, Py_ssize_t L,
     int border_mode, int num_threads,
-    int mode_x, int mode_y,
+    i32 mode_x, i32 mode_y,
+    i32 feather_hue_mode,  # NEW: hue mode for feathering blend
     i32 distance_mode,
 ) noexcept nogil:
     """Hue interpolation with array-based border values and feathering."""
@@ -131,7 +128,7 @@ cdef inline void _lerp_1ch_hue_array_border_kernel(
                     border_val_wrapped = wrap_hue(border_array_mv[h, w])
                     out_mv[h, w] = lerp_hue_single(edge_val, border_val_wrapped,
                                                    border_res.blend_factor,
-                                                   HUE_SHORTEST)
+                                                   feather_hue_mode)  # FIXED
                 else:
                     out_mv[h, w] = edge_val
 
@@ -139,7 +136,7 @@ cdef inline void _lerp_1ch_hue_array_border_kernel(
 # =============================================================================
 # 2D Hue Interpolation: coeffs (H, W, N), modes (N,) -> output (H, W)
 # =============================================================================
-cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
+cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(
     np.ndarray[f64, ndim=1] starts,
     np.ndarray[f64, ndim=1] ends,
     np.ndarray[f64, ndim=3] coeffs,
@@ -147,9 +144,16 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
 ):
     """
     Multi-dimensional hue interpolation over a 2D spatial grid.
-    ... (rest of docstring)
+    
+    Args:
+        starts: Start hue values for corner pairs, shape (2^{N-1},)
+        ends: End hue values for corner pairs, shape (2^{N-1},)
+        coeffs: Interpolation coefficients, shape (H, W, N)
+        modes: Interpolation mode for each dimension, shape (N,)
+    
+    Returns:
+        np.ndarray: Interpolated hue values, shape (H, W)
     """
-    # ... rest of function body unchanged ...
     cdef Py_ssize_t H = coeffs.shape[0]
     cdef Py_ssize_t W = coeffs.shape[1]
     cdef Py_ssize_t num_dims = coeffs.shape[2]
@@ -259,28 +263,40 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_spatial(   # <-- ADD RETURN TYPE
 
 
 # =============================================================================
-# Hue interpolation between lines (Section 6 style)
+# Hue interpolation between lines (WITH FEATHER HUE MODE)
 # =============================================================================
 cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(
     np.ndarray[f64, ndim=1] line0,
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
-    int mode_x = HUE_SHORTEST,
-    int mode_y = HUE_SHORTEST,
-    object border_mode = 'clamp',
+    i32 mode_x = HUE_SHORTEST,
+    i32 mode_y = HUE_SHORTEST,
+    int border_mode = BORDER_CLAMP,
     f64 border_constant = 0.0,
     f64 border_feathering = 0.0,
-    object distance_mode = 'euclidean',
+    i32 feather_hue_mode = HUE_SHORTEST,  # NEW PARAMETER
+    i32 distance_mode = ALPHA_MAX,
     int num_threads = 1,
 ):
     """
     Interpolate hue between two 1D hue lines with 2D coordinate mapping.
-
-    Adds border feathering, distance mode selection, and threaded execution
-    using the modern border processor. Border modes accept either string
-    identifiers ("constant", "clamp", "reflect", "periodic") or integer
-    constants. Distance mode accepts strings or integer constants from
-    `interp_utils`.
+    
+    Args:
+        line0: First hue line, shape (L,)
+        line1: Second hue line, shape (L,)
+        coords: Coordinate grid, shape (H, W, 2)
+        mode_x: Hue interpolation mode for X axis (int enum)
+        mode_y: Hue interpolation mode for Y axis (int enum)
+        border_mode: Border handling mode (int enum)
+        border_constant: Constant value for BORDER_CONSTANT mode
+        border_feathering: Feathering distance for smooth border blend
+        feather_hue_mode: Hue interpolation mode for feathering blend (int enum)
+                          Controls how edge color blends with border constant
+        distance_mode: Distance metric for feathering (int enum)
+        num_threads: Number of threads (-1 for auto)
+    
+    Returns:
+        np.ndarray: Interpolated hue values, shape (H, W)
     """
     cdef Py_ssize_t L = line0.shape[0]
     cdef Py_ssize_t H = coords.shape[0]
@@ -304,42 +320,53 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines(
         n_threads = os.cpu_count() or 4
     elif n_threads == 0:
         n_threads = 1
-
-    cdef int border_mode_int = _border_mode_to_int(border_mode)
-    cdef i32 dist_mode_int = _distance_mode_to_int(distance_mode)
     
     cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
     
     _lerp_1ch_hue_feathered_kernel(
         line0, line1, coords, out,
         border_constant, border_feathering,
-        H, W, L, border_mode_int, n_threads,
-        mode_x, mode_y, dist_mode_int,
+        H, W, L, border_mode, n_threads,
+        mode_x, mode_y,
+        feather_hue_mode,  # Pass through
+        distance_mode,
     )
     
     return out
 
 
 # =============================================================================
-# Hue interpolation between lines with discrete x-sampling (Section 6 style)
+# Hue interpolation between lines with discrete x-sampling
 # =============================================================================
 cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
     np.ndarray[f64, ndim=1] line0,
     np.ndarray[f64, ndim=1] line1,
     np.ndarray[f64, ndim=3] coords,
-    int mode_y = HUE_SHORTEST,
-    object border_mode = 'clamp',
+    i32 mode_y = HUE_SHORTEST,
+    int border_mode = BORDER_CLAMP,
     f64 border_constant = 0.0,
     f64 border_feathering = 0.0,
-    object distance_mode = 'euclidean',
+    i32 feather_hue_mode = HUE_SHORTEST,  # NEW PARAMETER
+    i32 distance_mode = ALPHA_MAX,
     int num_threads = 1,
 ):
     """
     Interpolate hue between two 1D hue lines with nearest-neighbor x-sampling.
-
-    Upgraded to use modern border handling with feathering and distance modes.
-    Accepts border/distance identifiers as strings or ints and supports
-    threaded execution.
+    
+    Args:
+        line0: First hue line, shape (L,)
+        line1: Second hue line, shape (L,)
+        coords: Coordinate grid, shape (H, W, 2)
+        mode_y: Hue interpolation mode for Y axis (int enum)
+        border_mode: Border handling mode (int enum)
+        border_constant: Constant value for BORDER_CONSTANT mode
+        border_feathering: Feathering distance
+        feather_hue_mode: Hue interpolation mode for feathering blend (int enum)
+        distance_mode: Distance metric for feathering (int enum)
+        num_threads: Number of threads (-1 for auto)
+    
+    Returns:
+        np.ndarray: Interpolated hue values, shape (H, W)
     """
     cdef Py_ssize_t L = line0.shape[0]
     cdef Py_ssize_t H = coords.shape[0]
@@ -364,8 +391,6 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
     elif n_threads == 0:
         n_threads = 1
 
-    cdef int border_mode_int = _border_mode_to_int(border_mode)
-    cdef i32 dist_mode_int = _distance_mode_to_int(distance_mode)
     cdef f64 wrapped_border = wrap_hue(border_constant)
 
     cdef f64[::1] l0 = line0
@@ -389,8 +414,8 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
                 u_x = c[h, w, 0]
                 u_y = c[h, w, 1]
                 
-                border_res = process_hue_border_2d(u_x, u_y, border_mode_int,
-                                                   border_feathering, dist_mode_int)
+                border_res = process_hue_border_2d(u_x, u_y, border_mode,
+                                                   border_feathering, distance_mode)
                 if border_res.use_border_directly:
                     out_mv[h, w] = wrapped_border
                     continue
@@ -399,7 +424,7 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
                 if border_res.blend_factor > 0.0:
                     out_mv[h, w] = lerp_hue_single(edge_val, wrapped_border,
                                                    border_res.blend_factor,
-                                                   HUE_SHORTEST)
+                                                   feather_hue_mode)  # FIXED
                 else:
                     out_mv[h, w] = edge_val
         return out
@@ -409,8 +434,8 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
             u_x = c[h, w, 0]
             u_y = c[h, w, 1]
             
-            border_res = process_hue_border_2d(u_x, u_y, border_mode_int,
-                                               border_feathering, dist_mode_int)
+            border_res = process_hue_border_2d(u_x, u_y, border_mode,
+                                               border_feathering, distance_mode)
             if border_res.use_border_directly:
                 out_mv[h, w] = wrapped_border
                 continue
@@ -431,7 +456,7 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_x_discrete(
                 border_val = wrapped_border
                 out_mv[h, w] = lerp_hue_single(edge_val, border_val,
                                                border_res.blend_factor,
-                                               HUE_SHORTEST)
+                                               feather_hue_mode)  # FIXED
             else:
                 out_mv[h, w] = edge_val
 
@@ -450,26 +475,15 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_with_modes(
     """
     2D grid interpolation with per-pixel start, end, coefficient, and mode.
     
-    Each pixel in the output is interpolated independently using its own
-    start hue, end hue, interpolation coefficient, and interpolation mode.
-    
     Args:
         h0_grid: Grid of start hue values, shape (H, W)
         h1_grid: Grid of end hue values, shape (H, W)
-                 Must match shape of h0_grid
         coeffs: Grid of interpolation coefficients, shape (H, W)
-                Each coefficient should typically be in [0, 1]
         modes: Grid of interpolation modes, shape (H, W)
-               Each element must be one of:
-               0=CW, 1=CCW, 2=SHORTEST, 3=LONGEST
+               1=CW, 2=CCW, 3=SHORTEST, 4=LONGEST
     
     Returns:
         np.ndarray: Interpolated hue grid, shape (H, W)
-                    Values are wrapped to [0, 360) range.
-    
-    Notes:
-        - Useful for spatial varying interpolation parameters
-        - Each pixel's interpolation is independent
     """
     cdef Py_ssize_t H = h0_grid.shape[0]
     cdef Py_ssize_t W = h0_grid.shape[1]
@@ -512,111 +526,4 @@ cpdef np.ndarray[f64, ndim=2] hue_lerp_2d_with_modes(
             h1_adj = adjust_end_for_mode(h0, h1, mode)
             out_mv[h, w] = wrap_hue(h0 + u * (h1_adj - h0))
     
-    return out
-
-# =============================================================================
-# Helper Functions for Mode Conversion
-# =============================================================================
-cdef i32 _distance_mode_to_int(object distance_mode):
-    """Convert distance mode identifier (str/int) to integer constant."""
-    if isinstance(distance_mode, str):
-        if distance_mode == 'max_norm':
-            return MAX_NORM
-        elif distance_mode == 'manhattan':
-            return MANHATTAN
-        elif distance_mode == 'scaled_manhattan':
-            return SCALED_MANHATTAN
-        elif distance_mode == 'alpha_max':
-            return ALPHA_MAX
-        elif distance_mode == 'alpha_max_simple':
-            return ALPHA_MAX_SIMPLE
-        elif distance_mode == 'taylor':
-            return TAYLOR
-        elif distance_mode == 'euclidean':
-            return EUCLIDEAN
-        elif distance_mode == 'weighted_minmax':
-            return WEIGHTED_MINMAX
-        else:
-            return ALPHA_MAX  # Default
-    try:
-        return <i32>distance_mode
-    except Exception:
-        return ALPHA_MAX
-
-
-cdef int _border_mode_to_int(object border_mode):
-    """Convert border mode identifier (str/int) to integer constant."""
-    if isinstance(border_mode, str):
-        if border_mode == 'constant':
-            return BORDER_CONSTANT
-        elif border_mode == 'clamp':
-            return BORDER_CLAMP
-        elif border_mode == 'reflect':
-            return BORDER_MIRROR
-        elif border_mode == 'periodic':
-            return BORDER_REPEAT
-        else:
-            return BORDER_CONSTANT  # Default
-    try:
-        return <int>border_mode
-    except Exception:
-        return BORDER_CONSTANT
-
-
-# =============================================================================
-# Public API: Modern Feathered Hue Interpolation
-# =============================================================================
-cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_feathered(
-    np.ndarray[f64, ndim=1] l0,
-    np.ndarray[f64, ndim=1] l1,
-    np.ndarray[f64, ndim=3] c,
-    f64 border_constant,
-    f64 border_feathering=0.0,
-    str border_mode='constant',
-    int mode_x=HUE_SHORTEST,
-    int mode_y=HUE_SHORTEST,
-    str distance_mode='euclidean',
-    int num_threads=1,
-):
-    """Hue interpolation with feathering and constant border value."""
-    cdef Py_ssize_t H = c.shape[0], W = c.shape[1], L = l0.shape[0]
-    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
-    cdef i32 dist_mode_int = _distance_mode_to_int(distance_mode)
-    cdef int border_mode_int = _border_mode_to_int(border_mode)
-    
-    _lerp_1ch_hue_feathered_kernel(
-        l0, l1, c, out,
-        border_constant, border_feathering,
-        H, W, L, border_mode_int, num_threads,
-        mode_x, mode_y, dist_mode_int,
-    )
-    return out
-
-
-cpdef np.ndarray[f64, ndim=2] hue_lerp_between_lines_array_border(
-    np.ndarray[f64, ndim=1] l0,
-    np.ndarray[f64, ndim=1] l1,
-    np.ndarray[f64, ndim=3] c,
-    np.ndarray[f64, ndim=2] border_array,
-    f64 border_feathering=0.0,
-    str border_mode='constant',
-    int mode_x=HUE_SHORTEST,
-    int mode_y=HUE_SHORTEST,
-    str distance_mode='euclidean',
-    int num_threads=1,
-):
-    """Hue interpolation with array-based border values."""
-    if border_array.shape[0] != c.shape[0] or border_array.shape[1] != c.shape[1]:
-        raise ValueError("border_array shape must match c[:, :, 0]")
-    
-    cdef Py_ssize_t H = c.shape[0], W = c.shape[1], L = l0.shape[0]
-    cdef np.ndarray[f64, ndim=2] out = np.empty((H, W), dtype=np.float64)
-    cdef i32 dist_mode_int = _distance_mode_to_int(distance_mode)
-    cdef int border_mode_int = _border_mode_to_int(border_mode)
-    
-    _lerp_1ch_hue_array_border_kernel(
-        l0, l1, c, out, border_array, border_feathering,
-        H, W, L, border_mode_int, num_threads,
-        mode_x, mode_y, dist_mode_int,
-    )
     return out
