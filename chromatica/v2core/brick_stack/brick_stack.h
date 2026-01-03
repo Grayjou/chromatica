@@ -4,42 +4,41 @@
 
 #include <stdint.h>
 
-// Structure to hold brick stack interval data
 typedef struct {
-    double* y_boundaries;      // Row boundaries [0, ..., 1]
-    int num_rows;              // Number of rows (num_y_boundaries - 1)
-    
-    double** x_boundaries;     // Array of x-boundary arrays per row
-    int* num_bricks_per_row;   // Number of bricks in each row
+    double start;
+    double end;
+    int brick_count;
+    double* brick_ends;  // Cumulative lengths up to 1.0
+} BrickRow;
+
+typedef struct {
+    int row_count;
+    BrickRow* rows;
+    double* row_ends;  // Cumulative heights up to 1.0
 } BrickStack;
 
-// Result for a single point lookup
 typedef struct {
-    int brick_idx;
     int row_idx;
+    int brick_idx;
     double rel_x;
     double rel_y;
-} BrickLookupResult;
+} BrickPosition;
 
-// Initialize brick stack from interval data
-BrickStack* brick_stack_create(
-    const double* y_bounds, int num_y_bounds,
-    const double** x_bounds_per_row, const int* num_x_bounds_per_row
-);
+// Create a brick stack from partition data
+BrickStack* create_brick_stack(int row_count, double* row_ends, 
+                               int* brick_counts, double** brick_arrays);
 
 // Free brick stack memory
-void brick_stack_free(BrickStack* stack);
+void free_brick_stack(BrickStack* stack);
 
-// Lookup single point
-BrickLookupResult brick_stack_lookup(const BrickStack* stack, double x, double y);
+// Find brick position for normalized coordinates
+BrickPosition find_brick_position(const BrickStack* stack, double x, double y);
 
-// Process entire WxHx2 position matrix
-void brick_stack_process_matrix(
-    const BrickStack* stack,
-    const double* positions,    // Flattened WxHx2: [x0,y0, x1,y1, ...]
-    int W, int H,
-    int32_t* out_pertinency,    // Flattened WxHx2: [brick0,row0, brick1,row1, ...]
-    double* out_relative        // Flattened WxHx2: [relx0,rely0, relx1,rely1, ...]
-);
+// Process scrambled matrix in parallel
+void process_scrambled_matrix(const BrickStack* stack, 
+                             double* scrambled_coords,  // WxHx2
+                             int width, int height,
+                             int* brick_indices,        // WxHx2 output
+                             double* rel_positions);    // WxHx2 output
 
-#endif // BRICK_STACK_H
+#endif
