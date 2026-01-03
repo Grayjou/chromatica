@@ -4,15 +4,15 @@
 from __future__ import annotations
 from typing import Optional
 import numpy as np
-from ....types.color_types import ColorSpaces, is_hue_space, HueDirection
+from ....types.color_types import ColorModes, is_hue_space, HueDirection
 
 
 def get_reusable_slice(
     cached_value: Optional[np.ndarray],
     start_idx: int,
     end_idx: int,
-    current_space: ColorSpaces,
-    target_space: ColorSpaces,
+    current_space: ColorModes,
+    target_space: ColorModes,
     current_hue_dir: Optional[HueDirection],
     target_hue_dir: Optional[HueDirection]
 ) -> Optional[np.ndarray]:

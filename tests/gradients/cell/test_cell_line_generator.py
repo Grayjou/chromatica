@@ -5,7 +5,7 @@ from typing import cast
 from ....chromatica.gradients.gradient2dv2.generators.cell_lines import LinesCellFactory
 from ....chromatica.gradients.gradient2dv2.cell.lines import LinesCell
 from ....chromatica.gradients.gradient2dv2.partitions import PerpendicularPartition, PartitionInterval, IndexRoundingMode
-from ....chromatica.types.color_types import ColorSpace, HueMode
+from ....chromatica.types.color_types import ColorMode, HueDirection
 from ....chromatica.types.format_type import FormatType
 from ....chromatica.conversions import np_convert
 from boundednumbers import BoundType
@@ -32,9 +32,9 @@ class TestLinesCellFactory:
             height=4,
             top_line=top_line,
             bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
-            hue_direction_x=HueMode.CW,
-            hue_direction_y=HueMode.CW,
+            color_mode=ColorMode.RGB,
+            hue_direction_x=HueDirection.CW,
+            hue_direction_y=HueDirection.CW,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
             input_format=FormatType.FLOAT,
             boundtypes=BoundType.CLAMP,
@@ -55,9 +55,9 @@ class TestLinesCellFactory:
         assert np.array_equal(factory.bottom_line, bottom_line)
         assert factory.width == 3
         assert factory.height == 4
-        assert factory.color_space == ColorSpace.RGB
-        assert factory.hue_direction_x == HueMode.CW
-        assert factory.hue_direction_y == HueMode.CW
+        assert factory.color_mode == ColorMode.RGB
+        assert factory.hue_direction_x == HueDirection.CW
+        assert factory.hue_direction_y == HueDirection.CW
         assert factory.line_method == LineInterpMethods.LINES_CONTINUOUS
     
     def test_property_synchronization(self):
@@ -68,7 +68,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -89,11 +89,11 @@ class TestLinesCellFactory:
         assert np.array_equal(cell.bottom_line, new_bottom_line)
         
         # Test other property syncs
-        factory.hue_direction_x = HueMode.CCW
-        assert cell.hue_direction_x == HueMode.CCW
+        factory.hue_direction_x = HueDirection.CCW
+        assert cell.hue_direction_x == HueDirection.CCW
         
-        factory.hue_direction_y = HueMode.CW
-        assert cell.hue_direction_y == HueMode.CW
+        factory.hue_direction_y = HueDirection.CW
+        assert cell.hue_direction_y == HueDirection.CW
         
         factory.line_method = LineInterpMethods.LINES_DISCRETE
         assert cell.line_method == LineInterpMethods.LINES_DISCRETE
@@ -114,7 +114,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -137,7 +137,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -166,7 +166,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -185,7 +185,7 @@ class TestLinesCellFactory:
         factory2 = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         value2 = factory2.get_value()
@@ -201,7 +201,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=2, height=3,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -217,7 +217,7 @@ class TestLinesCellFactory:
         factory.height = 5
         assert factory._cell is None
     
-    def test_color_space_conversion(self):
+    def test_color_mode_conversion(self):
         """Test color space conversion."""
         # Start with RGB colors
         top_line = np.array([[1.0, 0, 0], [0.5, 0, 0], [0.0, 0, 0]])
@@ -226,17 +226,17 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
         # Convert to HSV
-        factory.color_space = ColorSpace.HSV
+        factory.color_mode = ColorMode.HSV
         
         # Verify conversion happened
-        assert factory.color_space == ColorSpace.HSV
-        #Gotta set huemode_y if color space is hue space
-        factory.hue_direction_y = HueMode.CCW
+        assert factory.color_mode == ColorMode.HSV
+        #Gotta set hue_direction_y if color space is hue space
+        factory.hue_direction_y = HueDirection.CCW
         # Get value in HSV space
         value = factory.get_value()
         assert value is not None
@@ -250,10 +250,10 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
-            hue_direction_x=HueMode.CW,
-            hue_direction_y=HueMode.CCW,
+            hue_direction_x=HueDirection.CW,
+            hue_direction_y=HueDirection.CCW,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
             boundtypes=BoundType.CLAMP,
         )
@@ -262,24 +262,24 @@ class TestLinesCellFactory:
         copy_factory = factory.copy_with(
             width=5,
             height=6,
-            hue_direction_x=HueMode.CCW,
+            hue_direction_x=HueDirection.CCW,
             line_method=LineInterpMethods.LINES_DISCRETE,
         )
         
         # Verify original unchanged
         assert factory.width == 3
         assert factory.height == 4
-        assert factory.hue_direction_x == HueMode.CW
+        assert factory.hue_direction_x == HueDirection.CW
         assert factory.line_method == LineInterpMethods.LINES_CONTINUOUS
         
         # Verify copy has new values
         assert copy_factory.width == 5
         assert copy_factory.height == 6
-        assert copy_factory.hue_direction_x == HueMode.CCW
+        assert copy_factory.hue_direction_x == HueDirection.CCW
         assert copy_factory.line_method == LineInterpMethods.LINES_DISCRETE
         
         # Verify some properties remain the same
-        assert copy_factory.color_space == factory.color_space
+        assert copy_factory.color_mode == factory.color_mode
         assert copy_factory.hue_direction_y == factory.hue_direction_y
         assert np.array_equal(copy_factory.top_line, factory.top_line)
         assert np.array_equal(copy_factory.bottom_line, factory.bottom_line)
@@ -304,13 +304,13 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=5, height=3,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
 
         # Create partition: [0, 0.5] = RGB, (0.5, 1] = HSV
         pi1 = PartitionInterval("rgb")
-        pi2 = PartitionInterval("hsv", hue_direction_x=HueMode.CCW, hue_direction_y=HueMode.CW)
+        pi2 = PartitionInterval("hsv", hue_direction_x=HueDirection.CCW, hue_direction_y=HueDirection.CW)
         pp = PerpendicularPartition(breakpoints=[0.5], values=[pi1, pi2])
 
         # Partition with default padding (1)
@@ -325,8 +325,8 @@ class TestLinesCellFactory:
         assert factory1.height == factory2.height == 3
 
         # === Color space checks ===
-        assert factory1.color_space == ColorSpace.RGB
-        assert factory2.color_space == ColorSpace.HSV
+        assert factory1.color_mode == ColorMode.RGB
+        assert factory2.color_mode == ColorMode.HSV
 
         # === Factory1 line checks (RGB, no conversion needed) ===
         # Factory1 gets indices 0, 1, 2
@@ -338,15 +338,15 @@ class TestLinesCellFactory:
         # Convert back to RGB for comparison
         factory2_top_rgb = np_convert(
             factory2.top_line, 
-            from_space=ColorSpace.HSV, 
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV, 
+            to_space=ColorMode.RGB,
             input_type='float', 
             output_type='float'
         )
         factory2_bottom_rgb = np_convert(
             factory2.bottom_line,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
@@ -383,13 +383,13 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=6, height=2,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
 
         # Three intervals: RGB -> HSV -> RGB
         pi1 = PartitionInterval("rgb")
-        pi2 = PartitionInterval("hsv", hue_direction_y=HueMode.CCW)
+        pi2 = PartitionInterval("hsv", hue_direction_y=HueDirection.CCW)
         pi3 = PartitionInterval("rgb")
         pp = PerpendicularPartition(breakpoints=[1/3, 2/3], values=[pi1, pi2, pi3])
 
@@ -404,9 +404,9 @@ class TestLinesCellFactory:
         )
 
         # === Color space checks ===
-        assert factory1.color_space == ColorSpace.RGB
-        assert factory2.color_space == ColorSpace.HSV
-        assert factory3.color_space == ColorSpace.RGB
+        assert factory1.color_mode == ColorMode.RGB
+        assert factory2.color_mode == ColorMode.HSV
+        assert factory3.color_mode == ColorMode.RGB
 
         # === Dimension checks ===
         # Base widths: [3, 2, 1]
@@ -419,11 +419,11 @@ class TestLinesCellFactory:
         assert factory3.width == 2
 
         # === Helper to convert to RGB for comparison ===
-        def to_rgb(line: np.ndarray, from_space: ColorSpace) -> np.ndarray:
-            if from_space == ColorSpace.RGB:
+        def to_rgb(line: np.ndarray, from_space: ColorMode) -> np.ndarray:
+            if from_space == ColorMode.RGB:
                 return line
             return np_convert(
-                line, from_space=from_space, to_space=ColorSpace.RGB,
+                line, from_space=from_space, to_space=ColorMode.RGB,
                 input_type='float', output_type='float'
             )
 
@@ -432,7 +432,7 @@ class TestLinesCellFactory:
         boundary_1_2_expected = top_line[2]
         
         factory1_right_boundary = factory1.top_line[-1]  # RGB
-        factory2_left_boundary = to_rgb(factory2.top_line[0], factory2.color_space)
+        factory2_left_boundary = to_rgb(factory2.top_line[0], factory2.color_mode)
         
         assert np.allclose(factory1_right_boundary, boundary_1_2_expected), \
             f"Factory1 right boundary mismatch: {factory1_right_boundary} vs {boundary_1_2_expected}"
@@ -442,7 +442,7 @@ class TestLinesCellFactory:
         # Boundary between factory2 and factory3 should be idx 4 (value [0.2, 0, 0])
         boundary_2_3_expected = top_line[4]
         
-        factory2_right_boundary = to_rgb(factory2.top_line[-1], factory2.color_space)
+        factory2_right_boundary = to_rgb(factory2.top_line[-1], factory2.color_mode)
         factory3_left_boundary = factory3.top_line[0]  # RGB
         
         assert np.allclose(factory2_right_boundary, boundary_2_3_expected), \
@@ -455,8 +455,8 @@ class TestLinesCellFactory:
         value1 = factory1.get_value()
         value2_rgb = np_convert(
             factory2.get_value(), 
-            from_space=factory2.color_space, 
-            to_space=ColorSpace.RGB,
+            from_space=factory2.color_mode, 
+            to_space=ColorMode.RGB,
             input_type='float', 
             output_type='float'
         )
@@ -484,7 +484,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=5, height=3,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -525,7 +525,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=4, height=3,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -590,7 +590,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=6, height=2,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -642,16 +642,16 @@ class TestLinesCellFactory:
             top_right=top_right,
             bottom_left=bottom_left,
             bottom_right=bottom_right,
-            color_space=ColorSpace.RGB,
-            hue_direction_x=HueMode.CW,
-            hue_direction_y=HueMode.CW,
+            color_mode=ColorMode.RGB,
+            hue_direction_x=HueDirection.CW,
+            hue_direction_y=HueDirection.CW,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
         )
         
         # Verify properties
         assert factory.width == width
         assert factory.height == height
-        assert factory.color_space == ColorSpace.RGB
+        assert factory.color_mode == ColorMode.RGB
         assert factory.line_method == LineInterpMethods.LINES_CONTINUOUS
         
         # Verify lines are created correctly
@@ -685,7 +685,7 @@ class TestLinesCellFactory:
             factory = LinesCellFactory(
                 width=3, height=4,
                 top_line=top_line, bottom_line=bottom_line,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
                 input_format=FormatType.FLOAT,
                 line_method=method,
             )
@@ -717,7 +717,7 @@ class TestLinesCellFactory:
         factory = LinesCellFactory(
             width=3, height=4,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
         )
@@ -748,7 +748,7 @@ class TestLinesCellFactory:
             factory = LinesCellFactory(
                 width=3, height=4,
                 top_line=top_line, bottom_line=bottom_line,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
                 input_format=FormatType.FLOAT,
                 border_mode=border_mode,
                 border_value=0.5 if border_mode == 1 else None,
@@ -769,7 +769,7 @@ class TestLinesCellFactory:
             factory = LinesCellFactory(
                 width=3, height=4,
                 top_line=top_line, bottom_line=bottom_line,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
                 input_format=FormatType.FLOAT,
                 boundtypes=boundtype,
             )
@@ -790,7 +790,7 @@ class TestLinesCellFactory:
                 height=4,
                 top_line=top_line,
                 bottom_line=bottom_line,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
                 input_format=FormatType.FLOAT,
             )
         
@@ -804,7 +804,7 @@ class TestLinesCellFactory:
                 height=4,
                 top_line=valid_top_line,
                 bottom_line=valid_bottom_line,
-                color_space="INVALID_COLOR_SPACE",  # type: ignore
+                color_mode="INVALID_color_mode",  # type: ignore
                 input_format=FormatType.FLOAT,
             )
     
@@ -816,14 +816,14 @@ class TestLinesCellFactory:
         factory1 = LinesCellFactory(
             width=2, height=3,
             top_line=top_line, bottom_line=bottom_line,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
         factory2 = LinesCellFactory(
             width=2, height=3,
             top_line=top_line.copy(), bottom_line=bottom_line.copy(),
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
@@ -835,7 +835,7 @@ class TestLinesCellFactory:
             width=3, height=3,  # Different width
             top_line=np.vstack([top_line, [0.0, 0.0, 0.0]]),
             bottom_line=np.vstack([bottom_line, [0.0, 0.0, 0.0]]),
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         

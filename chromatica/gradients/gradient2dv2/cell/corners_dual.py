@@ -7,7 +7,7 @@ import numpy as np
 
 from boundednumbers import BoundType, UnitFloat
 
-from ....types.color_types import ColorSpace, HueMode, is_hue_space
+from ....types.color_types import ColorMode, HueDirection, is_hue_space
 from ....types.format_type import FormatType
 from ....conversions import np_convert
 from ....utils.color_utils import convert_to_space_float, is_hue_color_grayscale, is_hue_color_arr_grayscale
@@ -32,10 +32,10 @@ class CornersCellDual(CornersBase):
     can also have its own color space and hue direction.
     
     Attributes:
-        vertical_color_space: Color space for vertical interpolation
-        horizontal_color_space: Default color space for horizontal interpolation
-        top_segment_color_space: Color space for top edge interpolation
-        bottom_segment_color_space: Color space for bottom edge interpolation
+        vertical_color_mode: Color space for vertical interpolation
+        horizontal_color_mode: Default color space for horizontal interpolation
+        top_segment_color_mode: Color space for top edge interpolation
+        bottom_segment_color_mode: Color space for bottom edge interpolation
         top_segment_hue_direction_x: Hue direction for top edge
         bottom_segment_hue_direction_x: Hue direction for bottom edge
     """
@@ -49,19 +49,19 @@ class CornersCellDual(CornersBase):
     bottom_segment_hue_direction_x: Optional[str] = CellPropertyDescriptor(
         'bottom_segment_hue_direction_x', invalidates_segments=True
     )
-    top_segment_color_space: ColorSpace = CellPropertyDescriptor(
-        'top_segment_color_space', invalidates_segments=True
+    top_segment_color_mode: ColorMode = CellPropertyDescriptor(
+        'top_segment_color_mode', invalidates_segments=True
     )
-    bottom_segment_color_space: ColorSpace = CellPropertyDescriptor(
-        'bottom_segment_color_space', invalidates_segments=True
+    bottom_segment_color_mode: ColorMode = CellPropertyDescriptor(
+        'bottom_segment_color_mode', invalidates_segments=True
     )
     
     # === Read-only Color Space Properties ===
-    vertical_color_space: ColorSpace = CellPropertyDescriptor(
-        'vertical_color_space', readonly=True
+    vertical_color_mode: ColorMode = CellPropertyDescriptor(
+        'vertical_color_mode', readonly=True
     )
-    horizontal_color_space: ColorSpace = CellPropertyDescriptor(
-        'horizontal_color_space', readonly=True
+    horizontal_color_mode: ColorMode = CellPropertyDescriptor(
+        'horizontal_color_mode', readonly=True
     )
     
     def __init__(
@@ -71,8 +71,8 @@ class CornersCellDual(CornersBase):
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
         per_channel_coords: Union[List[np.ndarray], np.ndarray],
-        vertical_color_space: ColorSpace,
-        horizontal_color_space: Optional[ColorSpace] = None,
+        vertical_color_mode: ColorMode,
+        horizontal_color_mode: Optional[ColorMode] = None,
         hue_direction_y: Optional[str] = None,
         hue_direction_x: Optional[str] = None,
         boundtypes: Union[List[BoundType], BoundType] = BoundType.CLAMP,
@@ -82,19 +82,19 @@ class CornersCellDual(CornersBase):
         value: Optional[np.ndarray] = None,
         top_segment_hue_direction_x: Optional[str] = None,
         bottom_segment_hue_direction_x: Optional[str] = None,
-        top_segment_color_space: Optional[ColorSpace] = None,
-        bottom_segment_color_space: Optional[ColorSpace] = None,
+        top_segment_color_mode: Optional[ColorMode] = None,
+        bottom_segment_color_mode: Optional[ColorMode] = None,
         top_left_grayscale_hue: Optional[float] = None,
         top_right_grayscale_hue: Optional[float] = None,
         bottom_left_grayscale_hue: Optional[float] = None,
         bottom_right_grayscale_hue: Optional[float] = None,
     ) -> None:
         # Validate color space requirements
-        if horizontal_color_space is None:
-            if top_segment_color_space is None or bottom_segment_color_space is None:
+        if horizontal_color_mode is None:
+            if top_segment_color_mode is None or bottom_segment_color_mode is None:
                 raise ValueError(
-                    "Either horizontal_color_space or both top_segment_color_space "
-                    "and bottom_segment_color_space must be provided."
+                    "Either horizontal_color_mode or both top_segment_color_mode "
+                    "and bottom_segment_color_mode must be provided."
                 )
         
         # Initialize base with vertical color space
@@ -104,7 +104,7 @@ class CornersCellDual(CornersBase):
             bottom_left=bottom_left,
             bottom_right=bottom_right,
             per_channel_coords=per_channel_coords,
-            color_space=vertical_color_space,
+            color_mode=vertical_color_mode,
             hue_direction_y=hue_direction_y,
             hue_direction_x=hue_direction_x,
             boundtypes=boundtypes,
@@ -114,17 +114,17 @@ class CornersCellDual(CornersBase):
         )
         
         # Dual color space settings
-        self._vertical_color_space = vertical_color_space
-        self._horizontal_color_space = value_or_default(
-            horizontal_color_space, vertical_color_space
+        self._vertical_color_mode = vertical_color_mode
+        self._horizontal_color_mode = value_or_default(
+            horizontal_color_mode, vertical_color_mode
         )
         
         # Segment-specific settings
-        self._top_segment_color_space = value_or_default(
-            top_segment_color_space, self._horizontal_color_space
+        self._top_segment_color_mode = value_or_default(
+            top_segment_color_mode, self._horizontal_color_mode
         )
-        self._bottom_segment_color_space = value_or_default(
-            bottom_segment_color_space, self._horizontal_color_space
+        self._bottom_segment_color_mode = value_or_default(
+            bottom_segment_color_mode, self._horizontal_color_mode
         )
         self._top_segment_hue_direction_x = value_or_default(
             top_segment_hue_direction_x, hue_direction_x
@@ -140,29 +140,29 @@ class CornersCellDual(CornersBase):
     # === Color Space Properties ===
     
     @property
-    def color_space(self) -> ColorSpace:
+    def color_mode(self) -> ColorMode:
         """Primary color space (vertical)."""
-        return self._vertical_color_space
+        return self._vertical_color_mode
     
     @property
-    def top_left_color_space(self) -> ColorSpace:
+    def top_left_color_mode(self) -> ColorMode:
         """Color space of top-left corner."""
-        return self._top_segment_color_space
+        return self._top_segment_color_mode
     
     @property
-    def top_right_color_space(self) -> ColorSpace:
+    def top_right_color_mode(self) -> ColorMode:
         """Color space of top-right corner."""
-        return self._top_segment_color_space
+        return self._top_segment_color_mode
     
     @property
-    def bottom_left_color_space(self) -> ColorSpace:
+    def bottom_left_color_mode(self) -> ColorMode:
         """Color space of bottom-left corner."""
-        return self._bottom_segment_color_space
+        return self._bottom_segment_color_mode
     
     @property
-    def bottom_right_color_space(self) -> ColorSpace:
+    def bottom_right_color_mode(self) -> ColorMode:
         """Color space of bottom-right corner."""
-        return self._bottom_segment_color_space
+        return self._bottom_segment_color_mode
     
     # === Segment Creation ===
     
@@ -184,7 +184,7 @@ class CornersCellDual(CornersBase):
             already_converted_start_color=self._top_left,
             already_converted_end_color=self._top_right,
             per_channel_coords=uniform_coords,
-            color_space=self._top_segment_color_space,
+            color_mode=self._top_segment_color_mode,
             hue_direction=self._top_segment_hue_direction_x,
             bound_types=self._boundtypes,
             homogeneous_per_channel_coords=True,
@@ -211,7 +211,7 @@ class CornersCellDual(CornersBase):
             already_converted_start_color=self._bottom_left,
             already_converted_end_color=self._bottom_right,
             per_channel_coords=uniform_coords,
-            color_space=self._bottom_segment_color_space,
+            color_mode=self._bottom_segment_color_mode,
             hue_direction=self._bottom_segment_hue_direction_x,
             bound_types=self._boundtypes,
             homogeneous_per_channel_coords=True,
@@ -225,7 +225,7 @@ class CornersCellDual(CornersBase):
     def _interpolate_in_space(
         self,
         coords: List[np.ndarray],
-        space: ColorSpace,
+        space: ColorMode,
         hue_x: Optional[str],
     ) -> np.ndarray:
         """Interpolate corners in a specific color space."""
@@ -240,9 +240,9 @@ class CornersCellDual(CornersBase):
             bottom_left=c_bl,
             bottom_right=c_br,
             transformed=coords,
-            color_space=space,
-            huemode_x=hue_x or HueMode.SHORTEST,
-            huemode_y=self._hue_direction_y or HueMode.SHORTEST,
+            color_mode=space,
+            hue_direction_x=hue_x or HueDirection.SHORTEST,
+            hue_direction_y=self._hue_direction_y or HueDirection.SHORTEST,
             bound_types=self._boundtypes,
             border_mode=self._border_mode,
             border_value=self._border_value,
@@ -252,7 +252,7 @@ class CornersCellDual(CornersBase):
         """Core interpolation at specific coordinates."""
         return self._interpolate_in_space(
             coords_list,
-            self._vertical_color_space,
+            self._vertical_color_mode,
             self._hue_direction_y,
         )[0, 0, :]
     
@@ -290,11 +290,11 @@ class CornersCellDual(CornersBase):
         
         if is_top_edge:
             return self._interpolate_in_space(
-                coords, self._top_segment_color_space, self._top_segment_hue_direction_x
+                coords, self._top_segment_color_mode, self._top_segment_hue_direction_x
             )[0, 0, :]
         else:
             return self._interpolate_in_space(
-                coords, self._bottom_segment_color_space, self._bottom_segment_hue_direction_x
+                coords, self._bottom_segment_color_mode, self._bottom_segment_hue_direction_x
             )[0, 0, :]
     
     def index_interpolate_edge_discrete(
@@ -330,11 +330,11 @@ class CornersCellDual(CornersBase):
         
         if is_top_edge:
             return self._interpolate_in_space(
-                coords, self._top_segment_color_space, self._top_segment_hue_direction_x
+                coords, self._top_segment_color_mode, self._top_segment_hue_direction_x
             )[0, 0, :]
         else:
             return self._interpolate_in_space(
-                coords, self._bottom_segment_color_space, self._bottom_segment_hue_direction_x
+                coords, self._bottom_segment_color_mode, self._bottom_segment_hue_direction_x
             )[0, 0, :]
     def _resolve_hue(self, *fallback_order: Optional[float], default: float = 0.0) -> float:
         """Return first non-None value from fallback order, or default."""
@@ -382,29 +382,29 @@ class CornersCellDual(CornersBase):
         # Get segments in their respective spaces
         top_segment = self.get_top_segment_untransformed()
         bottom_segment = self.get_bottom_segment_untransformed()
-        if is_hue_space(self._vertical_color_space): 
-            mask_and_replace_top_hue = self._top_segment_color_space == ColorSpace.RGB
-            mask_and_replace_bottom_hue = self._bottom_segment_color_space == ColorSpace.RGB
+        if is_hue_space(self._vertical_color_mode): 
+            mask_and_replace_top_hue = self._top_segment_color_mode == ColorMode.RGB
+            mask_and_replace_bottom_hue = self._bottom_segment_color_mode == ColorMode.RGB
         else:
             mask_and_replace_top_hue = False
             mask_and_replace_bottom_hue = False
 
 
         # Convert segments to vertical space if needed
-        if self._top_segment_color_space != self._vertical_color_space:
+        if self._top_segment_color_mode != self._vertical_color_mode:
             top_segment = np_convert(
                 top_segment,
-                self._top_segment_color_space,
-                self._vertical_color_space,
+                self._top_segment_color_mode,
+                self._vertical_color_mode,
                 input_type="float",
                 output_type="float",
             )
         
-        if self._bottom_segment_color_space != self._vertical_color_space:
+        if self._bottom_segment_color_mode != self._vertical_color_mode:
             bottom_segment = np_convert(
                 bottom_segment,
-                self._bottom_segment_color_space,
-                self._vertical_color_space,
+                self._bottom_segment_color_mode,
+                self._vertical_color_mode,
                 input_type="float",
                 output_type="float",
             )
@@ -426,8 +426,8 @@ class CornersCellDual(CornersBase):
                 top_line[where_grayscale_top, 0] = hue_lerp_from_corners(
                     tl_ghue, tr_ghue, bl_ghue, br_ghue,
                     top_coords[:, where_grayscale_top].astype(np.float64),
-                    self._hue_direction_x or HueMode.SHORTEST,
-                    self._hue_direction_y or HueMode.SHORTEST,
+                    self._hue_direction_x or HueDirection.SHORTEST,
+                    self._hue_direction_y or HueDirection.SHORTEST,
                 )
         if mask_and_replace_bottom_hue:
 
@@ -445,8 +445,8 @@ class CornersCellDual(CornersBase):
                 bottom_line[where_grayscale_bottom, 0] = hue_lerp_from_corners(
                     corners=[tl_ghue, tr_ghue, bl_ghue, br_ghue],
                     coords=bottom_coords[:, where_grayscale_bottom].astype(np.float64),
-                    mode_x=self._hue_direction_x or HueMode.SHORTEST,
-                    mode_y=self._hue_direction_y or HueMode.SHORTEST,
+                    mode_x=self._hue_direction_x or HueDirection.SHORTEST,
+                    mode_y=self._hue_direction_y or HueDirection.SHORTEST,
                 )
             
 
@@ -454,11 +454,11 @@ class CornersCellDual(CornersBase):
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=self._per_channel_coords,
-            color_space=self._vertical_color_space,
-            top_line_color_space=self._vertical_color_space,
-            bottom_line_color_space=self._vertical_color_space,
-            hue_direction_y=self._hue_direction_y or HueMode.SHORTEST,
-            hue_direction_x=self._hue_direction_x or HueMode.SHORTEST,
+            color_mode=self._vertical_color_mode,
+            top_line_color_mode=self._vertical_color_mode,
+            bottom_line_color_mode=self._vertical_color_mode,
+            hue_direction_y=self._hue_direction_y or HueDirection.SHORTEST,
+            hue_direction_x=self._hue_direction_x or HueDirection.SHORTEST,
             line_method=LineInterpMethods.LINES_CONTINUOUS,
             boundtypes=self._boundtypes,
             border_mode=self._border_mode,
@@ -472,13 +472,13 @@ class CornersCellDual(CornersBase):
     
     def convert_to_space(
         self,
-        color_space: ColorSpace,
+        color_mode: ColorMode,
         render_before: bool = False,
     ) -> CornersCellDual:
         """Convert to a unified color space.
         
         Args:
-            color_space: Target color space for all interpolation
+            color_mode: Target color space for all interpolation
             render_before: If True, render current value before converting
             
         Returns:
@@ -486,10 +486,10 @@ class CornersCellDual(CornersBase):
         """
         # Check if already in target space
         if (
-            self._horizontal_color_space == color_space
-            and self._vertical_color_space == color_space
-            and self._top_segment_color_space == color_space
-            and self._bottom_segment_color_space == color_space
+            self._horizontal_color_mode == color_mode
+            and self._vertical_color_mode == color_mode
+            and self._top_segment_color_mode == color_mode
+            and self._bottom_segment_color_mode == color_mode
         ):
             return self
         
@@ -500,8 +500,8 @@ class CornersCellDual(CornersBase):
         converted_corners = [
             np_convert(
                 corner,
-                self._horizontal_color_space,
-                color_space,
+                self._horizontal_color_mode,
+                color_mode,
                 input_type="float",
                 output_type="float",
             )
@@ -513,8 +513,8 @@ class CornersCellDual(CornersBase):
         if self._value is not None:
             converted_value = np_convert(
                 self._value,
-                self._vertical_color_space,
-                color_space,
+                self._vertical_color_mode,
+                color_mode,
                 input_type="float",
                 output_type="float",
             )
@@ -525,8 +525,8 @@ class CornersCellDual(CornersBase):
             bottom_left=converted_corners[2],
             bottom_right=converted_corners[3],
             per_channel_coords=self._per_channel_coords,
-            horizontal_color_space=color_space,
-            vertical_color_space=color_space,
+            horizontal_color_mode=color_mode,
+            vertical_color_mode=color_mode,
             hue_direction_y=self._hue_direction_y,
             hue_direction_x=self._hue_direction_x,
             boundtypes=self._boundtypes,
@@ -535,39 +535,39 @@ class CornersCellDual(CornersBase):
             value=converted_value,
             top_segment_hue_direction_x=self._top_segment_hue_direction_x,
             bottom_segment_hue_direction_x=self._bottom_segment_hue_direction_x,
-            top_segment_color_space=color_space,
-            bottom_segment_color_space=color_space,
+            top_segment_color_mode=color_mode,
+            bottom_segment_color_mode=color_mode,
         )
     
     def convert_to_spaces(
         self,
-        horizontal_color_space: ColorSpace,
-        vertical_color_space: ColorSpace,
-        top_segment_color_space: Optional[ColorSpace] = None,
-        bottom_segment_color_space: Optional[ColorSpace] = None,
+        horizontal_color_mode: ColorMode,
+        vertical_color_mode: ColorMode,
+        top_segment_color_mode: Optional[ColorMode] = None,
+        bottom_segment_color_mode: Optional[ColorMode] = None,
         render_before: bool = False,
     ) -> CornersCellDual:
         """Convert to specific horizontal and vertical spaces.
         
         Args:
-            horizontal_color_space: Target horizontal color space
-            vertical_color_space: Target vertical color space
-            top_segment_color_space: Target top segment space (defaults to horizontal)
-            bottom_segment_color_space: Target bottom segment space (defaults to horizontal)
+            horizontal_color_mode: Target horizontal color space
+            vertical_color_mode: Target vertical color space
+            top_segment_color_mode: Target top segment space (defaults to horizontal)
+            bottom_segment_color_mode: Target bottom segment space (defaults to horizontal)
             render_before: If True, render current value before converting
             
         Returns:
             New cell instance in target color spaces
         """
-        top_seg_space = top_segment_color_space or horizontal_color_space
-        bottom_seg_space = bottom_segment_color_space or horizontal_color_space
+        top_seg_space = top_segment_color_mode or horizontal_color_mode
+        bottom_seg_space = bottom_segment_color_mode or horizontal_color_mode
         
         # Check if already in target spaces
         if (
-            self._horizontal_color_space == horizontal_color_space
-            and self._vertical_color_space == vertical_color_space
-            and self._top_segment_color_space == top_seg_space
-            and self._bottom_segment_color_space == bottom_seg_space
+            self._horizontal_color_mode == horizontal_color_mode
+            and self._vertical_color_mode == vertical_color_mode
+            and self._top_segment_color_mode == top_seg_space
+            and self._bottom_segment_color_mode == bottom_seg_space
         ):
             return self
         
@@ -578,8 +578,8 @@ class CornersCellDual(CornersBase):
         converted_corners = [
             np_convert(
                 corner,
-                self._horizontal_color_space,
-                horizontal_color_space,
+                self._horizontal_color_mode,
+                horizontal_color_mode,
                 input_type="float",
                 output_type="float",
             )
@@ -591,8 +591,8 @@ class CornersCellDual(CornersBase):
         if self._value is not None:
             converted_value = np_convert(
                 self._value,
-                self._vertical_color_space,
-                vertical_color_space,
+                self._vertical_color_mode,
+                vertical_color_mode,
                 input_type="float",
                 output_type="float",
             )
@@ -603,8 +603,8 @@ class CornersCellDual(CornersBase):
             bottom_left=converted_corners[2],
             bottom_right=converted_corners[3],
             per_channel_coords=self._per_channel_coords,
-            horizontal_color_space=horizontal_color_space,
-            vertical_color_space=vertical_color_space,
+            horizontal_color_mode=horizontal_color_mode,
+            vertical_color_mode=vertical_color_mode,
             hue_direction_y=self._hue_direction_y,
             hue_direction_x=self._hue_direction_x,
             boundtypes=self._boundtypes,
@@ -613,19 +613,19 @@ class CornersCellDual(CornersBase):
             value=converted_value,
             top_segment_hue_direction_x=self._top_segment_hue_direction_x,
             bottom_segment_hue_direction_x=self._bottom_segment_hue_direction_x,
-            top_segment_color_space=top_seg_space,
-            bottom_segment_color_space=bottom_seg_space,
+            top_segment_color_mode=top_seg_space,
+            bottom_segment_color_mode=bottom_seg_space,
         )
     
-    def _get_corner_color_space(self, corner: CornerIndex) -> ColorSpace:
+    def _get_corner_color_mode(self, corner: CornerIndex) -> ColorMode:
         if corner == CornerIndex.TOP_LEFT:
-            return self._top_segment_color_space
+            return self._top_segment_color_mode
         elif corner == CornerIndex.TOP_RIGHT:
-            return self._top_segment_color_space
+            return self._top_segment_color_mode
         elif corner == CornerIndex.BOTTOM_LEFT:
-            return self._bottom_segment_color_space
+            return self._bottom_segment_color_mode
         elif corner == CornerIndex.BOTTOM_RIGHT:
-            return self._bottom_segment_color_space
+            return self._bottom_segment_color_mode
         else:
             raise ValueError(f"Invalid corner index: {corner}")
     def _get_corner_color(self, corner: CornerIndex) -> np.ndarray:
@@ -651,9 +651,9 @@ class CornersCellDual(CornersBase):
             return self._bottom_right_grayscale_hue
         else:
             raise ValueError(f"Invalid corner index: {corner}")
-    def convert_corner(self, corner: CornerIndex, to_space: ColorSpace, from_space: ColorSpace=None):
+    def convert_corner(self, corner: CornerIndex, to_space: ColorMode, from_space: ColorMode=None):
         if from_space is None:
-            from_space = self._get_corner_color_space(corner)
+            from_space = self._get_corner_color_mode(corner)
         corner_color = self._get_corner_color(corner)
         converted = np_convert(
             corner_color,
@@ -678,8 +678,8 @@ class CornersCellDual(CornersBase):
             'bottom_left': self._bottom_left,
             'bottom_right': self._bottom_right,
             'per_channel_coords': self._per_channel_coords,
-            'horizontal_color_space': self._horizontal_color_space,
-            'vertical_color_space': self._vertical_color_space,
+            'horizontal_color_mode': self._horizontal_color_mode,
+            'vertical_color_mode': self._vertical_color_mode,
             'hue_direction_y': self._hue_direction_y,
             'hue_direction_x': self._hue_direction_x,
             'boundtypes': self._boundtypes,
@@ -687,8 +687,8 @@ class CornersCellDual(CornersBase):
             'border_value': self._border_value,
             'top_segment_hue_direction_x': self._top_segment_hue_direction_x,
             'bottom_segment_hue_direction_x': self._bottom_segment_hue_direction_x,
-            'top_segment_color_space': self._top_segment_color_space,
-            'bottom_segment_color_space': self._bottom_segment_color_space,
+            'top_segment_color_mode': self._top_segment_color_mode,
+            'bottom_segment_color_mode': self._bottom_segment_color_mode,
             'value': self._value,
         }
         defaults.update(kwargs)
@@ -700,6 +700,6 @@ class CornersCellDual(CornersBase):
         return (
             f"{self.__class__.__name__}("
             f"shape={self.shape}, "
-            f"vertical_space={self._vertical_color_space!r}, "
-            f"horizontal_space={self._horizontal_color_space!r})"
+            f"vertical_space={self._vertical_color_mode!r}, "
+            f"horizontal_space={self._horizontal_color_mode!r})"
         )

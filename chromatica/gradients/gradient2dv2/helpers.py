@@ -11,7 +11,7 @@ from .helpers import (
     interp_transformed_2d_lines,
     CellMode,
     apply_per_channel_transforms_2d,
-    HueMode,
+    HueDirection,
 )
 
 __all__ = [
@@ -20,5 +20,5 @@ __all__ = [
     'interp_transformed_2d_lines',
     'CellMode',
     'apply_per_channel_transforms_2d',
-    'HueMode',
+    'HueDirection',
 ]

@@ -65,7 +65,7 @@ High-Level API
 
 Types & Enums
 ------------
-    ColorSpace: Type alias for color space names ("rgb", "hsv", "hsl", "rgba", "hsva", "hsla")
+    ColorMode: Type alias for color space names ("rgb", "hsv", "hsl", "rgba", "hsva", "hsla")
     FormatType: Enum for value formats (INT, FLOAT, PERCENTAGE)
 
 Algorithm Selection
@@ -132,7 +132,7 @@ from .to_hsv import hsl_to_hsv, np_hsl_to_hsv
 from .to_hsl import hsv_to_hsl, np_hsv_to_hsl
 
 # High-level API
-from .wrapper import convert, np_convert, ColorSpace
+from .wrapper import convert, np_convert, ColorMode
 
 # Types and enums
 from ..types.format_type import FormatType
@@ -170,7 +170,7 @@ __all__ = [
     # High-level API
     'convert',
     'np_convert',
-    'ColorSpace',
+    'ColorMode',
     
     # Types
     'FormatType',

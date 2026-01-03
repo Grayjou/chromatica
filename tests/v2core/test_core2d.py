@@ -12,7 +12,7 @@ from ...chromatica.v2core.core2d import (
     multival2d_lerp_between_lines_continuous,
     multival2d_lerp_between_lines_discrete,
 )
-from ...chromatica.v2core.core import HueMode
+from ...chromatica.v2core.core import HueDirection
 from boundednumbers import BoundType
 from unitfield import upbm_2d
 
@@ -90,8 +90,8 @@ def test_sample_hue_between_lines_continuous():
     
     result = sample_hue_between_lines_continuous(
         line0, line1, coords,
-        mode_x=HueMode.SHORTEST,
-        mode_y=HueMode.CW
+        mode_x=HueDirection.SHORTEST,
+        mode_y=HueDirection.CW
     )
     
     assert result.shape == (H, W)
@@ -110,7 +110,7 @@ def test_sample_hue_between_lines_discrete():
     
     result = sample_hue_between_lines_discrete(
         line0, line1, coords,
-        mode_y=HueMode.CCW
+        mode_y=HueDirection.CCW
     )
     
     assert result.shape == (H, W)

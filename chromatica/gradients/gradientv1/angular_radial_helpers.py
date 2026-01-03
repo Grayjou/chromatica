@@ -94,9 +94,9 @@ def validate_and_return_outside_fill_array(arr: np.ndarray, width: int, height: 
 
 
 def process_outside_fill(
-    outside_fill: Optional[ColorInput], width: int, height: int, format_type: FormatType, color_space: str
+    outside_fill: Optional[ColorInput], width: int, height: int, format_type: FormatType, color_mode: str
 ) -> np.ndarray:
-    respective_class = unified_tuple_to_class[(color_space, format_type)]
+    respective_class = unified_tuple_to_class[(color_mode, format_type)]
     num_channels = respective_class.num_channels
 
     if outside_fill is None:

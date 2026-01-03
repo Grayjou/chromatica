@@ -257,7 +257,7 @@ class RadialAngularGradient:
         easing_r: Optional[Dict[int, Callable[[NDArray], NDArray]]] = None,
         hue_direction_theta: Optional[str] = None,
         hue_direction_r: Optional[str] = None,
-        color_space: str = 'rgb',
+        color_mode: str = 'rgb',
         format_type: FormatType = FormatType.FLOAT,
         bivariable_space_transforms=None,   # NEW FEATURE
         bivariable_channel_transforms=None   # NEW FEATURE
@@ -275,7 +275,7 @@ class RadialAngularGradient:
             easing_r: Optional dict mapping channel index to radial easing function
             hue_direction_theta: Hue interpolation direction for angular transitions
             hue_direction_r: Hue interpolation direction for radial transitions
-            color_space: Color space ('rgb', 'hsv', 'hsl', 'rgba', etc.)
+            color_mode: Color space ('rgb', 'hsv', 'hsl', 'rgba', etc.)
             format_type: Format type (INT or FLOAT),
             bivariable_space_transforms: Optional dict mapping channel index to functions
                                    that transform (r, theta) to (new_r, new_theta)
@@ -288,17 +288,17 @@ class RadialAngularGradient:
             ...         (180, (0, 0, 255), (255, 0, 0)),    # Blue to red at 180°
             ...         (270, (255, 255, 0), (0, 255, 0))   # Yellow to green at 270°
             ...     ],
-            ...     color_space='rgb',
+            ...     color_mode='rgb',
             ...     format_type=FormatType.INT
             ... )
             >>> image = gradient.render(500, 500, center=(250, 250), base_radius=200)
         """
-        self.color_space = color_space.lower()
+        self.color_mode = color_mode.lower()
         self.format_type = format_type
-        self.color_class = unified_tuple_to_class.get((self.color_space, format_type))
+        self.color_class = unified_tuple_to_class.get((self.color_mode, format_type))
         
         if self.color_class is None:
-            raise ValueError(f"Unsupported color space/format: {color_space}/{format_type}")
+            raise ValueError(f"Unsupported color space/format: {color_mode}/{format_type}")
 
         # Build angular interpolators for inner and outer colors
         self.inner_fn, self.outer_fn = build_theta_interpolators(
@@ -427,7 +427,7 @@ def example_radial_angular():
             (180, (0, 0, 255), (255, 0, 0)),    # Blue center to red edge at 180°
             (270, (255, 255, 0), (0, 255, 0))   # Yellow center to green edge at 270°
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -458,7 +458,7 @@ def example_elliptical():
             (180, 200),
             (270, 100)
         ],r_theta=r_tetha,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -498,7 +498,7 @@ def example_star_shaped():
             (288, (0, 255, 128), (128, 255, 0))
         ],
         radius_stops=radius_stops,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -546,7 +546,7 @@ def example_spiral():
             (360.0, (0, 0, 255, 0), (0, 0, 255, 255))
         ],
         r_theta=r_theta_spiral,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT,
         #easing_theta={0: quadratic_tetha_easing, 1: quadratic_tetha_easing, 2: quadratic_tetha_easing, 3: quadratic_tetha_easing},
         easing_r={0: sine_fade_in_out, 1: sine_fade_in_out, 2: sine_fade_in_out, 3: lambda x: sine_tight_fade_in_out(x, length=0.5)},

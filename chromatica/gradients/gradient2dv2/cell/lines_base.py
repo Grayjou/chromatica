@@ -8,7 +8,7 @@ import numpy as np
 
 from boundednumbers import BoundType
 
-from ....types.color_types import ColorSpaces
+from ....types.color_types import ColorModes
 from .base import CellBase
 from ._cell_coords import get_shape, extract_edge
 from ._descriptors import CellPropertyDescriptor
@@ -25,7 +25,7 @@ class LinesBase(CellBase, ABC):
         top_line: Color values along the top edge
         bottom_line: Color values along the bottom edge
         per_channel_coords: Coordinate arrays for each channel
-        color_space: Color space for interpolation
+        color_mode: Color space for interpolation
         hue_direction_x: Hue interpolation direction along X axis
         hue_direction_y: Hue interpolation direction along Y axis
         line_method: Method for interpolating along lines
@@ -50,14 +50,14 @@ class LinesBase(CellBase, ABC):
     border_value: Optional[float] = CellPropertyDescriptor('border_value')
     
     # === Read-only Properties ===
-    color_space: ColorSpaces = CellPropertyDescriptor('color_space', readonly=True)
+    color_mode: ColorModes = CellPropertyDescriptor('color_mode', readonly=True)
     
     def __init__(
         self,
         top_line: np.ndarray,
         bottom_line: np.ndarray,
         per_channel_coords: Union[List[np.ndarray], np.ndarray],
-        color_space: ColorSpaces,
+        color_mode: ColorModes,
         hue_direction_y: Optional[str] = None,
         hue_direction_x: Optional[str] = None,
         line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
@@ -82,7 +82,7 @@ class LinesBase(CellBase, ABC):
         
         # Coordinates and color space
         self._per_channel_coords = per_channel_coords
-        self._color_space = color_space
+        self._color_mode = color_mode
         
         # Interpolation settings
         self._hue_direction_y = hue_direction_y
@@ -208,13 +208,13 @@ class LinesBase(CellBase, ABC):
     @abstractmethod
     def convert_to_space(
         self,
-        color_space: ColorSpaces,
+        color_mode: ColorModes,
         render_before: bool = False,
     ) -> LinesBase:
         """Convert to a different color space.
         
         Args:
-            color_space: Target color space
+            color_mode: Target color space
             render_before: If True, render current value before converting
             
         Returns:
@@ -229,6 +229,6 @@ class LinesBase(CellBase, ABC):
             f"{self.__class__.__name__}("
             f"shape={self.shape}, "
             f"line_width={self.line_width}, "
-            f"color_space={self._color_space!r}, "
+            f"color_mode={self._color_mode!r}, "
             f"line_method={self._line_method!r})"
         )

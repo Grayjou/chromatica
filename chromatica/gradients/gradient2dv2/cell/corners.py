@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import List, Optional
 import numpy as np
-from ....types.color_types import ColorSpaces
+from ....types.color_types import ColorModes
 from ....conversions import np_convert
 from boundednumbers import BoundType
 from ..helpers import interp_transformed_2d_from_corners
@@ -25,7 +25,7 @@ class CornersCell(CornersBase):
             bottom_left: np.ndarray,
             bottom_right: np.ndarray,
             per_channel_coords: List[np.ndarray] | np.ndarray,
-            color_space: ColorSpaces,
+            color_mode: ColorModes,
             hue_direction_y: Optional[str] = None,
             hue_direction_x: Optional[str] = None,
             boundtypes: List[BoundType] | BoundType = BoundType.CLAMP,
@@ -40,7 +40,7 @@ class CornersCell(CornersBase):
             bottom_left=bottom_left,
             bottom_right=bottom_right,
             per_channel_coords=per_channel_coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction_y=hue_direction_y,
             hue_direction_x=hue_direction_x,
             boundtypes=boundtypes,
@@ -58,9 +58,9 @@ class CornersCell(CornersBase):
             bottom_left=self.bottom_left,
             bottom_right=self.bottom_right,
             transformed=coords_list,
-            color_space=self.color_space,
-            huemode_x=self.hue_direction_x,
-            huemode_y=self.hue_direction_y,
+            color_mode=self.color_mode,
+            hue_direction_x=self.hue_direction_x,
+            hue_direction_y=self.hue_direction_y,
             bound_types=self.boundtypes,
             border_mode=self.border_mode,
             border_value=self.border_value,
@@ -129,7 +129,7 @@ class CornersCell(CornersBase):
             already_converted_start_color=self.top_left,
             already_converted_end_color=self.top_right,
             per_channel_coords=uniform_coords,
-            color_space=self.color_space,
+            color_mode=self.color_mode,
             hue_direction=self.hue_direction_x,
             bound_types=self.boundtypes,
             homogeneous_per_channel_coords=True,
@@ -155,7 +155,7 @@ class CornersCell(CornersBase):
             already_converted_start_color=self.bottom_left,
             already_converted_end_color=self.bottom_right,
             per_channel_coords=uniform_coords,
-            color_space=self.color_space,
+            color_mode=self.color_mode,
             hue_direction=self.hue_direction_x,
             bound_types=self.boundtypes,
             homogeneous_per_channel_coords=True,
@@ -173,17 +173,17 @@ class CornersCell(CornersBase):
             bottom_left=self.bottom_left,
             bottom_right=self.bottom_right,
             transformed=self.per_channel_coords,
-            color_space=self.color_space,
-            huemode_x=self.hue_direction_x,
-            huemode_y=self.hue_direction_y,
+            color_mode=self.color_mode,
+            hue_direction_x=self.hue_direction_x,
+            hue_direction_y=self.hue_direction_y,
             bound_types=self.boundtypes,
             border_mode=self.border_mode,
             border_value=self.border_value,
         )
     
     # === Color space conversion ===
-    def convert_to_space(self, color_space: ColorSpaces, render_before: bool = False) -> CornersCell:
-        if self.color_space == color_space:
+    def convert_to_space(self, color_mode: ColorModes, render_before: bool = False) -> CornersCell:
+        if self.color_mode == color_mode:
             return self
         
         if render_before:
@@ -191,16 +191,16 @@ class CornersCell(CornersBase):
         
         # Convert all four corners
         converted_corners = [
-            np_convert(self.top_left, self.color_space, color_space, input_type="float", output_type='float'),
-            np_convert(self.top_right, self.color_space, color_space, input_type="float", output_type='float'),
-            np_convert(self.bottom_left, self.color_space, color_space, input_type="float", output_type='float'),
-            np_convert(self.bottom_right, self.color_space, color_space, input_type="float", output_type='float'),
+            np_convert(self.top_left, self.color_mode, color_mode, input_type="float", output_type='float'),
+            np_convert(self.top_right, self.color_mode, color_mode, input_type="float", output_type='float'),
+            np_convert(self.bottom_left, self.color_mode, color_mode, input_type="float", output_type='float'),
+            np_convert(self.bottom_right, self.color_mode, color_mode, input_type="float", output_type='float'),
         ]
         
         converted_value = None
         if self._value is not None:
             converted_value = np_convert(
-                self._value, self.color_space, color_space,
+                self._value, self.color_mode, color_mode,
                 input_type="float", output_type='float'
             )
         
@@ -210,7 +210,7 @@ class CornersCell(CornersBase):
             bottom_left=converted_corners[2],
             bottom_right=converted_corners[3],
             per_channel_coords=self.per_channel_coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction_y=self.hue_direction_y,
             hue_direction_x=self.hue_direction_x,
             boundtypes=self.boundtypes,
@@ -228,7 +228,7 @@ class CornersCell(CornersBase):
             'bottom_left': self.bottom_left,
             'bottom_right': self.bottom_right,
             'per_channel_coords': self.per_channel_coords,
-            'color_space': self.color_space,
+            'color_mode': self.color_mode,
             'hue_direction_y': self.hue_direction_y,
             'hue_direction_x': self.hue_direction_x,
             'boundtypes': self.boundtypes,

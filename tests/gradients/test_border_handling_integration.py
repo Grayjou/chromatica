@@ -9,7 +9,7 @@ import pytest
 import numpy as np
 
 try:
-    from ...chromatica.types.color_types import ColorSpaces
+    from ...chromatica.types.color_types import ColorModes
     from ...chromatica.gradients.gradient2dv2.cell.factory import (
         get_transformed_lines_cell,
         get_transformed_corners_cell,
@@ -52,7 +52,7 @@ class TestBorderHandlingPropagation:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             border_mode=BORDER_CLAMP,
             border_value=0.5,
         )
@@ -81,7 +81,7 @@ class TestBorderHandlingPropagation:
             bottom_left=bottom_left,
             bottom_right=bottom_right,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             border_mode=BORDER_REPEAT,
             border_value=0.0,
         )
@@ -106,7 +106,7 @@ class TestBorderHandlingPropagation:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             border_mode=BORDER_CLAMP,
             border_value=None,
             input_format='float'
@@ -141,7 +141,7 @@ class TestBorderHandlingPropagation:
             bottom_left=bottom_left,
             bottom_right=bottom_right,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             border_mode=BORDER_CLAMP,
             border_value=None,
             input_format='float'
@@ -171,7 +171,7 @@ class TestBorderHandlingPropagation:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             border_mode=BORDER_REPEAT,
             border_value=0.75,
         )
@@ -198,7 +198,7 @@ class TestBorderHandlingPropagation:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             input_format='float'
         )
         
@@ -221,7 +221,7 @@ class TestBorderHandlingPropagation:
                 top_line=top_line,
                 bottom_line=bottom_line,
                 per_channel_coords=per_channel_coords,
-                color_space='rgb',
+                color_mode='rgb',
                 border_mode=mode,
                 border_value=0.5,
                 input_format='float'
@@ -233,7 +233,7 @@ class TestBorderHandlingPropagation:
             result = cell.get_value()
             assert result.shape == (H, W, 3)
 
-    def test_color_space_inference_with_border_params(self):
+    def test_color_mode_inference_with_border_params(self):
         """Test that color space inference works together with border parameters."""
         # Create simple test data
         top_line = np.array([[255, 0, 0], [255, 255, 0]])
@@ -249,8 +249,8 @@ class TestBorderHandlingPropagation:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
-            # Not specifying top_line_color_space or bottom_line_color_space
+            color_mode='rgb',
+            # Not specifying top_line_color_mode or bottom_line_color_mode
             border_mode=BORDER_CLAMP,
             border_value=0.0,
         )
@@ -261,10 +261,10 @@ class TestBorderHandlingPropagation:
         assert cell.border_mode == BORDER_CLAMP
 
 
-class TestColorSpaceInference:
+class TestColorModeInference:
     """Test that color space inference works correctly in factory functions."""
 
-    def test_lines_cell_defaults_to_target_color_space(self):
+    def test_lines_cell_defaults_to_target_color_mode(self):
         """Test that line color spaces default to target color space."""
         top_line = np.array([[1.0, 0.0, 0.0], [1.0, 1.0, 0.0]])
         bottom_line = np.array([[0.0, 0.0, 1.0], [0.0, 1.0, 0.0]])
@@ -278,17 +278,17 @@ class TestColorSpaceInference:
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             input_format='float',
-            # top_line_color_space and bottom_line_color_space not specified
+            # top_line_color_mode and bottom_line_color_mode not specified
         )
         
         # Should render successfully
         result = cell.get_value()
         assert result.shape == (H, W, 3)
-        assert cell.color_space == 'rgb'
+        assert cell.color_mode == 'rgb'
 
-    def test_corners_cell_defaults_to_target_color_space(self):
+    def test_corners_cell_defaults_to_target_color_mode(self):
         """Test that corner color spaces default to target color space."""
         top_left = np.array([1.0, 0.0, 0.0])
         top_right = np.array([1.0, 1.0, 0.0])
@@ -306,7 +306,7 @@ class TestColorSpaceInference:
             bottom_left=bottom_left,
             bottom_right=bottom_right,
             per_channel_coords=per_channel_coords,
-            color_space='rgb',
+            color_mode='rgb',
             input_format='float',
             # Corner color spaces not specified
         )
@@ -314,7 +314,7 @@ class TestColorSpaceInference:
         # Should render successfully
         result = cell.get_value()
         assert result.shape == (H, W, 3)
-        assert cell.color_space == 'rgb'
+        assert cell.color_mode == 'rgb'
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@
 from __future__ import annotations
 from typing import List, Optional, Union
 import numpy as np
-from ....types.color_types import ColorSpaces
+from ....types.color_types import ColorModes
 from ....conversions import np_convert
 from boundednumbers import BoundType
 from ..helpers import LineInterpMethods, interp_transformed_2d_lines
@@ -28,7 +28,7 @@ class LinesCell(LinesBase):
         top_line: np.ndarray,
         bottom_line: np.ndarray,
         per_channel_coords: Union[List[np.ndarray], np.ndarray],
-        color_space: ColorSpaces,
+        color_mode: ColorModes,
         hue_direction_y: Optional[str] = None,
         hue_direction_x: Optional[str] = None,
         line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
@@ -42,7 +42,7 @@ class LinesCell(LinesBase):
             top_line=top_line,
             bottom_line=bottom_line,
             per_channel_coords=per_channel_coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction_y=hue_direction_y,
             hue_direction_x=hue_direction_x,
             line_method=line_method,
@@ -60,9 +60,9 @@ class LinesCell(LinesBase):
             line0=self._top_line,
             line1=self._bottom_line,
             transformed=self._per_channel_coords,
-            color_space=self._color_space,
-            huemode_y=self._hue_direction_y,
-            huemode_x=self._hue_direction_x,
+            color_mode=self._color_mode,
+            hue_direction_y=self._hue_direction_y,
+            hue_direction_x=self._hue_direction_x,
             line_method=self._line_method,
             bound_types=self._boundtypes,
             border_mode=self._border_mode,
@@ -128,26 +128,26 @@ class LinesCell(LinesBase):
     
     # === Color space conversion ===
     
-    def convert_to_space(self, color_space: ColorSpaces, render_before: bool = False) -> LinesCell:
-        if self._color_space == color_space:
+    def convert_to_space(self, color_mode: ColorModes, render_before: bool = False) -> LinesCell:
+        if self._color_mode == color_mode:
             return self
         
         if render_before:
             self.get_value()
         
         converted_top = np_convert(
-            self._top_line, self._color_space, color_space,
+            self._top_line, self._color_mode, color_mode,
             input_type="float", output_type='float'
         )
         converted_bottom = np_convert(
-            self._bottom_line, self._color_space, color_space,
+            self._bottom_line, self._color_mode, color_mode,
             input_type="float", output_type='float'
         )
         
         converted_value = None
         if self._value is not None:
             converted_value = np_convert(
-                self._value, self._color_space, color_space,
+                self._value, self._color_mode, color_mode,
                 input_type="float", output_type='float'
             )
         
@@ -155,7 +155,7 @@ class LinesCell(LinesBase):
             top_line=converted_top,
             bottom_line=converted_bottom,
             per_channel_coords=self._per_channel_coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction_y=self._hue_direction_y,
             hue_direction_x=self._hue_direction_x,
             line_method=self._line_method,
@@ -186,7 +186,7 @@ class LinesCell(LinesBase):
             'top_line': self._top_line,
             'bottom_line': self._bottom_line,
             'per_channel_coords': self._per_channel_coords,
-            'color_space': self._color_space,
+            'color_mode': self._color_mode,
             'hue_direction_y': self._hue_direction_y,
             'hue_direction_x': self._hue_direction_x,
             'line_method': self._line_method,
@@ -215,6 +215,6 @@ class LinesCell(LinesBase):
         cached = "cached" if self._value is not None else "not cached"
         return (
             f"LinesCell(width={self.width}, height={self.height}, "
-            f"line_width={self.line_width}, color_space={self._color_space!r}, "
+            f"line_width={self.line_width}, color_mode={self._color_mode!r}, "
             f"method={self._line_method.name}, {cached})"
         )

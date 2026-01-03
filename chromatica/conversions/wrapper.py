@@ -7,7 +7,7 @@ from .to_rgb import np_hsv_to_unit_rgb, np_hsl_to_unit_rgb
 from .to_hsv import np_unit_rgb_to_hsv, np_hsl_to_hsv
 from .to_hsl import np_unit_rgb_to_hsl, np_hsv_to_hsl
  
-from ..types.color_types import ColorElement, element_to_array, ColorSpace
+from ..types.color_types import ColorElement, element_to_array, ColorMode
 
 # Functions that accept use_css_algo parameter
 CONVERT_NUMPY_CSS: dict[tuple[str, str], Callable[[np.ndarray, np.ndarray, np.ndarray, bool], np.ndarray]] = {
@@ -126,8 +126,8 @@ def _convert_core(
 
 def convert(
     color: ColorElement,
-    from_space: ColorSpace,
-    to_space:   ColorSpace,
+    from_space: ColorMode,
+    to_space:   ColorMode,
     input_type:  FormatType=FormatType.INT,
     output_type: FormatType=FormatType.INT,
     use_css_algo: bool = False,
@@ -148,8 +148,8 @@ def convert(
 
 def np_convert(
     color: np.ndarray,
-    from_space: ColorSpace,
-    to_space:   ColorSpace,
+    from_space: ColorMode,
+    to_space:   ColorMode,
     input_type:  Literal["int","float","percentage"]="int",
     output_type: Literal["int","float","percentage"]="int",
     use_css_algo: bool = False,

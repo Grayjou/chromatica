@@ -10,7 +10,7 @@ from ..helpers import LineInterpMethods
 from ..helpers.cell_utils import apply_per_channel_transforms_2d
 from ..cell.factory import get_transformed_lines_cell
 from ....types.format_type import FormatType
-from ....types.color_types import ColorSpace
+from ....types.color_types import ColorMode
 from ....types.transform_types import PerChannelCoords
 from ....conversions import np_convert
 from boundednumbers import BoundType
@@ -42,7 +42,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
                 top_line=self._top_line,
                 bottom_line=self._bottom_line,
                 per_channel_coords=base_coords,
-                color_space=self.color_space,
+                color_mode=self.color_mode,
                 hue_direction_y=self.hue_direction_y,
                 hue_direction_x=self.hue_direction_x,
                 input_format=FormatType.FLOAT,
@@ -101,7 +101,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
             
             # Get interval properties with fallbacks
             interval = cast(PartitionInterval, spec.interval)
-            color_space = interval.color_space if interval.color_space is not None else self._color_space
+            color_mode = interval.color_mode if interval.color_mode is not None else self._color_mode
             hue_dir_x = interval.hue_direction_x if interval.hue_direction_x is not None else self._hue_direction_x
             hue_dir_y = interval.hue_direction_y if interval.hue_direction_y is not None else self._hue_direction_y
             
@@ -109,8 +109,8 @@ class LinesCellFactory(LinesCellFactoryProperties):
             top_slice, bottom_slice = slice_lines_with_padding(
                 self._top_line, self._bottom_line, px_start, px_end, spec.pad_left, spec.pad_right
             )
-            top_slice = np_convert(top_slice, from_space=self._color_space, to_space=color_space, input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
-            bottom_slice = np_convert(bottom_slice, from_space=self._color_space, to_space=color_space, input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
+            top_slice = np_convert(top_slice, from_space=self._color_mode, to_space=color_mode, input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
+            bottom_slice = np_convert(bottom_slice, from_space=self._color_mode, to_space=color_mode, input_type=FormatType.FLOAT, output_type=FormatType.FLOAT)
             # Handle per_channel_coords for pure_partition mode
             sliced_pcc = None
             if pure_partition:
@@ -128,7 +128,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
                 height=self._height,
                 top_line=top_slice,
                 bottom_line=bottom_slice,
-                color_space=color_space,
+                color_mode=color_mode,
                 hue_direction_x=hue_dir_x,
                 hue_direction_y=hue_dir_y,
                 line_method=self._line_method,
@@ -145,7 +145,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
                     top_line=top_slice,
                     bottom_line=bottom_slice,
                     per_channel_coords=sliced_pcc,
-                    color_space=color_space,
+                    color_mode=color_mode,
                     hue_direction_y=hue_dir_y,
                     hue_direction_x=hue_dir_x,
                     line_method=self._line_method,
@@ -172,7 +172,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
         top_right: np.ndarray,
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
-        color_space: ColorSpace,
+        color_mode: ColorMode,
         hue_direction_x: Optional[str] = None,
         hue_direction_y: Optional[str] = None,
         line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
@@ -194,7 +194,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
             already_converted_start_color=top_left,
             already_converted_end_color=top_right,
             per_channel_coords=coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction=hue_direction_x,
             homogeneous_per_channel_coords=True,
         )
@@ -204,7 +204,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
             already_converted_start_color=bottom_left,
             already_converted_end_color=bottom_right,
             per_channel_coords=coords,
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction=hue_direction_x,
             homogeneous_per_channel_coords=True,
         )
@@ -214,7 +214,7 @@ class LinesCellFactory(LinesCellFactoryProperties):
             height=height,
             top_line=top_segment.get_value(),
             bottom_line=bottom_segment.get_value(),
-            color_space=color_space,
+            color_mode=color_mode,
             hue_direction_x=hue_direction_x,
             hue_direction_y=hue_direction_y,
             line_method=line_method,

@@ -21,7 +21,7 @@ def test_gradient2d_initialization():
 
     bottom = bottom.convert('hsv', 'int')
 
-    gradient = Gradient2D.from_1d_arrays(top, bottom, format_type='int', height=200, color_space='hsv')
+    gradient = Gradient2D.from_1d_arrays(top, bottom, format_type='int', height=200, color_mode='hsv')
     from PIL import Image
     gradient = gradient.convert('rgb', 'int')
     arr = gradient.value.astype('uint8')

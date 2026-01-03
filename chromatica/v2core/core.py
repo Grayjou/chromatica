@@ -15,7 +15,7 @@ from .interp import (  # type: ignore
 
 
 )
-from ..types.color_types import HueMode
+from ..types.color_types import HueDirection
 
 from .interp_hue import (
 
@@ -40,21 +40,21 @@ BoundTypeSequence = Union[List[BoundType], Tuple[BoundType, ...]]
 
 
 
-HueModeSequence = Union[List[HueMode], Tuple[HueMode, ...], HueMode]
+HueDirectionSequence = Union[List[HueDirection], Tuple[HueDirection, ...], HueDirection]
 
 
 def _prepare_hue_modes(
-    modes: HueModeSequence,
+    modes: HueDirectionSequence,
     n_dims: int,
 ) -> np.ndarray:
     """Convert hue modes to int32 array for Cython."""
-    if isinstance(modes, HueMode):
+    if isinstance(modes, HueDirection):
         return np.full(n_dims, int(modes), dtype=np.int32)
     
     modes_list = list(modes)
     if len(modes_list) < n_dims:
         # Pad with SHORTEST
-        modes_list += [HueMode.SHORTEST] * (n_dims - len(modes_list))
+        modes_list += [HueDirection.SHORTEST] * (n_dims - len(modes_list))
     
     return np.array([int(m) for m in modes_list[:n_dims]], dtype=np.int32)
 
@@ -226,7 +226,7 @@ def hue_lerp(
     h0: float,
     h1: float,
     coeffs: np.ndarray,
-    mode: HueMode = HueMode.SHORTEST,
+    mode: HueDirection = HueDirection.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
 ) -> np.ndarray:
     """
@@ -245,10 +245,10 @@ def hue_lerp(
     Example:
         >>> # Interpolate from red (0°) to blue (240°) via shortest path
         >>> t = np.linspace(0, 1, 10)
-        >>> hues = hue_lerp(0, 240, t, HueMode.SHORTEST)
+        >>> hues = hue_lerp(0, 240, t, HueDirection.SHORTEST)
         
         >>> # Same but via longest path (through green)
-        >>> hues_long = hue_lerp(0, 240, t, HueMode.LONGEST)
+        >>> hues_long = hue_lerp(0, 240, t, HueDirection.LONGEST)
     """
     coeffs = np.asarray(coeffs, dtype=np.float64)
     coeffs = _apply_bound(coeffs, bound_type)
@@ -262,7 +262,7 @@ def hue_gradient_1d(
     h_start: float,
     h_end: float,
     n_steps: int,
-    mode: HueMode = HueMode.SHORTEST,
+    mode: HueDirection = HueDirection.SHORTEST,
 ) -> np.ndarray:
     """
     Create a 1D hue gradient.
@@ -278,7 +278,7 @@ def hue_gradient_1d(
         
     Example:
         >>> # Rainbow gradient (full circle clockwise)
-        >>> hues = hue_gradient_1d(0, 360, 100, HueMode.CW)
+        >>> hues = hue_gradient_1d(0, 360, 100, HueDirection.CW)
     """
     t = np.linspace(0, 1, n_steps)
     return hue_lerp(h_start, h_end, t, mode)
@@ -287,7 +287,7 @@ def hue_gradient_1d(
 def hue_gradient_2d(
     corners: Tuple[float, float, float, float],
     shape: Tuple[int, int],
-    modes: Tuple[HueMode, HueMode] = (HueMode.SHORTEST, HueMode.SHORTEST),
+    modes: Tuple[HueDirection, HueDirection] = (HueDirection.SHORTEST, HueDirection.SHORTEST),
 ) -> np.ndarray:
     """
     Create a 2D hue gradient from 4 corner values.
@@ -303,7 +303,7 @@ def hue_gradient_2d(
     Example:
         >>> # Hue wheel quadrant
         >>> corners = (0, 90, 270, 180)  # Red, Yellow, Purple, Cyan
-        >>> hues = hue_gradient_2d(corners, (100, 100), (HueMode.CW, HueMode.CCW))
+        >>> hues = hue_gradient_2d(corners, (100, 100), (HueDirection.CW, HueDirection.CCW))
     """
     tl, tr, bl, br = corners
 
@@ -329,8 +329,8 @@ def sample_hue_between_lines(
     line0: np.ndarray,
     line1: np.ndarray,
     coords: np.ndarray,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
 ) -> np.ndarray:
     """
@@ -355,8 +355,8 @@ def sample_hue_between_lines(
         
     Example:
         >>> # Two hue gradient lines
-        >>> line0 = hue_gradient_1d(0, 120, 100, HueMode.CW)    # Red→Green
-        >>> line1 = hue_gradient_1d(240, 360, 100, HueMode.CW)  # Blue→Red
+        >>> line0 = hue_gradient_1d(0, 120, 100, HueDirection.CW)    # Red→Green
+        >>> line1 = hue_gradient_1d(240, 360, 100, HueDirection.CW)  # Blue→Red
         >>> 
         >>> # Create coordinate grid
         >>> H, W = 50, 100
@@ -379,8 +379,8 @@ def sample_hue_between_lines(
 def make_hue_line_sampler(
     line0: np.ndarray,
     line1: np.ndarray,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
 ):
     """

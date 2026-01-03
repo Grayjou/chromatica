@@ -14,8 +14,8 @@ from .cell_utils import (
 
 )
 
-# Re-export HueMode from v2core for convenience
-from ....v2core.core import HueMode
+# Re-export HueDirection from v2core for convenience
+from ....v2core.core import HueDirection
 
 __all__ = [
     # Interpolation
@@ -25,6 +25,6 @@ __all__ = [
     # Cell utils
     'CellMode',
     'apply_per_channel_transforms_2d',
-    # HueMode
-    'HueMode',
+    # HueDirection
+    'HueDirection',
 ]

@@ -11,7 +11,7 @@ def test_gradient1d_from_colors_rgb():
         color1=(255, 0, 0),
         color2=(0, 0, 255),
         steps=10,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -30,7 +30,7 @@ def test_gradient1d_hsv_hue_direction():
         color1=(0.0, 1.0, 1.0),  # Red in HSV
         color2=(240.0, 1.0, 1.0),  # Blue in HSV
         steps=5,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.FLOAT,
         hue_direction='cw'
     )
@@ -46,7 +46,7 @@ def test_gradient1d_hsv_hue_direction():
         color1=(240.0, 1.0, 1.0),  # Blue in HSV
         color2=(0.0, 1.0, 1.0),  # Red in HSV
         steps=5,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.FLOAT,
         hue_direction='ccw'
     )
@@ -66,7 +66,7 @@ def test_gradient2d_from_colors():
         color_br=(255, 255, 0),
         width=10,
         height=10,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -89,7 +89,7 @@ def test_radial_gradient_basic():
         width=50,
         center=(25, 25),
         radius=25.0,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -114,7 +114,7 @@ def test_gradient1d_with_colorbase():
         color1=color1,
         color2=color2,
         steps=10,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.FLOAT
     )
     
@@ -129,7 +129,7 @@ def test_gradient1d_rgba_channels():
         color1=(255, 0, 0, 255),
         color2=(0, 0, 255, 128),
         steps=10,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT
     )
     
@@ -155,7 +155,7 @@ def test_gradient1d_hsva_with_hue_direction():
         color1=(0.0, 1.0, 1.0, 1.0),  # Red with full opacity
         color2=(120.0, 1.0, 1.0, 0.0),  # Green with full transparency
         steps=6,
-        color_space='hsva',
+        color_mode='hsva',
         format_type=FormatType.FLOAT,
         hue_direction='cw'
     )
@@ -185,7 +185,7 @@ def test_gradient2d_rgba_channels():
         color_br=(255, 255, 0, 100),
         width=10,
         height=10,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT
     )
     
@@ -210,7 +210,7 @@ def test_radial_gradient_rgba():
         width=50,
         center=(25, 25),
         radius=25.0,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT
     )
     
@@ -236,7 +236,7 @@ def test_gradient1d_colorbase_rgba():
         color1=color1,
         color2=color2,
         steps=10,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.FLOAT
     )
     
@@ -254,7 +254,7 @@ def test_gradient_channel_count_validation():
     # RGB - 3 channels
     grad_rgb = Gradient1D.from_colors(
         (255, 0, 0), (0, 0, 255), steps=5,
-        color_space='rgb', format_type=FormatType.INT
+        color_mode='rgb', format_type=FormatType.INT
     )
     assert grad_rgb._color.num_channels == 3
     assert grad_rgb._color.has_alpha is False
@@ -262,7 +262,7 @@ def test_gradient_channel_count_validation():
     # RGBA - 4 channels
     grad_rgba = Gradient1D.from_colors(
         (255, 0, 0, 255), (0, 0, 255, 255), steps=5,
-        color_space='rgba', format_type=FormatType.INT
+        color_mode='rgba', format_type=FormatType.INT
     )
     assert grad_rgba._color.num_channels == 4
     assert grad_rgba._color.has_alpha is True
@@ -270,7 +270,7 @@ def test_gradient_channel_count_validation():
     # HSV - 3 channels
     grad_hsv = Gradient1D.from_colors(
         (0, 100, 100), (240, 100, 100), steps=5,
-        color_space='hsv', format_type=FormatType.INT
+        color_mode='hsv', format_type=FormatType.INT
     )
     assert grad_hsv._color.num_channels == 3
     assert grad_hsv._color.has_alpha is False
@@ -278,7 +278,7 @@ def test_gradient_channel_count_validation():
     # HSVA - 4 channels
     grad_hsva = Gradient1D.from_colors(
         (0, 100, 100, 255), (240, 100, 100, 255), steps=5,
-        color_space='hsva', format_type=FormatType.INT
+        color_mode='hsva', format_type=FormatType.INT
     )
     assert grad_hsva._color.num_channels == 4
     assert grad_hsva._color.has_alpha is True

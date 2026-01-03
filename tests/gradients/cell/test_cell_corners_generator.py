@@ -6,7 +6,7 @@ from typing import cast, Optional
 from ....chromatica.gradients.gradient2dv2.generators.cell_corners import CornersCellFactory
 from ....chromatica.gradients.gradient2dv2.cell.corners import CornersCell
 from ....chromatica.gradients.gradient2dv2.partitions import PerpendicularPartition, PartitionInterval, IndexRoundingMode
-from ....chromatica.types.color_types import ColorSpace, HueMode
+from ....chromatica.types.color_types import ColorMode, HueDirection
 from ....chromatica.types.format_type import FormatType
 from ....chromatica.conversions import np_convert
 from boundednumbers import BoundType
@@ -24,7 +24,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             hue_direction_x='shortest',
             hue_direction_y='shortest',
             boundtypes=BoundType.CLAMP,
@@ -47,7 +47,7 @@ class TestCornersCellFactory:
         assert np.array_equal(factory.bottom_right, np.array([1.0, 1, 0]))
         assert factory.width == 3
         assert factory.height == 3
-        assert factory.color_space == ColorSpace.RGB
+        assert factory.color_mode == ColorMode.RGB
         assert factory.hue_direction_x == 'shortest'
         assert factory.hue_direction_y == 'shortest'
     
@@ -61,7 +61,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Create cell first
@@ -89,11 +89,11 @@ class TestCornersCellFactory:
         assert np.array_equal(cell.bottom_right, new_bottom_right)
         
         # Test other property syncs
-        factory.hue_direction_x = HueMode.CCW
-        assert cell.hue_direction_x == HueMode.CCW
+        factory.hue_direction_x = HueDirection.CCW
+        assert cell.hue_direction_x == HueDirection.CCW
         
-        factory.hue_direction_y = HueMode.CW
-        assert cell.hue_direction_y == HueMode.CW
+        factory.hue_direction_y = HueDirection.CW
+        assert cell.hue_direction_y == HueDirection.CW
     
     def test_get_value(self):
         """Test value retrieval with and without cell initialization."""
@@ -105,7 +105,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Test without initialization (init_cell=False)
@@ -133,7 +133,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Default behavior should create cell
@@ -151,7 +151,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Get default coordinates
@@ -180,7 +180,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Define transform to reverse coordinates
@@ -203,7 +203,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         value2 = factory2.get_value()
         
@@ -220,7 +220,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Create cell
@@ -240,7 +240,7 @@ class TestCornersCellFactory:
         factory.height = 3
         assert factory._cell is None
     
-    def test_color_space_conversion(self):
+    def test_color_mode_conversion(self):
         """Test color space conversion."""
         # Start with RGB colors
         factory = CornersCellFactory(
@@ -251,16 +251,16 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Convert to HSV
-        factory.color_space = ColorSpace.HSV
+        factory.color_mode = ColorMode.HSV
         
         # Verify conversion happened
-        assert factory.color_space == ColorSpace.HSV
-        factory.hue_direction_x = HueMode.CCW
-        factory.hue_direction_y = HueMode.CW
+        assert factory.color_mode == ColorMode.HSV
+        factory.hue_direction_x = HueDirection.CCW
+        factory.hue_direction_y = HueDirection.CW
         # Get value in HSV space
         value = factory.get_value()
         assert value is not None
@@ -270,8 +270,8 @@ class TestCornersCellFactory:
         # Convert original corners to HSV for comparison
         hsv_top_left = np_convert(
             np.array([1.0, 0, 0]), 
-            from_space=ColorSpace.RGB,
-            to_space=ColorSpace.HSV,
+            from_space=ColorMode.RGB,
+            to_space=ColorMode.HSV,
             input_type='float',
             output_type='float'
         )
@@ -287,9 +287,9 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
-            hue_direction_x=HueMode.CCW,
-            hue_direction_y=HueMode.CW,
+            color_mode=ColorMode.RGB,
+            hue_direction_x=HueDirection.CCW,
+            hue_direction_y=HueDirection.CW,
             boundtypes=BoundType.CYCLIC,
             border_mode=1,
             border_value=0.5,
@@ -300,7 +300,7 @@ class TestCornersCellFactory:
             width=5,
             height=6,
             top_left=np.array([0.5, 0.5, 0.5]),
-            hue_direction_x=HueMode.CW,
+            hue_direction_x=HueDirection.CW,
             boundtypes=BoundType.CLAMP,
         )
         
@@ -308,18 +308,18 @@ class TestCornersCellFactory:
         assert factory.width == 3
         assert factory.height == 3
         assert np.array_equal(factory.top_left, np.array([1.0, 0, 0]))
-        assert factory.hue_direction_x == HueMode.CCW
+        assert factory.hue_direction_x == HueDirection.CCW
         assert factory.boundtypes == BoundType.CYCLIC
         
         # Verify copy has new values
         assert copy_factory.width == 5
         assert copy_factory.height == 6
         assert np.array_equal(copy_factory.top_left, np.array([0.5, 0.5, 0.5]))
-        assert copy_factory.hue_direction_x == HueMode.CW
+        assert copy_factory.hue_direction_x == HueDirection.CW
         assert copy_factory.boundtypes == BoundType.CLAMP
         
         # Verify some properties remain the same
-        assert copy_factory.color_space == factory.color_space
+        assert copy_factory.color_mode == factory.color_mode
         assert copy_factory.hue_direction_y == factory.hue_direction_y
         assert np.array_equal(copy_factory.top_right, factory.top_right)
         assert np.array_equal(copy_factory.bottom_left, factory.bottom_left)
@@ -337,7 +337,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         corners = factory.corners
@@ -358,11 +358,11 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1.0, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
 
         pi1 = PartitionInterval("rgb")
-        pi2 = PartitionInterval("hsv", hue_direction_x=HueMode.CCW, hue_direction_y=HueMode.CW)
+        pi2 = PartitionInterval("hsv", hue_direction_x=HueDirection.CCW, hue_direction_y=HueDirection.CW)
         pp = PerpendicularPartition(breakpoints=[0.5], values=[pi1, pi2])
         
         # Partition with default padding (1)
@@ -378,8 +378,8 @@ class TestCornersCellFactory:
         assert factory1.height == factory2.height == 4
         
         # === Color space checks ===
-        assert factory1.color_space == ColorSpace.RGB
-        assert factory2.color_space == ColorSpace.HSV
+        assert factory1.color_mode == ColorMode.RGB
+        assert factory2.color_mode == ColorMode.HSV
         
         # === Factory1 corner checks (RGB, no conversion needed) ===
         # Factory1 gets left side, corners should match original left side
@@ -391,15 +391,15 @@ class TestCornersCellFactory:
         # Convert back to RGB for comparison
         factory2_top_left_rgb = np_convert(
             factory2.top_left, 
-            from_space=ColorSpace.HSV, 
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV, 
+            to_space=ColorMode.RGB,
             input_type='float', 
             output_type='float'
         )
         factory2_bottom_left_rgb = np_convert(
             factory2.bottom_left,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
@@ -418,15 +418,15 @@ class TestCornersCellFactory:
         # Factory2's right side should match original right corners (converted)
         factory2_top_right_rgb = np_convert(
             factory2.top_right,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
         factory2_bottom_right_rgb = np_convert(
             factory2.bottom_right,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
@@ -444,11 +444,11 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1.0, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         pi1 = PartitionInterval("rgb")
-        pi2 = PartitionInterval("hsv", hue_direction_x=HueMode.CCW, hue_direction_y=HueMode.CW)
+        pi2 = PartitionInterval("hsv", hue_direction_x=HueDirection.CCW, hue_direction_y=HueDirection.CW)
         pi3 = PartitionInterval("rgb")
         pp = PerpendicularPartition(breakpoints=[1/3, 2/3], values=[pi1, pi2, pi3])
         
@@ -465,9 +465,9 @@ class TestCornersCellFactory:
         assert factory1.height == factory2.height == factory3.height == 3
         
         # === Color space checks ===
-        assert factory1.color_space == ColorSpace.RGB
-        assert factory2.color_space == ColorSpace.HSV
-        assert factory3.color_space == ColorSpace.RGB
+        assert factory1.color_mode == ColorMode.RGB
+        assert factory2.color_mode == ColorMode.HSV
+        assert factory3.color_mode == ColorMode.RGB
         
         # === Boundary consistency checks ===
         # Get original cell for boundary interpolation
@@ -484,15 +484,15 @@ class TestCornersCellFactory:
         # Factory2 left side should match boundary (converted from HSV)
         factory2_top_left_rgb = np_convert(
             factory2.top_left,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
         factory2_bottom_left_rgb = np_convert(
             factory2.bottom_left,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
@@ -507,15 +507,15 @@ class TestCornersCellFactory:
         # Factory2 right side should match boundary (converted from HSV)
         factory2_top_right_rgb = np_convert(
             factory2.top_right,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
         factory2_bottom_right_rgb = np_convert(
             factory2.bottom_right,
-            from_space=ColorSpace.HSV,
-            to_space=ColorSpace.RGB,
+            from_space=ColorMode.HSV,
+            to_space=ColorMode.RGB,
             input_type='float',
             output_type='float'
         )
@@ -537,7 +537,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1.0, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         pi1 = PartitionInterval("rgb")
@@ -574,7 +574,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1.0, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Get original per-channel coords
@@ -633,7 +633,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         pi1 = PartitionInterval("rgb")
@@ -676,7 +676,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         cell = factory.get_cell()
@@ -709,7 +709,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             border_mode=None,
         )
         
@@ -733,7 +733,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
             boundtypes=BoundType.CLAMP,
         )
         
@@ -756,7 +756,7 @@ class TestCornersCellFactory:
                 bottom_left=np.array([0, 0, 1.0]),
                 bottom_right=np.array([1.0, 1, 0]),
                 input_format=FormatType.FLOAT,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
             )
         
         # Test invalid color space
@@ -769,7 +769,7 @@ class TestCornersCellFactory:
                 bottom_left=np.array([0, 0, 1.0]),
                 bottom_right=np.array([1.0, 1, 0]),
                 input_format=FormatType.FLOAT,
-                color_space="INVALID_COLOR_SPACE",  # type: ignore
+                color_mode="INVALID_color_mode",  # type: ignore
             )
         
         # Test negative dimensions
@@ -782,7 +782,7 @@ class TestCornersCellFactory:
                 bottom_left=np.array([0, 0, 1.0]),
                 bottom_right=np.array([1.0, 1, 0]),
                 input_format=FormatType.FLOAT,
-                color_space=ColorSpace.RGB,
+                color_mode=ColorMode.RGB,
             )
     
     def test_repr_and_eq(self):
@@ -795,7 +795,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         factory2 = CornersCellFactory(
@@ -806,7 +806,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Test equality
@@ -821,7 +821,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         assert factory1 != factory3
@@ -831,7 +831,7 @@ class TestCornersCellFactory:
         assert "CornersCellFactory" in repr_str
         assert "width=2" in repr_str
         assert "height=2" in repr_str
-        assert "color_space=<ColorSpace.RGB" in repr_str
+        assert "color_mode=<ColorMode.RGB" in repr_str
     
     def test_hue_space_uniform_dimension_does_not_break(self):
         """Test that uniform hue dimensions don't break interpolation."""
@@ -843,9 +843,9 @@ class TestCornersCellFactory:
             bottom_left=np.array([0.0, 1.0, 1.0]),
             bottom_right=np.array([0.0, 1.0, 1.0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.HSV,
-            hue_direction_x=HueMode.CW,
-            hue_direction_y=HueMode.CW,
+            color_mode=ColorMode.HSV,
+            hue_direction_x=HueDirection.CW,
+            hue_direction_y=HueDirection.CW,
         )
         
         value = factory.get_value()
@@ -865,7 +865,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         pi = PartitionInterval("rgb")
@@ -886,7 +886,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 1.0]),
             bottom_right=np.array([1.0, 1, 0]),
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Create cell and cache value
@@ -923,7 +923,7 @@ class TestCornersCellFactory:
             bottom_left=np.array([0, 0, 255]),
             bottom_right=np.array([255, 255, 0]),
             input_format=FormatType.INT,
-            color_space=ColorSpace.RGB,
+            color_mode=ColorMode.RGB,
         )
         
         # Corners should be converted to float [0, 1] range
@@ -932,7 +932,7 @@ class TestCornersCellFactory:
         assert np.allclose(factory.bottom_left, [0, 0, 1.0])
         assert np.allclose(factory.bottom_right, [1.0, 1.0, 0])
     
-    def test_corner_different_color_spaces(self):
+    def test_corner_different_color_modes(self):
         """Test corners specified in different color spaces."""
         factory = CornersCellFactory(
             width=2,
@@ -941,18 +941,18 @@ class TestCornersCellFactory:
             top_right=np.array([0, 1.0, 0]),  # RGB green
             bottom_left=np.array([0, 0, 1.0]),  # RGB blue
             bottom_right=np.array([1.0, 1, 0]),  # RGB yellow
-            top_left_color_space=ColorSpace.RGB,
-            top_right_color_space=ColorSpace.RGB,
-            bottom_left_color_space=ColorSpace.RGB,
-            bottom_right_color_space=ColorSpace.RGB,
+            top_left_color_mode=ColorMode.RGB,
+            top_right_color_mode=ColorMode.RGB,
+            bottom_left_color_mode=ColorMode.RGB,
+            bottom_right_color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
-            color_space=ColorSpace.HSV,  # Target space
-            hue_direction_x=HueMode.CCW,
-            hue_direction_y=HueMode.CW,
+            color_mode=ColorMode.HSV,  # Target space
+            hue_direction_x=HueDirection.CCW,
+            hue_direction_y=HueDirection.CW,
         )
         
         # All corners should be converted to HSV
-        assert factory.color_space == ColorSpace.HSV
+        assert factory.color_mode == ColorMode.HSV
         
         # Verify conversion happened (hue values should be different)
         # Red in HSV: [0, 1, 1]
@@ -997,7 +997,7 @@ def test_index_rounding_modes_corners(mode, expected_left_width):
         bottom_left=np.array([0, 0, 1.0]),
         bottom_right=np.array([1.0, 1, 0]),
         input_format=FormatType.FLOAT,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
     )
     
     pp = PerpendicularPartition(

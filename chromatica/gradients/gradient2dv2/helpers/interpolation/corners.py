@@ -11,7 +11,7 @@ from .....v2core.interp_hue import (
     hue_lerp_from_corners,
     hue_lerp_from_corners_array_border,
 )
-from .....types.color_types import is_hue_space, ColorSpaces, HueMode
+from .....types.color_types import is_hue_space, ColorModes, HueDirection
 from .utils import prepare_hue_and_rest_channels, combine_hue_and_rest_channels
 from .....v2core.border_handler import (
     BorderMode,
@@ -84,15 +84,15 @@ def _interp_transformed_non_hue_space_2d_corners(
 def _interp_transformed_hue_space_2d_corners(
     corners: np.ndarray,
     transformed: np.ndarray,
-    huemode_x: HueMode,
-    huemode_y: HueMode,
+    hue_direction_x: HueDirection,
+    hue_direction_y: HueDirection,
     *,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     num_channels: Optional[int] = 3,
@@ -105,8 +105,8 @@ def _interp_transformed_hue_space_2d_corners(
         corners: Corner values, shape (4, C) where C is number of channels
             Order: [top_left, top_right, bottom_left, bottom_right]
         transformed: Transformed coordinates, shape (H, W, 2) or list of coords
-        huemode_x: Hue interpolation mode for x-axis
-        huemode_y: Hue interpolation mode for y-axis
+        hue_direction_x: Hue interpolation mode for x-axis
+        hue_direction_y: Hue interpolation mode for y-axis
         bound_types: Legacy parameter for backward compatibility
         border_mode: Border handling mode
         border_constant: Border constant value for CONSTANT mode
@@ -169,8 +169,8 @@ def _interp_transformed_hue_space_2d_corners(
     hresult = hue_lerp_from_corners(
         corners=hue_corners,
         coords=transformed_h,
-        mode_x=huemode_x,
-        mode_y=huemode_y,
+        mode_x=hue_direction_x,
+        mode_y=hue_direction_y,
         border_mode=border_mode,
         border_constant=border_constant,
         border_array=hue_border_array,
@@ -217,15 +217,15 @@ def _interp_transformed_hue_space_2d_corners(
 def interp_transformed_2d_corners(
     corners: np.ndarray,
     transformed: np.ndarray,
-    color_space: ColorSpaces,
-    huemode_x: Optional[HueMode] = None,
-    huemode_y: Optional[HueMode] = None,
+    color_mode: ColorModes,
+    hue_direction_x: Optional[HueDirection] = None,
+    hue_direction_y: Optional[HueDirection] = None,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     num_channels: Optional[int] = None,
@@ -239,9 +239,9 @@ def interp_transformed_2d_corners(
         corners: Corner values, shape (4,) or (4, C)
             Order: [top_left, top_right, bottom_left, bottom_right]
         transformed: Transformed coordinates, shape (H, W, 2)
-        color_space: Color space of the data
-        huemode_x: Hue interpolation mode for x-axis (required for hue spaces)
-        huemode_y: Hue interpolation mode for y-axis (required for hue spaces)
+        color_mode: Color space of the data
+        hue_direction_x: Hue interpolation mode for x-axis (required for hue spaces)
+        hue_direction_y: Hue interpolation mode for y-axis (required for hue spaces)
         bound_types: List of BoundType for each channel or a single BoundType
         border_mode: Border handling mode (e.g., BorderMode.CLAMP, BorderMode.REPEAT)
         border_constant: Border constant value for BORDER_CONSTANT mode
@@ -250,7 +250,7 @@ def interp_transformed_2d_corners(
         feather_hue_mode: Hue mode to use when feathering hue values
         distance_mode: Mode for calculating distance (for feathering)
         num_threads: Number of threads to use (-1 for auto)
-        num_channels: Number of channels (inferred from color_space if not provided)
+        num_channels: Number of channels (inferred from color_mode if not provided)
         border_value: Legacy parameter, use border_constant instead
         
     Returns:
@@ -261,23 +261,23 @@ def interp_transformed_2d_corners(
         (i for i in [border_value, border_constant] if i is not None), 0
     )
     
-    num_channels = num_channels or len(color_space)
+    num_channels = num_channels or len(color_mode)
 
-    if is_hue_space(color_space):
-        if huemode_x is None:
+    if is_hue_space(color_mode):
+        if hue_direction_x is None:
             raise ValueError(
-                "huemode_x must be specified for hue space interpolation from corners."
+                "hue_direction_x must be specified for hue space interpolation from corners."
             )
-        if huemode_y is None:
+        if hue_direction_y is None:
             raise ValueError(
-                "huemode_y must be specified for hue space interpolation from corners."
+                "hue_direction_y must be specified for hue space interpolation from corners."
             )
         
         return _interp_transformed_hue_space_2d_corners(
             corners,
             transformed,
-            huemode_x=huemode_x,
-            huemode_y=huemode_y,
+            hue_direction_x=hue_direction_x,
+            hue_direction_y=hue_direction_y,
             bound_types=bound_types,
             border_mode=border_mode,
             border_constant=border_constant,
@@ -308,15 +308,15 @@ def interp_transformed_2d_corners_unpacked(
     bottom_left: np.ndarray,
     bottom_right: np.ndarray,
     transformed: np.ndarray,
-    color_space: ColorSpaces,
-    huemode_x: Optional[HueMode] = None,
-    huemode_y: Optional[HueMode] = None,
+    color_mode: ColorModes,
+    hue_direction_x: Optional[HueDirection] = None,
+    hue_direction_y: Optional[HueDirection] = None,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     num_channels: Optional[int] = None,
@@ -335,9 +335,9 @@ def interp_transformed_2d_corners_unpacked(
         bottom_left: Bottom-left corner value(s), shape () or (C,)
         bottom_right: Bottom-right corner value(s), shape () or (C,)
         transformed: Transformed coordinates, shape (H, W, 2)
-        color_space: Color space of the data
-        huemode_x: Hue interpolation mode for x-axis
-        huemode_y: Hue interpolation mode for y-axis
+        color_mode: Color space of the data
+        hue_direction_x: Hue interpolation mode for x-axis
+        hue_direction_y: Hue interpolation mode for y-axis
         bound_types: List of BoundType for each channel or single BoundType
         border_mode: Border handling mode
         border_constant: Border constant value
@@ -365,9 +365,9 @@ def interp_transformed_2d_corners_unpacked(
     return interp_transformed_2d_corners(
         corners=corners,
         transformed=transformed,
-        color_space=color_space,
-        huemode_x=huemode_x,
-        huemode_y=huemode_y,
+        color_mode=color_mode,
+        hue_direction_x=hue_direction_x,
+        hue_direction_y=hue_direction_y,
         bound_types=bound_types,
         border_mode=border_mode,
         border_constant=border_constant,

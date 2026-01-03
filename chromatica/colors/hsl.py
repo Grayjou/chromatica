@@ -1,12 +1,12 @@
 from typing import ClassVar, Tuple
 from ..types.format_type import FormatType
-from ..types.color_types import ColorSpace
+from ..types.color_types import ColorMode
 from .color_base import ColorBase, WithAlpha, build_registry
 
 
 class ColorHSLINT(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.HSL
+    mode: ClassVar[ColorMode] = ColorMode.HSL
     _type: ClassVar[type] = int
     maxima: ClassVar[Tuple[int, int, int]] = (360, 255, 255)
     null_value: ClassVar[Tuple[int, int, int]] = (0, 0, 0)
@@ -15,7 +15,7 @@ class ColorHSLINT(ColorBase):
 
 class ColorHSLAINT(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.HSLA
+    mode: ClassVar[ColorMode] = ColorMode.HSLA
     _type: ClassVar[type] = int
     maxima: ClassVar[Tuple[int, int, int, int]] = (360, 255, 255, 255)
     null_value: ClassVar[Tuple[int, int, int, int]] = (0, 0, 0, 0)
@@ -24,7 +24,7 @@ class ColorHSLAINT(ColorBase, WithAlpha):
 
 class UnitHSL(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.HSL
+    mode: ClassVar[ColorMode] = ColorMode.HSL
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float]] = (360.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -33,7 +33,7 @@ class UnitHSL(ColorBase):
 
 class UnitHSLA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.HSLA
+    mode: ClassVar[ColorMode] = ColorMode.HSLA
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float, float]] = (360.0, 1.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)
@@ -42,7 +42,7 @@ class UnitHSLA(ColorBase, WithAlpha):
 
 class PercentageHSL(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.HSL
+    mode: ClassVar[ColorMode] = ColorMode.HSL
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float]] = (360.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -51,7 +51,7 @@ class PercentageHSL(ColorBase):
 
 class PercentageHSLA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.HSLA
+    mode: ClassVar[ColorMode] = ColorMode.HSLA
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float, float]] = (360.0, 100.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)

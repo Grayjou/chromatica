@@ -10,7 +10,7 @@ IntElement = Union[int, IntVector]
 FloatElement = Union[float, Tuple[float, ...]]
 ColorElement = Union[IntElement, FloatElement]
 ColorValue = Union[ColorElement, ndarray]  # Includes array support
-ColorSpaces = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
+ColorModes = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
 HUE_SPACES = {"hsl", "hsla", "hsv", "hsva"}
 
 def element_to_array(element: Union[ColorElement, ndarray]) -> np.ndarray:

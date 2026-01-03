@@ -29,7 +29,7 @@ def example_basic_three_rings():
             # Outer ring: white → black → white → black
             ((255, 255, 255), (0, 0, 0), (255, 255, 255), (0, 0, 0))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(32, 32, 32)
     )
@@ -58,7 +58,7 @@ def example_elliptical_gradient():
             ((255, 0, 0), (255, 128, 0)),
             ((0, 0, 255), (128, 0, 255))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0)
     )
@@ -90,7 +90,7 @@ def example_flower_shaped():
             # Outer edge: dark
             ((64, 0, 64), (0, 64, 64), (64, 64, 0), (64, 0, 0), (0, 0, 64), (64, 32, 0))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0)
     )
@@ -120,7 +120,7 @@ def example_spiral_with_transform():
             ((255, 0, 255), (255, 255, 0), (0, 255, 255)),
             ((128, 0, 0), (0, 128, 0), (0, 0, 128)),
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0),
         bivariable_space_transforms={0: spiral_transform, 1: spiral_transform, 2: spiral_transform}
@@ -146,7 +146,7 @@ def example_hsv_with_hue_directions():
             # Outer ring: green → red (counter-clockwise)
             ((120, 100, 80), (0, 100, 80))
         ],
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0),
         hue_directions_theta=[
@@ -182,7 +182,7 @@ def example_easing_functions():
             ((255, 0, 0), (0, 255, 0), (0, 0, 255)),
             ((255, 255, 0), (255, 0, 255), (0, 255, 255))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0),
         easing_theta={0: pulse_easing, 1: pulse_easing, 2: pulse_easing},
@@ -224,7 +224,7 @@ def example_star_burst():
         inner_r_theta=lambda theta: np.full_like(theta, 30),
         outer_r_theta=star_r,
         color_rings=color_rings,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 20)
     )
@@ -248,7 +248,7 @@ def example_angular_segment():
             ((0, 255, 0), (0, 255, 128), (0, 255, 255)),
             ((0, 0, 255), (128, 0, 255), (255, 0, 255))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         deg_start=45.0,
         deg_end=315.0,
@@ -279,7 +279,7 @@ def example_color_transform():
             ((255, 0, 0), (0, 255, 0), (0, 0, 255)),
             ((255, 255, 0), (255, 0, 255), (0, 255, 255))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0),
         bivariable_color_transforms={0: fade_by_angle, 1: fade_by_angle, 2: fade_by_angle}

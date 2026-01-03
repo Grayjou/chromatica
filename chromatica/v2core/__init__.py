@@ -23,7 +23,7 @@ from .core import (
     sample_hue_between_lines,
     make_hue_line_sampler,
     sample_between_lines,
-    HueMode,
+    HueDirection,
 )
 
 # Import 2D interpolation functions from interp_2d
@@ -84,7 +84,7 @@ __all__ = [
     # Utility functions
     "bound_coeffs",
     "bound_coeffs_fused",
-    "HueMode",
+    "HueDirection",
     
     # 2D interpolation between lines/planes
     "lerp_between_lines",

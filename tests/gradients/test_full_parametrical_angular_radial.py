@@ -292,7 +292,7 @@ class TestGradientGeneration:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 40),
             color_rings=[((255, 0, 0), (0, 0, 255))],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         
@@ -318,7 +318,7 @@ class TestGradientGeneration:
                 ((0, 255, 0), (0, 255, 255)),
                 ((0, 0, 255), (255, 0, 255))
             ],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         this_r, this_theta = 25, 180 
@@ -337,7 +337,7 @@ class TestGradientGeneration:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 40),
             color_rings=[((255, 0, 0), (0, 0, 255))],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT,
             deg_start=0,
             deg_end=180,
@@ -355,7 +355,7 @@ class TestGradientGeneration:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 30),
             color_rings=[((255, 0, 0),)],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT,
             outside_fill=(128, 128, 128)
         )
@@ -374,7 +374,7 @@ class TestGradientGeneration:
             inner_r_theta=lambda theta: np.full_like(theta, 5),
             outer_r_theta=lambda theta: np.full_like(theta, 20),
             color_rings=[((1.0, 0.0, 0.0), (0.0, 0.0, 1.0))],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.FLOAT
         )
         
@@ -394,7 +394,7 @@ class TestShapeHelpers:
             height=100,
             colors=((255, 0, 0), (0, 0, 255)),
             eccentricity=0.5,
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         
@@ -408,7 +408,7 @@ class TestShapeHelpers:
             colors=((255, 255, 0), (255, 0, 255)),
             points=5,
             inner_ratio=0.4,
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         
@@ -420,7 +420,7 @@ class TestShapeHelpers:
             width=100, height=100,
             colors=((255, 0, 0),),
             points=5,
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         
@@ -428,7 +428,7 @@ class TestShapeHelpers:
             width=100, height=100,
             colors=((255, 0, 0),),
             points=8,
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
         
@@ -452,7 +452,7 @@ class TestVariableRadiusFunctions:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=wave_r,
             color_rings=[((255, 0, 0), (0, 0, 255))],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
 
@@ -476,7 +476,7 @@ class TestVariableRadiusFunctions:
             outer_r_theta=petal_r,
             color_rings=[((255, 255, 0), (255, 0, 255)),
                          ((255, 128, 255), (255, 255, 128))],
-            color_space='rgb',
+            color_mode='rgb',
             format_type=FormatType.INT
         )
 
@@ -504,7 +504,7 @@ class TestHSVGradients:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 40),
             color_rings=[((0.0, 1.0, 1.0), (120.0, 1.0, 1.0))],
-            color_space='hsv',
+            color_mode='hsv',
             format_type=FormatType.FLOAT
         )
         gradient = gradient.convert('rgb', to_format=FormatType.INT)
@@ -527,7 +527,7 @@ class TestHSVGradients:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 40),
             color_rings=[((0.0, 1.0, 1.0), (240.0, 1.0, 1.0))],
-            color_space='hsv',
+            color_mode='hsv',
             format_type=FormatType.FLOAT,
             hue_directions_theta=[['cw']]
         )
@@ -547,7 +547,7 @@ class TestHSVGradients:
             inner_r_theta=lambda theta: np.full_like(theta, 10),
             outer_r_theta=lambda theta: np.full_like(theta, 40),
             color_rings=[((0.0, 1.0, 1.0), (240.0, 1.0, 1.0))],
-            color_space='hsv',
+            color_mode='hsv',
             format_type=FormatType.FLOAT,
             hue_directions_theta=[['ccw']]
         )

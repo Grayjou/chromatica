@@ -11,20 +11,20 @@ from typing import Optional
 
 # Import from the new Cython backend
 
-from ..v2core.core import hue_lerp, HueMode
+from ..v2core.core import hue_lerp, HueDirection
 
 
 
-def _convert_direction_to_mode(direction: Optional[str]) -> HueMode:
-    """Convert old string direction to new HueMode enum."""
-    if direction is None or direction == 'shortest' or direction == HueMode.SHORTEST:
-        return HueMode.SHORTEST
-    elif direction == 'cw' or direction == 'clockwise' or direction == HueMode.CW:
-        return HueMode.CW
-    elif direction == 'ccw' or direction == 'counterclockwise' or direction == HueMode.CCW:
-        return HueMode.CCW
-    elif direction == 'longest' or direction == HueMode.LONGEST:
-        return HueMode.LONGEST
+def _convert_direction_to_mode(direction: Optional[str]) -> HueDirection:
+    """Convert old string direction to new HueDirection enum."""
+    if direction is None or direction == 'shortest' or direction == HueDirection.SHORTEST:
+        return HueDirection.SHORTEST
+    elif direction == 'cw' or direction == 'clockwise' or direction == HueDirection.CW:
+        return HueDirection.CW
+    elif direction == 'ccw' or direction == 'counterclockwise' or direction == HueDirection.CCW:
+        return HueDirection.CCW
+    elif direction == 'longest' or direction == HueDirection.LONGEST:
+        return HueDirection.LONGEST
     else:
         raise ValueError(f"Invalid hue direction: {direction}")
 

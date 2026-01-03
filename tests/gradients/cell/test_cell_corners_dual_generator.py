@@ -9,7 +9,7 @@ from ....chromatica.gradients.gradient2dv2.partitions import (
     PerpendicularDualPartition, CellDualPartitionInterval, IndexRoundingMode
 )
 from ....chromatica.samples.colors import RED_FLOAT_RGB, GREEN_FLOAT_RGB, BLUE_FLOAT_RGB, YELLOW_FLOAT_RGB, CYAN_FLOAT_RGB, MAGENTA_FLOAT_RGB, WHITE_FLOAT_RGB, get_white_hsv, RED_FLOAT_HSV, GREEN_FLOAT_HSV
-from ....chromatica.types.color_types import ColorSpace, HueMode
+from ....chromatica.types.color_types import ColorMode, HueDirection
 from ....chromatica.types.format_type import FormatType
 from ....chromatica.conversions import np_convert
 from boundednumbers import BoundType
@@ -26,11 +26,11 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
-            hue_direction_x=HueMode.CW,
-            hue_direction_y=HueMode.CCW,
+            hue_direction_x=HueDirection.CW,
+            hue_direction_y=HueDirection.CCW,
             boundtypes=BoundType.CLAMP,
             border_mode=None,
             border_value=None,
@@ -51,12 +51,12 @@ class TestCornersCellDualFactory:
         assert np.array_equal(factory.bottom_right, YELLOW_FLOAT_RGB)
         assert factory.width == 3
         assert factory.height == 3
-        assert factory.vertical_color_space == ColorSpace.RGB
-        assert factory.horizontal_color_space == ColorSpace.HSV
-        assert factory.hue_direction_x == HueMode.CW
-        assert factory.hue_direction_y == HueMode.CCW
-        assert factory.top_segment_color_space == ColorSpace.HSV  # Defaults to horizontal
-        assert factory.bottom_segment_color_space == ColorSpace.HSV  # Defaults to horizontal
+        assert factory.vertical_color_mode == ColorMode.RGB
+        assert factory.horizontal_color_mode == ColorMode.HSV
+        assert factory.hue_direction_x == HueDirection.CW
+        assert factory.hue_direction_y == HueDirection.CCW
+        assert factory.top_segment_color_mode == ColorMode.HSV  # Defaults to horizontal
+        assert factory.bottom_segment_color_mode == ColorMode.HSV  # Defaults to horizontal
     
     def test_property_synchronization(self):
         """Test that property changes sync with the underlying cell."""
@@ -67,8 +67,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -97,17 +97,17 @@ class TestCornersCellDualFactory:
         assert np.array_equal(cell.bottom_right, new_bottom_right)
         
         # Test other property syncs
-        factory.hue_direction_x = HueMode.CCW
-        assert cell.hue_direction_x == HueMode.CCW
+        factory.hue_direction_x = HueDirection.CCW
+        assert cell.hue_direction_x == HueDirection.CCW
         
-        factory.hue_direction_y = HueMode.CW
-        assert cell.hue_direction_y == HueMode.CW
+        factory.hue_direction_y = HueDirection.CW
+        assert cell.hue_direction_y == HueDirection.CW
         
-        factory.top_segment_hue_direction_x = HueMode.CCW
-        assert cell.top_segment_hue_direction_x == HueMode.CCW
+        factory.top_segment_hue_direction_x = HueDirection.CCW
+        assert cell.top_segment_hue_direction_x == HueDirection.CCW
         
-        factory.bottom_segment_hue_direction_x = HueMode.CW
-        assert cell.bottom_segment_hue_direction_x == HueMode.CW
+        factory.bottom_segment_hue_direction_x = HueDirection.CW
+        assert cell.bottom_segment_hue_direction_x == HueDirection.CW
     
     def test_get_value(self):
         """Test value retrieval with and without cell initialization."""
@@ -118,8 +118,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -145,8 +145,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -164,8 +164,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -194,8 +194,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -218,8 +218,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         value2 = factory2.get_value()
@@ -236,8 +236,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -258,7 +258,7 @@ class TestCornersCellDualFactory:
         factory.height = 3
         assert factory._cell is None
     
-    def test_color_space_conversion(self):
+    def test_color_mode_conversion(self):
         """Test color space conversion for dual spaces."""
         # Start with RGB vertical, HSV horizontal
         factory = CornersCellDualFactory(
@@ -268,30 +268,30 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         # Convert vertical color space
-        factory.vertical_color_space = ColorSpace.HSV
+        factory.vertical_color_mode = ColorMode.HSV
         
         # Verify conversion happened
-        assert factory.vertical_color_space == ColorSpace.HSV
-        assert factory.horizontal_color_space == ColorSpace.HSV  # Unchanged
+        assert factory.vertical_color_mode == ColorMode.HSV
+        assert factory.horizontal_color_mode == ColorMode.HSV  # Unchanged
         
         # Convert horizontal color space
-        factory.horizontal_color_space = ColorSpace.RGB
+        factory.horizontal_color_mode = ColorMode.RGB
         
-        assert factory.vertical_color_space == ColorSpace.HSV
-        assert factory.horizontal_color_space == ColorSpace.RGB
+        assert factory.vertical_color_mode == ColorMode.HSV
+        assert factory.horizontal_color_mode == ColorMode.RGB
         
         # Get value and verify shape
         value = factory.get_value()
         assert value is not None
         assert value.shape == (2, 2, 3)
     
-    def test_segment_color_spaces(self):
+    def test_segment_color_modes(self):
         """Test segment-specific color spaces."""
         factory = CornersCellDualFactory(
             width=3,
@@ -300,16 +300,16 @@ class TestCornersCellDualFactory:
             top_right=np.array([0.333, 1.0, 1.0]),  # HSV green
             bottom_left=CYAN_FLOAT_RGB,  # HSV red
             bottom_right=np.array([0.333, 1.0, 1.0]),  # HSV green
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.RGB,  # Different segment space
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.RGB,  # Different segment space
             input_format=FormatType.FLOAT,
         )
         
         # Verify segment color spaces
-        assert factory.top_segment_color_space == ColorSpace.HSV
-        assert factory.bottom_segment_color_space == ColorSpace.RGB
+        assert factory.top_segment_color_mode == ColorMode.HSV
+        assert factory.bottom_segment_color_mode == ColorMode.RGB
         
         # Top segment should use HSV interpolation
         # Bottom segment should use RGB interpolation
@@ -330,16 +330,16 @@ class TestCornersCellDualFactory:
             top_right=np.array([0.5, 1.0, 1.0]),
             bottom_left=CYAN_FLOAT_RGB,
             bottom_right=np.array([0.5, 1.0, 1.0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_hue_direction_x=HueMode.CW,
-            bottom_segment_hue_direction_x=HueMode.CCW,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_hue_direction_x=HueDirection.CW,
+            bottom_segment_hue_direction_x=HueDirection.CCW,
             input_format=FormatType.FLOAT,
         )
         
         # Verify segment hue directions
-        assert factory.top_segment_hue_direction_x == HueMode.CW
-        assert factory.bottom_segment_hue_direction_x == HueMode.CCW
+        assert factory.top_segment_hue_direction_x == HueDirection.CW
+        assert factory.bottom_segment_hue_direction_x == HueDirection.CCW
         
         # Get value - should use different hue directions for top and bottom
         value = factory.get_value()
@@ -358,56 +358,56 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.RGB,
-            hue_direction_x=HueMode.CCW,
-            hue_direction_y=HueMode.CW,
-            top_segment_hue_direction_x=HueMode.CW,
-            bottom_segment_hue_direction_x=HueMode.CCW,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.RGB,
+            hue_direction_x=HueDirection.CCW,
+            hue_direction_y=HueDirection.CW,
+            top_segment_hue_direction_x=HueDirection.CW,
+            bottom_segment_hue_direction_x=HueDirection.CCW,
             boundtypes=BoundType.CYCLIC,
             border_mode=1,
             border_value=0.5,
             input_format=FormatType.FLOAT,
-            top_left_color_space=ColorSpace.RGB,
-            top_right_color_space=ColorSpace.RGB,
-            bottom_left_color_space=ColorSpace.RGB, 
-            bottom_right_color_space=ColorSpace.RGB,)
+            top_left_color_mode=ColorMode.RGB,
+            top_right_color_mode=ColorMode.RGB,
+            bottom_left_color_mode=ColorMode.RGB, 
+            bottom_right_color_mode=ColorMode.RGB,)
         
         # Create a copy with modified properties
         copy_factory = factory.copy_with(
             width=5,
             height=6,
             top_left=np.array([0.5, 0.5, 0.5]),
-            vertical_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.RGB,
-            hue_direction_x=HueMode.CW,
+            vertical_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.RGB,
+            hue_direction_x=HueDirection.CW,
             boundtypes=BoundType.CLAMP,
-            top_left_color_space=ColorSpace.RGB,
+            top_left_color_mode=ColorMode.RGB,
         )
         
         # Verify original unchanged
         assert factory.width == 3
         assert factory.height == 3
         assert np.array_equal(factory.top_left, RED_FLOAT_HSV)
-        assert factory.vertical_color_space == ColorSpace.RGB
-        assert factory.top_segment_color_space == ColorSpace.HSV
-        assert factory.hue_direction_x == HueMode.CCW
+        assert factory.vertical_color_mode == ColorMode.RGB
+        assert factory.top_segment_color_mode == ColorMode.HSV
+        assert factory.hue_direction_x == HueDirection.CCW
         assert factory.boundtypes == BoundType.CYCLIC
         
         # Verify copy has new values
         assert copy_factory.width == 5
         assert copy_factory.height == 6
         assert np.array_equal(copy_factory.top_left, np.array([0.5, 0.5, 0.5]))
-        assert copy_factory.vertical_color_space == ColorSpace.HSV
-        assert copy_factory.top_segment_color_space == ColorSpace.RGB
-        assert copy_factory.hue_direction_x == HueMode.CW
+        assert copy_factory.vertical_color_mode == ColorMode.HSV
+        assert copy_factory.top_segment_color_mode == ColorMode.RGB
+        assert copy_factory.hue_direction_x == HueDirection.CW
         assert copy_factory.boundtypes == BoundType.CLAMP
         
         # Verify some properties remain the same
-        assert copy_factory.horizontal_color_space == factory.horizontal_color_space
-        assert copy_factory.bottom_segment_color_space == factory.bottom_segment_color_space
+        assert copy_factory.horizontal_color_mode == factory.horizontal_color_mode
+        assert copy_factory.bottom_segment_color_mode == factory.bottom_segment_color_mode
         assert copy_factory.hue_direction_y == factory.hue_direction_y
         assert copy_factory.top_segment_hue_direction_x == factory.top_segment_hue_direction_x
         assert copy_factory.bottom_segment_hue_direction_x == factory.bottom_segment_hue_direction_x
@@ -428,8 +428,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -441,8 +441,8 @@ class TestCornersCellDualFactory:
         assert np.array_equal(corners['bottom_left'], BLUE_FLOAT_RGB)
         assert np.array_equal(corners['bottom_right'], YELLOW_FLOAT_RGB)
     
-    def test_color_spaces_property(self):
-        """Test the computed color_spaces property."""
+    def test_color_modes_property(self):
+        """Test the computed color_modes property."""
         factory = CornersCellDualFactory(
             width=2,
             height=2,
@@ -450,20 +450,20 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.RGB,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
-        color_spaces = factory.color_spaces
-        assert isinstance(color_spaces, dict)
-        assert set(color_spaces.keys()) == {'vertical', 'horizontal', 'top_segment', 'bottom_segment'}
-        assert color_spaces['vertical'] == ColorSpace.RGB
-        assert color_spaces['horizontal'] == ColorSpace.HSV
-        assert color_spaces['top_segment'] == ColorSpace.HSV
-        assert color_spaces['bottom_segment'] == ColorSpace.RGB
+        color_modes = factory.color_modes
+        assert isinstance(color_modes, dict)
+        assert set(color_modes.keys()) == {'vertical', 'horizontal', 'top_segment', 'bottom_segment'}
+        assert color_modes['vertical'] == ColorMode.RGB
+        assert color_modes['horizontal'] == ColorMode.HSV
+        assert color_modes['top_segment'] == ColorMode.HSV
+        assert color_modes['bottom_segment'] == ColorMode.RGB
     
     def test_perpendicular_dual_partition_basic(self):
         """Test basic partition with two intervals."""
@@ -474,19 +474,19 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=np.array([1.0, 1.0, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
 
         # Create partition intervals with different color spaces
         pi1 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pi2 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.HSV,
-            horizontal_color_space=ColorSpace.RGB
+            vertical_color_mode=ColorMode.HSV,
+            horizontal_color_mode=ColorMode.RGB
         )
         
         # Create dual partition
@@ -505,10 +505,10 @@ class TestCornersCellDualFactory:
         assert factory1.height == factory2.height == 4
         
         # === Color space checks ===
-        assert factory1.vertical_color_space == ColorSpace.RGB
-        assert factory1.horizontal_color_space == ColorSpace.HSV
-        assert factory2.vertical_color_space == ColorSpace.HSV
-        assert factory2.horizontal_color_space == ColorSpace.RGB
+        assert factory1.vertical_color_mode == ColorMode.RGB
+        assert factory1.horizontal_color_mode == ColorMode.HSV
+        assert factory2.vertical_color_mode == ColorMode.HSV
+        assert factory2.horizontal_color_mode == ColorMode.RGB
         
         # === Verify boundaries match ===
         # Get boundary colors from original cell interpolation
@@ -542,23 +542,23 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=np.array([1.0, 1.0, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         # Create three intervals with different configurations
         pi1 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pi2 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.HSV,
-            horizontal_color_space=ColorSpace.RGB
+            vertical_color_mode=ColorMode.HSV,
+            horizontal_color_mode=ColorMode.RGB
         )
         pi3 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         
         pp = PerpendicularDualPartition(breakpoints=[1/3, 2/3], values=[pi1, pi2, pi3])
@@ -573,14 +573,14 @@ class TestCornersCellDualFactory:
         assert factory1.height == factory2.height == factory3.height == 3
         
         # === Color space checks ===
-        assert factory1.vertical_color_space == ColorSpace.RGB
-        assert factory1.horizontal_color_space == ColorSpace.HSV
+        assert factory1.vertical_color_mode == ColorMode.RGB
+        assert factory1.horizontal_color_mode == ColorMode.HSV
         
-        assert factory2.vertical_color_space == ColorSpace.HSV
-        assert factory2.horizontal_color_space == ColorSpace.RGB
+        assert factory2.vertical_color_mode == ColorMode.HSV
+        assert factory2.horizontal_color_mode == ColorMode.RGB
         
-        assert factory3.vertical_color_space == ColorSpace.RGB
-        assert factory3.horizontal_color_space == ColorSpace.HSV
+        assert factory3.vertical_color_mode == ColorMode.RGB
+        assert factory3.horizontal_color_mode == ColorMode.HSV
         
         # === Get rendered values ===
         value1 = factory1.get_value()
@@ -603,18 +603,18 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=np.array([1.0, 1.0, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         pi1 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pi2 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.HSV,
-            horizontal_color_space=ColorSpace.RGB
+            vertical_color_mode=ColorMode.HSV,
+            horizontal_color_mode=ColorMode.RGB
         )
         pp = PerpendicularDualPartition(breakpoints=[0.5], values=[pi1, pi2])
         
@@ -647,8 +647,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=np.array([1.0, 1.0, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -656,12 +656,12 @@ class TestCornersCellDualFactory:
         original_pcc = factory.per_channel_coords
         
         pi1 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pi2 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pp = PerpendicularDualPartition(breakpoints=[0.5], values=[pi1, pi2])
         
@@ -713,18 +713,18 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         pi1 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pi2 = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pp = PerpendicularDualPartition(breakpoints=[0.501], values=[pi1, pi2])
         
@@ -763,8 +763,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -797,8 +797,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
             border_mode=None,
         )
@@ -822,8 +822,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
             boundtypes=BoundType.CLAMP,
         )
@@ -846,8 +846,8 @@ class TestCornersCellDualFactory:
                 top_right=GREEN_FLOAT_RGB,  # 3 channels
                 bottom_left=BLUE_FLOAT_RGB,
                 bottom_right=YELLOW_FLOAT_RGB,
-                vertical_color_space=ColorSpace.RGB,
-                horizontal_color_space=ColorSpace.HSV,
+                vertical_color_mode=ColorMode.RGB,
+                horizontal_color_mode=ColorMode.HSV,
                 input_format=FormatType.FLOAT,
             )
         
@@ -860,8 +860,8 @@ class TestCornersCellDualFactory:
                 top_right=GREEN_FLOAT_RGB,
                 bottom_left=BLUE_FLOAT_RGB,
                 bottom_right=YELLOW_FLOAT_RGB,
-                vertical_color_space="INVALID_COLOR_SPACE",  # type: ignore
-                horizontal_color_space=ColorSpace.HSV,
+                vertical_color_mode="INVALID_color_mode",  # type: ignore
+                horizontal_color_mode=ColorMode.HSV,
                 input_format=FormatType.FLOAT,
             )
         
@@ -874,8 +874,8 @@ class TestCornersCellDualFactory:
                 top_right=GREEN_FLOAT_RGB,
                 bottom_left=BLUE_FLOAT_RGB,
                 bottom_right=YELLOW_FLOAT_RGB,
-                vertical_color_space=ColorSpace.RGB,
-                horizontal_color_space=ColorSpace.HSV,
+                vertical_color_mode=ColorMode.RGB,
+                horizontal_color_mode=ColorMode.HSV,
                 input_format=FormatType.FLOAT,
             )
     
@@ -888,8 +888,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -900,8 +900,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -916,8 +916,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -928,7 +928,7 @@ class TestCornersCellDualFactory:
         assert "CornersCellDualFactory" in repr_str
         assert "width=2" in repr_str
         assert "height=2" in repr_str
-        assert "vertical_space=ColorSpace.RGB" in repr_str or "ColorSpace.RGB" in repr_str
+        assert "vertical_space=ColorMode.RGB" in repr_str or "ColorMode.RGB" in repr_str
     
     def test_single_partition_returns_self(self):
         """Test that partitioning with a single interval returns a copy of self."""
@@ -939,14 +939,14 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         pi = CellDualPartitionInterval(
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV
         )
         pp = PerpendicularDualPartition(breakpoints=[], values=[pi])
         
@@ -964,8 +964,8 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,
             bottom_left=BLUE_FLOAT_RGB,
             bottom_right=YELLOW_FLOAT_RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
@@ -1002,14 +1002,14 @@ class TestCornersCellDualFactory:
             top_right=np.array([0, 255, 0]),
             bottom_left=np.array([0, 0, 255]),
             bottom_right=np.array([255, 255, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_left_color_space=ColorSpace.RGB,
-            top_right_color_space=ColorSpace.RGB,
-            bottom_left_color_space=ColorSpace.RGB,
-            bottom_right_color_space=ColorSpace.RGB,
-            top_segment_color_space=ColorSpace.RGB,
-            bottom_segment_color_space=ColorSpace.RGB,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_left_color_mode=ColorMode.RGB,
+            top_right_color_mode=ColorMode.RGB,
+            bottom_left_color_mode=ColorMode.RGB,
+            bottom_right_color_mode=ColorMode.RGB,
+            top_segment_color_mode=ColorMode.RGB,
+            bottom_segment_color_mode=ColorMode.RGB,
             input_format=FormatType.INT,
         )
         
@@ -1020,7 +1020,7 @@ class TestCornersCellDualFactory:
         assert np.allclose(factory.bottom_left, [0, 0, 1.0])  # RGB blue
         assert np.allclose(factory.bottom_right, [1.0, 1.0, 0])  # RGB yellow
     
-    def test_corner_different_color_spaces(self):
+    def test_corner_different_color_modes(self):
         """Test corners specified in different color spaces."""
         factory = CornersCellDualFactory(
             width=2,
@@ -1029,20 +1029,20 @@ class TestCornersCellDualFactory:
             top_right=GREEN_FLOAT_RGB,  # RGB green
             bottom_left=BLUE_FLOAT_RGB,  # RGB blue
             bottom_right=YELLOW_FLOAT_RGB,  # RGB yellow
-            top_left_color_space=ColorSpace.RGB,
-            top_right_color_space=ColorSpace.RGB,
-            bottom_left_color_space=ColorSpace.RGB,
-            bottom_right_color_space=ColorSpace.RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.HSV,
+            top_left_color_mode=ColorMode.RGB,
+            top_right_color_mode=ColorMode.RGB,
+            bottom_left_color_mode=ColorMode.RGB,
+            bottom_right_color_mode=ColorMode.RGB,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.HSV,
             input_format=FormatType.FLOAT,
         )
         
         # All corners should be converted to HSV (segment color space)
-        assert factory.top_segment_color_space == ColorSpace.HSV
-        assert factory.bottom_segment_color_space == ColorSpace.HSV
+        assert factory.top_segment_color_mode == ColorMode.HSV
+        assert factory.bottom_segment_color_mode == ColorMode.HSV
         
         # Verify corners were converted (not original RGB values)
         # Red in HSV: [0, 1, 1]
@@ -1074,20 +1074,20 @@ class TestCornersCellDualFactory:
             top_right=np.array([0.333, 1.0, 1.0]),  # HSV
             bottom_left=RED_FLOAT_RGB,  # RGB
             bottom_right=GREEN_FLOAT_RGB,  # RGB
-            top_left_color_space=ColorSpace.HSV,
-            top_right_color_space=ColorSpace.HSV,
-            bottom_left_color_space=ColorSpace.RGB,
-            bottom_right_color_space=ColorSpace.RGB,
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.RGB,
+            top_left_color_mode=ColorMode.HSV,
+            top_right_color_mode=ColorMode.HSV,
+            bottom_left_color_mode=ColorMode.RGB,
+            bottom_right_color_mode=ColorMode.RGB,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.RGB,
             input_format=FormatType.FLOAT,
         )
         
         # Verify segment configurations
-        assert factory.top_segment_color_space == ColorSpace.HSV
-        assert factory.bottom_segment_color_space == ColorSpace.RGB
+        assert factory.top_segment_color_mode == ColorMode.HSV
+        assert factory.bottom_segment_color_mode == ColorMode.RGB
         
         # Top corners should be in HSV
         # Bottom corners should be in RGB
@@ -1110,13 +1110,13 @@ class TestCornersCellDualFactory:
             top_right=np.array([0.5, 1.0, 1.0]),  # HSV cyan-ish
             bottom_left=RED_FLOAT_RGB,  # RGB red
             bottom_right=GREEN_FLOAT_RGB,  # RGB green
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
-            top_segment_color_space=ColorSpace.HSV,
-            bottom_segment_color_space=ColorSpace.RGB,
-            top_segment_hue_direction_x=HueMode.CW,
-            bottom_segment_hue_direction_x=HueMode.CCW,
-            hue_direction_y=HueMode.SHORTEST,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
+            top_segment_color_mode=ColorMode.HSV,
+            bottom_segment_color_mode=ColorMode.RGB,
+            top_segment_hue_direction_x=HueDirection.CW,
+            bottom_segment_hue_direction_x=HueDirection.CCW,
+            hue_direction_y=HueDirection.SHORTEST,
             input_format=FormatType.FLOAT,
         )
         
@@ -1153,18 +1153,18 @@ def test_index_rounding_modes_corners_dual(mode, expected_left_width):
         top_right=GREEN_FLOAT_RGB,
         bottom_left=BLUE_FLOAT_RGB,
         bottom_right=YELLOW_FLOAT_RGB,
-        vertical_color_space=ColorSpace.RGB,
-        horizontal_color_space=ColorSpace.HSV,
+        vertical_color_mode=ColorMode.RGB,
+        horizontal_color_mode=ColorMode.HSV,
         input_format=FormatType.FLOAT,
     )
     
     pi1 = CellDualPartitionInterval(
-        vertical_color_space=ColorSpace.RGB,
-        horizontal_color_space=ColorSpace.HSV
+        vertical_color_mode=ColorMode.RGB,
+        horizontal_color_mode=ColorMode.HSV
     )
     pi2 = CellDualPartitionInterval(
-        vertical_color_space=ColorSpace.RGB,
-        horizontal_color_space=ColorSpace.HSV
+        vertical_color_mode=ColorMode.RGB,
+        horizontal_color_mode=ColorMode.HSV
     )
     pp = PerpendicularDualPartition(breakpoints=[0.501], values=[pi1, pi2])
     
@@ -1178,7 +1178,7 @@ def test_index_rounding_modes_corners_dual(mode, expected_left_width):
 
 
 # Test for edge cases with uniform color spaces
-def test_uniform_color_space_dual():
+def test_uniform_color_mode_dual():
     """Test that uniform color spaces work correctly in dual mode."""
     factory = CornersCellDualFactory(
         width=3,
@@ -1187,11 +1187,11 @@ def test_uniform_color_space_dual():
         top_right=CYAN_FLOAT_RGB,
         bottom_left=CYAN_FLOAT_RGB,
         bottom_right=CYAN_FLOAT_RGB,
-        vertical_color_space=ColorSpace.HSV,
-        horizontal_color_space=ColorSpace.HSV,
+        vertical_color_mode=ColorMode.HSV,
+        horizontal_color_mode=ColorMode.HSV,
         input_format=FormatType.FLOAT,
-        hue_direction_x=HueMode.CW,
-        hue_direction_y=HueMode.CCW,
+        hue_direction_x=HueDirection.CW,
+        hue_direction_y=HueDirection.CCW,
     )
     
     # All corners are identical in HSV
@@ -1206,12 +1206,12 @@ def test_render_values():
     top_right = BLUE_FLOAT_RGB
     bottom_left = MAGENTA_FLOAT_RGB
     bottom_right = get_white_hsv(hue=300.0)
-    top_segment_color_space = ColorSpace.RGB
-    bottom_segment_color_space = ColorSpace.RGB
-    horizontal_color_space = ColorSpace.RGB
-    vertical_color_space = ColorSpace.HSV
-    hue_direction_x = HueMode.SHORTEST
-    hue_direction_y = HueMode.LONGEST
+    top_segment_color_mode = ColorMode.RGB
+    bottom_segment_color_mode = ColorMode.RGB
+    horizontal_color_mode = ColorMode.RGB
+    vertical_color_mode = ColorMode.HSV
+    hue_direction_x = HueDirection.SHORTEST
+    hue_direction_y = HueDirection.LONGEST
     input_format = FormatType.FLOAT
     WIDTH = 4
     HEIGHT = 4
@@ -1222,32 +1222,32 @@ def test_render_values():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        top_segment_color_space=top_segment_color_space,
-        bottom_segment_color_space=bottom_segment_color_space,
-        horizontal_color_space=horizontal_color_space,
-        vertical_color_space=vertical_color_space,
+        top_segment_color_mode=top_segment_color_mode,
+        bottom_segment_color_mode=bottom_segment_color_mode,
+        horizontal_color_mode=horizontal_color_mode,
+        vertical_color_mode=vertical_color_mode,
         hue_direction_x=hue_direction_x,
         hue_direction_y=hue_direction_y,
         input_format=input_format,
-        bottom_right_color_space=ColorSpace.HSV,
+        bottom_right_color_mode=ColorMode.HSV,
     )
     value = factory.get_value()
-    rgb_value = np_convert(value, from_space=vertical_color_space, to_space=ColorSpace.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT)
+    rgb_value = np_convert(value, from_space=vertical_color_mode, to_space=ColorMode.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT)
 
     first_row = rgb_value[0]
     expected_first_row = np.array([[255, 0 , 0], [170, 0, 85], [85, 0, 170], [0, 0, 255]])
     last_row = rgb_value[-1]
     expected_last_row = np.array([[255, 0 , 255], [255, 85, 255], [255, 170, 255], [255, 255, 255]])
     first_column = rgb_value[:,0]
-    expected_first_column = np.array([[255, 0 , 0], np_convert(np.array([100.0, 1.0, 1.0]), from_space=ColorSpace.HSV, to_space=ColorSpace.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
-                                    np_convert(np.array([200.0, 1.0, 1.0]), from_space=ColorSpace.HSV, to_space=ColorSpace.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
+    expected_first_column = np.array([[255, 0 , 0], np_convert(np.array([100.0, 1.0, 1.0]), from_space=ColorMode.HSV, to_space=ColorMode.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
+                                    np_convert(np.array([200.0, 1.0, 1.0]), from_space=ColorMode.HSV, to_space=ColorMode.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
                                       [255, 0, 255]])
     last_column = rgb_value[:,-1]
 
     #Blue (240, 1.0, 1.0) to WhiteMagenta(300, 0.0, 1.0) Longest so WhiteMagenta (-60, 0.0, 1.0)
     expected_last_column = np.array([[0, 0 , 255], 
-             np_convert(np.array([240-300*1/3, 2/3, 1.0]), from_space=ColorSpace.HSV, to_space=ColorSpace.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
-            np_convert(np.array([240-300*2/3, 1/3, 1.0]), from_space=ColorSpace.HSV, to_space=ColorSpace.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
+             np_convert(np.array([240-300*1/3, 2/3, 1.0]), from_space=ColorMode.HSV, to_space=ColorMode.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
+            np_convert(np.array([240-300*2/3, 1/3, 1.0]), from_space=ColorMode.HSV, to_space=ColorMode.RGB, input_type=FormatType.FLOAT, output_type=FormatType.INT),
                                      [255, 255, 255]])
 
     assert factory._bottom_right_grayscale_hue is not None

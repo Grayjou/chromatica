@@ -10,7 +10,7 @@ from ..cell.lines import LinesCell
 from .descriptors import SyncedCellPropertyDescriptor
 from ..helpers import LineInterpMethods
 from ....types.format_type import FormatType
-from ....types.color_types import ColorSpace
+from ....types.color_types import ColorMode
 from ....types.transform_types import PerChannelCoords
 from boundednumbers import BoundType
 from ....conversions import np_convert
@@ -38,9 +38,9 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
         height: int,
         top_line: np.ndarray,
         bottom_line: np.ndarray,
-        color_space: ColorSpace,
-        top_line_color_space: Optional[ColorSpace] = None,
-        bottom_line_color_space: Optional[ColorSpace] = None,
+        color_mode: ColorMode,
+        top_line_color_mode: Optional[ColorMode] = None,
+        bottom_line_color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = None,
         hue_direction_y: Optional[str] = None,
         line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
@@ -65,13 +65,13 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
             per_channel_coords=per_channel_coords,
         )
         
-        self._color_space = ColorSpace(color_space)
+        self._color_mode = ColorMode(color_mode)
         
         # Convert lines to working color space
         self._top_line, self._bottom_line = self._convert_lines(
             lines=[top_line, bottom_line],
-            line_spaces=[top_line_color_space, bottom_line_color_space],
-            target_space=self._color_space,
+            line_spaces=[top_line_color_mode, bottom_line_color_mode],
+            target_space=self._color_mode,
             input_format=input_format,
         )
         
@@ -86,8 +86,8 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
     @staticmethod
     def _convert_lines(
         lines: List[np.ndarray],
-        line_spaces: List[Optional[ColorSpace]],
-        target_space: ColorSpace,
+        line_spaces: List[Optional[ColorMode]],
+        target_space: ColorMode,
         input_format: FormatType,
     ) -> List[np.ndarray]:
         """Convert line arrays to target color space."""
@@ -116,26 +116,26 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
     @property
     def num_channels(self) -> int:
         """Number of channels in the color space."""
-        return len(self._color_space)
+        return len(self._color_mode)
     
-    def _get_color_space_for_repr(self) -> str:
+    def _get_color_mode_for_repr(self) -> str:
         """Return color space info for __repr__."""
-        return f"color_space={self._color_space!r}"
+        return f"color_mode={self._color_mode!r}"
     
 
     
     # === Color space property (special handling) ===
     @property
-    def color_space(self) -> ColorSpace:
-        return self._color_space
+    def color_mode(self) -> ColorMode:
+        return self._color_mode
     
-    @color_space.setter
-    def color_space(self, value: ColorSpace):
-        if self._color_space == value:
+    @color_mode.setter
+    def color_mode(self, value: ColorMode):
+        if self._color_mode == value:
             return
         
         # Convert both lines to new color space
-        old_space = self._color_space
+        old_space = self._color_mode
         lines = [self._top_line, self._bottom_line]
         
         converted = [
@@ -144,7 +144,7 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
         ]
         
         self._top_line, self._bottom_line = converted
-        self._color_space = value
+        self._color_mode = value
         
         # Sync with cell if it exists
         if self._cell is not None:
@@ -187,7 +187,7 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
         height: Optional[int] = None,
         top_line: Optional[np.ndarray] = None,
         bottom_line: Optional[np.ndarray] = None,
-        color_space: Optional[ColorSpace] = None,
+        color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = ...,  # Use ... as sentinel for "not provided"
         hue_direction_y: Optional[str] = ...,
         line_method: Optional[LineInterpMethods] = None,
@@ -205,7 +205,7 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
             height=height if height is not None else self._height,
             top_line=top_line if top_line is not None else self._top_line.copy(),
             bottom_line=bottom_line if bottom_line is not None else self._bottom_line.copy(),
-            color_space=color_space if color_space is not None else self._color_space,
+            color_mode=color_mode if color_mode is not None else self._color_mode,
             hue_direction_x=resolve(hue_direction_x, self._hue_direction_x),
             hue_direction_y=resolve(hue_direction_y, self._hue_direction_y),
             line_method=line_method if line_method is not None else self._line_method,
@@ -222,7 +222,7 @@ class LinesCellFactoryProperties(BaseCellFactoryProperties):  # INHERITANCE ADDE
         return (
             self._width == other._width
             and self._height == other._height
-            and self._color_space == other._color_space
+            and self._color_mode == other._color_mode
             and self._line_method == other._line_method
             and np.array_equal(self._top_line, other._top_line)
             and np.array_equal(self._bottom_line, other._bottom_line)

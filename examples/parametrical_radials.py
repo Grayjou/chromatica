@@ -98,7 +98,7 @@ def fading_spiral():
         color_rings=rings,
         deg_start=min_angle,
         deg_end=max_angle,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0, 0),
         # Use bivariable_color_transforms to nullify channels
@@ -175,7 +175,7 @@ def fire_ice_puffy_dagger():
         color_rings=[((0, 0, 255),(0, 0, 200), (0, 0, 100),(0, 0, 200), (0, 0, 255))],
         deg_start=white_start,
         deg_end=white_end,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 70),
 
@@ -189,7 +189,7 @@ def fire_ice_puffy_dagger():
         color_rings=rings,
         deg_start=min_angle,
         deg_end=max_angle,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.INT,
         outside_fill=white_gradient.value,
         hue_directions_r=["cw",

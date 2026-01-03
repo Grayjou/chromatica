@@ -26,7 +26,7 @@ class CellPropertyDescriptor:
             color: np.ndarray = CellPropertyDescriptor('color')
             
             # Read-only property
-            space: ColorSpaces = CellPropertyDescriptor('space', readonly=True)
+            space: ColorModes = CellPropertyDescriptor('space', readonly=True)
             
             # Property that also invalidates segment caches
             corner: np.ndarray = CellPropertyDescriptor(

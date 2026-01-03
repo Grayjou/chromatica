@@ -326,7 +326,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         is_hue_space: bool,
         ring_idx: int,
         hue_directions_theta: Optional[List[List[Optional[str]]]],
-        #color_spaces: List[str]
+        #color_modes: List[str]
     ) -> NDArray:
         """Interpolate colors within a ring angularly."""
         num_colors = len(ring)
@@ -396,7 +396,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         ch: int,
         is_hue_space: bool,
         hue_directions_r: Optional[List[Optional[str]]],
-        #color_spaces: List[str]
+        #color_modes: List[str]
     ) -> NDArray:
         """Interpolate between rings radially."""
         num_rings = len(ring_colors)
@@ -523,7 +523,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         inner_r_theta: Callable[[NDArray], NDArray],
         outer_r_theta: Callable[[NDArray], NDArray],
         color_rings: List[GradientEnds],
-        color_space: str = 'rgb',
+        color_mode: str = 'rgb',
         format_type: FormatType = FormatType.FLOAT,
         center: Optional[Tuple[int, int]] = None,
         relative_center: Optional[Tuple[float, float]] = None,
@@ -549,7 +549,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
             inner_r_theta: Function mapping angle (degrees) to inner radius
             outer_r_theta: Function mapping angle (degrees) to outer radius
             color_rings: List of color tuples, one per radial ring
-            color_space: Color space ('rgb', 'hsv', 'hsl', 'rgba', etc.)
+            color_mode: Color space ('rgb', 'hsv', 'hsl', 'rgba', etc.)
             format_type: Format type (INT or FLOAT)
             center: Absolute (x, y) center position
             relative_center: Relative (x, y) center as fractions of width/height
@@ -575,15 +575,15 @@ class FullParametricalAngularRadialGradient(Gradient2D):
         
         # Setup
         center = compute_center(width, height, center, relative_center)
-        respective_class = unified_tuple_to_class[(color_space, format_type)]
+        respective_class = unified_tuple_to_class[(color_mode, format_type)]
         num_channels = respective_class.num_channels
-        is_hue_space = color_space.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
+        is_hue_space = color_mode.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
         
         # Process colors
         num_rings = len(color_rings)
         cls._validate_hue_directions(hue_directions_theta, hue_directions_r, num_rings)
         normalized_rings = cls._normalize_color_rings(color_rings)
-        outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_space)
+        outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_mode)
         
         # Compute coordinates
         distances, theta = GRID_CACHE.get_grid(width, height, center)
@@ -634,7 +634,7 @@ class FullParametricalAngularRadialGradient(Gradient2D):
                 result[..., 0] = result[..., 0] % 360
         
         # Create ColorBase instance and wrap in Gradient2D
-        assigned_class = unified_tuple_to_class[(color_space, format_type)]
+        assigned_class = unified_tuple_to_class[(color_mode, format_type)]
         result_color = assigned_class(result)
         gradient_obj = cls(result_color)
         

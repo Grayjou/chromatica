@@ -18,7 +18,7 @@ from .....v2core.interp_hue import(
     hue_lerp_between_lines_inplace_x_discrete,
     hue_lerp_between_lines_inplace,
 )
-from .....types.color_types import is_hue_space, ColorSpaces, HueMode
+from .....types.color_types import is_hue_space, ColorModes, HueDirection
 from enum import Enum
 from .utils import prepare_hue_and_rest_channels, combine_hue_and_rest_channels
 from .....v2core.border_handler import BorderMode, BorderModeInput, BorderConstant, DistanceMode, BorderArrayInput, DistanceModeInput
@@ -29,18 +29,18 @@ class LineInterpMethods(Enum):
     LINES_DISCRETE = 0
 
 
-def _get_line_method(line_method: LineInterpMethods, huemode_x: Optional[HueMode] = None):
+def _get_line_method(line_method: LineInterpMethods, hue_direction_x: Optional[HueDirection] = None):
     """
     Determine the line interpolation line_method to use.
     
     Args:
         line_method: Requested interpolation line_method
-        huemode_x: Hue mode for x-axis (if None, uses discrete)
+        hue_direction_x: Hue mode for x-axis (if None, uses discrete)
         
     Returns:
         LineInterpMethods enum value
     """
-    if huemode_x is None:
+    if hue_direction_x is None:
         return LineInterpMethods.LINES_DISCRETE
     return line_method
 
@@ -140,15 +140,15 @@ def _interp_transformed_hue_space_2d_lines_continuous(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
-    huemode_x: HueMode,
-    huemode_y: HueMode,
+    hue_direction_x: HueDirection,
+    hue_direction_y: HueDirection,
     *,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     x_discrete: bool = False,
@@ -199,8 +199,8 @@ def _interp_transformed_hue_space_2d_lines_continuous(
         line0=hline0,
         line1=hline1,
         coords=transformed_h,
-        mode_x=huemode_x,
-        mode_y=huemode_y,
+        mode_x=hue_direction_x,
+        mode_y=hue_direction_y,
 
         border_mode=border_mode,
         border_constant=border_constant,
@@ -251,14 +251,14 @@ def _interp_transformed_hue_space_2d_lines_discrete(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: List[np.ndarray],
-    huemode_y: HueMode,
+    hue_direction_y: HueDirection,
     *,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     num_channels: Optional[int] = 3,
@@ -308,7 +308,7 @@ def _interp_transformed_hue_space_2d_lines_discrete(
         line0=hline0,
         line1=hline1,
         coords=transformed_h,
-        mode_y=huemode_y,
+        mode_y=hue_direction_y,
         border_mode=border_mode,
         border_constant=border_constant,
         border_array=hue_border_array,
@@ -356,16 +356,16 @@ def interp_transformed_2d_lines(
     line0: np.ndarray,
     line1: np.ndarray,
     transformed: np.ndarray,
-    color_space: ColorSpaces,
-    huemode_x: Optional[HueMode] = None,
-    huemode_y: Optional[HueMode] = None,
+    color_mode: ColorModes,
+    hue_direction_x: Optional[HueDirection] = None,
+    hue_direction_y: Optional[HueDirection] = None,
     line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE,
     bound_types: List[BoundType] | BoundType = BoundType.CLAMP,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0,
     border_array: BorderArrayInput = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     num_channels: Optional[int] = None,
@@ -379,9 +379,9 @@ def interp_transformed_2d_lines(
         line0: First line, shape (L, C)
         line1: Second line, shape (L, C)
         transformed: Transformed coordinates, shape (H, W, 2)
-        color_space: Color space of the data
-        huemode_x: Hue interpolation mode for x-axis (if is_hue_space is True)
-        huemode_y: Hue interpolation mode for y-axis (if is_hue_space is True)
+        color_mode: Color space of the data
+        hue_direction_x: Hue interpolation mode for x-axis (if is_hue_space is True)
+        hue_direction_y: Hue interpolation mode for y-axis (if is_hue_space is True)
         line_method: Interpolation line_method to use
         bound_types: List of BoundType for each channel or a single BoundType
         border_mode: Border handling mode (e.g., BorderMode.CLAMP, BorderMode.REPEAT)
@@ -391,7 +391,7 @@ def interp_transformed_2d_lines(
         feather_hue_mode: Hue mode to use when feathering hue values
         distance_mode: Mode for calculating distance (for feathering)
         num_threads: Number of threads to use (-1 for auto)
-        num_channels: Number of channels (inferred from color_space if not provided)
+        num_channels: Number of channels (inferred from color_mode if not provided)
         border_value: Legacy parameter, use border_constant instead
         
     Returns:
@@ -400,21 +400,21 @@ def interp_transformed_2d_lines(
     # Handle legacy border_value parameter
     border_constant = next((i for i in [border_value, border_constant] if i is not None), 0)
     
-    num_channels = num_channels or len(color_space)
+    num_channels = num_channels or len(color_mode)
 
-    if is_hue_space(color_space):
-        line_method = _get_line_method(line_method, huemode_x)
+    if is_hue_space(color_mode):
+        line_method = _get_line_method(line_method, hue_direction_x)
 
-        if huemode_y is None:
-            raise ValueError("huemode_y must be specified for hue space interpolation between lines.")
+        if hue_direction_y is None:
+            raise ValueError("hue_direction_y must be specified for hue space interpolation between lines.")
         
         if line_method == LineInterpMethods.LINES_CONTINUOUS:
             return _interp_transformed_hue_space_2d_lines_continuous(
                 line0,
                 line1,
                 transformed,
-                huemode_x=huemode_x,
-                huemode_y=huemode_y,
+                hue_direction_x=hue_direction_x,
+                hue_direction_y=hue_direction_y,
                 bound_types=bound_types,
                 border_mode=border_mode,
                 border_constant=border_constant,
@@ -430,7 +430,7 @@ def interp_transformed_2d_lines(
                 line0,
                 line1,
                 transformed,
-                huemode_y=huemode_y,
+                hue_direction_y=hue_direction_y,
                 bound_types=bound_types,
                 border_mode=border_mode,
                 border_constant=border_constant,

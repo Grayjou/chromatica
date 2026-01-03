@@ -89,7 +89,7 @@ def test_convert_to_rgba_adds_default_alpha():
     assert rgba.value == (0.5, 0.25, 0.75, 1.0)
 
 
-def test_alpha_preserved_across_color_space_conversion():
+def test_alpha_preserved_across_color_mode_conversion():
     """Test that alpha is preserved when converting between color spaces."""
     rgba = ColorUnitRGBA((0.5, 0.25, 0.75, 0.6))
     

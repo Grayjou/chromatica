@@ -8,7 +8,7 @@ ctypedef double f64
 ctypedef int i32
 
 # Hue interpolation modes
-cdef enum HueMode:
+cdef enum HueDirection:
     HUE_CW = 1
     HUE_CCW = 2
     HUE_SHORTEST = 3

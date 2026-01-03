@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Any, ClassVar, Tuple, cast, Self, Callable, Union
 from ..conversions import convert, FormatType, np_convert
 from ..types.format_type import format_classes, format_valid_dtypes, default_format_dtypes
-from ..types.color_types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES, ColorSpace
+from ..types.color_types import ColorElement, ColorValue, Scalar, ScalarVector, HUE_SPACES, ColorMode
 from ..utils import get_dimension
 from abc import ABC
 from numpy import ndarray
@@ -11,14 +11,14 @@ class ColorBase:
     __slots__ = ('_value',)  # prevents adding new attributes → immutability
 
     num_channels: ClassVar[int] = 1
-    mode:       ClassVar[ColorSpace]
+    mode:       ClassVar[ColorMode]
     _type:      ClassVar[type]
     maxima:     ClassVar[ColorElement]
     null_value: ClassVar[ColorElement]
     format_type: ClassVar[FormatType] 
     _is_frozen: bool = False   # class-level default (instance gets its own slot)
-    # def color_convert(self: ColorBase, to_space: ColorSpace, to_format: FormatType | None = None) -> ColorBase:
-    convert: Callable[[ColorBase, ColorSpace, FormatType | None], ColorBase]
+    # def color_convert(self: ColorBase, to_space: ColorMode, to_format: FormatType | None = None) -> ColorBase:
+    convert: Callable[[ColorBase, ColorMode, FormatType | None], ColorBase]
     with_alpha: Callable[[ColorBase, Union[Scalar, ndarray]], ColorBase]
 
     def __setattr__(self, name, value):
@@ -170,7 +170,7 @@ class WithAlpha(ABC):
     # Tell static checkers these come from the real subclass (ColorInt)
     num_channels: ClassVar[int]
     maxima: ClassVar[ColorElement]
-    mode: ClassVar[ColorSpace]
+    mode: ClassVar[ColorMode]
     value: ColorValue  # Can be scalar tuple or ndarray
     is_array: bool
 

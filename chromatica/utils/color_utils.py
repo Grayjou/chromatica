@@ -6,15 +6,15 @@ from numpy import ndarray as NDArray
 from ..colors import unified_tuple_to_class
 from ..colors.color_base import ColorBase
 from ..types.format_type import FormatType
-from ..types.color_types import ColorSpace
+from ..types.color_types import ColorMode
 from ..types.array_types import ndarray_1d
 
 
 def convert_to_space_float(
     color: Union[ColorBase, tuple, List, ndarray_1d, NDArray],
-    from_space: ColorSpace,
+    from_space: ColorMode,
     format_type: FormatType,
-    to_space: ColorSpace,
+    to_space: ColorMode,
 ) -> ColorBase:
     """
     Convert a color to a specified color space in float format.
@@ -29,7 +29,7 @@ def convert_to_space_float(
         ColorBase object in target space with float format
     """
 
-    from_space, to_space = ColorSpace(from_space), ColorSpace(to_space)
+    from_space, to_space = ColorMode(from_space), ColorMode(to_space)
     from_class = unified_tuple_to_class[(from_space, format_type)]
     to_float_class = unified_tuple_to_class[(to_space, FormatType.FLOAT)]
     return to_float_class(from_class(color))

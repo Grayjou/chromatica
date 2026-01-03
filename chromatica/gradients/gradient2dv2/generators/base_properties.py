@@ -98,7 +98,7 @@ class BaseCellFactoryProperties(ABC):
 		raise NotImplementedError
 
 	@abstractmethod
-	def _get_color_space_for_repr(self) -> str:
+	def _get_color_mode_for_repr(self) -> str:
 		"""Return color space info for __repr__."""
 		raise NotImplementedError
 
@@ -129,7 +129,7 @@ class BaseCellFactoryProperties(ABC):
 		return (
 			f"{self.__class__.__name__}("
 			f"width={self._width}, height={self._height}, "
-			f"{self._get_color_space_for_repr()}, "
+			f"{self._get_color_mode_for_repr()}, "
 			f"cell={cell_status})"
 		)
 

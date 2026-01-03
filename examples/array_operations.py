@@ -17,7 +17,7 @@ def demonstrate_arrays() -> None:
         (255, 128, 64),
         (64, 128, 255),
         steps=8,
-        color_space="rgb",
+        color_mode="rgb",
         format_type=FormatType.INT,
     )
     tiled = base.repeat(times=2, axis=1)
@@ -30,7 +30,7 @@ def demonstrate_arrays() -> None:
         start=(0, 100, 100),
         end=(300, 100, 100),
         format_type=FormatType.INT,
-        color_space="hsv",
+        color_mode="hsv",
         size=(32, 32),
     )
     normalized = cyclic_wrap_float(radial.value[..., 0], 0.0, 360.0)

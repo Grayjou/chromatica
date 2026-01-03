@@ -10,7 +10,7 @@ from ....chromatica.gradients.gradient2dv2.cell import (
     CornersCellDual
 
 )
-from ....chromatica.types.color_types import HueMode, ColorSpace
+from ....chromatica.types.color_types import HueDirection, ColorMode
 from ....chromatica.types.format_type import FormatType
 from ....chromatica.gradients.gradient2dv2 import LineInterpMethods, PartitionInterval as PInt, PerpendicularDualPartition
 import numpy as np
@@ -29,7 +29,7 @@ def test_init_corners_cell():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=2, height=2),
         input_format=FormatType.FLOAT,
     )
@@ -45,7 +45,7 @@ def test_homgoenous_cells_renders():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
     )
@@ -63,7 +63,7 @@ def test_homog_cell_equal_channels():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
     )
@@ -86,8 +86,8 @@ def test_init_corners_dual_cell():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        vertical_color_space=ColorSpace.RGB,
-        horizontal_color_space=ColorSpace.HSV,
+        vertical_color_mode=ColorMode.RGB,
+        horizontal_color_mode=ColorMode.HSV,
         per_channel_coords=upbm_2d(width=2, height=2),
         input_format=FormatType.FLOAT,
     )
@@ -103,8 +103,8 @@ def test_homogenous_dual_cell_renders():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        vertical_color_space=ColorSpace.RGB,
-        horizontal_color_space=ColorSpace.RGB,
+        vertical_color_mode=ColorMode.RGB,
+        horizontal_color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
     )
@@ -122,9 +122,9 @@ def test_homog_dual_cell_equal_channels():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        vertical_color_space=ColorSpace.HSV,
-        horizontal_color_space=ColorSpace.HSV,
-        hue_direction_y=HueMode.SHORTEST,
+        vertical_color_mode=ColorMode.HSV,
+        horizontal_color_mode=ColorMode.HSV,
+        hue_direction_y=HueDirection.SHORTEST,
         #per_channel_coords=[upbm_2d(width=3, height=3)]*3,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
@@ -141,10 +141,10 @@ def test_homog_dual_cell_equal_channels():
         top_right=top_right,
         bottom_left=bottom_left,
         bottom_right=bottom_right,
-        vertical_color_space=ColorSpace.HSV,
-        horizontal_color_space=ColorSpace.HSV,
-        hue_direction_y=HueMode.SHORTEST,
-        hue_direction_x=HueMode.SHORTEST,
+        vertical_color_mode=ColorMode.HSV,
+        horizontal_color_mode=ColorMode.HSV,
+        hue_direction_y=HueDirection.SHORTEST,
+        hue_direction_x=HueDirection.SHORTEST,
         #per_channel_coords=[upbm_2d(width=3, height=3)]*3,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
@@ -163,7 +163,7 @@ def test_init_lines_cell():
     cell = get_transformed_lines_cell(
         top_line=line_top,
         bottom_line=line_bottom,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=2, height=2),
         input_format=FormatType.FLOAT,
     )
@@ -174,7 +174,7 @@ def test_homogenous_lines_cell_renders():
     cell = get_transformed_lines_cell(
         top_line=line_top,
         bottom_line=line_bottom,
-        color_space=ColorSpace.RGB,
+        color_mode=ColorMode.RGB,
         per_channel_coords=upbm_2d(width=3, height=3),
         input_format=FormatType.FLOAT,
     )

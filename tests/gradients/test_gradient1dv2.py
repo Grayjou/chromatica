@@ -8,7 +8,7 @@ def test_gradient1d_creation():
         left_color=(255, 0, 0),
         right_color=(0, 0, 255),
         steps=5,
-        color_space="rgb",
+        color_mode="rgb",
         format_type="int",
     )
     expected_colors = np.array([
@@ -27,7 +27,7 @@ def test_gradient1d_with_transforms():
         left_color=(0, 0, 0),
         right_color=(255, 255, 255),
         steps=5,
-        color_space="rgb",
+        color_mode="rgb",
         format_type="int",
         per_channel_transforms={0: transform_channel, 1: transform_channel, 2: transform_channel},
     )
@@ -38,7 +38,7 @@ def test_gradient_sequence():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=7,
-        color_spaces=["rgb", "rgb"],
+        color_modes=["rgb", "rgb"],
         format_type="int",
     )
     expected_colors = np.array([
@@ -56,10 +56,10 @@ def test_gradient_sequence_with_hue_direction():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=7,
-        color_spaces=["hsv", "hsv"],
+        color_modes=["hsv", "hsv"],
         format_type="int",
         hue_directions=["longest", "longest"],
-        output_color_space="rgb"
+        output_color_mode="rgb"
     )
     expected_colors = np.array([
         (255, 0, 0),
@@ -76,10 +76,10 @@ def test_gradient_sequence_with_hue_direction():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=7,
-        color_spaces=["rgb", "rgb"],
+        color_modes=["rgb", "rgb"],
         format_type="int",
         hue_directions=["shortest", "shortest"],
-        output_color_space="rgb"
+        output_color_mode="rgb"
     )
 
     expected_colors_shortest = np.array([
@@ -97,10 +97,10 @@ def test_gradient_sequence_different_spaces():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=9,
-        input_color_spaces=("rgb", "rgb", "rgb"),
-        color_spaces=["rgb", "hsv"],
+        input_color_modes=("rgb", "rgb", "rgb"),
+        color_modes=["rgb", "hsv"],
         format_type="int",
-        output_color_space="rgb",
+        output_color_mode="rgb",
     )
 
     expected_colors = np.array([
@@ -121,7 +121,7 @@ def test_gradient_sequence_different_lengths():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         segment_lengths=[3, 5],
-        color_spaces=["rgb", "rgb"],
+        color_modes=["rgb", "rgb"],
         format_type="int",
         offset=0,
     )
@@ -144,7 +144,7 @@ def test_gradient_sequence_global_transform():
 
     grad = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (0, 0, 255), (255, 0, 0)],
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         global_unit_transform=global_transform,
         segment_lengths=[2, 6],
@@ -171,7 +171,7 @@ def test_single_channel_transform():
         left_color=(0, 0, 0),
         right_color=(255, 255, 255),
         steps=5,
-        color_space="rgb",
+        color_mode="rgb",
         format_type="int",
         per_channel_transforms={0: red_channel_transform},
     )
@@ -191,7 +191,7 @@ def test_gradient_sequence_single_channel_transform():
     grad = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (0, 255, 0), (255, 0, 0)],
         total_steps=5,
-        color_spaces=["rgb", "rgb"],
+        color_modes=["rgb", "rgb"],
         format_type="int",
         per_channel_transforms=[{1: green_channel_transform}, None],
     )
@@ -212,7 +212,7 @@ def test_gradient_sequence_composite_transform():
     grad = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (255, 255, 255)],
         total_steps=5,
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         per_channel_transforms=[{0: square_transform, 1: square_transform, 2: square_transform}],
         global_unit_transform=sqrt_transform,
@@ -227,7 +227,7 @@ def test_gradient_sequence_composite_transform():
     grad_no_transform = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (255, 255, 255)],
         total_steps=5,
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
     )
     print(grad.value, "vs", grad_no_transform.value)
@@ -249,8 +249,8 @@ def test_gradient_sequence_composite_transform():
 
 def test_get_transformed_segment():
     colors = [(255, 0, 0), (0, 255, 0)]
-    input_color_spaces = ["rgb", "rgb"]
-    color_spaces = ["hsv"]
+    input_color_modes = ["rgb", "rgb"]
+    color_modes = ["hsv"]
     format_type = "int"
     total_steps = 5
     num_segments = 1
@@ -268,7 +268,7 @@ def test_get_transformed_segment():
         already_converted_start_color=np.array(colors[0]),
         already_converted_end_color=np.array(colors[-1]),
         per_channel_coords=[u_scaled],
-        color_space=color_spaces[0],
+        color_mode=color_modes[0],
         hue_direction=hue_directions[0],
 
     ).get_value()
@@ -290,9 +290,9 @@ def test_get_transformed_segment():
     gradient = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0)],
         total_steps=5,
-        color_spaces=["hsv"],
+        color_modes=["hsv"],
         format_type="int",
-        output_color_space="rgb"
+        output_color_mode="rgb"
     )
     print("Gradient colors:", gradient.value)
     assert np.array_equal(result, gradient.value)
@@ -305,7 +305,7 @@ def test_gradient_sequence_segment():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=7,
-        color_spaces=["rgb", "rgb"],
+        color_modes=["rgb", "rgb"],
         format_type="int",
         method=SequenceMethod.SEGMENT,
         global_unit_transform=identity_global_transform
@@ -327,7 +327,7 @@ def test_methods_equivalence():
 
     grad = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (0, 0, 255), (255, 0, 0)],
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         global_unit_transform=global_transform,
         segment_lengths=[2, 6],
@@ -346,7 +346,7 @@ def test_methods_equivalence():
 
     grad_segment = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (0, 0, 255), (255, 0, 0)],
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         global_unit_transform=global_transform,
         segment_lengths=[2, 6],
@@ -357,10 +357,10 @@ def test_methods_equivalence():
     grad = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=9,
-        input_color_spaces=("rgb", "rgb", "rgb"),
-        color_spaces=["rgb", "hsv"],
+        input_color_modes=("rgb", "rgb", "rgb"),
+        color_modes=["rgb", "hsv"],
         format_type="int",
-        output_color_space="rgb",
+        output_color_mode="rgb",
     )
 
     expected_colors = np.array([
@@ -377,10 +377,10 @@ def test_methods_equivalence():
     grad_segment = Gradient1D.gradient_sequence(
         colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
         total_steps=9,
-        input_color_spaces=("rgb", "rgb", "rgb"),
-        color_spaces=["rgb", "hsv"],
+        input_color_modes=("rgb", "rgb", "rgb"),
+        color_modes=["rgb", "hsv"],
         format_type="int",
-        output_color_space="rgb",
+        output_color_mode="rgb",
         method=SequenceMethod.SEGMENT
     )
     assert np.array_equal(grad.value, expected_colors)
@@ -392,7 +392,7 @@ def test_methods_equivalence():
     grad = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (255, 255, 255)],
         total_steps=5,
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         per_channel_transforms=[{0: sine_global_transform, 1: sine_global_transform}],
     )
@@ -400,7 +400,7 @@ def test_methods_equivalence():
     grad_segment = Gradient1D.gradient_sequence(
         colors=[(0, 0, 0), (255, 255, 255)],
         total_steps=5,
-        color_spaces=["rgb"],
+        color_modes=["rgb"],
         format_type="int",
         per_channel_transforms=[{0: sine_global_transform, 1: sine_global_transform}],
         method=SequenceMethod.SEGMENT

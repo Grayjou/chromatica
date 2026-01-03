@@ -8,7 +8,7 @@ import numpy as np
 
 from boundednumbers import BoundType
 
-from ....types.color_types import ColorSpaces
+from ....types.color_types import ColorModes
 from .base import CellBase
 from ._cell_coords import get_shape, extract_edge
 from ._descriptors import CellPropertyDescriptor
@@ -32,7 +32,7 @@ class CornersBase(CellBase, ABC):
         bottom_left: Color at bottom-left corner
         bottom_right: Color at bottom-right corner
         per_channel_coords: Coordinate arrays for each channel
-        color_space: Color space for interpolation
+        color_mode: Color space for interpolation
         hue_direction_x: Hue interpolation direction along X axis
         hue_direction_y: Hue interpolation direction along Y axis
         boundtypes: Boundary handling types per channel
@@ -55,7 +55,7 @@ class CornersBase(CellBase, ABC):
     hue_direction_x: Optional[str] = CellPropertyDescriptor('hue_direction_x')
     
     # === Read-only Properties ===
-    color_space: ColorSpaces = CellPropertyDescriptor('color_space', readonly=True)
+    color_mode: ColorModes = CellPropertyDescriptor('color_mode', readonly=True)
     hue_direction_y: Optional[str] = CellPropertyDescriptor('hue_direction_y')
     boundtypes: Union[List[BoundType], BoundType] = CellPropertyDescriptor('boundtypes', readonly=True)
     border_mode: Optional[int] = CellPropertyDescriptor('border_mode', readonly=True)
@@ -68,7 +68,7 @@ class CornersBase(CellBase, ABC):
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
         per_channel_coords: Union[List[np.ndarray], np.ndarray],
-        color_space: ColorSpaces,
+        color_mode: ColorModes,
         hue_direction_y: Optional[str] = None,
         hue_direction_x: Optional[str] = None,
         boundtypes: Union[List[BoundType], BoundType] = BoundType.CLAMP,
@@ -87,7 +87,7 @@ class CornersBase(CellBase, ABC):
         
         # Coordinates and color space
         self._per_channel_coords = per_channel_coords
-        self._color_space = color_space
+        self._color_mode = color_mode
         
         # Interpolation settings
         self._hue_direction_y = hue_direction_y
@@ -198,13 +198,13 @@ class CornersBase(CellBase, ABC):
     @abstractmethod
     def convert_to_space(
         self,
-        color_space: ColorSpaces,
+        color_mode: ColorModes,
         render_before: bool = False,
     ) -> CornersBase:
         """Convert to a different color space.
         
         Args:
-            color_space: Target color space
+            color_mode: Target color space
             render_before: If True, render current value before converting
             
         Returns:
@@ -218,5 +218,5 @@ class CornersBase(CellBase, ABC):
         return (
             f"{self.__class__.__name__}("
             f"shape={self.shape}, "
-            f"color_space={self._color_space!r})"
+            f"color_mode={self._color_mode!r})"
         )

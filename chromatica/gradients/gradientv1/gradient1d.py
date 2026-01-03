@@ -35,7 +35,7 @@ class Gradient1D(Color1DArr):
         color1: Union[ColorBase, Tuple, int],
         color2: Union[ColorBase, Tuple, int],
         steps: int,
-        color_space: str = "rgb",
+        color_mode: str = "rgb",
         format_type: FormatType = FormatType.FLOAT,
         unit_transform: Optional[UnitTransform] = None,
         hue_direction: Optional[str] = None,
@@ -48,7 +48,7 @@ class Gradient1D(Color1DArr):
             color1: First color (ColorBase instance or tuple/int)
             color2: Second color (ColorBase instance or tuple/int)
             steps: Number of steps in the gradient
-            color_space: Target color space ('rgb', 'hsv', 'hsl', etc.)
+            color_mode: Target color space ('rgb', 'hsv', 'hsl', etc.)
             format_type: Format type (INT or FLOAT)
             unit_transform: Optional function to transform interpolation parameter
             hue_direction: Hue direction for HSV/HSL - 'cw' (clockwise), 
@@ -58,14 +58,14 @@ class Gradient1D(Color1DArr):
         Returns:
             Gradient1D instance with interpolated colors
         """
-        color_space = color_space.lower()
-        is_hue_space = color_space in ("hsv", "hsl", "hsva", "hsla")
+        color_mode = color_mode.lower()
+        is_hue_space = color_mode in ("hsv", "hsl", "hsva", "hsla")
         
-        color_class = get_color_class(color_space, format_type)
+        color_class = get_color_class(color_mode, format_type)
 
         # Convert colors to target color space
-        c1 = convert_color(color1, color_space, format_type)
-        c2 = convert_color(color2, color_space, format_type)
+        c1 = convert_color(color1, color_mode, format_type)
+        c2 = convert_color(color2, color_mode, format_type)
 
         start = np.array(c1.value, dtype=float)
         end = np.array(c2.value, dtype=float)
@@ -177,7 +177,7 @@ class Gradient1D(Color1DArr):
         cls,
         colors: List[Union[ColorBase, Tuple, int]],
         steps: int,
-        color_spaces: Optional[List[str]] = None,
+        color_modes: Optional[List[str]] = None,
         format_type: FormatType = FormatType.FLOAT,
         unit_transforms: Optional[List[UnitTransform]] = None,
         hue_directions: Optional[List[str]] = None,
@@ -190,7 +190,7 @@ class Gradient1D(Color1DArr):
         Args:
             colors: List of colors to interpolate between
             steps: Total number of steps in the gradient
-            color_spaces: Optional list of color spaces for each segment
+            color_modes: Optional list of color spaces for each segment
             format_type: Format type (INT or FLOAT)
             unit_transforms: Optional list of unit transforms for each segment
             hue_directions: Optional list of hue directions for each segment
@@ -206,9 +206,9 @@ class Gradient1D(Color1DArr):
         # Handle optional lists with defaults
         num_segments = len(colors) - 1
         
-        if color_spaces is None:
-            color_spaces = ["rgb"] * num_segments
-        color_spaces = handle_list_size_mismatch(color_spaces, num_segments)
+        if color_modes is None:
+            color_modes = ["rgb"] * num_segments
+        color_modes = handle_list_size_mismatch(color_modes, num_segments)
         
         if hue_directions is None:
             hue_directions = [None] * num_segments
@@ -235,15 +235,15 @@ class Gradient1D(Color1DArr):
         for i in range(len(colors)):
             # Determine which color space to use (use the segment's color space)
             seg_idx = min(i, num_segments - 1)
-            color_space = color_spaces[seg_idx].lower()
+            color_mode = color_modes[seg_idx].lower()
             
-            color_obj = convert_color(colors[i], color_space, format_type)
+            color_obj = convert_color(colors[i], color_mode, format_type)
             color_arrays.append(np.array(color_obj.value, dtype=float))
         
         # Determine output color space (use first segment's color space)
-        output_color_space = color_spaces[0].lower()
-        color_class = get_color_class(output_color_space, format_type)
-        is_hue_space = output_color_space in ("hsv", "hsl", "hsva", "hsla")
+        output_color_mode = color_modes[0].lower()
+        color_class = get_color_class(output_color_mode, format_type)
+        is_hue_space = output_color_mode in ("hsv", "hsl", "hsva", "hsla")
         
         # Interpolate using global envelope function
         colors_result = global_envelope_multiple_interp(

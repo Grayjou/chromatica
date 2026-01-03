@@ -2,7 +2,7 @@
 from bisect import bisect_left
 from typing import Generic, List, TypeVar, Literal, Generator
 from boundednumbers import UnitFloat
-from ...types.color_types import ColorSpaces
+from ...types.color_types import ColorModes
 from enum import StrEnum
 import numpy as np
 T = TypeVar("T")
@@ -59,19 +59,19 @@ class HuePartition(Partition[HueDirection]):
     def get_hue_direction(self, position: UnitFloat) -> HueDirection:
         return self.get_value(position)
 
-class ColorSpacePartition(Partition[str]):
+class ColorModePartition(Partition[str]):
     def __init__(
         self,
         breakpoints: List[UnitFloat],
-        color_spaces: List[str],
+        color_modes: List[str],
     ) -> None:
-        super().__init__(breakpoints, color_spaces)
-    def get_color_space(self, position: UnitFloat) -> str:
+        super().__init__(breakpoints, color_modes)
+    def get_color_mode(self, position: UnitFloat) -> str:
         return self.get_value(position)
     
 class PartitionInterval:
-    def __init__(self, color_space: ColorSpaces, hue_direction_y: HueDirection | None = None, hue_direction_x: HueDirection | None = None) -> None:
-        self.color_space = color_space
+    def __init__(self, color_mode: ColorModes, hue_direction_y: HueDirection | None = None, hue_direction_x: HueDirection | None = None) -> None:
+        self.color_mode = color_mode
         self.hue_direction_y = hue_direction_y
         self.hue_direction_x = hue_direction_x
 
@@ -84,15 +84,15 @@ Check the CellDual init T_T
             bottom_left: np.ndarray,
             bottom_right: np.ndarray,
             per_channel_coords: List[np.ndarray] | np.ndarray,
-            horizontal_color_space: ColorSpaces,
-            vertical_color_space: ColorSpaces,
-            hue_direction_y: HueMode,
-            hue_direction_x: HueMode,
+            horizontal_color_mode: ColorModes,
+            vertical_color_mode: ColorModes,
+            hue_direction_y: HueDirection,
+            hue_direction_x: HueDirection,
             boundtypes: List[BoundType] | BoundType = BoundType.CLAMP, *, value: Optional[np.ndarray] = None, 
-            top_segment_hue_direction_x: Optional[HueMode] = None,
-            bottom_segment_hue_direction_x: Optional[HueMode] = None,
-            top_segment_color_space: Optional[ColorSpaces] = None,
-            bottom_segment_color_space: Optional[ColorSpaces] = None
+            top_segment_hue_direction_x: Optional[HueDirection] = None,
+            bottom_segment_hue_direction_x: Optional[HueDirection] = None,
+            top_segment_color_mode: Optional[ColorModes] = None,
+            bottom_segment_color_mode: Optional[ColorModes] = None
             ) -> None:
 """
 
@@ -114,8 +114,8 @@ class PerpendicularPartition(Partition[tuple[PartitionInterval, ...]]):
         values: List[tuple[PartitionInterval, ...]],
     ) -> None:
         super().__init__(breakpoints, values)
-    def get_color_space(self, position: UnitFloat) -> ColorSpaces:
-        return self.get_value(position)[0].color_space
+    def get_color_mode(self, position: UnitFloat) -> ColorModes:
+        return self.get_value(position)[0].color_mode
     def get_hue_direction(self, position: UnitFloat) -> HueDirection:
         if self.get_value(position)[1].hue_direction_y is None:
             return "shortest"
@@ -133,20 +133,20 @@ class PerpendicularPartition(Partition[tuple[PartitionInterval, ...]]):
         yield (prev_bp, 1.0, self.values[-1])
 
 class CellDualPartitionInterval:
-    def __init__(self, horizontal_color_space: ColorSpaces, 
-                 vertical_color_space: ColorSpaces,
+    def __init__(self, horizontal_color_mode: ColorModes, 
+                 vertical_color_mode: ColorModes,
                  hue_direction_y: HueDirection | None = None,
                  hue_direction_x: HueDirection | None = None,
-                 top_segment_color_space: ColorSpaces | None = None,
-                 bottom_segment_color_space: ColorSpaces | None = None,
+                 top_segment_color_mode: ColorModes | None = None,
+                 bottom_segment_color_mode: ColorModes | None = None,
                  top_segment_hue_direction_x: HueDirection | None = None,
                  bottom_segment_hue_direction_x: HueDirection | None = None,) -> None:
-        self.horizontal_color_space = horizontal_color_space
-        self.vertical_color_space = vertical_color_space
+        self.horizontal_color_mode = horizontal_color_mode
+        self.vertical_color_mode = vertical_color_mode
         self.hue_direction_y = hue_direction_y
         self.hue_direction_x = hue_direction_x
-        self.top_segment_color_space = top_segment_color_space
-        self.bottom_segment_color_space = bottom_segment_color_space
+        self.top_segment_color_mode = top_segment_color_mode
+        self.bottom_segment_color_mode = bottom_segment_color_mode
         self.top_segment_hue_direction_x = top_segment_hue_direction_x
         self.bottom_segment_hue_direction_x = bottom_segment_hue_direction_x
 
@@ -159,10 +159,10 @@ class PerpendicularDualPartition(Partition[tuple[CellDualPartitionInterval, ...]
         values: List[tuple[CellDualPartitionInterval, ...]],
     ) -> None:
         super().__init__(breakpoints, values)
-    def get_horizontal_color_space(self, position: UnitFloat) -> ColorSpaces:
-        return self.get_value(position)[0].horizontal_color_space
-    def get_vertical_color_space(self, position: UnitFloat) -> ColorSpaces:
-        return self.get_value(position)[0].vertical_color_space
+    def get_horizontal_color_mode(self, position: UnitFloat) -> ColorModes:
+        return self.get_value(position)[0].horizontal_color_mode
+    def get_vertical_color_mode(self, position: UnitFloat) -> ColorModes:
+        return self.get_value(position)[0].vertical_color_mode
     def get_hue_direction_y(self, position: UnitFloat) -> HueDirection:
         if self.get_value(position)[0].hue_direction_y is None:
             return "shortest"

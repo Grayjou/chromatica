@@ -1,12 +1,12 @@
 from typing import ClassVar, Tuple
 from ..types.format_type import FormatType
-from ..types.color_types import ColorSpace
+from ..types.color_types import ColorMode
 from .color_base import ColorBase, WithAlpha, build_registry
 
 
 class ColorRGBINT(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.RGB
+    mode: ClassVar[ColorMode] = ColorMode.RGB
     _type: ClassVar[type] = int
     maxima: ClassVar[Tuple[int, int, int]] = (255, 255, 255)
     null_value: ClassVar[Tuple[int, int, int]] = (0, 0, 0)
@@ -15,7 +15,7 @@ class ColorRGBINT(ColorBase):
 
 class ColorRGBAINT(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.RGBA
+    mode: ClassVar[ColorMode] = ColorMode.RGBA
     _type: ClassVar[type] = int
     maxima: ClassVar[Tuple[int, int, int, int]] = (255, 255, 255, 255)
     null_value: ClassVar[Tuple[int, int, int, int]] = (0, 0, 0, 0)
@@ -24,7 +24,7 @@ class ColorRGBAINT(ColorBase, WithAlpha):
 
 class ColorUnitRGB(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.RGB
+    mode: ClassVar[ColorMode] = ColorMode.RGB
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float]] = (1.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -33,7 +33,7 @@ class ColorUnitRGB(ColorBase):
 
 class ColorUnitRGBA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.RGBA
+    mode: ClassVar[ColorMode] = ColorMode.RGBA
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float, float]] = (1.0, 1.0, 1.0, 1.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)
@@ -42,7 +42,7 @@ class ColorUnitRGBA(ColorBase, WithAlpha):
 
 class ColorPercentageRGB(ColorBase):
     num_channels: ClassVar[int] = 3
-    mode: ClassVar[ColorSpace] = ColorSpace.RGB
+    mode: ClassVar[ColorMode] = ColorMode.RGB
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float]] = (100.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float]] = (0.0, 0.0, 0.0)
@@ -51,7 +51,7 @@ class ColorPercentageRGB(ColorBase):
 
 class ColorPercentageRGBA(ColorBase, WithAlpha):
     num_channels: ClassVar[int] = 4
-    mode: ClassVar[ColorSpace] = ColorSpace.RGBA
+    mode: ClassVar[ColorMode] = ColorMode.RGBA
     _type: ClassVar[type] = float
     maxima: ClassVar[Tuple[float, float, float, float]] = (100.0, 100.0, 100.0, 100.0)
     null_value: ClassVar[Tuple[float, float, float, float]] = (0.0, 0.0, 0.0, 0.0)

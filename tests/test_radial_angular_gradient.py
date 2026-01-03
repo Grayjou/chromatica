@@ -17,7 +17,7 @@ def test_radial_angular_gradient_basic():
             (0, (255, 0, 0), (0, 0, 255)),
             (180, (0, 255, 0), (255, 255, 0))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -38,7 +38,7 @@ def test_radial_angular_gradient_rgba():
             (0, (255, 0, 0, 255), (0, 0, 255, 128)),
             (180, (0, 255, 0, 255), (255, 255, 0, 128))
         ],
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT
     )
     
@@ -89,7 +89,7 @@ def test_radial_angular_with_radius_stops():
             (180, 50),
             (270, 25)
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -106,7 +106,7 @@ def test_radial_angular_outside_fill():
             (0, (255, 0, 0), (0, 0, 255)),
             (180, (0, 255, 0), (255, 255, 0))
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     
@@ -144,7 +144,7 @@ def test_radial_angular_hsv_with_hue_direction():
             (180, (240.0, 1.0, 1.0), (0.0, 1.0, 1.0))     # Blue to red
         ],
         hue_direction_theta='cw',
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.FLOAT
     )
     
@@ -168,7 +168,7 @@ def test_radial_angular_colorbase_input():
             (0, color_inner, color_outer),
             (180, color_outer, color_inner)
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.FLOAT
     )
     
@@ -225,7 +225,7 @@ def test_radial_angular_four_quadrants():
             (180, (0, 0, 255), (0, 0, 128)),    # Blue quadrant
             (270, (255, 255, 0), (128, 128, 0)) # Yellow quadrant
         ],
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT
     )
     

@@ -5,7 +5,7 @@ from ...chromatica.v2core.interp_hue import (
     hue_lerp_between_lines_x_discrete, 
 
     hue_lerp_2d_spatial,)
-from ...chromatica.v2core.core import HueMode
+from ...chromatica.v2core.core import HueDirection
 import numpy as np
 from unitfield import upbm_2d, unit_positional_basematrix_ndim
 import pytest
@@ -33,7 +33,7 @@ def test_hue_lerp_1d_spatial():
         h0,
         h1,
         coeffs,
-        HueMode.SHORTEST
+        HueDirection.SHORTEST
     )
     expected_shortest = np.array([30.0, 7.5, 345, 322.5, 300.0])
     np.testing.assert_allclose(result_shortest, expected_shortest, atol=1e-5)
@@ -43,7 +43,7 @@ def test_hue_lerp_1d_spatial():
         h0,
         h1,
         coeffs,
-        HueMode.CW
+        HueDirection.CW
     )
     expected_cw = np.array([30.0, 97.5, 165.0, 232.5, 300.0])
     np.testing.assert_allclose(result_cw, expected_cw, atol=1e-5)
@@ -53,7 +53,7 @@ def test_hue_lerp_1d_spatial():
         h0,
         h1,
         coeffs,
-        HueMode.CCW
+        HueDirection.CCW
     )
     expected_ccw = np.array([30.0, 7.5, 345.0, 322.5, 300.0])
     np.testing.assert_allclose(result_ccw, expected_ccw, atol=1e-5)
@@ -63,7 +63,7 @@ def test_hue_lerp_1d_spatial():
         h0,
         h1,
         coeffs,
-        HueMode.LONGEST
+        HueDirection.LONGEST
     )
     expected_longest = np.array([30.0, 97.5, 165.0, 232.5, 300.0])
     np.testing.assert_allclose(result_longest, expected_longest, atol=1e-5)
@@ -92,7 +92,7 @@ def test_hue_lerp_between_lines():
     line0 = np.array([0, 60, 120, 180, 240, 300]).astype(np.float64)
     line1 = np.array([180, 240, 300, 0, 60, 120]).astype(np.float64)
     columns = [
-        hue_lerp_simple(line0[i], line1[i], np.linspace(0, 1, H), HueMode.CW)
+        hue_lerp_simple(line0[i], line1[i], np.linspace(0, 1, H), HueDirection.CW)
         for i in range(L)
     ]
 
@@ -101,8 +101,8 @@ def test_hue_lerp_between_lines():
         line0,
         line1,
         coords,
-        mode_x=HueMode.SHORTEST,
-        mode_y=HueMode.CW
+        mode_x=HueDirection.SHORTEST,
+        mode_y=HueDirection.CW
     )
     expected = np.array(columns).T
     np.testing.assert_allclose(result, expected, atol=1e-5)
@@ -128,7 +128,7 @@ def test_hue_lerp_between_lines_x_discrete():
     line0 = np.array([0, 60, 120, 180, 240, 300]).astype(np.float64)
     line1 = np.array([180, 240, 300, 0, 60, 120]).astype(np.float64)
     columns = [
-        hue_lerp_simple(line0[i], line1[i], np.linspace(0, 1, H), HueMode.CCW)
+        hue_lerp_simple(line0[i], line1[i], np.linspace(0, 1, H), HueDirection.CCW)
         for i in range(L)
     ]
 
@@ -137,7 +137,7 @@ def test_hue_lerp_between_lines_x_discrete():
         line0,
         line1,
         coords,
-        mode_y=HueMode.CCW
+        mode_y=HueDirection.CCW
     )
     expected = np.array(columns).T
     np.testing.assert_allclose(result, expected, atol=1e-5)
@@ -157,7 +157,7 @@ def test_hue_lerp_2d_spatial_transformed():
         starts,
         ends,
         coeffs,
-        modes = np.array([HueMode.SHORTEST, HueMode.CW]).astype(np.int32),
+        modes = np.array([HueDirection.SHORTEST, HueDirection.CW]).astype(np.int32),
     )
     expected_first_row = [0.0, 20.0, 80.0, 180.0]
     expected_first_col = [0.0, 120 * np.sqrt(1/3), 120 * np.sqrt(2/3), 120.0]

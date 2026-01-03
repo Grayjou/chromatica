@@ -6,9 +6,9 @@ from typing import List, Optional, Union, Tuple, Callable
 import numpy as np
 from enum import Enum
 
-from ....types.color_types import ColorSpaces
+from ....types.color_types import ColorModes
 from ....types.transform_types import TransformOutput
-from ....v2core.core import HueMode
+from ....v2core.core import HueDirection
 from boundednumbers import BoundType
  
 

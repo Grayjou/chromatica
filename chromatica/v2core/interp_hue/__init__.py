@@ -14,7 +14,7 @@ from .wrappers import (
     hue_lerp_between_lines_inplace_x_discrete,
     hue_lerp_simple,
     hue_multidim_lerp,
-    HueMode, 
+    HueDirection, 
     DistanceMode,
     BorderMode,
 )

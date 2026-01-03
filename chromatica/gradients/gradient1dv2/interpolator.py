@@ -6,7 +6,7 @@ from typing import Optional, Tuple, Union, List, Callable
 from ...types.format_type import FormatType
 from ...utils.interpolate_hue import interpolate_hue
 from ...types.transform_types import PerChannelTransform
-from ...types.color_types import ColorSpace, HueDirection, is_hue_space
+from ...types.color_types import ColorMode, HueDirection, is_hue_space
 from ...utils.dimension import most_common_element
 from ...v2core import multival1d_lerp
 from ...colors import ColorBase 
@@ -40,9 +40,9 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         u_scaled: np.ndarray,
         num_segments: int,
         total_steps: int,
-        input_color_spaces: List[ColorSpace],
-        color_spaces: List[ColorSpace],
-        output_color_space: Optional[ColorSpace],
+        input_color_modes: List[ColorMode],
+        color_modes: List[ColorMode],
+        output_color_mode: Optional[ColorMode],
         format_type: FormatType,
         hue_directions: List[HueDirection],
         per_channel_transforms: List[Optional[PerChannelTransform]],
@@ -51,19 +51,19 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         method: SequenceMethod = SequenceMethod.MASK,
     ) -> np.ndarray:
         """Interpolate all segments and combine into result array."""
-        if output_color_space is None:
-            output_color_space = most_common_element(color_spaces)
+        if output_color_mode is None:
+            output_color_mode = most_common_element(color_modes)
         
         if method == SequenceMethod.MASK:
             return cls._interpolate_with_mask_method(
                 colors, u_scaled, num_segments, total_steps,
-                input_color_spaces, color_spaces, output_color_space,
+                input_color_modes, color_modes, output_color_mode,
                 format_type, hue_directions, per_channel_transforms, bound_type
             )
         else:
             return cls._interpolate_with_segment_method(
                 colors, u_scaled, num_segments, total_steps,
-                input_color_spaces, color_spaces, output_color_space,
+                input_color_modes, color_modes, output_color_mode,
                 format_type, hue_directions, per_channel_transforms, bound_type
             )
     
@@ -74,9 +74,9 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         u_scaled: np.ndarray,
         num_segments: int,
         total_steps: int,
-        input_color_spaces: List[ColorSpace],
-        color_spaces: List[ColorSpace],
-        output_color_space: ColorSpace,
+        input_color_modes: List[ColorMode],
+        color_modes: List[ColorMode],
+        output_color_mode: ColorMode,
         format_type: FormatType,
         hue_directions: List[HueDirection],
         per_channel_transforms: List[Optional[PerChannelTransform]],
@@ -84,15 +84,15 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
     ) -> np.ndarray:
         """Interpolate using mask method."""
         first_color_converted = _convert_to_space_float(
-            colors[0], input_color_spaces[0], format_type, output_color_space
+            colors[0], input_color_modes[0], format_type, output_color_mode
         )
         
-        current_color_space = color_spaces[0]
+        current_color_mode = color_modes[0]
         float_color_left = _convert_to_space_float(
-            colors[0], input_color_spaces[0], format_type, current_color_space
+            colors[0], input_color_modes[0], format_type, current_color_mode
         )
         float_color_right = _convert_to_space_float(
-            colors[1], input_color_spaces[1], format_type, current_color_space
+            colors[1], input_color_modes[1], format_type, current_color_mode
         )
         
         num_channels = len(float_color_left.value)
@@ -108,23 +108,23 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
                 start=float_color_left.value,
                 end=float_color_right.value,
                 u=u_scaled[mask] - seg_idx,
-                is_hue=is_hue_space(current_color_space),
+                is_hue=is_hue_space(current_color_mode),
                 hue_direction=hue_directions[seg_idx],
                 per_channel_transforms=per_channel_transforms[seg_idx],
                 bound_type=bound_type,
             )
             
-            if current_color_space != output_color_space:
+            if current_color_mode != output_color_mode:
                 this_chunk = _convert_to_space_float(
-                    this_chunk, current_color_space, FormatType.FLOAT, output_color_space
+                    this_chunk, current_color_mode, FormatType.FLOAT, output_color_mode
                 ).value
             
             result[mask] = this_chunk
             
             if seg_idx < num_segments - 1:
-                float_color_left, float_color_right, current_color_space = cls._prepare_next_segment_colors(
-                    seg_idx, colors, current_color_space, float_color_right, 
-                    input_color_spaces, color_spaces
+                float_color_left, float_color_right, current_color_mode = cls._prepare_next_segment_colors(
+                    seg_idx, colors, current_color_mode, float_color_right, 
+                    input_color_modes, color_modes
                 )
         
         return result
@@ -136,9 +136,9 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         u_scaled: np.ndarray,
         num_segments: int,
         total_steps: int,
-        input_color_spaces: List[ColorSpace],
-        color_spaces: List[ColorSpace],
-        output_color_space: ColorSpace,
+        input_color_modes: List[ColorMode],
+        color_modes: List[ColorMode],
+        output_color_mode: ColorMode,
         format_type: FormatType,
         hue_directions: List[HueDirection],
         per_channel_transforms: List[Optional[PerChannelTransform]],
@@ -149,8 +149,8 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
             u_scaled=u_scaled,
             num_segments=num_segments,
             colors=colors,
-            input_color_spaces=input_color_spaces,
-            color_spaces=color_spaces,
+            input_color_modes=input_color_modes,
+            color_modes=color_modes,
             format_type=format_type,
             hue_directions=hue_directions,
             per_channel_transforms=per_channel_transforms,
@@ -159,7 +159,7 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         
         # Convert segments to output space and combine
         segment_values = [
-            segment.convert_to_space(output_color_space).get_value() 
+            segment.convert_to_space(output_color_mode).get_value() 
             for segment in segments
         ]
         return np.vstack(segment_values)
@@ -169,31 +169,31 @@ class _Gradient1DInterpolator(_Gradient1DUnitBuilder):
         cls,
         seg_idx: int,
         colors: List,
-        current_color_space: ColorSpace,
+        current_color_mode: ColorMode,
         float_color_right: ColorBase,
-        input_color_spaces: List[ColorSpace],
-        color_spaces: List[ColorSpace],
-    ) -> Tuple[ColorBase, ColorBase, ColorSpace]:
+        input_color_modes: List[ColorMode],
+        color_modes: List[ColorMode],
+    ) -> Tuple[ColorBase, ColorBase, ColorMode]:
         """Prepare left and right colors for the next segment."""
         next_seg_idx = seg_idx + 1
-        next_color_space = color_spaces[next_seg_idx]
+        next_color_mode = color_modes[next_seg_idx]
         
         float_color_left = float_color_right
-        if next_color_space != current_color_space:
+        if next_color_mode != current_color_mode:
             float_color_left = float_color_left.convert(
                 to_format=FormatType.FLOAT,
-                to_space=next_color_space,
+                to_space=next_color_mode,
             )
-            current_color_space = next_color_space
+            current_color_mode = next_color_mode
         
         float_color_right = _convert_to_space_float(
             colors[next_seg_idx + 1],
-            input_color_spaces[next_seg_idx + 1],
+            input_color_modes[next_seg_idx + 1],
             FormatType.FLOAT,
-            current_color_space,
+            current_color_mode,
         )
         
-        return float_color_left, float_color_right, current_color_space
+        return float_color_left, float_color_right, current_color_mode
     
     @classmethod
     def _interpolate(

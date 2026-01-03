@@ -41,7 +41,7 @@ class Gradient2D(Color2DArr):
         color_br: Union[ColorBase, Tuple, int],
         width: int,
         height: int,
-        color_space: str = "rgb",
+        color_mode: str = "rgb",
         format_type: FormatType = FormatType.FLOAT,
         unit_transform_x: Optional[UnitTransform] = None,
         unit_transform_y: Optional[UnitTransform] = None,
@@ -63,7 +63,7 @@ class Gradient2D(Color2DArr):
             color_br: Bottom-right color
             width: Number of columns
             height: Number of rows
-            color_space: Target color space ('rgb', 'hsv', 'hsl', etc.)
+            color_mode: Target color space ('rgb', 'hsv', 'hsl', etc.)
             format_type: Format type (INT or FLOAT)
             unit_transform_x: Optional transformation of x interpolation factors
             unit_transform_y: Optional transformation of y interpolation factors
@@ -81,14 +81,14 @@ class Gradient2D(Color2DArr):
         Returns:
             Gradient2D instance with bilinearly interpolated colors
         """
-        color_space = color_space.lower()
-        is_hue_space = color_space in ("hsv", "hsl", "hsva", "hsla")
+        color_mode = color_mode.lower()
+        is_hue_space = color_mode in ("hsv", "hsl", "hsva", "hsla")
         
-        color_class = get_color_class(color_space, format_type)
+        color_class = get_color_class(color_mode, format_type)
 
         # Convert corner colors to target color space
         corners = [
-            convert_color(corner_color, color_space, format_type)
+            convert_color(corner_color, color_mode, format_type)
             for corner_color in [color_tl, color_tr, color_bl, color_br]
         ]
         
@@ -323,7 +323,7 @@ class Gradient2D(Color2DArr):
         top_color_arr: ColorBase,
         bottom_color_arr: ColorBase,
         height: int,
-        color_space: str = "rgb",
+        color_mode: str = "rgb",
         format_type: FormatType = FormatType.FLOAT,
         unit_transform_y: Optional[UnitTransform] = None,
         hue_direction_y: Optional[str] = None,
@@ -339,7 +339,7 @@ class Gradient2D(Color2DArr):
             top_color_arr: 1D gradient for the top row (shape: [width, channels])
             bottom_color_arr: 1D gradient for the bottom row (shape: [width, channels])
             height: Number of rows in the output 2D gradient
-            color_space: Target color space ('rgb', 'hsv', 'hsl', etc.)
+            color_mode: Target color space ('rgb', 'hsv', 'hsl', etc.)
             format_type: Format type (INT or FLOAT)
             unit_transform_y: Optional transformation of y interpolation factors
             hue_direction_y: Hue interpolation direction along y-axis for hue-based 
@@ -373,8 +373,8 @@ class Gradient2D(Color2DArr):
 
 
         # Convert gradients to target color space if needed
-        if top_color_arr.mode != color_space or top_color_arr.format_type != format_type:
-            converted_top_color = top_color_arr.convert(color_space, format_type)
+        if top_color_arr.mode != color_mode or top_color_arr.format_type != format_type:
+            converted_top_color = top_color_arr.convert(color_mode, format_type)
 
             top_arr = converted_top_color.value
 
@@ -382,8 +382,8 @@ class Gradient2D(Color2DArr):
             top_arr = top_color_arr.value
 
             
-        if bottom_color_arr.mode != color_space or bottom_color_arr.format_type != format_type:
-            converted_bottom_color = bottom_color_arr.convert(color_space, format_type)
+        if bottom_color_arr.mode != color_mode or bottom_color_arr.format_type != format_type:
+            converted_bottom_color = bottom_color_arr.convert(color_mode, format_type)
             bottom_arr = converted_bottom_color.value
         else:
             bottom_arr = bottom_color_arr.value
@@ -395,9 +395,9 @@ class Gradient2D(Color2DArr):
             )
         
         num_channels = top_arr.shape[1]
-        is_hue_space = color_space.lower() in ("hsv", "hsl", "hsva", "hsla")
+        is_hue_space = color_mode.lower() in ("hsv", "hsl", "hsva", "hsla")
 
-        color_class = get_color_class(color_space, format_type)
+        color_class = get_color_class(color_mode, format_type)
         
         # Create normalized y coordinate grid
         y_norm = np.linspace(0.0, 1.0, height, dtype=float)
@@ -592,7 +592,7 @@ class Gradient2D(Color2DArr):
         top_color_arr: Color1DArr,
         bottom_color_arr: Color1DArr,
         height: int,
-        color_space: str = "rgb",
+        color_mode: str = "rgb",
         format_type: FormatType = FormatType.FLOAT,
         unit_transform_y: Optional[UnitTransform] = None,
         hue_direction_y: Optional[str] = None,
@@ -606,7 +606,7 @@ class Gradient2D(Color2DArr):
             top_color_arr: 1D gradient for the top row
             bottom_color_arr: 1D gradient for the bottom row
             height: Number of rows in the output
-            color_space: Target color space
+            color_mode: Target color space
             format_type: Format type (INT or FLOAT)
             unit_transform_y: Optional transformation of y interpolation factors
             hue_direction_y: Hue interpolation direction along y-axis
@@ -629,13 +629,13 @@ class Gradient2D(Color2DArr):
         width = top_width
         
         # Convert to target color space
-        if top_color_arr.mode != color_space or top_color_arr.format_type != format_type:
-            top_arr = top_color_arr.convert(color_space, format_type).value
+        if top_color_arr.mode != color_mode or top_color_arr.format_type != format_type:
+            top_arr = top_color_arr.convert(color_mode, format_type).value
         else:
             top_arr = top_color_arr.value
             
-        if bottom_color_arr.mode != color_space or bottom_color_arr.format_type != format_type:
-            bottom_arr = bottom_color_arr.convert(color_space, format_type).value
+        if bottom_color_arr.mode != color_mode or bottom_color_arr.format_type != format_type:
+            bottom_arr = bottom_color_arr.convert(color_mode, format_type).value
         else:
             bottom_arr = bottom_color_arr.value
 
@@ -645,8 +645,8 @@ class Gradient2D(Color2DArr):
             y_norm = unit_transform_y(y_norm)
         
         # Get color class and check if hue space
-        color_class = get_color_class(color_space, format_type)
-        is_hue_space = color_space.lower() in ("hsv", "hsl", "hsva", "hsla")
+        color_class = get_color_class(color_mode, format_type)
+        is_hue_space = color_mode.lower() in ("hsv", "hsl", "hsva", "hsla")
         
         # Prepare result array
         if is_hue_space and (hue_direction_y is not None or hue_partition_y is not None):
@@ -720,7 +720,7 @@ class Gradient2D(Color2DArr):
         color_br: List[Union[ColorBase, Tuple, int]],
         width: int,
         height: int,
-        color_space: str = "rgb",
+        color_mode: str = "rgb",
         format_type: FormatType = FormatType.FLOAT,
         unit_transform_x: Optional[UnitTransform] = None,
         unit_transform_y: Optional[UnitTransform] = None,
@@ -743,7 +743,7 @@ class Gradient2D(Color2DArr):
             color_br: List of bottom-right colors
             width: Number of columns
             height: Number of rows
-            color_space: Target color space ('rgb', 'hsv', 'hsl', etc.)
+            color_mode: Target color space ('rgb', 'hsv', 'hsl', etc.)
             format_type: Format type (INT or FLOAT)
             unit_transform_x: Optional transformation of x interpolation factors
             unit_transform_y: Optional transformation of y interpolation factors
@@ -765,7 +765,7 @@ class Gradient2D(Color2DArr):
             color_tl,
             color_tr,
             width,
-            color_space,
+            color_mode,
             format_type,
             unit_transform_x,
             hue_direction_x,
@@ -779,8 +779,8 @@ class Gradient2D(Color2DArr):
         width_portions: Optional[List[List[float]]] = None, # 2D list width portions between gradient colors. Must sum 1.0 in total per row.
         height_portions: Optional[List[float]] = None, # 1D list height portions between gradient rows. Must sum 1.0 in total. #
                                                             #Can't have both width_portions and height_portions as heterogeneous.
-        color_spaces_x: Optional[List[List[str]]] = None, #2D list matching colors
-        color_spaces_y: Optional[List[List[str]]] = None, #2D list matching colors
+        color_modes_x: Optional[List[List[str]]] = None, #2D list matching colors
+        color_modes_y: Optional[List[List[str]]] = None, #2D list matching colors
         format_type: FormatType = FormatType.FLOAT,
         unit_transforms_x: Optional[List[List[UnitTransform]]] = None, #2D list matching colors
         unit_transforms_y: Optional[List[List[UnitTransform]]] = None, #2D list matching colors
@@ -800,8 +800,8 @@ class Gradient2D(Color2DArr):
             colors: 2D list of corner colors for each gradient
             width: Number of columns in each gradient
             height: Number of rows in each gradient
-            color_spaces_x: List of color spaces for each gradient along x-axis
-            color_spaces_y: List of color spaces for each gradient along y-axis
+            color_modes_x: List of color spaces for each gradient along x-axis
+            color_modes_y: List of color spaces for each gradient along y-axis
             format_type: Format type (INT or FLOAT)
             unit_transforms_x: List of x-axis unit transforms for each gradient
             unit_transforms_y: List of y-axis unit transforms for each gradient
@@ -831,14 +831,14 @@ class Gradient2D(Color2DArr):
         )
 
         # Color spaces
-        color_spaces_x = normalize_2d_rows(
-            color_spaces_x,
+        color_modes_x = normalize_2d_rows(
+            color_modes_x,
             between_color_lengths,
             default="rgb",
         )
 
-        color_spaces_y = normalize_2d_rows(
-            color_spaces_y,
+        color_modes_y = normalize_2d_rows(
+            color_modes_y,
             between_color_lengths,
             default="rgb",
         )

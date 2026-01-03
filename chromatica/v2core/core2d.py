@@ -23,8 +23,8 @@ from .interp_hue import (  # type: ignore
 )
 
 from .core import (
-    HueMode,
-    HueModeSequence,
+    HueDirection,
+    HueDirectionSequence,
     BoundTypeSequence,
     _prepare_bound_types,
     _apply_bound,
@@ -144,8 +144,8 @@ def sample_hue_between_lines_continuous(
     line0: np.ndarray,
     line1: np.ndarray,
     coords: CoordArray2D,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
     border_mode: BorderMode = BorderMode.OVERFLOW,
     border_constant: Optional[float] = None,
@@ -191,7 +191,7 @@ def sample_hue_between_lines_discrete(
     line0: np.ndarray,
     line1: np.ndarray,
     coords: CoordArray2D,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     bound_type: BoundType = BoundType.CLAMP,
     border_mode: BorderMode = BorderMode.OVERFLOW,
     border_constant: Optional[float] = None,
@@ -390,6 +390,6 @@ __all__ = [
     'hue_gradient_2d',
     
     # Types and enums
-    'HueMode',
+    'HueDirection',
     'BoundType',
 ]

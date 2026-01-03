@@ -5,13 +5,13 @@ from .rgb import rgb_tuple_to_class
 from .hsv import hsv_tuple_to_class
 from ..types.format_type import FormatType, max_non_hue
 from ..conversions import convert, np_convert
-from ..types.color_types import  ColorSpace
+from ..types.color_types import  ColorMode
 from typing import Optional
 from numpy import ndarray
 import numpy as np
-unified_tuple_to_class: dict[tuple[ColorSpace, FormatType], type[ColorBase]]  = {**rgb_tuple_to_class, **hsl_tuple_to_class, **hsv_tuple_to_class}
+unified_tuple_to_class: dict[tuple[ColorMode, FormatType], type[ColorBase]]  = {**rgb_tuple_to_class, **hsl_tuple_to_class, **hsv_tuple_to_class}
 
-def color_convert(self: ColorBase, to_space: ColorSpace | None = None, to_format: FormatType | None = None, *, use_css_algo:bool = False) -> ColorBase:
+def color_convert(self: ColorBase, to_space: ColorMode | None = None, to_format: FormatType | None = None, *, use_css_algo:bool = False) -> ColorBase:
     """
     Convert this color to a different color space and/or format.
     
@@ -58,9 +58,9 @@ def color_convert(self: ColorBase, to_space: ColorSpace | None = None, to_format
     return cls(result)
 
 ALPHA_SPACE = {
-    ColorSpace.RGB:  ColorSpace.RGBA,
-    ColorSpace.HSL:  ColorSpace.HSLA,
-    ColorSpace.HSV:  ColorSpace.HSVA,
+    ColorMode.RGB:  ColorMode.RGBA,
+    ColorMode.HSL:  ColorMode.HSLA,
+    ColorMode.HSV:  ColorMode.HSVA,
 }
 
 def with_alpha(self: ColorBase, alpha: Optional[ColorValue] = None) -> ColorBase:
@@ -98,18 +98,18 @@ ColorBase.convert = color_convert
 ColorBase.with_alpha = with_alpha
 
 
-def get_color_class(color_space: ColorSpace, format_type: FormatType):
-    color_space = ColorSpace(color_space)
-    color_class = unified_tuple_to_class.get((color_space, format_type))
+def get_color_class(color_mode: ColorMode, format_type: FormatType):
+    color_mode = ColorMode(color_mode)
+    color_class = unified_tuple_to_class.get((color_mode, format_type))
     if color_class is None:
         raise ValueError(
-            f"Unsupported color space/format combination: {color_space}/{format_type}"
+            f"Unsupported color space/format combination: {color_mode}/{format_type}"
         )
     return color_class
 
 
-def convert_color(value, color_space: ColorSpace, format_type: FormatType):
-    color_class = get_color_class(color_space, format_type)
+def convert_color(value, color_mode: ColorMode, format_type: FormatType):
+    color_class = get_color_class(color_mode, format_type)
     if isinstance(value, ColorBase):
-        return value.convert(color_space, format_type)  # type: ignore
+        return value.convert(color_mode, format_type)  # type: ignore
     return color_class(value)

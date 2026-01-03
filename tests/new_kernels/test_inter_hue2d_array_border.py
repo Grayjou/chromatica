@@ -7,7 +7,7 @@ from ...chromatica.v2core.interp_hue.wrappers import (
     DistanceMode
 )
 from unitfield import upbm_2d
-from ...chromatica.types.color_types import HueMode
+from ...chromatica.types.color_types import HueDirection
 
 def _hue_lerp(h0: float, h1: float, t: float) -> float:
     diff = h1 - h0
@@ -104,7 +104,7 @@ def test_lerp_between_lines_blending():
             line0, line1, coords, border_array=np.zeros((2, 2), dtype=np.float64) + border_v,
             distance_mode=DistanceMode.MANHATTAN,
             border_feathering=1,
-            feather_hue_mode=HueMode.CCW
+            feather_hue_mode=HueDirection.CCW
         )
         expected = np.array([
             [border_v, _simple_lerp(_simple_lerp(90, 359, 0.5), border_v, 0.5)],
@@ -121,7 +121,7 @@ def test_lerp_between_lines_blending():
             line0, line1, coords, border_array=np.zeros((2, 2), dtype=np.float64) + border_v,
             distance_mode=DistanceMode.MANHATTAN,
             border_feathering=1,
-            feather_hue_mode=HueMode.SHORTEST
+            feather_hue_mode=HueDirection.SHORTEST
         )
         shortest_results.append(result)
     assert any((not np.allclose(ccw, short) for ccw, short in zip(ccw_results, shortest_results))), "CCW and Shortest results should differ for some border values"
@@ -145,7 +145,7 @@ def test_hue_corners_array_border_feathering(feathering):
         coords,
         border_array,
         border_feathering=feathering,
-        feather_hue_mode=HueMode.SHORTEST,
+        feather_hue_mode=HueDirection.SHORTEST,
     )
 
     # Shortest path from 0 → 200 is 360 → 200
@@ -182,7 +182,7 @@ def test_hue_corners_different_distance_modes(distance_mode, expected):
         border_array,
         distance_mode=distance_mode,
         border_feathering=1.0,
-        feather_hue_mode=HueMode.SHORTEST,
+        feather_hue_mode=HueDirection.SHORTEST,
     )
 
     assert np.allclose(result, expected)

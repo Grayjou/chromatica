@@ -31,7 +31,7 @@ def demonstrate_gradients() -> None:
         (255, 0, 0),
         (0, 0, 255),
         steps=10,
-        color_space="rgb",
+        color_mode="rgb",
         format_type=FormatType.INT,
     )
     print("1D RGB gradient sample:", strip.value[:3])
@@ -41,7 +41,7 @@ def demonstrate_gradients() -> None:
         (120, 100, 100),
         (300, 100, 100),
         steps=10,
-        color_space="hsv",
+        color_mode="hsv",
         format_type=FormatType.INT,
         direction="cw",
     )

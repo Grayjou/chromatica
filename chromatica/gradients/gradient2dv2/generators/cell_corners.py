@@ -4,7 +4,7 @@ from ..cell.corners import CornersCell
 from ..cell.factory import get_transformed_corners_cell
 import numpy as np
 from typing import List, Optional, Callable, Dict, Union, cast
-from ....types.color_types import ColorSpace
+from ....types.color_types import ColorMode
 from ....types.format_type import FormatType
 from ..partitions import PerpendicularPartition, PartitionInterval, IndexRoundingMode
 from .partition_utils import compute_partition_slices
@@ -31,7 +31,7 @@ class CornersCellFactory(CornersCellFactoryProperties):
                 bottom_left=self.bottom_left,
                 bottom_right=self.bottom_right,
                 per_channel_coords=base_coords,
-                color_space=self.color_space,
+                color_mode=self.color_mode,
                 hue_direction_y=self.hue_direction_y,
                 hue_direction_x=self.hue_direction_x,
                 input_format=FormatType.FLOAT,
@@ -87,13 +87,13 @@ class CornersCellFactory(CornersCellFactoryProperties):
             
             # Get interval properties with fallbacks
             interval = cast(PartitionInterval, spec.interval)
-            color_space = interval.color_space if interval.color_space is not None else self.color_space
+            color_mode = interval.color_mode if interval.color_mode is not None else self.color_mode
             hue_dir_x = interval.hue_direction_x if interval.hue_direction_x is not None else self.hue_direction_x
             hue_dir_y = interval.hue_direction_y if interval.hue_direction_y is not None else self.hue_direction_y
-            top_left = np_convert(top_left, self.color_space, color_space, FormatType.FLOAT, output_type=FormatType.FLOAT)
-            top_right = np_convert(top_right, self.color_space, color_space, FormatType.FLOAT, output_type=FormatType.FLOAT)
-            bottom_left = np_convert(bottom_left, self.color_space, color_space, FormatType.FLOAT, output_type=FormatType.FLOAT)
-            bottom_right = np_convert(bottom_right, self.color_space, color_space, FormatType.FLOAT, output_type=FormatType.FLOAT)
+            top_left = np_convert(top_left, self.color_mode, color_mode, FormatType.FLOAT, output_type=FormatType.FLOAT)
+            top_right = np_convert(top_right, self.color_mode, color_mode, FormatType.FLOAT, output_type=FormatType.FLOAT)
+            bottom_left = np_convert(bottom_left, self.color_mode, color_mode, FormatType.FLOAT, output_type=FormatType.FLOAT)
+            bottom_right = np_convert(bottom_right, self.color_mode, color_mode, FormatType.FLOAT, output_type=FormatType.FLOAT)
             slice_width = int(spec.width)
             
             # Handle per_channel_coords for pure_partition mode
@@ -114,7 +114,7 @@ class CornersCellFactory(CornersCellFactoryProperties):
                 top_right=top_right,
                 bottom_left=bottom_left,
                 bottom_right=bottom_right,
-                color_space=color_space,
+                color_mode=color_mode,
                 hue_direction_x=hue_dir_x,
                 hue_direction_y=hue_dir_y,
             )
@@ -128,7 +128,7 @@ class CornersCellFactory(CornersCellFactoryProperties):
                     bottom_left=bottom_left,
                     bottom_right=bottom_right,
                     per_channel_coords=sliced_pcc,
-                    color_space=color_space,
+                    color_mode=color_mode,
                     hue_direction_y=hue_dir_y,
                     hue_direction_x=hue_dir_x,
                     input_format=FormatType.FLOAT,
@@ -163,7 +163,7 @@ class CornersCellFactory(CornersCellFactoryProperties):
             'top_right': self.top_right,
             'bottom_left': self.bottom_left,
             'bottom_right': self.bottom_right,
-            'color_space': self.color_space,
+            'color_mode': self.color_mode,
             'hue_direction_x': self.hue_direction_x,
             'hue_direction_y': self.hue_direction_y,
             'per_channel_coords': self.per_channel_coords,

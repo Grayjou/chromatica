@@ -12,7 +12,7 @@ from ....chromatica.gradients.gradient2dv2.cell import (
     CornersCellDual
 
 )
-from ....chromatica.types.color_types import HueMode
+from ....chromatica.types.color_types import HueDirection
 from ....chromatica.gradients.gradient2dv2 import LineInterpMethods
 import numpy as np
 from unitfield import upbm_2d
@@ -34,13 +34,13 @@ def test_interpolate_edge_corners():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=per_channel_coords,
-        top_left_color_space="rgb",
-        top_right_color_space="rgb",
-        bottom_left_color_space="rgb",
-        bottom_right_color_space="rgb",
-        color_space="rgb",
-        hue_direction_x=HueMode.CCW,
-        hue_direction_y=HueMode.CW,
+        top_left_color_mode="rgb",
+        top_right_color_mode="rgb",
+        bottom_left_color_mode="rgb",
+        bottom_right_color_mode="rgb",
+        color_mode="rgb",
+        hue_direction_x=HueDirection.CCW,
+        hue_direction_y=HueDirection.CW,
         boundtypes=BoundType.CLAMP
     )
     top_edge = cell.interpolate_edge(0.5, is_top_edge=True)
@@ -68,13 +68,13 @@ def test_interpolate_edge_corners():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=per_channel_coords,
-        top_left_color_space="rgb",
-        top_right_color_space="rgb",
-        bottom_left_color_space="rgb",
-        bottom_right_color_space="rgb",
-        color_space="rgb",
-        hue_direction_x=HueMode.CCW,
-        hue_direction_y=HueMode.CW,
+        top_left_color_mode="rgb",
+        top_right_color_mode="rgb",
+        bottom_left_color_mode="rgb",
+        bottom_right_color_mode="rgb",
+        color_mode="rgb",
+        hue_direction_x=HueDirection.CCW,
+        hue_direction_y=HueDirection.CW,
         boundtypes=BoundType.CLAMP
     )
     top_edge = cell.interpolate_edge(0.5, is_top_edge=True)
@@ -100,9 +100,9 @@ def test_cell_lines_interpolation_discrete():
         top_line=top_line,
         bottom_line=bottom_line,
         per_channel_coords=per_channel_coords,
-        top_line_color_space="rgb",
-        bottom_line_color_space="rgb",
-        color_space="rgb",
+        top_line_color_mode="rgb",
+        bottom_line_color_mode="rgb",
+        color_mode="rgb",
         input_format="int",
         line_method=LineInterpMethods.LINES_DISCRETE,
         boundtypes=BoundType.CLAMP
@@ -138,15 +138,15 @@ def test_interpolate_edge_corners_dual():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=pcc,
-        horizontal_color_space="hsv",
-        vertical_color_space="hsv",
-        top_left_color_space="rgb",
-        top_right_color_space="rgb",
-        bottom_left_color_space="rgb",
-        bottom_right_color_space="rgb",
+        horizontal_color_mode="hsv",
+        vertical_color_mode="hsv",
+        top_left_color_mode="rgb",
+        top_right_color_mode="rgb",
+        bottom_left_color_mode="rgb",
+        bottom_right_color_mode="rgb",
 
-        hue_direction_x=HueMode.CCW,
-        hue_direction_y=HueMode.CW,
+        hue_direction_x=HueDirection.CCW,
+        hue_direction_y=HueDirection.CW,
     )
     top_edge = cell.interpolate_edge(0.5, is_top_edge=True)
     bottom_edge = cell.interpolate_edge(0.5, is_top_edge=False)
@@ -173,18 +173,18 @@ def test_interpolate_edge_corners_dual_diff_spaces():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=pcc,
-        horizontal_color_space="hsv",
-        vertical_color_space="rgb",
-        top_left_color_space="rgb",
-        top_right_color_space="rgb",
-        bottom_left_color_space="rgb",
-        bottom_right_color_space="rgb",
-        bottom_segment_color_space="rgb",
-        top_segment_color_space="hsv",
-        #hue_direction_x=HueMode.CCW,
+        horizontal_color_mode="hsv",
+        vertical_color_mode="rgb",
+        top_left_color_mode="rgb",
+        top_right_color_mode="rgb",
+        bottom_left_color_mode="rgb",
+        bottom_right_color_mode="rgb",
+        bottom_segment_color_mode="rgb",
+        top_segment_color_mode="hsv",
+        #hue_direction_x=HueDirection.CCW,
         hue_direction_y=None,
-        top_segment_hue_direction_x=HueMode.CW,
-        bottom_segment_hue_direction_x=HueMode.CCW,
+        top_segment_hue_direction_x=HueDirection.CW,
+        bottom_segment_hue_direction_x=HueDirection.CCW,
     )
 
     top_edge = cell.interpolate_edge(0.5, is_top_edge=True)
@@ -214,15 +214,15 @@ def test_interpolate_edge_corners_dual_transformed():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=pcc,
-        horizontal_color_space="hsv",
-        vertical_color_space="hsv",
-        top_left_color_space="rgb",
-        top_right_color_space="rgb",
-        bottom_left_color_space="rgb",
-        bottom_right_color_space="rgb",
+        horizontal_color_mode="hsv",
+        vertical_color_mode="hsv",
+        top_left_color_mode="rgb",
+        top_right_color_mode="rgb",
+        bottom_left_color_mode="rgb",
+        bottom_right_color_mode="rgb",
 
-        hue_direction_x=HueMode.CCW,
-        hue_direction_y=HueMode.CW,
+        hue_direction_x=HueDirection.CCW,
+        hue_direction_y=HueDirection.CW,
     )
     result = cell.get_value()
     top_edge = cell.interpolate_edge(0.5, is_top_edge=True)
@@ -249,11 +249,11 @@ def test_interpolate_edge_lines():
         top_line=top_line,
         bottom_line=bottom_line,
         per_channel_coords=per_channel_coords,
-        top_line_color_space="rgb",
-        bottom_line_color_space="rgb",
-        color_space="rgb",
+        top_line_color_mode="rgb",
+        bottom_line_color_mode="rgb",
+        color_mode="rgb",
         input_format="int",
-        hue_direction_y=HueMode.CW,
+        hue_direction_y=HueDirection.CW,
         line_method=LineInterpMethods.LINES_CONTINUOUS,
         boundtypes=BoundType.CLAMP
     )
@@ -289,11 +289,11 @@ def test_interpolate_edge_lines_non_uniform():
         top_line=top_line,
         bottom_line=bottom_line,
         per_channel_coords=per_channel_coords,
-        top_line_color_space="rgb",
-        bottom_line_color_space="rgb",
-        color_space="rgb",
+        top_line_color_mode="rgb",
+        bottom_line_color_mode="rgb",
+        color_mode="rgb",
         input_format="int",
-        hue_direction_y=HueMode.CW,
+        hue_direction_y=HueDirection.CW,
         line_method=LineInterpMethods.LINES_CONTINUOUS,
         boundtypes=BoundType.CLAMP
     )

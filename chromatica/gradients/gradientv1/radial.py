@@ -16,7 +16,7 @@ def radial_gradient(
     width: int,
     center: Union[Tuple[int, int], List[int]] = (0, 0),
     radius: float = 1.0,
-    color_space: str = "rgb",
+    color_mode: str = "rgb",
     format_type: FormatType = FormatType.FLOAT,
     unit_transform: Optional[Callable[[NDArray], NDArray]] = None,
     outside_fill: Optional[Union[ColorBase, Tuple, int]] = None,
@@ -35,7 +35,7 @@ def radial_gradient(
         width: Width of the output array
         center: (x, y) center position of the gradient
         radius: Radius of the gradient in pixels
-        color_space: Target color space ('rgb', 'hsv', 'hsl', etc.)
+        color_mode: Target color space ('rgb', 'hsv', 'hsl', etc.)
         format_type: Format type (INT or FLOAT)
         unit_transform: Optional transformation of normalized distances
         outside_fill: Optional color to fill areas outside the gradient
@@ -52,16 +52,16 @@ def radial_gradient(
         `base` only within the gradient area, leaving the rest untouched.
         If `outside_fill` is provided, it fills areas outside the gradient.
     """
-    color_space = color_space.lower()
+    color_mode = color_mode.lower()
 
-    color_class = get_color_class(color_space, format_type)
+    color_class = get_color_class(color_mode, format_type)
 
-    col1 = convert_color(color1, color_space, format_type)
-    col2 = convert_color(color2, color_space, format_type)
+    col1 = convert_color(color1, color_mode, format_type)
+    col2 = convert_color(color2, color_mode, format_type)
 
     if outside_fill is not None:
         if isinstance(outside_fill, ColorBase):
-            outside_fill_color = outside_fill.convert(color_space, format_type).value  # type: ignore
+            outside_fill_color = outside_fill.convert(color_mode, format_type).value  # type: ignore
         else:
             outside_fill_color = color_class(outside_fill).value
     else:
@@ -116,7 +116,7 @@ def radial_gradient(
     if format_type == FormatType.INT:
         result = np.round(result).astype(np.uint16)
         # Ensure hue values are wrapped to [0, 360) for hue-based color spaces
-        if color_space in ("hsv", "hsl", "hsva", "hsla"):
+        if color_mode in ("hsv", "hsl", "hsva", "hsla"):
             result[..., 0] = result[..., 0] % 360
     else:
         result = result.astype(np.float32)

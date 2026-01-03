@@ -12,7 +12,7 @@ import numpy as np
 from enum import IntEnum
 from functools import partial
 
-from ...types.color_types import HueMode
+from ...types.color_types import HueDirection
 from ...v2core.border_handler import BorderMode
 from ...types.array_types import ndarray_1d, ndarray_2d, ndarray_3d
 from ..border_handler import BorderModeInput, DistanceMode, BorderConstant
@@ -66,11 +66,11 @@ def _ensure_float64(arr: np.ndarray) -> np.ndarray:
     return np.ascontiguousarray(arr, dtype=np.float64)
 
 
-def _normalize_hue_mode(mode: HueMode) -> int:
+def _normalize_hue_mode(mode: HueDirection) -> int:
     """Convert hue mode to int."""
     if mode is None:
-        return HueMode.SHORTEST
-    return HueMode(mode)
+        return HueDirection.SHORTEST
+    return HueDirection(mode)
 
 
 def _normalize_border_mode(mode: BorderModeInput) -> int:
@@ -197,13 +197,13 @@ def hue_lerp_between_lines(
     line1: np.ndarray,
     coords: CoordsInput,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_constant: BorderConstant = 0.0,
     border_array: ndarray_2d = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     x_discrete: bool = False,
@@ -274,11 +274,11 @@ def hue_lerp_between_lines_array_border(
     coords: CoordsInput,
     border_array: np.ndarray,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CONSTANT,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     x_discrete: bool = False,
@@ -390,11 +390,11 @@ def hue_lerp_between_lines_inplace(
     coords: CoordsInput,
     target_array: np.ndarray,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     x_discrete: bool = False,
@@ -450,13 +450,13 @@ def hue_lerp_from_corners(
     corners: CornersInput,
     coords: CoordsInput,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_array: ndarray_2d = None,
     border_constant: BorderConstant = 0.0,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
 ) -> np.ndarray:
@@ -519,11 +519,11 @@ def hue_lerp_from_corners_array_border(
     coords: CoordsInput,
     border_array: np.ndarray,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CONSTANT,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
 ) -> np.ndarray:
@@ -637,13 +637,13 @@ def hue_lerp_from_unpacked_corners(
     bottom_right: Union[float, np.ndarray],
     coords: CoordsInput,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_array: ndarray_2d = None,
     border_constant: BorderConstant = 0.0,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
 ) -> np.ndarray:
@@ -694,7 +694,7 @@ def hue_multidim_lerp(
     starts: np.ndarray,
     ends: np.ndarray,
     coeffs: np.ndarray,
-    modes: Union[List[HueMode], np.ndarray],
+    modes: Union[List[HueDirection], np.ndarray],
 ) -> np.ndarray:
     """
     Multi-dimensional hue interpolation with recursive bilinear-like scheme.
@@ -708,7 +708,7 @@ def hue_multidim_lerp(
         coeffs: Interpolation coefficients for L points across N dimensions,
                 shape (L, N) for 1D spatial grid or (H, W, N) for 2D spatial grid
         modes: Interpolation mode for each dimension:
-               - List of N modes (each can be HueMode, str, or int)
+               - List of N modes (each can be HueDirection, str, or int)
                - Array shape (N,) of ints
     
     Returns:
@@ -737,12 +737,12 @@ def hue_lerp_between_lines_full(
     line1: np.ndarray,
     coords: CoordsInput,
     *,
-    mode_x: HueMode = HueMode.SHORTEST,
-    mode_y: HueMode = HueMode.SHORTEST,
+    mode_x: HueDirection = HueDirection.SHORTEST,
+    mode_y: HueDirection = HueDirection.SHORTEST,
     border_mode: BorderModeInput = BorderMode.CLAMP,
     border_value: Optional[Union[float, np.ndarray]] = None,
     border_feathering: float = 0.0,
-    feather_hue_mode: HueMode = HueMode.SHORTEST,
+    feather_hue_mode: HueDirection = HueDirection.SHORTEST,
     distance_mode: DistanceModeInput = DistanceMode.ALPHA_MAX,
     num_threads: int = -1,
     modify_inplace: bool = False,
@@ -833,7 +833,7 @@ def hue_lerp_simple(
     hue0: float,
     hue1: float,
     t: np.ndarray,
-    mode: HueMode = HueMode.SHORTEST,
+    mode: HueDirection = HueDirection.SHORTEST,
 ) -> float:
     """
     Simple hue interpolation between two scalar hue values.
@@ -855,10 +855,10 @@ def hue_lerp_simple(
     return _hue_lerp_simple(hue0_norm, hue1_norm, t, mode_norm)
 
 
-def _resolve_hue_modes(modes: Optional[np.ndarray | List[HueMode]], ndims=2):
+def _resolve_hue_modes(modes: Optional[np.ndarray | List[HueDirection]], ndims=2):
     """Helper to resolve modes input."""
     if modes is None:
-        return np.full((ndims,), HueMode.SHORTEST, dtype=np.int32)
+        return np.full((ndims,), HueDirection.SHORTEST, dtype=np.int32)
     if isinstance(modes, (list, tuple)):
         return np.array(modes, dtype=np.int32)
     return modes.astype(np.int32)
@@ -868,7 +868,7 @@ def hue_lerp_2d_spatial(
     start_hues: np.ndarray,
     end_hues: np.ndarray,
     coeffs: np.ndarray,
-    modes: np.ndarray | List[HueMode] | None = None,  # SHORTER
+    modes: np.ndarray | List[HueDirection] | None = None,  # SHORTER
 ) -> np.ndarray:
     """
     2D spatial hue interpolation.
@@ -920,7 +920,7 @@ hue_lerp_between_lines_inplace_x_discrete = partial(
 
 __all__ = [
     # Enums
-    "HueMode",
+    "HueDirection",
     "BorderMode",
     "DistanceMode",
     

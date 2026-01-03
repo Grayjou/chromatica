@@ -5,7 +5,7 @@ from .base_properties import BaseCellFactoryProperties  # NEW IMPORT
 import numpy as np
 from typing import List, Optional, Callable, Dict, Union
 from ....types.format_type import FormatType
-from ....types.color_types import ColorSpace
+from ....types.color_types import ColorMode
 from boundednumbers import BoundType
 from ....types.transform_types import PerChannelCoords
 from ....utils.color_utils import convert_to_space_float
@@ -44,11 +44,11 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
         top_right: np.ndarray,
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
-        color_space: ColorSpace,
-        top_left_color_space: Optional[ColorSpace] = None,
-        top_right_color_space: Optional[ColorSpace] = None,
-        bottom_left_color_space: Optional[ColorSpace] = None,
-        bottom_right_color_space: Optional[ColorSpace] = None,
+        color_mode: ColorMode,
+        top_left_color_mode: Optional[ColorMode] = None,
+        top_right_color_mode: Optional[ColorMode] = None,
+        bottom_left_color_mode: Optional[ColorMode] = None,
+        bottom_right_color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = None,
         hue_direction_y: Optional[str] = None,
         input_format: FormatType = FormatType.INT,
@@ -66,8 +66,8 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
             per_channel_coords=per_channel_coords,
         )
         
-        self._color_space = color_space
-        lens = {len(corner) for corner in [top_left, top_right, bottom_left, bottom_right]} | {len(color_space)}
+        self._color_mode = color_mode
+        lens = {len(corner) for corner in [top_left, top_right, bottom_left, bottom_right]} | {len(color_mode)}
         if len(lens) != 1:
             raise ValueError("All corners must have the same number of channels as the color space.")
         # Convert corners to working color space
@@ -75,12 +75,12 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
             self._convert_corners(
                 corners=[top_left, top_right, bottom_left, bottom_right],
                 corner_spaces=[
-                    top_left_color_space, 
-                    top_right_color_space,
-                    bottom_left_color_space, 
-                    bottom_right_color_space
+                    top_left_color_mode, 
+                    top_right_color_mode,
+                    bottom_left_color_mode, 
+                    bottom_right_color_mode
                 ],
-                target_space=color_space,
+                target_space=color_mode,
                 input_format=input_format,
             )
         )
@@ -95,8 +95,8 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
     @staticmethod
     def _convert_corners(
         corners: List[np.ndarray],
-        corner_spaces: List[Optional[ColorSpace]],
-        target_space: ColorSpace,
+        corner_spaces: List[Optional[ColorMode]],
+        target_space: ColorMode,
         input_format: FormatType,
     ) -> List[np.ndarray]:
         """Convert corner colors to target color space."""
@@ -121,25 +121,25 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
     @property
     def num_channels(self) -> int:
         """Number of channels in the color space."""
-        return len(self._color_space)
+        return len(self._color_mode)
     
-    def _get_color_space_for_repr(self) -> str:
+    def _get_color_mode_for_repr(self) -> str:
         """Return color space info for __repr__."""
-        return f"color_space={self._color_space!r}"
+        return f"color_mode={self._color_mode!r}"
     
     # === Color space property (special handling) ===
     
     @property
-    def color_space(self) -> ColorSpace:
-        return self._color_space
+    def color_mode(self) -> ColorMode:
+        return self._color_mode
     
-    @color_space.setter
-    def color_space(self, value: ColorSpace):
-        if self._color_space == value:
+    @color_mode.setter
+    def color_mode(self, value: ColorMode):
+        if self._color_mode == value:
             return
         
         # Convert all corners to new color space
-        old_space = self._color_space
+        old_space = self._color_mode
         corners = [self._top_left, self._top_right, self._bottom_left, self._bottom_right]
         
         converted = [
@@ -148,7 +148,7 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
         ]
         
         self._top_left, self._top_right, self._bottom_left, self._bottom_right = converted
-        self._color_space = value
+        self._color_mode = value
         
         # Sync with cell if it exists
         if self._cell is not None:
@@ -196,7 +196,7 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
         top_right: Optional[np.ndarray] = None,
         bottom_left: Optional[np.ndarray] = None,
         bottom_right: Optional[np.ndarray] = None,
-        color_space: Optional[ColorSpace] = None,
+        color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = ...,  # Use ... as sentinel for "not provided"
         hue_direction_y: Optional[str] = ...,
         per_channel_transforms: Optional[Dict[int, Callable]] = ...,
@@ -215,7 +215,7 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
             top_right=top_right if top_right is not None else self._top_right.copy(),
             bottom_left=bottom_left if bottom_left is not None else self._bottom_left.copy(),
             bottom_right=bottom_right if bottom_right is not None else self._bottom_right.copy(),
-            color_space=color_space if color_space is not None else self._color_space,
+            color_mode=color_mode if color_mode is not None else self._color_mode,
             hue_direction_x=resolve(hue_direction_x, self._hue_direction_x),
             hue_direction_y=resolve(hue_direction_y, self._hue_direction_y),
             input_format=FormatType.FLOAT,
@@ -231,7 +231,7 @@ class CornersCellFactoryProperties(BaseCellFactoryProperties):
         return (
             self._width == other._width
             and self._height == other._height
-            and self._color_space == other._color_space
+            and self._color_mode == other._color_mode
             and np.array_equal(self._top_left, other._top_left)
             and np.array_equal(self._top_right, other._top_right)
             and np.array_equal(self._bottom_left, other._bottom_left)

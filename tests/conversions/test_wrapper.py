@@ -1,4 +1,4 @@
-from ...chromatica.conversions import convert, ColorSpace, FormatType, np_convert
+from ...chromatica.conversions import convert, ColorMode, FormatType, np_convert
 from ..samples import samples_rgb_hsv
 
 def test_convert_returns_tuple():

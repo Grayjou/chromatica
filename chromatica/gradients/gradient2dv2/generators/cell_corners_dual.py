@@ -29,8 +29,8 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
             top_right=np.array([0, 1, 0]),
             bottom_left=np.array([0, 0, 1]),
             bottom_right=np.array([1, 1, 0]),
-            vertical_color_space=ColorSpace.RGB,
-            horizontal_color_space=ColorSpace.HSV,
+            vertical_color_mode=ColorMode.RGB,
+            horizontal_color_mode=ColorMode.HSV,
         )
         
         # Get rendered gradient
@@ -56,8 +56,8 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                 bottom_left=self._bottom_left,
                 bottom_right=self._bottom_right,
                 per_channel_coords=base_coords,
-                vertical_color_space=self._vertical_color_space,
-                horizontal_color_space=self._horizontal_color_space,
+                vertical_color_mode=self._vertical_color_mode,
+                horizontal_color_mode=self._horizontal_color_mode,
                 hue_direction_y=self._hue_direction_y,
                 hue_direction_x=self._hue_direction_x,
                 input_format=FormatType.FLOAT,
@@ -65,8 +65,8 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                 boundtypes=self._boundtypes,
                 top_segment_hue_direction_x=self._top_segment_hue_direction_x,
                 bottom_segment_hue_direction_x=self._bottom_segment_hue_direction_x,
-                top_segment_color_space=self._top_segment_color_space,
-                bottom_segment_color_space=self._bottom_segment_color_space,
+                top_segment_color_mode=self._top_segment_color_mode,
+                bottom_segment_color_mode=self._bottom_segment_color_mode,
                 top_left_grayscale_hue=self._top_left_grayscale_hue,
                 top_right_grayscale_hue=self._top_right_grayscale_hue,
                 bottom_left_grayscale_hue=self._bottom_left_grayscale_hue,
@@ -153,11 +153,11 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
         max_hue: float = 1.0,
     ) -> float:
         """Interpolate hue respecting the specified direction."""
-        from ....types.color_types import HueMode
+        from ....types.color_types import HueDirection
         
-        if direction == HueMode.SHORTEST:
+        if direction == HueDirection.SHORTEST:
             return self._interpolate_hue_shortest(start_hue, end_hue, t, max_hue)
-        elif direction == HueMode.LONGEST:
+        elif direction == HueDirection.LONGEST:
             # Take the long way around
             diff = end_hue - start_hue
             if abs(diff) <= max_hue / 2:
@@ -166,12 +166,12 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                 else:
                     diff += max_hue
             return (start_hue + t * diff) % max_hue
-        elif direction == HueMode.CW:
+        elif direction == HueDirection.CW:
             diff = end_hue - start_hue
             if diff < 0:
                 diff += max_hue
             return (start_hue + t * diff) % max_hue
-        elif direction == HueMode.CCW:
+        elif direction == HueDirection.CCW:
             diff = end_hue - start_hue
             if diff > 0:
                 diff -= max_hue
@@ -243,10 +243,10 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
             slice_bl_ghue = self._interpolate_grayscale_hue(spec.start_frac, is_top=False)
             slice_br_ghue = self._interpolate_grayscale_hue(spec.end_frac, is_top=False)
             # Resolve interval properties with fallbacks
-            v_space = interval.vertical_color_space or self._vertical_color_space
-            h_space = interval.horizontal_color_space or self._horizontal_color_space
-            top_seg_space = interval.top_segment_color_space or self._top_segment_color_space
-            bottom_seg_space = interval.bottom_segment_color_space or self._bottom_segment_color_space
+            v_space = interval.vertical_color_mode or self._vertical_color_mode
+            h_space = interval.horizontal_color_mode or self._horizontal_color_mode
+            top_seg_space = interval.top_segment_color_mode or self._top_segment_color_mode
+            bottom_seg_space = interval.bottom_segment_color_mode or self._bottom_segment_color_mode
             
             hue_x = interval.hue_direction_x if interval.hue_direction_x is not None else self._hue_direction_x
             hue_y = interval.hue_direction_y if interval.hue_direction_y is not None else self._hue_direction_y
@@ -273,10 +273,10 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                 top_right=top_right,
                 bottom_left=bottom_left,
                 bottom_right=bottom_right,
-                vertical_color_space=v_space,
-                horizontal_color_space=h_space,
-                top_segment_color_space=top_seg_space,
-                bottom_segment_color_space=bottom_seg_space,
+                vertical_color_mode=v_space,
+                horizontal_color_mode=h_space,
+                top_segment_color_mode=top_seg_space,
+                bottom_segment_color_mode=bottom_seg_space,
                 hue_direction_x=hue_x,
                 hue_direction_y=hue_y,
                 top_segment_hue_direction_x=top_hue_x,
@@ -295,8 +295,8 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                     bottom_left=bottom_left,
                     bottom_right=bottom_right,
                     per_channel_coords=sliced_pcc,
-                    vertical_color_space=v_space,
-                    horizontal_color_space=h_space,
+                    vertical_color_mode=v_space,
+                    horizontal_color_mode=h_space,
                     hue_direction_y=hue_y,
                     hue_direction_x=hue_x,
                     input_format=FormatType.FLOAT,
@@ -304,8 +304,8 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
                     boundtypes=self._boundtypes,
                     top_segment_hue_direction_x=top_hue_x,
                     bottom_segment_hue_direction_x=bottom_hue_x,
-                    top_segment_color_space=top_seg_space,
-                    bottom_segment_color_space=bottom_seg_space,
+                    top_segment_color_mode=top_seg_space,
+                    bottom_segment_color_mode=bottom_seg_space,
                     top_left_grayscale_hue=slice_tl_ghue,
                     top_right_grayscale_hue=slice_tr_ghue,
                     bottom_left_grayscale_hue=slice_bl_ghue,
@@ -336,10 +336,10 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
             'top_right': self._top_right,
             'bottom_left': self._bottom_left,
             'bottom_right': self._bottom_right,
-            'vertical_color_space': self._vertical_color_space,
-            'horizontal_color_space': self._horizontal_color_space,
-            'top_segment_color_space': self._top_segment_color_space,
-            'bottom_segment_color_space': self._bottom_segment_color_space,
+            'vertical_color_mode': self._vertical_color_mode,
+            'horizontal_color_mode': self._horizontal_color_mode,
+            'top_segment_color_mode': self._top_segment_color_mode,
+            'bottom_segment_color_mode': self._bottom_segment_color_mode,
             'hue_direction_x': self._hue_direction_x,
             'hue_direction_y': self._hue_direction_y,
             'top_segment_hue_direction_x': self._top_segment_hue_direction_x,
@@ -354,10 +354,10 @@ class CornersCellDualFactory(CornersCellDualFactoryProperties):
             'top_right_grayscale_hue': self._top_right_grayscale_hue,
             'bottom_left_grayscale_hue': self._bottom_left_grayscale_hue,
             'bottom_right_grayscale_hue': self._bottom_right_grayscale_hue,
-            'top_left_color_space': self._top_segment_color_space,
-            'top_right_color_space': self._top_segment_color_space,
-            'bottom_left_color_space': self._bottom_segment_color_space,
-            'bottom_right_color_space': self._bottom_segment_color_space,
+            'top_left_color_mode': self._top_segment_color_mode,
+            'top_right_color_mode': self._top_segment_color_mode,
+            'bottom_left_color_mode': self._bottom_segment_color_mode,
+            'bottom_right_color_mode': self._bottom_segment_color_mode,
         }
         params.update(kwargs)
         return CornersCellDualFactory(**params)

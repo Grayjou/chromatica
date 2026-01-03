@@ -6,15 +6,15 @@ Uses np.sin(2*pi*t) as a transform to cause oscillation in the gradient space.
 import numpy as np
 import time
 from typing import Callable, Tuple
-from chromatica.gradients.gradient1dv2.gradient_1dv2 import Gradient1D
-from chromatica.types.color_types import ColorSpace
-from chromatica.types.format_type import FormatType
+from ..chromatica.gradients.gradient1dv2.gradient_1dv2 import Gradient1D
+from ..chromatica.types.color_types import ColorMode
+from ..chromatica.types.format_type import FormatType
 
 
 def benchmark_simple_gradient(
     start_color: np.ndarray,
     end_color: np.ndarray,
-    color_space: ColorSpace,
+    color_mode: ColorMode,
     total_steps: int,
     transform: Callable[[np.ndarray], np.ndarray],
     num_runs: int = 5
@@ -25,7 +25,7 @@ def benchmark_simple_gradient(
     Args:
         start_color: Starting color
         end_color: Ending color
-        color_space: Color space to use
+        color_mode: Color space to use
         total_steps: Number of steps in the gradient
         transform: Transform function to apply
         num_runs: Number of runs to average
@@ -43,7 +43,7 @@ def benchmark_simple_gradient(
             left_color=start_color,
             right_color=end_color,
             steps=total_steps,
-            color_space=color_space,
+            color_mode=color_mode,
             format_type=FormatType.FLOAT,
             unit_transform=transform,
         )

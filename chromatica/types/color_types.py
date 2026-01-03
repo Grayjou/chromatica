@@ -11,7 +11,7 @@ IntElement = Union[int, IntVector]
 FloatElement = Union[float, Tuple[float, ...]]
 ColorElement = Union[IntElement, FloatElement]
 ColorValue = Union[ColorElement, ndarray]  # Includes array support
-ColorSpaces = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
+ColorModes = Literal["rgb","rgba","hsv","hsva","hsl","hsla"]
 HUE_SPACES = {"hsl", "hsla", "hsv", "hsva"}
 
 
@@ -31,18 +31,18 @@ def element_to_array(element: Union[ColorElement, ndarray]) -> np.ndarray:
         return np.array([element])
     return np.array(element)
 
-def is_hue_space(color_space: ColorSpaces) -> bool:
+def is_hue_space(color_mode: ColorModes) -> bool:
     """
     Check if the given color space is a hue-based space (HSV or HSL).
     
     Args:
-        color_space: Color space string
+        color_mode: Color space string
     Returns:
         True if hue-based, False otherwise
     """
-    return color_space.lower() in HUE_SPACES
+    return color_mode.lower() in HUE_SPACES
 
-class HueMode(IntEnum):
+class HueDirection(IntEnum):
     """
     Hue interpolation modes for cyclical color space.
     
@@ -56,8 +56,8 @@ class HueMode(IntEnum):
     SHORTEST = 3
     LONGEST = 4
 
-HueDirection = HueMode
-class ColorSpace(StrEnum):
+HueDirection = HueDirection
+class ColorMode(StrEnum):
     RGB = "rgb"
     RGBA = "rgba"
     HSV = "hsv"

@@ -9,7 +9,7 @@ from ...chromatica.gradients.gradient2dv2.cell import (
 
 )
 from ...chromatica.gradients.gradient2dv2 import LineInterpMethods
-from ...chromatica.types.color_types import HueMode
+from ...chromatica.types.color_types import HueDirection
 from boundednumbers import BoundType
 from unitfield import upbm_2d
 
@@ -25,7 +25,7 @@ def test_rgba_segment_uniform():
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
         per_channel_coords=[u],
-        color_space="rgba",
+        color_mode="rgba",
         homogeneous_per_channel_coords=True,
     )
     
@@ -56,7 +56,7 @@ def test_rgba_segment_per_channel():
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
         per_channel_coords=[u_r, u_g, u_b, u_a],
-        color_space="rgba",
+        color_mode="rgba",
         homogeneous_per_channel_coords=False,
     )
     
@@ -82,7 +82,7 @@ def test_hsva_segment():
         already_converted_start_color=start_color,
         already_converted_end_color=end_color,
         per_channel_coords=[u],
-        color_space="hsva",
+        color_mode="hsva",
         hue_direction="shortest",
         homogeneous_per_channel_coords=True,
     )
@@ -109,9 +109,9 @@ def test_rgba_lines_cell():
         top_line=top_line,
         bottom_line=bottom_line,
         per_channel_coords=per_channel_coords,
-        top_line_color_space="rgba",
-        bottom_line_color_space="rgba",
-        color_space="rgba",
+        top_line_color_mode="rgba",
+        bottom_line_color_mode="rgba",
+        color_mode="rgba",
         input_format="int",
         hue_direction_y=None,
         line_method=LineInterpMethods.LINES_CONTINUOUS,
@@ -142,11 +142,11 @@ def test_rgba_corners_cell():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=per_channel_coords,
-        top_left_color_space="rgba",
-        top_right_color_space="rgba",
-        bottom_left_color_space="rgba",
-        bottom_right_color_space="rgba",
-        color_space="rgba",
+        top_left_color_mode="rgba",
+        top_right_color_mode="rgba",
+        bottom_left_color_mode="rgba",
+        bottom_right_color_mode="rgba",
+        color_mode="rgba",
         hue_direction_y=None,
         hue_direction_x=None,
         boundtypes=BoundType.CLAMP
@@ -179,13 +179,13 @@ def test_hsva_corners_cell():
         bottom_left=bottom_left,
         bottom_right=bottom_right,
         per_channel_coords=per_channel_coords,
-        top_left_color_space="hsva",
-        top_right_color_space="hsva",
-        bottom_left_color_space="hsva",
-        bottom_right_color_space="hsva",
-        color_space="hsva",
-        hue_direction_y=HueMode.CW,
-        hue_direction_x=HueMode.CCW,
+        top_left_color_mode="hsva",
+        top_right_color_mode="hsva",
+        bottom_left_color_mode="hsva",
+        bottom_right_color_mode="hsva",
+        color_mode="hsva",
+        hue_direction_y=HueDirection.CW,
+        hue_direction_x=HueDirection.CCW,
         boundtypes=BoundType.CLAMP
     )
     

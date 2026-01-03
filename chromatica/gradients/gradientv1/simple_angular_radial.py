@@ -20,7 +20,7 @@ class SimpleAngularRadialGradient(Gradient2D):
                 radius: float,
                 inner_ring_colors: Tuple[ColorInput, ColorInput],
                 outer_ring_colors: Tuple[ColorInput, ColorInput],
-                color_space: str = 'rgb',
+                color_mode: str = 'rgb',
                 format_type: FormatType = FormatType.FLOAT,
                 center: Optional[Tuple[int, int]] = None,
                 relative_center: Optional[Tuple[float, float]] = None,
@@ -41,7 +41,7 @@ class SimpleAngularRadialGradient(Gradient2D):
     
         center = compute_center(width, height, center, relative_center)
         
-        outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_space)
+        outside_fill_processed = process_outside_fill(outside_fill, width, height, format_type, color_mode)
         
         # Generate indices np matrix
         indices_matrix = np.indices((height, width), dtype=np.float32)
@@ -151,7 +151,7 @@ class SimpleAngularRadialGradient(Gradient2D):
         result = base.astype(np.float32, copy=False)
         
         # Check if we're in a hue-based color space
-        is_hue_space = color_space.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
+        is_hue_space = color_mode.lower() in ('hsv', 'hsl', 'hsva', 'hsla')
         
         # Linear interpolation in angular dimension
         # inner_ring_colors[0] -> inner_ring_colors[1] as theta goes from deg_start to deg_end
@@ -219,7 +219,7 @@ class SimpleAngularRadialGradient(Gradient2D):
                 result[..., 0] = result[..., 0] % 360
         
         # Create ColorBase instance and wrap in Gradient2D
-        assigned_class = unified_tuple_to_class[(color_space, format_type)]
+        assigned_class = unified_tuple_to_class[(color_mode, format_type)]
         result = assigned_class(result)
         # Create Gradient2D
         gradient_obj = cls(result)
@@ -246,7 +246,7 @@ def example_simple_angular_radial():
         deg_end=300.0,
         radius_start=0.5,
         radius_end=1.0,
-        color_space='rgba',
+        color_mode='rgba',
         format_type=FormatType.INT,
         outside_fill=(0, 0, 0, 0)
     )
@@ -275,7 +275,7 @@ def example_simple_angular_radial_quadrant():
         deg_end=90.0,
         radius_start=0.0,
         radius_end=1.0,
-        color_space='rgb',
+        color_mode='rgb',
         format_type=FormatType.INT,
         outside_fill=(50, 50, 50)
     )
@@ -311,7 +311,7 @@ def example_hsv_hue_directions():
         deg_end=360.0,
         radius_start=0.3,
         radius_end=1.0,
-        color_space='hsv',
+        color_mode='hsv',
         format_type=FormatType.INT,
         hue_direction_theta='cw',  # Clockwise hue interpolation angularly
         hue_direction_r='ccw',     # Counter-clockwise hue interpolation radially

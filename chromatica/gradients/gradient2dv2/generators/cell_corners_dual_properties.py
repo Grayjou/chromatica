@@ -7,7 +7,7 @@ from typing import Callable, Dict, List, Optional, Union
 import numpy as np
 from boundednumbers import BoundType
 
-from ....types.color_types import ColorSpace, is_hue_space
+from ....types.color_types import ColorMode, is_hue_space
 from ....types.format_type import FormatType
 from ....types.transform_types import PerChannelCoords
 from ....utils.color_utils import convert_to_space_float
@@ -39,11 +39,11 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
     bottom_segment_hue_direction_x: Optional[str] = SyncedCellPropertyDescriptor(
         'bottom_segment_hue_direction_x'
     )
-    top_segment_color_space: ColorSpace = SyncedCellPropertyDescriptor(
-        'top_segment_color_space', invalidates_cell=True
+    top_segment_color_mode: ColorMode = SyncedCellPropertyDescriptor(
+        'top_segment_color_mode', invalidates_cell=True
     )
-    bottom_segment_color_space: ColorSpace = SyncedCellPropertyDescriptor(
-        'bottom_segment_color_space', invalidates_cell=True
+    bottom_segment_color_mode: ColorMode = SyncedCellPropertyDescriptor(
+        'bottom_segment_color_mode', invalidates_cell=True
     )
     # === Grayscale Hue Properties ===
     top_left_grayscale_hue: Optional[float] = SyncedCellPropertyDescriptor(
@@ -66,12 +66,12 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         top_right: np.ndarray,
         bottom_left: np.ndarray,
         bottom_right: np.ndarray,
-        vertical_color_space: ColorSpace,
-        horizontal_color_space: Optional[ColorSpace] = None,
-        top_left_color_space: Optional[ColorSpace] = None,
-        top_right_color_space: Optional[ColorSpace] = None,
-        bottom_left_color_space: Optional[ColorSpace] = None,
-        bottom_right_color_space: Optional[ColorSpace] = None,
+        vertical_color_mode: ColorMode,
+        horizontal_color_mode: Optional[ColorMode] = None,
+        top_left_color_mode: Optional[ColorMode] = None,
+        top_right_color_mode: Optional[ColorMode] = None,
+        bottom_left_color_mode: Optional[ColorMode] = None,
+        bottom_right_color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = None,
         hue_direction_y: Optional[str] = None,
         input_format: FormatType = FormatType.INT,
@@ -82,15 +82,15 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         *,
         top_segment_hue_direction_x: Optional[str] = None,
         bottom_segment_hue_direction_x: Optional[str] = None,
-        top_segment_color_space: Optional[ColorSpace] = None,
-        bottom_segment_color_space: Optional[ColorSpace] = None,
+        top_segment_color_mode: Optional[ColorMode] = None,
+        bottom_segment_color_mode: Optional[ColorMode] = None,
         per_channel_coords: Optional[PerChannelCoords] = None,
         top_left_grayscale_hue: Optional[float] = None,
         top_right_grayscale_hue: Optional[float] = None,
         bottom_left_grayscale_hue: Optional[float] = None,
         bottom_right_grayscale_hue: Optional[float] = None,
     ):
-        lens = {len(corner) for corner in [top_left, top_right, bottom_left, bottom_right]} | {len(vertical_color_space)} | ({len(horizontal_color_space)} if horizontal_color_space else set())
+        lens = {len(corner) for corner in [top_left, top_right, bottom_left, bottom_right]} | {len(vertical_color_mode)} | ({len(horizontal_color_mode)} if horizontal_color_mode else set())
         if len(lens) != 1:
             raise ValueError("All corners must have the same number of channels as the color space.")
         
@@ -102,16 +102,16 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         )
         
         # Resolve color spaces
-        self._vertical_color_space = vertical_color_space
-        self._horizontal_color_space = horizontal_color_space or vertical_color_space
-        self._top_segment_color_space = top_segment_color_space or self._horizontal_color_space
-        self._bottom_segment_color_space = bottom_segment_color_space or self._horizontal_color_space
+        self._vertical_color_mode = vertical_color_mode
+        self._horizontal_color_mode = horizontal_color_mode or vertical_color_mode
+        self._top_segment_color_mode = top_segment_color_mode or self._horizontal_color_mode
+        self._bottom_segment_color_mode = bottom_segment_color_mode or self._horizontal_color_mode
         
         # Resolve corner color spaces (the ORIGINAL space of each input color)
-        tl_space = top_left_color_space or self._top_segment_color_space
-        tr_space = top_right_color_space or self._top_segment_color_space
-        bl_space = bottom_left_color_space or self._bottom_segment_color_space
-        br_space = bottom_right_color_space or self._bottom_segment_color_space
+        tl_space = top_left_color_mode or self._top_segment_color_mode
+        tr_space = top_right_color_mode or self._top_segment_color_mode
+        bl_space = bottom_left_color_mode or self._bottom_segment_color_mode
+        br_space = bottom_right_color_mode or self._bottom_segment_color_mode
         
         # === DETERMINE GRAYSCALE HUES BEFORE CONVERSION ===
         # This must happen BEFORE _convert_corner because conversion loses hue info
@@ -131,16 +131,16 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         # Convert corners to their segment color spaces (AFTER grayscale hue detection)
 
         self._top_left = self._convert_corner(
-            top_left, tl_space, self._top_segment_color_space, input_format
+            top_left, tl_space, self._top_segment_color_mode, input_format
         )
         self._top_right = self._convert_corner(
-            top_right, tr_space, self._top_segment_color_space, input_format
+            top_right, tr_space, self._top_segment_color_mode, input_format
         )
         self._bottom_left = self._convert_corner(
-            bottom_left, bl_space, self._bottom_segment_color_space, input_format
+            bottom_left, bl_space, self._bottom_segment_color_mode, input_format
         )
         self._bottom_right = self._convert_corner(
-            bottom_right, br_space, self._bottom_segment_color_space, input_format
+            bottom_right, br_space, self._bottom_segment_color_mode, input_format
         )
 
         # Hue directions
@@ -158,7 +158,7 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
     @staticmethod
     def _detect_grayscale_hue(
         color: np.ndarray,
-        color_space: ColorSpace,
+        color_mode: ColorMode,
         input_format: FormatType,
     ) -> Optional[float]:
         """Detect grayscale hue from a color in its ORIGINAL space before conversion.
@@ -168,30 +168,30 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         
         Args:
             color: The color array in its original space
-            color_space: The color's ORIGINAL color space (not target)
+            color_mode: The color's ORIGINAL color space (not target)
             input_format: The format of the color values (INT or FLOAT)
             
         Returns:
             The hue value if the color is grayscale in a hue space, None otherwise
         """
-        if not is_hue_space(color_space):
+        if not is_hue_space(color_mode):
             return None
         
         # Convert to float in the SAME color space for consistent grayscale checking
         if input_format != FormatType.FLOAT:
             color_float = convert_to_space_float(
-                color, color_space, input_format, color_space  # same space!
+                color, color_mode, input_format, color_mode  # same space!
             ).value
         else:
             color_float = np.asarray(color, dtype=float)
         
-        return _determine_grayscale_hue(color_float, color_space)
+        return _determine_grayscale_hue(color_float, color_mode)
 
     @staticmethod
     def _convert_corner(
         color: np.ndarray,
-        source_space: ColorSpace,
-        target_space: ColorSpace,
+        source_space: ColorMode,
+        target_space: ColorMode,
         input_format: FormatType,
     ) -> np.ndarray:
         """Convert a corner color to target space."""
@@ -205,40 +205,40 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
     @property
     def num_channels(self) -> int:
         """Number of channels in the horizontal color space."""
-        return len(self._horizontal_color_space)
+        return len(self._horizontal_color_mode)
     
-    def _get_color_space_for_repr(self) -> str:
+    def _get_color_mode_for_repr(self) -> str:
         """Return color space info for __repr__."""
         return (
-            f"vertical_space={self._vertical_color_space!r}, "
-            f"horizontal_space={self._horizontal_color_space!r}"
+            f"vertical_space={self._vertical_color_mode!r}, "
+            f"horizontal_space={self._horizontal_color_mode!r}"
         )
     
 
     
     # === Color Space Properties (special handling) ===
     @property
-    def vertical_color_space(self) -> ColorSpace:
-        return self._vertical_color_space
+    def vertical_color_mode(self) -> ColorMode:
+        return self._vertical_color_mode
     
-    @vertical_color_space.setter
-    def vertical_color_space(self, value: ColorSpace):
-        if self._vertical_color_space == value:
+    @vertical_color_mode.setter
+    def vertical_color_mode(self, value: ColorMode):
+        if self._vertical_color_mode == value:
             return
-        self._vertical_color_space = value
+        self._vertical_color_mode = value
         self._cell = None  # Requires rebuild
     
     @property
-    def horizontal_color_space(self) -> ColorSpace:
-        return self._horizontal_color_space
+    def horizontal_color_mode(self) -> ColorMode:
+        return self._horizontal_color_mode
     
-    @horizontal_color_space.setter
-    def horizontal_color_space(self, value: ColorSpace):
-        if self._horizontal_color_space == value:
+    @horizontal_color_mode.setter
+    def horizontal_color_mode(self, value: ColorMode):
+        if self._horizontal_color_mode == value:
             return
         
         # Convert corners to new horizontal space
-        old_space = self._horizontal_color_space
+        old_space = self._horizontal_color_mode
         self._top_left = convert_to_space_float(
             self._top_left, old_space, FormatType.FLOAT, value
         ).value
@@ -252,7 +252,7 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
             self._bottom_right, old_space, FormatType.FLOAT, value
         ).value
         
-        self._horizontal_color_space = value
+        self._horizontal_color_mode = value
         self._cell = None
     
     # === Per-channel Transforms (special handling) ===
@@ -278,13 +278,13 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         }
     
     @property
-    def color_spaces(self) -> Dict[str, ColorSpace]:
+    def color_modes(self) -> Dict[str, ColorMode]:
         """All color spaces as a dictionary."""
         return {
-            'vertical': self._vertical_color_space,
-            'horizontal': self._horizontal_color_space,
-            'top_segment': self._top_segment_color_space,
-            'bottom_segment': self._bottom_segment_color_space,
+            'vertical': self._vertical_color_mode,
+            'horizontal': self._horizontal_color_mode,
+            'top_segment': self._top_segment_color_mode,
+            'bottom_segment': self._bottom_segment_color_mode,
         }
     
     # === Copy Methods ===
@@ -300,10 +300,10 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         top_right: Optional[np.ndarray] = None,
         bottom_left: Optional[np.ndarray] = None,
         bottom_right: Optional[np.ndarray] = None,
-        vertical_color_space: Optional[ColorSpace] = None,
-        horizontal_color_space: Optional[ColorSpace] = None,
-        top_segment_color_space: Optional[ColorSpace] = None,
-        bottom_segment_color_space: Optional[ColorSpace] = None,
+        vertical_color_mode: Optional[ColorMode] = None,
+        horizontal_color_mode: Optional[ColorMode] = None,
+        top_segment_color_mode: Optional[ColorMode] = None,
+        bottom_segment_color_mode: Optional[ColorMode] = None,
         hue_direction_x: Optional[str] = ...,
         hue_direction_y: Optional[str] = ...,
         top_segment_hue_direction_x: Optional[str] = ...,
@@ -324,10 +324,10 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
             top_right=top_right if top_right is not None else self._top_right.copy(),
             bottom_left=bottom_left if bottom_left is not None else self._bottom_left.copy(),
             bottom_right=bottom_right if bottom_right is not None else self._bottom_right.copy(),
-            vertical_color_space=vertical_color_space or self._vertical_color_space,
-            horizontal_color_space=horizontal_color_space or self._horizontal_color_space,
-            top_segment_color_space=top_segment_color_space or self._top_segment_color_space,
-            bottom_segment_color_space=bottom_segment_color_space or self._bottom_segment_color_space,
+            vertical_color_mode=vertical_color_mode or self._vertical_color_mode,
+            horizontal_color_mode=horizontal_color_mode or self._horizontal_color_mode,
+            top_segment_color_mode=top_segment_color_mode or self._top_segment_color_mode,
+            bottom_segment_color_mode=bottom_segment_color_mode or self._bottom_segment_color_mode,
             hue_direction_x=resolve(hue_direction_x, self._hue_direction_x),
             hue_direction_y=resolve(hue_direction_y, self._hue_direction_y),
             top_segment_hue_direction_x=resolve(top_segment_hue_direction_x, self._top_segment_hue_direction_x),
@@ -345,10 +345,10 @@ class CornersCellDualFactoryProperties(BaseCellFactoryProperties):  # INHERITANC
         return (
             self._width == other._width
             and self._height == other._height
-            and self._vertical_color_space == other._vertical_color_space
-            and self._horizontal_color_space == other._horizontal_color_space
-            and self._top_segment_color_space == other._top_segment_color_space
-            and self._bottom_segment_color_space == other._bottom_segment_color_space
+            and self._vertical_color_mode == other._vertical_color_mode
+            and self._horizontal_color_mode == other._horizontal_color_mode
+            and self._top_segment_color_mode == other._top_segment_color_mode
+            and self._bottom_segment_color_mode == other._bottom_segment_color_mode
             and np.array_equal(self._top_left, other._top_left)
             and np.array_equal(self._top_right, other._top_right)
             and np.array_equal(self._bottom_left, other._bottom_left)
