@@ -33,6 +33,7 @@ EXTENSION_PATHS = [
     "v2core/interp_hue/interp_hue_utils.pyx",
     
     # Core utilities
+    "v2core/interp.pyx",
     "v2core/interp_utils.pyx",
     "v2core/border_handling.pyx",
 ]
