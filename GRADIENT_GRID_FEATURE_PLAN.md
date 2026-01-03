@@ -12,7 +12,8 @@ A **Gradient Grid** is a stack of rows of gradient cells with the following char
 1. **Structure:**
    - Stack is always rectangular
    - Composed of rows of gradient cells
-   - All rows have the same height
+   - **Rows can have DIFFERENT heights** (but all cells in same row have same height)
+   - Cells within a row can have ANY width
    - Can be partitioned dynamically
 
 2. **Interactive Vertices:**
@@ -91,11 +92,19 @@ class GradientGrid:
     """
     Rectangular grid of gradient cells with interactive vertices.
     
+    This is a "brick stack" where:
+    - Rows can have DIFFERENT heights
+    - All cells in same row have SAME height
+    - Cells within a row can have VARYING widths
+    - Overall structure is always rectangular
+    
     Attributes:
         rows: List[GridRow]
         width: int  # Total width in pixels
         height: int  # Total height in pixels
-        row_heights: List[int]  # Heights of each row (all same initially)
+        row_heights: List[int]  # Heights of each row (can vary!)
+        y_intervals: List[float]  # Normalized [0,1] row boundaries
+        x_intervals: List[List[float]]  # Per-row normalized [0,1] brick boundaries
     """
     
     def __init__(self, num_rows: int, num_cols: int, 
