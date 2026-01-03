@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 *.c  # Generated C files from Cython
+*.html  # Generated HTML annotation files from Cython
 
 # Distribution / packaging
 .Python
