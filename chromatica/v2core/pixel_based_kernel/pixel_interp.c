@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils",
+        "name": "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp",
         "sources": [
-            "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pyx"
+            "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx"
         ]
     },
-    "module_name": "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils"
+    "module_name": "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp"
 }
 END: Cython Metadata */
 
@@ -1127,8 +1127,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__Chromatica__chromatica__v2core__interp_hue__interp_hue_utils
-#define __PYX_HAVE_API__Chromatica__chromatica__v2core__interp_hue__interp_hue_utils
+#define __PYX_HAVE__Chromatica__chromatica__v2core__pixel_based_kernel__pixel_interp
+#define __PYX_HAVE_API__Chromatica__chromatica__v2core__pixel_based_kernel__pixel_interp
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -1381,10 +1381,11 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pyx",
+  "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx",
   "<stringsource>",
   "../../AppData/Local/Python/pythoncore-3.12-64/Lib/site-packages/numpy/__init__.cython-30.pxd",
   "Chromatica/chromatica/v2core/interp_utils.pxd",
+  "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd",
   "cpython/type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1817,7 +1818,7 @@ typedef double __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64;
 */
 typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32;
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":26
+/* "interp_hue/interp_hue_utils.pxd":26
  * 
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64             # <<<<<<<<<<<<<<
@@ -1826,7 +1827,7 @@ typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12inter
 */
 typedef double __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64;
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":27
+/* "interp_hue/interp_hue_utils.pxd":27
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64
  * ctypedef int i32             # <<<<<<<<<<<<<<
@@ -1941,7 +1942,7 @@ struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult1D {
   int use_border_directly;
 };
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":30
+/* "interp_hue/interp_hue_utils.pxd":30
  * 
  * # Hue interpolation modes
  * cdef enum HueDirection:             # <<<<<<<<<<<<<<
@@ -2774,6 +2775,12 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
                                   int full_traceback, int nogil);
 
+/* BufferIndexError.proto (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis);
+
+/* BufferIndexErrorNogil.proto */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis);
+
 /* AllocateExtensionType.proto */
 static PyObject *__Pyx_AllocateExtensionType(PyTypeObject *t, int is_final);
 
@@ -2885,46 +2892,6 @@ static void __pyx_insert_code_object(int code_line, __Pyx_CachedCodeObjectType* 
 /* AddTraceback.proto */
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
-
-/* BufferStructDeclare.proto */
-typedef struct {
-  Py_ssize_t shape, strides, suboffsets;
-} __Pyx_Buf_DimInfo;
-typedef struct {
-  size_t refcount;
-  Py_buffer pybuffer;
-} __Pyx_Buffer;
-typedef struct {
-  __Pyx_Buffer *rcbuffer;
-  char *data;
-  __Pyx_Buf_DimInfo diminfo[8];
-} __Pyx_LocalBuf_ND;
-
-/* MemviewRefcount.proto */
-static CYTHON_INLINE int __pyx_add_acquisition_count_locked(
-    __pyx_atomic_int_type *acquisition_count, PyThread_type_lock lock);
-static CYTHON_INLINE int __pyx_sub_acquisition_count_locked(
-    __pyx_atomic_int_type *acquisition_count, PyThread_type_lock lock);
-#define __pyx_get_slice_count_pointer(memview) (&memview->acquisition_count)
-#define __PYX_INC_MEMVIEW(slice, have_gil) __Pyx_INC_MEMVIEW(slice, have_gil, __LINE__)
-#define __PYX_XCLEAR_MEMVIEW(slice, have_gil) __Pyx_XCLEAR_MEMVIEW(slice, have_gil, __LINE__)
-static CYTHON_INLINE void __Pyx_INC_MEMVIEW(__Pyx_memviewslice *, int, int);
-static CYTHON_INLINE void __Pyx_XCLEAR_MEMVIEW(__Pyx_memviewslice *, int, int);
-
-/* MemviewSliceIsContig.proto */
-static int __pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim);
-
-/* OverlappingSlices.proto */
-static int __pyx_slices_overlap(__Pyx_memviewslice *slice1,
-                                __Pyx_memviewslice *slice2,
-                                int ndim, size_t itemsize);
-
-/* MemviewSliceInit.proto */
-static int __Pyx_init_memviewslice(
-                struct __pyx_memoryview_obj *memview,
-                int ndim,
-                __Pyx_memviewslice *memviewslice,
-                int memview_is_new_reference);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -3061,6 +3028,46 @@ static int __Pyx_init_memviewslice(
         static CYTHON_INLINE __pyx_t_long_double_complex __Pyx_c_pow_long__double(__pyx_t_long_double_complex, __pyx_t_long_double_complex);
     #endif
 #endif
+
+/* BufferStructDeclare.proto */
+typedef struct {
+  Py_ssize_t shape, strides, suboffsets;
+} __Pyx_Buf_DimInfo;
+typedef struct {
+  size_t refcount;
+  Py_buffer pybuffer;
+} __Pyx_Buffer;
+typedef struct {
+  __Pyx_Buffer *rcbuffer;
+  char *data;
+  __Pyx_Buf_DimInfo diminfo[8];
+} __Pyx_LocalBuf_ND;
+
+/* MemviewRefcount.proto */
+static CYTHON_INLINE int __pyx_add_acquisition_count_locked(
+    __pyx_atomic_int_type *acquisition_count, PyThread_type_lock lock);
+static CYTHON_INLINE int __pyx_sub_acquisition_count_locked(
+    __pyx_atomic_int_type *acquisition_count, PyThread_type_lock lock);
+#define __pyx_get_slice_count_pointer(memview) (&memview->acquisition_count)
+#define __PYX_INC_MEMVIEW(slice, have_gil) __Pyx_INC_MEMVIEW(slice, have_gil, __LINE__)
+#define __PYX_XCLEAR_MEMVIEW(slice, have_gil) __Pyx_XCLEAR_MEMVIEW(slice, have_gil, __LINE__)
+static CYTHON_INLINE void __Pyx_INC_MEMVIEW(__Pyx_memviewslice *, int, int);
+static CYTHON_INLINE void __Pyx_XCLEAR_MEMVIEW(__Pyx_memviewslice *, int, int);
+
+/* MemviewSliceIsContig.proto */
+static int __pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim);
+
+/* OverlappingSlices.proto */
+static int __pyx_slices_overlap(__Pyx_memviewslice *slice1,
+                                __Pyx_memviewslice *slice2,
+                                int ndim, size_t itemsize);
+
+/* MemviewSliceInit.proto */
+static int __Pyx_init_memviewslice(
+                struct __pyx_memoryview_obj *memview,
+                int ndim,
+                __Pyx_memviewslice *memviewslice,
+                int memview_is_new_reference);
 
 /* MemviewSliceCopy.proto */
 static __Pyx_memviewslice
@@ -3265,6 +3272,11 @@ static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_u
 static CYTHON_INLINE Py_ssize_t __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 *); /*proto*/
 
 /* Module declarations from "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils" */
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+
+/* Module declarations from "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp" */
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3273,9 +3285,12 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
-static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t, Py_ssize_t); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch_discrete(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t, Py_ssize_t); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t, Py_ssize_t, int, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue_discrete(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t, Py_ssize_t, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_ch(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_hue(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, Py_ssize_t, int, int); /*proto*/
 static int __pyx_array_allocate_buffer(struct __pyx_array_obj *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo const *); /*proto*/
@@ -3312,11 +3327,11 @@ static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils"
-extern int __pyx_module_is_main_Chromatica__chromatica__v2core__interp_hue__interp_hue_utils;
-int __pyx_module_is_main_Chromatica__chromatica__v2core__interp_hue__interp_hue_utils = 0;
+#define __Pyx_MODULE_NAME "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp"
+extern int __pyx_module_is_main_Chromatica__chromatica__v2core__pixel_based_kernel__pixel_interp;
+int __pyx_module_is_main_Chromatica__chromatica__v2core__pixel_based_kernel__pixel_interp = 0;
 
-/* Implementation of "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils" */
+/* Implementation of "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin___import__;
 static PyObject *__pyx_builtin_enumerate;
@@ -3326,7 +3341,7 @@ static PyObject *__pyx_builtin_id;
 static const char __pyx_k_c[] = "c";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_fortran[] = "fortran";
-static const char __pyx_k_Hue_interpolation_utilities_wit[] = "\nHue interpolation utilities with cyclical color space support.\n\nModernized to support feathering, distance modes, and advanced border handling.\n";
+static const char __pyx_k_Pointer_based_pixel_kernels_for[] = "Pointer-based pixel kernels for brick dispatch.";
 /* #### Code section: decls ### */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
@@ -20127,7 +20142,7 @@ static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_u
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":39
+/* "interp_hue/interp_hue_utils.pxd":39
  * # Inline Helpers - Hue Operations
  * # =============================================================================
  * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20139,7 +20154,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
   int __pyx_t_1;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":41
+  /* "interp_hue/interp_hue_utils.pxd":41
  * cdef inline f64 wrap_hue(f64 h) noexcept nogil:
  *     """Wrap hue to [0, 360)."""
  *     h = fmod(h, 360.0)             # <<<<<<<<<<<<<<
@@ -20148,7 +20163,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_h = fmod(__pyx_v_h, 360.0);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":42
+  /* "interp_hue/interp_hue_utils.pxd":42
  *     """Wrap hue to [0, 360)."""
  *     h = fmod(h, 360.0)
  *     if h < 0.0:             # <<<<<<<<<<<<<<
@@ -20158,7 +20173,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_1 = (__pyx_v_h < 0.0);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":43
+    /* "interp_hue/interp_hue_utils.pxd":43
  *     h = fmod(h, 360.0)
  *     if h < 0.0:
  *         h += 360.0             # <<<<<<<<<<<<<<
@@ -20167,7 +20182,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     __pyx_v_h = (__pyx_v_h + 360.0);
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":42
+    /* "interp_hue/interp_hue_utils.pxd":42
  *     """Wrap hue to [0, 360)."""
  *     h = fmod(h, 360.0)
  *     if h < 0.0:             # <<<<<<<<<<<<<<
@@ -20176,7 +20191,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   }
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":44
+  /* "interp_hue/interp_hue_utils.pxd":44
  *     if h < 0.0:
  *         h += 360.0
  *     return h             # <<<<<<<<<<<<<<
@@ -20186,7 +20201,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_r = __pyx_v_h;
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":39
+  /* "interp_hue/interp_hue_utils.pxd":39
  * # Inline Helpers - Hue Operations
  * # =============================================================================
  * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20199,7 +20214,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":47
+/* "interp_hue/interp_hue_utils.pxd":47
  * 
  * 
  * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20213,7 +20228,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":52
+  /* "interp_hue/interp_hue_utils.pxd":52
  *     Returns adjusted h1 (may be outside [0, 360)).
  *     """
  *     cdef f64 d = h1 - h0             # <<<<<<<<<<<<<<
@@ -20222,7 +20237,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_d = (__pyx_v_h1 - __pyx_v_h0);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":54
+  /* "interp_hue/interp_hue_utils.pxd":54
  *     cdef f64 d = h1 - h0
  * 
  *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
@@ -20232,7 +20247,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   switch (__pyx_v_mode) {
     case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CW:
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":55
+    /* "interp_hue/interp_hue_utils.pxd":55
  * 
  *     if mode == HUE_CW:
  *         if h0 > h1:             # <<<<<<<<<<<<<<
@@ -20242,7 +20257,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_t_1 = (__pyx_v_h0 > __pyx_v_h1);
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":56
+      /* "interp_hue/interp_hue_utils.pxd":56
  *     if mode == HUE_CW:
  *         if h0 > h1:
  *             return h1 + 360.0             # <<<<<<<<<<<<<<
@@ -20252,7 +20267,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 + 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":55
+      /* "interp_hue/interp_hue_utils.pxd":55
  * 
  *     if mode == HUE_CW:
  *         if h0 > h1:             # <<<<<<<<<<<<<<
@@ -20261,7 +20276,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":57
+    /* "interp_hue/interp_hue_utils.pxd":57
  *         if h0 > h1:
  *             return h1 + 360.0
  *         return h1             # <<<<<<<<<<<<<<
@@ -20271,7 +20286,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_r = __pyx_v_h1;
     goto __pyx_L0;
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":54
+    /* "interp_hue/interp_hue_utils.pxd":54
  *     cdef f64 d = h1 - h0
  * 
  *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
@@ -20281,7 +20296,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     break;
     case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CCW:
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":60
+    /* "interp_hue/interp_hue_utils.pxd":60
  * 
  *     elif mode == HUE_CCW:
  *         if h0 < h1:             # <<<<<<<<<<<<<<
@@ -20291,7 +20306,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_t_1 = (__pyx_v_h0 < __pyx_v_h1);
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":61
+      /* "interp_hue/interp_hue_utils.pxd":61
  *     elif mode == HUE_CCW:
  *         if h0 < h1:
  *             return h1 - 360.0             # <<<<<<<<<<<<<<
@@ -20301,7 +20316,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 - 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":60
+      /* "interp_hue/interp_hue_utils.pxd":60
  * 
  *     elif mode == HUE_CCW:
  *         if h0 < h1:             # <<<<<<<<<<<<<<
@@ -20310,7 +20325,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":62
+    /* "interp_hue/interp_hue_utils.pxd":62
  *         if h0 < h1:
  *             return h1 - 360.0
  *         return h1             # <<<<<<<<<<<<<<
@@ -20320,7 +20335,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_r = __pyx_v_h1;
     goto __pyx_L0;
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":59
+    /* "interp_hue/interp_hue_utils.pxd":59
  *         return h1
  * 
  *     elif mode == HUE_CCW:             # <<<<<<<<<<<<<<
@@ -20330,7 +20345,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     break;
     case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_SHORTEST:
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":65
+    /* "interp_hue/interp_hue_utils.pxd":65
  * 
  *     elif mode == HUE_SHORTEST:
  *         if d > 180.0:             # <<<<<<<<<<<<<<
@@ -20340,7 +20355,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_t_1 = (__pyx_v_d > 180.0);
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":66
+      /* "interp_hue/interp_hue_utils.pxd":66
  *     elif mode == HUE_SHORTEST:
  *         if d > 180.0:
  *             return h1 - 360.0             # <<<<<<<<<<<<<<
@@ -20350,7 +20365,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 - 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":65
+      /* "interp_hue/interp_hue_utils.pxd":65
  * 
  *     elif mode == HUE_SHORTEST:
  *         if d > 180.0:             # <<<<<<<<<<<<<<
@@ -20359,7 +20374,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":67
+    /* "interp_hue/interp_hue_utils.pxd":67
  *         if d > 180.0:
  *             return h1 - 360.0
  *         elif d < -180.0:             # <<<<<<<<<<<<<<
@@ -20369,7 +20384,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_t_1 = (__pyx_v_d < -180.0);
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":68
+      /* "interp_hue/interp_hue_utils.pxd":68
  *             return h1 - 360.0
  *         elif d < -180.0:
  *             return h1 + 360.0             # <<<<<<<<<<<<<<
@@ -20379,7 +20394,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 + 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":67
+      /* "interp_hue/interp_hue_utils.pxd":67
  *         if d > 180.0:
  *             return h1 - 360.0
  *         elif d < -180.0:             # <<<<<<<<<<<<<<
@@ -20388,7 +20403,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":69
+    /* "interp_hue/interp_hue_utils.pxd":69
  *         elif d < -180.0:
  *             return h1 + 360.0
  *         return h1             # <<<<<<<<<<<<<<
@@ -20398,7 +20413,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_r = __pyx_v_h1;
     goto __pyx_L0;
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":64
+    /* "interp_hue/interp_hue_utils.pxd":64
  *         return h1
  * 
  *     elif mode == HUE_SHORTEST:             # <<<<<<<<<<<<<<
@@ -20408,7 +20423,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     break;
     case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_LONGEST:
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":72
+    /* "interp_hue/interp_hue_utils.pxd":72
  * 
  *     elif mode == HUE_LONGEST:
  *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
@@ -20426,7 +20441,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_L7_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":73
+      /* "interp_hue/interp_hue_utils.pxd":73
  *     elif mode == HUE_LONGEST:
  *         if d >= 0.0 and d < 180.0:
  *             return h1 - 360.0             # <<<<<<<<<<<<<<
@@ -20436,7 +20451,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 - 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":72
+      /* "interp_hue/interp_hue_utils.pxd":72
  * 
  *     elif mode == HUE_LONGEST:
  *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
@@ -20445,7 +20460,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":74
+    /* "interp_hue/interp_hue_utils.pxd":74
  *         if d >= 0.0 and d < 180.0:
  *             return h1 - 360.0
  *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
@@ -20463,7 +20478,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":75
+      /* "interp_hue/interp_hue_utils.pxd":75
  *             return h1 - 360.0
  *         elif d < 0.0 and d > -180.0:
  *             return h1 + 360.0             # <<<<<<<<<<<<<<
@@ -20473,7 +20488,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
       __pyx_r = (__pyx_v_h1 + 360.0);
       goto __pyx_L0;
 
-      /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":74
+      /* "interp_hue/interp_hue_utils.pxd":74
  *         if d >= 0.0 and d < 180.0:
  *             return h1 - 360.0
  *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
@@ -20482,7 +20497,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     }
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":76
+    /* "interp_hue/interp_hue_utils.pxd":76
  *         elif d < 0.0 and d > -180.0:
  *             return h1 + 360.0
  *         return h1             # <<<<<<<<<<<<<<
@@ -20492,7 +20507,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     __pyx_r = __pyx_v_h1;
     goto __pyx_L0;
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":71
+    /* "interp_hue/interp_hue_utils.pxd":71
  *         return h1
  * 
  *     elif mode == HUE_LONGEST:             # <<<<<<<<<<<<<<
@@ -20503,7 +20518,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     default: break;
   }
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":78
+  /* "interp_hue/interp_hue_utils.pxd":78
  *         return h1
  * 
  *     return h1             # <<<<<<<<<<<<<<
@@ -20513,7 +20528,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_r = __pyx_v_h1;
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":47
+  /* "interp_hue/interp_hue_utils.pxd":47
  * 
  * 
  * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20526,7 +20541,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":81
+/* "interp_hue/interp_hue_utils.pxd":81
  * 
  * 
  * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20539,7 +20554,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_result;
   __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":84
+  /* "interp_hue/interp_hue_utils.pxd":84
  *     """Lerp between two hues with mode, returning wrapped result."""
  * 
  *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
@@ -20548,7 +20563,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":85
+  /* "interp_hue/interp_hue_utils.pxd":85
  * 
  *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
  *     cdef f64 result = h0 + u * (h1_adj - h0)             # <<<<<<<<<<<<<<
@@ -20557,7 +20572,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_result = (__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0)));
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":87
+  /* "interp_hue/interp_hue_utils.pxd":87
  *     cdef f64 result = h0 + u * (h1_adj - h0)
  * 
  *     return wrap_hue(result)             # <<<<<<<<<<<<<<
@@ -20567,7 +20582,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_v_result);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":81
+  /* "interp_hue/interp_hue_utils.pxd":81
  * 
  * 
  * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20580,7 +20595,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":93
+/* "interp_hue/interp_hue_utils.pxd":93
  * # Hue-Specific Interpolation Functions
  * # =============================================================================
  * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
@@ -20596,9 +20611,14 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   Py_ssize_t __pyx_v_idx_hi;
   __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
   Py_ssize_t __pyx_t_1;
-  Py_ssize_t __pyx_t_2;
+  int __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":102
+  /* "interp_hue/interp_hue_utils.pxd":102
  *     cdef Py_ssize_t idx_lo, idx_hi
  * 
  *     idx_lo = compute_interp_idx(u_x, L, &frac)             # <<<<<<<<<<<<<<
@@ -20607,7 +20627,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_idx_lo = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_v_u_x, __pyx_v_L, (&__pyx_v_frac));
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":103
+  /* "interp_hue/interp_hue_utils.pxd":103
  * 
  *     idx_lo = compute_interp_idx(u_x, L, &frac)
  *     idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
@@ -20616,7 +20636,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":106
+  /* "interp_hue/interp_hue_utils.pxd":106
  * 
  *     # Hue interpolation for both lines
  *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
@@ -20624,21 +20644,57 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
  * 
 */
   __pyx_t_1 = __pyx_v_idx_lo;
-  __pyx_t_2 = __pyx_v_idx_hi;
-  __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_1)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_2)) ))), __pyx_v_frac, __pyx_v_mode_x);
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_t_3 = __pyx_v_idx_hi;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_1)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_3)) ))), __pyx_v_frac, __pyx_v_mode_x);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":107
+  /* "interp_hue/interp_hue_utils.pxd":107
  *     # Hue interpolation for both lines
  *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)
  *     v1 = lerp_hue_single(l1[idx_lo], l1[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
  * 
  *     # Interpolate between lines with hue wrapping
 */
-  __pyx_t_2 = __pyx_v_idx_lo;
+  __pyx_t_3 = __pyx_v_idx_lo;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
   __pyx_t_1 = __pyx_v_idx_hi;
-  __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_2)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_1)) ))), __pyx_v_frac, __pyx_v_mode_x);
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
+  __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_3)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_1)) ))), __pyx_v_frac, __pyx_v_mode_x);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":110
+  /* "interp_hue/interp_hue_utils.pxd":110
  * 
  *     # Interpolate between lines with hue wrapping
  *     return lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
@@ -20648,7 +20704,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":93
+  /* "interp_hue/interp_hue_utils.pxd":93
  * # Hue-Specific Interpolation Functions
  * # =============================================================================
  * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
@@ -20657,11 +20713,16 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
 
   /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_1ch_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":113
+/* "interp_hue/interp_hue_utils.pxd":113
  * 
  * 
  * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
@@ -20676,9 +20737,14 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
   int __pyx_t_1;
   Py_ssize_t __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
+  int __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":119
+  /* "interp_hue/interp_hue_utils.pxd":119
  * ) noexcept nogil:
  *     """Discrete x-sampling hue interpolation."""
  *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
@@ -20687,7 +20753,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64)(__pyx_v_L - 1));
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":120
+  /* "interp_hue/interp_hue_utils.pxd":120
  *     """Discrete x-sampling hue interpolation."""
  *     cdef f64 L_minus_1 = <f64>(L - 1)
  *     cdef f64 idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
@@ -20696,7 +20762,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":121
+  /* "interp_hue/interp_hue_utils.pxd":121
  *     cdef f64 L_minus_1 = <f64>(L - 1)
  *     cdef f64 idx_f = u_x * L_minus_1
  *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)             # <<<<<<<<<<<<<<
@@ -20705,7 +20771,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
   __pyx_v_idx = ((Py_ssize_t)floor((__pyx_v_idx_f + 0.5)));
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":123
+  /* "interp_hue/interp_hue_utils.pxd":123
  *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
  * 
  *     if idx < 0:             # <<<<<<<<<<<<<<
@@ -20715,7 +20781,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_1 = (__pyx_v_idx < 0);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":124
+    /* "interp_hue/interp_hue_utils.pxd":124
  * 
  *     if idx < 0:
  *         idx = 0             # <<<<<<<<<<<<<<
@@ -20724,7 +20790,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     __pyx_v_idx = 0;
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":123
+    /* "interp_hue/interp_hue_utils.pxd":123
  *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
  * 
  *     if idx < 0:             # <<<<<<<<<<<<<<
@@ -20734,7 +20800,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
     goto __pyx_L3;
   }
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":125
+  /* "interp_hue/interp_hue_utils.pxd":125
  *     if idx < 0:
  *         idx = 0
  *     elif idx >= L:             # <<<<<<<<<<<<<<
@@ -20744,7 +20810,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   __pyx_t_1 = (__pyx_v_idx >= __pyx_v_L);
   if (__pyx_t_1) {
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":126
+    /* "interp_hue/interp_hue_utils.pxd":126
  *         idx = 0
  *     elif idx >= L:
  *         idx = L - 1             # <<<<<<<<<<<<<<
@@ -20753,7 +20819,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
     __pyx_v_idx = (__pyx_v_L - 1);
 
-    /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":125
+    /* "interp_hue/interp_hue_utils.pxd":125
  *     if idx < 0:
  *         idx = 0
  *     elif idx >= L:             # <<<<<<<<<<<<<<
@@ -20763,7 +20829,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
   }
   __pyx_L3:;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":129
+  /* "interp_hue/interp_hue_utils.pxd":129
  * 
  *     # Direct interpolation between two lines (discrete in x)
  *     return lerp_hue_single(l0[idx], l1[idx], u_y, mode_y)             # <<<<<<<<<<<<<<
@@ -20771,11 +20837,29 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
  * 
 */
   __pyx_t_2 = __pyx_v_idx;
-  __pyx_t_3 = __pyx_v_idx;
-  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_2)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_3)) ))), __pyx_v_u_y, __pyx_v_mode_y);
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_l0.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_l1.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_2)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_4)) ))), __pyx_v_u_y, __pyx_v_mode_y);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":113
+  /* "interp_hue/interp_hue_utils.pxd":113
  * 
  * 
  * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
@@ -20784,11 +20868,16 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 */
 
   /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_discrete_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":135
+/* "interp_hue/interp_hue_utils.pxd":135
  * # Convenience Wrapper for hue code with modern features
  * # =============================================================================
  * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
@@ -20799,7 +20888,7 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16in
 static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_process_hue_border_2d(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, int __pyx_v_bmode, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_feathering, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_i32 __pyx_v_distance_mode) {
   struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_r;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":139
+  /* "interp_hue/interp_hue_utils.pxd":139
  * ) noexcept nogil:
  *     """Wrapper for hue code - uses specified distance mode."""
  *     return process_border_2d(u_x, u_y, bmode, feathering, distance_mode)             # <<<<<<<<<<<<<<
@@ -20807,12 +20896,1026 @@ static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_u
   __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_v_u_x, __pyx_v_u_y, __pyx_v_bmode, __pyx_v_feathering, __pyx_v_distance_mode);
   goto __pyx_L0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd":135
+  /* "interp_hue/interp_hue_utils.pxd":135
  * # Convenience Wrapper for hue code with modern features
  * # =============================================================================
  * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
  *     f64 u_x, f64 u_y, int bmode, f64 feathering, i32 distance_mode
  * ) noexcept nogil:
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":20
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_lines_pixel_ch(             # <<<<<<<<<<<<<<
+ *     const f64* l0,          # top_line data pointer
+ *     const f64* l1,          # bottom_line data pointer
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l0, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_frac;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":31
+ *     """Single channel bilinear interpolation between two lines."""
+ *     cdef f64 frac
+ *     cdef Py_ssize_t idx_lo = compute_interp_idx(u_x, L, &frac)             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx_hi = idx_lo + 1
+ * 
+*/
+  __pyx_v_idx_lo = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_v_u_x, __pyx_v_L, (&__pyx_v_frac));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":32
+ *     cdef f64 frac
+ *     cdef Py_ssize_t idx_lo = compute_interp_idx(u_x, L, &frac)
+ *     cdef Py_ssize_t idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Pointer arithmetic: line[idx, ch] = line[idx * C + ch]
+*/
+  __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":35
+ * 
+ *     # Pointer arithmetic: line[idx, ch] = line[idx * C + ch]
+ *     cdef f64 v0 = l0[idx_lo * C + ch] + frac * (l0[idx_hi * C + ch] - l0[idx_lo * C + ch])             # <<<<<<<<<<<<<<
+ *     cdef f64 v1 = l1[idx_lo * C + ch] + frac * (l1[idx_hi * C + ch] - l1[idx_lo * C + ch])
+ * 
+*/
+  __pyx_v_v0 = ((__pyx_v_l0[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]) + (__pyx_v_frac * ((__pyx_v_l0[((__pyx_v_idx_hi * __pyx_v_C) + __pyx_v_ch)]) - (__pyx_v_l0[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]))));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":36
+ *     # Pointer arithmetic: line[idx, ch] = line[idx * C + ch]
+ *     cdef f64 v0 = l0[idx_lo * C + ch] + frac * (l0[idx_hi * C + ch] - l0[idx_lo * C + ch])
+ *     cdef f64 v1 = l1[idx_lo * C + ch] + frac * (l1[idx_hi * C + ch] - l1[idx_lo * C + ch])             # <<<<<<<<<<<<<<
+ * 
+ *     return v0 + u_y * (v1 - v0)
+*/
+  __pyx_v_v1 = ((__pyx_v_l1[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]) + (__pyx_v_frac * ((__pyx_v_l1[((__pyx_v_idx_hi * __pyx_v_C) + __pyx_v_ch)]) - (__pyx_v_l1[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]))));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":38
+ *     cdef f64 v1 = l1[idx_lo * C + ch] + frac * (l1[idx_hi * C + ch] - l1[idx_lo * C + ch])
+ * 
+ *     return v0 + u_y * (v1 - v0)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = (__pyx_v_v0 + (__pyx_v_u_y * (__pyx_v_v1 - __pyx_v_v0)));
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":20
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_lines_pixel_ch(             # <<<<<<<<<<<<<<
+ *     const f64* l0,          # top_line data pointer
+ *     const f64* l1,          # bottom_line data pointer
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":41
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_ch_discrete(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch_discrete(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l0, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_idx_f;
+  Py_ssize_t __pyx_v_idx;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":51
+ * ) noexcept nogil:
+ *     """Discrete x-sampling (nearest neighbor in X)."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64)(__pyx_v_L - 1));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":52
+ *     """Discrete x-sampling (nearest neighbor in X)."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+*/
+  __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":53
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)             # <<<<<<<<<<<<<<
+ * 
+ *     if idx < 0:
+*/
+  __pyx_v_idx = ((Py_ssize_t)(__pyx_v_idx_f + 0.5));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":55
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+  __pyx_t_1 = (__pyx_v_idx < 0);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":56
+ * 
+ *     if idx < 0:
+ *         idx = 0             # <<<<<<<<<<<<<<
+ *     elif idx >= L:
+ *         idx = L - 1
+*/
+    __pyx_v_idx = 0;
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":55
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+    goto __pyx_L3;
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":57
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_idx >= __pyx_v_L);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":58
+ *         idx = 0
+ *     elif idx >= L:
+ *         idx = L - 1             # <<<<<<<<<<<<<<
+ * 
+ *     return l0[idx * C + ch] + u_y * (l1[idx * C + ch] - l0[idx * C + ch])
+*/
+    __pyx_v_idx = (__pyx_v_L - 1);
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":57
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  }
+  __pyx_L3:;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":60
+ *         idx = L - 1
+ * 
+ *     return l0[idx * C + ch] + u_y * (l1[idx * C + ch] - l0[idx * C + ch])             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = ((__pyx_v_l0[((__pyx_v_idx * __pyx_v_C) + __pyx_v_ch)]) + (__pyx_v_u_y * ((__pyx_v_l1[((__pyx_v_idx * __pyx_v_C) + __pyx_v_ch)]) - (__pyx_v_l0[((__pyx_v_idx * __pyx_v_C) + __pyx_v_ch)]))));
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":41
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_ch_discrete(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":63
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_hue(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l0, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch, int __pyx_v_mode_x, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_frac;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_v1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":76
+ *     """Hue-aware bilinear interpolation."""
+ *     cdef f64 frac
+ *     cdef Py_ssize_t idx_lo = compute_interp_idx(u_x, L, &frac)             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx_hi = idx_lo + 1
+ * 
+*/
+  __pyx_v_idx_lo = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_v_u_x, __pyx_v_L, (&__pyx_v_frac));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":77
+ *     cdef f64 frac
+ *     cdef Py_ssize_t idx_lo = compute_interp_idx(u_x, L, &frac)
+ *     cdef Py_ssize_t idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Hue lerp along X for both lines
+*/
+  __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":80
+ * 
+ *     # Hue lerp along X for both lines
+ *     cdef f64 v0 = lerp_hue_single(l0[idx_lo * C + ch], l0[idx_hi * C + ch], frac, mode_x)             # <<<<<<<<<<<<<<
+ *     cdef f64 v1 = lerp_hue_single(l1[idx_lo * C + ch], l1[idx_hi * C + ch], frac, mode_x)
+ * 
+*/
+  __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((__pyx_v_l0[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]), (__pyx_v_l0[((__pyx_v_idx_hi * __pyx_v_C) + __pyx_v_ch)]), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":81
+ *     # Hue lerp along X for both lines
+ *     cdef f64 v0 = lerp_hue_single(l0[idx_lo * C + ch], l0[idx_hi * C + ch], frac, mode_x)
+ *     cdef f64 v1 = lerp_hue_single(l1[idx_lo * C + ch], l1[idx_hi * C + ch], frac, mode_x)             # <<<<<<<<<<<<<<
+ * 
+ *     # Hue lerp along Y
+*/
+  __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((__pyx_v_l1[((__pyx_v_idx_lo * __pyx_v_C) + __pyx_v_ch)]), (__pyx_v_l1[((__pyx_v_idx_hi * __pyx_v_C) + __pyx_v_ch)]), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":84
+ * 
+ *     # Hue lerp along Y
+ *     return lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":63
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_hue(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":87
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_hue_discrete(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue_discrete(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l0, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_idx_f;
+  Py_ssize_t __pyx_v_idx;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":98
+ * ) noexcept nogil:
+ *     """Discrete X, hue-aware Y."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64)(__pyx_v_L - 1));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":99
+ *     """Discrete X, hue-aware Y."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+*/
+  __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":100
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)             # <<<<<<<<<<<<<<
+ * 
+ *     if idx < 0:
+*/
+  __pyx_v_idx = ((Py_ssize_t)(__pyx_v_idx_f + 0.5));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":102
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+  __pyx_t_1 = (__pyx_v_idx < 0);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":103
+ * 
+ *     if idx < 0:
+ *         idx = 0             # <<<<<<<<<<<<<<
+ *     elif idx >= L:
+ *         idx = L - 1
+*/
+    __pyx_v_idx = 0;
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":102
+ *     cdef Py_ssize_t idx = <Py_ssize_t>(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+    goto __pyx_L3;
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":104
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_idx >= __pyx_v_L);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":105
+ *         idx = 0
+ *     elif idx >= L:
+ *         idx = L - 1             # <<<<<<<<<<<<<<
+ * 
+ *     return lerp_hue_single(l0[idx * C + ch], l1[idx * C + ch], u_y, mode_y)
+*/
+    __pyx_v_idx = (__pyx_v_L - 1);
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":104
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  }
+  __pyx_L3:;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":107
+ *         idx = L - 1
+ * 
+ *     return lerp_hue_single(l0[idx * C + ch], l1[idx * C + ch], u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((__pyx_v_l0[((__pyx_v_idx * __pyx_v_C) + __pyx_v_ch)]), (__pyx_v_l1[((__pyx_v_idx * __pyx_v_C) + __pyx_v_ch)]), __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":87
+ * 
+ * 
+ * cdef inline f64 interp_lines_pixel_hue_discrete(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":114
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_corners_pixel_ch(             # <<<<<<<<<<<<<<
+ *     const f64* corners,     # [TL, TR, BL, BR] packed, each has C channels
+ *     f64 u_x,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_ch(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_corners, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_tl;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_tr;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_bl;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_br;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_top;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_bot;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":123
+ *     """Bilinear from 4 corners."""
+ *     # corners layout: [c0_tl, c1_tl, ..., c0_tr, c1_tr, ..., c0_bl, ...]
+ *     cdef f64 tl = corners[0 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]
+*/
+  __pyx_v_tl = (__pyx_v_corners[((0 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":124
+ *     # corners layout: [c0_tl, c1_tl, ..., c0_tr, c1_tr, ..., c0_bl, ...]
+ *     cdef f64 tl = corners[0 * C + ch]
+ *     cdef f64 tr = corners[1 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 bl = corners[2 * C + ch]
+ *     cdef f64 br = corners[3 * C + ch]
+*/
+  __pyx_v_tr = (__pyx_v_corners[((1 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":125
+ *     cdef f64 tl = corners[0 * C + ch]
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 br = corners[3 * C + ch]
+ * 
+*/
+  __pyx_v_bl = (__pyx_v_corners[((2 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":126
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]
+ *     cdef f64 br = corners[3 * C + ch]             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64 top = tl + (tr - tl) * u_x
+*/
+  __pyx_v_br = (__pyx_v_corners[((3 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":128
+ *     cdef f64 br = corners[3 * C + ch]
+ * 
+ *     cdef f64 top = tl + (tr - tl) * u_x             # <<<<<<<<<<<<<<
+ *     cdef f64 bot = bl + (br - bl) * u_x
+ *     return top + (bot - top) * u_y
+*/
+  __pyx_v_top = (__pyx_v_tl + ((__pyx_v_tr - __pyx_v_tl) * __pyx_v_u_x));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":129
+ * 
+ *     cdef f64 top = tl + (tr - tl) * u_x
+ *     cdef f64 bot = bl + (br - bl) * u_x             # <<<<<<<<<<<<<<
+ *     return top + (bot - top) * u_y
+ * 
+*/
+  __pyx_v_bot = (__pyx_v_bl + ((__pyx_v_br - __pyx_v_bl) * __pyx_v_u_x));
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":130
+ *     cdef f64 top = tl + (tr - tl) * u_x
+ *     cdef f64 bot = bl + (br - bl) * u_x
+ *     return top + (bot - top) * u_y             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = (__pyx_v_top + ((__pyx_v_bot - __pyx_v_top) * __pyx_v_u_y));
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":114
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_corners_pixel_ch(             # <<<<<<<<<<<<<<
+ *     const f64* corners,     # [TL, TR, BL, BR] packed, each has C channels
+ *     f64 u_x,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":133
+ * 
+ * 
+ * cdef inline f64 interp_corners_pixel_hue(             # <<<<<<<<<<<<<<
+ *     const f64* corners,
+ *     f64 u_x,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_hue(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_corners, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch, int __pyx_v_mode_x, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_tl;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_tr;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_bl;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_br;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_top;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_bot;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":143
+ * ) noexcept nogil:
+ *     """Hue-aware bilinear from 4 corners."""
+ *     cdef f64 tl = corners[0 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]
+*/
+  __pyx_v_tl = (__pyx_v_corners[((0 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":144
+ *     """Hue-aware bilinear from 4 corners."""
+ *     cdef f64 tl = corners[0 * C + ch]
+ *     cdef f64 tr = corners[1 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 bl = corners[2 * C + ch]
+ *     cdef f64 br = corners[3 * C + ch]
+*/
+  __pyx_v_tr = (__pyx_v_corners[((1 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":145
+ *     cdef f64 tl = corners[0 * C + ch]
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]             # <<<<<<<<<<<<<<
+ *     cdef f64 br = corners[3 * C + ch]
+ * 
+*/
+  __pyx_v_bl = (__pyx_v_corners[((2 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":146
+ *     cdef f64 tr = corners[1 * C + ch]
+ *     cdef f64 bl = corners[2 * C + ch]
+ *     cdef f64 br = corners[3 * C + ch]             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64 top = lerp_hue_single(tl, tr, u_x, mode_x)
+*/
+  __pyx_v_br = (__pyx_v_corners[((3 * __pyx_v_C) + __pyx_v_ch)]);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":148
+ *     cdef f64 br = corners[3 * C + ch]
+ * 
+ *     cdef f64 top = lerp_hue_single(tl, tr, u_x, mode_x)             # <<<<<<<<<<<<<<
+ *     cdef f64 bot = lerp_hue_single(bl, br, u_x, mode_x)
+ *     return lerp_hue_single(top, bot, u_y, mode_y)
+*/
+  __pyx_v_top = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_tl, __pyx_v_tr, __pyx_v_u_x, __pyx_v_mode_x);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":149
+ * 
+ *     cdef f64 top = lerp_hue_single(tl, tr, u_x, mode_x)
+ *     cdef f64 bot = lerp_hue_single(bl, br, u_x, mode_x)             # <<<<<<<<<<<<<<
+ *     return lerp_hue_single(top, bot, u_y, mode_y)
+ * 
+*/
+  __pyx_v_bot = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_bl, __pyx_v_br, __pyx_v_u_x, __pyx_v_mode_x);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":150
+ *     cdef f64 top = lerp_hue_single(tl, tr, u_x, mode_x)
+ *     cdef f64 bot = lerp_hue_single(bl, br, u_x, mode_x)
+ *     return lerp_hue_single(top, bot, u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_top, __pyx_v_bot, __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":133
+ * 
+ * 
+ * cdef inline f64 interp_corners_pixel_hue(             # <<<<<<<<<<<<<<
+ *     const f64* corners,
+ *     f64 u_x,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":157
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_lines_pixel_full(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_full(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l0, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch, int __pyx_v_x_discrete, int __pyx_v_is_hue, int __pyx_v_hue_mode_x, int __pyx_v_hue_mode_y, int __pyx_v_border_mode, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_border_constant, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_border_feathering, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32 __pyx_v_distance_mode) {
+  struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_v_border;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_edge_val;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":177
+ * 
+ *     # Process border
+ *     cdef BorderResult border = process_border_2d(             # <<<<<<<<<<<<<<
+ *         u_x, u_y, border_mode, border_feathering, distance_mode
+ *     )
+*/
+  __pyx_v_border = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_v_u_x, __pyx_v_u_y, __pyx_v_border_mode, __pyx_v_border_feathering, __pyx_v_distance_mode);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":181
+ *     )
+ * 
+ *     if border.use_border_directly:             # <<<<<<<<<<<<<<
+ *         return border_constant
+ * 
+*/
+  if (__pyx_v_border.use_border_directly) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":182
+ * 
+ *     if border.use_border_directly:
+ *         return border_constant             # <<<<<<<<<<<<<<
+ * 
+ *     # Interpolate
+*/
+    __pyx_r = __pyx_v_border_constant;
+    goto __pyx_L0;
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":181
+ *     )
+ * 
+ *     if border.use_border_directly:             # <<<<<<<<<<<<<<
+ *         return border_constant
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":187
+ *     cdef f64 edge_val
+ * 
+ *     if x_discrete:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             edge_val = interp_lines_pixel_hue_discrete(
+*/
+  if (__pyx_v_x_discrete) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":188
+ * 
+ *     if x_discrete:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             edge_val = interp_lines_pixel_hue_discrete(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch, hue_mode_y
+*/
+    if (__pyx_v_is_hue) {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":189
+ *     if x_discrete:
+ *         if is_hue:
+ *             edge_val = interp_lines_pixel_hue_discrete(             # <<<<<<<<<<<<<<
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch, hue_mode_y
+ *             )
+*/
+      __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue_discrete(__pyx_v_l0, __pyx_v_l1, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_L, __pyx_v_C, __pyx_v_ch, __pyx_v_hue_mode_y);
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":188
+ * 
+ *     if x_discrete:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             edge_val = interp_lines_pixel_hue_discrete(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch, hue_mode_y
+*/
+      goto __pyx_L5;
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":193
+ *             )
+ *         else:
+ *             edge_val = interp_lines_pixel_ch_discrete(             # <<<<<<<<<<<<<<
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch
+ *             )
+*/
+    /*else*/ {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":194
+ *         else:
+ *             edge_val = interp_lines_pixel_ch_discrete(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch             # <<<<<<<<<<<<<<
+ *             )
+ *     else:
+*/
+      __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch_discrete(__pyx_v_l0, __pyx_v_l1, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_L, __pyx_v_C, __pyx_v_ch);
+    }
+    __pyx_L5:;
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":187
+ *     cdef f64 edge_val
+ * 
+ *     if x_discrete:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             edge_val = interp_lines_pixel_hue_discrete(
+*/
+    goto __pyx_L4;
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":197
+ *             )
+ *     else:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             edge_val = interp_lines_pixel_hue(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch,
+*/
+  /*else*/ {
+    if (__pyx_v_is_hue) {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":198
+ *     else:
+ *         if is_hue:
+ *             edge_val = interp_lines_pixel_hue(             # <<<<<<<<<<<<<<
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch,
+ *                 hue_mode_x, hue_mode_y
+*/
+      __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_hue(__pyx_v_l0, __pyx_v_l1, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_L, __pyx_v_C, __pyx_v_ch, __pyx_v_hue_mode_x, __pyx_v_hue_mode_y);
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":197
+ *             )
+ *     else:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             edge_val = interp_lines_pixel_hue(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch,
+*/
+      goto __pyx_L6;
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":203
+ *             )
+ *         else:
+ *             edge_val = interp_lines_pixel_ch(             # <<<<<<<<<<<<<<
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch
+ *             )
+*/
+    /*else*/ {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":204
+ *         else:
+ *             edge_val = interp_lines_pixel_ch(
+ *                 l0, l1, border.u_x_final, border.u_y_final, L, C, ch             # <<<<<<<<<<<<<<
+ *             )
+ * 
+*/
+      __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_lines_pixel_ch(__pyx_v_l0, __pyx_v_l1, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_L, __pyx_v_C, __pyx_v_ch);
+    }
+    __pyx_L6:;
+  }
+  __pyx_L4:;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":208
+ * 
+ *     # Blend if feathering
+ *     if border.blend_factor > 0.0:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+*/
+  __pyx_t_1 = (__pyx_v_border.blend_factor > 0.0);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":209
+ *     # Blend if feathering
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+*/
+    if (__pyx_v_is_hue) {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":210
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)             # <<<<<<<<<<<<<<
+ *         else:
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)
+*/
+      __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_edge_val, __pyx_v_border_constant, __pyx_v_border.blend_factor, __pyx_v_hue_mode_y);
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":209
+ *     # Blend if feathering
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+*/
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":212
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)             # <<<<<<<<<<<<<<
+ * 
+ *     return edge_val
+*/
+    /*else*/ {
+      __pyx_r = (__pyx_v_edge_val + (__pyx_v_border.blend_factor * (__pyx_v_border_constant - __pyx_v_edge_val)));
+      goto __pyx_L0;
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":208
+ * 
+ *     # Blend if feathering
+ *     if border.blend_factor > 0.0:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":214
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)
+ * 
+ *     return edge_val             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_v_edge_val;
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":157
+ * # =============================================================================
+ * 
+ * cdef inline f64 interp_lines_pixel_full(             # <<<<<<<<<<<<<<
+ *     const f64* l0,
+ *     const f64* l1,
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":217
+ * 
+ * 
+ * cdef inline f64 interp_corners_pixel_full(             # <<<<<<<<<<<<<<
+ *     const f64* corners,
+ *     f64 u_x,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_full(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 const *__pyx_v_corners, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_C, Py_ssize_t __pyx_v_ch, int __pyx_v_is_hue, int __pyx_v_hue_mode_x, int __pyx_v_hue_mode_y, int __pyx_v_border_mode, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_border_constant, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_border_feathering, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32 __pyx_v_distance_mode) {
+  struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_v_border;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_v_edge_val;
+  __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":233
+ *     """Complete single-pixel corner interpolation."""
+ * 
+ *     cdef BorderResult border = process_border_2d(             # <<<<<<<<<<<<<<
+ *         u_x, u_y, border_mode, border_feathering, distance_mode
+ *     )
+*/
+  __pyx_v_border = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_v_u_x, __pyx_v_u_y, __pyx_v_border_mode, __pyx_v_border_feathering, __pyx_v_distance_mode);
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":237
+ *     )
+ * 
+ *     if border.use_border_directly:             # <<<<<<<<<<<<<<
+ *         return border_constant
+ * 
+*/
+  if (__pyx_v_border.use_border_directly) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":238
+ * 
+ *     if border.use_border_directly:
+ *         return border_constant             # <<<<<<<<<<<<<<
+ * 
+ *     cdef f64 edge_val
+*/
+    __pyx_r = __pyx_v_border_constant;
+    goto __pyx_L0;
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":237
+ *     )
+ * 
+ *     if border.use_border_directly:             # <<<<<<<<<<<<<<
+ *         return border_constant
+ * 
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":241
+ * 
+ *     cdef f64 edge_val
+ *     if is_hue:             # <<<<<<<<<<<<<<
+ *         edge_val = interp_corners_pixel_hue(
+ *             corners, border.u_x_final, border.u_y_final, C, ch,
+*/
+  if (__pyx_v_is_hue) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":242
+ *     cdef f64 edge_val
+ *     if is_hue:
+ *         edge_val = interp_corners_pixel_hue(             # <<<<<<<<<<<<<<
+ *             corners, border.u_x_final, border.u_y_final, C, ch,
+ *             hue_mode_x, hue_mode_y
+*/
+    __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_hue(__pyx_v_corners, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_C, __pyx_v_ch, __pyx_v_hue_mode_x, __pyx_v_hue_mode_y);
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":241
+ * 
+ *     cdef f64 edge_val
+ *     if is_hue:             # <<<<<<<<<<<<<<
+ *         edge_val = interp_corners_pixel_hue(
+ *             corners, border.u_x_final, border.u_y_final, C, ch,
+*/
+    goto __pyx_L4;
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":247
+ *         )
+ *     else:
+ *         edge_val = interp_corners_pixel_ch(             # <<<<<<<<<<<<<<
+ *             corners, border.u_x_final, border.u_y_final, C, ch
+ *         )
+*/
+  /*else*/ {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":248
+ *     else:
+ *         edge_val = interp_corners_pixel_ch(
+ *             corners, border.u_x_final, border.u_y_final, C, ch             # <<<<<<<<<<<<<<
+ *         )
+ * 
+*/
+    __pyx_v_edge_val = __pyx_f_10Chromatica_10chromatica_6v2core_18pixel_based_kernel_12pixel_interp_interp_corners_pixel_ch(__pyx_v_corners, __pyx_v_border.u_x_final, __pyx_v_border.u_y_final, __pyx_v_C, __pyx_v_ch);
+  }
+  __pyx_L4:;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":251
+ *         )
+ * 
+ *     if border.blend_factor > 0.0:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+*/
+  __pyx_t_1 = (__pyx_v_border.blend_factor > 0.0);
+  if (__pyx_t_1) {
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":252
+ * 
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+*/
+    if (__pyx_v_is_hue) {
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":253
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)             # <<<<<<<<<<<<<<
+ *         else:
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)
+*/
+      __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_edge_val, __pyx_v_border_constant, __pyx_v_border.blend_factor, __pyx_v_hue_mode_y);
+      goto __pyx_L0;
+
+      /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":252
+ * 
+ *     if border.blend_factor > 0.0:
+ *         if is_hue:             # <<<<<<<<<<<<<<
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+*/
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":255
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+ *         else:
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)             # <<<<<<<<<<<<<<
+ * 
+ *     return edge_val
+*/
+    /*else*/ {
+      __pyx_r = (__pyx_v_edge_val + (__pyx_v_border.blend_factor * (__pyx_v_border_constant - __pyx_v_edge_val)));
+      goto __pyx_L0;
+    }
+
+    /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":251
+ *         )
+ * 
+ *     if border.blend_factor > 0.0:             # <<<<<<<<<<<<<<
+ *         if is_hue:
+ *             return lerp_hue_single(edge_val, border_constant, border.blend_factor, hue_mode_y)
+*/
+  }
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":257
+ *             return edge_val + border.blend_factor * (border_constant - edge_val)
+ * 
+ *     return edge_val             # <<<<<<<<<<<<<<
+*/
+  __pyx_r = __pyx_v_edge_val;
+  goto __pyx_L0;
+
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":217
+ * 
+ * 
+ * cdef inline f64 interp_corners_pixel_full(             # <<<<<<<<<<<<<<
+ *     const f64* corners,
+ *     f64 u_x,
 */
 
   /* function exit code */
@@ -20946,7 +22049,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.array",
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -20980,7 +22083,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.""array", /*tp_name*/
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -21125,7 +22228,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.Enum",
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -21135,7 +22238,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.""Enum", /*tp_name*/
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -21402,7 +22505,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.memoryview",
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -21436,7 +22539,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.""memoryview", /*tp_name*/
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -21579,7 +22682,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._memoryviewslice",
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -21589,7 +22692,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils.""_memoryviewslice", /*tp_name*/
+  "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -21871,7 +22974,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(4, 9, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_mstate->__pyx_ptype_7cpython_4type_type = __Pyx_ImportType_3_2_3(__pyx_t_1, __Pyx_BUILTIN_MODULE_NAME, "type",
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
@@ -21881,7 +22984,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   #else
   sizeof(PyHeapTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_2_3(PyHeapTypeObject),
   #endif
-  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(4, 9, __pyx_L1_error)
+  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyImport_ImportModule("numpy"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -22049,10 +23152,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_interp_hue_utils(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_pixel_interp(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_interp_hue_utils},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_pixel_interp},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -22071,8 +23174,8 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "interp_hue_utils",
-      __pyx_k_Hue_interpolation_utilities_wit, /* m_doc */
+      "pixel_interp",
+      __pyx_k_Pointer_based_pixel_kernels_for, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
     #else
@@ -22109,8 +23212,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_interp_hue_utils(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_interp_hue_utils(void)
+__Pyx_PyMODINIT_FUNC PyInit_pixel_interp(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_pixel_interp(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -22217,7 +23320,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue_utils(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_pixel_interp(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -22240,7 +23343,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue_utils(PyObject *__pyx_p
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'interp_hue_utils' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'pixel_interp' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -22256,7 +23359,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue_utils(PyObject *__pyx_p
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "interp_hue_utils" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "pixel_interp" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -22284,7 +23387,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_interp_hue_utils(PyObject *__pyx_p
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_interp_hue_utils", 0);
+__Pyx_RefNannySetupContext("PyInit_pixel_interp", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -22295,13 +23398,13 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue_utils", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_Chromatica__chromatica__v2core__interp_hue__interp_hue_utils) {
+  if (__pyx_module_is_main_Chromatica__chromatica__v2core__pixel_based_kernel__pixel_interp) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils")) {
-      if (unlikely((PyDict_SetItemString(modules, "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp")) {
+      if (unlikely((PyDict_SetItemString(modules, "Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -22810,9 +23913,9 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue_utils", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_4) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pyx":1
- * # interp_hue_utils.pyx             # <<<<<<<<<<<<<<
- * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True, initializedcheck=False
+  /* "Chromatica/chromatica/v2core/pixel_based_kernel/pixel_interp.pyx":1
+ * # chromatica/v2core/interp_pixel.pxd             # <<<<<<<<<<<<<<
+ * """Pointer-based pixel kernels for brick dispatch."""
  * 
 */
   __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -22828,7 +23931,7 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue_utils", 0);
   __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init Chromatica.chromatica.v2core.interp_hue.interp_hue_utils", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -22842,7 +23945,7 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue_utils", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init Chromatica.chromatica.v2core.interp_hue.interp_hue_utils");
+    PyErr_SetString(PyExc_ImportError, "init Chromatica.chromatica.v2core.pixel_based_kernel.pixel_interp");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -25843,6 +26946,19 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
         PyGILState_Release(state);
 }
 
+/* BufferIndexError (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis) {
+  PyErr_Format(PyExc_IndexError,
+     "Out of bounds on buffer access (axis %d)", axis);
+}
+
+/* BufferIndexErrorNogil */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis) {
+    PyGILState_STATE gilstate = PyGILState_Ensure();
+    __Pyx_RaiseBufferIndexError(axis);
+    PyGILState_Release(gilstate);
+}
+
 /* AllocateExtensionType */
 static PyObject *__Pyx_AllocateExtensionType(PyTypeObject *t, int is_final) {
     if (is_final || likely(!__Pyx_PyType_HasFeature(t, Py_TPFLAGS_IS_ABSTRACT))) {
@@ -26985,203 +28101,6 @@ bad:
 }
 #endif
 
-/* MemviewRefcount */
-#include <stdio.h>
-#ifndef _Py_NO_RETURN
-#define _Py_NO_RETURN
-#endif
-_Py_NO_RETURN
-static void __pyx_fatalerror(const char *fmt, ...) {
-    va_list vargs;
-    char msg[200];
-#if PY_VERSION_HEX >= 0x030A0000 || defined(HAVE_STDARG_PROTOTYPES)
-    va_start(vargs, fmt);
-#else
-    va_start(vargs);
-#endif
-    vsnprintf(msg, 200, fmt, vargs);
-    va_end(vargs);
-    Py_FatalError(msg);
-}
-static CYTHON_INLINE int
-__pyx_add_acquisition_count_locked(__pyx_atomic_int_type *acquisition_count,
-                                   PyThread_type_lock lock)
-{
-    int result;
-    PyThread_acquire_lock(lock, 1);
-    result = (*acquisition_count)++;
-    PyThread_release_lock(lock);
-    return result;
-}
-static CYTHON_INLINE int
-__pyx_sub_acquisition_count_locked(__pyx_atomic_int_type *acquisition_count,
-                                   PyThread_type_lock lock)
-{
-    int result;
-    PyThread_acquire_lock(lock, 1);
-    result = (*acquisition_count)--;
-    PyThread_release_lock(lock);
-    return result;
-}
-static CYTHON_INLINE void
-__Pyx_INC_MEMVIEW(__Pyx_memviewslice *memslice, int have_gil, int lineno)
-{
-    __pyx_nonatomic_int_type old_acquisition_count;
-    struct __pyx_memoryview_obj *memview = memslice->memview;
-    if (unlikely(!memview || (PyObject *) memview == Py_None)) {
-        return;
-    }
-    old_acquisition_count = __pyx_add_acquisition_count(memview);
-    if (unlikely(old_acquisition_count <= 0)) {
-        if (likely(old_acquisition_count == 0)) {
-            if (have_gil) {
-                Py_INCREF((PyObject *) memview);
-            } else {
-                PyGILState_STATE _gilstate = PyGILState_Ensure();
-                Py_INCREF((PyObject *) memview);
-                PyGILState_Release(_gilstate);
-            }
-        } else {
-            __pyx_fatalerror("Acquisition count is %d (line %d)",
-                             old_acquisition_count+1, lineno);
-        }
-    }
-}
-static CYTHON_INLINE void __Pyx_XCLEAR_MEMVIEW(__Pyx_memviewslice *memslice,
-                                             int have_gil, int lineno) {
-    __pyx_nonatomic_int_type old_acquisition_count;
-    struct __pyx_memoryview_obj *memview = memslice->memview;
-    if (unlikely(!memview || (PyObject *) memview == Py_None)) {
-        memslice->memview = NULL;
-        return;
-    }
-    old_acquisition_count = __pyx_sub_acquisition_count(memview);
-    memslice->data = NULL;
-    if (likely(old_acquisition_count > 1)) {
-        memslice->memview = NULL;
-    } else if (likely(old_acquisition_count == 1)) {
-        if (have_gil) {
-            Py_CLEAR(memslice->memview);
-        } else {
-            PyGILState_STATE _gilstate = PyGILState_Ensure();
-            Py_CLEAR(memslice->memview);
-            PyGILState_Release(_gilstate);
-        }
-    } else {
-        __pyx_fatalerror("Acquisition count is %d (line %d)",
-                         old_acquisition_count-1, lineno);
-    }
-}
-
-/* MemviewSliceIsContig */
-static int
-__pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim)
-{
-    int i, index, step, start;
-    Py_ssize_t itemsize = mvs.memview->view.itemsize;
-    if (order == 'F') {
-        step = 1;
-        start = 0;
-    } else {
-        step = -1;
-        start = ndim - 1;
-    }
-    for (i = 0; i < ndim; i++) {
-        index = start + step * i;
-        if (mvs.suboffsets[index] >= 0 || mvs.strides[index] != itemsize)
-            return 0;
-        itemsize *= mvs.shape[index];
-    }
-    return 1;
-}
-
-/* OverlappingSlices */
-static void
-__pyx_get_array_memory_extents(__Pyx_memviewslice *slice,
-                               void **out_start, void **out_end,
-                               int ndim, size_t itemsize)
-{
-    char *start, *end;
-    int i;
-    start = end = slice->data;
-    for (i = 0; i < ndim; i++) {
-        Py_ssize_t stride = slice->strides[i];
-        Py_ssize_t extent = slice->shape[i];
-        if (extent == 0) {
-            *out_start = *out_end = start;
-            return;
-        } else {
-            if (stride > 0)
-                end += stride * (extent - 1);
-            else
-                start += stride * (extent - 1);
-        }
-    }
-    *out_start = start;
-    *out_end = end + itemsize;
-}
-static int
-__pyx_slices_overlap(__Pyx_memviewslice *slice1,
-                     __Pyx_memviewslice *slice2,
-                     int ndim, size_t itemsize)
-{
-    void *start1, *end1, *start2, *end2;
-    __pyx_get_array_memory_extents(slice1, &start1, &end1, ndim, itemsize);
-    __pyx_get_array_memory_extents(slice2, &start2, &end2, ndim, itemsize);
-    return (start1 < end2) && (start2 < end1);
-}
-
-/* MemviewSliceInit */
-static int
-__Pyx_init_memviewslice(struct __pyx_memoryview_obj *memview,
-                        int ndim,
-                        __Pyx_memviewslice *memviewslice,
-                        int memview_is_new_reference)
-{
-    __Pyx_RefNannyDeclarations
-    int i, retval=-1;
-    Py_buffer *buf = &memview->view;
-    __Pyx_RefNannySetupContext("init_memviewslice", 0);
-    if (unlikely(memviewslice->memview || memviewslice->data)) {
-        PyErr_SetString(PyExc_ValueError,
-            "memviewslice is already initialized!");
-        goto fail;
-    }
-    if (buf->strides) {
-        for (i = 0; i < ndim; i++) {
-            memviewslice->strides[i] = buf->strides[i];
-        }
-    } else {
-        Py_ssize_t stride = buf->itemsize;
-        for (i = ndim - 1; i >= 0; i--) {
-            memviewslice->strides[i] = stride;
-            stride *= buf->shape[i];
-        }
-    }
-    for (i = 0; i < ndim; i++) {
-        memviewslice->shape[i]   = buf->shape[i];
-        if (buf->suboffsets) {
-            memviewslice->suboffsets[i] = buf->suboffsets[i];
-        } else {
-            memviewslice->suboffsets[i] = -1;
-        }
-    }
-    memviewslice->memview = memview;
-    memviewslice->data = (char *)buf->buf;
-    if (__pyx_add_acquisition_count(memview) == 0 && !memview_is_new_reference) {
-        Py_INCREF((PyObject*)memview);
-    }
-    retval = 0;
-    goto no_fail;
-fail:
-    memviewslice->memview = 0;
-    memviewslice->data = 0;
-    retval = -1;
-no_fail:
-    __Pyx_RefNannyFinishContext();
-    return retval;
-}
-
 /* Declarations */
 #if CYTHON_CCOMPLEX && (1) && (!0 || __cplusplus)
   #ifdef __cplusplus
@@ -27643,6 +28562,203 @@ no_fail:
         }
     #endif
 #endif
+
+/* MemviewRefcount */
+#include <stdio.h>
+#ifndef _Py_NO_RETURN
+#define _Py_NO_RETURN
+#endif
+_Py_NO_RETURN
+static void __pyx_fatalerror(const char *fmt, ...) {
+    va_list vargs;
+    char msg[200];
+#if PY_VERSION_HEX >= 0x030A0000 || defined(HAVE_STDARG_PROTOTYPES)
+    va_start(vargs, fmt);
+#else
+    va_start(vargs);
+#endif
+    vsnprintf(msg, 200, fmt, vargs);
+    va_end(vargs);
+    Py_FatalError(msg);
+}
+static CYTHON_INLINE int
+__pyx_add_acquisition_count_locked(__pyx_atomic_int_type *acquisition_count,
+                                   PyThread_type_lock lock)
+{
+    int result;
+    PyThread_acquire_lock(lock, 1);
+    result = (*acquisition_count)++;
+    PyThread_release_lock(lock);
+    return result;
+}
+static CYTHON_INLINE int
+__pyx_sub_acquisition_count_locked(__pyx_atomic_int_type *acquisition_count,
+                                   PyThread_type_lock lock)
+{
+    int result;
+    PyThread_acquire_lock(lock, 1);
+    result = (*acquisition_count)--;
+    PyThread_release_lock(lock);
+    return result;
+}
+static CYTHON_INLINE void
+__Pyx_INC_MEMVIEW(__Pyx_memviewslice *memslice, int have_gil, int lineno)
+{
+    __pyx_nonatomic_int_type old_acquisition_count;
+    struct __pyx_memoryview_obj *memview = memslice->memview;
+    if (unlikely(!memview || (PyObject *) memview == Py_None)) {
+        return;
+    }
+    old_acquisition_count = __pyx_add_acquisition_count(memview);
+    if (unlikely(old_acquisition_count <= 0)) {
+        if (likely(old_acquisition_count == 0)) {
+            if (have_gil) {
+                Py_INCREF((PyObject *) memview);
+            } else {
+                PyGILState_STATE _gilstate = PyGILState_Ensure();
+                Py_INCREF((PyObject *) memview);
+                PyGILState_Release(_gilstate);
+            }
+        } else {
+            __pyx_fatalerror("Acquisition count is %d (line %d)",
+                             old_acquisition_count+1, lineno);
+        }
+    }
+}
+static CYTHON_INLINE void __Pyx_XCLEAR_MEMVIEW(__Pyx_memviewslice *memslice,
+                                             int have_gil, int lineno) {
+    __pyx_nonatomic_int_type old_acquisition_count;
+    struct __pyx_memoryview_obj *memview = memslice->memview;
+    if (unlikely(!memview || (PyObject *) memview == Py_None)) {
+        memslice->memview = NULL;
+        return;
+    }
+    old_acquisition_count = __pyx_sub_acquisition_count(memview);
+    memslice->data = NULL;
+    if (likely(old_acquisition_count > 1)) {
+        memslice->memview = NULL;
+    } else if (likely(old_acquisition_count == 1)) {
+        if (have_gil) {
+            Py_CLEAR(memslice->memview);
+        } else {
+            PyGILState_STATE _gilstate = PyGILState_Ensure();
+            Py_CLEAR(memslice->memview);
+            PyGILState_Release(_gilstate);
+        }
+    } else {
+        __pyx_fatalerror("Acquisition count is %d (line %d)",
+                         old_acquisition_count-1, lineno);
+    }
+}
+
+/* MemviewSliceIsContig */
+static int
+__pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim)
+{
+    int i, index, step, start;
+    Py_ssize_t itemsize = mvs.memview->view.itemsize;
+    if (order == 'F') {
+        step = 1;
+        start = 0;
+    } else {
+        step = -1;
+        start = ndim - 1;
+    }
+    for (i = 0; i < ndim; i++) {
+        index = start + step * i;
+        if (mvs.suboffsets[index] >= 0 || mvs.strides[index] != itemsize)
+            return 0;
+        itemsize *= mvs.shape[index];
+    }
+    return 1;
+}
+
+/* OverlappingSlices */
+static void
+__pyx_get_array_memory_extents(__Pyx_memviewslice *slice,
+                               void **out_start, void **out_end,
+                               int ndim, size_t itemsize)
+{
+    char *start, *end;
+    int i;
+    start = end = slice->data;
+    for (i = 0; i < ndim; i++) {
+        Py_ssize_t stride = slice->strides[i];
+        Py_ssize_t extent = slice->shape[i];
+        if (extent == 0) {
+            *out_start = *out_end = start;
+            return;
+        } else {
+            if (stride > 0)
+                end += stride * (extent - 1);
+            else
+                start += stride * (extent - 1);
+        }
+    }
+    *out_start = start;
+    *out_end = end + itemsize;
+}
+static int
+__pyx_slices_overlap(__Pyx_memviewslice *slice1,
+                     __Pyx_memviewslice *slice2,
+                     int ndim, size_t itemsize)
+{
+    void *start1, *end1, *start2, *end2;
+    __pyx_get_array_memory_extents(slice1, &start1, &end1, ndim, itemsize);
+    __pyx_get_array_memory_extents(slice2, &start2, &end2, ndim, itemsize);
+    return (start1 < end2) && (start2 < end1);
+}
+
+/* MemviewSliceInit */
+static int
+__Pyx_init_memviewslice(struct __pyx_memoryview_obj *memview,
+                        int ndim,
+                        __Pyx_memviewslice *memviewslice,
+                        int memview_is_new_reference)
+{
+    __Pyx_RefNannyDeclarations
+    int i, retval=-1;
+    Py_buffer *buf = &memview->view;
+    __Pyx_RefNannySetupContext("init_memviewslice", 0);
+    if (unlikely(memviewslice->memview || memviewslice->data)) {
+        PyErr_SetString(PyExc_ValueError,
+            "memviewslice is already initialized!");
+        goto fail;
+    }
+    if (buf->strides) {
+        for (i = 0; i < ndim; i++) {
+            memviewslice->strides[i] = buf->strides[i];
+        }
+    } else {
+        Py_ssize_t stride = buf->itemsize;
+        for (i = ndim - 1; i >= 0; i--) {
+            memviewslice->strides[i] = stride;
+            stride *= buf->shape[i];
+        }
+    }
+    for (i = 0; i < ndim; i++) {
+        memviewslice->shape[i]   = buf->shape[i];
+        if (buf->suboffsets) {
+            memviewslice->suboffsets[i] = buf->suboffsets[i];
+        } else {
+            memviewslice->suboffsets[i] = -1;
+        }
+    }
+    memviewslice->memview = memview;
+    memviewslice->data = (char *)buf->buf;
+    if (__pyx_add_acquisition_count(memview) == 0 && !memview_is_new_reference) {
+        Py_INCREF((PyObject*)memview);
+    }
+    retval = 0;
+    goto no_fail;
+fail:
+    memviewslice->memview = 0;
+    memviewslice->data = 0;
+    retval = -1;
+no_fail:
+    __Pyx_RefNannyFinishContext();
+    return retval;
+}
 
 /* MemviewSliceCopy */
 static __Pyx_memviewslice

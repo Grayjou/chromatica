@@ -1,0 +1,259 @@
+# chromatica/gradients/gradient2dv2/cell/unified.py
+"""Unified Cell structure for Cython portability."""
+
+from __future__ import annotations
+from dataclasses import dataclass, field
+from enum import IntEnum
+from typing import List, Optional, Union
+import numpy as np
+
+from boundednumbers import BoundType
+from ....types.color_types import ColorMode, HueMode
+from ..helpers import LineInterpMethods
+
+
+class CellType(IntEnum):
+    """Cell type discriminator - IntEnum for C compatibility."""
+    CORNERS = 0
+    CORNERS_DUAL = 1
+    LINES = 2
+
+
+@dataclass
+class UnifiedCell:
+    """Unified cell structure that can represent all cell types.
+    
+    This structure is designed for easy porting to Cython by:
+    - Using an enum discriminator for type
+    - Having all fields flat (no inheritance)
+    - Using Optional for type-specific fields
+    - Avoiding complex Python objects where possible
+    
+    Type-specific field usage:
+    - CORNERS: corners, coords, color_mode, hue directions, bounds
+    - CORNERS_DUAL: corners, coords, all color modes, all hue directions, grayscale hues
+    - LINES: lines, coords, color_mode, line_method, hue directions, bounds
+    """
+    
+    # === Type Discriminator ===
+    cell_type: CellType
+    
+    # === Geometry (shape) ===
+    height: int
+    width: int
+    num_channels: int
+    
+    # === Corner Data (CORNERS, CORNERS_DUAL) ===
+    # Shape: (num_channels,) each, or None for LINES
+    top_left: Optional[np.ndarray] = None
+    top_right: Optional[np.ndarray] = None
+    bottom_left: Optional[np.ndarray] = None
+    bottom_right: Optional[np.ndarray] = None
+    
+    # === Line Data (LINES only) ===
+    # Shape: (width, num_channels) each, or None for CORNERS*
+    top_line: Optional[np.ndarray] = None
+    bottom_line: Optional[np.ndarray] = None
+    
+    # === Coordinates (ALL types) ===
+    # Shape: (num_channels, height, width) or List of (height, width)
+    per_channel_coords: Union[np.ndarray, List[np.ndarray]] = None
+    
+    # === Color Modes ===
+    # Primary color mode (vertical for DUAL, main for others)
+    color_mode: ColorMode = ColorMode.RGB
+    # CORNERS_DUAL specific
+    horizontal_color_mode: Optional[ColorMode] = None
+    top_segment_color_mode: Optional[ColorMode] = None
+    bottom_segment_color_mode: Optional[ColorMode] = None
+    
+    # === Hue Directions ===
+    hue_direction_x: Optional[HueMode] = None
+    hue_direction_y: Optional[HueMode] = None
+    # CORNERS_DUAL specific
+    top_segment_hue_direction_x: Optional[HueMode] = None
+    bottom_segment_hue_direction_x: Optional[HueMode] = None
+    
+    # === Grayscale Hues (CORNERS_DUAL only) ===
+    top_left_grayscale_hue: Optional[float] = None
+    top_right_grayscale_hue: Optional[float] = None
+    bottom_left_grayscale_hue: Optional[float] = None
+    bottom_right_grayscale_hue: Optional[float] = None
+    
+    # === Line Interpolation (LINES only) ===
+    line_method: LineInterpMethods = LineInterpMethods.LINES_DISCRETE
+    
+    # === Bounds and Borders (ALL types) ===
+    boundtypes: Union[List[BoundType], BoundType] = BoundType.CLAMP
+    border_mode: Optional[int] = None
+    border_value: Optional[float] = None
+    
+    # === Cached Values ===
+    _value: Optional[np.ndarray] = field(default=None, repr=False)
+    _top_segment: Optional[np.ndarray] = field(default=None, repr=False)
+    _bottom_segment: Optional[np.ndarray] = field(default=None, repr=False)
+    
+    def __post_init__(self):
+        """Validate required fields based on cell type."""
+        self._validate_type_fields()
+    
+    def _validate_type_fields(self):
+        """Ensure required fields are present for the cell type."""
+        if self.cell_type == CellType.CORNERS:
+            if any(c is None for c in [self.top_left, self.top_right, 
+                                        self.bottom_left, self.bottom_right]):
+                raise ValueError("CORNERS type requires all corner colors")
+                
+        elif self.cell_type == CellType.CORNERS_DUAL:
+            if any(c is None for c in [self.top_left, self.top_right,
+                                        self.bottom_left, self.bottom_right]):
+                raise ValueError("CORNERS_DUAL type requires all corner colors")
+            # Either horizontal_color_mode or both segment modes must be set
+            if self.horizontal_color_mode is None:
+                if self.top_segment_color_mode is None or self.bottom_segment_color_mode is None:
+                    raise ValueError(
+                        "CORNERS_DUAL requires horizontal_color_mode or both segment color modes"
+                    )
+                    
+        elif self.cell_type == CellType.LINES:
+            if self.top_line is None or self.bottom_line is None:
+                raise ValueError("LINES type requires top_line and bottom_line")
+    
+    # === Shape Properties ===
+    
+    @property
+    def shape(self) -> tuple[int, int, int]:
+        return (self.height, self.width, self.num_channels)
+    
+    # === Type-Specific Accessors ===
+    
+    def get_corners(self) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Get corner colors. Raises if cell type doesn't have corners."""
+        if self.cell_type == CellType.LINES:
+            raise TypeError("LINES cell type does not have corners")
+        return (self.top_left, self.top_right, self.bottom_left, self.bottom_right)
+    
+    def get_lines(self) -> tuple[np.ndarray, np.ndarray]:
+        """Get line arrays. Raises if cell type doesn't have lines."""
+        if self.cell_type != CellType.LINES:
+            raise TypeError(f"{self.cell_type.name} cell type does not have lines")
+        return (self.top_line, self.bottom_line)
+    
+    # === Effective Color Mode Getters ===
+    
+    def get_vertical_color_mode(self) -> ColorMode:
+        """Get the color mode used for vertical interpolation."""
+        return self.color_mode  # Primary color_mode is always vertical
+    
+    def get_horizontal_color_mode(self) -> ColorMode:
+        """Get the color mode used for horizontal interpolation."""
+        if self.cell_type == CellType.CORNERS_DUAL:
+            return self.horizontal_color_mode or self.color_mode
+        return self.color_mode
+    
+    def get_top_segment_color_mode(self) -> ColorMode:
+        """Get color mode for top segment/edge."""
+        if self.cell_type == CellType.CORNERS_DUAL:
+            return (self.top_segment_color_mode or 
+                    self.horizontal_color_mode or 
+                    self.color_mode)
+        return self.color_mode
+    
+    def get_bottom_segment_color_mode(self) -> ColorMode:
+        """Get color mode for bottom segment/edge."""
+        if self.cell_type == CellType.CORNERS_DUAL:
+            return (self.bottom_segment_color_mode or 
+                    self.horizontal_color_mode or 
+                    self.color_mode)
+        return self.color_mode
+
+
+# chromatica/gradients/gradient2dv2/cell/_cell_struct.pxd (Cython header)
+"""
+Cython declaration file for unified cell structure.
+"""
+
+cimport numpy as np
+from libc.stdint cimport int32_t, uint8_t
+
+# C-compatible enum
+ctypedef enum CellType:
+    CELL_CORNERS = 0
+    CELL_CORNERS_DUAL = 1
+    CELL_LINES = 2
+
+ctypedef enum ColorModeC:
+    COLOR_RGB = 0
+    COLOR_HSL = 1
+    COLOR_HSV = 2
+    COLOR_OKLCH = 3
+    # ... etc
+
+ctypedef enum HueModeC:
+    HUE_SHORTEST = 0
+    HUE_LONGEST = 1
+    HUE_INCREASING = 2
+    HUE_DECREASING = 3
+
+ctypedef enum LineMethC:
+    LINE_DISCRETE = 0
+    LINE_CONTINUOUS = 1
+
+ctypedef enum BoundTypeC:
+    BOUND_CLAMP = 0
+    BOUND_WRAP = 1
+    BOUND_REFLECT = 2
+
+
+# Unified cell structure for Cython
+cdef struct CellData:
+    # Type discriminator
+    CellType cell_type
+    
+    # Dimensions
+    int32_t height
+    int32_t width
+    int32_t num_channels
+    
+    # Corner data pointers (NULL for LINES type)
+    double* top_left
+    double* top_right
+    double* bottom_left
+    double* bottom_right
+    
+    # Line data pointers (NULL for CORNERS* types)
+    double* top_line      # Shape: width * num_channels
+    double* bottom_line
+    
+    # Coordinates pointer
+    # Shape: num_channels * height * width (contiguous)
+    double* per_channel_coords
+    
+    # Color modes (as C enums)
+    ColorModeC color_mode
+    ColorModeC horizontal_color_mode  # -1 if not used
+    ColorModeC top_segment_color_mode
+    ColorModeC bottom_segment_color_mode
+    
+    # Hue directions (-1 if not used)
+    HueModeC hue_direction_x
+    HueModeC hue_direction_y
+    HueModeC top_segment_hue_direction_x
+    HueModeC bottom_segment_hue_direction_x
+    
+    # Grayscale hues (NaN if not used)
+    double top_left_grayscale_hue
+    double top_right_grayscale_hue
+    double bottom_left_grayscale_hue
+    double bottom_right_grayscale_hue
+    
+    # Line method
+    LineMethC line_method
+    
+    # Bounds (simplified to single type for C)
+    BoundTypeC boundtype
+    int32_t border_mode   # -1 if not used
+    double border_value   # NaN if not used
+    
+    # Cached value pointer (NULL if not computed)
+    double* cached_value  # Shape: height * width * num_channels

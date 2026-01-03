@@ -1391,6 +1391,7 @@ static const char* const __pyx_f[] = {
   "<stringsource>",
   "../../AppData/Local/Python/pythoncore-3.12-64/Lib/site-packages/numpy/__init__.cython-30.pxd",
   "Chromatica/chromatica/v2core/interp_utils.pxd",
+  "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd",
   "cpython/type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1823,7 +1824,7 @@ typedef double __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64;
 */
 typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32;
 
-/* "interp_hue_utils.pxd":7
+/* "interp_hue_utils.pxd":26
  * 
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64             # <<<<<<<<<<<<<<
@@ -1832,7 +1833,7 @@ typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12inter
 */
 typedef double __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64;
 
-/* "interp_hue_utils.pxd":8
+/* "interp_hue_utils.pxd":27
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64
  * ctypedef int i32             # <<<<<<<<<<<<<<
@@ -1947,7 +1948,7 @@ struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult1D {
   int use_border_directly;
 };
 
-/* "interp_hue_utils.pxd":11
+/* "interp_hue_utils.pxd":30
  * 
  * # Hue interpolation modes
  * cdef enum HueDirection:             # <<<<<<<<<<<<<<
@@ -2898,6 +2899,12 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
                                   int full_traceback, int nogil);
 
+/* BufferIndexError.proto (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis);
+
+/* BufferIndexErrorNogil.proto */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis);
+
 /* ReleaseUnknownGil.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
 typedef struct {
@@ -3046,9 +3053,6 @@ enum __Pyx_ImportType_CheckSize_3_2_3 {
 };
 static PyTypeObject *__Pyx_ImportType_3_2_3(PyObject* module, const char *module_name, const char *class_name, size_t size, size_t alignment, enum __Pyx_ImportType_CheckSize_3_2_3 check_size);
 #endif
-
-/* FunctionImport.proto */
-static int __Pyx_ImportFunction_3_2_3(PyObject *module, const char *funcname, void (**f)(void), const char *sig);
 
 /* dict_setdefault.proto (used by FetchCommonType) */
 static CYTHON_INLINE PyObject *__Pyx_PyDict_SetDefault(PyObject *d, PyObject *key, PyObject *default_value);
@@ -3606,10 +3610,12 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f6
 static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_extra_2d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32); /*proto*/
 static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_clamp_01(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64); /*proto*/
 static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, int, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32); /*proto*/
+static CYTHON_INLINE Py_ssize_t __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 *); /*proto*/
 
 /* Module declarations from "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils" */
-static __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue)(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
-static __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single)(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
 
 /* Module declarations from "Chromatica.chromatica.v2core.interp_hue.interp_hue_corners" */
 static PyObject *__pyx_collections_abc_Sequence = 0;
@@ -3818,7 +3824,7 @@ typedef struct {
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[2];
   PyObject *__pyx_codeobj_tab[6];
-  PyObject *__pyx_string_tab[160];
+  PyObject *__pyx_string_tab[159];
   PyObject *__pyx_number_tab[5];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -4018,8 +4024,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_b_iso88591_wfAS_1_j_vV1Cs_j_fAQ_t7_aq_t6_q __pyx_string_tab[155]
 #define __pyx_kp_b_iso88591_wfAS_1_j_vV1Cs_j_fAQ_vQa_t7_aq __pyx_string_tab[156]
 #define __pyx_kp_b_iso88591_wfAS_1_j_vV1Cs_j_vV1Cs_q_j_fAQ __pyx_string_tab[157]
-#define __pyx_kp_b_pyx_t_10Chromatica_10chromatic __pyx_string_tab[158]
-#define __pyx_n_b_O __pyx_string_tab[159]
+#define __pyx_n_b_O __pyx_string_tab[158]
 #define __pyx_float_0_0 __pyx_number_tab[0]
 #define __pyx_int_0 __pyx_number_tab[1]
 #define __pyx_int_neg_1 __pyx_number_tab[2]
@@ -4066,7 +4071,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<6; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<160; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<159; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -4117,7 +4122,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<6; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<160; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<159; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -20598,6 +20603,773 @@ static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_u
   return __pyx_r;
 }
 
+/* "interp_hue_utils.pxd":39
+ * # Inline Helpers - Hue Operations
+ * # =============================================================================
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "interp_hue_utils.pxd":41
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)             # <<<<<<<<<<<<<<
+ *     if h < 0.0:
+ *         h += 360.0
+*/
+  __pyx_v_h = fmod(__pyx_v_h, 360.0);
+
+  /* "interp_hue_utils.pxd":42
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:             # <<<<<<<<<<<<<<
+ *         h += 360.0
+ *     return h
+*/
+  __pyx_t_1 = (__pyx_v_h < 0.0);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":43
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:
+ *         h += 360.0             # <<<<<<<<<<<<<<
+ *     return h
+ * 
+*/
+    __pyx_v_h = (__pyx_v_h + 360.0);
+
+    /* "interp_hue_utils.pxd":42
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:             # <<<<<<<<<<<<<<
+ *         h += 360.0
+ *     return h
+*/
+  }
+
+  /* "interp_hue_utils.pxd":44
+ *     if h < 0.0:
+ *         h += 360.0
+ *     return h             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_v_h;
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":39
+ * # Inline Helpers - Hue Operations
+ * # =============================================================================
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":47
+ * 
+ * 
+ * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """
+ *     Adjust h1 relative to h0 based on interpolation mode.
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1, int __pyx_v_mode) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_d;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+  int __pyx_t_2;
+
+  /* "interp_hue_utils.pxd":52
+ *     Returns adjusted h1 (may be outside [0, 360)).
+ *     """
+ *     cdef f64 d = h1 - h0             # <<<<<<<<<<<<<<
+ * 
+ *     if mode == HUE_CW:
+*/
+  __pyx_v_d = (__pyx_v_h1 - __pyx_v_h0);
+
+  /* "interp_hue_utils.pxd":54
+ *     cdef f64 d = h1 - h0
+ * 
+ *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
+ *         if h0 > h1:
+ *             return h1 + 360.0
+*/
+  switch (__pyx_v_mode) {
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CW:
+
+    /* "interp_hue_utils.pxd":55
+ * 
+ *     if mode == HUE_CW:
+ *         if h0 > h1:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_h0 > __pyx_v_h1);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":56
+ *     if mode == HUE_CW:
+ *         if h0 > h1:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":55
+ * 
+ *     if mode == HUE_CW:
+ *         if h0 > h1:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":57
+ *         if h0 > h1:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_CCW:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":54
+ *     cdef f64 d = h1 - h0
+ * 
+ *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
+ *         if h0 > h1:
+ *             return h1 + 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CCW:
+
+    /* "interp_hue_utils.pxd":60
+ * 
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_h0 < __pyx_v_h1);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":61
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":60
+ * 
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":62
+ *         if h0 < h1:
+ *             return h1 - 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_SHORTEST:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":59
+ *         return h1
+ * 
+ *     elif mode == HUE_CCW:             # <<<<<<<<<<<<<<
+ *         if h0 < h1:
+ *             return h1 - 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_SHORTEST:
+
+    /* "interp_hue_utils.pxd":65
+ * 
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+*/
+    __pyx_t_1 = (__pyx_v_d > 180.0);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":66
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         elif d < -180.0:
+ *             return h1 + 360.0
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":65
+ * 
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+*/
+    }
+
+    /* "interp_hue_utils.pxd":67
+ *         if d > 180.0:
+ *             return h1 - 360.0
+ *         elif d < -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_d < -180.0);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":68
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":67
+ *         if d > 180.0:
+ *             return h1 - 360.0
+ *         elif d < -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":69
+ *         elif d < -180.0:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_LONGEST:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":64
+ *         return h1
+ * 
+ *     elif mode == HUE_SHORTEST:             # <<<<<<<<<<<<<<
+ *         if d > 180.0:
+ *             return h1 - 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_LONGEST:
+
+    /* "interp_hue_utils.pxd":72
+ * 
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+*/
+    __pyx_t_2 = (__pyx_v_d >= 0.0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L7_bool_binop_done;
+    }
+    __pyx_t_2 = (__pyx_v_d < 180.0);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L7_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":73
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":72
+ * 
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+*/
+    }
+
+    /* "interp_hue_utils.pxd":74
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_2 = (__pyx_v_d < 0.0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L9_bool_binop_done;
+    }
+    __pyx_t_2 = (__pyx_v_d > -180.0);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L9_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":75
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":74
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":76
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     return h1
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":71
+ *         return h1
+ * 
+ *     elif mode == HUE_LONGEST:             # <<<<<<<<<<<<<<
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+*/
+    break;
+    default: break;
+  }
+
+  /* "interp_hue_utils.pxd":78
+ *         return h1
+ * 
+ *     return h1             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_v_h1;
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":47
+ * 
+ * 
+ * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """
+ *     Adjust h1 relative to h0 based on interpolation mode.
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":81
+ * 
+ * 
+ * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u, int __pyx_v_mode) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1_adj;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_result;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+
+  /* "interp_hue_utils.pxd":84
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+ *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
+ *     cdef f64 result = h0 + u * (h1_adj - h0)
+ * 
+*/
+  __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
+
+  /* "interp_hue_utils.pxd":85
+ * 
+ *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
+ *     cdef f64 result = h0 + u * (h1_adj - h0)             # <<<<<<<<<<<<<<
+ * 
+ *     return wrap_hue(result)
+*/
+  __pyx_v_result = (__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0)));
+
+  /* "interp_hue_utils.pxd":87
+ *     cdef f64 result = h0 + u * (h1_adj - h0)
+ * 
+ *     return wrap_hue(result)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_v_result);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":81
+ * 
+ * 
+ * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":93
+ * # Hue-Specific Interpolation Functions
+ * # =============================================================================
+ * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils__interp_line_1ch_hue(__Pyx_memviewslice __pyx_v_l0, __Pyx_memviewslice __pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, int __pyx_v_mode_x, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_v1;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
+
+  /* "interp_hue_utils.pxd":102
+ *     cdef Py_ssize_t idx_lo, idx_hi
+ * 
+ *     idx_lo = compute_interp_idx(u_x, L, &frac)             # <<<<<<<<<<<<<<
+ *     idx_hi = idx_lo + 1
+ * 
+*/
+  __pyx_v_idx_lo = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_v_u_x, __pyx_v_L, (&__pyx_v_frac));
+
+  /* "interp_hue_utils.pxd":103
+ * 
+ *     idx_lo = compute_interp_idx(u_x, L, &frac)
+ *     idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Hue interpolation for both lines
+*/
+  __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+  /* "interp_hue_utils.pxd":106
+ * 
+ *     # Hue interpolation for both lines
+ *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
+ *     v1 = lerp_hue_single(l1[idx_lo], l1[idx_hi], frac, mode_x)
+ * 
+*/
+  __pyx_t_1 = __pyx_v_idx_lo;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_t_3 = __pyx_v_idx_hi;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_1)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_3)) ))), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "interp_hue_utils.pxd":107
+ *     # Hue interpolation for both lines
+ *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)
+ *     v1 = lerp_hue_single(l1[idx_lo], l1[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
+ * 
+ *     # Interpolate between lines with hue wrapping
+*/
+  __pyx_t_3 = __pyx_v_idx_lo;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_v_idx_hi;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
+  __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_3)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_1)) ))), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "interp_hue_utils.pxd":110
+ * 
+ *     # Interpolate between lines with hue wrapping
+ *     return lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":93
+ * # Hue-Specific Interpolation Functions
+ * # =============================================================================
+ * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_1ch_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":113
+ * 
+ * 
+ * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils__interp_line_discrete_hue(__Pyx_memviewslice __pyx_v_l0, __Pyx_memviewslice __pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_idx_f;
+  Py_ssize_t __pyx_v_idx;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  int __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
+
+  /* "interp_hue_utils.pxd":119
+ * ) noexcept nogil:
+ *     """Discrete x-sampling hue interpolation."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64)(__pyx_v_L - 1));
+
+  /* "interp_hue_utils.pxd":120
+ *     """Discrete x-sampling hue interpolation."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+*/
+  __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+  /* "interp_hue_utils.pxd":121
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)             # <<<<<<<<<<<<<<
+ * 
+ *     if idx < 0:
+*/
+  __pyx_v_idx = ((Py_ssize_t)floor((__pyx_v_idx_f + 0.5)));
+
+  /* "interp_hue_utils.pxd":123
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+  __pyx_t_1 = (__pyx_v_idx < 0);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":124
+ * 
+ *     if idx < 0:
+ *         idx = 0             # <<<<<<<<<<<<<<
+ *     elif idx >= L:
+ *         idx = L - 1
+*/
+    __pyx_v_idx = 0;
+
+    /* "interp_hue_utils.pxd":123
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+    goto __pyx_L3;
+  }
+
+  /* "interp_hue_utils.pxd":125
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_idx >= __pyx_v_L);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":126
+ *         idx = 0
+ *     elif idx >= L:
+ *         idx = L - 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Direct interpolation between two lines (discrete in x)
+*/
+    __pyx_v_idx = (__pyx_v_L - 1);
+
+    /* "interp_hue_utils.pxd":125
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  }
+  __pyx_L3:;
+
+  /* "interp_hue_utils.pxd":129
+ * 
+ *     # Direct interpolation between two lines (discrete in x)
+ *     return lerp_hue_single(l0[idx], l1[idx], u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_t_2 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_l0.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_l1.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_2)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_4)) ))), __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":113
+ * 
+ * 
+ * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_discrete_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":135
+ * # Convenience Wrapper for hue code with modern features
+ * # =============================================================================
+ * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
+ *     f64 u_x, f64 u_y, int bmode, f64 feathering, i32 distance_mode
+ * ) noexcept nogil:
+*/
+
+static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_process_hue_border_2d(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, int __pyx_v_bmode, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_feathering, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_i32 __pyx_v_distance_mode) {
+  struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_r;
+
+  /* "interp_hue_utils.pxd":139
+ * ) noexcept nogil:
+ *     """Wrapper for hue code - uses specified distance mode."""
+ *     return process_border_2d(u_x, u_y, bmode, feathering, distance_mode)             # <<<<<<<<<<<<<<
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_v_u_x, __pyx_v_u_y, __pyx_v_bmode, __pyx_v_feathering, __pyx_v_distance_mode);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":135
+ * # Convenience Wrapper for hue code with modern features
+ * # =============================================================================
+ * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
+ *     f64 u_x, f64 u_y, int bmode, f64 feathering, i32 distance_mode
+ * ) noexcept nogil:
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
 /* "Chromatica/chromatica/v2core/interp_hue/interp_hue_corners.pyx":36
  * # Hue Bilinear Interpolation Helper Functions (WITH PER-AXIS MODES)
  * # =============================================================================
@@ -29272,7 +30044,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(4, 9, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_mstate->__pyx_ptype_7cpython_4type_type = __Pyx_ImportType_3_2_3(__pyx_t_1, __Pyx_BUILTIN_MODULE_NAME, "type",
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
@@ -29282,7 +30054,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   #else
   sizeof(PyHeapTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_2_3(PyHeapTypeObject),
   #endif
-  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(4, 9, __pyx_L1_error)
+  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyImport_ImportModule("numpy"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -29442,38 +30214,10 @@ static int __Pyx_modinit_variable_import_code(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannyDeclarations
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_import_code", 0);
   /*--- Function import code ---*/
-  {
-    __pyx_t_1 = PyImport_ImportModule("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils"); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    const char * __pyx_import_signature = __Pyx_PyBytes_AsString(__pyx_mstate_global->__pyx_kp_b_pyx_t_10Chromatica_10chromatic);
-    #if !CYTHON_ASSUME_SAFE_MACROS
-    if (unlikely(!__pyx_import_signature)) __PYX_ERR(0, 1, __pyx_L1_error)
-    #endif
-    const char * __pyx_import_name = __pyx_import_signature + 479;
-    void (**const __pyx_import_pointers[])(void) = {(void (**)(void))&__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue, (void (**)(void))&__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single, (void (**)(void)) NULL};
-    void (**const *__pyx_import_pointer)(void) = __pyx_import_pointers;
-    const char *__pyx_import_current_signature = __pyx_import_signature;
-    while (*__pyx_import_pointer) {
-      if (__Pyx_ImportFunction_3_2_3(__pyx_t_1, __pyx_import_name, *__pyx_import_pointer, __pyx_import_current_signature) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-      ++__pyx_import_pointer;
-      __pyx_import_name = strchr(__pyx_import_name, '\0') + 1;
-      __pyx_import_signature = strchr(__pyx_import_signature, '\0') + 1;
-      if (*__pyx_import_signature != '\0') __pyx_import_current_signature = __pyx_import_signature;
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  }
   __Pyx_RefNannyFinishContext();
   return 0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_RefNannyFinishContext();
-  return -1;
 }
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
@@ -29749,7 +30493,7 @@ __Pyx_RefNannySetupContext("PyInit_interp_hue_corners", 0);
   if (unlikely((__Pyx_modinit_type_init_code(__pyx_mstate) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
   if (unlikely((__Pyx_modinit_type_import_code(__pyx_mstate) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
   (void)__Pyx_modinit_variable_import_code(__pyx_mstate);
-  if (unlikely((__Pyx_modinit_function_import_code(__pyx_mstate) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+  (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
   /* "View.MemoryView":100
@@ -31074,25 +31818,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 11; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{62},{26},{34},{29},{33},{45},{22},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{43},{27},{24},{21},{26},{44},{30},{7},{6},{2},{6},{35},{9},{30},{38},{50},{39},{34},{8},{21},{20},{32},{22},{30},{37},{5},{12},{58},{8},{20},{8},{15},{3},{15},{17},{18},{4},{15},{17},{11},{1},{9},{17},{18},{6},{7},{5},{9},{8},{13},{5},{15},{5},{6},{9},{5},{16},{5},{7},{6},{7},{8},{12},{25},{30},{34},{47},{39},{35},{2},{10},{5},{13},{5},{8},{8},{7},{4},{6},{6},{7},{7},{10},{4},{8},{4},{7},{2},{11},{5},{3},{2},{4},{3},{12},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{8},{6},{6},{6},{1},{1587},{254},{269},{351},{239},{254},{299},{503},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2117 bytes) */
-const char* const cstring = "BZh91AY&SY\236P\352\231\000\002\212\177\377\357\375\375\376w\367\375\327\277\343\377\212\277\377\377\360@@@@@@@@@\000@@@\000@\000`\010\357\207\205\222\251\212\245QTB E\022\276\035\201$\2422\2314\322m\243S&)\206\325=2#\023\021\246F&\214\020`\215\244\r\246\221\350\r'\244h\307\032\032\000\320\000\320\000\000\000h\000\000\000\006@\000\003\020\01644\001\240\001\240\000\000\000\320\000\000\000\014\200\000\006 \t\021\002\004\020iQ\3712\220?T\311\352h\006\020\304= z\200\031\000\000hi\246\233!\004T\244\000h\000\000\000\0004\000\000\000\000\000\000\00044\010\244\0212i\212h\320\000\247\222\237\2216!O\324\233P\320\364\236\210\000\000\000\0002\014\236\3251\224L>\221{\020\276%\253\034\277x\356XxN\334\022?l\225\333\202q+\242\356\027\370a\010\201\206\"\"\"\022\0045\203\340\245T\335\005\206\313\000\003x~T\220\331\3024\030\026c\t\3142I#j\206\032\244\211\245(\005\303\354 z\023\300y\206\357\022L\013A\322\245\243\225\375jPlM\241l\037\034\207@\317\3106\r\220>Q\201\354\032\275\243\374\177\301\355\034\244\377\330\017\021O\370\377\307\311\004G|w\271\374\021\353,\225<sz\345?jOk}\000\3031\245\201H\363\335\231\033\360\333\362>\024/\352k\010\317a\317\2659\2558yq\270\212V\237\357(\340\367\247\367<\277K}1\266\274|x\275\321\270\256\342c\033\366.\225w\332\2212\377\364K\324\251\222l\206y4\211e\034\343VI\216\023\312\325~\366/\241\031\341\304\354,\025\335G)\314*F\211h\266\312\345M\342\353\361\325n\310\366\373\206<\312Bs\201\327\340\362\007\254c\001\355\002\225K\020>\022\274\350p4\304\302\242\210Z~\021Oy}`\223 B\312C\242\353?2\237\276\002\320\351\207Z\224\267\205\037\024Q\363-\314!\277\2359\252T\226\340\353\306N<u\025eF\010\337\374\240\204i\354\000| a:V|\300H~\231c\354\026\225\261,\037x|\237\244\375w\022\3730\376\210\326;\331\216`\340=\244\001\313A\376\333\270\036[$\366\263\"R\321e\031\307\351\202!J\024\210Y\301f\3428)\224\225\344\376\250y\346\313\306+=O\242\r\306\013\232m{\275V\354\307F\330\345,\345\361wSO\336\335\237\016\313\2710\251\307\177\307\244\023G;\320m\242\365\326\006f\024\222\232\t\214\0032""\202\334\250\237\240\225|\376\231\2700Nh\222\220\373\233Hd<c\334\016\200\031\014\201\340\2357\254BvH\010\353\371(\372#M=\373\212\327\232r\236Rk\327_]\303\351\030\032\366\363\363\224.+-\255\312_\252\017t`f\265\023\347Q\351\257\224T\314LL\027O\257%\370\211\305\005\214h\333v\020Z\260\222\031\014+)M\236p\220AH.\246\310\031\243:\0317\004\326JR\002\364B\2156\2271A;COwNm!o\350\234\223wv\307\344\314\274\342\214\275\243>\013\307\322i3\331\361Q\252n\361\346k\270J)@\363\326\261D\317\250\025\365\345\322\361\216\236\236p\307l\004j}n\276\233\213\253\200\365P\365-b\246d\002\327x\2748\214\"\342\310T\361\241\363\036\241\220\275\375\356\255\236#\224\3017\372\201\034\202j\005\371\274TGc\217\007gu\364\004\246\371\254\355\2508\265\372\373\315\222\311Bj\2506\"{\277\317\240\n\232i\207\243\247\233\274\213y\261\364M\272\\\372S\347\036\375\017]\215\033+_\226\2423\215q-\313\014\3017F\024\326JD\241\231a\334\367\355U\032?\325\342\031\016T\235$\024\371\231xk\340\n\246Sh\207\336\231A\2430\332\262\204\276D\230`\327E\244\351jD\027E\006\226\345\247\307\034\017i\341\221H\354\225|6\247(\2648\225\225\351~{\356\263O\206>E\001P\024\313\32225\245\t\322\"\300Z\036+A\004\26032G\236SJSw\300\010\204\3306b5\230\322\313\343T\347\316\256ql\006\324\233yaMj\330\032\2722\3127\236A\251\007\272\332\347\347\323`\333X>\246\271A\031\016\006\230\245\273\222\246\345\342\032\005\"\006\374\225vfr\340m<\032-\021=\031i[\257\013n\236\004\262fGc:\317M\354\036\257\033\013\215H8'\270\231\006\232\320q\264\365v\347:\250t\257z\236\257\232\356\006\233;e=W\036\217\020]\365\250u\233\233M$\332G\024A\200r\323b\364\241\266\t\202\325$j\333\356p\333\274G+\303\230\003\267\272\225`\223h'\311\333\302\246P\213\236\373ln\264\300q\030\272\351\223G\rXV\323-\243J\025\323W\236V\257g\177x1/\204~\001\262\327J\301\021\336:\265\t\332\030\005r)8^\256\034\351\177\035\232>\221K&\371\025,\216\201}\341\316\243\001S{;n\230\320z\254\010\035\373\003=\271p\337\316M\327\270!\313\203\226&7{\376O\253P\332\253\243P\3051\006rw\332h\202\225&!\032\261\335\235\001g\241!""+`\326v\360U\337\203\314V\222U+\255\321\204\327mP]\004\365\232\232\345\r\216)\3253@q\r\344x\254H\263\343\242\265q\272 G\237\232\264@X\3126|\311\034\311%\027h\311\331d\001\362\360a\26662\371\016\301\201^0\225e\300%!N=\221~>\014Kq\240a\003~x\227g7\314\2340'5\201;\325M\004\372\345\246A%\356\247\302L-\027^8\203g!\034\356\320\026\200j\254\220\r\001#%\221\356q\346\021\004@\345\267\244\270\337\rX\033\330\355\014\3048!\027\177\013d:4\330\020r\306\330\304\313eYtm\233qu\326_\2068\243i\224<\231t@,Y\322>\2444N\030x6II\007L\235\324\032\250\342q\342m\346&8\261e\273\300\340:L%@\002|J\030\002\352\241ER\327\304\t\004\220\t\024](Ju;\272\246$\344FR^\224T^eKu\272\305\361N\3212\230\202\"D\305z\274\n%%-X#(\322\321\235\264)_S\031\034y\227>\322\023\256\266\235\302\350\353V\240\257}\332\013\026\330\\\020E)\034L\231M3\365S\002\031\311\026\337\207\022\371\331\234 \220\031\022\034Gd\365\2044!\220Ewg\032\312\324\321\342n\322\356\347\024Q\343\233I\323\210\264\316\337:\251k\235Rv\211cb\306p`\226\265\364r\243\310\022\332\347S\301\316\210>:+\007\006\t4\027\016\"\206O\021i\301\374\0344\021\271\351$H\273\332Z\337\n\326\310x\344D\177A.F\313<04\005\313\317(\000i\255\351=\220Wl\346\022\355gT\007D\274Y\032\3108\203\237\242\352\005\350G\256\321\221w\243\316\016\243\200\341\3149\351\0249\3344\361\257\245\366\357Aq\371\321T\255C\034\\1\260K\352F\301R\003\262FLtOq\346\0364J\242L\262VD\257\263\n\217\243\24445\272\005v\313c!\370\002\370\376\350\234\343\005\365\037T\234\026\027\213\372\340/\270\261\017\204\320\037\021\257\030-\033\340\004\2003\326 \364\r\322\364\003D\271+\024c\017\210\326\256b\310\002\013\333\2109K\322/\312\307\006\000D\030-z\307\030\3048\376\337\265,\330\2435\275,4\252H\344\263`\224\312Q\001\375N0\002\2320\023\224\274\275Jy\377\014_|\235,\\{TY\037\372\262Q2$b/)\205V\212\361\225\310\3122pR\000\316Ej\002\243\035\250\356\201\003\260u\363x\344\226\320\234\240kd\253e+\000@\371\206C!\264v&\244\322?\030\377\323\262\037(\377\261\277-0A!\2038p\214F\031d\023\214\306\361\377\342\356H\247\n\022\023\312""\035S ";
-    PyObject *data = __Pyx_DecompressString(cstring, 2117, 2);
+    const struct { const unsigned int length: 11; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{62},{26},{34},{29},{33},{45},{22},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{43},{27},{24},{21},{26},{44},{30},{7},{6},{2},{6},{35},{9},{30},{38},{50},{39},{34},{8},{21},{20},{32},{22},{30},{37},{5},{12},{58},{8},{20},{8},{15},{3},{15},{17},{18},{4},{15},{17},{11},{1},{9},{17},{18},{6},{7},{5},{9},{8},{13},{5},{15},{5},{6},{9},{5},{16},{5},{7},{6},{7},{8},{12},{25},{30},{34},{47},{39},{35},{2},{10},{5},{13},{5},{8},{8},{7},{4},{6},{6},{7},{7},{10},{4},{8},{4},{7},{2},{11},{5},{3},{2},{4},{3},{12},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{8},{6},{6},{6},{1},{1587},{254},{269},{351},{239},{254},{299},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2086 bytes) */
+const char* const cstring = "BZh91AY&SYr\021*\202\000\002^\377\377\357\375\375\376w\367\375\327\277\343\377\212\277\377\377\360@@@@@@@@@\000@@@\000@\000`\010\236\370\275\343\274\364\327\263\323\255\005=4\000\002\201\216\316\022QA\241O\323Q\206\247\242\236\247\244\323\332\005\036\243\324`M4i\2021\030\230\023\023'\251\243\032\032F\214\236\203\024\320\232d\t \001\240\000z\207\250\320\000\006\200\000\000\000\000\033(\006\220%<\210\320\3101\006CM2\031\0314\320\014 \311\240\311\202`\020\321\246@h1\306\206\2004\0004\000\000\000\032\000\000\000\001\220\000\000\304\001\024\244\247\3455\036\247\240M\000`\032\201\232\206\232\001\264\236\243\000\010\310a2\030\215\006\320\017R\t\022\004\004\004\311<Sjh\nx\247\204OQ\265\031\006\020h\000\000\000\032h\006\236R\371\300\202\311JX\t\242m\352\356l\313$\243`S\206\027\212\300\310\274C\3143\214 lM6\333m\014A\254\027\255\"\211\033\201&\253P\000\336/\221\020*\360\024\304\304\244&\216b\204B\025\222\014\263\204#\024L\013\305\352\030\273h\365\213\230\257\356\242@X\026)\026\026\234<\t\023\024\311l,\303\336\220h\215\016\370\3143@\370F\007\004ep\207o\372^\033\245\017\203\200\217cy\351\000@\357\016\360\310\230~2\\\223\322\214E0\210\350\036\215\022\000\\\301vk\020)\3330\353\244\222\312\272\257\025r\254q\026Z\023|\232f\230f\225\301\317\203\376\265\273\005yZ9\262^\371[f.\264\252\250\213\204.\014\351_h\250\030_\027\271\231~\334\312\301\001YH9\014\264s \364\322\261\006\022\301\2651\202\322\225T\016\234\223\232\320d!s\323\231\200\200wE\326\2554\317\244\277\r\031\333s\361\371\204\374\351\r\035`|\257Z\352\017|S\003\340\003\305\017\326s\200\356R\032\031\242`R\027\204\247\262\270fHpB\266\210\202\274~\251\270\350\034\206\035\232OF\026 \242\372\271\246\217\340O\205\220\303-\244H\345\253\021\225X\315\212\2302\206\360\202)a\000\363\300\302_\255\013\260$\034bfp:\022\314\223\016(\3706h\231\232\337h\036\024\241z\006\001\014\301]\177\300Z\270@\313\222]^\306(\255r\230!\364\237H}\215\0266#E6\222\221\007V\025\331\357T,\307\213\230)#\251`\242fUw\037zD\341`7\005\267\274\323\307\356\357\227\035\327""\365eC\236\037\343\020E\337\326\273~\024c&\r\261`u \330\300lS\271\235\264\345\024\274\271\0353\340\235Y\225\222\222\262& \246+bp\023D\321Q\2116\010\350\004,p\001\237`IB34\310`)N\320tc\234\224\371\\\254\002\336\004`JX\030\3552Sl\031\355\t\212T\240\236\245\036\225\335(`&&\013g\277\"\332\004\342\353\261m\272\010)h\000d0\244U\341\t\004\022\202\312T@\314Y\255\215P\005\032\313\020K\022\251k&p\205h\253\263\246\2117\342j\312U(\335\227\003\003\260\364\3635o\300^\223\023V\357\3575Do\341\250\331x\211\244L=\212Rh\303\244\025\262\337\271\332\355\333\266\205\334`##\350q\335at\352\036J\036EjP\300\200\010\320\022\202\300\353$\221\330\222+\240\205U\023D\261\361\324\267\352\030c\250\241T\021\204\022\240\026\331\357M\034\234vys\266 \022\266\013\n\344\016+n>S4\257P\232\201\002\320\346\317\371\360\301})%D\375\375\341\321\334\273 \267P\233\212\333\241\374x\350\240\211\214!\362PB\223\330\343\242\246\240F\3614\215\204A\rH\251\346^\215tCG\305h\206C\222\221\270\202~+\374t\354\205\023'\234C\357\246Lh\3003\2444a\004&\231\262iNS\262\033/s\024\355\207\205\360^S\327\240\233\362E<u\236\370\2548\222\337i\333m\264U\247\253\271!HW\311\343\027\231Nd\261\210\250\025\207u& \223\300\275\036Bx\316z=@\210M\203e\321\224\243\032\256\272\033p\243\225\325\270\026\275\243\231\305\241\004\200\026'\241\022\353\306P\213\000\256\215\230d\244A\252\010ss\234\307\244Y\030\271\333\242'\321\200\202\340\0144\244\226\354\r\372\214\345\251\242\261\022\350\277\032Yx\333s\354\245{/93\211\351y\207\321\327\256c8]\320\215!\215&-\026+\325\265\241*\205\372\342)_\312\334\005)\252\311O\242y\355\201\251FP\355\026q\014+\r#Z \270\034\232l^\3246\304\305\220\006M\276n\033v\210\337hr\216\256s\243\000m\004\277\357V\252\027\302,\177\346\330\335'pk8\316\366\214,@F,\311\021G\210R\305|A\307\241\240\nv\2100\274\314\224\022\341\003e\201\036@\304)\240\234\232]\376\032g\207*\335\356\023\254\227\205$U\366\304\275\261j\240\230P\337\252\327\310S\027~\240\305\323P\332\370_\332$\265\364\0100Y\344ew\324\360\373\264\r4W\022\314\026p\267\251\334\311\320""\220\201\345\237D\246\001+\220\321J\212\222\267b\213{<\305'\"\211Yh\213\223\\\250\202\310%\33022\276\033\034O\214\2450q\r\336{\265$,5\342\253K\264D\010\371x*\304\005K\3437\261#bIE\230^\352\257\000\357\334\\\333\033\031k\307P\270V\213\205I8\000\220O_\030\267.\032\013h\230d\305\206\255\005\372\244\274\310\342\304s\250K\004\200\270\227\2021\200\204\274\263\372\244\202\302[4h\005^\241\366\226\260,#:B\000\270 \322\224\036\216\316\240llZv\342^v\003<\216\235\032\305!\001\323\215`V\303\2003\233\332'\"\321H\355\3556\273\357\256\031h\320\205cK]Z|LHu\356\213\351\240\272M5\303t$@5\271\002\232\021\231\3133f\221\031\346\235m\274\026\"\304\356\304\300\trH2\000\316d\304\005\227x\020\310@\022\024Y(JY\034\372e\0227\221|\213Njk\265B\274]\"\327O\250L\235\320DHLV\243p\222\206\250\021|c\204a\\I\323\333\272\363^\305\2679\004\262\312\272\005\321\305R\242\265\264b+\253\230\265 \211\3165\227\262x\341\356&\0043\251\333\014\271%\347R8\202\030i Z\005\272[\001\251\215@:o\223\330B\002\211\321D\347\252\325X\246\323\300\031\327\034p&\223\201*.d\022\006Sp\220\223X\374\333\346\357\000\335c\245\334mD\035\264R\rL\001\240\260=d\265\213\035O\325\253\021\032\0362\"B\357\264\262\265\312\265\274wo\"?x\226\363u}y\027\005\351>\264\200\236\305\335=L\246\323\264\"\375\207\201\207r;\332M\2039\007_r\371\206\010\037\274\313\375\217\204Y\234\016:\203\256ngZ\307We/J\361\340\202\303sJ\222-\251\303\033\022=\021\220P\200\343!\222\215\262\3529\237\n\021D\"Eb\2560\256T\027\263\334\013\225/`-\205\236\221|\001\203\370\220\217\324&\227\306/\215\026b\305U\346q\026\300\262\034\t\220;\303x0\275W\364\004\340c\254\203\2648+\264\r\302\326Zc\206;\303v\265\326p!w=\003Y~\302\360\257\0300\004\203\013z\274c\206F\267#\310\245F\230\322\324\262\036\272\223\353\324LE\004\211\340_\242&\001C\030\007\240\341\270\221\321|R\376R\263<\2269)1\027\353\312F\316\362:\327\262q\360r^C\304MM@\257\003\320\217\017\001r~T-\3401n\026\316\327\206\021i\222\206*V)Y\321\200\305\347\024\n\005anFh\304?\200t\2064w\240\376\201\235\364A\007\002\206\010\330\256""\005\027^\003,\001\230?\361w$S\205\t\007!\022\250 ";
+    PyObject *data = __Pyx_DecompressString(cstring, 2086, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1807 bytes) */
-const char* const cstring = "x\332\335W\317s\0237\024v\246\241\244?\246mB\007\002mg\004Sp\2221\013\201L\312t(\035\343\3226\207&\320\224\366\320\351hd\255\326\026\254\245\315J\353\330\2348\346\270G\037}\364\321\307\034\371\0238\372\230?\241\177B\337\323\256\177\204\020\232\2644e8x\255\225\364\364\336\373\336\367>\331_\223r\030\022_6\2042R+C\242Xp\341KU\033O\222\313>i$\306\222\252 R\371\242%|\302\224O\224\266\304\204\022\266\337M\202@\304\244)\3056\361\2650nI\264\"m\00416\226\2760\025\246\210Va\233\360X0+\010#\325\314\310\326\231%\322\020\256\225\225\265D'\006\234\220\206h\350\270\355\201\025\036\305\214\2215E\254&`\354_u\347d;\320e\276)?x;\226\226UC\221o\310\202\nb\335x\225\255K\213lK['\266\035\tR\314\347m\314\224qi\214M\262m`!\001*;\201]\245\016^\230\225\234]\343\343a\363\006\327\261\270&\225\025qD\353\311\344\220\302\222\022\261\361\242v\353\273I\270e\006a\346\342^#\262mb\352\014\002\263I\004\251\005:&\274m\353Zy,\216Y{\315\205\257\023Kt@\252:Q\276!\013\254\005\247\\\366\027\327\016F\232\225.\211\"\035[\341\257\251&\013%\324X\373\242\204e\203\315P\342\"/\022\360S\004g\010C\261Dj`5\334\234\205\003\225rnn\377\344\340\371\025\341\201\020\3265\024\302\025\266\342\242\304||\021\312\252\210\241DP\000$\0058q\325W\344\376\275\373WWn\2558R\305\342\021\2707\020]\225\207Pw \023\346\224\310\320\2023,\216\361\310Z@\332:!J@\230@\212\010\366M\032\330\272P\304\010\213\003Rt\225\204ZhE\301\034\230]\314q\225M\201\326\337\263\320\010oc\037x\020rNO\306\2710C47\255\210H\203\265\035~\320\rOD\254\307@?T\216wp$p\271)b\240\225\025\r|\327UL\312\273\363mq\221\371>U\010\017&K\000\241\353-\256\303\020\303\201\302x\254\312oOt\002n\312\202\275\363\342\364\220\200w\270\3261\204\314\001I%B\223\265*\220\217\327IN\257\321Z\276u\330\314\013\225\022\371\261D~+\221\033\213/.\0356\277\236Mf\347\272\331:\003\034W\010\320\"\021\346\360\225\257\311\3576,AG\225H\025\276\253\361\037\007\367f\244ZX)\221\312\242/\r\302)\034\2505N\026\220}5\327\024X\030T(\321\262BY\247\027c\261\222&3\361\021|#\237\010r\373\033r\375@\313 \331\rm9(\263q{""\"\220P\250\0324yEi\340m\300\222\320\022Jc\341'\\PJ\374\304UYiu\025x\334\224,\204U.\225\264\224\252\244\021\265=ll\3415\300N:o$`2\314\310*\033\330u\223\333\022(V\375\300\216\2344w\214\010\003O\261\206\030\212\302\272V\342v\246\252\376>\202\034\234\303\376\035\361d\337\372h6\031\221\226\205\241\346N\232]\304>\263\314{\311jV#<#Wv\257\274YY[\253\320\312\306\372/k?<\334x\2709\026Bo,\204^&\204\336X\375\274\203Bx/\014ed\244\241\364~\273\005\237\357@%\350:\324\371g\021l\212\255D(.Pd\274\261\336@\307\014c\243Y\31723n\025\227\0133m\305\245\366\300\th\244T\302T\231\021U \266\210\301\2632\226)\233\277\006p\211\324\035\275\362\t$\007\207\362\242\266P:\034\324\204E~\341+\234G%hK\314\270\2502\3768\353\230<!\016zby\224P7\240\324\307\204\340\211.\201Kx\270\217\242\346\036\024\022\317\252.P\362!YX\026@\025'\233\"\216u\234\207\3470C\343 d5\023\204\232\331\325\025\2408@\235\3135\245A\2428\006\014\241\2027@\307\031\205\2108^\207C\310\3512\257\037\272@\341|\373\362UG\356\\X\376~\007\215\020\352\272\213\331\034a\373\341~\363\2032\224\245Oi\326.\360\215\227 B8*s\246\000\271\014P\332`P&\n\0279\336\342\030\010~h\313=\207z\220K\001\305@\223\020\214\260\363FOP\031x\212mxDP\026j\353\370\233\302\270f\206\302i\023A\375#\035Q\n\027:\345,\222X\0007\256\013\376\330\200\211{\313\353\201CWw7JT$\371c\360yO\r\3675\335/\031<c+aa\026\304X\207F\243L\327&&\000\007\030\326\200e\000\026\205\2330O\000F\271\234\271q\036\306\304xx\222krD\r\246cX\023\221\261\032>q\202\364\2650M1^\3106\211@(D&\361\255\373\3552\366\333\206\3430YZx\341\275D\376\301\004\210\004\311Q{,#l\235\010\357\266\022\311\242\311\327td)\213k@\332\353c\365\201\227\261\376\320\325L\200`rBw\226o\035\024!zL:\223\245Q\014p\001\261\320\005\262X8>\030oL\252\320\371oeRNV\336\276\314&\231\371vg\367\226\026p\337\235vHz\307\024\245\302\241MPxu{\034\301Q\341\210\205*\034!\333\247S\177\276[\230;3\230\235\033\234=7\270\360\331\340\363/\006\237}>\230?\017\257\177.\025N\315<\335\336\t\322r\272\331y\247\263<\230\371h\347Qg\2523;\230>\375\264\271\363k\272\234VR""\323\2718\232\337\233\236\357\274\333\t\272\345\356\203\301x\270\007\273\355\316W\351\025g:3\227^z\376\351\225.\353n\r\334\302jz6\335\352L\rff\323\271\347g.w\037t\331\336\364\371\314\311\223t.]\036|\374\311`\346\323\364n\372\250\373N\367f\227\r\336;\223\336L\031\316\225\367\246\227z\227z\337\367/\365+}\273\273\372l\356\331\362\336\364\227\3352\2366\217\336\360\240\231\017vn\35640\376O\322\231\347\363K\275\213\220\364\251\017w\226_\231\375\302\353\311\036\207\247;\315,\255\223\001\302\354~\271\033<\273\373\014\314\257\366\036\034\204\202\247_t\330\313\300x\277pn\376d`\030\037x\243\263\331=\335m\366\036\364x\377L\277<q\314q\301\032\274\332\342%\013\377\032\336\353\375\251C\341\235M\317?\277P\352\225\377k\256\235\004\253.\366o\366\203\335\273\273`\272\330\233}1\345o\360\370\223l\255\023\356\247\221\260\334\350_\374?\204e\377|\261{\266\273\325\233:B\277\235\260\376N\364\305r\177\366\250\262\223\377\017;\366\365\276:\361\002\1777CC\203\325\025\262\360Z\217[,\274\311\321\225\310\233}\034\314.\026\266c\346\026\n\341p\207\221\252\026\212\215\277\000\335Yn\370";
-    PyObject *data = __Pyx_DecompressString(cstring, 1807, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1758 bytes) */
+const char* const cstring = "x\332\335V\313r\023G\024\265+\006\234G%\261M\201IBUC\001\262]b\300\340\"\251\024!%\004$^\304\306q \213T\252\253\325\323#5\214\272\307\323=\262\304\212\245\227\263\324RK-\265\364\222O`\251\245?\201O\310\275=\243\2071&&\017'\305B\343\236\356\276\257s\317=\343oI)\014\211/\353B\031\251\225!Q,\270\360\245\252\2166\311e\237\324\023cIE\020\251|\321\024>a\312'J[bB\t\327\357&A b\322\220b\233\370Z\030w$\232\2216\202\030\033K_\2302SD\253\260Ex,\230\025\204\221Jfdk\314\022i\010\327\312\312j\242\023\003AH]\324u\334\362\300\n]1cdU\021\253\t\030\373W\235\237\354\006\206\314/\345\216\267ciY%\024\371\205,\251 \326\365\267\331\272\262\310\266\2645b[\221 \205|\337\306L\031W\306\310$\273\006\026\022\240\262c\330\225k\020\205Y\311\3315>Z6np\035\213kRY\021G\264\226\214/)\034)\021\033/j5\357\215\303-3\010\263\020\367\353\221m\021Sc\220\230M\"(-\3201\341-[\323\312cq\314Z\253.}\235X\242\003R\321\211\362\rY`M\360r\331_\\=\230i\326\272$\212tl\205\277\252\032,\224\320c\355\213\"\266\r.C\213\013\274@ N\001\202!\014\205\"\251\202\325\340r\226\016t\312\205\271\375\223\203\3471\302\003)\254ih\204kl\331e\211\365\370\"\224\025\021C\213\240\001H\n\010\342\272\257\310\303\373\017\257\256|\263\342H\025\213'\020\336@v\025\036B\337\201LXS\"C\013\301\2609\306#\253\001i\351\204(\001i\002)\"\2707n`kB\021#,.H\301u\022z\241\025\005s`v!\307U6\004Z?`\241\021\336\372>\360 \345\234\236\214sa\006hnZ\021\221:k9\374`\032\236\211X\217\200~\244\034\357\300%p\271!b\240\225\025u|\327\025,\312\273\363}a\221\371>U\010\017\026K\000\241\353M\256\303\020\323\201\306x\254\302o\217M\002^\312\222\275\363\372\366\200\200w\270\3261\244\314\001I%B\223\215*\220\217\327HN\257\341Y~u0\314\013\345\"\371\261H~-\222\033\213\257\037\035\266\277\226mf~\335n\215\001\216+\004h\221\010s\370\311\267\3447\033\026a\242\212\244\002\177+\361\357\007\357f\244ZX)\222\362\242/\r\302)\034\250UN\026\220}U7\024\330\030T(\321\264BY\247\027#\261\222&3\361\021|#\237\tr\373;r\375\300\310 \331\rm:(\263uk,\221P\250*\014yYi\340m\300\222\320\022Jc\341'\\PJ""\374\304uYiu\025x\334\220,\204S.\225\264\224\252\244\036\265<\034l\341\325\301N\272h$`2\314\310*\3538u\343\327\022hV\355\300\215\2344w\214\010\003O\261\272\030\210\302\232V\342v\246\252\376>\202\034\334\303\371\035\362d\337\371p7\031\222\226\205\241\346N\232]\306>\263\314{\303i\326#\364\221+\273W\332,\257\256\226iy}\355\227\325\037\036\255?\332\034\t\2417\022B/\023Bo\244~\336A!\274\037\20622\322P\372\260\325\204\337=P\t\272\006}\376Y\004\233b+\021\212\013\024\031o\244701\203\334h6\263\314\214F\305\325\302LKq\251=\010\002\032)\2250\025fD\005\210-b\210\254\214e\312\346\257\001|Dj\216^\371\006\222\203C{Q[(\035,\252\302\"\277\360\025\374Q\t\332\0223.*\214?\315&&/\210\203\236X\036%\324-(\365\261 xbH\340\022:\367Q\324\334\203B\341Y\327\005J>\024\013\307\002\250\342dS\304\261\216\363\364\034fh\034\204\254j\202P3{k\005(\016P\347rMi\220(\216\tC\252\020\r\320qF!\"\216\237\303\001\344t\231\327\016=\240\340\337\276\371\324\221;\027\226?\277A#\204\272\346r6G\270~x\334\334Q\206\262\364)\315\306\005\376\342G\020!\034\2669S\200\\\006(\2553h\023\205\0179~\3051\021\374\321\246{\016\364 \227\002\212\211&!\030\341\344\r\237\2402\360\024\333\360\210\240-\324\326\360\177\n\343\206\031\032\247M\004\375\217tD)|\320)g\221\304\006\270uM\360\247\006L\334[\336\017\\\272\276\273U\242\"\311\237B\314\373jp\257\341\376\223A\037[\t\013\263$F:4\\e\2726\266\0018\300\262\n,\003\260(|\t\363\002`\225\313\231[\347i\214\255\007\236\334\220#j\260\035\303\231\210\214\325\360\213\023\244\257\205m\212\371B\265I\004B!2\211o>l\225p\336\326\035\207\311\322\302k\357E\362\0276@$H\216\332S\031\341\350D\370m+\222,\233\374LG\226\262\270\n\244\275>R\037x\031\351\017\275\225\t\020l\216\351\316\3627\007E\210\276#\235\311\3220\007\370\000\261\320%\2628\361\356`\374oJ\205\311\177/\213r\262\362\376U6\316\314\367\273\272\367\264\201\373\276i\207\224\367\216\2424q\350\020L\274}<\216\020h\342\210\215\2328B\265\317'_\235\234\230\235\353\317\314\366\317\234\355\177\361e\377\253\363\375/\277\352\317\237\203\327WK\023'\246\237o""\357\004i)\335l\177\320^\356O\177\272\363\244=\331\236\351O\235z\336\330y\234.\247\345\324\264/\014\367\367\246\346\333'\333A\247\324\331\350\217\226{p\333\356|\235^q\246\323\263\351\305\227\247\257tXg\253\357\016n\245g\322\255\366d\177z&\235}9w\271\263\321a{S\347\262 \317\322\331t\271\377\331\347\375\351\323\351\335\364I\347\203\316\315\016\353\1778\227\336L\031\356\225\366\246\226\272\027\273\017z\027{\345\236\335\275\365b\366\305\362\336\324\245N\t\275\315c4t4\375\361\316\315\235:\346\377y:\375r~\251{\001\212>\361\311\316\362[\253_\370g\252\307\345\251v#+\353x\2000\273\227v\203\027w_\200\371\325\356\306A(xz\276\315\336\004\306G\023g\347\217\007\206\221\303\033\355\315\316\251N\243\273\321\345\275\271^i\314\315\273\202\325\177\273\305\033\016\3766\274\327{\223\207\302;\223\236{\371E\261[\372\267\271v\034\254\272\320\273\331\013v\357\356\202\351bw\346\365\222\277C\367\3079Z\307<OCa\271\321\273\360_\010\313\376\375B\347Lg\253;y\204y;f\375\035\233\213\345\336\314Qeg\375\0177B\263\262";
+    PyObject *data = __Pyx_DecompressString(cstring, 1758, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (6395 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/v2core/interp_hue/interp_hue_corners.pyxDimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>?')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>coords channels must match corners channelscoords must be (C, H, W, 2)coords must be (H, W, 2)coords must be (N, 2)corners must have 4 valuescorners must have 4 values: [tl, tr, bl, br]corners must have shape (4, C)disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraymodes_x and modes_y must have length Cno default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not None<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSChromatica.chromatica.v2core.interp_hue.interp_hue_cornersEllipsis__Pyx_PyDict_NextRefSequenceView.MemoryViewabcallocate_bufferascontiguousarrayasyncio.coroutinesbaseborder_constantborder_featheringborder_modec__class____class_getitem__cline_in_tracebackcoordscornerscountcpu_count__dict__distance_modedtypedtype_is_objectemptyencodeenumerateerrorfeather_hue_modeflagsfloat64form""atfortran__func____getstate__hue_lerp_from_corners_1chhue_lerp_from_corners_1ch_flathue_lerp_from_corners_multichannelhue_lerp_from_corners_multichannel_per_ch_modeshue_lerp_from_corners_multichannel_flathue_lerp_from_corners_per_ch_coordsid__import__index_is_coroutineitemsitemsize__main__memviewmodemode_xmode_ymodes_xmodes_y__module__name__name__ndim__new__npnum_threadsnumpyobjospackpop__pyx_capi____pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__register__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstruct__test__unpackupdatevaluesxPyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_per_ch_modes *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_per_ch_coor""ds *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes\000hue_lerp_from_corners_1ch\000hue_lerp_from_corners_1ch_flat\000hue_lerp_from_corners_multichannel\000hue_lerp_from_corners_multichannel_flat\000hue_lerp_from_corners_per_ch_coords\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360*\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260t\2706\300\022\3001\340\004$\240A\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210m\2301\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\004-\250Q\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001""\360\n\000\027\030\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200w\210f\220A\220S\230\003\2302\230S\240\007\240v\250Q\250c\260\023\260A\330\010\016\210j\230\001\230\021\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\0040\260\001\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\021\220\031\320\032,\250A\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260!\2603\260f\270B\270a\340\004)\250\021\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\210=\230\001\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032""\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260t\2706\300\022\3001\340\0042\260!\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210m\2301\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230'\240\026\240q\250\001\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\0041\260\021\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64)\000__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_u""tils_f64 (__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int)\000wrap_hue\000lerp_hue_singleO";
+    #else /* compression: none (5892 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/v2core/interp_hue/interp_hue_corners.pyxDimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>?')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>coords channels must match corners channelscoords must be (C, H, W, 2)coords must be (H, W, 2)coords must be (N, 2)corners must have 4 valuescorners must have 4 values: [tl, tr, bl, br]corners must have shape (4, C)disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraymodes_x and modes_y must have length Cno default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not None<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ASCIIC_CONTIGUOUSChromatica.chromatica.v2core.interp_hue.interp_hue_cornersEllipsis__Pyx_PyDict_NextRefSequenceView.MemoryViewabcallocate_bufferascontiguousarrayasyncio.coroutinesbaseborder_constantborder_featheringborder_modec__class____class_getitem__cline_in_tracebackcoordscornerscountcpu_count__dict__distance_modedtypedtype_is_objectemptyencodeenumerateerrorfeather_hue_modeflagsfloat64form""atfortran__func____getstate__hue_lerp_from_corners_1chhue_lerp_from_corners_1ch_flathue_lerp_from_corners_multichannelhue_lerp_from_corners_multichannel_per_ch_modeshue_lerp_from_corners_multichannel_flathue_lerp_from_corners_per_ch_coordsid__import__index_is_coroutineitemsitemsize__main__memviewmodemode_xmode_ymodes_xmodes_y__module__name__name__ndim__new__npnum_threadsnumpyobjospackpop__pyx_capi____pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__register__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstruct__test__unpackupdatevaluesxPyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_per_ch_modes *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_per_ch_coor""ds *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes\000hue_lerp_from_corners_1ch\000hue_lerp_from_corners_1ch_flat\000hue_lerp_from_corners_multichannel\000hue_lerp_from_corners_multichannel_flat\000hue_lerp_from_corners_per_ch_coords\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360*\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260t\2706\300\022\3001\340\004$\240A\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210m\2301\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\004-\250Q\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001""\360\n\000\027\030\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200w\210f\220A\220S\230\003\2302\230S\240\007\240v\250Q\250c\260\023\260A\330\010\016\210j\230\001\230\021\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\0040\260\001\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\021\220\031\320\032,\250A\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260!\2603\260f\270B\270a\340\004)\250\021\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\210=\230\001\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032""\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\007\230v\240Q\240a\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260t\2706\300\022\3001\340\0042\260!\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210m\2301\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101\200\001\360\006\000\022\023\330\021\022\330\026\027\330\032\033\330\034\035\330\033\034\330\030\031\330\026\027\360(\000\005\010\200w\210f\220A\220S\230\003\2301\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\330\004\007\200v\210V\2201\220C\220s\230'\240\026\240q\250\001\330\010\016\210j\230\001\230\021\340\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200t\2107\220&\230\001\230\021\330\010\022\220\"\320\024&\240a\240q\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\031\230\021\330\004\007\200z\220\022\2201\330\017\020\330\010\024\220B\220j\240\003\2403\240a\330\t\023\2203\220a\330\010\024\220A\340\004*\250\"\250F\260\"\260C\260s\270$\270f\300B\300a\340\0041\260\021\330\010\021\220\030\230\021\330\010\031\230\021\330\010\013\2103\210c\220\035\230a\330\010\020\220\010\320\030*\250!\360\006\000\005\014\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -31109,7 +31853,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 151; i < 160; i++) {
+    for (int i = 151; i < 159; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -31120,7 +31864,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 160; i++) {
+    for (Py_ssize_t i = 0; i < 159; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
@@ -31128,7 +31872,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
     #if CYTHON_IMMORTAL_CONSTANTS
     {
       PyObject **table = stringtab + 151;
-      for (Py_ssize_t i=0; i<9; ++i) {
+      for (Py_ssize_t i=0; i<8; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
         #else
@@ -34071,6 +34815,19 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
         PyGILState_Release(state);
 }
 
+/* BufferIndexError (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis) {
+  PyErr_Format(PyExc_IndexError,
+     "Out of bounds on buffer access (axis %d)", axis);
+}
+
+/* BufferIndexErrorNogil */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis) {
+    PyGILState_STATE gilstate = PyGILState_Ensure();
+    __Pyx_RaiseBufferIndexError(axis);
+    PyGILState_Release(gilstate);
+}
+
 /* ReleaseUnknownGil */
 static __Pyx_UnknownThreadState __Pyx_SaveUnknownThread(void) {
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
@@ -35606,62 +36363,6 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
   bad:
       Py_XDECREF(result);
       return NULL;
-  }
-  #endif
-  
-/* PxdImportShared (used by FunctionImport) */
-  #ifndef __PYX_HAVE_RT_ImportFromPxd_3_2_3
-  #define __PYX_HAVE_RT_ImportFromPxd_3_2_3
-  static int __Pyx_ImportFromPxd_3_2_3(PyObject *module, const char *name, void **p, const char *sig, const char *what) {
-      PyObject *d = 0;
-      PyObject *cobj = 0;
-      d = PyObject_GetAttrString(module, "__pyx_capi__");
-      if (!d)
-          goto bad;
-  #if (defined(Py_LIMITED_API) && Py_LIMITED_API >= 0x030d0000) || (!defined(Py_LIMITED_API) && PY_VERSION_HEX >= 0x030d0000)
-      PyDict_GetItemStringRef(d, name, &cobj);
-  #else
-      cobj = PyDict_GetItemString(d, name);
-      Py_XINCREF(cobj);
-  #endif
-      if (!cobj) {
-          PyErr_Format(PyExc_ImportError,
-              "%.200s does not export expected C %.8s %.200s",
-                  PyModule_GetName(module), what, name);
-          goto bad;
-      }
-      if (!PyCapsule_IsValid(cobj, sig)) {
-          PyErr_Format(PyExc_TypeError,
-              "C %.8s %.200s.%.200s has wrong signature (expected %.500s, got %.500s)",
-               what, PyModule_GetName(module), name, sig, PyCapsule_GetName(cobj));
-          goto bad;
-      }
-      *p = PyCapsule_GetPointer(cobj, sig);
-      if (!(*p))
-          goto bad;
-      Py_DECREF(d);
-      Py_DECREF(cobj);
-      return 0;
-  bad:
-      Py_XDECREF(d);
-      Py_XDECREF(cobj);
-      return -1;
-  }
-  #endif
-  
-/* FunctionImport */
-  #ifndef __PYX_HAVE_RT_ImportFunction_3_2_3
-  #define __PYX_HAVE_RT_ImportFunction_3_2_3
-  static int __Pyx_ImportFunction_3_2_3(PyObject *module, const char *funcname, void (**f)(void), const char *sig) {
-      union {
-          void (*fp)(void);
-          void *p;
-      } tmp;
-      int result = __Pyx_ImportFromPxd_3_2_3(module, funcname, &tmp.p, sig, "function");
-      if (result == 0) {
-          *f = tmp.fp;
-      }
-      return result;
   }
   #endif
   

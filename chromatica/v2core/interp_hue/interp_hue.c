@@ -1385,6 +1385,7 @@ static const char* const __pyx_f[] = {
   "<stringsource>",
   "../../AppData/Local/Python/pythoncore-3.12-64/Lib/site-packages/numpy/__init__.cython-30.pxd",
   "Chromatica/chromatica/v2core/interp_utils.pxd",
+  "Chromatica/chromatica/v2core/interp_hue/interp_hue_utils.pxd",
   "cpython/type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1817,7 +1818,7 @@ typedef double __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64;
 */
 typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32;
 
-/* "interp_hue_utils.pxd":7
+/* "interp_hue_utils.pxd":26
  * 
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64             # <<<<<<<<<<<<<<
@@ -1826,7 +1827,7 @@ typedef __pyx_t_5numpy_int32_t __pyx_t_10Chromatica_10chromatica_6v2core_12inter
 */
 typedef double __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64;
 
-/* "interp_hue_utils.pxd":8
+/* "interp_hue_utils.pxd":27
  * # Type definitions (also defined in .pyx)
  * ctypedef double f64
  * ctypedef int i32             # <<<<<<<<<<<<<<
@@ -1941,7 +1942,7 @@ struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult1D {
   int use_border_directly;
 };
 
-/* "interp_hue_utils.pxd":11
+/* "interp_hue_utils.pxd":30
  * 
  * # Hue interpolation modes
  * cdef enum HueDirection:             # <<<<<<<<<<<<<<
@@ -3200,6 +3201,12 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
                                   int full_traceback, int nogil);
 
+/* BufferIndexError.proto (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis);
+
+/* BufferIndexErrorNogil.proto */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis);
+
 /* IsLittleEndian.proto (used by BufferFormatCheck) */
 static CYTHON_INLINE int __Pyx_Is_Little_Endian(void);
 
@@ -3886,12 +3893,14 @@ static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_15border_handling
 static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_extra_1d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64); /*proto*/
 static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_extra_2d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32); /*proto*/
 static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_clamp_01(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64); /*proto*/
+static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, int, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_i32); /*proto*/
+static CYTHON_INLINE Py_ssize_t __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, Py_ssize_t, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64 *); /*proto*/
 static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult1D __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_1d(__pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64, int, __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_f64); /*proto*/
 
 /* Module declarations from "Chromatica.chromatica.v2core.interp_hue.interp_hue_utils" */
-static __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue)(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
-static __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode)(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
-static __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single)(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int); /*proto*/
 
 /* Module declarations from "Chromatica.chromatica.v2core.interp_hue.interp_hue2d" */
 static PyArrayObject *(*__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_12interp_hue2d_hue_lerp_2d_spatial)(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch); /*proto*/
@@ -4110,7 +4119,7 @@ typedef struct {
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[2];
   PyObject *__pyx_codeobj_tab[8];
-  PyObject *__pyx_string_tab[192];
+  PyObject *__pyx_string_tab[191];
   PyObject *__pyx_number_tab[5];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -4342,8 +4351,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_b_iso88591_fAQ_fAQ_vV1Cs_j_t6_q_Qa_t6_q_Qa __pyx_string_tab[187]
 #define __pyx_kp_b_iso88591_fAQ_r_q_6_1_1_a_d_U_1_AQa_auHAS __pyx_string_tab[188]
 #define __pyx_kp_b_iso88591_vQa_vV1A_aq_t6_S_j_uF_3c_j_4r_Y __pyx_string_tab[189]
-#define __pyx_kp_b_pyx_t_10Chromatica_10chromatic __pyx_string_tab[190]
-#define __pyx_n_b_O __pyx_string_tab[191]
+#define __pyx_n_b_O __pyx_string_tab[190]
 #define __pyx_float_0_0 __pyx_number_tab[0]
 #define __pyx_int_0 __pyx_number_tab[1]
 #define __pyx_int_neg_1 __pyx_number_tab[2]
@@ -4390,7 +4398,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<8; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<192; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<191; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -4441,7 +4449,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<8; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<192; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<191; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -20922,6 +20930,773 @@ static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_u
   return __pyx_r;
 }
 
+/* "interp_hue_utils.pxd":39
+ * # Inline Helpers - Hue Operations
+ * # =============================================================================
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+
+  /* "interp_hue_utils.pxd":41
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)             # <<<<<<<<<<<<<<
+ *     if h < 0.0:
+ *         h += 360.0
+*/
+  __pyx_v_h = fmod(__pyx_v_h, 360.0);
+
+  /* "interp_hue_utils.pxd":42
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:             # <<<<<<<<<<<<<<
+ *         h += 360.0
+ *     return h
+*/
+  __pyx_t_1 = (__pyx_v_h < 0.0);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":43
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:
+ *         h += 360.0             # <<<<<<<<<<<<<<
+ *     return h
+ * 
+*/
+    __pyx_v_h = (__pyx_v_h + 360.0);
+
+    /* "interp_hue_utils.pxd":42
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+ *     if h < 0.0:             # <<<<<<<<<<<<<<
+ *         h += 360.0
+ *     return h
+*/
+  }
+
+  /* "interp_hue_utils.pxd":44
+ *     if h < 0.0:
+ *         h += 360.0
+ *     return h             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_v_h;
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":39
+ * # Inline Helpers - Hue Operations
+ * # =============================================================================
+ * cdef inline f64 wrap_hue(f64 h) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Wrap hue to [0, 360)."""
+ *     h = fmod(h, 360.0)
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":47
+ * 
+ * 
+ * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """
+ *     Adjust h1 relative to h0 based on interpolation mode.
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1, int __pyx_v_mode) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_d;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+  int __pyx_t_2;
+
+  /* "interp_hue_utils.pxd":52
+ *     Returns adjusted h1 (may be outside [0, 360)).
+ *     """
+ *     cdef f64 d = h1 - h0             # <<<<<<<<<<<<<<
+ * 
+ *     if mode == HUE_CW:
+*/
+  __pyx_v_d = (__pyx_v_h1 - __pyx_v_h0);
+
+  /* "interp_hue_utils.pxd":54
+ *     cdef f64 d = h1 - h0
+ * 
+ *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
+ *         if h0 > h1:
+ *             return h1 + 360.0
+*/
+  switch (__pyx_v_mode) {
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CW:
+
+    /* "interp_hue_utils.pxd":55
+ * 
+ *     if mode == HUE_CW:
+ *         if h0 > h1:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_h0 > __pyx_v_h1);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":56
+ *     if mode == HUE_CW:
+ *         if h0 > h1:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":55
+ * 
+ *     if mode == HUE_CW:
+ *         if h0 > h1:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":57
+ *         if h0 > h1:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_CCW:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":54
+ *     cdef f64 d = h1 - h0
+ * 
+ *     if mode == HUE_CW:             # <<<<<<<<<<<<<<
+ *         if h0 > h1:
+ *             return h1 + 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_CCW:
+
+    /* "interp_hue_utils.pxd":60
+ * 
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_h0 < __pyx_v_h1);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":61
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":60
+ * 
+ *     elif mode == HUE_CCW:
+ *         if h0 < h1:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":62
+ *         if h0 < h1:
+ *             return h1 - 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_SHORTEST:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":59
+ *         return h1
+ * 
+ *     elif mode == HUE_CCW:             # <<<<<<<<<<<<<<
+ *         if h0 < h1:
+ *             return h1 - 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_SHORTEST:
+
+    /* "interp_hue_utils.pxd":65
+ * 
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+*/
+    __pyx_t_1 = (__pyx_v_d > 180.0);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":66
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         elif d < -180.0:
+ *             return h1 + 360.0
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":65
+ * 
+ *     elif mode == HUE_SHORTEST:
+ *         if d > 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+*/
+    }
+
+    /* "interp_hue_utils.pxd":67
+ *         if d > 180.0:
+ *             return h1 - 360.0
+ *         elif d < -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_1 = (__pyx_v_d < -180.0);
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":68
+ *             return h1 - 360.0
+ *         elif d < -180.0:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":67
+ *         if d > 180.0:
+ *             return h1 - 360.0
+ *         elif d < -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":69
+ *         elif d < -180.0:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     elif mode == HUE_LONGEST:
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":64
+ *         return h1
+ * 
+ *     elif mode == HUE_SHORTEST:             # <<<<<<<<<<<<<<
+ *         if d > 180.0:
+ *             return h1 - 360.0
+*/
+    break;
+    case __pyx_e_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_HUE_LONGEST:
+
+    /* "interp_hue_utils.pxd":72
+ * 
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+*/
+    __pyx_t_2 = (__pyx_v_d >= 0.0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L7_bool_binop_done;
+    }
+    __pyx_t_2 = (__pyx_v_d < 180.0);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L7_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":73
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0             # <<<<<<<<<<<<<<
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0
+*/
+      __pyx_r = (__pyx_v_h1 - 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":72
+ * 
+ *     elif mode == HUE_LONGEST:
+ *         if d >= 0.0 and d < 180.0:             # <<<<<<<<<<<<<<
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+*/
+    }
+
+    /* "interp_hue_utils.pxd":74
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    __pyx_t_2 = (__pyx_v_d < 0.0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L9_bool_binop_done;
+    }
+    __pyx_t_2 = (__pyx_v_d > -180.0);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L9_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "interp_hue_utils.pxd":75
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0             # <<<<<<<<<<<<<<
+ *         return h1
+ * 
+*/
+      __pyx_r = (__pyx_v_h1 + 360.0);
+      goto __pyx_L0;
+
+      /* "interp_hue_utils.pxd":74
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+ *         elif d < 0.0 and d > -180.0:             # <<<<<<<<<<<<<<
+ *             return h1 + 360.0
+ *         return h1
+*/
+    }
+
+    /* "interp_hue_utils.pxd":76
+ *         elif d < 0.0 and d > -180.0:
+ *             return h1 + 360.0
+ *         return h1             # <<<<<<<<<<<<<<
+ * 
+ *     return h1
+*/
+    __pyx_r = __pyx_v_h1;
+    goto __pyx_L0;
+
+    /* "interp_hue_utils.pxd":71
+ *         return h1
+ * 
+ *     elif mode == HUE_LONGEST:             # <<<<<<<<<<<<<<
+ *         if d >= 0.0 and d < 180.0:
+ *             return h1 - 360.0
+*/
+    break;
+    default: break;
+  }
+
+  /* "interp_hue_utils.pxd":78
+ *         return h1
+ * 
+ *     return h1             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_v_h1;
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":47
+ * 
+ * 
+ * cdef inline f64 adjust_end_for_mode(f64 h0, f64 h1, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """
+ *     Adjust h1 relative to h0 based on interpolation mode.
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":81
+ * 
+ * 
+ * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h0, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u, int __pyx_v_mode) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_h1_adj;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_result;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+
+  /* "interp_hue_utils.pxd":84
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+ *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)             # <<<<<<<<<<<<<<
+ *     cdef f64 result = h0 + u * (h1_adj - h0)
+ * 
+*/
+  __pyx_v_h1_adj = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode(__pyx_v_h0, __pyx_v_h1, __pyx_v_mode);
+
+  /* "interp_hue_utils.pxd":85
+ * 
+ *     cdef f64 h1_adj = adjust_end_for_mode(h0, h1, mode)
+ *     cdef f64 result = h0 + u * (h1_adj - h0)             # <<<<<<<<<<<<<<
+ * 
+ *     return wrap_hue(result)
+*/
+  __pyx_v_result = (__pyx_v_h0 + (__pyx_v_u * (__pyx_v_h1_adj - __pyx_v_h0)));
+
+  /* "interp_hue_utils.pxd":87
+ *     cdef f64 result = h0 + u * (h1_adj - h0)
+ * 
+ *     return wrap_hue(result)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue(__pyx_v_result);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":81
+ * 
+ * 
+ * cdef inline f64 lerp_hue_single(f64 h0, f64 h1, f64 u, int mode) noexcept nogil:             # <<<<<<<<<<<<<<
+ *     """Lerp between two hues with mode, returning wrapped result."""
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":93
+ * # Hue-Specific Interpolation Functions
+ * # =============================================================================
+ * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils__interp_line_1ch_hue(__Pyx_memviewslice __pyx_v_l0, __Pyx_memviewslice __pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, int __pyx_v_mode_x, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_frac;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_v0;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_v1;
+  Py_ssize_t __pyx_v_idx_lo;
+  Py_ssize_t __pyx_v_idx_hi;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
+
+  /* "interp_hue_utils.pxd":102
+ *     cdef Py_ssize_t idx_lo, idx_hi
+ * 
+ *     idx_lo = compute_interp_idx(u_x, L, &frac)             # <<<<<<<<<<<<<<
+ *     idx_hi = idx_lo + 1
+ * 
+*/
+  __pyx_v_idx_lo = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_compute_interp_idx(__pyx_v_u_x, __pyx_v_L, (&__pyx_v_frac));
+
+  /* "interp_hue_utils.pxd":103
+ * 
+ *     idx_lo = compute_interp_idx(u_x, L, &frac)
+ *     idx_hi = idx_lo + 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Hue interpolation for both lines
+*/
+  __pyx_v_idx_hi = (__pyx_v_idx_lo + 1);
+
+  /* "interp_hue_utils.pxd":106
+ * 
+ *     # Hue interpolation for both lines
+ *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
+ *     v1 = lerp_hue_single(l1[idx_lo], l1[idx_hi], frac, mode_x)
+ * 
+*/
+  __pyx_t_1 = __pyx_v_idx_lo;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_t_3 = __pyx_v_idx_hi;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l0.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 106, __pyx_L1_error)
+  }
+  __pyx_v_v0 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_1)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_3)) ))), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "interp_hue_utils.pxd":107
+ *     # Hue interpolation for both lines
+ *     v0 = lerp_hue_single(l0[idx_lo], l0[idx_hi], frac, mode_x)
+ *     v1 = lerp_hue_single(l1[idx_lo], l1[idx_hi], frac, mode_x)             # <<<<<<<<<<<<<<
+ * 
+ *     # Interpolate between lines with hue wrapping
+*/
+  __pyx_t_3 = __pyx_v_idx_lo;
+  __pyx_t_2 = -1;
+  if (__pyx_t_3 < 0) {
+    __pyx_t_3 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_3 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_3 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_v_idx_hi;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_v_l1.shape[0])) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_2);
+    __PYX_ERR(4, 107, __pyx_L1_error)
+  }
+  __pyx_v_v1 = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_3)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_1)) ))), __pyx_v_frac, __pyx_v_mode_x);
+
+  /* "interp_hue_utils.pxd":110
+ * 
+ *     # Interpolate between lines with hue wrapping
+ *     return lerp_hue_single(v0, v1, u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single(__pyx_v_v0, __pyx_v_v1, __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":93
+ * # Hue-Specific Interpolation Functions
+ * # =============================================================================
+ * cdef inline f64 _interp_line_1ch_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_1ch_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":113
+ * 
+ * 
+ * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+static CYTHON_INLINE __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils__interp_line_discrete_hue(__Pyx_memviewslice __pyx_v_l0, __Pyx_memviewslice __pyx_v_l1, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, Py_ssize_t __pyx_v_L, int __pyx_v_mode_y) {
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_L_minus_1;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_idx_f;
+  Py_ssize_t __pyx_v_idx;
+  __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_r;
+  int __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  int __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyGILState_STATE __pyx_gilstate_save;
+
+  /* "interp_hue_utils.pxd":119
+ * ) noexcept nogil:
+ *     """Discrete x-sampling hue interpolation."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)             # <<<<<<<<<<<<<<
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+*/
+  __pyx_v_L_minus_1 = ((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64)(__pyx_v_L - 1));
+
+  /* "interp_hue_utils.pxd":120
+ *     """Discrete x-sampling hue interpolation."""
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+*/
+  __pyx_v_idx_f = (__pyx_v_u_x * __pyx_v_L_minus_1);
+
+  /* "interp_hue_utils.pxd":121
+ *     cdef f64 L_minus_1 = <f64>(L - 1)
+ *     cdef f64 idx_f = u_x * L_minus_1
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)             # <<<<<<<<<<<<<<
+ * 
+ *     if idx < 0:
+*/
+  __pyx_v_idx = ((Py_ssize_t)floor((__pyx_v_idx_f + 0.5)));
+
+  /* "interp_hue_utils.pxd":123
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+  __pyx_t_1 = (__pyx_v_idx < 0);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":124
+ * 
+ *     if idx < 0:
+ *         idx = 0             # <<<<<<<<<<<<<<
+ *     elif idx >= L:
+ *         idx = L - 1
+*/
+    __pyx_v_idx = 0;
+
+    /* "interp_hue_utils.pxd":123
+ *     cdef Py_ssize_t idx = <Py_ssize_t>floor(idx_f + 0.5)
+ * 
+ *     if idx < 0:             # <<<<<<<<<<<<<<
+ *         idx = 0
+ *     elif idx >= L:
+*/
+    goto __pyx_L3;
+  }
+
+  /* "interp_hue_utils.pxd":125
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_idx >= __pyx_v_L);
+  if (__pyx_t_1) {
+
+    /* "interp_hue_utils.pxd":126
+ *         idx = 0
+ *     elif idx >= L:
+ *         idx = L - 1             # <<<<<<<<<<<<<<
+ * 
+ *     # Direct interpolation between two lines (discrete in x)
+*/
+    __pyx_v_idx = (__pyx_v_L - 1);
+
+    /* "interp_hue_utils.pxd":125
+ *     if idx < 0:
+ *         idx = 0
+ *     elif idx >= L:             # <<<<<<<<<<<<<<
+ *         idx = L - 1
+ * 
+*/
+  }
+  __pyx_L3:;
+
+  /* "interp_hue_utils.pxd":129
+ * 
+ *     # Direct interpolation between two lines (discrete in x)
+ *     return lerp_hue_single(l0[idx], l1[idx], u_y, mode_y)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_t_2 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_l0.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_l0.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_l1.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_l1.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_3);
+    __PYX_ERR(4, 129, __pyx_L1_error)
+  }
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single((*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l0.data) + __pyx_t_2)) ))), (*((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) ( /* dim=0 */ ((char *) (((__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 const  *) __pyx_v_l1.data) + __pyx_t_4)) ))), __pyx_v_u_y, __pyx_v_mode_y);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":113
+ * 
+ * 
+ * cdef inline f64 _interp_line_discrete_hue(             # <<<<<<<<<<<<<<
+ *     const f64[::1] l0, const f64[::1] l1,
+ *     f64 u_x, f64 u_y, Py_ssize_t L,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  __Pyx_WriteUnraisable("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils._interp_line_discrete_hue", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "interp_hue_utils.pxd":135
+ * # Convenience Wrapper for hue code with modern features
+ * # =============================================================================
+ * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
+ *     f64 u_x, f64 u_y, int bmode, f64 feathering, i32 distance_mode
+ * ) noexcept nogil:
+*/
+
+static CYTHON_INLINE struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_process_hue_border_2d(__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_x, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_u_y, int __pyx_v_bmode, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 __pyx_v_feathering, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_i32 __pyx_v_distance_mode) {
+  struct __pyx_t_10Chromatica_10chromatica_6v2core_12interp_utils_BorderResult __pyx_r;
+
+  /* "interp_hue_utils.pxd":139
+ * ) noexcept nogil:
+ *     """Wrapper for hue code - uses specified distance mode."""
+ *     return process_border_2d(u_x, u_y, bmode, feathering, distance_mode)             # <<<<<<<<<<<<<<
+*/
+  __pyx_r = __pyx_f_10Chromatica_10chromatica_6v2core_12interp_utils_process_border_2d(__pyx_v_u_x, __pyx_v_u_y, __pyx_v_bmode, __pyx_v_feathering, __pyx_v_distance_mode);
+  goto __pyx_L0;
+
+  /* "interp_hue_utils.pxd":135
+ * # Convenience Wrapper for hue code with modern features
+ * # =============================================================================
+ * cdef inline BorderResult process_hue_border_2d(             # <<<<<<<<<<<<<<
+ *     f64 u_x, f64 u_y, int bmode, f64 feathering, i32 distance_mode
+ * ) noexcept nogil:
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
 /* "Chromatica/chromatica/v2core/interp_hue/interp_hue.pyx":79
  * # 1D Hue Interpolation: coeffs (L, N), modes (N,) -> output (L,)
  * # =============================================================================
@@ -29870,7 +30645,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(4, 9, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_mstate->__pyx_ptype_7cpython_4type_type = __Pyx_ImportType_3_2_3(__pyx_t_1, __Pyx_BUILTIN_MODULE_NAME, "type",
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
@@ -29880,7 +30655,7 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   #else
   sizeof(PyHeapTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_2_3(PyHeapTypeObject),
   #endif
-  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(4, 9, __pyx_L1_error)
+  __Pyx_ImportType_CheckSize_Warn_3_2_3); if (!__pyx_mstate->__pyx_ptype_7cpython_4type_type) __PYX_ERR(5, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyImport_ImportModule("numpy"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -30046,26 +30821,6 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_import_code", 0);
   /*--- Function import code ---*/
-  {
-    __pyx_t_1 = PyImport_ImportModule("Chromatica.chromatica.v2core.interp_hue.interp_hue_utils"); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    const char * __pyx_import_signature = __Pyx_PyBytes_AsString(__pyx_mstate_global->__pyx_kp_b_pyx_t_10Chromatica_10chromatic);
-    #if !CYTHON_ASSUME_SAFE_MACROS
-    if (unlikely(!__pyx_import_signature)) __PYX_ERR(0, 1, __pyx_L1_error)
-    #endif
-    const char * __pyx_import_name = __pyx_import_signature + 721;
-    void (**const __pyx_import_pointers[])(void) = {(void (**)(void))&__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_wrap_hue, (void (**)(void))&__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_lerp_hue_single, (void (**)(void))&__pyx_f_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_adjust_end_for_mode, (void (**)(void)) NULL};
-    void (**const *__pyx_import_pointer)(void) = __pyx_import_pointers;
-    const char *__pyx_import_current_signature = __pyx_import_signature;
-    while (*__pyx_import_pointer) {
-      if (__Pyx_ImportFunction_3_2_3(__pyx_t_1, __pyx_import_name, *__pyx_import_pointer, __pyx_import_current_signature) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-      ++__pyx_import_pointer;
-      __pyx_import_name = strchr(__pyx_import_name, '\0') + 1;
-      __pyx_import_signature = strchr(__pyx_import_signature, '\0') + 1;
-      if (*__pyx_import_signature != '\0') __pyx_import_current_signature = __pyx_import_signature;
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  }
   {
     __pyx_t_1 = PyImport_ImportModule("Chromatica.chromatica.v2core.interp_hue.interp_hue2d"); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -31518,25 +32273,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 11; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{54},{96},{26},{34},{34},{13},{29},{33},{45},{22},{15},{68},{179},{37},{57},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{21},{15},{23},{25},{17},{31},{45},{39},{40},{7},{30},{6},{14},{2},{6},{35},{39},{9},{30},{46},{28},{22},{50},{39},{34},{8},{21},{37},{19},{20},{32},{22},{30},{37},{5},{12},{50},{8},{20},{8},{15},{3},{15},{17},{18},{4},{12},{15},{17},{11},{1},{9},{17},{18},{6},{6},{7},{5},{8},{13},{5},{15},{5},{6},{7},{4},{9},{5},{16},{5},{7},{6},{7},{8},{12},{2},{6},{2},{6},{13},{11},{16},{19},{15},{31},{30},{15},{17},{2},{10},{5},{5},{13},{5},{8},{5},{5},{8},{7},{4},{6},{6},{5},{7},{7},{10},{4},{8},{3},{4},{7},{2},{11},{5},{3},{4},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{12},{10},{12},{19},{5},{4},{5},{9},{6},{4},{4},{6},{8},{6},{6},{6},{1},{10},{662},{1263},{1587},{1592},{403},{42},{255},{1014},{589},{266},{113},{867},{765},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (3824 bytes) */
-const char* const cstring = "BZh91AY&SY\330\244a\\\000\005Y\377\377\377\377\377\377\377\377\377\377\377\377\377\377\277\377\377\367\300@@@@@@@@@@@@\000@\000`\020\035\321\367\266dv\017I\326\313'\275\274\004\203CJS\223@\024h\353\245\024;\325T\001\365\361\357l%\010\211Q\352zOh\023\320\243G\352z&I\266\251\373F\021O\025<\223O\321Oh\236Jz\217D\364\312=C\322\r\250z\233D\362\232\037\251\r\240\201\240I \020\2311\023Bi\350\241\352d\323\324\323\020h\323j\r\251\264\201\243@\032\000\000\000\0001\001\240\000\323@R)\350\200\003FM\006\200\000\000\000\000\0004\000\0004\006\200\000\006\200\022jP\236\224\236J3F\246\230\232\007\2444zCM4\364L\232\000\0000&LL\322\006\215\000\315\020\003@\r\004R@\304\304\300\206\230#\000\t\246\023\000#L\002h`\t\241\241\2021\251\210d\300@\311\220\301\"A\004\311\242i\210A\204j\236\t\262\r\005<\241\240\032\006@\001\240\000\320\000\032\003@2\032w\371\330\345B\252\246\222\024k\373m\337\221\273\330\355q\201\256\025AL\2632\023\340\325+\013\rp\374\362\343\t\303\2312\032i\003}>\240}\200\037t\374\001\211\372\204\200\222\354\300\313'\366\325\252\206\222\360\253\355\375\001\206\006\006\0261/\304\300\354\007b*\250\"\250\240\213\004E\202\204K\366$'\373,Z\331\332_\360\023!\222f\013X\261bB\373He\206V(\241\024U\222\r\256T\251uL\301F\350\213\002^\332\2607\300\235K\233\033`1\244\314\223\010`8\212\010.\270\254\254U\252\311-%\221Q\200\031Z\301\3501\313\214\230As\352\0251-\236\010\262E\221qW\3002f\261A\246P\252\230\032\013\326\340hY\024\325B\204\334\017SR\210c\222+\021\255\316\225\247\240i3\031\320e\200\341U`\256/X\201\3352\275%\263sX\314\263\230\270.\301\\ZH\\cV\321\n\322\272\302\252\257U\2318\365m\3326\276TV<\210\026\221\310g\030S\024\313mDNEH*Kr\373\032\300\254\256\262\363Z)v\200X\006:\007j\260\336\360\005N\006=\001\274\267L\020\314\225\347\204[\327%\321\314\2542$\211\240\315\242\224\350\326\342H\347J\301\006D\374H\225\311N\353\n\350 #\"\017\030\202\321\035Z+\021\344\277\256\211\236Q\036\275\251\007\260w\316\351>~\374\241\236\253\364\225\223\210\225\3634}\247X\210\020\t6\231\2000\372\323\001\343\005""\361.\t\272\264\242\305\301\253\233\266?\247X\350`\364\220T\305\321H\007&\262\225'r\355\2434Y\306\021{O\235c\200\264wK\250\371\330\3310\313S9\330\266Q\321\224\n\254qO\321\327\246\350\177\030oF\354\363\261\367[\373U\316k*U0\\\354\271\034\027\223\254{\262a\"\240Di(>e\255\000z\265\322h\222\220a\027\276\246\304\250?{aS\023\031\363ieb\005Y\253.h\3774\233[e\305l\353i\245\317\205\210\n\207J\3473\236\365\026a\261\255\365\3128\276\225\337t\215\r\330\361\n(\231\302i\200J!\323\207CB(\345\034\225\020\266\211f\330\213\207\2062\252\252\215\003\014.[\271\263\026\340'\322\224\244P\324\034C\272\304K\223y\207ne\256\352\203!\320I\212\267\311\223S\231\341\211d[\363i)\031\242\225\341\276\007\220\236\006\301\274\212\024L\237\205\022K\\\032\034\340\\\254\203l\007\245%@\355\010\n!\315\230fOM\032\250%\272\214\013\340\033r_\224\365\2248W~b\335\343\030@\234\242\010\030\250]\n\032]\212\r\203\033\300\323I\007\3466/.[\222\270* \2027\220\021ix\343v\365\332\336\375\237\343>\323\223\242\256\3506\233\264\3478|\342\356\244\t\326Q\306z\302\341\257\333\347Q\315\020L\241D\021TA'>F\357\261\342$\222!\037:\204\022oi\017\\5\314K\212\216\340\340\372\370@\212\356\\\342se\r\322H\364i2\256\276\352%Z\026\004\235\231w\201\267\2203?\262\ti\024\315f\225\216\030\022%Dqh\002Y\037}z\3143\263\240\333\027\333\201i\3609\202\224F\367X\202\354\020^!I)\027\205aCA\214\245%l\315\312\305\002\006\023&\375?\013\210L2\216I\245\2442\341&\024\377\242\370I\241\305@M\003\033\263\302\276\255DA\003\037>zd\2161D1X\031\2331\206FQ\237\005:\256\234@tP\265\205\355t?Z\\\271X\362\026\341~\340\205\242\364\031\360X_\304\341yZ\371hR\234\2566\326}\201\\Sf\313\343`\264\250\232\260\242\241n\262\327m\021\211\251N\226\355\306\336\323\250_\224\311w\013Vj\013sQ\376\216\246\266^\236\262B\tW\365\273V\323\240I\237%\3420A\004\025\220\231\216\367m\262\r\250h\220\327\354\212 \301\n\372u\030\014\340\030RTL\265\355\220 X&\313\037\335\350\310\352\261yJ\027\022\345\330sY\\\276\355\215\252\"\206\306\263=\364\246Cmh\221\037\t\363\270\\~t\037#\361\374\241\367\265""\tW\177\373?\357\317\237\210\016\261\306\201\244\276\030\205\265!\020\037u@1\242B\027f)\336\260\tY\t?<\227\305|\022\363\332R\234\362\350\237\r\025|\265\312\364\007\310@1\005.\3469\211\266\\R4}\251\337\213>\332\001\240=\316j\356)\322\024C\200\322\r(\236VY\010ZR\025\364\026mJ>1\320h\025P\323\023\022\302\n\310\213\022\270AB\230RH..\317\021\022\031#=\251!\333G \005)\203\231\003m\266\334\204J\332Z\367\340\0223hB\231i32%x)Ak.d\360\020\014\300$\002\014,\240\202\243\021<\331\244\345\024@\321\250\252\301\242\303a\242,\222\026]\022\262,\231\245N\255\305f\346\253\260\352r\014\336:\367m@;\236\\\263F\220\226\003\006\256\316&j\301F)(\206\364\244\320\tk\202\007\214mi\n\367\rX\2136l\324\027>\223\024f>T\205\301\255X\010\333\261<\024<\n\324\241U\000%M\245\353\204\301\334\252\322\020\271;\";!\331;\007\231@x\t\317\315\352Yk\250\306N\327h\023m\332i\340\355\234\206\200:\2354/\022B\016\220T\t$v.\352o\315\013\3525x6e\234\311k\324j\335\273\217\213\255\226\350\tKPj\347\256\300r\255\234}\303Z\021\254\201\205\017Lb6J\207/\245\314!&.\\cp\276\213\032\026q_\234\343\356\003\337\226\340\303\000\317\250PQ\0026\324\260@\003\2751!\245\235!\006\304\003H\320D\020\302eN5\306\270\274\332ll\032_V\346\340nA#Y\001<\202\234\020G4I\343\315o\n-L\237N!\367\000\006\023\032/\016+\367,&\212\302R1\231$\323\223\331\000\224\363L\245\3665\r1\216t\025/\324n\035\276>}\033w9\270Bi\236\324\023uQ>\177\003-\216\230\023vg>\n4\201N\004iI\26336q\311Fj\330\210P\020\246\366\261\324%\"/\210\242E\"\"\332I!\022`\255-G|\235\363\236\177e!\004&\301\262\330\214\034f\252\357Ql\231{r\266\266\206>4)g\267\374\310\332;.\266\030K,3\276\212P\304\352\214\240\r\215\350Zk\273\266\331\217\027K\255\025`m6J\330\227\247\222G\004\330\340\332&\222\320\324\355\351D\367pHE\251$6\201\230\356\252\264\200\351\336Cl\333\221\214\211\266\332\0068\211\360_Mx;V\362]\350n\364)\347J\214XhcP\337n\26490\2749\372(\203E\006/~\201b\026\264IV(\013L\202>gF\344\346\222,g\210\356\210\354\036=\210\344\257Fy\2323\007}\213p@w(*\006`\352\350\030\330\301\210,\361a\035\333\350""\025`\332SD(\30271\0318\024\251\010\220\225`\t\223m\264\317\330\024\340\252\243\256\252\025]\305R\252\210\250\325h!4M\271\224\33439\001&\301o\365\377\036|\252\334\341\025z-?\323ln\315\025\r\344\320p\315,\315*k49\rV\311\310l1ShO\313\\s\273\273Y\\\010\347\361\372\007\260\036!\373\"\026\312:\"\350\240\257 `\2202f\300A\216)\032\371B\360\226r u\032\021\315\305\262\3148kwB\235d\270y\304\220X\354\355%\314-V\332 \200\237V\321\263T$\020#U\003<\002\321\207U\2425\307\025\375\205*\226\245\260B9Y\205\230\306PGO*\241W\323\347\317\362nF\345B\375\010'T\004G\000Ox\245.\234\003r$\222\031\0176\205\262T\001)\\\223E*\005\225\234\345\323\205\322k\241\232\247)Q+Q\242.R!q\321\n\360R\351bcd67\023\340\234\261\240D\242\210Q\021y\352D\220\031\265`\025\245\271\342\0013\301z\316\033\262\220YA\270TtIj\022\010\022\302\370J\242\224{\350W\241\034\367\0276\323c-\274uE\300Y\027\010$\325')\000\224\302,\325tt\347w\036\254\213\262\2323\264\260\323\230\273L\203\306.\233\004\316B\241\027\200\"\322O\254\363@8A\311hs\007\"i,n\270@I\033I\230\333\0000A1%n\325$\002.D\032\022\203\251\2411\26660h\313Vb\336\000\307\005\265\243;\022\322 i#\201\210K\315\205\233\351\"\354,L\342{\242r\262\351Wp\237,\032\207}\3653c\226I\001b8r\020\004\371_ \273\341\327\360\203\363\314\365\333\027}P\3014\340]`\276\2376\232\276gC\262\202E\355j-\004\212\270\303\216\024\304\220\246\201\035&$\267N\267T\340\332\221\257Zu\242VZ .0\343hx\030\312\240\"\\\200,\340%d\311\211\002\264]\304\204\r\000@\010\316\346I\241\205\242\010J[6-\344n\255\322TW\034\275\\\013\270\017\002\366\350\260a\016\356\214R\014\005\277,\263c\344\020\000\367\314\026\031\232\312\252\002\002\333jI\215\203C$\342\364\014\233\020M\223\010\332f\226:\225\316if+\226\364%af\272\340\\\364\375\270\270\274\016\016+\010\010&\342\273\001\023\233\262\230\213V\244\243r\0217mk>\006Ak\306\270\346\367\351\244\020\316\273-\307j8\322\205\302\220\201\243x\204\006B\r\351b\223C&B\234\224\024\334\335\201\000~bo,j\017j9.\026d\016\203S\034\217\263\004\005@\351X\365>U\0220\276\211\"\250rcd&\213\247i""\"\322ma\344\272n\300\022\306\303\200\035\253R \227\002)\032&\233\001&\205`iA\014\226\224\006c'\226`X\346\221)\013\270\304\022\315XV*\264+H\267\200\210\344\021\263\220\327\355\026\224\013\004\032}G\270\004(\266n)\317e\036\277P\336\333\022\321k\007f\301\303t\364\033\243\351\007[\226\342ax.h\360\332\202\r\363\265\3301\363\371\004-'\026\352\345\223\3429V\214\370\254N>?@\357b\203b\026b\351Gu\335\250.\241\210\335\201\333d \003\3113p&@o\332r\024Lx\307\270;\007\320\004\202\200\220H\272\020\225\\[\\\250*z=\260\265V\346 \014\306\275&\361\231\355\r\255\025\360\370<\346\021\353\353_\325\374\244P\210\261>\311In\2415\246\314\205B\203\240\303|f:k\252}\303*\373\210\356_\233\273\200p2\242\241\306*%-\246\034%\373\203x\244\345\002\370\214Mc\332\202r\330l\314\225:\365u\321\036?\311%\311\376\035\032(aq=\003\253_\352y\216\023\247J\021\210)8\366z\211\345=\r\234?\363\3173`A\307\"t\227u\303m\257\034\342\022\347\002RN\021\271X&\345,\274\271|\250>\375\3749\342\263\361\323=\3027x7\213\370\214\273\256F;Q\032\243\220f\266\226c#!!y\007\001\274JF=.\236UI\237\365\373\032\232\205\3360\2454\207\337T\365\327%\010\233\303W\351\0147\362\267\370C\347\324\036\211\311q\311/\214V\022\322\327+\363\004\263\005q\352=\006+\233\244\244\244\270\020\274\366[\005\203{\360\354\257TKC\205-Y\205s\311\224QK\004\303;\224{\323\231l\3020\245\230\340H\344\021nL\320\217\200z\302A\017\0313l\r\204\345ws\314\367\246\335\344\260\276EQ\245\260)\210\260 \276?\010\223(\262\002\202\246\034\245\3478\3541b\307\220\230;\343 \311\342\3312\034\212||\222\213\260\273E\227\314M\024\265k\"\223\306\217\340\300,\233'\357 \310\303?\266\204\246Au\010\322H\037\177\317\025T$E\032\375rR\257\361%\355\327\324\247\271V\373\215\210\252k\264Eb\371x\372\252\235\370\357Fn\300\345\037\027\021*\307Y\342\217\224mr/^\264l\303\215u\200\366\365\273u\206gV\027\210\210\321\"\311\321\rS\177XZg)L\337b\231SR\341P\240Dt\216\276q\232M\327\323\353\026\033\010\317\177\277K\321\202\217\364\247sk\336\3302\377J\n/\327`\313[\037\336e\177=\010\362\350\200\233a\272\250\004`""\246R\201\253C9y)v?\230\377\274\\(\301O\201\351\"\001!\202\nw\210\034\233\004\340\000\301\240\226\213\207=\023\322\347\247v}\322\320p@&\246<\375m\235\353\377\316\226\277G\251!\210\251\352-6~$\017pN\345TL\211\3064\321\250i\016i\301\252X\005F\271Qbl\246\213\004\304\302\310*\021\304\2731f\002\"\300K\204tR\245\231X\210\021\002\211\rW\323@\310Gj\016\022\226\"\310\021x#+F\324\332/l\033T\342-\271S\nf}\037\305\204G\013\302V\236\002\324~\017\302>N\031\357\301~o[\223\014j\316#P\365\007\021J\351\206\300\274\013\315),Kc\240\251\352\222x\362ar\303C\234\0076\355V\034\332\244\267\226\253\306.\327\217\227\223\217\024\\\231\"\025\350\201#<\311\276!\204ES\203mi}dQl\235\266\276w\352\307\267-\314\242/p\302\021\204\330\365\343>\253\351\037\374]\311\024\341BCb\221\205p";
-    PyObject *data = __Pyx_DecompressString(cstring, 3824, 2);
+    const struct { const unsigned int length: 11; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{54},{96},{26},{34},{34},{13},{29},{33},{45},{22},{15},{68},{179},{37},{57},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{21},{15},{23},{25},{17},{31},{45},{39},{40},{7},{30},{6},{14},{2},{6},{35},{39},{9},{30},{46},{28},{22},{50},{39},{34},{8},{21},{37},{19},{20},{32},{22},{30},{37},{5},{12},{50},{8},{20},{8},{15},{3},{15},{17},{18},{4},{12},{15},{17},{11},{1},{9},{17},{18},{6},{6},{7},{5},{8},{13},{5},{15},{5},{6},{7},{4},{9},{5},{16},{5},{7},{6},{7},{8},{12},{2},{6},{2},{6},{13},{11},{16},{19},{15},{31},{30},{15},{17},{2},{10},{5},{5},{13},{5},{8},{5},{5},{8},{7},{4},{6},{6},{5},{7},{7},{10},{4},{8},{3},{4},{7},{2},{11},{5},{3},{4},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{12},{10},{12},{19},{5},{4},{5},{9},{6},{4},{4},{6},{8},{6},{6},{6},{1},{10},{662},{1263},{1587},{1592},{403},{42},{255},{1014},{589},{266},{113},{867},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (3745 bytes) */
+const char* const cstring = "BZh91AY&SY>\250\271\025\000\005\027\377\377\377\377\377\377\377\377\377\377\377\377\377\377\277\377\377\367\300@@@@@@@@@@@@\000@\000`\017\275\337\017H]\330=\347\233\275{\266+\330\032$\002T\t\000-\264\000\212\335UO@/^\332\022\204D\244\375M\033T\315M\352j2zd=\024\363T\375\243\010\247\222\236\322\236\231\030OjM#\321<\221\243\020i\217Rz\230\365\003Hd\3654\017@\222Q\246\232\000\214\201OM\032\010\236\247\251\262\r\020\304\001\352\003@\003F\200\3202\000\036\243F\2004\000\032i0\244\324@\000z \000\000i\352z\232d\000\000\000z\200\000\323@\r\000\001\246\215\000$J \202f\240\323M\250\006!\243\324<\204\332\236\246\231\003L\200\000\032\0324\003@\014C\324h\311\352\000\004\030\000&\000\0020\000\010\300\001\03214\300\023\000\000L#\010\300L\230\214@\300\221\020A2\005<\241\240\323Q\211\017Si\225\037\242=\022z\233@\032\233(dh\311\352`\200d`M\032h\001\232&\324\333\331O\264a\021\n\361\204\0245\3251*jh\317Af6\3306Z+V#,~lE\304\364\341\260\3610c\006\005%\007\333\024\017\270\003\031?\000c\376\235\034$5(\014\024O\324\342\361\003\206P\"\227\367\300\255J\225\271\201L\n\237\260?bm\266\301\215\2666\014m\014chl\023)\304B\377\345r\367\307\321\370\000V,\266\005\356\\\270\221K\244f\214\332ll\023cm\244\206\327\201*\343c0\253uE\302~\005p\354\201K\030\2666\300cI\264\230C\001\266\234\202\272\311\311\305:\234z\320Q\"\221\300X\324\021\240\205\020J\250oHD,\013\350\014m$\332M\340\333\370\205\266\\\200\361\025,\250\006\343%\3007-\245x\324\251G\003\342\324\3041\312-\021\311\322\266\257\3050\024\025\240\262\221\242OT\251\211\325@n\226N\222\307\207\020\305\225\2254D\330\025eC\305\274d\250B\250\236p\232kT\345<\211\266j\0335\210\234\214\220\n\211)/\030R\212R\252\221!\311\231\004\311n[CP\023\223\316Ze\221.P\024\001U\243AJe\345\203\316#\rheW\224\241\213\024\346\370\262\314\2273yJXF\212 \317uk\346\344\342Q\352%q\006\322\236\252'\024\251\215\313n #i\007\254 \236#a1NF\366\316\365\022\225\204W\236\220i\025\013\362Zw\362C;/\215\022(\372\230>\363|\210\020\0075R\200\027kE\303=\306\307\272\021waEKrn\366\327T\370\326E7JH1f""\265\004\031\341\212\217_L\033\253\203\352V]\376np\006\204~\177\366\233\346\366o\327\027\021\301\355\"\266\241\216pa\377Q\271?w\364\357\366\253\257Z\371\316\272\177\346?5\347\212\305\206\261\267d\006\342\371\023\0337\330\304A\\-I\271\243\240J\322,\352Z\301\276\2638\276\006!\3724\246,\270\346\356\333YC\0369\032\272\373\370]\351\236\246N4\303\271\023L\320\030\221ma\304\312\253c\341\224\345j\360\2342\335\255\216o\341\374#\274\227|^\310\004\242\031P\344\344\305\034\243\222\262\031\250\226\363D\\,!\225UTh\030Q.6\215\001n\002\216\020\204$C@\210w;\010\2276\323\0070\262z\346\nO)&&\340%%R\312x\302T\256\tY\351\345\322%hp\001\346(\300\316w\350\201\005\213\315K\177\237\324\333i\201\3535GH\tU\333A\324\0204\254Q(\320T\252 3G\326\301\312.\230x\337kxa\362\312\002\t\314B\013tq\302\343\023\225q\032\032\214\330\225$\036\222\255\266\237\"\310!\020\026\232\000\356\001DV\304\242\231\\|\033\334:f<\220\273=\256\272\355\007\017\240ji@\231\352I\341v\222=\317cN\367\242\200\354\r\000\332\002\363c\330\373~\332BT\372\266\300\242C\334@\311\246M\322&\261\006\320^vr\214\035-\252\211\222\212K\321\006\345\330A\214\025\244T\270K\276\337 6\366\2035\367\322\r\342\241\310\336\264\331\260\222j\216\366\340#\260\353U\276c\352\317\nH\036\016\360I\"2\325Z\001\3118\254 \0171\026\275\357\\\032\006_\020G\217)P(:\357\225\304&\021\215\210gg\014\264R\215.\314\341%K\364\304\250q6\177\265\353\343HA\307\301\271r$\336#|\004DtA\n\031\024\257\213\3117*w\221\317\237oG\335\261\303\226\355\363\240\367t\220\030\355A~\005\202\336\323\213\347f\262\004!\334\356\353_\234U\220\325\242\331(\026\205!\221\320P*\312\26369$1C\261\320\254\331\326\212\005\266\024\327\305\311*r\334\305\037O\026{>\374\251\010\037?\014Y3\256\240\225i8a\220\300\300\300\314\311\n\243\303\333\344\035\240\346#\177\"\030\352\310\247\222\017\014\320\035a\270-i\351\302\245L\007\302\016\354p\342\356\354\315)J\246\260\360YV\272\372\232`\210\031\362\264q\302\024\233K\033\311<X\345\254T\361\345\222i\243\245/\275\317&\315\272\260\376\224\355\266@^ 2\020\032\264\n\003""\300\240\030\321(\017\205\035\377-\300\233\302O\330\225\364_D\373\030\025\257\222|t\351\252\267\307\266\334\220\037I\000\304\025\260\343_\267K\344\317\270\200h\017>\226\334\251XQ\016\003h4\242\232^\360\205\265!eQg\275G\266y\215\302\262\032bb[ \264\221t\261\020T\25500\326\"*2K$\215oW\"A4\007B\006\333m\270\326\270>\274\002F{\220\250^\206h\234AL\0303\026S`\200f\300\224\222[( \250\347<\345\314\024\300\3031\344\307\277\255V\204\026^\372$d\314\370vk'6\332\337\303x\303\345\257~\224\004]\022\245\206H9\366\214\034\373{\316\031\002\255RU\017j\326\240[\260\010\036\221\315\244,\2345d_\227.!\213\350b\214\317\340\221vy+\202:\374\323\330\241\354-b\245\224\t\005z\346K\316lx\2534\204.\257HG\244\036\221\341<\352\003\312R\236\177v\370;\014e0h\000\346f\201\203\211\332\233\005\240h\324B\346$ \316\017\0024\2164\33239\013\246\312pf,\254\261b\270\272\371\265\364\354\331x\220Gp]\274\374`\321\276]}\303\022\021\310\201\205Opb9\315O\007\317\364\320\026\256\315\222\366:{;\310\266\177\247\277Oh\247S\237n\262\023O,\014A>\313\221\001G\276$ij\220\203\232\001\244n\"\010aB\307R\352]\357_}\333\006\227\275\213p7!'\"\002\233C\241\226\361\304\275<xt\206\t\224\355\304?\020\000\302\203FA\336\313\205\312\"\320\224\232P\224\323\227\316\001*ILl\3244\306<\352*\345\304\340|N\255\273\275>\350Jg\352\202\217\310\242\236\247\3553\267^\345\013\307\030\232*\341C\016\212\341\205\333m\365\210J\353J %\001iy\305I\2222\210\252Eb\"\365\224\204K10G\224\246T\246\276\372B\010M\203f\021\033\034ge\344\252\347C&\347\007\300*\355\320\243\256\035\230\314\203K4\"a+\035|pOv\023\2622p6\033P\264O^\373\270\372\221R)\200\325j&a\376Mi\031\234\303Dc\023$\254d\350q\"u\324\244#\001 f\234U\232@v\262!\266s\332i%\033m\003\034C\263O%\364\264\026D\27113Z\205-\351A\212\rv1\034\r\256\034\327Z\035\034x\345\030\335\2271p\r\035I\264T\026\371\017\247\346\3415I\027g\252zb=#\326\346\217B\336mi\2730\362\261p\020\036*\212\241\230ww\014l`\304\027\365vG\247\225B\314\033Ir\010*\234\264\306\227\257\r\264\003@E\304\202\335\256\316\233\310um\266\307\224@\333o""\277\020\333m\214m\216#\2039\035\3033\276\326,H\033\005\331\357\375\355v\331\272B,\367`~\206\330\335\367X;\013\246\211f\322\257#s\221\253\336\2226\032*4'\361\355\246\257\341\355\300A\352z\337\024\377\200\346\221\352\2405Q\322\024\327\005\251\003&kD\0300$e\254,\007\334H\006\243!\033\272\330\245\247U\363o\247>5\253\274$\202V\333KtWK(\202 v\213\215\234a \201\034j\032\300,\273\215\033\371GN^\02560K\230$gm\221\254\021\321\255\220\255\364\274z{\270\243}\203)\252\003lvB\234\312\327\032@7$\244\206C\317j\3455\022\t\305&\212\330\013\332\221\332\252\354\265\373l\343I\232\245\2027F*H]5B\310\024\364hixln)\331\244\351P\211\212\241DFG\271\022\200\317\216\300\265p\326 \023\362\344\265\016\264\310^\243p\252\352\222\342$\020%\263(\025\2051\362ad\204x\3611m\246\306a\220\354\214@\274b \227ZL\211\005\002/\307\030\355S\036\236;Lv\321\032\264\266o\314\307|\207\252\216\333\004\316\242\301\031\t%\201/\320y\300@\203\314\351\373\244\"\351.\032\352 ,\216\224\337\240\000oAt#N\232\310\010\305\020nJ\016\346\344\306\330\330\301\243o\034\314:\003M\213\256\321\253\022\336 bIs\250~T\221\n3\2464\265\342h\345\2327\341\035\265\021p\323\316\362\212\254\261 %F\306\335\002R\324wb\250\027\270\000\360\345+\2667V\0211\224\220I8%\207\303\207\024X\243T17\330\204\334$\227P5\"HR\201\035\r\010\270\331\320f\306\221}\351\237\"R\300@LQ\245\220\324\233\021\274\004G\260\002\254H/B\211\0020\027\211!\003@\020\0025t%\241\206\002\010Jy\363]\204u\227X\232\254O\007w\303\255JT\356\350\344\222\264\245\024\265WR:\234\305\260\247Y\001N\231\"\2633\205\354\200\200\303\013\022\306\301\241\222\341K\020K$#\256e<9c{\245\304\326\337&\226\314\317\262\2725\225>\215cp\035\276\013}\004\027\203,\301\024\243\275t\027\036)G\010E0\265\247\241\220`\364\266\231\373I\244\020\316\3730\323\256\216\244\241t\244 h\354\020\200\332 \354N\21142\204*J\202\274=z\024\t\342^L\334a\204%\340r\357\2779\313r\003\000\266P\257\361\254\221\236UI\026C\2266Bh\306\230\022`Q\254\375lh\356$\034\256t\003\301qD\023\320\212\306\352&\304\201\241\\\036\362w\24036\275\271""\202\3239&E\342b\t\316\320\256\254\320\260#\016\202#\320\021\217`\305\375\025\020\n\004\036\274Z\250B$k\270\347\216\312M\254G}\262%\216\246\r\326\0164R\332^6p\331\342\3148'\004\333\354e6\370\305<\376\232\002\323Z\345\265\033k\033J\273\252U\032t\366\307\"\244\030\220\250&\216\"\030B\016)\031\236\033lD\002_\032\206\360\241\001\327\300\357\025L{#\276x\017\252\t\005A \223\030BVh\240\373$\024\235\356\330A>f@\225\005\370\014\205\r\2141\262\037\313\345t\nb\353\360\273\353\321I\260Lm2\272\206N\317\027\261\\\210\204@wZ0\213S9\274s\3122\255\304v\017\267\271\2728\031QP\334\025\023#a\207\t>\200\336\230\360\0018\214&\003\234\206v\032.I\260\254D\222&>\237\221)\031\3733 \201\242Ac\036\330\376/\261\371\231Y\020\214A\220\343\033-7\215\366\346\017\363T9p \343\306\234\325\332p\335E\334\240B9`\0241b\227\315\241\227\314\234\336J\225B\037~\\\245\202\327\312\221\222'&\352Q\347\014\273NF6b:\003\220f\315Kq\221\220\220\274\203\264m\222\221\217MCyRg\370g\263T\223\010l\207\0144\"\035\206\346\300\306`\031~\240\231YEi\210\364U\036a\237\214\344\227\324+\tql\226}a,\301dz\217A\213&\331)).\352\027\236\313h\264u\374\033+\316\022\340\341K\226\341Z\204\312(\245\242a\235\200{\323\326\266\341\030R\334p&\312\370!\336\332X\014\341\214\007\2170\264\274@\265\320\323\265\214\314\234\3362[8\244\205\331\333\004\303X\020_W\224I\224Y\001AS\nR\363\234t\230\265k\371&\r\301\220d\364\353\230\216E:\336)E\326]\202\333\346&\212Z\366\021JCG\323\335\026Ms\367\220da\237\264\204\246!\250\204i$\017\237\331\025t$E\032{$\245\177\342K\333o\255W\352\257;\215h\253j\264E\202r\361\370W7#\275\031\267\003\224|W\311V;\017\024|\243j\221r,F\3148\325X\017\227Oj\300\314\353\002\337\"3\010\276\014\300\350\035\2151j\2362\251\330b\251[KD\254S\"9\246\2070\345\223h]\317-5\022\243\3729\033\373\274\257\361N\336\307?X\305\363SQ\177\033F*\332\377~\033>\312q\342\362\204\246cU\022l\316\266]\013\007\267\213\325\311\341\377\366w\364\243\276\267\361\317\217\252\207\tR\377'<\273\361\037 \023[\022\341\242q\2218\034d\356R\324.\007j\0014\270\264\264\365""\372\363\377y\332\270\371r\030j\234\025\252\317\303\201\356\025y\352\242 FN\221&^\220\030\313\0032\256\n\213j\212\361T\321\352\020\360\353\001\300\250Z\223.d+\\\006\350*(p\346bYR\265.\3317\351\265\301\200\215I\014\022U\336\247\017d>rM\210\260Z\260lK\007\255\212\227R\302\347\303LQk51\300\345\220GW\340\033cY\331\242'\243\255\261MOcIp\327\006\222G\340F\002\200P\364R\270\257\207\006\331\355\211y\322\254\266\216\037`\017z~\323G\275\020\262\350\2334-K-y\007,$\2610C\253I\002\006\236\211\301\"\201\336e\201\255^\270\222\253\2350\301\372\217\371\243\340\236\033b2p\302\021\262\214|\264\247u\366\217\377\027rE8P\220>\250\271\025";
+    PyObject *data = __Pyx_DecompressString(cstring, 3745, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (3615 bytes) */
-const char* const cstring = "x\332\355ZKW\333\326\026\266SHIC\002\306\016\204P\032\231<\200\22481\241$\355Ms/!/\356m\223\002\315\3536\255\226,\037c%F2\222\014\270\253\275\267C\0175\324PC\r=\364\320\303\0145\324\320?!?\341~\373H~\005\022Hn\332\225>\326\002st\264\3179{\177\373\333\337\331\260\370BX(\024\204\254\262\316TC\321TC(\352LfYE]kO\ng\262\302z\3110\205\014\023\0245\313\266YV\220\324\254\240j\246`\024\024\230_/\345rL\0276\025\266%d5f\360Wl\273\250\031L0L]\3112cQR\005M-\224\005Yg\222\311\004I\310\004\213\314\274d\n\212!\310\232j*k%\255d\340\020a\235\255kz9\205U\264\225d\030\312\232*\230\232\200\305\331\363|\237\300\202\216\014\215\302\215\267t\305\2242\005\026\032\004N\345tm\375ukyX\302\226b\346\005\263\\d\302d8o\352\222j\3600\332K\0023\254P\000\225\331\201\335b\036\247H\246\"K\027\344\366psV\326tvAQM\246\027\305|\251s\230*\226\267o\010F\021\226RAX\003P\0349e\275X`\330\325d\331\224p\217\034N\337\020\246\276\232\021\356Ns\340g\361tgFx\310'd\215\345r\212\254\300\234\357`\010\222\016\324K\305\242\246\323\0067:\323\250\004\251\t\\\277\271^4\313\202\221\227\020\260Y\302\221BN\323\005\271l\34655%\351\272T\276%)\005$\033\270K\205\202&sx5\375\031\261#\310\236q\247\304\204\002\242\341K\2278\212Z\311\024\264\234\220\321J*\234\231\222\266q\350\231\354\364\322N\300\002\0065=]R7\245\002\020X\327\262l\206\330\003c\034>)O\n\330{\022\007P6&g\2045\254j\032\007\336\2030\374\230\253_\363,=\240,\301\205\257K\005S9/\347\221KV\000P\232\016\207\232L\236Z\234\2713\363pfvz\206\300\014\0068g\352.\037\321\031px\375\313\273\032\202\346\034]\344\300\020\204YVP2L\007\034H\r\361\033\216r\"\253\30277\2779?we\216\247IgO\021\202\201\0103r\001\024F]\020.%\005^\251\234gFJX\312\te\255$\250,\300\271\010\273\316\005f\236\251\202\301L\032\010\223\234\224 \213\246\212X\2164L\206\251T6\031\255\276%\025\014\226\272\327\225\000\270\034V\232$\313\314hfd\025\253\013\354\225\340\004\210\354\006\310\252\311\212\302\272T\346\311\203\351\217L\327\332Y\276\257\362\332\203/\250\347M\246\203\314&[\247g-Ch\244\376~mrZ\312fE\225p%\224\004@{q;""\203\343\231.r\326\201P\352\032JlJ\326\n\005\n\016TII\031\371j\207D\320\312 \364k/O7+\363Z\030S\030\242A\373\361\t@\313Y\330\212v6\010o'\006Tb-\024\204.\030P\324*\370/\344\024\335\350\340tk\365\\s\317\300\254\265\351\334L\260\337\334\314b\347vY\305\340\300\221z\252\223&\0006\345\2740\373\303\224ZZ\027a`\234OO\177\311\002p\251\324\232\323_\256\311\302\024\355\262\306\313\232\362L\325\311\266M\350\001W\322\266k\371\213\204/\307(\237\346C\356U^\002y\014i\235\205\270+FpN\2262g(?2\341\352\227\302\305\035\332@ejt\354\020&\215m\224 e\3107<\354(\365\351\3002\010\253\231\2070\315/\275\013\000\233R5\324YNB\t\013\242\250\263lIf\242(dK\234\\\252\246\236G\335m\222l\212\242\254\250\212)\2128\261XN\211$\267\251u*\375\200M\271\226\210AW!\"\235f%\034\232\337a\021r\365\232\301\n\271\224J\310\204\272yWS\231aJ\272\0310\215\251Ycw\014\003\243\013\334 \014\363jp\021f\273\250\273s\216\310\321bp\327\373\326l\251Uc-U\016\"\315J\246\224\332\345m \222\264Gx\031\247\026V\027\227\226\026\305\305{w\277]\272}\377\336\375\325\366\335\225j\337]\251\340\356Ju\\X\355\341\315BA)\032\212!\212\337\224\267\361}\003*(\336\005\361VXn\025,`\252\314H\210SmMF\r7}\022\003M\222\214v\361\362\030$\243\254\312\212\226\302\271\270G\024\300\235\221\014\326\251\016\341\030\353\000\262j\206\2179\334\375y\316\375p\202\350)\203\032\244\243\242\330\034\2541\223XM\217\330[T\240\243\272$\263\214$?\343\367\250\021P3$\241\014\005\005\257\262\024\031>\351<\220\220v\316\222z\363\017\021\010\004tat\235\"j\274F\336\t\"J?\003\335\370U\301t]\323C7\351%\337'W\220\326\214\\A\223\314\3719\024\030`\017\2579Q\314\225T\231\034\207\3138\030\210\211\371\213A\005\347\323A\371\322&\241\374k*=\320E,\246\263\035C\354R(t>\207\275Fk\212Cj\264\0363\314\334\202\333\"\241cP\310E*\312\326kj\243\304\020\234\235o\r\336\267\360\320\250\372P\374|^\311\212bPW\370I\035\0028ti\226pk%9P\232Pn\350\354\213\364\221\026\305u\t)\022\321{Q\343E\200\321\267\270\315?\003\005\342\037\301\214!\226EB\265T\000XT\266\355O\225D\026\003\266\205\217\"\211\247\231\247v""\320\340b\200\374\025\301\200\242V\024Etd\242\234g\3623\003F\374)D\237\206<\341|TR\213\212\374\014\007\335T\233v\233\274\355\244\224\221\004\006'\267\225\2535\n4\264c\202m\323p\r\364\0021D\334\365\241\327\030\205\002\310\307\241\033\035\343\346N\274\274\t\271@u\350\203\010\026<a\327\242aj\370\326KDc\023\363\"\271\217\200KE(\006C#\005\343\355mJ(zh\223}S^ V\334\343\254\026\316M\275\364<#\274\305\004r.\204p>S\212-\356LG\"\357\340\264Wl>#\004A\207\357\264\242\t\272\257\031b\372b[\355\360\320\326;q>\020<L\266uNL\317\266\037fy]\357R+\302\271\326!(F\251\300O\232\376\203\004'\266\271\361\2128[\353f[\022\3235G\2772q\3013\"\273\037\021\331\363\344\337\220\225\357\010\333\331\317\272\260\345R+\206\327\323+\302\355\264\371\365(\365\373\302A\304%i\376\005F\007\030{\327\343\237\017\227\375K\324\2537\211\3547\001\221\267\310T\344\315\242\370\375e0}\245\343\241\331$\356\336:\362\3760\374\275\\,R7\037\336\016\357\214\316\357M\250i\374N\373G\014\352\335\252\362{\311\314?vt\177\320\004\206j\022\376\211i\217\253`\177\242\024ye\021D^_\036\3738(\262\317DE\366\021\355\257qe\374\306\211\276\224\336%\321\273\367\002\373\313\335o\324Q\277\237\250\374\231c\347\335\327\237\031\200\256\222\370\013\210\016-\335\017\032\377\217\314D\366\256\306\310>I\033y\303\334F\336\006\202_\242/\372\"Cq?6\344\017\217\370'\306\374ON\372\037\217\373c\037\373\307Gifx\344\305\305H\357\307\366\274\023{\361Q\244\267\357\227\237\254K\226\344\367\305\255y{\330\336p\242~\337\341\312\347\326\242\265\341\367\017Y\347\354\005o\374ZM\252m\370\207\216Y\253vto\303F\337\321\312S;\352\215\336y\036}\036k\364|\370\313\317\326m;M\326W-\303N\372\375\003\225\r\177p\304\033\271Y_\366\023c\366eg\312M\222\203B\322?;\351\2379\353O\234\302\270\321\037\367\342\363U\t\246\326\226\235w$\177\3448}!\030\274ON\004\201\2758\03092\030\356\367\317\347\311\275\366\373[-\275\307~}\204\311\206\3377\340\r\\\254F\375\376\270u\031>\307\023\004\037La4\376\t\301z|\024G\367\366{\207\223N\014\326\225-\20080H_\211cd\013\223\321\023\004x\342\030O\311\350""\211\027\023\334~\214\260\210[\237\333\013\301[2>6\034\330\303\362D\230\034\277g\334~\342\016\271iBp\263\362\020@\353\366\250s\312\371\326\035v7\253\313\000\246/f\ry\3613\316\262\223ws\325\353\230\201\251Y\271l\235\262V\254\262\363\2013\347\230\356|5VM\222\203\272\027;\345\244\235[\356\331\352\001\314\274\331\256\245\312m\320$c\177h\033\316i\2075w\035\264\016xC\247\235\005\347\241{\253:Q] _\377\023\320\004\370M8I\347\nL\217\327b\376\241\021\236\373\227\246\301\025\357(\001\330\017T\354\005\204\1770\344.\260\013\340\333\301\340\027W#\275\343\366m'\355\367\214\005@\235r.#\250h\225\017\201\327q\234\337\223t\306\335\265\3522\r\216\273#\325\336\352\267\265\343\365\221\347t\002\022\3743\347m\0371!\007\367\227\375\276\376\312\002\275\032\250d\274A\362\360\363 \"\277\347He\305\033\200\217`\025G\216b\344Kuo\364S7\355\336\255\235\255\037\2507\247\207\254\t/q\326\221\234r\365`5S\213\356\234\351r ,\225\353\365d=\335\365\242U,\237\300\301[n\322M\243n\274\201\223\300?\351\017\016[O\235\250\227\344\313\032\255z\372\0348'\306\355G\010g\354\034J\240\233\377T)\t/>\343.\370\203\243v\314\037\201O\204+\254\272\353\351\350\t;\016r\276\311\311(\374\327\234\314+/\215\364\274\356\334\276\310\221x\240\"\217\274G\217\275\307\377\206'\037\215X\262\r\222\354\037\014\022\227M\353\001\310\264\330\365r\256\272P}P\233\257\307\274\353\337y\337=\361\236|\337\226\227\327:\365\246`\304\25544\310\033{\350=|\344\037'\356\305\350G\314?}\306?\367\251?}\216\2009}\246A\250\335\252K{\344\253\251l\241\345r\360\001;\354\3662\300\237\201\354\3576\026\034\374\257\347\351\275\022\373E-\271\317\304\312\236\234\365\262\014\201\035\032\010x\277XO\327\027By\014\213\035_\274\330_\034\215\364\216\332\007\203\362\244\322\210[Sv\022\332\3313\324\034\014{\303\323n\314=\355fI\317Z\005\177\322;\231\256\016U\323/\022\221\336)G\207\260mT?\250\316\327\206j\\K\315\312\2745lm\220F\265\224Nj\364\014ZQ\252\365\345\260\216\307\354Yo\374\002V\036\255\345\352\327\001\177\337a\222n\350\r\304r\325\215\206w\236?8\351lxSWj\007\371\0359H:""\221l\364%\254\205\240\232\351r]\347:\234&\211\271i\035\263$\2720\007\255>;\n\341MB\306\260S\322\372\314\356s\242N\334\271\356d\334\017\334\313\\z \332\033\264\315\241J?D\341?8\266\277\272X\375o=\373\374\364s\251{;oP\300\362Q$u\316\335\330\317\216\275\225\373\260\201SG\274#\237\330\222]v\243n\302\375\276F\264;\324_\231\365\216L@\350\013\325S@4\334\356\000U\340\221\335\336s\266\014\303\225\222}\007\351z\354J\356F\243cb9\\7l=\262\227m\331\031rfa$WGj\007Z\007V~\260g\355\346^\234q\216\002\370\243\215\360A\242z\210sG\006\234\r \361\025T\367\202\267\274\322\010\335\2136z\016W\322\234L\203\274\265i\261\307\307\215\020\016\203\313\364\201\225\006\240\374>\342\002l\307^I\014\377\215_4zN`\343\340\003\0204z&9\007\365j\274z\0034\311\324\3013 N\036v\246a\307 \346\305\350f\375\026iYnts'j\305\254d\220\226K\026\263\257\340Z_\304!C\356%T\300Ju\3435HLv\027\004\335\241\351\320\317\316r\2426\250\303;\\\216\225\345\212DpI\225\222u\307^\260W\235\003\316\004\216\335r3\325\026\364\251H\357\2043\354l\272\313.\000:io:\017pC\342\022\235p\316\272\0079-B\330bhRx\237\020& h2n\361\210\240\371]\363?Ys\350R\022\366c0\271\271\302\357\347\245\346\367C\020\355\214\323\343,\271+\336\205\177\324\243\365XPy\257I\332\034\256\210e\352y[M\321\302\036i\376\314:\310\261o7<`\022\222\350\367|\014\r\350I\006\355\032\346\316\271\023\350\033\222\325\253\265\315\372J}#\310t\177\244\367\224\223\0144,I\372\305\233\205\260\357\356H,\3453M\275\262}\243U\314?\325fk\313/\277\032\341\305\372\204+Z?\272\235\0068\321k\335\347\2528\230\260\226x\221\305\250\321\335\246F\275\201\271\233\3661T\371\206\237\030\265G\260C\254c0\356\215\243\323\255&\320!\305\250\177N\3337\351\332rO\271+\234\265\267\311\205\006n\266/\354\025\332a\314\376\202+`\342\004\035H\235\230s\003\016\215`\217\221Zom\005:\230\200\0325\372\217\001e\206v\034\"\327h+\317\301J\316Z\260\236@\004@\274\276\356\307\017\177\321+q\000\022\267\256\007,8\014aX\005\370Y\036\333\313\217G+\317\354\230\r4{w\340\010l\321\002G\235\204\363\204\356\202\366\344\026`0\235\253\210,""\366\026\330\305\270]{\320\215]\020\360\316r|\005v\227@\334\003(\214^\000\335\215\031za\233\027=\312.\254>^b\341?\256\274\361_\\\347;\036J\246R\300/\247\363s\302\324;\335n:\362>{7#\274\337\333a\366O\006 \217xK\227\370\213H\241ia\360\177e\216H\331\247%\303\024\351\177\357rZ\360\017\200\367\376\007\367\227r\236";
-    PyObject *data = __Pyx_DecompressString(cstring, 3615, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (3548 bytes) */
+const char* const cstring = "x\332\355XKW\333\326\026\266SHIC\002\306\016\204P\032\231<\200\22481\241\344q\323\334K\310\213{\333$@\363\350mZ-Y>\306j\214d$\031pW{o\207\036j\250\241\206\032z\350\241\207\031j\250\241\177B~\302\375\366\221\374\n$\220\334\264\253\257\265@9:\332\347\234\275\277\375\355\357lrMX(\024\204\254\262\316TC\321TC(\352LfYE]kO\ng\262\302z\3110\205\014\023\0245\313\266YV\220\324\254\240j\246`\024\024\230\337,\345rL\0276\025\266%d5f\360Ol\273\250\031L0L]\3112cQR\005M-\224\005Yg\222\311\004I\310\004\213\314\274d\n\212!\310\232j*k%\255d\340\020a\235\255kz9\205U\264\225d\030\312\232*\230\232\200\305\331\363|\237\300\202\216\014\215\302\215\267t\305\2242\005\026\032\004N\345tm\375MkyX\302\226b\346\005\263\\d\302d8o\352\222j\3600\332K\0023\254P\000\225\331\201\335b\036\247H\246\"K\027\344\366psV\326tvAQM\246\027\305|\251s\230*\226\267o\tF\021\226RAX\003P\0349e\275X`\330\325d\331\224\360\200\034N\337\022\246\276\230\021\356Os\340g\361voFx\302'd\215\345r\212\254\300\234\357`\010\222\016\324K\305\242\246\323\006\267:\323\250\004\251\t\\\277\275^4\313\202\221\227\020\260Y\302\221BN\323\005\271l\34655%\351\272T\276#)\005$\033\270K\205\202&sx5\3759\261#\310\236q\257\304\204\002\242\341K\2278\212Z\311\024\264\234\220\321J*\234\231\222\266q\350\231\354\364\322N\300\002\0065=]R7\245\002\020X\327\262l\206\330\003c\034>)O\n\330{\022\007P6&g\2045\254j\032\007\336\2030\374\230\353_\362,=\246,\301\205/K\005S9/\347\221KV\000P\232\016\207\232L\236Z\234\2717\363dfvz\206\300\014\0068g\352>\037\321\031px\375\363\373\032\202\346\034]\344\300\020\204YVP2L\007\034H\r\361\033\216r\"\253\302\303\333\017\317\317]\231\343i\322\331\367\010\301@\204\031\271\000\n\243.\010\227\222\002\257T\3163#%,\345\204\262V\022T\026\340\\\204]\347\0023\317T\301`&\r\204INJ\220ESE,G\032&\303T*\233\214V\337\221\n\006K=\350J\000\\\016+M\222ef43\262\212\325\005\366Zp\002Dv\003d\325dEa]*\363\344\301\364\007\246k\355,?Ry\355\301\027\324\363&\323Af\223\255\323\273\226!4R\177\27719-e\263\242J\270\022J\002\240\275\270\235\301\361L\0279""\353@(u\r%6%k\205\002\005\007\252\244\244\214|\275C\"he\020\372\215W\247\233\225y#\214)\014\321\240\375\370\004\240\345,lE;\033\204\267\023\003*\261\026\nB\027\014(j\025\374\027r\212ntp\272\265z\256\271g`\326\332tn&\330onf\261s\273\254bp\340H=\325I\023\000\233r^\230\375nJ-\255\21300\316\247\247?g\001\270Tj\315\351\317\327da\212vY\343eMy\246\352d\333&\364\200+i\333\265\374E\302\227c\224O\363!\367*/\201<\206\264\316B\334\025#8'K\2313\224\037\230p\375s\341\342\016m\24025:v\010\223\3066J\2202\344\033\036v\224\372t`\031\204\325\314C\230\346W\276\005\200M\251\032\352,'\241\204\005Q\324Y\266$3Q\024\262%N.US\317\243\3566I6EQVT\305\024E\234X,\247D\222\333\324:\225~\300\246\\K\304\240\253\020\221N\263\022\016\315\357\260\010\271z\303`\205\\J%dB\335\274\257\251\3140%\335\014\230\306\324\254\261;\206\201\321\005n\020\206y=\270\010\263]\324\3359G\344h1\270\353{k\266\324\252\261\226*\007\221f%SJ\355\3625\020I\332#\274\214S\013\253\213KK\213\342\342\203\373_-\335}\364\340\321j\373\356J\265\357\256Tpw\245:.\254\366\360v\241\240\024\r\305\020\305\207\345m\374\336\202\n\212\367A\274\025\226[\005\013\230*3\022\342T[\223Q\303M\237\304@\223$\243]\274<\006\311(\253\262\242\245p.\356\021\005pg$\203u\252C8\306:\200\254\232\341k\016w\177\236s?\234 z\312\240\006\351\250(6\007k\314$V\323+\366\026\025\350\250.\311,#\311\317\371=j\004\324\014I(CA\301\253,E\206'\235\007\022\322\316YRo\376\020\201@@\027F\327)\242\306g\344\235 \242\3643\320\215_\025L\3275=t\223>\362}r\005i\315\310\0254\311\234\237C\201\001\366\360\232\023\305\\I\225\311q\270\214\203\201\230\230\277\030Tp>\035\224/m\022\312\277\246\322\013]\304b:\3331\304.\205B\347{\330k\264\2468\244F\3535\303\314-\270-\022:\006\205\\\244\242l}\2466J\014\301\331\371\325\340}\013\017\215\252\017\305\317\347\225\254(\006u\205\177\251C\000\207.\315\022n\255$\007J\023\312\r\235}\221\036iQ\\\227\220\"\021\275\0275^\004\030\375\212\333\374\031(\020\177\0043\206X\026\t\325R\001`Q\331\266\237*\211,\006l\013\217\"\211\247\231\247v\320\340b\200\374\025\301""\200\242V\024Etd\242\234g\362s\003F\374-D\237\206<\341|TR\213\212\374\034\007\335V\233v\233\274\355\244\224\221\004\006'\267\225\2535\n4\264c\202m\323p\r\364\0021D\334\365\241\327\030\205\002\310\307\241\033\035\343\346N\274\274\t\271@u\350A\004\013\336\260k\32105\374\352%\242\261\211y\221\334G\300\245\"\024\203\241\221\202\361\3666%\024=\264\311\036\226\027\210\025\0178\253\205sS\257\274\317\010\3570\201\234\013!\234\317\225b\213;\323\221\310{8\3555\233\317\010A\320\3417\255h\202\356k\206\230\276\330V;\274\264\365N\234\017\004\017\223m\235\023\323\263\355\227Y^\327\273\324\212p\256u\010\212Q*\360\223\246\377 \301\211mn\274&\316\326\272\331\226\304t\315\321\237L\\\360\214\310\356GD\366<\371Wd\345{\302v\366\263.l\271\324\212\341\365\364\232p;m~9J\375\276p\020qI\232\177\201\321\001\306\336\365\370\347\303e\377\022\365\372M\"\373M@\344\0352\025y\273(~\177\031L_\351xi6\211\273\267\216\274?\014\377.\027\213\324\315\207\267\303{\243\363o&\3244\376\246\375#\006\365~U\3717\311\314?vt\177\320\004\206j\022\376\027\323\036W\301\376D)\362\332\"\210\274\271<\366qPd\237\211\212\354#\332_\342\312\370\225\023})\275K\242w\357\005\366\227\273_\251\243\376m\242\362g\216\235w_\177f\000\272J\342/ :\264t?h\374?2\023\331\273\032#\373$m\344-s\033y\027\010~\216\276\354\213\014\305\375\330\220?<\342\237\030\363?9\351\177<\356\217}\354\037\037\245\231\341\221\227\027#\275\037\333\363N\354\345G\221\336\276\237\177\264.Y\222\337\027\267\346\355a{\303\211\372}\207+W\255Ek\303\357\037\262\316\331\013\336\370\215\232T\333\360\017\035\263V\355\350\336\206\215\276\243\225\357\355\2507z\357E\364E\254\321\363\341\317?Yw\3554Y_\267\014;\351\367\017T6\374\301\021o\344v}\331O\214\331\227\235)7I\016\nI\377\354\244\177\346\254?q\n\343F\177\334\213\317W%\230Z[v\336\221\374\221\343\364\203`\360=9\021\004\366\362`\344\310`\270\337?_$\367\332\357o\265\364\036\373\365\021&\033~\337\2007p\261\032\365\373\343\326e\370\034O\020|0\205\321\370'\004\353\361Q\034\335\333\357\035N:1XW\266\000\342\300 \375$\216\221-LFO""\020\340\211c<%\243'^Np\3731\302\"n]\265\027\202\257d|l8\260\207\345\21109~\317\270\375\314\035r\323\204\340f\345\t\200\326\355Q\347\224\363\225;\354nV\227\001L_\314\032\362\342g\234e'\357\346\25271\003S\263r\331:e\255Xe\347\003g\3161\335\371j\254\232$\007u/v\312I;w\334\263\325\003\230y\273]K\225\273\240I\306\376\3206\234\323\016k\356:h\035\360\206N;\013\316\023\367Nu\242\272@\276\376'\240\t\360\233p\222\316\025\230\036\257\305\374C#<\367\257L\203+\336Q\002\260\037\250\330\013\010\377`\310]`\027\300\267\203\301/\257Gz\307\355\273N\332\357\031\013\200:\345\\FP\321*\037\002\257\3438\277'\351\214\273k\325e\032\034wG\252\275\325\257j\307\353#/\350\004$\370'\316\333>bB\016\356/\373}\375\225\005\3724P\311x\203\344\341\325 \"\277\347He\305\033\200\217`\025G\216b\344Kuo\364S7\355\336\257\235\255\037\2507\247\207\254\t/q\326\221\234r\365`5S\213\356\234\351r ,\225\233\365d=\335\365\241U,\237\300\301;n\322M\243n\274\201\223\300?\351\017\016[\337;Q/\311\2275Z\365t\0258'\306\355\247\010g\354\034J\240\233\377T)\t/>\343.\370\203\243v\314\037\201O\204+\254\272\353\351\350\t;\016r\276\315\311(\3747\234\314+/\215\364\274\351\334\276\310\221x\240\"O\275\247_{_\377\033\236|4b\3116H\262\1770H\\6\255\307 \323b\327\307\271\352B\365qm\276\036\363n~\343}\363\314{\366m[^\336\350\324\333\202\021\267\322\320 o\354\211\367\344\251\177\234\270\027\243\177b\376\3513\376\271O\375\351s\004\314\3513\rB\355N]\332#_Me\013-\227\203\007\354\260\333\253\000\177\006\262\277\337Xp\360\277^\244\367J\354\265Zr\237\211\225=9\353e\031\002;4\020\360~\261\236\256/\204\362\030\026;~x\261\277<\032\351\035\265\017\006\345I\245\021\267\246\354$\264\263g\2509\030\366\206\247\335\230{\332\315\222\236\265\n\376\244w2]\035\252\246_&\"\275S\216\016a\333\250~P\235\257\r\325\270\226\232\225yk\330\332 \215j)\235\324\350\031\264\242T\353\313a\035\217\331\263\336\370\005\254<Z\313\325o\002\376\276\303$\335\320\033\210\345\252\033\r\357<\177p\322\331\360\246\256\324\016\362;r\220t\"\331\350KX\013A5\323\345\272\316u8M\022s\333:""fIta\016Z}v\024\302\233\204\214a\247\244\365\231\335\347D\235\270s\323\311\270\037\270\227\271\364@\2647h\233C\225~\210\302\177pl\177u\261\372\337z\366\305\351\027R\367v\336\240\200\345\243H\352\234\273\261\237\035{+\217`\003\247\216xG>\261%\273\354F\335\204\373m\215hw\250\2772\353\035\231\200\320\027\252\247\200h\270\335\001\252\300#\273}\347l\031\206+%\373\036\322\365\265+\271\033\215\216\211\345p\335\260\365\324^\266eg\310\231\205\221\\\035\251\035h\035X\371\316\236\265\233{q\3069\n\340\2176\302\027\211\352!\316\035\031p6\200\304\027P\335\013\336\362J#t/\332\3509\\Is2\r\362\326\246\305\036\0377B8\014.\323\307V\032\200\362\373\210\013\260\035{-1\374\267\376\320\3509\201\215\203\007 h\364Lr\016\352\325x\365\026h\222\251\203g@\234<\354L\303\216A\314\213\321\315\372\025\322\262\334\350\346N\324\212Y\311 -\227,f_\301\265\276\210C\206\334K\250\200\225\352\306\033\220\230\354.\010\272C\323\241\237\235\345DmP\207w\270\034+\313\025\211\340\222*%\353\236\275`\257:\007\234\t\034\273\345f\252-\350S\221\336\tg\330\331t\227]\000t\322\336t\036\343\206\304%:\341\234u\017rZ\204\260\305\320\244\360>!L@\320d\334\341\021A\363\273\346\177\264\346\320\245$\354\257\301\344\346\n\277\237\227\232\337\017A\2643N\217\263\344\256x\027\376Q\217\326cA\345\275!is\270\"\226\251\347m5E\013{\244\3713\353 \307\276\335\360\200IH\242\337\36314\240'\031\264k\230;\347N\240oHV\257\3276\353+\365\215 \323\375\221\336SN2\320\260$\351\027o\026\302\276\273#\261\224\3174\365\312\366\255V1\377X\233\255-\277\372i\204\027\3533\256h\375\350v\032\340D\257\365\210\253\342`\302Z\342E\026\243Fw\233\032\365\006\346n\333\307P\345\033~b\324\036\301\016\261\216\301\2707\216N\267\232@\207\024\243\3769m\337\246k\313=\345\256p\326\336%\027\032\270\331\256\331+\264\303\230}\215+`\342\004\035H\235\230s\013\016\215`\217\221Zom\005:\230\200\0325\372\217\001e\206v\034\"\327h+\317\301J\316Z\260\236A\004@\274\276\356\327\017\177\326+q\000\022\267n\006,8\014aX\005\370Y\036\333\253\257G+\317\355\230\r4{w\340\010l\321\002G\235\204""\363\214\356\202\366\344\026`0\235\353\210,\366\016\330\305\270]{\320\215]\020\360\316r|\rv\227@\334\003(\214^\000\335\215\031za\233\027=\312.\254>^b\017\376\007Y0U\356";
+    PyObject *data = __Pyx_DecompressString(cstring, 3548, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (12511 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/v2core/interp_hue/interp_hue.pyxD spatial grid not implemented. Only 1D (L, N) and 2D (H, W, N) coefficient grids are supported.Dimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersHue lerp for Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Multi-channel coords must be (C,H,W,2), (H,W,2), or (N,2), got ndim=Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Single-channel coords must be (H,W,2) or (N,2), got ndim=Step may not be zero (axis %d)Unable to convert item to object.?>')add_note and  at 0xborder_array length (collections.abc<contiguous and direct><contiguous and indirect>coords channels (coords last dim must be 2, got coords must be (H, W, 2) or (N, 2), got ndim=corners first dimension must be 4, got corners must be (4,) or (4,C), got ndim=disable doesn't match 2^(num_dims-1)=enable for num_dims=gc (got got differing extents in dimension h0_arr and h1_arr must have same lengthisenableditemsize <= 0 for cython.arraymodes must have length equal to num dimensions) must match coords length () must match corners (no default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same lengthstarts/ends length <strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array dat""a.unable to allocate shape and strides.ASCIIC_CONTIGUOUSChromatica.chromatica.v2core.interp_hue.interp_hueEllipsis__Pyx_PyDict_NextRefSequenceView.MemoryViewabcallocate_bufferascontiguousarrayasyncio.coroutinesbaseborder_arrayborder_constantborder_featheringborder_modec__class____class_getitem__cline_in_tracebackcoeffscoordscornerscount__dict__distance_modedtypedtype_is_objectemptyencodeend_hueendsenumerateerrorfeather_hue_modeflagsfloat64formatfortran__func____getstate__h0h0_arrh1h1_arrhue_directionhue_lerp_1dhue_lerp_1d_fullhue_lerp_1d_spatialhue_lerp_arrayshue_lerp_between_lines_dispatchhue_lerp_from_corners_dispatchhue_lerp_simplehue_multidim_lerpid__import__indexint32_is_coroutineitemsitemsizeline0line1__main__memviewmodemode_xmode_ymodesmodes_xmodes_y__module__name__name__nanndim__new__npnum_threadsnumpyobjpackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__register__set_name__setdefault__setstate____setstate_cython__shapesizestartstart_huestartsstepstopstruct__test__unpackupdatevaluesxx_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch)\000\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_12interp_hue2d_hue_lerp_between_lines *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_12interp_hue2d_hue_lerp_between_lines_x_discrete *__pyx_optional_args)\000hue_lerp_2d_spatial\000hue_lerp_2d_with_modes\000hue_lerp_between_lines\000hue_lerp_between_lines_x_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_li""nes_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_flat_x_discrete *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_x_discrete *__pyx_optional_args)\000hue_lerp_between_lines_array_border\000hue_lerp_between_lines_array_border_flat\000hue_lerp_between_lines_array_border_flat_x_discrete\000hue_lerp_between_lines_array_border_x_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_per_ch_modes *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel *__pyx_optional_args)\000PyArray""Object *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_per_ch_coords *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes\000hue_lerp_from_corners_1ch\000hue_lerp_from_corners_1ch_flat\000hue_lerp_from_corners_multichannel\000hue_lerp_from_corners_multichannel_flat\000hue_lerp_from_corners_per_ch_coordsPyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multichannel_per_ch_modes_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_flat_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multichannel_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multic""hannel_flat_array_border *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes_array_border\000hue_lerp_from_corners_array_border\000hue_lerp_from_corners_flat_array_border\000hue_lerp_from_corners_multichannel_array_border\000hue_lerp_from_corners_multichannel_flat_array_border\200\001\360\010\000\022\023\330\021\022\330\026\027\330\032\033\330\036\037\330\034\035\330\033\034\330\030\031\330\026\027\330\026\027\3600\000\005\034\2306\240\021\360\n\000\005\010\200|\2203\220a\330\010\023\2206\230\026\230q\240\001\330\010\013\2109\220C\220q\330\014\022\220*\230A\320\035>\270a\270q\330\t\025\220S\230\001\330\010\023\2206\230\026\230q\240\001\330\010\013\2109\220C\220q\330\014\022\220*\230A\320\035>\270a\270q\340\010\016\210j\230\001\320\031H\310\001\310\021\340\004\007\200}\220G\2301\330\010\013\210<\220s\230!\330\014\017\210q\330\020\027\320\027E\300Q\330\024\033\2307\240(\250!\330\033\034\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\0236\260a\330\020\027\220w\230h\240a\330\027\030\330\027\030\330\034\035\330\"#\330!\"\330\036\037\330\034\035\360\006\000\r\020\210q\330\020\027\320\027J\310!\330\024\033\2307\240(\250!\330\033\034\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\023;\2701\330\020\027\220w\230h\240a\330\027\030\330\027\030\330\034\035\330\"#\330!\"\330\036\037\330\034\035\360\010\000\005\010\200q\330\010\017\320\0170\260\001\330\014\023\2207\230!\330\023\024\330\030\031\330\034\035\330\036\037\330\035\036\330\032\033\330\030\031\360\006\000\005\014\320\013!\240\021\330\010\017\210w\220a\330\017\020\330\017\020\330\024\025\330\030\031\330\032\033\330\031\032\330\026\027\330\024\025\200\001\360\010\000\031\032\360\"\000\005\014\320\013\033\2301\330\010\023\2209\230A\330\026\027\330\024\025\330\030\031\330\025\026\330\032\033\330\031\032\200\001\360\032\000\005\034\2306\240\021\330\004\035\230\\\250\022\2501\340\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330""\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200u\210G\2203\220b\230\007\230s\240$\240e\2506\260\021\260!\330\010\020\220\002\320\022$\240A\240W\250F\260\"\260A\340\004\007\200~\220S\230\001\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\330\t\027\220s\230!\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\340\010\016\320\016!\240\021\330\014\033\2301\230A\200\001\360\006\000\022\023\330\021\022\330\031\032\330\031\032\330\026\027\330\032\033\330\036\037\330\034\035\330\033\034\330\030\031\330\026\027\360<\000\005\035\230G\2401\330\004\033\2306\240\021\330\004#\2407\250&\260\001\260\021\330\004#\2401\340\004\030\230\001\330\004!\240\035\250g\260Q\330\004!\240\030\250\027\260\005\260T\270\030\300\027\310\001\360\006\000\005\010\200}\220C\220q\330\010\027\220w\230f\240A\240Q\330\010\014\210A\360\006\000\005\017\210b\320\020\"\240!\2409\250F\260\"\260A\330\004\r\210R\320\017!\240\021\240(\250&\260\002\260!\340\004\007\200q\330\010\027\220r\320\031+\2501\250N\270&\300\002\300!\340\004\007\200q\330\010\022\220\"\320\024&\240a\240y\260\006\260b\270\001\330\010\022\220\"\320\024&\240a\240y\260\006\260b\270\001\360\006\000\005\010\200}\220C\220q\330\010\016\210j\230\001\320\031B\300!\3001\360\006\000\005\010\200}\220C\220q\330\010\013\210<\220s\230!\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027\320\0279\270\021\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\360\006\000\r\024\320\023,\250A\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\006\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027""\320\027>\270a\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\0231\260\021\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\r\023\220*\230A\320\035X\320XY\320YZ\360\006\000\n\027\220c\230\021\340\010\013\210<\220s\230!\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\330\014\017\210v\220V\2301\230C\230s\240!\330\020\026\220j\240\001\320!4\260A\260V\2706\300\021\320B[\320[\\\320\\]\340\014\023\320\0236\260a\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\023\2201\330\024\033\320\033W\320WX\330\030!\240\030\250\021\330\030!\240\021\330$%\330*+\330)*\330&'\330$%\340\020\027\320\027F\300a\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\360\006\000\r\020\210q\330\020\027\320\027F\300a\330\024\035\230Q\330\024\035\230Q\330 !\330$%\330&'\330%&\330\"#\330 !\340\014\023\320\0235\260Q\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027\320\027K\3101\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\023:\270!\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\r\023\220*\230A\320\035c\320cd\320de\360\006\000\t\017\210j\230\001\320\031C\3001\300A\200\001\360\010\000\031\032\330\026\027\330\032\033\330\032\033\330\034\035\330\033\034\360\016\000\005\031\230\006\230f\240A\240Q\360\006\000\005\023\220(\230!\2301\330\004\022\220(\230!\2301\330\004\026\320\026)\250\021\250$\250d\260!\330\004!\240\035\250g\260Q\330\004\037\320\0371""\260\022\2601\360\024\000\005(\240r\250\026\250q\260\003\2606\270\022\2701\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\020\220\001\330\004\r\210Q\340\004\007\200q\330\010\033\2302\320\035/\250q\260\016\270f\300B\300a\330\010\013\320\013\033\2306\240\021\240#\240S\250\001\330\014\022\220*\230A\330\020'\240q\320(8\270\006\270a\270q\330\020!\240\021\240!\340\010\024\220A\360\006\000\005\010\200|\2203\220m\2404\240t\2501\330\010\014\210E\220\025\220a\220q\330\014\020\220\010\230\001\230\031\240!\2401\330\014\022\220!\2205\230\010\240\001\240\023\240B\240b\250\003\2507\260\"\260A\330\010\017\210q\360\006\000\005\t\210\014\220C\220~\240S\250\014\260C\260\177\300d\310$\310a\330\010\014\210E\220\025\220a\220q\330\014\020\320\020 \240\001\240\031\250!\2504\250q\330\014\022\220!\2205\230\010\240\001\240\023\240B\240b\250\003\2507\260\"\260A\330\010\017\210q\360\006\000\005\t\210\005\210U\220!\2201\330\010\r\320\r\036\230a\230y\250\001\250\024\250]\270!\360\006\000\t\014\2102\320\r\"\240$\240l\260#\260Q\330\014\022\220!\2205\230\002\230!\330\014\r\360\006\000\t\014\2102\320\r\"\240$\240l\260#\260Q\330\014\017\210q\330\020\026\220a\220u\230H\240A\240Y\250a\250q\340\020\026\220a\220u\230H\240A\240Q\330\014\r\360\006\000\t\026\220X\230Q\230c\240\022\2402\240Y\250c\260\027\270\002\270!\360\006\000\t\014\2102\210^\2302\230Q\330\014\017\210q\330\020\035\230X\240Q\240i\250q\260\001\340\020\035\230X\240Q\240a\360\006\000\r\023\220!\2205\230\017\240q\250\014\260L\300\002\300/\320QR\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\010\000\020\021\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q""\240a\340\004\032\230!\330\004\032\230!\330\004\026\220a\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\n\000\005\t\210\005\210U\220!\2201\330\010\r\210U\220!\2201\330\010\r\210U\220!\2201\330\010\021\320\021$\240A\240T\250\024\250Q\340\010\014\210E\220\025\220a\220q\330\014\020\220\001\220\021\220!\330\014\022\220!\2203\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\004\013\2101\200\001\360\010\000\020\021\360\n\000\005\031\230\006\230f\240A\240Q\330\004'\240r\250\026\250q\260\003\2606\270\022\2701\330\004\033\2301\330\004\026\220a\340\004\026\320\026)\250\021\250$\250d\260!\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210A\210Q\210a\330\010\016\210a\210u\220H\230A\230S\240\002\240\"\240C\240w\250b\260\001\340\004\013\2101\200\001\360.\000\005\"\240\026\240v\250Q\250a\330\004\037\230v\240V\2501\250A\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200|\2204\220r\230\024\230Y\240b\250\001\330\010\016\210j\230\001\330\014!\240\021\240!\330\014\035\230Q\230b\240\004\240I\250R\320/@\300\001\300\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240A\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\340\004\036\230a\330\004\034\230A\330\004!\240\021\330\004\035\230Q\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\024\250\\\270\022\2701\340\014\030\230\001\340\014\020""\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\340\020\024\220E\230\025\230a\230q\330\024\031\230\027\240\001\240\021\330\024\031\230\027\240\001\240\021\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\033\2301\230E\240\030\250\021\250#\250R\250r\260\023\260G\2702\270Q\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a\220w\230a\230t\240<\250r\260\021\340\014\030\230\001\340\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\340\020\024\220E\230\025\230a\230q\330\024\031\230\021\230!\2301\330\024\031\230\021\230!\2301\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\025\220Q\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64)\000__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10int""erp_hue_16interp_hue_utils_f64, int)\000__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64 (__pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, __pyx_t_10Chromatica_10chromatica_6v2core_10interp_hue_16interp_hue_utils_f64, int)\000wrap_hue\000lerp_hue_single\000adjust_end_for_modeO";
+    #else /* compression: none (11746 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsChromatica/chromatica/v2core/interp_hue/interp_hue.pyxD spatial grid not implemented. Only 1D (L, N) and 2D (H, W, N) coefficient grids are supported.Dimension %d is not directEmpty shape tuple for cython.arrayFailed to allocate working buffersHue lerp for Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Multi-channel coords must be (C,H,W,2), (H,W,2), or (N,2), got ndim=Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Single-channel coords must be (H,W,2) or (N,2), got ndim=Step may not be zero (axis %d)Unable to convert item to object.?>')add_note and  at 0xborder_array length (collections.abc<contiguous and direct><contiguous and indirect>coords channels (coords last dim must be 2, got coords must be (H, W, 2) or (N, 2), got ndim=corners first dimension must be 4, got corners must be (4,) or (4,C), got ndim=disable doesn't match 2^(num_dims-1)=enable for num_dims=gc (got got differing extents in dimension h0_arr and h1_arr must have same lengthisenableditemsize <= 0 for cython.arraymodes must have length equal to num dimensions) must match coords length () must match corners (no default __reduce__ due to non-trivial __cinit__numpy._core.multiarray failed to importnumpy._core.umath failed to import object>self.name is not Nonestarts and ends must have same lengthstarts/ends length <strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array dat""a.unable to allocate shape and strides.ASCIIC_CONTIGUOUSChromatica.chromatica.v2core.interp_hue.interp_hueEllipsis__Pyx_PyDict_NextRefSequenceView.MemoryViewabcallocate_bufferascontiguousarrayasyncio.coroutinesbaseborder_arrayborder_constantborder_featheringborder_modec__class____class_getitem__cline_in_tracebackcoeffscoordscornerscount__dict__distance_modedtypedtype_is_objectemptyencodeend_hueendsenumerateerrorfeather_hue_modeflagsfloat64formatfortran__func____getstate__h0h0_arrh1h1_arrhue_directionhue_lerp_1dhue_lerp_1d_fullhue_lerp_1d_spatialhue_lerp_arrayshue_lerp_between_lines_dispatchhue_lerp_from_corners_dispatchhue_lerp_simplehue_multidim_lerpid__import__indexint32_is_coroutineitemsitemsizeline0line1__main__memviewmodemode_xmode_ymodesmodes_xmodes_y__module__name__name__nanndim__new__npnum_threadsnumpyobjpackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__register__set_name__setdefault__setstate____setstate_cython__shapesizestartstart_huestartsstepstopstruct__test__unpackupdatevaluesxx_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch)\000\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_12interp_hue2d_hue_lerp_between_lines *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_12interp_hue2d_hue_lerp_between_lines_x_discrete *__pyx_optional_args)\000hue_lerp_2d_spatial\000hue_lerp_2d_with_modes\000hue_lerp_between_lines\000hue_lerp_between_lines_x_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_li""nes_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_flat_x_discrete *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_25interp_hue2d_array_border_hue_lerp_between_lines_array_border_x_discrete *__pyx_optional_args)\000hue_lerp_between_lines_array_border\000hue_lerp_between_lines_array_border_flat\000hue_lerp_between_lines_array_border_flat_x_discrete\000hue_lerp_between_lines_array_border_x_discretePyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_per_ch_modes *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_1ch_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel *__pyx_optional_args)\000PyArray""Object *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_multichannel_flat *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_18interp_hue_corners_hue_lerp_from_corners_per_ch_coords *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes\000hue_lerp_from_corners_1ch\000hue_lerp_from_corners_1ch_flat\000hue_lerp_from_corners_multichannel\000hue_lerp_from_corners_multichannel_flat\000hue_lerp_from_corners_per_ch_coordsPyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multichannel_per_ch_modes_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_flat_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multichannel_array_border *__pyx_optional_args)\000PyArrayObject *(PyArrayObject *, PyArrayObject *, PyArrayObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10Chromatica_10chromatica_6v2core_10interp_hue_31interp_hue_corners_array_border_hue_lerp_from_corners_multic""hannel_flat_array_border *__pyx_optional_args)\000hue_lerp_from_corners_multichannel_per_ch_modes_array_border\000hue_lerp_from_corners_array_border\000hue_lerp_from_corners_flat_array_border\000hue_lerp_from_corners_multichannel_array_border\000hue_lerp_from_corners_multichannel_flat_array_border\200\001\360\010\000\022\023\330\021\022\330\026\027\330\032\033\330\036\037\330\034\035\330\033\034\330\030\031\330\026\027\330\026\027\3600\000\005\034\2306\240\021\360\n\000\005\010\200|\2203\220a\330\010\023\2206\230\026\230q\240\001\330\010\013\2109\220C\220q\330\014\022\220*\230A\320\035>\270a\270q\330\t\025\220S\230\001\330\010\023\2206\230\026\230q\240\001\330\010\013\2109\220C\220q\330\014\022\220*\230A\320\035>\270a\270q\340\010\016\210j\230\001\320\031H\310\001\310\021\340\004\007\200}\220G\2301\330\010\013\210<\220s\230!\330\014\017\210q\330\020\027\320\027E\300Q\330\024\033\2307\240(\250!\330\033\034\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\0236\260a\330\020\027\220w\230h\240a\330\027\030\330\027\030\330\034\035\330\"#\330!\"\330\036\037\330\034\035\360\006\000\r\020\210q\330\020\027\320\027J\310!\330\024\033\2307\240(\250!\330\033\034\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\023;\2701\330\020\027\220w\230h\240a\330\027\030\330\027\030\330\034\035\330\"#\330!\"\330\036\037\330\034\035\360\010\000\005\010\200q\330\010\017\320\0170\260\001\330\014\023\2207\230!\330\023\024\330\030\031\330\034\035\330\036\037\330\035\036\330\032\033\330\030\031\360\006\000\005\014\320\013!\240\021\330\010\017\210w\220a\330\017\020\330\017\020\330\024\025\330\030\031\330\032\033\330\031\032\330\026\027\330\024\025\200\001\360\010\000\031\032\360\"\000\005\014\320\013\033\2301\330\010\023\2209\230A\330\026\027\330\024\025\330\030\031\330\025\026\330\032\033\330\031\032\200\001\360\032\000\005\034\2306\240\021\330\004\035\230\\\250\022\2501\340\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330""\004\007\200t\2107\220#\220R\220y\240\003\2404\240t\2506\260\021\260!\330\010\017\210r\320\021#\2401\240F\250&\260\002\260!\330\004\007\200v\210W\220C\220r\230\031\240#\240T\250\026\250v\260Q\260a\330\010\021\220\022\320\023%\240Q\240h\250f\260B\260a\330\004\007\200u\210G\2203\220b\230\007\230s\240$\240e\2506\260\021\260!\330\010\020\220\002\320\022$\240A\240W\250F\260\"\260A\340\004\007\200~\220S\230\001\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\330\t\027\220s\230!\330\010\017\320\017\"\240!\2408\2506\260\030\270\021\340\010\016\320\016!\240\021\330\014\033\2301\230A\200\001\360\006\000\022\023\330\021\022\330\031\032\330\031\032\330\026\027\330\032\033\330\036\037\330\034\035\330\033\034\330\030\031\330\026\027\360<\000\005\035\230G\2401\330\004\033\2306\240\021\330\004#\2407\250&\260\001\260\021\330\004#\2401\340\004\030\230\001\330\004!\240\035\250g\260Q\330\004!\240\030\250\027\260\005\260T\270\030\300\027\310\001\360\006\000\005\010\200}\220C\220q\330\010\027\220w\230f\240A\240Q\330\010\014\210A\360\006\000\005\017\210b\320\020\"\240!\2409\250F\260\"\260A\330\004\r\210R\320\017!\240\021\240(\250&\260\002\260!\340\004\007\200q\330\010\027\220r\320\031+\2501\250N\270&\300\002\300!\340\004\007\200q\330\010\022\220\"\320\024&\240a\240y\260\006\260b\270\001\330\010\022\220\"\320\024&\240a\240y\260\006\260b\270\001\360\006\000\005\010\200}\220C\220q\330\010\016\210j\230\001\320\031B\300!\3001\360\006\000\005\010\200}\220C\220q\330\010\013\210<\220s\230!\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027\320\0279\270\021\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\360\006\000\r\024\320\023,\250A\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\006\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027""\320\027>\270a\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\0231\260\021\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\r\023\220*\230A\320\035X\320XY\320YZ\360\006\000\n\027\220c\230\021\340\010\013\210<\220s\230!\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\330\014\017\210v\220V\2301\230C\230s\240!\330\020\026\220j\240\001\320!4\260A\260V\2706\300\021\320B[\320[\\\320\\]\340\014\023\320\0236\260a\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\023\2201\330\024\033\320\033W\320WX\330\030!\240\030\250\021\330\030!\240\021\330$%\330*+\330)*\330&'\330$%\340\020\027\320\027F\300a\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\360\006\000\r\020\210q\330\020\027\320\027F\300a\330\024\035\230Q\330\024\035\230Q\330 !\330$%\330&'\330%&\330\"#\330 !\340\014\023\320\0235\260Q\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\016\032\230\023\230A\330\014\036\230f\240F\250!\2501\330\014\017\320\017\037\230s\240!\330\020\026\220j\240\001\320!B\300!\3001\340\014\017\210q\330\020\027\320\027K\3101\330\024\035\230X\240Q\330\033*\250!\330 !\330&'\330%&\330\"#\330 !\340\014\023\320\023:\270!\330\020\031\230\021\330\027&\240a\330\034\035\330 !\330\"#\330!\"\330\036\037\330\034\035\360\010\000\r\023\220*\230A\320\035c\320cd\320de\360\006\000\t\017\210j\230\001\320\031C\3001\300A\200\001\360\010\000\031\032\330\026\027\330\032\033\330\032\033\330\034\035\330\033\034\360\016\000\005\031\230\006\230f\240A\240Q\360\006\000\005\023\220(\230!\2301\330\004\022\220(\230!\2301\330\004\026\320\026)\250\021\250$\250d\260!\330\004!\240\035\250g\260Q\330\004\037\320\0371""\260\022\2601\360\024\000\005(\240r\250\026\250q\260\003\2606\270\022\2701\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\340\004\020\220\001\330\004\r\210Q\340\004\007\200q\330\010\033\2302\320\035/\250q\260\016\270f\300B\300a\330\010\013\320\013\033\2306\240\021\240#\240S\250\001\330\014\022\220*\230A\330\020'\240q\320(8\270\006\270a\270q\330\020!\240\021\240!\340\010\024\220A\360\006\000\005\010\200|\2203\220m\2404\240t\2501\330\010\014\210E\220\025\220a\220q\330\014\020\220\010\230\001\230\031\240!\2401\330\014\022\220!\2205\230\010\240\001\240\023\240B\240b\250\003\2507\260\"\260A\330\010\017\210q\360\006\000\005\t\210\014\220C\220~\240S\250\014\260C\260\177\300d\310$\310a\330\010\014\210E\220\025\220a\220q\330\014\020\320\020 \240\001\240\031\250!\2504\250q\330\014\022\220!\2205\230\010\240\001\240\023\240B\240b\250\003\2507\260\"\260A\330\010\017\210q\360\006\000\005\t\210\005\210U\220!\2201\330\010\r\320\r\036\230a\230y\250\001\250\024\250]\270!\360\006\000\t\014\2102\320\r\"\240$\240l\260#\260Q\330\014\022\220!\2205\230\002\230!\330\014\r\360\006\000\t\014\2102\320\r\"\240$\240l\260#\260Q\330\014\017\210q\330\020\026\220a\220u\230H\240A\240Y\250a\250q\340\020\026\220a\220u\230H\240A\240Q\330\014\r\360\006\000\t\026\220X\230Q\230c\240\022\2402\240Y\250c\260\027\270\002\270!\360\006\000\t\014\2102\210^\2302\230Q\330\014\017\210q\330\020\035\230X\240Q\240i\250q\260\001\340\020\035\230X\240Q\240a\360\006\000\r\023\220!\2205\230\017\240q\250\014\260L\300\002\300/\320QR\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\010\000\020\021\360\n\000\005\031\230\006\230f\240A\240Q\330\004\030\230\006\230f\240A\240Q\340\004\007\200v\210V\2201\220C\220s\230!\330\010\016\210j\230\001\230\021\340\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q""\240a\340\004\032\230!\330\004\032\230!\330\004\026\220a\340\004'\240r\250\026\250r\260\023\260D\270\006\270b\300\001\330\004\036\230a\360\n\000\005\t\210\005\210U\220!\2201\330\010\r\210U\220!\2201\330\010\r\210U\220!\2201\330\010\021\320\021$\240A\240T\250\024\250Q\340\010\014\210E\220\025\220a\220q\330\014\020\220\001\220\021\220!\330\014\022\220!\2203\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\004\013\2101\200\001\360\010\000\020\021\360\n\000\005\031\230\006\230f\240A\240Q\330\004'\240r\250\026\250q\260\003\2606\270\022\2701\330\004\033\2301\330\004\026\220a\340\004\026\320\026)\250\021\250$\250d\260!\360\010\000\005\t\210\005\210U\220!\2201\330\010\014\210A\210Q\210a\330\010\016\210a\210u\220H\230A\230S\240\002\240\"\240C\240w\250b\260\001\340\004\013\2101\200\001\360.\000\005\"\240\026\240v\250Q\250a\330\004\037\230v\240V\2501\250A\330\004\"\240&\250\006\250a\250q\340\004\007\200t\2106\220\021\220#\220S\230\001\330\010\016\210j\230\001\230\021\330\004\007\200u\210F\220!\2203\220c\230\021\330\010\016\210j\230\001\230\021\330\004\007\200|\2204\220r\230\024\230Y\240b\250\001\330\010\016\210j\230\001\330\014!\240\021\240!\330\014\035\230Q\230b\240\004\240I\250R\320/@\300\001\300\021\360\006\000\005\010\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2104\210v\220Q\220a\330\010\017\210r\320\021#\2401\240A\330\004\007\200t\2106\220\026\220q\230\001\330\010\021\220\022\320\023%\240Q\240a\330\004\007\200t\2105\220\006\220a\220q\330\010\020\220\002\320\022$\240A\240Q\340\004\036\230a\330\004\034\230A\330\004!\240\021\330\004\035\230Q\340\004*\250\"\250F\260!\260<\270v\300R\300q\330\004\036\230a\360\014\000\005#\240!\360\006\000\005\023\220!\330\004\022\220!\340\004\007\200|\2203\220a\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2201\220G\2301\230D\240\001\240\031\250!\2504\250|\2702\270Q\330\014\022\220!\2201\220G\2301\230D\240\001\240\027\250\001\250\024\250\\\270\022\2701\340\014\030\230\001\340\014\020""\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\340\020\024\220E\230\025\230a\230q\330\024\031\230\027\240\001\240\021\330\024\031\230\027\240\001\240\021\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\033\2301\230E\240\030\250\021\250#\250R\250r\260\023\260G\2702\270Q\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2301\230G\2401\240D\250\001\250\027\260\001\260\027\270\005\270R\270q\330\024 \240\001\340\014\025\220Q\220e\2307\240!\2401\340\010\017\210q\360\006\000\005\t\210\006\210f\220A\220\\\240\022\2401\330\004\010\210\006\210f\220A\220\\\240\022\2401\330\004\007\200r\210\023\210E\220\023\220B\220c\230\021\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\013\2102\210S\220\006\220d\230!\2301\330\010\016\210k\230\021\230!\340\004\005\330\010\014\210E\220\025\220a\220q\330\014\022\220!\2203\220a\220y\240\001\240\024\240\\\260\022\2601\330\014\022\220!\2203\220a\220w\230a\230t\240<\250r\260\021\340\014\030\230\001\340\014\020\220\005\220U\230!\2301\330\020\024\220I\230Q\230c\240\021\330\020\027\220x\230q\240\001\340\020\024\220E\230\025\230a\230q\330\024\031\230\021\230!\2301\330\024\031\230\021\230!\2301\330\024\035\320\0350\260\001\260\024\260T\270\021\330\024\025\220Q\220e\2308\2401\240C\240r\250\022\2503\250g\260R\260q\340\020\023\220:\230R\230q\330\024\033\230:\240S\250\001\330\024\032\230!\2303\230b\240\002\240&\250\005\250R\250q\330\024 \240\001\340\014\025\220Q\220e\2301\230A\230Q\340\010\014\210A\210Q\330\010\014\210A\210Q\340\004\013\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -31553,7 +32308,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 178; i < 192; i++) {
+    for (int i = 178; i < 191; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -31564,7 +32319,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 192; i++) {
+    for (Py_ssize_t i = 0; i < 191; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
@@ -31572,7 +32327,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
     #if CYTHON_IMMORTAL_CONSTANTS
     {
       PyObject **table = stringtab + 178;
-      for (Py_ssize_t i=0; i<14; ++i) {
+      for (Py_ssize_t i=0; i<13; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
         #else
@@ -34523,6 +35278,19 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
     }
     if (nogil)
         PyGILState_Release(state);
+}
+
+/* BufferIndexError (used by BufferIndexErrorNogil) */
+static void __Pyx_RaiseBufferIndexError(int axis) {
+  PyErr_Format(PyExc_IndexError,
+     "Out of bounds on buffer access (axis %d)", axis);
+}
+
+/* BufferIndexErrorNogil */
+static void __Pyx_RaiseBufferIndexErrorNogil(int axis) {
+    PyGILState_STATE gilstate = PyGILState_Ensure();
+    __Pyx_RaiseBufferIndexError(axis);
+    PyGILState_Release(gilstate);
 }
 
 /* IsLittleEndian (used by BufferFormatCheck) */

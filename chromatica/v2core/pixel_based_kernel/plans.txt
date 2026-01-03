@@ -1,0 +1,20 @@
+Phase 1: Create pixel kernels (new file, no risk)
+├── _pixel_kernels.pxd - declarations
+├── _pixel_kernels.pyx - implementations for lines/corners
+├── _hue_pixel_kernels.pyx - hue-aware versions
+└── Test: Verify pixel output matches array kernel output
+
+Phase 2: Brick dispatch (new file, no risk)  
+├── _brick_topology.pxd - CSR grid structures
+├── _brick_dispatch.pyx - main dispatch loop
+└── Test: Verify brick membership and local coordinates
+
+Phase 3: Integration (new code, minimal risk)
+├── Create Python BrickGrid class
+├── Create factory to build CellPtr arrays from UnifiedCell
+└── Test: Full pipeline with various cell types
+
+Phase 4: Optional array kernel refactor (low priority)
+├── Gradually replace inline logic with pixel kernel calls
+├── Benchmark before/after
+└── Only do if maintenance benefit outweighs risk
